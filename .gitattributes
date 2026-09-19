@@ -1,0 +1,8 @@
+# Einheitlich LF im Repository, egal auf welchem Rechner gearbeitet wird.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp4 binary
+*.webm binary
+*.tar binary
