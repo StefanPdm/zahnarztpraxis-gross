@@ -68,7 +68,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
   ablegen — die Maße erzeugt `npm run bilder` (läuft vor dev und build).
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
-  Laufmarke, Angst-Regler, Anliegen-Wahl, Termin-Formular, Praxis-Video,
+  Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
   Karte, Großelino.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
@@ -92,8 +92,9 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;
-   über 1.200 gesetzte Implantate (Matthias Groß); Chantal Groß hat in
-   **Halle** studiert (bestätigt 19.09.2026).
+   über 1.200 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
+   haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
+   immer „Halle/Saale").
 4. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
    (Klasse `.todo`) und nachfragen. Die offenen Stellen stehen in
    `docs/STAND.md`.

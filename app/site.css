@@ -422,7 +422,13 @@ body .flipcard img.portrait {
 }
 
 .reasonchip { transition: background .25s ease, color .25s ease, border-color .25s ease; }
-.reasonchip:hover { border-color: var(--color-accent) !important; }
+.reasonchip:hover,
+.reasonchip:focus-visible {
+  border-color: var(--color-accent) !important;
+  background: var(--color-accent-100);
+  color: var(--color-accent-800) !important;
+  text-decoration: none;
+}
 
 body footer { padding-bottom: 68px !important; }
 body footer a:hover { color: var(--color-accent); }

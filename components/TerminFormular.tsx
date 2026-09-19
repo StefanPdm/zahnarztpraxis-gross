@@ -22,6 +22,7 @@ const nichts = () => () => {};
 const ANLIEGEN_AUS_LINK: Record<string, string> = {
   kontrolle: "Kontrolle & Prophylaxe",
   schmerzen: "Schmerzen / akutes Problem",
+  beratung: "Beratung",
 };
 
 export default function TerminFormular() {
@@ -290,6 +291,7 @@ export default function TerminFormular() {
           <option>Kontrolle &amp; Prophylaxe</option>
           <option>Professionelle Zahnreinigung</option>
           <option>Schmerzen / akutes Problem</option>
+          <option>Beratung</option>
           <option>Zahnersatz, Krone oder Implantat</option>
           <option>Ästhetische Beratung (Veneers, Bleaching)</option>
           <option>Parodontitis-Behandlung</option>

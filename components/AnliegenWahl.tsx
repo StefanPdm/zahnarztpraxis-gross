@@ -1,15 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { praxis } from "@/lib/praxis";
 
 /*
-  „Worum geht es?" — Auswahl auf der Startseite.
+  „Worum geht es?" — Einstieg auf der Startseite.
 
-  Die Auswahl färbt den Knopf und hängt sie als Parameter an den Termin-Link,
-  damit das Formular vorbelegt werden kann. Markup und Werte 1:1 aus dem
-  Übergabepaket; aus `this.state.reason` ist useState geworden.
+  Jeder Knopf führt direkt zum Formular auf /termin; das Formular wählt das
+  Anliegen anhand von ?anliegen=… selbst aus (components/TerminFormular,
+  ANLIEGEN_AUS_LINK). Neue Knöpfe dort mit eintragen.
 */
 
 const anliegen = [
@@ -19,12 +16,6 @@ const anliegen = [
 ];
 
 export default function AnliegenWahl() {
-  const [gewaehlt, setGewaehlt] = useState<string | null>(null);
-
-  const ziel = gewaehlt
-    ? `/termin?anliegen=${encodeURIComponent(gewaehlt)}`
-    : "/termin";
-
   return (
     <>
       <div id="worum" style={{ scrollMarginTop: "110px" }}>
@@ -40,34 +31,27 @@ export default function AnliegenWahl() {
           Worum geht es?
         </div>
         <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap", marginTop: "16px" }}>
-          {anliegen.map((a) => {
-            const aktiv = gewaehlt === a.value;
-            return (
-              <button
-                key={a.value}
-                type="button"
-                className="reasonchip"
-                aria-pressed={aktiv}
-                onClick={() => setGewaehlt(aktiv ? null : a.value)}
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  fontSize: "var(--fs-body-lg)",
-                  padding: "9px 22px",
-                  borderRadius: "var(--radius-md)",
-                  cursor: "pointer",
-                  background: aktiv ? "var(--color-accent-100)" : "transparent",
-                  color: aktiv ? "var(--color-accent-800)" : "var(--color-text)",
-                  border: `1px solid ${aktiv ? "var(--color-accent)" : "var(--color-divider)"}`,
-                }}
-              >
-                {a.label}
-              </button>
-            );
-          })}
+          {anliegen.map((a) => (
+            <Link
+              key={a.value}
+              href={`/termin?anliegen=${a.value}#formular`}
+              className="reasonchip"
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "var(--fs-body-lg)",
+                padding: "9px 22px",
+                borderRadius: "var(--radius-md)",
+                color: "var(--color-text)",
+                border: "1px solid var(--color-divider)",
+              }}
+            >
+              {a.label}
+            </Link>
+          ))}
         </div>
       </div>
       <div style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
-        <Link className="btn btn-primary knopf-gross" href={ziel}>
+        <Link className="btn btn-primary knopf-gross" href="/termin">
           Termin vereinbaren
         </Link>
         <a className="btn btn-secondary knopf-gross" href={praxis.telefonHref}>

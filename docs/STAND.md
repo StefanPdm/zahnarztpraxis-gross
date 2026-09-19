@@ -29,12 +29,6 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
   halten. Umsetzung, wenn entschieden: die Tokens `--fs-marke` und
   `--fs-marke-klein` in `app/site.css.original` auf 12px setzen; die
   restlichen Einzelfälle stehen noch inline.
-- **Studienort Matthias Groß:** `/praxis-team` und der Werdegang nennen
-  Rostock, die Faktenbox der alten Startseite nannte Halle. Jetzt überall
-  Rostock (aus `lib/team.ts`) — bitte bestätigen.
-- **Hochschule Chantal Groß im JSON-LD:** „Martin-Luther-Universität
-  Halle-Wittenberg" (einzige Hochschule mit Zahnmedizin in Halle) — bitte
-  bestätigen.
 - **Link „Wie wir Angstpatienten begleiten"** im Termin-Formular führt jetzt
   zu `/angstpatienten` (vorher `/leistungen`).
 
