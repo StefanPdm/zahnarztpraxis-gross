@@ -1,56 +1,41 @@
 [
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/moderne-technik",
-      "name": "Moderne Technik in der Zahnarztpraxis Potsdam",
-      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
-      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
-      "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Moderne Technik in der Zahnarztpraxis Potsdam", "item": "https://www.zahnmedizin-potsdam.de/moderne-technik" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Tut die Laserbehandlung weh?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sie ist in der Regel schonender als das klassische Vorgehen. Der Vorteil liegt vor allem danach: weniger Wundschmerz und eine längere Schmerzfreiheit." }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#webpage",
+        "url": "https://www.zahnmedizin-potsdam.de/moderne-technik",
+        "name": "Moderne Technik in der Zahnarztpraxis Potsdam",
+        "isPartOf": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#website"
         },
-        {
-          "@type": "Question",
-          "name": "Brauche ich beim Laser überhaupt eine Spritze?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Oft genügt weniger Betäubungsmittel als sonst. Ob und wie viel nötig ist, entscheiden wir zusammen mit Ihnen — je nach Eingriff und Ihrer Empfindlichkeit." }
+        "provider": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        {
-          "@type": "Question",
-          "name": "Was heißt CAD/CAM für mich als Patient?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ihr Zahnersatz wird am Rechner konstruiert und im 3D-Verfahren gefertigt, hier im Haus. Das macht die Passung genauer und spart die Wartezeit, die der Versand an ein Fremdlabor kostet." }
-        },
-        {
-          "@type": "Question",
-          "name": "Wie oft wird geröntgt?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nur, wenn ein Bild eine Behandlungsentscheidung trägt — etwa bei Weisheitszähnen, vor einem Implantat oder bei tiefer Entzündung. Wir sagen Ihnen vorher, warum." }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich mir die Geräte ansehen?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Fragen Sie im Termin danach — wir zeigen Ihnen, was bei Ihnen zum Einsatz kommt, und erklären, was es tut." }
+        "inLanguage": "de-DE",
+        "breadcrumb": {
+          "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb"
         }
-      ]
-    }
-  ]
-}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://www.zahnmedizin-potsdam.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Moderne Technik in der Zahnarztpraxis Potsdam",
+            "item": "https://www.zahnmedizin-potsdam.de/moderne-technik"
+          }
+        ]
+      }
+    ]
+  }
 ]

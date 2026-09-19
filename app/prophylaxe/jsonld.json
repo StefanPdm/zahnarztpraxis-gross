@@ -1,63 +1,48 @@
 [
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/prophylaxe",
-      "name": "Professionelle Zahnreinigung in Potsdam",
-      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
-      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
-      "about": { "@type": "MedicalCondition", "name": "Karies" },
-      "audience": { "@type": "Patient" },
-      "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#breadcrumb" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Professionelle Zahnreinigung in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/prophylaxe" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Tut die Zahnreinigung weh?",
-          "acceptedAnswer": { "@type": "Answer", "text": "In der Regel nicht. Bei empfindlichen Zahnhälsen oder entzündetem Zahnfleisch kann es unangenehm werden — sagen Sie es uns, dann arbeiten wir vorsichtiger oder betäuben die Stelle." }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#webpage",
+        "url": "https://www.zahnmedizin-potsdam.de/prophylaxe",
+        "name": "Professionelle Zahnreinigung in Potsdam",
+        "isPartOf": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#website"
         },
-        {
-          "@type": "Question",
-          "name": "Wie lange dauert der Termin?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Rechnen Sie mit etwa einer Stunde. Wie viel Zeit Ihr Fall braucht, hängt davon ab, wie viel Belag und Zahnstein sich gebildet hat." }
+        "provider": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        {
-          "@type": "Question",
-          "name": "Zahlt die Krankenkasse die professionelle Zahnreinigung?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Gesetzliche Kassen übernehmen sie meist nicht oder nur mit einem Zuschuss; viele erstatten sie inzwischen teilweise. Fragen Sie bei Ihrer Kasse nach — wir sagen Ihnen vorher, was der Termin kostet." }
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Karies"
         },
-        {
-          "@type": "Question",
-          "name": "Werden die Zähne dabei weißer?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sie werden sauber, und dadurch oft eine Nuance heller, weil Verfärbungen von Kaffee, Tee oder Rauch verschwinden. Die eigene Zahnfarbe verändert sich dabei nicht — dafür wäre ein Bleaching nötig." }
+        "audience": {
+          "@type": "Patient"
         },
-        {
-          "@type": "Question",
-          "name": "Wie oft sollte ich zur Reinigung?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Das hängt von Ihrem Risiko ab, nicht vom Kalender. Bei gesundem Zahnfleisch genügen meist zwei Termine im Jahr, bei Zahnfleischtaschen oder starker Zahnsteinbildung sind es mehr." }
-        },
-        {
-          "@type": "Question",
-          "name": "Ich war jahrelang nicht beim Zahnarzt. Ist das jetzt schlimm?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Nein, und wir kommentieren es nicht. Wir fangen dort an, wo es für Sie machbar ist — bei Bedarf in mehreren kürzeren Terminen." }
+        "inLanguage": "de-DE",
+        "breadcrumb": {
+          "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#breadcrumb"
         }
-      ]
-    }
-  ]
-}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.zahnmedizin-potsdam.de/prophylaxe#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://www.zahnmedizin-potsdam.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Professionelle Zahnreinigung in Potsdam",
+            "item": "https://www.zahnmedizin-potsdam.de/prophylaxe"
+          }
+        ]
+      }
+    ]
+  }
 ]

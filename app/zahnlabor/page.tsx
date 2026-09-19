@@ -5,6 +5,7 @@ import Bild, { VOLL } from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
+import Fragen from "@/components/Fragen";
 
 export const metadata = seitenMetadaten("/zahnlabor");
 
@@ -205,20 +206,7 @@ export default function Zahnlabor() {
           Was Patienten zum Labor fragen.
         </h2>
       </div>
-      <div className="fragen">
-        {faq.map((f, fI) => (
-          <Fragment key={fI}>
-            <div className="frage">
-              <h3 className="titel-5">
-                {f.q}
-              </h3>
-              <p className="frage__antwort">
-                {f.a}
-              </p>
-            </div>
-          </Fragment>
-        ))}
-      </div>
+      <Fragen eintraege={faq} pfad="/zahnlabor" />
       <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Zahnersatz

@@ -6,6 +6,7 @@ import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
+import Fragen from "@/components/Fragen";
 
 export const metadata = seitenMetadaten("/anfahrt-parken");
 
@@ -265,20 +266,7 @@ export default function AnfahrtParken() {
           Fragen zur Anfahrt.
         </h2>
       </div>
-      <div className="fragen">
-        {faq.map((f, fI) => (
-          <Fragment key={fI}>
-            <div className="frage">
-              <h3 className="titel-5">
-                {f.q}
-              </h3>
-              <p className="frage__antwort">
-                {f.a}
-              </p>
-            </div>
-          </Fragment>
-        ))}
-      </div>
+      <Fragen eintraege={faq} pfad="/anfahrt-parken" />
       <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Termin

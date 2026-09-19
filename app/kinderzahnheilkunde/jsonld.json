@@ -1,63 +1,48 @@
 [
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde",
-      "name": "Kinderzahnarzt Potsdam — Kinderzahnheilkunde",
-      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
-      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
-      "about": { "@type": "MedicalCondition", "name": "Kinderzahnheilkunde" },
-      "audience": { "@type": "Patient" },
-      "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Kinderzahnarzt Potsdam", "item": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Ab welchem Alter soll mein Kind zum Zahnarzt?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sobald die ersten Zähne da sind, spätestens im Rahmen der Vorsorgeuntersuchungen. Beim ersten Besuch geht es ohnehin nur ums Kennenlernen — je früher der stattfindet, desto normaler ist der Zahnarzt für Ihr Kind." }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#webpage",
+        "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde",
+        "name": "Kinderzahnarzt Potsdam — Kinderzahnheilkunde",
+        "isPartOf": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#website"
         },
-        {
-          "@type": "Question",
-          "name": "Was passiert beim ersten Termin?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ihr Kind darf den Behandlungsstuhl ausprobieren, das Licht anschauen und den Spiegel halten. Wir zählen die Zähne, wenn es möchte. Behandelt wird an diesem Tag nichts." }
+        "provider": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        {
-          "@type": "Question",
-          "name": "Darf ich als Elternteil dabeibleiben?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja, so lange Sie und Ihr Kind es möchten. Manche Kinder sind ohne Publikum mutiger — das merken wir gemeinsam." }
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Kinderzahnheilkunde"
         },
-        {
-          "@type": "Question",
-          "name": "Was ist, wenn mein Kind nicht mitmacht?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Dann machen wir Schluss und probieren es beim nächsten Termin wieder. Niemand wird überredet oder festgehalten; ein abgebrochener Termin ist besser als ein schlechtes erstes Erlebnis." }
+        "audience": {
+          "@type": "Patient"
         },
-        {
-          "@type": "Question",
-          "name": "Was kostet die Prophylaxe für Kinder?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Die zahnärztlichen Vorsorgeuntersuchungen und die Individualprophylaxe für Kinder und Jugendliche sind Leistungen der gesetzlichen Krankenkassen. Was darüber hinausgeht, sagen wir Ihnen vorher." }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich Kariesbakterien auf mein Kind übertragen?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja, das ist möglich — über gemeinsam benutzte Löffel oder den abgeleckten Schnuller. Deshalb lohnt es sich, gerade vor und während einer Schwangerschaft die eigene Mundgesundheit im Blick zu haben." }
+        "inLanguage": "de-DE",
+        "breadcrumb": {
+          "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb"
         }
-      ]
-    }
-  ]
-}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://www.zahnmedizin-potsdam.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Kinderzahnarzt Potsdam",
+            "item": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde"
+          }
+        ]
+      }
+    ]
+  }
 ]

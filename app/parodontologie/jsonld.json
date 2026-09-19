@@ -1,63 +1,48 @@
 [
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/parodontologie",
-      "name": "Parodontitis-Behandlung in Potsdam",
-      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
-      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
-      "about": { "@type": "MedicalCondition", "name": "Parodontitis" },
-      "audience": { "@type": "Patient" },
-      "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Parodontitis-Behandlung in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/parodontologie" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Woran merke ich, dass ich Parodontitis habe?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Am häufigsten an blutendem Zahnfleisch beim Putzen. Weitere Zeichen sind dunkelrotes, geschwollenes Zahnfleisch, wiederkehrender Mundgeruch, zurückgehendes Zahnfleisch und im späteren Verlauf lockere Zähne." }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#webpage",
+        "url": "https://www.zahnmedizin-potsdam.de/parodontologie",
+        "name": "Parodontitis-Behandlung in Potsdam",
+        "isPartOf": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#website"
         },
-        {
-          "@type": "Question",
-          "name": "Tut die Behandlung weh?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Die Reinigung der Taschen findet in örtlicher Betäubung statt. Danach kann das Zahnfleisch einige Tage empfindlich sein — durch den Laser fällt der Wundschmerz in der Regel geringer aus." }
+        "provider": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        {
-          "@type": "Question",
-          "name": "Wie viele Termine brauche ich?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Meist Befund, Vorbehandlung, zwei Sitzungen für die Taschenreinigung und eine Kontrolle nach einigen Wochen. Danach folgt das Recall-Programm dauerhaft." }
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Parodontitis"
         },
-        {
-          "@type": "Question",
-          "name": "Zahlt die Krankenkasse die Parodontitis-Behandlung?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Die Parodontitis-Therapie ist bei entsprechendem Befund eine Leistung der gesetzlichen Krankenkassen; einzelne Zusatzleistungen können privat sein. Sie bekommen den Plan vorher schriftlich." }
+        "audience": {
+          "@type": "Patient"
         },
-        {
-          "@type": "Question",
-          "name": "Kann der abgebaute Knochen wieder aufgebaut werden?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Verlorener Kieferknochen wächst nicht von selbst zurück. Deshalb ist das Ziel, den Abbau zu stoppen — je früher wir behandeln, desto mehr bleibt erhalten." }
-        },
-        {
-          "@type": "Question",
-          "name": "Wird Parodontitis wieder auftreten?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Die Bakterien kommen zurück, das ist normal. Mit regelmäßiger Nachsorge und guter Pflege zu Hause bleibt die Erkrankung aber unter Kontrolle." }
+        "inLanguage": "de-DE",
+        "breadcrumb": {
+          "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb"
         }
-      ]
-    }
-  ]
-}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://www.zahnmedizin-potsdam.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Parodontitis-Behandlung in Potsdam",
+            "item": "https://www.zahnmedizin-potsdam.de/parodontologie"
+          }
+        ]
+      }
+    ]
+  }
 ]

@@ -6,6 +6,7 @@ import Bild from "@/components/Bild";
 import AngstRegler from "@/components/AngstRegler";
 import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
+import Fragen from "@/components/Fragen";
 
 /*
  * ACHTUNG — diese Seite hatte in der Übergabe Zustand und Handler
@@ -224,20 +225,7 @@ export default function Angstpatienten() {
           Was Angstpatienten uns am häufigsten fragen.
         </h2>
       </div>
-      <div className="fragen">
-        {faq.map((f, fI) => (
-          <Fragment key={fI}>
-            <div className="frage">
-              <h3 className="titel-5">
-                {f.q}
-              </h3>
-              <p className="frage__antwort">
-                {f.a}
-              </p>
-            </div>
-          </Fragment>
-        ))}
-      </div>
+      <Fragen eintraege={faq} pfad="/angstpatienten" />
       <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Der erste Schritt
