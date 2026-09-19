@@ -56,7 +56,9 @@ const vorhanden = new Set(
     return pfad === "/." || pfad === "/" ? "/" : pfad;
   }),
 );
-for (const p of vorhanden) if (!verzeichnet.has(p)) fehler.push(`app${p}/page.tsx fehlt in lib/seiten.ts`);
+/** Interne Seiten, die bewusst nicht im Verzeichnis (und nicht in der Sitemap) stehen. */
+const INTERN = new Set(["/bausteine"]);
+for (const p of vorhanden) if (!verzeichnet.has(p) && !INTERN.has(p)) fehler.push(`app${p}/page.tsx fehlt in lib/seiten.ts`);
 for (const p of verzeichnet) if (!vorhanden.has(p)) fehler.push(`lib/seiten.ts nennt ${p}, die Seite gibt es nicht`);
 
 /* 4 — Bildmaße */
