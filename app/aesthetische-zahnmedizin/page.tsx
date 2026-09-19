@@ -41,31 +41,31 @@ export default function AesthetischeZahnmedizin() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Gute ästhetische Zahnmedizin fällt nicht auf. Kein zu weißes Weiß, keine gleichförmige Reihe — sondern Zähne, die zu Ihrem Gesicht und Ihrem Alter passen und von denen niemand vermutet, dass daran gearbeitet wurde. Material und Technik erlauben heute Ergebnisse, die man als solche nicht erkennt.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Beratung anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Unsere Haltung
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Dezent dosiert, nicht maximal.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Wir raten von dem ab, was auffällt. Ein Frontzahn darf eine Kante haben, die Farbe darf natürlich sein — was zählt, ist dass die Arbeit im Gesicht verschwindet. Deshalb steht am Anfang keine Materialliste, sondern die Frage, was Sie an Ihren Zähnen eigentlich stört und was Sie an ihnen mögen.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Vor jedem Eingriff kommt die Gesundheit: Karies, Zahnfleischentzündungen und lockere Füllungen werden zuerst behandelt. Ästhetik auf kranke Zähne zu setzen hält nicht — weder medizinisch noch optisch.
           </p>
           <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
@@ -76,13 +76,13 @@ export default function AesthetischeZahnmedizin() {
           </blockquote>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "580px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitales Kiefermodell im Labor der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild vorrang className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitales Kiefermodell im Labor der Zahnarztpraxis Groß & Groß in Potsdam" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Zahnfarbe und Form · im Haus konstruiert
           </figcaption>
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Die Möglichkeiten
         </div>
@@ -117,32 +117,32 @@ export default function AesthetischeZahnmedizin() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" />
         </figure>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Warum das hier besser gelingt
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Die Zahnfarbe entsteht nicht per Post.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Bei Ästhetik entscheidet die Farbe alles — und Farbe lässt sich nicht auf einem Auftragszettel übermitteln. Sitzt der Zahntechniker im Fremdlabor, arbeitet er nach einem Code und einem Foto. Sitzt er in derselben Praxis, sieht er Ihren Zahn im gleichen Licht wie wir.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Genau das ist bei uns der Fall: Veneers, Keramik-Inlays und Vollkeramikkronen entstehen im eigenen Labor, die Farbe wird am Stuhl bestimmt, und eine Nuance zu hell wird noch am selben Tag korrigiert.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-secondary" href="/zahnlabor" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum eigenen Zahnlabor
             </Link>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

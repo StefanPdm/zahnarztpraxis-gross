@@ -60,21 +60,21 @@ export default function Zahnlabor() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             In den meisten Praxen wandert Ihr Zahnersatz per Post in ein Fremdlabor und Wochen später zurück. Bei uns geht er eine Tür weiter. Der Zahntechniker arbeitet im Haus — er kann Sie sehen, Ihre Zahnfarbe im Tageslicht bestimmen und eine Korrektur machen, während Sie im Stuhl sitzen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Beratung anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
         </div>
       </div>
       <figure style={{ position: "relative", overflow: "hidden", height: "620px", margin: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor: Gipsmodelle, Zahnfarbmuster und Werkzeug unter der Arbeitsleuchte" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor: Gipsmodelle, Zahnfarbmuster und Werkzeug unter der Arbeitsleuchte" />
         <figcaption style={{ position: "absolute", left: "24px", bottom: "20px", display: "flex", gap: "14px", padding: "10px 18px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Der Labortisch · eine Tür neben dem Behandlungszimmer
         </figcaption>
@@ -93,7 +93,7 @@ export default function Zahnlabor() {
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Was das für Sie ändert
         </div>
@@ -121,20 +121,20 @@ export default function Zahnlabor() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Handwerk und Digitaltechnik
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Gips und CAD/CAM, je nach Fall.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Manches lässt sich am Bildschirm besser lösen, manches nur mit der Hand. Kronen aus Vollkeramik oder Cerkon entstehen im 3D-Verfahren mit CAD/CAM-Technologie und werden an Ihre Zahnfarbe angepasst — so genau, dass man den überkronten Zahn nicht vom eigenen unterscheidet.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Daneben bleibt das klassische Handwerk im Einsatz: Präzisionsabformungen und Modellherstellung, die Präparation von Zähnen für Keramikverblendkronen und Keramikverblendbrücken, Interimsprothesen, Schienen und Provisorien mittels Tiefziehschienen. Für die digitale Strecke wird das Modell eingescannt und der Zahnersatz am Rechner konstruiert.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Dahinter steht ein bestens ausgebildetes Praxisteam, das mit den neuesten Techniken arbeitet — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
           </p>
           <blockquote style={{ margin: "28px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
@@ -145,13 +145,13 @@ export default function Zahnlabor() {
           </blockquote>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Modellscan · digitale Konstruktion
           </figcaption>
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Was hier entsteht
         </div>
@@ -175,29 +175,29 @@ export default function Zahnlabor() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Zusammen mit der Implantologie
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Implantat, Zahnersatz, Nachsorge — ein Haus.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Der größte Nutzen entsteht, wenn beides zusammenkommt: Wir setzen das Implantat und fertigen den Zahn darauf im eigenen Labor. Sie müssen nicht zwischen Chirurg, Zahnarzt und Fremdlabor vermitteln, und bei einer Anpassung sitzen alle Beteiligten im selben Haus.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
-            <Link className="btn btn-secondary" href="/implantologie" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/implantologie">
               Zu den Implantaten
             </Link>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

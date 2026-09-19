@@ -52,14 +52,7 @@ export default function Termin() {
             zeiten genügen.
           </h1>
         </div>
-        <p
-          style={{
-            textAlign: 'justify',
-            hyphens: 'auto',
-            color: 'var(--color-neutral-800)',
-            fontSize: 'var(--fs-body-lg)',
-            margin: '0',
-          }}>
+        <p className="fliesstext fliesstext--gross">
           Diese Anfrage ist noch keine feste Buchung: wir prüfen Ihre Wunschzeit und bestätigen
           innerhalb von 24 Stunden telefonisch oder per E-Mail. Bei akuten Schmerzen rufen Sie bitte
           direkt an —{" "}
@@ -186,13 +179,7 @@ export default function Termin() {
             }}>
             Eine kurze Rückmeldung, kein Automat.
           </h2>
-          <p
-            style={{
-              textAlign: 'justify',
-              hyphens: 'auto',
-              color: 'var(--color-neutral-800)',
-              margin: '0',
-            }}>
+          <p className="fliesstext">
             Wir sehen uns Ihre Anfrage im Team an und melden uns mit einem konkreten Vorschlag —
             inklusive der Dauer, die wir für Ihr Anliegen einplanen. Wenn ein früherer Termin frei
             wird, fragen wir, ob er Ihnen passt.

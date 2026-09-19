@@ -67,14 +67,14 @@ export default function PraxisTeam() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Eine Praxis, die seit über drei Jahrzehnten in denselben Händen liegt, arbeitet anders als eine, die alle paar Jahre den Betreiber wechselt. Wir kennen viele unserer Patienten über zwei Generationen — und weil Zahnärztin, Zahnarzt und Zahntechniker hier zusammen unter einem Dach arbeiten, entscheidet nicht der Kalender, sondern der Fall.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -94,7 +94,7 @@ export default function PraxisTeam() {
           </Fragment>
         ))}
       </div>
-      <div id="team" style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben" id="team">
         <div className="ueberzeile">
           Ihre Behandler
         </div>
@@ -198,7 +198,7 @@ export default function PraxisTeam() {
           Namen und Funktionen der Mitarbeiterinnen und Mitarbeiter (Vorname genügt), damit an dieser Stelle echte Menschen stehen statt Bereiche — inklusive des Zahntechnikers im Labor. Fotos sind nicht nötig, wirken aber deutlich stärker.
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Praxisgeschichte
         </div>
@@ -232,7 +232,7 @@ export default function PraxisTeam() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Fortbildung
           </div>
@@ -261,10 +261,10 @@ export default function PraxisTeam() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Die Räume
         </div>

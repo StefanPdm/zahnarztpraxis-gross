@@ -28,7 +28,7 @@ export default function Kontakt() {
             Potsdam West.
           </h1>
         </div>
-        <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+        <p className="fliesstext fliesstext--gross">
           Rufen Sie an, schreiben Sie eine E-Mail oder senden Sie eine Terminanfrage — wir antworten innerhalb von 24 Stunden. Für akute Beschwerden halten wir jeden Morgen Termine frei; melden Sie sich in diesem Fall bitte telefonisch.
         </p>
       </div>
@@ -137,7 +137,7 @@ export default function Kontakt() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
             Rufen Sie morgens ab 8:00 an.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Wir halten täglich Termine für Schmerzfälle frei. Sagen Sie am Telefon kurz, wo und seit wann es weh tut — dann können wir einschätzen, wie dringend es ist. Außerhalb unserer Zeiten hilft der zahnärztliche Notdienst der Kassenzahnärztlichen Vereinigung Brandenburg.
           </p>
         </div>
@@ -173,7 +173,7 @@ export default function Kontakt() {
             Senden Sie uns zwei Wunschzeiten und Ihr Anliegen — wir bestätigen innerhalb von 24 Stunden.
           </p>
         </div>
-        <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+        <Link className="btn btn-primary knopf-gross" href="/termin">
           Termin anfragen
         </Link>
       </div>

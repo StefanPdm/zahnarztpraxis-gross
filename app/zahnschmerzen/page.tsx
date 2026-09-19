@@ -98,7 +98,7 @@ export default function Zahnschmerzen() {
           </p>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Bis zum Termin
         </div>
@@ -153,7 +153,7 @@ export default function Zahnschmerzen() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Woran es liegen kann
           </div>
@@ -187,7 +187,7 @@ export default function Zahnschmerzen() {
           <Bild src="/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg" alt="Zahnarzt untersucht einen Patienten in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "88% 32%", display: "block" }} />
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Im Termin
         </div>
@@ -216,34 +216,34 @@ export default function Zahnschmerzen() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Auch wenn Sie Angst haben
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Kommen Sie trotzdem.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Viele, die uns mit akuten Schmerzen anrufen, waren jahrelang nicht beim Zahnarzt. Wir fragen nicht, warum, und kommentieren den Zustand nicht. Sagen Sie am Telefon, dass Sie Angst haben — dann planen wir mehr Zeit ein und erklären jeden Schritt vorher.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Das Handzeichen gilt auch im Schmerztermin: Hand heben, und wir unterbrechen sofort.
           </p>
           <Link className="btn btn-secondary" href="/angstpatienten" style={{ display: "inline-block", marginTop: "24px", padding: "12px 26px", fontSize: "15px" }}>
             Für Angstpatienten
           </Link>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Danach
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Damit es nicht wiederkommt.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Akute Schmerzen sind fast immer das Ende einer längeren Entwicklung. Wenn der Schmerz weg ist, lohnt der Blick auf den Rest: eine professionelle Zahnreinigung, der Zustand des Zahnfleischs, und ein Kontrollrhythmus, der zu Ihrem Risiko passt.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Der zweite Termin ist der, der die nächsten Schmerzen verhindert.
           </p>
           <Link className="btn btn-secondary" href="/prophylaxe" style={{ display: "inline-block", marginTop: "24px", padding: "12px 26px", fontSize: "15px" }}>
@@ -251,7 +251,7 @@ export default function Zahnschmerzen() {
           </Link>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

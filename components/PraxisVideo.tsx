@@ -62,15 +62,6 @@ export default function PraxisVideo({ standbild }: { standbild: string }) {
         aria-label="Rundflug durch die Praxisräume"
         onPlay={() => setLaeuft(true)}
         onPause={() => setLaeuft(false)}
-        style={{
-          position: "absolute",
-          left: "0",
-          top: "-20%",
-          width: "100%",
-          height: "140%",
-          objectFit: "cover",
-          display: "block",
-        }}
       >
         {quellen.map((q) => (
           <source key={q.src} src={q.src} type={q.type} media={q.media} />

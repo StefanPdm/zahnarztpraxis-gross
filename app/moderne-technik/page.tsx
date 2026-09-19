@@ -45,21 +45,21 @@ export default function ModerneTechnik() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Geräte sind kein Selbstzweck. Wir schaffen an, was für Sie einen Unterschied macht: weniger Wundschmerz, weniger Betäubungsmittel, weniger Termine, genauere Passung. Was Sie hier lesen, steht auch wirklich in unseren Behandlungsräumen — und wir zeigen es Ihnen gern, wenn Sie fragen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Laserbehandlung
           </div>
@@ -101,10 +101,10 @@ export default function ModerneTechnik() {
           </p>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Ausstattung in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild vorrang className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Ausstattung in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Digitale Fertigung
         </div>
@@ -133,23 +133,23 @@ export default function ModerneTechnik() {
         ))}
       </div>
       <figure style={{ position: "relative", overflow: "hidden", height: "560px", margin: "0 64px 96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
-        <Bild sizes={VOLL} className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
         <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Modellscan und digitale Konstruktion · im eigenen Labor
         </figcaption>
       </figure>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Diagnostik
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Röntgen, wo es die Entscheidung trägt.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Röntgenbilder machen wir nicht routinemäßig, sondern wenn sie eine Frage beantworten: Wie liegen die Weisheitszähne, reicht der Knochen für ein Implantat, wie tief geht eine Entzündung. Vorher sagen wir Ihnen, warum wir ein Bild brauchen und was wir darauf suchen.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Bei Weisheitszähnen zum Beispiel entscheidet die Lage im Kiefer darüber, ob und wie entfernt wird — das sieht man nicht von außen.
           </p>
         </div>
@@ -160,10 +160,10 @@ export default function ModerneTechnik() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Monitor, Musik, Kopfhörer.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Dieselben Monitore nutzen wir, um Ihnen zu zeigen, worüber wir sprechen: ein Befund am Bildschirm ist verständlicher als jede Erklärung mit Worten.
           </p>
           <Link className="btn btn-secondary" href="/angstpatienten" style={{ display: "inline-block", marginTop: "24px", padding: "12px 26px", fontSize: "15px" }}>
@@ -171,7 +171,7 @@ export default function ModerneTechnik() {
           </Link>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Was uns wichtiger ist als Geräte
         </div>
@@ -187,23 +187,23 @@ export default function ModerneTechnik() {
           </cite>
         </blockquote>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Unser Praxispersonal ist bestens ausgebildet und arbeitet mit den neuesten Techniken — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme. Das gilt für die Behandlung ebenso wie für die zahntechnischen Arbeiten im eigenen Labor.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Genauso wichtig ist die Zurückhaltung: Nicht jede Behandlung braucht das neueste Verfahren. Wir sagen Ihnen offen, wenn die einfachere Lösung die bessere ist — auch wenn sie weniger spektakulär klingt.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-secondary" href="/zahnlabor" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum eigenen Zahnlabor
             </Link>
-            <Link className="btn btn-secondary" href="/praxis-team#team" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/praxis-team#team">
               Das Team
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

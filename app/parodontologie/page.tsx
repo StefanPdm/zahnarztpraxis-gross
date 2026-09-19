@@ -52,14 +52,14 @@ export default function Parodontologie() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Parodontitis tut lange nicht weh — das ist ihr Problem. Bakterieller Belag am Zahnfleischsaum verhärtet zu Zahnstein, das Zahnfleisch entzündet sich und blutet, es entstehen Taschen. Unbehandelt baut der Kieferknochen ab, und die Zähne verlieren ihren Halt. Deshalb ist blutendes Zahnfleisch kein Schönheitsfehler, sondern ein Termingrund.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Zahnfleisch prüfen lassen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -91,7 +91,7 @@ export default function Parodontologie() {
         </p>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Die Behandlung
           </div>
@@ -122,7 +122,7 @@ export default function Parodontologie() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "640px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
             <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
@@ -130,34 +130,34 @@ export default function Parodontologie() {
         </figure>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Laserunterstützt
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Weniger Wundschmerz, weniger Betäubung.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Der Laser erreicht die entzündeten Taschen und reduziert die Bakterien dort gezielt, ohne sie mechanisch aufzuarbeiten. Für Sie heißt das weniger Wundschmerz, eine längere Schmerzfreiheit nach dem Termin und geringere Mengen an Betäubungsmittel.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Gerade wenn Sie ungern zum Zahnarzt gehen, ist das ein Unterschied, den man merkt.{" "}
             <Link href="/moderne-technik">
               Mehr zur Lasertechnik
             </Link>
           </p>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Danach
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Parodontitis ist kein Termin, sondern ein Programm.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Die Bakterien kommen zurück — das ist normal. Entscheidend ist, dass sie nicht wieder in die Tiefe gelangen. Deshalb folgt auf die Behandlung ein festes Recall-Programm mit kürzeren Abständen als bei gesundem Zahnfleisch.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Auf Wunsch erinnern wir Sie an jeden Termin — per E-Mail, SMS, Post oder Anruf.{" "}
             <Link href="/prophylaxe">
               Mehr zur Prophylaxe
@@ -167,32 +167,32 @@ export default function Parodontologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Behandlung am Stuhl mit Assistenz in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Behandlung am Stuhl mit Assistenz in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Was auf dem Spiel steht
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Der häufigste Grund für Zahnverlust.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Die meisten Zähne gehen im Erwachsenenalter nicht durch Karies verloren, sondern weil der Knochen, der sie hält, abgebaut wurde. Dieser Abbau verläuft schleichend und schmerzfrei — deshalb kommen viele erst, wenn ein Zahn schon wackelt.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Was verloren ist, ersetzen wir mit Implantaten oder Zahnersatz aus dem eigenen Labor. Besser ist es, bis dahin nicht zu kommen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
-            <Link className="btn btn-secondary" href="/implantologie" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/implantologie">
               Zu den Implantaten
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

@@ -132,7 +132,7 @@ export default function ImpressumDatenschutz() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "0" }}>
             Datenschutzerklärung
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Als Zahnarztpraxis arbeiten wir täglich mit sensiblen Daten. Auf dieser Website erheben wir so wenig wie möglich: Sie können sie nutzen, ohne personenbezogene Daten anzugeben. Nur wenn Sie uns eine Terminanfrage senden, verarbeiten wir Ihre Angaben — ausschließlich dafür.
           </p>
         </div>
@@ -167,10 +167,10 @@ export default function ImpressumDatenschutz() {
           </p>
         </div>
         <div style={{ display: "flex", gap: "14px" }}>
-          <a className="btn btn-secondary" href="mailto:zahnarztgross.gross@outlook.de" style={{ padding: "12px 26px", fontSize: "15px" }}>
+          <a className="btn btn-secondary knopf-gross" href="mailto:zahnarztgross.gross@outlook.de">
             E-Mail schreiben
           </a>
-          <Link className="btn btn-primary" href="/kontakt" style={{ padding: "12px 26px", fontSize: "15px" }}>
+          <Link className="btn btn-primary knopf-gross" href="/kontakt">
             Kontakt
           </Link>
         </div>

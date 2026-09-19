@@ -56,10 +56,10 @@ export default function Kinderzahnheilkunde() {
             Unsere kleinen Patienten behandeln wir mit viel Einfühlungsvermögen: Kinder sind bei uns ausdrücklich willkommen — nicht nebenbei, sondern als eigene Patienten mit eigenem Tempo. Unser Ziel ist einfach: dass Ihr Kind gar keine Angst vor dem Zahnarzt entwickelt. Dafür nehmen wir uns beim ersten Mal Zeit für nichts als Kennenlernen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Kindertermin anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -71,7 +71,7 @@ export default function Kinderzahnheilkunde() {
           </figcaption>
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Unsere Grundregel
         </div>
@@ -106,17 +106,17 @@ export default function Kinderzahnheilkunde() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Der erste Besuch
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Hinsetzen, hochfahren, staunen.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Beim ersten Termin darf Ihr Kind den Stuhl ausprobieren, das Licht anschauen und den Spiegel selbst halten. Wir zählen die Zähne, wenn es das möchte — und wenn nicht, dann eben nicht. Niemand wird überredet.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Sie dürfen dabeibleiben, so lange Sie und Ihr Kind es möchten. Was wir sehen, erklären wir beiden: dem Kind in seinen Worten, Ihnen in Ihren.
           </p>
           <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
@@ -127,7 +127,7 @@ export default function Kinderzahnheilkunde() {
           </blockquote>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>
       </div>
       <div style={{ padding: "96px 64px 0", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
@@ -162,32 +162,32 @@ export default function Kinderzahnheilkunde() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974468276-pkt8.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974468276-pkt8.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte" />
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Für Eltern
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Eine feste Anlaufstelle — auch für Sie.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Sie müssen für Ihr Kind nicht in eine andere Praxis fahren: Kontrolle, Prophylaxe und Behandlung laufen hier, bei denselben Behandlern, die auch Sie kennen. Das macht Termine planbar und den Weg kurz.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Ein Hinweis, der oft überrascht: Karies- und Parodontitisbakterien können von Eltern auf das Kind übertragen werden. Auf die eigene Mundgesundheit zu achten — gerade vor und während einer Schwangerschaft — schützt also beide.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
-            <Link className="btn btn-secondary" href="/angstpatienten" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/angstpatienten">
               Für Angstpatienten
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

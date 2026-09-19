@@ -60,14 +60,14 @@ export default function Implantologie() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Planung, Implantation, Zahnersatz und Nachsorge — alles in derselben Praxis, bei denselben Behandlern, mit dem Zahnlabor eine Tür weiter. Sie müssen für Ihr Implantat nicht zwischen Chirurg, Zahnarzt und Labor pendeln, und niemand schiebt die Verantwortung weiter.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Beratung anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -87,7 +87,7 @@ export default function Implantologie() {
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Der Weg zum Implantat
         </div>
@@ -116,7 +116,7 @@ export default function Implantologie() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Was ein Implantat ist
           </div>
@@ -147,10 +147,10 @@ export default function Implantologie() {
           </div>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "600px", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Technik in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Technik in der Zahnarztpraxis Groß & Groß in Potsdam" />
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Wann welche Lösung
         </div>
@@ -174,38 +174,38 @@ export default function Implantologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Digitales Modell · Labor im Haus
           </figcaption>
         </figure>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Der Unterschied
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Implantat und Zahnersatz aus einer Hand.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Der aufwendigste Teil einer Implantatversorgung ist selten die Operation — es ist die Abstimmung danach. Farbe, Form, Biss: Wenn Zahnarzt und Zahntechniker in verschiedenen Häusern sitzen, geht jede Korrektur mit Post und Wartezeit einher.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Bei uns sitzt der Zahntechniker in derselben Praxis. Die Zahnfarbe wird direkt am Stuhl bestimmt, Anpassungen passieren am selben Tag, und Kronen entstehen im 3D-Verfahren mit CAD/CAM-Technologie dort, wo sie auch eingesetzt werden.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Das Modell Ihres Kiefers wird dafür digital eingescannt (Bild links): Aus dem Scan entsteht am Rechner ein exaktes dreidimensionales Abbild, auf dem Krone oder Brücke konstruiert werden — ohne den Umweg über Gipsmodelle, die per Post zwischen Praxis und Fremdlabor reisen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
-            <Link className="btn btn-secondary" href="/zahnlabor" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum Zahnlabor
             </Link>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

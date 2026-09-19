@@ -15,6 +15,55 @@
    Benennung: .baustein, .baustein__teil, .baustein--variante
    ═══════════════════════════════════════════════════════════════════════════ */
 
+/* ── Tokens der Bausteine ────────────────────────────────────────────────── */
+:root {
+  /* Seitenrand links/rechts — der eine Wert, der mobil schrumpft. */
+  --rand: 64px;
+}
+@media (max-width: 1000px) { :root { --rand: 24px; } }
+@media (max-width: 640px)  { :root { --rand: 18px; } }
+
+/* ── Abschnitte ────────────────────────────────────────────────────────────
+   Vertikaler Rhythmus der Seiten. Mobil werden die Abstände kürzer, genau
+   wie es site.css bisher über den Style-Text geregelt hat. */
+.abschnitt { padding: 80px var(--rand); }
+.abschnitt--linie { border-left: 1px solid var(--color-divider); }
+.abschnitt-oben { padding: 96px var(--rand) 0; }
+@media (max-width: 1000px) {
+  .abschnitt { padding-top: 52px; padding-bottom: 52px; }
+  .abschnitt--linie { border-left: 0; border-top: 1px solid var(--color-divider); }
+  .abschnitt-oben { padding-top: 52px; padding-bottom: 36px; }
+}
+@media (max-width: 640px) {
+  .abschnitt { padding-top: 40px; padding-bottom: 40px; }
+}
+
+/* ── Fließtext ─────────────────────────────────────────────────────────────
+   Blocksatz mit Silbentrennung; mobil linksbündig (schmale Spalten
+   reißen im Blocksatz Löcher). */
+.fliesstext { text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0; }
+.fliesstext--absatz { margin: 0 0 16px; }
+.fliesstext--gross { font-size: var(--fs-body-lg); }
+@media (max-width: 1000px) { .fliesstext { text-align: left; } }
+
+/* ── Knöpfe ────────────────────────────────────────────────────────────────
+   .btn und .btn-primary/-secondary kommen aus classical.css; hier nur die
+   große Fassung, die auf den Seiten Standard ist. */
+.knopf-gross { padding: 12px 26px; font-size: 15px; }
+
+/* ── Parallax-Bild ─────────────────────────────────────────────────────────
+   Bild oder Video füllt seinen Rahmen mit 20 % Überstand oben und unten —
+   Spielraum für die Bewegung (components/ScrollEffekte). */
+.parallax-img {
+  position: absolute;
+  left: 0;
+  top: -20%;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ── Notfallleiste (components/NotfallLeiste) ─────────────────────────────
    Schmale Leiste unter dem Kopf: Hinweis auf Notfalltermine plus Telefon. */
 .notfallleiste {

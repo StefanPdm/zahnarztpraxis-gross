@@ -67,10 +67,10 @@ export default function AnliegenWahl() {
         </div>
       </div>
       <div style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
-        <Link className="btn btn-primary" href={ziel} style={{ padding: "12px 26px", fontSize: "15px" }}>
+        <Link className="btn btn-primary knopf-gross" href={ziel}>
           Termin vereinbaren
         </Link>
-        <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 26px", fontSize: "15px" }}>
+        <a className="btn btn-secondary knopf-gross" href={praxis.telefonHref}>
           {praxis.telefon}
         </a>
       </div>

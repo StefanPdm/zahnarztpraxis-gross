@@ -44,12 +44,12 @@ export default function Leistungen() {
             unter einem Dach.
           </h1>
         </div>
-        <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+        <p className="fliesstext fliesstext--gross">
           Neben der allgemeinen Zahnheilkunde setzen wir Schwerpunkte: Implantologie und Prothetik, ästhetische Zahnmedizin, Parodontologie, Kinderbehandlung und Chirurgie. Weil unser Zahnlabor in derselben Praxis sitzt, entstehen Kronen, Inlays und Veneers dort, wo sie auch eingesetzt werden — kurze Wege, schnelle Korrekturen.
         </p>
       </div>
       <div style={{ position: "relative", overflow: "hidden", height: "560px" }}>
-        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/photos-1786974461785-ksjv.jpg" alt="Behandlungseinheit" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/photos-1786974461785-ksjv.jpg" alt="Behandlungseinheit" />
         <svg viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", left: "0", top: "-1px", width: "100%", height: "30px", display: "block", pointerEvents: "none" }}>
           <path d="M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z" style={{ fill: "var(--color-bg)" }} />
         </svg>
@@ -89,7 +89,7 @@ export default function Leistungen() {
         <Bild className="plate" src="/uploads/photos-1786974461803-v5uo.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
       </div>
       <div style={{ position: "relative", overflow: "hidden", height: "540px" }}>
-        <Bild sizes={VOLL} className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche" />
         <svg viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", left: "0", top: "-1px", width: "100%", height: "30px", display: "block", pointerEvents: "none" }}>
           <path d="M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z" style={{ fill: "var(--color-bg)" }} />
         </svg>
@@ -110,7 +110,7 @@ export default function Leistungen() {
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>
             Präzisionsabformungen, Modelle, Provisorien, Schienen und Keramikarbeiten entstehen im Labor der Praxis. Farbe und Passung prüfen wir direkt am Stuhl, Korrekturen laufen oft am selben Tag — statt über Wochen und Wege zu einem externen Labor.
           </p>
-          <Link className="btn btn-primary" href="/zahnlabor" style={{ padding: "12px 26px", fontSize: "15px" }}>
+          <Link className="btn btn-primary knopf-gross" href="/zahnlabor">
             Zum eigenen Zahnlabor
           </Link>
         </div>
@@ -153,10 +153,10 @@ export default function Leistungen() {
           </p>
         </div>
         <div style={{ display: "flex", gap: "14px" }}>
-          <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+          <Link className="btn btn-primary knopf-gross" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+          <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
             0331 960926
           </a>
         </div>

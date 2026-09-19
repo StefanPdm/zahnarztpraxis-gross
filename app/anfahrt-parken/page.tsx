@@ -40,7 +40,7 @@ export default function AnfahrtParken() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Schopenhauerstraße 37, mitten in Potsdam. Ein Hinweis vorweg, der Ihnen den Umweg erspart:{" "}
             <strong style={{ fontWeight: "400", borderBottom: "1px solid var(--color-accent)" }}>
               Der Praxiseingang liegt nicht an der Straße, sondern auf der Rückseite des Gebäudes.
@@ -48,10 +48,10 @@ export default function AnfahrtParken() {
             Von der Schopenhauerstraße gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort führt eine gläserne Eingangstür ins Haus.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <a className="btn btn-primary" href="https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-primary knopf-gross" href="https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener">
               Route öffnen
             </a>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -105,7 +105,7 @@ export default function AnfahrtParken() {
           </figcaption>
         </figure>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Der letzte Weg
         </div>
@@ -131,7 +131,7 @@ export default function AnfahrtParken() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Mit Bus und Tram
           </div>
@@ -201,7 +201,7 @@ export default function AnfahrtParken() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Zugang
           </div>
@@ -240,15 +240,15 @@ export default function AnfahrtParken() {
             </div>
           </div>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
-            <Link className="btn btn-secondary" href="/kontakt" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/kontakt">
               Öffnungszeiten
             </Link>
           </div>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div style={{ borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
             <Karte hoehe={480} />
           </div>
@@ -257,7 +257,7 @@ export default function AnfahrtParken() {
           </a>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

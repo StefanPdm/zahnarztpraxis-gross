@@ -67,21 +67,21 @@ export default function WeisheitszaehneChirurgie() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Bei den meisten Menschen ist im Kiefer nicht genug Platz für die Weisheitszähne: sie wachsen schief, drücken auf die Nachbarzähne und verursachen Schmerzen. Ob sie raus müssen, entscheidet ihre Lage im Kiefer — und die sieht man nicht von außen. Deshalb steht am Anfang immer ein Röntgenbild, nicht eine Empfehlung.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Beurteilung anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Raus oder drin?
           </div>
@@ -106,17 +106,17 @@ export default function WeisheitszaehneChirurgie() {
             ))}
           </div>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Erfahrung
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 18px" }}>
             Chirurgie aus der Klinik, in der Praxis.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Matthias Groß hat vier Jahre in der Mund-, Kiefer- und Gesichtschirurgie am Klinikum gearbeitet. Diese Erfahrung kommt bei chirurgischen Eingriffen in unserer Praxis zum Tragen — Sie müssen für eine Weisheitszahn-Entfernung nicht an eine andere Adresse überwiesen werden.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Was wir nicht selbst machen können, sagen wir Ihnen offen und verweisen weiter. Auch das gehört zur Erfahrung.
           </p>
           <blockquote style={{ margin: "28px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
@@ -127,7 +127,7 @@ export default function WeisheitszaehneChirurgie() {
           </blockquote>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Der Ablauf
         </div>
@@ -156,7 +156,7 @@ export default function WeisheitszaehneChirurgie() {
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0" }}>
           <Bild src="/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg" alt="Behandlungszimmer mit Röntgenbild am Bildschirm in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Nach dem Eingriff
           </div>
@@ -186,7 +186,7 @@ export default function WeisheitszaehneChirurgie() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Auch chirurgisch
           </div>
@@ -211,30 +211,30 @@ export default function WeisheitszaehneChirurgie() {
             ))}
           </div>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Wenn Sie Angst haben
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Ein Eingriff ist genau der Moment dafür.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Sagen Sie vorher, dass Sie Angst haben — dann planen wir mehr Zeit ein, erklären jeden Schritt bevor er passiert und vereinbaren das Handzeichen. Hand heben heißt: wir unterbrechen sofort, auch mitten im Eingriff.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Auf Wunsch läuft Musik oder ein Film über den Monitor am Behandlungsplatz.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-secondary" href="/angstpatienten" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/angstpatienten">
               Für Angstpatienten
             </Link>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

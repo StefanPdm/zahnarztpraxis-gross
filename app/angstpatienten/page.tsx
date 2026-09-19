@@ -59,31 +59,31 @@ export default function Angstpatienten() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Fünf bis zehn Prozent der Menschen meiden den Zahnarzt aus Angst. Die Folge ist meistens dieselbe: Kontrollen werden verschoben, aus kleinen Problemen werden große, und der Weg zurück fühlt sich mit jedem Jahr schwerer an. Wir behandeln viele Patienten, die lange nicht da waren — und fangen dort an, wo es für Sie machbar ist.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Erstgespräch anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Der erste Termin
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Nur reden. Ohne Behandlung.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Wenn Sie möchten, ist der erste Termin ein Gespräch und nichts weiter: Sie erzählen, was Ihnen Sorgen macht, wir sehen uns nur an, was Sie uns zeigen möchten, und Sie gehen wieder. Kein Bohrer, keine Spritze, keine Entscheidung an diesem Tag.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Am Ende wissen Sie, was ansteht, in welcher Reihenfolge und was es kostet. Wann Sie damit anfangen, entscheiden Sie.
           </p>
           <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
@@ -94,7 +94,7 @@ export default function Angstpatienten() {
           </blockquote>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild vorrang className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start", padding: "96px 64px", borderBottom: "1px solid var(--color-divider)" }}>
@@ -105,10 +105,10 @@ export default function Angstpatienten() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 18px" }}>
             Wie nervös sind Sie wirklich?
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Angst ist keine Ja-oder-Nein-Frage. Zwischen „ungern, aber es geht“ und „ich habe seit Jahren abgesagt“ liegt ein weiter Weg — und wir planen den Termin unterschiedlich, je nachdem wo Sie stehen.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Schieben Sie den Regler dorthin, wo es für Sie stimmt. Rechts sehen Sie, wie wir dann vorgehen würden.
           </p>
           <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h5)", lineHeight: "1.45", margin: "28px 0 0" }}>
@@ -146,19 +146,19 @@ export default function Angstpatienten() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "520px" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461752-m532.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461752-m532.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" />
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Das Handzeichen
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Ein Zeichen, und wir hören auf.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Wer im Behandlungsstuhl liegt, kann nicht reden — das ist für viele der schlimmste Teil. Deshalb legen wir vor jeder Behandlung ein Handzeichen fest: Hand heben. Sobald Sie es geben, unterbrechen wir sofort. Nicht „gleich“, nicht „nur noch dieser eine Schritt“.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Danach entscheiden Sie, ob wir weitermachen, eine Pause einlegen oder für heute Schluss ist. Das gilt bei jedem Termin, auch beim zwanzigsten.
           </p>
           <hr className="hr" />
@@ -167,7 +167,7 @@ export default function Angstpatienten() {
           </p>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           In Etappen
         </div>
@@ -193,30 +193,30 @@ export default function Angstpatienten() {
         ))}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Ablenkung
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
             Musik, Film, oder einfach Kopfhörer.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Sanfter behandeln
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
             Laser statt Schmerzmittel-Reflex.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Wo es möglich ist, arbeiten wir mit dem Laser — in der Parodontosebehandlung, zur Keimreduktion und bei der Fissurenversiegelung. Der Vorteil für Sie: weniger Wundschmerz, längere Schmerzfreiheit und geringere Mengen Betäubungsmittel.
           </p>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

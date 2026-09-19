@@ -57,14 +57,14 @@ export default function Prophylaxe() {
           </h1>
         </div>
         <div>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+          <p className="fliesstext fliesstext--gross">
             Die günstigste Behandlung ist die, die nicht nötig wird. Zähneputzen erreicht die Zahnzwischenräume und den Zahnfleischsaum nur zum Teil — genau dort beginnen Karies und Zahnfleischentzündung. Bei der professionellen Zahnreinigung kommen wir an diese Stellen, und Sie erfahren, wie Sie sie zu Hause besser erreichen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Zahnreinigung anfragen
             </Link>
-            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
               0331 960926
             </a>
           </div>
@@ -96,14 +96,14 @@ export default function Prophylaxe() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Der Rhythmus
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
             Nach Ihrem Risiko, nicht nach Kalender.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             „Zweimal im Jahr“ ist eine Faustregel, keine Diagnose. Wer kräftigen Zahnstein bildet, Zahnfleischtaschen hat, raucht oder Diabetes hat, braucht kürzere Abstände. Wer stabile Verhältnisse hat, kommt mit weniger aus.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
@@ -128,35 +128,35 @@ export default function Prophylaxe() {
           </p>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Zahnreinigung mit Assistenz am Behandlungsstuhl in der Praxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild vorrang className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Zahnreinigung mit Assistenz am Behandlungsstuhl in der Praxis Groß & Groß Potsdam" />
         </figure>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ padding: "80px 64px" }}>
+        <div className="abschnitt">
           <div className="ueberzeile">
             Zu Hause
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Zahnseide, Bürstchen oder Munddusche?
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Das hängt von Ihren Zwischenräumen ab, nicht von der Werbung. Enge Räume brauchen Zahnseide, weitere eine Interdentalbürste in der passenden Stärke, und bei Brücken oder Implantaten hilft oft die Munddusche zusätzlich.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Wir zeigen Ihnen im Termin, was zu Ihrem Mund passt — und lassen Sie es einmal selbst machen. Das hält länger als jede Erklärung.
           </p>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Fluoridierung
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Zum Abschluss wird der Schmelz gehärtet.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Nach der Reinigung tragen wir Fluorid auf. Es härtet den Zahnschmelz und macht ihn widerstandsfähiger gegen Säure — schnell, schmerzfrei und ohne Bohrer.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Bei Kindern gehört zusätzlich die Fissurenversiegelung dazu: die feinen Rillen der Backenzähne werden verschlossen, bevor sich Bakterien dort einnisten.{" "}
             <Link href="/kinderzahnheilkunde">
               Mehr zur Kinderprophylaxe
@@ -164,7 +164,7 @@ export default function Prophylaxe() {
           </p>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Warum es sich lohnt
         </div>
@@ -193,32 +193,32 @@ export default function Prophylaxe() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg" alt="Behandlungszimmer mit Deckenmonitor in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg" alt="Behandlungszimmer mit Deckenmonitor in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
             Wenn mehr nötig ist
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
             Blutet Ihr Zahnfleisch beim Putzen?
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
+          <p className="fliesstext fliesstext--absatz">
             Dann reicht die Reinigung allein nicht. Blutendes Zahnfleisch ist entzündet, und wenn sich Taschen gebildet haben, baut der Kieferknochen unbemerkt ab. Das ist Parodontitis — und die häufigste Ursache dafür, dass Zähne im Alter verloren gehen.
           </p>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
+          <p className="fliesstext">
             Wir reinigen dann die Taschen, unterstützen mit dem Laser und halten das Ergebnis über ein festes Recall-Programm. Sagen Sie im Termin Bescheid, wenn Ihr Zahnfleisch blutet.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
-            <Link className="btn btn-secondary" href="/parodontologie" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-secondary knopf-gross" href="/parodontologie">
               Zur Parodontologie
             </Link>
-            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+            <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0" }}>
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
         </div>

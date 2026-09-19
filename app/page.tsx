@@ -1459,15 +1459,13 @@ export default function Index() {
               </p>
               <div style={{ display: 'flex', gap: '14px', marginTop: '24px' }}>
                 <Link
-                  className='btn btn-primary'
-                  href='/termin'
-                  style={{ padding: '12px 26px', fontSize: '15px' }}>
+                  className="btn btn-primary knopf-gross"
+                  href='/termin'>
                   Erstgespräch anfragen
                 </Link>
                 <a
-                  className='btn btn-secondary'
-                  href='tel:+49331960926'
-                  style={{ padding: '12px 26px', fontSize: '15px' }}>
+                  className="btn btn-secondary knopf-gross"
+                  href='tel:+49331960926'>
                   0331 960926
                 </a>
               </div>
