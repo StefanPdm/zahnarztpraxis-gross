@@ -21,6 +21,15 @@ const wordpressReste = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  images: {
+    // AVIF zuerst (≈20 % kleiner als WebP), WebP als Rückfall. Hinter einem
+    // eigenen Proxy/CDN muss der Accept-Header durchgereicht werden.
+    formats: ["image/avif", "image/webp"],
+    qualities: [75],
+    // Bilder ändern sich selten; die optimierten Fassungen dürfen lange liegen.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
+
   async redirects() {
     // /<slug>.html → /<slug>. Die alten Adressen sind indexiert.
     const htmlVarianten = routen

@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -139,8 +140,9 @@ export default function Parodontologie() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "640px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <img className="parallax-img" src="/uploads/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
           <span className="ai-badge">
+            {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
             <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
         </figure>
@@ -183,7 +185,7 @@ export default function Parodontologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <img className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Behandlung am Stuhl mit Assistenz in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Behandlung am Stuhl mit Assistenz in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </figure>
         <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>

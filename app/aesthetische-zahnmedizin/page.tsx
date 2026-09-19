@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -93,7 +94,7 @@ export default function AesthetischeZahnmedizin() {
           </blockquote>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "580px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <img className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitales Kiefermodell im Labor der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild vorrang className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitales Kiefermodell im Labor der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Zahnfarbe und Form · im Haus konstruiert
           </figcaption>
@@ -134,7 +135,7 @@ export default function AesthetischeZahnmedizin() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
-          <img className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </figure>
         <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>

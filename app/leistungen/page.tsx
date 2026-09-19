@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild, { VOLL } from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -66,7 +67,7 @@ export default function Leistungen() {
         </p>
       </div>
       <div style={{ position: "relative", overflow: "hidden", height: "560px" }}>
-        <img className="parallax-img" src="/uploads/photos-1786974461785-ksjv.jpg" alt="Behandlungseinheit" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/photos-1786974461785-ksjv.jpg" alt="Behandlungseinheit" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         <svg viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", left: "0", top: "-1px", width: "100%", height: "30px", display: "block", pointerEvents: "none" }}>
           <path d="M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z" style={{ fill: "var(--color-bg)" }} />
         </svg>
@@ -102,11 +103,11 @@ export default function Leistungen() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <img className="plate" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit Technik" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
-        <img className="plate" src="/uploads/photos-1786974461803-v5uo.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
+        <Bild className="plate" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit Technik" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
+        <Bild className="plate" src="/uploads/photos-1786974461803-v5uo.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
       </div>
       <div style={{ position: "relative", overflow: "hidden", height: "540px" }}>
-        <img className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+        <Bild sizes={VOLL} className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         <svg viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", left: "0", top: "-1px", width: "100%", height: "30px", display: "block", pointerEvents: "none" }}>
           <path d="M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z" style={{ fill: "var(--color-bg)" }} />
         </svg>
@@ -132,7 +133,7 @@ export default function Leistungen() {
           </Link>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", height: "340px", margin: "0", borderRadius: "var(--radius-md)" }}>
-          <img src="/uploads/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor mit Gipsmodellen und Zahnfarbmustern" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Bild src="/uploads/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor mit Gipsmodellen und Zahnfarbmustern" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
       </div>
       <div style={{ padding: "80px 64px", borderBottom: "1px solid var(--color-divider)" }}>

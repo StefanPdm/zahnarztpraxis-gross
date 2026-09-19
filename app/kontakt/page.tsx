@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import strukturierteDaten from "./jsonld.json";
 
@@ -162,8 +163,8 @@ export default function Kontakt() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <img className="plate" src="/uploads/photos-1786974467268-lgux.jpg" alt="Wartebereich der Praxis" style={{ width: "100%", height: "480px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
-        <img className="plate" src="/uploads/photos-1786974467256-ovyq.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "480px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
+        <Bild className="plate" src="/uploads/photos-1786974467268-lgux.jpg" alt="Wartebereich der Praxis" style={{ width: "100%", height: "480px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
+        <Bild className="plate" src="/uploads/photos-1786974467256-ovyq.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "480px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", padding: "80px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
         <div>

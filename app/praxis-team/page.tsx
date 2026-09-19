@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import { team } from "@/lib/team";
 import strukturierteDaten from "./jsonld.json";
 
@@ -136,7 +137,7 @@ export default function PraxisTeam() {
                 </div>
                 <div className="flipinner" style={{ width: "100%", height: "100%" }}>
                   <div className="flipface portraitframe" style={{ width: "100%", height: "100%" }}>
-                    <img className="plate portrait" src={m.foto} alt={m.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 26%", borderRadius: "var(--radius-md)", mixBlendMode: "multiply" }} />
+                    <Bild className="plate portrait" src={m.foto} alt={m.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 26%", borderRadius: "var(--radius-md)", mixBlendMode: "multiply" }} />
                   </div>
                   <div className="flipface flipback" style={{ border: "1px solid var(--color-divider)", borderRadius: "var(--radius-md)", background: "linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, #ffffff 100%)", padding: "38px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "18px" }}>
                     <div style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
@@ -278,7 +279,7 @@ export default function PraxisTeam() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <img className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461849-vuwz.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </figure>
       </div>
       <div style={{ padding: "96px 64px 0" }}>
@@ -296,7 +297,7 @@ export default function PraxisTeam() {
         {raeume.map((r, rI) => (
           <Fragment key={rI}>
             <figure style={{ margin: "0" }}>
-              <img className="plate" src={r.src} alt={r.alt} style={{ display: "block", width: "100%", height: "240px", objectFit: "cover", borderRadius: "var(--radius-md)" }} />
+              <Bild sizes="(max-width: 1000px) 100vw, 30vw" className="plate" src={r.src} alt={r.alt} style={{ display: "block", width: "100%", height: "240px", objectFit: "cover", borderRadius: "var(--radius-md)" }} />
               <figcaption style={{ display: "flex", gap: "12px", padding: "11px 2px 0", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
                 <span style={{ color: "var(--color-accent-700)" }}>
                   {r.no}

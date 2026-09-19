@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -188,7 +189,7 @@ export default function Zahnschmerzen() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <img src="/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg" alt="Zahnarzt untersucht einen Patienten in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "88% 32%", display: "block" }} />
+          <Bild src="/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg" alt="Zahnarzt untersucht einen Patienten in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "88% 32%", display: "block" }} />
         </figure>
       </div>
       <div style={{ padding: "96px 64px 0" }}>

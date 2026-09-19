@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import TerminFormular from "@/components/TerminFormular";
 import strukturierteDaten from "./jsonld.json";
 
@@ -266,7 +267,7 @@ export default async function Termin({
             wird, fragen wir, ob er Ihnen passt.
           </p>
         </div>
-        <img
+        <Bild
           className='plate'
           src='/uploads/photos-1786974468276-pkt8.jpg'
           alt='Wartebereich'

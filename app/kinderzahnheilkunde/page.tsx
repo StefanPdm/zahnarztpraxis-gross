@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Bild from "@/components/Bild";
 import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
 import strukturierteDaten from "./jsonld.json";
 
@@ -82,7 +83,7 @@ export default function Kinderzahnheilkunde() {
           </div>
         </div>
         <figure style={{ position: "relative", margin: "0" }}>
-          <img src="/uploads/kinder-motiv.jpg" alt="Illustration: lächelnder Zahn mit Sternen — Kinderzahnheilkunde bei Groß & Groß in Potsdam" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
+          <Bild vorrang src="/uploads/kinder-motiv.jpg" alt="Illustration: lächelnder Zahn mit Sternen — Kinderzahnheilkunde bei Groß & Groß in Potsdam" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
           <figcaption id="gr-caption" style={{ margin: "12px 2px 0", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Großelino, unser Bär, winkt euch auf dieser Seite zu
           </figcaption>
@@ -144,7 +145,7 @@ export default function Kinderzahnheilkunde() {
           </blockquote>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px", borderLeft: "1px solid var(--color-divider)" }}>
-          <img className="parallax-img" src="/uploads/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </div>
       </div>
       <div style={{ padding: "96px 64px 0", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
@@ -179,7 +180,7 @@ export default function Kinderzahnheilkunde() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
-          <img className="parallax-img" src="/uploads/photos-1786974468276-pkt8.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
+          <Bild className="parallax-img" src="/uploads/photos-1786974468276-pkt8.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </div>
         <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>

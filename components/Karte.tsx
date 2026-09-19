@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { praxis } from "@/lib/praxis";
+import Bild from "@/components/Bild";
 
 /*
   Karte mit Zwei-Klick-Lösung.
@@ -33,8 +34,7 @@ export default function Karte({ hoehe, grau = false }: { hoehe: number; grau?: b
 
   return (
     <div className="karte karte-vorschau" style={flaeche}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- dekoratives Standbild, next/image bringt hier nichts */}
-      <img src="/uploads/karte-schopenhauerstrasse.webp" alt="" loading="lazy" decoding="async" />
+      <Bild src="/uploads/karte-schopenhauerstrasse.webp" alt="" />
       <div className="karte-hinweis">
         <button type="button" className="btn btn-primary" onClick={() => setGeladen(true)}>
           Interaktive Karte laden

@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import { team } from "@/lib/team";
 import Laufmarke from "@/components/Laufmarke";
@@ -80,66 +81,6 @@ const services = [
     title: 'Parodontologie',
     text: 'Behandlung von Zahnfleischentzündungen, Schienentherapie und Laser.',
     icon: 'M4 15c2-1 3-3 3-6M20 15c-2-1-3-3-3-6M4 15c0 3 3.6 5 8 5s8-2 8-5M8 9h8',
-  },
-];
-
-const behandlungen = [
-  {
-    no: '01',
-    title: 'Prophylaxe & Zahnreinigung',
-    text: 'Professionelle Reinigung, Fluoridierung und ein Kontrollrhythmus, der zu Ihrem Risiko passt — nicht zum Kalender.',
-  },
-  {
-    no: '02',
-    title: 'Füllungen & Zahnerhalt',
-    text: 'Zahnfarbene Komposit-Füllungen und Keramik-Inlays unter Lupenbrille, um den eigenen Zahn so lange wie möglich zu erhalten.',
-  },
-  {
-    no: '03',
-    title: 'Parodontologie',
-    text: 'Behandlung von Zahnfleischentzündung und Knochenabbau, unterstützt durch Laser und ein festes Recall-Programm.',
-  },
-  {
-    no: '04',
-    title: 'Weisheitszähne & Chirurgie',
-    text: 'Entfernung von Weisheitszähnen und kleinere chirurgische Eingriffe mit Erfahrung aus der MKG-Chirurgie.',
-  },
-  {
-    no: '05',
-    title: 'Kinderbehandlung',
-    text: 'Erst zeigen, dann erklären, dann behandeln. Der erste Termin ist bei uns oft nur ein Kennenlernen.',
-  },
-  {
-    no: '06',
-    title: 'Angstpatienten',
-    text: 'Längere Termine, ein vereinbartes Handzeichen für Pausen und keine Behandlung ohne Ankündigung.',
-  },
-  {
-    no: '07',
-    title: 'Schienentherapie',
-    text: 'Knirscher- und Aufbissschienen gegen Verspannungen, Kopfschmerzen und abgeriebene Zahnflächen.',
-  },
-  {
-    no: '08',
-    title: 'Bleaching & Ästhetik',
-    text: 'Aufhellung und ästhetische Korrekturen — dezent dosiert, damit das Ergebnis nicht auffällt, sondern passt.',
-  },
-];
-
-const labor = [
-  { no: '01', title: 'Zahnkronen', text: 'Vollkeramik-Kronen, Farbe direkt am Stuhl abgestimmt.' },
-  { no: '02', title: 'Inlays', text: 'Passgenaue Einlagefüllungen statt großflächiger Füllungen.' },
-  { no: '03', title: 'Veneers', text: 'Dünne Keramikschalen für Form und Farbe der Frontzähne.' },
-  { no: '04', title: 'Implantate', text: 'Planung, Setzen und Versorgung aus einer Hand.' },
-  {
-    no: '05',
-    title: 'Brücken & Prothetik',
-    text: 'Fester und herausnehmbarer Zahnersatz, im Haus gefertigt.',
-  },
-  {
-    no: '06',
-    title: 'Reparatur & Recall',
-    text: 'Kurze Wege bei Reparaturen — meist am selben Tag.',
   },
 ];
 
@@ -469,7 +410,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <figure style={{ margin: '0', background: '#ffffff' }}>
-              <img
+              <Bild
                 className='plate'
                 src='/uploads/photos-1786974468276-pkt8.jpg'
                 alt='Wartebereich'
@@ -498,7 +439,7 @@ export default function Index() {
               </figcaption>
             </figure>
             <figure style={{ margin: '0', background: '#ffffff' }}>
-              <img
+              <Bild
                 className='plate'
                 src='/uploads/photos-1786974461785-ksjv.jpg'
                 alt='Behandlungseinheit'
@@ -599,7 +540,7 @@ export default function Index() {
                         <div
                           className='flipface portraitframe'
                           style={{ width: '100%', height: '100%' }}>
-                          <img
+                          <Bild
                             className='plate portrait'
                             src={m.foto}
                             alt={m.alt}
@@ -823,7 +764,7 @@ export default function Index() {
                 </p>
               </div>
               <figure style={{ margin: '0' }}>
-                <img
+                <Bild
                   className='plate'
                   src='/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg'
                   alt='Behandlungszimmer mit Deckenmonitor und Röntgenbild am Bildschirm, Patientin im Stuhl'
@@ -859,7 +800,7 @@ export default function Index() {
                 margin: '40px 0 0',
               }}>
               <figure style={{ margin: '0' }}>
-                <img
+                <Bild
                   className='plate'
                   src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg'
                   alt='Behandlung mit Assistenz am Stuhl in der Zahnarztpraxis Groß & Groß in Potsdam'
@@ -887,7 +828,7 @@ export default function Index() {
                 </figcaption>
               </figure>
               <figure style={{ margin: '0' }}>
-                <img
+                <Bild
                   className='plate'
                   src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg'
                   alt='Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand'
@@ -1351,7 +1292,7 @@ export default function Index() {
               </div>
             </div>
             <figure style={{ margin: '0' }}>
-              <img
+              <Bild
                 className='plate'
                 src='/uploads/photos-1786974479454-rmck.jpg'
                 alt='Behandlungsraum mit Technik'
@@ -1603,7 +1544,7 @@ export default function Index() {
             </div>
             <figure
               style={{ position: 'relative', margin: '0', height: '100%', minHeight: '640px' }}>
-              <img
+              <Bild
                 className='plate'
                 src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-12-1-687x1030-1.jpg'
                 alt='Wartebereich der Praxis mit Sitzgruppe, Orchideen und Buddha-Figur'
@@ -2089,7 +2030,7 @@ export default function Index() {
                 <span>Erdgeschoss, barrierefrei — Zugang ebenerdig</span>
               </div>
               <figure style={{ margin: '24px 0 0' }}>
-                <img
+                <Bild
                   src='/uploads/Schopenhauer_Str_37_hinten_cropped.webp'
                   alt='Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof'
                   style={{
