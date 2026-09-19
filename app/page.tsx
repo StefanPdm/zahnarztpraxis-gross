@@ -686,13 +686,7 @@ export default function Index() {
                 <div className="ueberzeile">
                   Die Praxis
                 </div>
-                <h2
-                  style={{
-                    fontWeight: '400',
-                    fontSize: 'var(--fs-h2)',
-                    lineHeight: '1.08',
-                    margin: '16px 0 20px',
-                  }}>
+                <h2 className="titel-2 titel-2--luft">
                   Helle Räume, moderne Technik, kein Praxisgeruch von 1995.
                 </h2>
                 <p
@@ -947,13 +941,7 @@ export default function Index() {
               <div className="ueberzeile">
                 Eigenes Zahnlabor
               </div>
-              <h2
-                style={{
-                  fontWeight: '400',
-                  fontSize: 'var(--fs-h2)',
-                  lineHeight: '1.08',
-                  margin: '16px 0 20px',
-                }}>
+              <h2 className="titel-2 titel-2--luft">
                 Besonderheit: Der Zahntechniker sitzt direkt in der Praxis.
               </h2>
               <p
@@ -1390,13 +1378,7 @@ export default function Index() {
               <div className="ueberzeile">
                 Angstpatienten
               </div>
-              <h2
-                style={{
-                  fontWeight: '400',
-                  fontSize: 'var(--fs-h2)',
-                  lineHeight: '1.08',
-                  margin: '16px 0 20px',
-                }}>
+              <h2 className="titel-2 titel-2--luft">
                 Wenn der letzte Zahnarztbesuch Jahre zurückliegt.
               </h2>
               <p
@@ -1644,13 +1626,7 @@ export default function Index() {
               <div className="ueberzeile">
                 Termin
               </div>
-              <h2
-                style={{
-                  fontWeight: '400',
-                  fontSize: 'var(--fs-h2)',
-                  lineHeight: '1.08',
-                  margin: '16px 0 20px',
-                }}>
+              <h2 className="titel-2 titel-2--luft">
                 Zwei Wunschzeiten genügen.
               </h2>
               <p
@@ -1990,46 +1966,19 @@ export default function Index() {
               </span>
               .
             </h2>
-            <p
-              style={{
-                fontSize: 'var(--fs-lead)',
-                lineHeight: '1.6',
-                maxWidth: '52ch',
-                margin: '24px auto 0',
-                color: 'rgba(243,242,242,0.72)',
-              }}>
+            <p className="abschluss__text">
               Zwei Wunschzeiten genügen — wir bestätigen innerhalb von 24 Stunden. Für akute
               Beschwerden halten wir jeden Morgen Termine frei.
             </p>
-            <div
-              style={{
-                display: 'flex',
-                gap: '14px',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                marginTop: '40px',
-              }}>
+            <div className="knopfreihe knopfreihe--mitte">
               <Link
-                className='btn'
-                href='/termin'
-                style={{
-                  padding: '15px 38px',
-                  fontSize: 'var(--fs-body)',
-                  border: '1px solid var(--color-accent-400)',
-                  color: '#17150f',
-                  background: 'var(--color-accent-400)',
-                }}>
+                className="btn knopf-band knopf-band--voll"
+                href='/termin'>
                 Termin anfragen
               </Link>
               <a
-                className='btn'
-                href='tel:+49331960926'
-                style={{
-                  padding: '15px 38px',
-                  fontSize: 'var(--fs-body)',
-                  border: '1px solid rgba(243,242,242,0.35)',
-                  color: '#f3f2f2',
-                }}>
+                className="btn knopf-band knopf-band--rahmen"
+                href='tel:+49331960926'>
                 0331 960926
               </a>
             </div>

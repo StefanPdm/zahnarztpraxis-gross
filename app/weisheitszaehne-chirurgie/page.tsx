@@ -53,12 +53,12 @@ export default function WeisheitszaehneChirurgie() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Weisheitszähne &amp; Chirurgie
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Vier Zähne,
             <br />
             für die kein
@@ -70,7 +70,7 @@ export default function WeisheitszaehneChirurgie() {
           <p className="fliesstext fliesstext--gross">
             Bei den meisten Menschen ist im Kiefer nicht genug Platz für die Weisheitszähne: sie wachsen schief, drücken auf die Nachbarzähne und verursachen Schmerzen. Ob sie raus müssen, entscheidet ihre Lage im Kiefer — und die sieht man nicht von außen. Deshalb steht am Anfang immer ein Röntgenbild, nicht eine Empfehlung.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Beurteilung anfragen
             </Link>
@@ -131,7 +131,7 @@ export default function WeisheitszaehneChirurgie() {
         <div className="ueberzeile">
           Der Ablauf
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Vom Röntgenbild bis zum Fädenziehen.
         </h2>
       </div>
@@ -145,7 +145,7 @@ export default function WeisheitszaehneChirurgie() {
               <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3-sm)", lineHeight: "1.14", margin: "14px 0 10px" }}>
                 {a.title}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+              <p className="text-15">
                 {a.text}
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function WeisheitszaehneChirurgie() {
           <div className="ueberzeile">
             Nach dem Eingriff
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
+          <h2 className="titel-2 titel-2--luft">
             Die ersten zwei Tage entscheiden.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
@@ -190,7 +190,7 @@ export default function WeisheitszaehneChirurgie() {
           <div className="ueberzeile">
             Auch chirurgisch
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Weitere Eingriffe.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
@@ -203,7 +203,7 @@ export default function WeisheitszaehneChirurgie() {
                   <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.16", margin: "0 0 6px" }}>
                     {w.title}
                   </h3>
-                  <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.6", margin: "0" }}>
+                  <p className="text-15 text-15--dicht">
                     {w.text}
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export default function WeisheitszaehneChirurgie() {
           <div className="ueberzeile">
             Wenn Sie Angst haben
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Ein Eingriff ist genau der Moment dafür.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -224,7 +224,7 @@ export default function WeisheitszaehneChirurgie() {
           <p className="fliesstext">
             Auf Wunsch läuft Musik oder ein Film über den Monitor am Behandlungsplatz.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-secondary knopf-gross" href="/angstpatienten">
               Für Angstpatienten
             </Link>
@@ -238,39 +238,39 @@ export default function WeisheitszaehneChirurgie() {
         <div className="ueberzeile">
           Häufige Fragen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Fragen zur Weisheitszahn-Entfernung.
         </h2>
       </div>
-      <div style={{ margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="fragen">
         {faq.map((f, fI) => (
           <Fragment key={fI}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "40px", padding: "28px 0", borderBottom: "1px solid var(--color-divider)" }}>
-              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.2", margin: "0" }}>
+            <div className="frage">
+              <h3 className="titel-5">
                 {f.q}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body)", lineHeight: "1.66", margin: "0" }}>
+              <p className="frage__antwort">
                 {f.a}
               </p>
             </div>
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+      <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Beurteilung
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+        <h2 className="abschluss__titel">
           Erst schauen, dann entscheiden.
         </h2>
-        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "54ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+        <p className="abschluss__text abschluss__text--breit">
           Im Beratungstermin sehen wir anhand des Röntgenbildes, wie Ihre Weisheitszähne liegen — und sagen Ihnen offen, ob überhaupt etwas gemacht werden muss. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
-        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
-          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+        <div className="knopfreihe knopfreihe--mitte">
+          <Link className="btn knopf-band knopf-band--voll" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+          <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">
             0331 960926
           </a>
         </div>

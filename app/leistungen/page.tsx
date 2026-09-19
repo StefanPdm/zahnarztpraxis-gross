@@ -31,12 +31,12 @@ export default function Leistungen() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Leistungen
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Zahnmedizin
             <br />
             und Zahntechnik
@@ -104,7 +104,7 @@ export default function Leistungen() {
           <div className="ueberzeile">
             Eigenes Zahnlabor
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
+          <h2 className="titel-3 titel-3--eng">
             Der Zahntechniker sitzt direkt in der Praxis.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>

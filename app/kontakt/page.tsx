@@ -15,12 +15,12 @@ export default function Kontakt() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Kontakt
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Schopenhauer-
             <br />
             straße 37,
@@ -134,7 +134,7 @@ export default function Kontakt() {
           <div className="ueberzeile">
             Akute Schmerzen
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
+          <h2 className="titel-3 titel-3--eng">
             Rufen Sie morgens ab 8:00 an.
           </h2>
           <p className="fliesstext">
@@ -145,7 +145,7 @@ export default function Kontakt() {
           <div className="ueberzeile">
             Erster Besuch
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
+          <h2 className="titel-3 titel-3--eng">
             Was Sie mitbringen sollten.
           </h2>
           <div style={{ display: "grid", gap: "12px", fontSize: "15px", color: "var(--color-neutral-800)" }}>

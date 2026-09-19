@@ -27,26 +27,12 @@ export default function Termin() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
-          alignItems: 'end',
-          padding: '96px 64px 60px',
-        }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Online-Terminanfrage
           </div>
-          <h1
-            style={{
-              fontWeight: '400',
-              fontSize: 'var(--fs-hero)',
-              lineHeight: '1.0',
-              letterSpacing: '-0.025em',
-              margin: '22px 0 0',
-            }}>
+          <h1 className="seitentitel">
             Zwei Wunsch-
             <br />
             zeiten genügen.
@@ -170,13 +156,7 @@ export default function Termin() {
           <div className="ueberzeile">
             Was danach passiert
           </div>
-          <h2
-            style={{
-              fontWeight: '400',
-              fontSize: 'var(--fs-h2-sm)',
-              lineHeight: '1.1',
-              margin: '16px 0 14px',
-            }}>
+          <h2 className="titel-3 titel-3--eng">
             Eine kurze Rückmeldung, kein Automat.
           </h2>
           <p className="fliesstext">

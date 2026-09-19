@@ -45,12 +45,12 @@ export default function Angstpatienten() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Angstpatienten
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Zahnarzt für
             <br />
             Angstpatienten
@@ -62,7 +62,7 @@ export default function Angstpatienten() {
           <p className="fliesstext fliesstext--gross">
             Fünf bis zehn Prozent der Menschen meiden den Zahnarzt aus Angst. Die Folge ist meistens dieselbe: Kontrollen werden verschoben, aus kleinen Problemen werden große, und der Weg zurück fühlt sich mit jedem Jahr schwerer an. Wir behandeln viele Patienten, die lange nicht da waren — und fangen dort an, wo es für Sie machbar ist.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Erstgespräch anfragen
             </Link>
@@ -77,7 +77,7 @@ export default function Angstpatienten() {
           <div className="ueberzeile">
             Der erste Termin
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
+          <h2 className="titel-2 titel-2--luft">
             Nur reden. Ohne Behandlung.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -121,7 +121,7 @@ export default function Angstpatienten() {
         <div className="ueberzeile">
           Was Sie von uns erwarten können
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Sieben Zusagen, die im Behandlungszimmer gelten.
         </h2>
       </div>
@@ -136,7 +136,7 @@ export default function Angstpatienten() {
                 <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h4)", lineHeight: "1.16", margin: "0 0 8px" }}>
                   {z.title}
                 </h3>
-                <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+                <p className="text-15">
                   {z.text}
                 </p>
               </div>
@@ -152,7 +152,7 @@ export default function Angstpatienten() {
           <div className="ueberzeile">
             Das Handzeichen
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
+          <h2 className="titel-2 titel-2--luft">
             Ein Zeichen, und wir hören auf.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -171,7 +171,7 @@ export default function Angstpatienten() {
         <div className="ueberzeile">
           In Etappen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Alles auf einmal muss niemand durchhalten.
         </h2>
       </div>
@@ -185,7 +185,7 @@ export default function Angstpatienten() {
               <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3)", lineHeight: "1.14", margin: "14px 0 10px" }}>
                 {e.title}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+              <p className="text-15">
                 {e.text}
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function Angstpatienten() {
           <div className="ueberzeile">
             Ablenkung
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
+          <h2 className="titel-3 titel-3--eng">
             Musik, Film, oder einfach Kopfhörer.
           </h2>
           <p className="fliesstext">
@@ -208,7 +208,7 @@ export default function Angstpatienten() {
           <div className="ueberzeile">
             Sanfter behandeln
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
+          <h2 className="titel-3 titel-3--eng">
             Laser statt Schmerzmittel-Reflex.
           </h2>
           <p className="fliesstext">
@@ -220,39 +220,39 @@ export default function Angstpatienten() {
         <div className="ueberzeile">
           Häufige Fragen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Was Angstpatienten uns am häufigsten fragen.
         </h2>
       </div>
-      <div style={{ margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="fragen">
         {faq.map((f, fI) => (
           <Fragment key={fI}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "40px", padding: "28px 0", borderBottom: "1px solid var(--color-divider)" }}>
-              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.2", margin: "0" }}>
+            <div className="frage">
+              <h3 className="titel-5">
                 {f.q}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body)", lineHeight: "1.66", margin: "0" }}>
+              <p className="frage__antwort">
                 {f.a}
               </p>
             </div>
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+      <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Der erste Schritt
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+        <h2 className="abschluss__titel">
           Sagen Sie einfach, dass Sie Angst haben.
         </h2>
-        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+        <p className="abschluss__text">
           Bei der Online-Anfrage wählen Sie „Angstpatient/in“ — dann planen wir mehr Zeit ein und beginnen mit einem Gespräch. Wir melden uns innerhalb von 24 Stunden.
         </p>
-        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
-          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+        <div className="knopfreihe knopfreihe--mitte">
+          <Link className="btn knopf-band knopf-band--voll" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+          <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">
             0331 960926
           </a>
         </div>

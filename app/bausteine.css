@@ -110,3 +110,51 @@
   letter-spacing: 0.28em;
   color: var(--color-accent-400);
 }
+
+/* ── Überschriften ─────────────────────────────────────────────────────────
+   Schriftgrade aus site.css (--fs-*), Gewicht immer 400 (Cormorant). */
+.seitentitel { font-weight: 400; font-size: var(--fs-hero); line-height: 1.0; letter-spacing: -0.025em; margin: 22px 0 0; }
+.titel-2 { font-weight: 400; font-size: var(--fs-h2); line-height: 1.08; margin: 16px 0 0; }
+.titel-2--luft { margin-bottom: 20px; }
+.titel-3 { font-weight: 400; font-size: var(--fs-h2-sm); line-height: 1.1; margin: 16px 0 16px; }
+.titel-3--eng { margin-bottom: 14px; }
+.titel-5 { font-weight: 400; font-size: var(--fs-h5); line-height: 1.2; margin: 0; }
+/* Zeilenlänge begrenzen */
+.breite-22 { max-width: 22ch; }
+.breite-24 { max-width: 24ch; }
+.breite-26 { max-width: 26ch; }
+
+/* ── Seitenkopf ────────────────────────────────────────────────────────────
+   Erster Block jeder Unterseite: links Überzeile + Seitentitel, rechts Lead. */
+.seitenkopf { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; padding: 96px var(--rand) 60px; }
+@media (max-width: 1000px) { .seitenkopf { grid-template-columns: 1fr; gap: 30px; padding-top: 52px; padding-bottom: 36px; } }
+@media (max-width: 640px)  { .seitenkopf { gap: 24px; } }
+
+/* ── Knopfreihen ───────────────────────────────────────────────────────── */
+.knopfreihe { display: flex; gap: 14px; margin-top: 26px; }
+.knopfreihe--mitte { justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+@media (max-width: 640px) { .knopfreihe { flex-wrap: wrap; } }
+
+/* ── Textgrößen ────────────────────────────────────────────────────────── */
+.text-15 { color: var(--color-neutral-800); font-size: 15px; line-height: 1.62; margin: 0; }
+.text-15--dicht { line-height: 1.6; }
+
+/* ── Abschlussband ─────────────────────────────────────────────────────────
+   Dunkles Band am Seitenende mit Einladung zum Termin. */
+.abschluss { padding: 104px var(--rand); text-align: center; background: var(--ink-dark); }
+.abschluss__titel { font-weight: 400; font-size: var(--fs-display); line-height: 1.04; letter-spacing: -0.03em; margin: 24px auto 0; max-width: 22ch; color: #f7f5f0; }
+.abschluss__text { font-size: var(--fs-lead); line-height: 1.6; max-width: 52ch; margin: 24px auto 0; color: color-mix(in srgb, var(--color-bg) 72%, transparent); }
+.abschluss__text--breit { max-width: 54ch; }
+.knopf-band { padding: 15px 38px; font-size: var(--fs-body); }
+.knopf-band--voll { border: 1px solid var(--color-accent-400); color: var(--ink-dark); background: var(--color-accent-400); }
+.knopf-band--rahmen { border: 1px solid color-mix(in srgb, var(--color-bg) 35%, transparent); color: var(--color-bg); }
+@media (max-width: 1000px) { .abschluss { padding-top: 52px; padding-bottom: 36px; } }
+@media (max-width: 640px)  { .abschluss { padding-top: 36px; padding-bottom: 36px; } }
+
+/* ── Häufige Fragen ────────────────────────────────────────────────────────
+   Frage links, Antwort rechts; mobil untereinander. */
+.fragen { margin: 40px var(--rand) 96px; border-top: 1px solid var(--color-divider); }
+.frage { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; padding: 28px 0; border-bottom: 1px solid var(--color-divider); }
+.frage__antwort { color: var(--color-neutral-800); font-size: var(--fs-body); line-height: 1.66; margin: 0; }
+@media (max-width: 1000px) { .frage { grid-template-columns: 1fr; gap: 30px; } }
+@media (max-width: 640px)  { .frage { gap: 24px; } }

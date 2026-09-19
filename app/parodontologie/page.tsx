@@ -38,12 +38,12 @@ export default function Parodontologie() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Parodontologie
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Wenn das
             <br />
             Zahnfleisch
@@ -55,7 +55,7 @@ export default function Parodontologie() {
           <p className="fliesstext fliesstext--gross">
             Parodontitis tut lange nicht weh — das ist ihr Problem. Bakterieller Belag am Zahnfleischsaum verhärtet zu Zahnstein, das Zahnfleisch entzündet sich und blutet, es entstehen Taschen. Unbehandelt baut der Kieferknochen ab, und die Zähne verlieren ihren Halt. Deshalb ist blutendes Zahnfleisch kein Schönheitsfehler, sondern ein Termingrund.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Zahnfleisch prüfen lassen
             </Link>
@@ -69,7 +69,7 @@ export default function Parodontologie() {
         <div className="ueberzeile">
           Warnzeichen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Sechs Anzeichen, die Sie ernst nehmen sollten.
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "36px 0 0", borderTop: "1px solid var(--color-divider)" }}>
@@ -95,7 +95,7 @@ export default function Parodontologie() {
           <div className="ueberzeile">
             Die Behandlung
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
+          <h2 className="titel-2 titel-2--luft">
             Taschen reinigen, Entzündung stoppen.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
@@ -112,7 +112,7 @@ export default function Parodontologie() {
                     <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.16", margin: "0 0 6px" }}>
                       {a.title}
                     </h3>
-                    <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.6", margin: "0" }}>
+                    <p className="text-15 text-15--dicht">
                       {a.text}
                     </p>
                   </div>
@@ -134,7 +134,7 @@ export default function Parodontologie() {
           <div className="ueberzeile">
             Laserunterstützt
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Weniger Wundschmerz, weniger Betäubung.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -151,7 +151,7 @@ export default function Parodontologie() {
           <div className="ueberzeile">
             Danach
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Parodontitis ist kein Termin, sondern ein Programm.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -173,7 +173,7 @@ export default function Parodontologie() {
           <div className="ueberzeile">
             Was auf dem Spiel steht
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Der häufigste Grund für Zahnverlust.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -182,7 +182,7 @@ export default function Parodontologie() {
           <p className="fliesstext">
             Was verloren ist, ersetzen wir mit Implantaten oder Zahnersatz aus dem eigenen Labor. Besser ist es, bis dahin nicht zu kommen.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
@@ -196,39 +196,39 @@ export default function Parodontologie() {
         <div className="ueberzeile">
           Häufige Fragen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Fragen zur Parodontitis.
         </h2>
       </div>
-      <div style={{ margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="fragen">
         {faq.map((f, fI) => (
           <Fragment key={fI}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "40px", padding: "28px 0", borderBottom: "1px solid var(--color-divider)" }}>
-              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.2", margin: "0" }}>
+            <div className="frage">
+              <h3 className="titel-5">
                 {f.q}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body)", lineHeight: "1.66", margin: "0" }}>
+              <p className="frage__antwort">
                 {f.a}
               </p>
             </div>
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+      <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Termin
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+        <h2 className="abschluss__titel">
           Je früher, desto weniger.
         </h2>
-        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "54ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+        <p className="abschluss__text abschluss__text--breit">
           Lassen Sie Ihr Zahnfleisch anschauen, bevor Taschen entstehen. Senden Sie zwei Wunschzeiten — wir bestätigen innerhalb von 24 Stunden.
         </p>
-        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
-          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+        <div className="knopfreihe knopfreihe--mitte">
+          <Link className="btn knopf-band knopf-band--voll" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+          <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">
             0331 960926
           </a>
         </div>

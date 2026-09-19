@@ -30,7 +30,7 @@ export default function ImpressumDatenschutz() {
         <div className="ueberzeile">
           Rechtliches
         </div>
-        <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+        <h1 className="seitentitel">
           Impressum &amp;
           <br />
           Datenschutz

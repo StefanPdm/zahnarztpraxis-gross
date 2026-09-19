@@ -60,7 +60,7 @@ export default function PraxisTeam() {
           <div className="ueberzeile">
             Praxis &amp; Team
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Familiengeführt
             <br />
             seit 1991.
@@ -70,7 +70,7 @@ export default function PraxisTeam() {
           <p className="fliesstext fliesstext--gross">
             Eine Praxis, die seit über drei Jahrzehnten in denselben Händen liegt, arbeitet anders als eine, die alle paar Jahre den Betreiber wechselt. Wir kennen viele unserer Patienten über zwei Generationen — und weil Zahnärztin, Zahnarzt und Zahntechniker hier zusammen unter einem Dach arbeiten, entscheidet nicht der Kalender, sondern der Fall.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
@@ -98,7 +98,7 @@ export default function PraxisTeam() {
         <div className="ueberzeile">
           Ihre Behandler
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Wer Sie behandelt — und woher das Können kommt.
         </h2>
         <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "18px 0 0", maxWidth: "62ch", textWrap: "pretty" }}>
@@ -184,7 +184,7 @@ export default function PraxisTeam() {
                 <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h4)", lineHeight: "1.16", margin: "10px 0 8px" }}>
                   {p.title}
                 </h3>
-                <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+                <p className="text-15">
                   {p.text}
                 </p>
               </div>
@@ -202,7 +202,7 @@ export default function PraxisTeam() {
         <div className="ueberzeile">
           Praxisgeschichte
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Drei Jahrzehnte, eine Familie.
         </h2>
       </div>
@@ -216,7 +216,7 @@ export default function PraxisTeam() {
               <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h4)", lineHeight: "1.16", margin: "14px 0 9px" }}>
                 {h.title}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+              <p className="text-15">
                 {h.text}
               </p>
             </div>
@@ -268,7 +268,7 @@ export default function PraxisTeam() {
         <div className="ueberzeile">
           Die Räume
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Fünf Behandlungszimmer mit Tageslicht.
         </h2>
         <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "18px 0 0", maxWidth: "62ch", textWrap: "pretty" }}>
@@ -309,21 +309,21 @@ export default function PraxisTeam() {
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+      <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Termin
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+        <h2 className="abschluss__titel">
           Lernen Sie uns kennen.
         </h2>
-        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+        <p className="abschluss__text">
           Senden Sie zwei Wunschzeiten und Ihr Anliegen — wir bestätigen innerhalb von 24 Stunden.
         </p>
-        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
-          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+        <div className="knopfreihe knopfreihe--mitte">
+          <Link className="btn knopf-band knopf-band--voll" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+          <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">
             0331 960926
           </a>
         </div>

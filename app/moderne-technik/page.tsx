@@ -33,12 +33,12 @@ export default function ModerneTechnik() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
+      <div className="seitenkopf">
         <div>
           <div className="ueberzeile">
             Moderne Technik
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+          <h1 className="seitentitel">
             Technik, die
             <br />
             Sie merken.
@@ -48,7 +48,7 @@ export default function ModerneTechnik() {
           <p className="fliesstext fliesstext--gross">
             Geräte sind kein Selbstzweck. Wir schaffen an, was für Sie einen Unterschied macht: weniger Wundschmerz, weniger Betäubungsmittel, weniger Termine, genauere Passung. Was Sie hier lesen, steht auch wirklich in unseren Behandlungsräumen — und wir zeigen es Ihnen gern, wenn Sie fragen.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/termin">
               Termin anfragen
             </Link>
@@ -63,7 +63,7 @@ export default function ModerneTechnik() {
           <div className="ueberzeile">
             Laserbehandlung
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
+          <h2 className="titel-2 titel-2--luft">
             Weniger Wundschmerz, weniger Betäubung.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
@@ -80,7 +80,7 @@ export default function ModerneTechnik() {
                     <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.18", margin: "0 0 5px" }}>
                       {l.title}
                     </h3>
-                    <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.6", margin: "0" }}>
+                    <p className="text-15 text-15--dicht">
                       {l.text}
                     </p>
                   </div>
@@ -125,7 +125,7 @@ export default function ModerneTechnik() {
               <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3)", lineHeight: "1.14", margin: "14px 0 10px" }}>
                 {d.title}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+              <p className="text-15">
                 {d.text}
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function ModerneTechnik() {
           <div className="ueberzeile">
             Diagnostik
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Röntgen, wo es die Entscheidung trägt.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -157,7 +157,7 @@ export default function ModerneTechnik() {
           <div className="ueberzeile">
             Am Behandlungsstuhl
           </div>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+          <h2 className="titel-3">
             Monitor, Musik, Kopfhörer.
           </h2>
           <p className="fliesstext fliesstext--absatz">
@@ -175,7 +175,7 @@ export default function ModerneTechnik() {
         <div className="ueberzeile">
           Was uns wichtiger ist als Geräte
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+        <h2 className="titel-2 breite-26">
           Fortbildung, nicht nur Anschaffung.
         </h2>
       </div>
@@ -193,7 +193,7 @@ export default function ModerneTechnik() {
           <p className="fliesstext">
             Genauso wichtig ist die Zurückhaltung: Nicht jede Behandlung braucht das neueste Verfahren. Wir sagen Ihnen offen, wenn die einfachere Lösung die bessere ist — auch wenn sie weniger spektakulär klingt.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+          <div className="knopfreihe">
             <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum eigenen Zahnlabor
             </Link>
@@ -207,39 +207,39 @@ export default function ModerneTechnik() {
         <div className="ueberzeile">
           Häufige Fragen
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+        <h2 className="titel-2 breite-24">
           Fragen zur Technik.
         </h2>
       </div>
-      <div style={{ margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="fragen">
         {faq.map((f, fI) => (
           <Fragment key={fI}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "40px", padding: "28px 0", borderBottom: "1px solid var(--color-divider)" }}>
-              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.2", margin: "0" }}>
+            <div className="frage">
+              <h3 className="titel-5">
                 {f.q}
               </h3>
-              <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body)", lineHeight: "1.66", margin: "0" }}>
+              <p className="frage__antwort">
                 {f.a}
               </p>
             </div>
           </Fragment>
         ))}
       </div>
-      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+      <div className="abschluss">
         <div className="ueberzeile ueberzeile--hell">
           Termin
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+        <h2 className="abschluss__titel">
           Lassen Sie es sich zeigen.
         </h2>
-        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+        <p className="abschluss__text">
           Fragen Sie im Termin einfach nach — wir erklären jedes Gerät, das bei Ihnen zum Einsatz kommt. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
-        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
-          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+        <div className="knopfreihe knopfreihe--mitte">
+          <Link className="btn knopf-band knopf-band--voll" href="/termin">
             Termin anfragen
           </Link>
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+          <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">
             0331 960926
           </a>
         </div>
