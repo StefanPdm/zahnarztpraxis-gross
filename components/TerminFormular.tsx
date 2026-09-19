@@ -18,7 +18,13 @@ import Link from "next/link";
 
 const nichts = () => () => {};
 
-export default function TerminFormular({ anliegen }: { anliegen?: string }) {
+/** Vorbelegung aus /termin?anliegen=… (AnliegenWahl auf der Startseite). */
+const ANLIEGEN_AUS_LINK: Record<string, string> = {
+  kontrolle: "Kontrolle & Prophylaxe",
+  schmerzen: "Schmerzen / akutes Problem",
+};
+
+export default function TerminFormular() {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
@@ -26,9 +32,14 @@ export default function TerminFormular({ anliegen }: { anliegen?: string }) {
   >(null);
   // Zeitstempel für den Spamschutz — erst im Browser setzen, nicht beim Rendern.
   const gestartet = useRef(0);
+  const anliegenFeld = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     gestartet.current = Date.now();
+    // Im Browser statt auf dem Server gelesen: so bleibt /termin eine statische Seite.
+    const wunsch = new URLSearchParams(window.location.search).get("anliegen");
+    const wert = wunsch ? ANLIEGEN_AUS_LINK[wunsch] : undefined;
+    if (wert && anliegenFeld.current) anliegenFeld.current.value = wert;
   }, []);
 
   async function sendeAnfrage(event: FormEvent<HTMLFormElement>) {
@@ -274,7 +285,7 @@ export default function TerminFormular({ anliegen }: { anliegen?: string }) {
           className='input'
           id='t-anliegen'
           name='anliegen'
-          defaultValue={anliegen}
+          ref={anliegenFeld}
           required>
           <option>Kontrolle &amp; Prophylaxe</option>
           <option>Professionelle Zahnreinigung</option>

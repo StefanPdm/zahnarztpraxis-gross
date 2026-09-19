@@ -27,20 +27,7 @@ const steps = [
   { no: '03', title: 'Ihr Termin', text: 'Mit der Zeit, die Ihr Anliegen tatsächlich braucht.' },
 ];
 
-/** Vorbelegung aus /termin?anliegen=… (AnliegenWahl auf der Startseite). */
-const anliegenAusLink: Record<string, string> = {
-  kontrolle: "Kontrolle & Prophylaxe",
-  schmerzen: "Schmerzen / akutes Problem",
-};
-
-export default async function Termin({
-  searchParams,
-}: {
-  searchParams: Promise<{ anliegen?: string | string[] }>;
-}) {
-  const { anliegen } = await searchParams;
-  const vorwahl = typeof anliegen === "string" ? anliegenAusLink[anliegen] : undefined;
-
+export default function Termin() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
@@ -226,7 +213,7 @@ export default async function Termin({
             Schopenhauerstraße 37 · 14467 Potsdam
           </p>
         </div>
-        <TerminFormular anliegen={vorwahl} />
+        <TerminFormular />
       </div>
       <div
         style={{

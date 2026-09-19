@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
+import { praxis } from '@/lib/praxis';
 
 /*
   Termin-Anfrage.
@@ -13,10 +14,13 @@ import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
+/** Einzeilige Felder: keine Steuerzeichen — der Name landet im Mail-Betreff. */
+const einzeilig = /^[^\u0000-\u001f\u007f]*$/;
+
 const Anfrage = z
   .object({
-    name: z.string().trim().min(2).max(120),
-    tel: z.string().trim().max(60).optional().or(z.literal('')),
+    name: z.string().trim().min(2).max(120).regex(einzeilig),
+    tel: z.string().trim().max(60).regex(einzeilig).optional().or(z.literal('')),
     mail: z.string().trim().email().max(180).optional().or(z.literal('')),
     geburt: z.string().trim().max(40).optional().or(z.literal('')),
     termin1: z.string().trim().min(1).max(60),
@@ -25,7 +29,7 @@ const Anfrage = z
     status: z.enum(['Neu', 'Bestandspatient']).optional(),
     versicherung: z.enum(['Gesetzlich', 'Privat']).optional(),
     angst: z.enum(['Nein', 'Ja — Angstpatient/in', 'Erstmal nur ein Gespräch']).optional(),
-    anliegen: z.string().trim().min(1).max(120),
+    anliegen: z.string().trim().min(1).max(120).regex(einzeilig),
     nachricht: z.string().trim().max(4000).optional().or(z.literal('')),
     einverstaendnis: z.literal(true),
     // Spamschutz
@@ -41,13 +45,47 @@ const Anfrage = z
 const zugriffe = new Map<string, number[]>();
 const FENSTER = 10 * 60 * 1000;
 const MAXIMUM = 5;
+/** Größer ist keine echte Anfrage: alle Felder zusammen bleiben weit darunter. */
+const MAX_BYTES = 16 * 1024;
 
 function zuHaeufig(ip: string): boolean {
   const jetzt = Date.now();
+  // Abgelaufene Einträge anderer IPs mit aufräumen, damit die Liste nicht wächst.
+  if (zugriffe.size > 1000) {
+    for (const [schluessel, zeiten] of zugriffe) {
+      if (zeiten.every((z) => jetzt - z >= FENSTER)) zugriffe.delete(schluessel);
+    }
+  }
   const bisher = (zugriffe.get(ip) ?? []).filter((t) => jetzt - t < FENSTER);
   bisher.push(jetzt);
   zugriffe.set(ip, bisher);
   return bisher.length > MAXIMUM;
+}
+
+/**
+ * Nur Anfragen von der eigenen Seite annehmen (Schutz vor fremden Formularen).
+ * Verglichen wird mit dem Host der Anfrage — hinter einem Proxy steht der
+ * öffentliche Name in x-forwarded-host — und mit der Praxis-Domain samt und
+ * ohne www.
+ */
+function vonEigenerSeite(request: Request): boolean {
+  const herkunft = request.headers.get("origin");
+  if (!herkunft) return false;
+  const praxisHost = new URL(praxis.domain).host;
+  const erlaubt = new Set(
+    [
+      new URL(request.url).host,
+      request.headers.get("host"),
+      request.headers.get("x-forwarded-host")?.split(",")[0].trim(),
+      praxisHost,
+      praxisHost.replace(/^www./, ""),
+    ].filter(Boolean),
+  );
+  try {
+    return erlaubt.has(new URL(herkunft).host);
+  } catch {
+    return false;
+  }
 }
 
 function zeile(bezeichnung: string, wert?: string) {
@@ -55,6 +93,13 @@ function zeile(bezeichnung: string, wert?: string) {
 }
 
 export async function POST(request: Request) {
+  if (!vonEigenerSeite(request)) {
+    return NextResponse.json({ fehler: 'Ungültige Anfrage.' }, { status: 403 });
+  }
+  if (!request.headers.get('content-type')?.startsWith('application/json')) {
+    return NextResponse.json({ fehler: 'Ungültige Anfrage.' }, { status: 415 });
+  }
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unbekannt';
 
   if (zuHaeufig(ip)) {
@@ -66,7 +111,11 @@ export async function POST(request: Request) {
 
   let roh: unknown;
   try {
-    roh = await request.json();
+    const text = await request.text();
+    if (text.length > MAX_BYTES) {
+      return NextResponse.json({ fehler: 'Anfrage zu groß.' }, { status: 413 });
+    }
+    roh = JSON.parse(text);
   } catch {
     return NextResponse.json({ fehler: 'Ungültige Anfrage.' }, { status: 400 });
   }
