@@ -1,64 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
-  Erscheint ab 0,9 Bildschirmhöhen und weicht der Termin-Leiste aus
-  (deren Höhe steht als --terminleiste-hoehe auf <html>).
-  Im alten site.v2.js per Skript erzeugt — hier eine echte Komponente.
+  Zurück nach oben. Aussehen komplett aus site.css (#totop, .show) — hier
+  nur Zustand und Klick. Erscheint ab 0,9 Bildschirmhöhen; weicht der
+  Termin-Leiste über --terminleiste-abstand aus.
 */
 export default function ZurueckNachOben() {
+  const pfad = usePathname();
   const [sichtbar, setSichtbar] = useState(false);
 
-  useEffect(() => {
-    let angefordert = false;
-    const pruefe = () => {
-      angefordert = false;
-      setSichtbar(window.scrollY > window.innerHeight * 0.9);
-    };
-    const beiScroll = () => {
-      if (angefordert) return;
-      angefordert = true;
-      requestAnimationFrame(pruefe);
-    };
-    pruefe();
-    window.addEventListener("scroll", beiScroll, { passive: true });
-    return () => window.removeEventListener("scroll", beiScroll);
-  }, []);
+  useBeimScrollen(() => setSichtbar(window.scrollY > window.innerHeight * 0.9), pfad);
 
   const nachOben = () => {
     const sanft = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: sanft ? "smooth" : "auto" });
+    // Fokus an den Seitenanfang, damit Tastaturnutzer nicht am Knopf hängen bleiben.
+    document.getElementById("inhalt")?.focus({ preventScroll: true });
   };
 
   return (
     <button
       id="totop"
       type="button"
+      className={sichtbar ? "show" : undefined}
       onClick={nachOben}
       aria-label="Zurück nach oben"
-      style={{
-        position: "fixed",
-        right: "22px",
-        bottom: "calc(22px + var(--terminleiste-hoehe, 0px) + 14px)",
-        zIndex: "55",
-        width: "42px",
-        height: "42px",
-        display: "grid",
-        placeItems: "center",
-        border: "1px solid var(--color-divider)",
-        borderRadius: "999px",
-        background: "rgba(255,255,255,0.9)",
-        backdropFilter: "blur(10px)",
-        cursor: "pointer",
-        color: "var(--color-accent-700)",
-        opacity: sichtbar ? "1" : "0",
-        visibility: sichtbar ? "visible" : "hidden",
-        transition: "opacity .3s ease, visibility .3s ease, bottom .4s cubic-bezier(.16,1,.3,1)",
-      }}
+      tabIndex={sichtbar ? 0 : -1}
     >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 19V5M5 12l7-7 7 7" />
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 19V5" />
+        <path d="m5 12 7-7 7 7" />
       </svg>
     </button>
   );

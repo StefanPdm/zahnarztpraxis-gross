@@ -27,10 +27,10 @@ export default function Kontakt() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -117,11 +117,11 @@ export default function Kontakt() {
             Anfahrt &amp; Parken
           </div>
           <p style={{ fontSize: "14.5px", lineHeight: "1.6", margin: "18px 0 0", padding: "14px 16px", borderLeft: "2px solid var(--color-accent)", background: "var(--color-accent-100)", color: "var(--color-neutral-900)" }}>
-            Der Praxiseingang liegt auf der
+            Der Praxiseingang liegt auf der{" "}
             <strong style={{ fontWeight: "400" }}>
               Rückseite des Gebäudes
-            </strong>
-            — gehen Sie links am Gebäude vorbei nach hinten in den Hof, dort ist eine gläserne Doppeltür.
+            </strong>{" "}
+            — gehen Sie links am Gebäude vorbei nach hinten in den Hof, dort ist eine gläserne Doppeltür.{" "}
             <Link href="/anfahrt-parken">
               Wegbeschreibung mit Fotos
             </Link>

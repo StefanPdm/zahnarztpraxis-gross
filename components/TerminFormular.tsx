@@ -264,8 +264,8 @@ export default function TerminFormular({ anliegen }: { anliegen?: string }) {
         </div>
         <p style={{ fontSize: '12px', color: 'var(--color-neutral-700)', margin: '8px 0 0' }}>
           Wenn Sie „Angstpatient/in“ wählen, planen wir mehr Zeit ein und besprechen zuerst nur,
-          was Sie möchten — ohne Behandlung.
-          <Link href='/leistungen'>Wie wir Angstpatienten begleiten</Link>
+          was Sie möchten — ohne Behandlung.{" "}
+          <Link href='/angstpatienten'>Wie wir Angstpatienten begleiten</Link>
         </p>
       </div>
       <div className='field'>
@@ -318,7 +318,7 @@ export default function TerminFormular({ anliegen }: { anliegen?: string }) {
         />
         <span>
           Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Terminanfrage
-          gespeichert werden.
+          gespeichert werden.{" "}
           <Link href='/impressum-datenschutz'>Datenschutzerklärung</Link>
         </span>
       </label>

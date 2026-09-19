@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { team } from "@/lib/team";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -15,39 +16,6 @@ const zahlen = [
         { value: "5", label: "Behandlungszimmer mit Tageslicht" },
         { value: "1.200+", label: "Gesetzte Implantate" },
         { value: "1", label: "Eigenes Labor im Haus" }
-      ];
-
-const team = [
-        {
-          name: "Chantal Groß",
-          role: "Zahnärztin",
-          photo: R.portraitChantal || "uploads/portrait-chantal-gross.jpg",
-          alt: "Porträt von Chantal Groß, Zahnärztin bei Groß & Groß in Potsdam",
-          quote: "„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe und eine ehrliche Ansage.“",
-          bio: "Nach dem Studium und der Assistenzzeit habe ich mich auf ästhetische und konservierende Zahnheilkunde spezialisiert — und darauf, Kinder zu behandeln, ohne sie zu überfahren. Regelmäßige Fortbildungen gehören für mich dazu, weil sich in der Zahnmedizin ständig etwas ändert.",
-          personal: "Studium in Greifswald, Assistenzzeit in Berlin-Mitte. Curriculum Kinderzahnheilkunde und Parodontologie, jährlich rund 60 Fortbildungsstunden.",
-          facts: [
-            { label: "Studium", value: "Greifswald" },
-            { label: "Schwerpunkt", value: "Kinder · Ästhetik" },
-            { label: "Zertifikate", value: "Curriculum Paro (DG PARO)" }
-          ],
-          focus: "Ästhetische Zahnmedizin · Konservierende Zahnheilkunde · Kinderzahnheilkunde · Parodontologie"
-        },
-        {
-          name: "Matthias Groß",
-          role: "Zahnarzt",
-          photo: R.portraitMatthias || "uploads/portrait-matthias-gross.jpg",
-          alt: "Porträt von Matthias Groß, Zahnarzt und Implantologe bei Groß & Groß in Potsdam",
-          quote: "„Beim Zahnersatz entscheidet der halbe Millimeter. Deshalb arbeite ich mit unserem eigenen Meisterlabor direkt in der Praxis.“",
-          bio: "Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.",
-          personal: "Studium in Rostock, vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie, über 1.200 gesetzte Implantate.",
-          facts: [
-            { label: "Studium", value: "Rostock" },
-            { label: "Schwerpunkt", value: "Implantologie · Prothetik" },
-            { label: "Erfahrung", value: "1.200+ Implantate" }
-          ],
-          focus: "Implantologie · Prothetik · Chirurgie · Zahnersatz aus dem eigenen Labor"
-        }
       ];
 
 const personal = [
@@ -70,12 +38,12 @@ const zertifikate = [
       ];
 
 const raeume = [
-        { src: R.raum1 || "uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg", alt: "Behandlungszimmer mit Deckenmonitor und Röntgenbild am Bildschirm", no: "I", cap: "Deckenmonitor und Röntgenbild" },
-        { src: R.raum2 || "uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg", alt: "Behandlung mit Assistenz am Stuhl in der Zahnarztpraxis Groß & Groß", no: "II", cap: "Behandlung mit Assistenz" },
-        { src: R.raum3 || "uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg", alt: "Zahnarzt bei der Untersuchung eines Patienten im Behandlungszimmer", no: "III", cap: "Untersuchung am Stuhl" },
-        { src: R.raum4 || "uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg", alt: "Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand", no: "IV", cap: "Flur, hinter dem Empfang" },
-        { src: R.raum5 || "uploads/Zahnlabor.jpg", alt: "Arbeitsplatz im praxiseigenen Zahnlabor", no: "V", cap: "Das Labor, eine Tür weiter" },
-        { src: R.raum6 || "uploads/photos-1786974461824-wn8d.jpg", alt: "Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß", no: "VI", cap: "Behandlungszimmer, Südlicht" }
+        { src: "/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg", alt: "Behandlungszimmer mit Deckenmonitor und Röntgenbild am Bildschirm", no: "I", cap: "Deckenmonitor und Röntgenbild" },
+        { src: "/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg", alt: "Behandlung mit Assistenz am Stuhl in der Zahnarztpraxis Groß & Groß", no: "II", cap: "Behandlung mit Assistenz" },
+        { src: "/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg", alt: "Zahnarzt bei der Untersuchung eines Patienten im Behandlungszimmer", no: "III", cap: "Untersuchung am Stuhl" },
+        { src: "/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg", alt: "Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand", no: "IV", cap: "Flur, hinter dem Empfang" },
+        { src: "/uploads/Zahnlabor.jpg", alt: "Arbeitsplatz im praxiseigenen Zahnlabor", no: "V", cap: "Das Labor, eine Tür weiter" },
+        { src: "/uploads/photos-1786974461824-wn8d.jpg", alt: "Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß", no: "VI", cap: "Behandlungszimmer, Südlicht" }
       ];
 
 const verweise = [
@@ -94,10 +62,10 @@ export default function PraxisTeam() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -158,7 +126,7 @@ export default function PraxisTeam() {
         {team.map((m, mI) => (
           <Fragment key={mI}>
             <div>
-              <div className="flipcard" tabIndex="0" style={{ position: "relative", height: "520px", borderRadius: "var(--radius-md)", outlineOffset: "4px" }}>
+              <div className="flipcard" tabIndex={0} style={{ position: "relative", height: "520px", borderRadius: "var(--radius-md)", outlineOffset: "4px" }}>
                 <div className="fliphint" style={{ position: "absolute", right: "14px", bottom: "14px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "8px 14px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.9)", border: "1px solid var(--color-divider)", fontFamily: "var(--font-ui)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", pointerEvents: "none", transition: "opacity .4s ease" }}>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M21 12a9 9 0 11-3.2-6.9" />
@@ -168,17 +136,17 @@ export default function PraxisTeam() {
                 </div>
                 <div className="flipinner" style={{ width: "100%", height: "100%" }}>
                   <div className="flipface portraitframe" style={{ width: "100%", height: "100%" }}>
-                    <img className="plate portrait" src={m.photo} alt={m.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 26%", borderRadius: "var(--radius-md)", mixBlendMode: "multiply" }} />
+                    <img className="plate portrait" src={m.foto} alt={m.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 26%", borderRadius: "var(--radius-md)", mixBlendMode: "multiply" }} />
                   </div>
                   <div className="flipface flipback" style={{ border: "1px solid var(--color-divider)", borderRadius: "var(--radius-md)", background: "linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, #ffffff 100%)", padding: "38px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "18px" }}>
                     <div style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
                       Werdegang
                     </div>
                     <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h4)", lineHeight: "1.42", margin: "0" }}>
-                      {m.personal}
+                      {m.werdegang}
                     </p>
                     <div style={{ display: "grid", gap: "0", fontSize: "14px", color: "var(--color-neutral-800)" }}>
-                      {m.facts.map((f, fI) => (
+                      {m.fakten.map((f, fI) => (
                         <Fragment key={fI}>
                           <div style={{ display: "flex", justifyContent: "space-between", gap: "18px", borderTop: "1px solid var(--color-divider)", padding: "10px 0" }}>
                             <span style={{ color: "var(--color-neutral-700)" }}>
@@ -198,16 +166,16 @@ export default function PraxisTeam() {
                 {m.name}
               </h3>
               <p style={{ fontFamily: "var(--font-ui)", fontSize: "11.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-accent-700)", margin: "0 0 18px" }}>
-                {m.role}
+                {m.rolle}
               </p>
               <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h5)", lineHeight: "1.42", color: "var(--color-text)", margin: "0 0 16px" }}>
-                {m.quote}
+                {m.zitat}
               </p>
               <p style={{ fontSize: "15px", lineHeight: "1.65", color: "var(--color-neutral-800)", textAlign: "justify", hyphens: "auto", margin: "0 0 16px" }}>
                 {m.bio}
               </p>
               <p style={{ fontSize: "13.5px", lineHeight: "1.6", color: "var(--color-neutral-700)", borderTop: "1px solid var(--color-divider)", paddingTop: "14px", margin: "0" }}>
-                {m.focus}
+                {m.schwerpunkte}
               </p>
             </div>
           </Fragment>
@@ -243,7 +211,7 @@ export default function PraxisTeam() {
         <div className="todo" style={{ marginTop: "20px" }}>
           <b>
             Von der Praxis zu ergänzen
-          </b>
+          </b>{" "}
           Namen und Funktionen der Mitarbeiterinnen und Mitarbeiter (Vorname genügt), damit an dieser Stelle echte Menschen stehen statt Bereiche — inklusive des Zahntechnikers im Labor. Fotos sind nicht nötig, wirken aber deutlich stärker.
         </div>
       </div>
@@ -276,7 +244,7 @@ export default function PraxisTeam() {
         <div className="todo">
           <b>
             Von der Praxis zu ergänzen
-          </b>
+          </b>{" "}
           Die Eckdaten der Praxisgeschichte: Wer hat 1991 gegründet? Wann kamen Chantal und Matthias Groß dazu, wann folgte die Übernahme? Wann entstand das eigene Labor? Diese Angaben ersetzen die Platzhalter oben — die Familientradition ist laut Briefing ein zentrales Vertrauenssignal und gehört belegt, nicht behauptet.
         </div>
       </div>
@@ -305,7 +273,7 @@ export default function PraxisTeam() {
           <div className="todo" style={{ marginTop: "24px" }}>
             <b>
               Zu prüfen
-            </b>
+            </b>{" "}
             Bitte die vollständige Liste der Mitgliedschaften und Zertifikate bestätigen oder korrigieren — falsche Verbandsangaben sind berufsrechtlich heikel.
           </div>
         </div>

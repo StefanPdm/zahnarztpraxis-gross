@@ -94,7 +94,7 @@ export default function Zahnschmerzen() {
             ))}
           </div>
           <p style={{ fontSize: "13px", lineHeight: "1.55", margin: "6px 0 0", color: "rgba(243,242,242,0.6)" }}>
-            Außerhalb der Sprechzeiten: zahnärztlicher Bereitschaftsdienst der
+            Außerhalb der Sprechzeiten: zahnärztlicher Bereitschaftsdienst der{" "}
             <a href="https://www.kzvlb.de/patienten/notdienstsuche" target="_blank" rel="noopener" style={{ color: "var(--color-accent-400)", textDecoration: "underline" }}>
               Kassenzahnärztlichen Vereinigung Land Brandenburg
             </a>

@@ -1,64 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
-  Zeigt am linken Rand den aktuellen Abschnitt.
+  Seitliche Laufmarke — nur Startseite, nur ab 1001 px (site.css).
   Markup und Werte 1:1 aus layout/runhead.html.
 
-  Die Abschnitte werden über ihre Kapitel-Kolophone erkannt (.colophon).
-  Falls die Startseite anders ausgezeichnet wird, hier den Selektor ändern.
+  Abschnitte melden sich über data-abschnitt="…". Rein dekorativ: die
+  Kapitelüberschriften stehen ohnehin im Text, darum aria-hidden.
 */
 export default function Laufmarke() {
   const [label, setLabel] = useState("");
   const [anteil, setAnteil] = useState(0);
-  const wurzel = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const abschnitte = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-abschnitt], .colophon"),
-    );
-
-    let angefordert = false;
-    const pruefe = () => {
-      angefordert = false;
-      const y = window.scrollY + window.innerHeight * 0.4;
-
-      let aktuell: HTMLElement | null = null;
-      for (const a of abschnitte) {
-        if (a.offsetTop <= y) aktuell = a;
-      }
-      setLabel(
-        aktuell
-          ? (aktuell.dataset.abschnitt ?? aktuell.textContent?.trim().slice(0, 40) ?? "")
-          : "",
-      );
-
-      const gesamt = document.body.scrollHeight - window.innerHeight;
-      setAnteil(gesamt > 0 ? Math.min(1, window.scrollY / gesamt) : 0);
-    };
-
-    const beiScroll = () => {
-      if (angefordert) return;
-      angefordert = true;
-      requestAnimationFrame(pruefe);
-    };
-
-    pruefe();
-    window.addEventListener("scroll", beiScroll, { passive: true });
-    return () => window.removeEventListener("scroll", beiScroll);
-  }, []);
+  useBeimScrollen(() => {
+    const linie = window.scrollY + window.innerHeight * 0.4;
+    let aktuell = "";
+    for (const a of document.querySelectorAll<HTMLElement>("[data-abschnitt]")) {
+      if (a.getBoundingClientRect().top + window.scrollY <= linie) aktuell = a.dataset.abschnitt ?? "";
+    }
+    setLabel(aktuell);
+    const gesamt = document.documentElement.scrollHeight - window.innerHeight;
+    setAnteil(gesamt > 0 ? Math.min(1, window.scrollY / gesamt) : 0);
+  });
 
   return (
     <div
       id="runhead"
-      ref={wurzel}
+      aria-hidden="true"
       style={{
         position: "fixed",
         left: "18px",
         top: "50%",
         transform: "translateY(-50%)",
-        zIndex: "50",
+        zIndex: "var(--ebene-figur)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -99,8 +75,10 @@ export default function Laufmarke() {
             left: "0",
             top: "0",
             width: "1px",
-            height: `${Math.round(anteil * 120)}px`,
+            height: "120px",
             background: "var(--color-accent)",
+            transformOrigin: "top",
+            transform: `scaleY(${anteil})`,
           }}
         />
       </span>

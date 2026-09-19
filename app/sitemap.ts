@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import routen from "@/lib/routes.json";
-import { praxis } from "@/lib/navigation";
+import { praxis } from "@/lib/praxis";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routen.map((r) => ({

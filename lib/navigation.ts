@@ -30,12 +30,3 @@ export const navRechts: Eintrag[] = [
   { label: "Kontakt", href: "/kontakt" },
   { label: "Anfahrt", href: "/anfahrt-parken" },
 ];
-
-export const praxis = {
-  name: "Groß & Groß",
-  telefon: "0331 960926",
-  telefonHref: "tel:+49331960926",
-  strasse: "Schopenhauerstraße 37",
-  ort: "14467 Potsdam",
-  domain: "https://www.zahnmedizin-potsdam.de",
-} as const;

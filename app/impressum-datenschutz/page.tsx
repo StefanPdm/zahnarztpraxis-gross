@@ -34,10 +34,10 @@ export default function ImpressumDatenschutz() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -145,7 +145,7 @@ export default function ImpressumDatenschutz() {
           ))}
         </div>
       </div>
-      <div style={{ padding: "80px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div id="datenschutz" style={{ padding: "80px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", marginBottom: "52px" }}>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "0" }}>
             Datenschutzerklärung

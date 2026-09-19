@@ -67,8 +67,8 @@ export default async function Termin({
         </span>
         <span style={{ width: '1px', height: '18px', background: 'var(--color-divider)' }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
-          <Link href='/zahnschmerzen'>Notfalltermine</Link>
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
+          <Link href='/zahnschmerzen'>Notfalltermine</Link>{" "}
           frei.
         </span>
         <a
@@ -123,7 +123,7 @@ export default async function Termin({
           }}>
           Diese Anfrage ist noch keine feste Buchung: wir prüfen Ihre Wunschzeit und bestätigen
           innerhalb von 24 Stunden telefonisch oder per E-Mail. Bei akuten Schmerzen rufen Sie bitte
-          direkt an —
+          direkt an —{" "}
           <a
             href='tel:+49331960926'
             style={{ fontFeatureSettings: "'tnum'" }}>

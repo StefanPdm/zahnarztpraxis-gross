@@ -52,10 +52,10 @@ export default function Angstpatienten() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -104,7 +104,7 @@ export default function Angstpatienten() {
             Am Ende wissen Sie, was ansteht, in welcher Reihenfolge und was es kostet. Wann Sie damit anfangen, entscheiden Sie.
           </p>
           <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
-            „Ich behandle viele Menschen, die lange keinen Zahnarzt gesehen haben. Sie brauchen dasselbe wie Kinder: Ruhe und eine ehrliche Ansage."
+            „Ich behandle viele Menschen, die lange keinen Zahnarzt gesehen haben. Sie brauchen dasselbe wie Kinder: Ruhe und eine ehrliche Ansage.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>
@@ -123,7 +123,7 @@ export default function Angstpatienten() {
             Wie nervös sind Sie wirklich?
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
-            Angst ist keine Ja-oder-Nein-Frage. Zwischen „ungern, aber es geht" und „ich habe seit Jahren abgesagt" liegt ein weiter Weg — und wir planen den Termin unterschiedlich, je nachdem wo Sie stehen.
+            Angst ist keine Ja-oder-Nein-Frage. Zwischen „ungern, aber es geht“ und „ich habe seit Jahren abgesagt“ liegt ein weiter Weg — und wir planen den Termin unterschiedlich, je nachdem wo Sie stehen.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
             Schieben Sie den Regler dorthin, wo es für Sie stimmt. Rechts sehen Sie, wie wir dann vorgehen würden.
@@ -173,7 +173,7 @@ export default function Angstpatienten() {
             Ein Zeichen, und wir hören auf.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
-            Wer im Behandlungsstuhl liegt, kann nicht reden — das ist für viele der schlimmste Teil. Deshalb legen wir vor jeder Behandlung ein Handzeichen fest: Hand heben. Sobald Sie es geben, unterbrechen wir sofort. Nicht „gleich", nicht „nur noch dieser eine Schritt".
+            Wer im Behandlungsstuhl liegt, kann nicht reden — das ist für viele der schlimmste Teil. Deshalb legen wir vor jeder Behandlung ein Handzeichen fest: Hand heben. Sobald Sie es geben, unterbrechen wir sofort. Nicht „gleich“, nicht „nur noch dieser eine Schritt“.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
             Danach entscheiden Sie, ob wir weitermachen, eine Pause einlegen oder für heute Schluss ist. Das gilt bei jedem Termin, auch beim zwanzigsten.
@@ -218,7 +218,7 @@ export default function Angstpatienten() {
             Musik, Film, oder einfach Kopfhörer.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
-            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht" und „geht schon".
+            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
         </div>
         <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
@@ -263,7 +263,7 @@ export default function Angstpatienten() {
           Sagen Sie einfach, dass Sie Angst haben.
         </h2>
         <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
-          Bei der Online-Anfrage wählen Sie „Angstpatient/in" — dann planen wir mehr Zeit ein und beginnen mit einem Gespräch. Wir melden uns innerhalb von 24 Stunden.
+          Bei der Online-Anfrage wählen Sie „Angstpatient/in“ — dann planen wir mehr Zeit ein und beginnen mit einem Gespräch. Wir melden uns innerhalb von 24 Stunden.
         </p>
         <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
           <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>

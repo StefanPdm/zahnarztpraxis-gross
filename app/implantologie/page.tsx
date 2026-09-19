@@ -55,10 +55,10 @@ export default function Implantologie() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>

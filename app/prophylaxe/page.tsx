@@ -50,10 +50,10 @@ export default function Prophylaxe() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -121,7 +121,7 @@ export default function Prophylaxe() {
             Nach Ihrem Risiko, nicht nach Kalender.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
-            „Zweimal im Jahr" ist eine Faustregel, keine Diagnose. Wer kräftigen Zahnstein bildet, Zahnfleischtaschen hat, raucht oder Diabetes hat, braucht kürzere Abstände. Wer stabile Verhältnisse hat, kommt mit weniger aus.
+            „Zweimal im Jahr“ ist eine Faustregel, keine Diagnose. Wer kräftigen Zahnstein bildet, Zahnfleischtaschen hat, raucht oder Diabetes hat, braucht kürzere Abstände. Wer stabile Verhältnisse hat, kommt mit weniger aus.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
             Wir legen den Abstand nach dem fest, was wir im Mund sehen — und sagen Ihnen, warum. Auf Wunsch erinnern wir Sie an den nächsten Termin: per E-Mail, SMS, Post oder Anruf.
@@ -174,7 +174,7 @@ export default function Prophylaxe() {
             Nach der Reinigung tragen wir Fluorid auf. Es härtet den Zahnschmelz und macht ihn widerstandsfähiger gegen Säure — schnell, schmerzfrei und ohne Bohrer.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
-            Bei Kindern gehört zusätzlich die Fissurenversiegelung dazu: die feinen Rillen der Backenzähne werden verschlossen, bevor sich Bakterien dort einnisten.
+            Bei Kindern gehört zusätzlich die Fissurenversiegelung dazu: die feinen Rillen der Backenzähne werden verschlossen, bevor sich Bakterien dort einnisten.{" "}
             <Link href="/kinderzahnheilkunde">
               Mehr zur Kinderprophylaxe
             </Link>

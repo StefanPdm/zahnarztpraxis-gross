@@ -53,10 +53,10 @@ export default function Zahnlabor() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -155,7 +155,7 @@ export default function Zahnlabor() {
             Dahinter steht ein bestens ausgebildetes Praxisteam, das mit den neuesten Techniken arbeitet — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
           </p>
           <blockquote style={{ margin: "28px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
-            „Zahnärztliche Leistungen von höchster Qualität bieten wir Ihnen auch beim Zahnersatz und bei aufwendigen zahntechnischen Versorgungen."
+            „Zahnärztliche Leistungen von höchster Qualität bieten wir Ihnen auch beim Zahnersatz und bei aufwendigen zahntechnischen Versorgungen.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>

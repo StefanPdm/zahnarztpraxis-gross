@@ -34,10 +34,10 @@ export default function AnfahrtParken() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -57,10 +57,10 @@ export default function AnfahrtParken() {
         </div>
         <div>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
-            Schopenhauerstraße 37, mitten in Potsdam. Ein Hinweis vorweg, der Ihnen den Umweg erspart:
+            Schopenhauerstraße 37, mitten in Potsdam. Ein Hinweis vorweg, der Ihnen den Umweg erspart:{" "}
             <strong style={{ fontWeight: "400", borderBottom: "1px solid var(--color-accent)" }}>
               Der Praxiseingang liegt nicht an der Straße, sondern auf der Rückseite des Gebäudes.
-            </strong>
+            </strong>{" "}
             Von der Schopenhauerstraße gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort führt eine gläserne Eingangstür ins Haus.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
@@ -85,7 +85,7 @@ export default function AnfahrtParken() {
             <img className="wegbild" src="/uploads/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover" }} />
             <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none" }}>
               <defs>
-                <marker id="wayarrow" viewBox="0 0 12 12" refx="7" refy="6" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+                <marker id="wayarrow" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                   <path d="M1 1 L11 6 L1 11 Z" fill="#f7f5f0" />
                 </marker>
               </defs>
@@ -97,14 +97,14 @@ export default function AnfahrtParken() {
             </span>
           </div>
           <figcaption style={{ fontSize: "14.5px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "16px 0 0" }}>
-            Das ist die Ansicht, die Sie von der Straße sehen — gelbe Fassade, hohe Sprossenfenster, Bäume davor. Hier ist
+            Das ist die Ansicht, die Sie von der Straße sehen — gelbe Fassade, hohe Sprossenfenster, Bäume davor. Hier ist{" "}
             <strong style={{ fontWeight: "400" }}>
               kein Praxiseingang.
-            </strong>
-            Gehen Sie
+            </strong>{" "}
+            Gehen Sie{" "}
             <strong style={{ fontWeight: "400" }}>
               links
-            </strong>
+            </strong>{" "}
             am Gebäude vorbei nach hinten.
           </figcaption>
         </figure>
@@ -159,7 +159,7 @@ export default function AnfahrtParken() {
               Tram
             </span>
             <span>
-              Linien 91, 94 und 98 bis
+              Linien 91, 94 und 98 bis{" "}
               <strong style={{ fontWeight: "400" }}>
                 Luisenplatz-Süd
               </strong>
@@ -169,7 +169,7 @@ export default function AnfahrtParken() {
               Bus
             </span>
             <span>
-              Linien 605, 606 und 695 bis
+              Linien 605, 606 und 695 bis{" "}
               <strong style={{ fontWeight: "400" }}>
                 Luisenplatz
               </strong>
@@ -207,10 +207,10 @@ export default function AnfahrtParken() {
               Navigation
             </span>
             <span>
-              Geben Sie
+              Geben Sie{" "}
               <strong style={{ fontWeight: "400" }}>
                 Schopenhauerstraße 37, 14467 Potsdam
-              </strong>
+              </strong>{" "}
               ein. Das Navi führt Sie an die Straßenseite — der Eingang liegt dahinter im Hof.
             </span>
           </div>

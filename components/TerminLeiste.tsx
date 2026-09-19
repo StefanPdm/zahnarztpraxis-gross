@@ -1,47 +1,50 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { praxis } from "@/lib/navigation";
+import { usePathname } from "next/navigation";
+import { praxis } from "@/lib/praxis";
+import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
-  Fährt unten ein, sobald der Termin-Abschnitt außer Sicht ist.
-  Markup und Werte 1:1 aus layout/stickycta.html; nur das `transform`
-  wird vom Zustand gesteuert statt von site.css.
+  Mitlaufende Termin-Leiste. Markup und Werte 1:1 aus layout/stickycta.html,
+  Verhalten nach site.v2.js: erscheint ab 620 px Scrollweg und verschwindet,
+  sobald die Fußzeile ins Bild kommt. Auf /termin entfällt sie — dort steht
+  das Formular.
+
+  Ihre Höhe plus 14 px steht als --terminleiste-abstand auf <html>; der
+  Zurück-nach-oben-Knopf weicht ihr darüber aus.
 */
+const AB_SCROLLWEG = 620;
+
 export default function TerminLeiste() {
+  const pfad = usePathname();
   const [sichtbar, setSichtbar] = useState(false);
   const leiste = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ziel =
-      document.getElementById("termin") ?? document.getElementById("1b-termin");
-    if (!ziel) return;
-
-    const beobachter = new IntersectionObserver(
-      ([eintrag]) => setSichtbar(!eintrag.isIntersecting && window.scrollY > 400),
-      { rootMargin: "0px 0px -20% 0px" },
-    );
-    beobachter.observe(ziel);
-    return () => beobachter.disconnect();
-  }, []);
-
-  // Höhe für den Zurück-nach-oben-Knopf bereitstellen.
-  useEffect(() => {
-    const hoehe = sichtbar ? (leiste.current?.offsetHeight ?? 0) : 0;
-    document.documentElement.style.setProperty("--terminleiste-hoehe", `${hoehe}px`);
-  }, [sichtbar]);
+  useBeimScrollen(() => {
+    const fuss = document.querySelector("footer");
+    const zeigen =
+      pfad !== "/termin" &&
+      window.scrollY > AB_SCROLLWEG &&
+      !(fuss && fuss.getBoundingClientRect().top < window.innerHeight);
+    setSichtbar(zeigen);
+    const abstand = zeigen ? (leiste.current?.offsetHeight ?? 0) + 14 : 0;
+    document.documentElement.style.setProperty("--terminleiste-abstand", `${abstand}px`);
+  }, pfad);
 
   return (
     <div
       id="stickycta"
       ref={leiste}
+      // Ausgefahren nicht per Tab erreichbar und für Screenreader stumm.
+      inert={!sichtbar}
       style={{
         position: "fixed",
         left: "0",
         right: "0",
         bottom: "0",
-        zIndex: "60",
+        zIndex: "var(--ebene-leiste)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

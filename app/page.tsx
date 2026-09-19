@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import { team } from "@/lib/team";
+import Laufmarke from "@/components/Laufmarke";
 import AngstRegler from '@/components/AngstRegler';
 import AnliegenWahl from '@/components/AnliegenWahl';
 import strukturierteDaten from './jsonld.json';
@@ -76,42 +78,6 @@ const services = [
     title: 'Parodontologie',
     text: 'Behandlung von Zahnfleischentzündungen, Schienentherapie und Laser.',
     icon: 'M4 15c2-1 3-3 3-6M20 15c-2-1-3-3-3-6M4 15c0 3 3.6 5 8 5s8-2 8-5M8 9h8',
-  },
-];
-
-const team = [
-  {
-    name: 'Chantal Groß',
-    role: 'Zahnärztin',
-    photo: 'uploads/portrait-chantal-gross.jpg',
-    personal:
-      'Studium in Greifswald, Assistenzzeit in Berlin-Mitte. Curriculum Kinderzahnheilkunde und Parodontologie, jährlich rund 60 Fortbildungsstunden.',
-    facts: [
-      { label: 'Studium', value: 'Halle' },
-      { label: 'Schwerpunkt', value: 'Kinder & Prophylaxe' },
-      { label: 'Zertifikate', value: 'Curriculum Paro (DG PARO)' },
-    ],
-    quote:
-      '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe und eine ehrliche Ansage.\u201c',
-    focus:
-      'Ästhetische Zahnmedizin · Konservierende Zahnheilkunde · Kinderzahnheilkunde · Parodontologie',
-    bio: 'Nach dem Studium und der Assistenzzeit habe ich mich auf ästhetische und konservierende Zahnheilkunde spezialisiert — und darauf, Kinder zu behandeln, ohne sie zu überfahren. Regelmäßige Fortbildungen in Parodontologie und Kinderzahnheilkunde gehören für mich zum Beruf, nicht zur Kür.',
-  },
-  {
-    name: 'Matthias Groß',
-    role: 'Zahnarzt',
-    photo: 'uploads/portrait-matthias-gross.jpg',
-    personal:
-      'Studium in Rostock, vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie, über 1.200 gesetzte Implantate.',
-    facts: [
-      { label: 'Studium', value: 'Halle' },
-      { label: 'Schwerpunkt', value: 'Implantologie & Prothetik' },
-      { label: 'Zertifikate', value: 'Tätigkeitsschwerpunkt Implantologie (DGI)' },
-    ],
-    quote:
-      '„Beim Zahnersatz entscheidet der halbe Millimeter. Deshalb arbeite ich mit unserem eigenen Meisterlabor direkt in der Praxis.\u201c',
-    focus: 'Implantologie · Prothetik · Chirurgie',
-    bio: 'Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen — das ist der Grund, warum ich diese Praxis so aufgebaut habe.',
   },
 ];
 
@@ -252,6 +218,7 @@ export default function Index() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
+      <Laufmarke />
       <section style={{ fontFamily: 'var(--font-body)' }}>
         <div
           id='1b'
@@ -386,8 +353,8 @@ export default function Index() {
             </span>
             <span style={{ width: '1px', height: '18px', background: 'var(--color-divider)' }} />
             <span>
-              Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
-              <Link href='/zahnschmerzen'>Notfalltermine</Link>
+              Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
+              <Link href='/zahnschmerzen'>Notfalltermine</Link>{" "}
               frei.
             </span>
             <a
@@ -599,7 +566,7 @@ export default function Index() {
                   <div>
                     <div
                       className='flipcard'
-                      tabIndex='0'
+                      tabIndex={0}
                       style={{
                         position: 'relative',
                         height: '460px',
@@ -651,8 +618,8 @@ export default function Index() {
                           style={{ width: '100%', height: '100%' }}>
                           <img
                             className='plate portrait'
-                            src={m.photo}
-                            alt='Porträt'
+                            src={m.foto}
+                            alt={m.alt}
                             style={{
                               width: '100%',
                               height: '100%',
@@ -693,7 +660,7 @@ export default function Index() {
                               lineHeight: '1.42',
                               margin: '0',
                             }}>
-                            {m.personal}
+                            {m.werdegang}
                           </p>
                           <div
                             style={{
@@ -702,7 +669,7 @@ export default function Index() {
                               fontSize: '14px',
                               color: 'var(--color-neutral-800)',
                             }}>
-                            {m.facts.map((f, fI) => (
+                            {m.fakten.map((f, fI) => (
                               <Fragment key={fI}>
                                 <div
                                   style={{
@@ -740,7 +707,7 @@ export default function Index() {
                         color: 'var(--color-accent-700)',
                         marginBottom: '18px',
                       }}>
-                      {m.role}
+                      {m.rolle}
                     </p>
                     <p
                       style={{
@@ -749,7 +716,7 @@ export default function Index() {
                         lineHeight: '1.42',
                         color: 'var(--color-text)',
                       }}>
-                      {m.quote}
+                      {m.zitat}
                     </p>
                     <p
                       style={{
@@ -760,7 +727,7 @@ export default function Index() {
                         hyphens: 'auto',
                         margin: '0',
                       }}>
-                      {m.focus}
+                      {m.schwerpunkte}
                     </p>
                   </div>
                 </Fragment>
@@ -769,6 +736,7 @@ export default function Index() {
           </div>
           <div
             className='colophon rv'
+            data-abschnitt='Kapitel I · Die Praxis'
             style={{
               position: 'relative',
               display: 'flex',
@@ -967,6 +935,7 @@ export default function Index() {
           </div>
           <div
             className='colophon rv'
+            data-abschnitt='Kapitel II · Was wir behandeln'
             style={{
               position: 'relative',
               display: 'flex',
@@ -1495,6 +1464,7 @@ export default function Index() {
           ) : null}
           <div
             className='colophon rv'
+            data-abschnitt='Kapitel III · Wenn Angst im Weg steht'
             style={{
               position: 'relative',
               display: 'flex',
@@ -1755,6 +1725,7 @@ export default function Index() {
           </div>
           <div
             className='colophon rv'
+            data-abschnitt='Kapitel IV · Ihr Termin'
             style={{
               position: 'relative',
               display: 'flex',
@@ -2155,11 +2126,11 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     margin: '12px 0 0',
                   }}>
-                  Der Eingang liegt auf der
+                  Der Eingang liegt auf der{" "}
                   <strong style={{ fontWeight: '400', color: 'var(--color-text)' }}>
                     Rückseite
-                  </strong>
-                  des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.
+                  </strong>{" "}
+                  des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.{" "}
                   <Link href='/anfahrt-parken'>Wegbeschreibung ansehen</Link>
                 </figcaption>
               </figure>

@@ -69,6 +69,35 @@ input:focus-visible,
   font-weight: 400;
 }
 
+/* Sprunglink: erst bei Tastaturfokus sichtbar, dann über allem. */
+.sprunglink {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: calc(var(--ebene-kopf) + 1);
+  padding: 12px 20px;
+  background: var(--color-bg);
+  color: var(--color-accent-700);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  translate: 0 -200%;
+}
+.sprunglink:focus-visible { translate: 0 0; }
+main:focus { outline: none; }
+
+/* Laufmarke nur auf breiten Bildschirmen — mobil läge sie über dem Text. */
+@media (max-width: 1000px) { #runhead { display: none; } }
+
+/* Termin-Leiste: Knöpfe mobil mit voller Trefffläche. */
+@media (max-width: 1000px) {
+  #stickycta .btn { min-height: 44px; white-space: nowrap; padding-inline: 16px !important; }
+}
+
+/* Sprungziele nicht unter der klebenden Kopfzeile verstecken. */
+html { scroll-padding-top: 96px; }
+@media (max-width: 1000px) { html { scroll-padding-top: 72px; } }
+
 /* Nur für Screenreader und Tastatur: unsichtbar, aber fokussierbar. */
 .nur-lesbar {
   position: absolute !important;
@@ -162,6 +191,8 @@ body .platecap > span:last-child { flex: 1; }
               background .2s ease, color .2s ease, border-color .2s ease, transform .3s ease;
 }
 #totop.show { opacity: 1; visibility: visible; translate: 0 0; }
+/* Weicht der Termin-Leiste aus (Abstand setzt components/TerminLeiste). */
+#totop { transform: translateY(calc(var(--terminleiste-abstand, 0px) * -1)); }
 #totop:hover {
   background: var(--color-accent-100);
   border-color: var(--color-accent-600);
@@ -436,6 +467,9 @@ body footer a:hover { color: var(--color-accent); }
   [style*="margin: 40px 64px"] { margin-left: 24px !important; margin-right: 24px !important; }
 
   [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { grid-template-columns: 1fr !important; }
+  /* Zweispaltige Angaben (Bezeichnung | Wert) bleiben nebeneinander — lange
+     Werte wie E-Mail-Adressen dürfen dafür umbrechen, statt die Seite zu verbreitern. */
+  [style*="grid-template-columns"][style*="auto 1fr"] > * { min-width: 0; overflow-wrap: anywhere; }
   body [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { gap: 30px !important; }
   body [style*="display: grid"][style*="gap: 2px"] { gap: 2px !important; }
 

@@ -11,7 +11,7 @@ import Fusszeile from "@/components/Fusszeile";
 import TerminLeiste from "@/components/TerminLeiste";
 import ZurueckNachOben from "@/components/ZurueckNachOben";
 import ScrollEffekte from "@/components/ScrollEffekte";
-import { praxis } from "@/lib/navigation";
+import { praxis } from "@/lib/praxis";
 
 /*
   Die drei Familien des Design-Systems, über next/font self-hosted:
@@ -65,6 +65,9 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${cormorant.variable} ${lora.variable} ${jost.variable}`}>
       <body>
+        <a className="sprunglink" href="#inhalt">
+          Zum Inhalt springen
+        </a>
         {/*
           Der äußere Rahmen stand bisher in allen 17 Dateien. Er gehört
           genau einmal hierher — siehe docs/arbeitsanweisung-original.md,
@@ -79,7 +82,10 @@ export default function RootLayout({
           }}
         >
           <Kopfzeile />
-          <main>{children}</main>
+          {/* tabIndex -1: Ziel für Sprunglink und „Zurück nach oben", ohne Tab-Stopp. */}
+          <main id="inhalt" tabIndex={-1}>
+            {children}
+          </main>
           <Fusszeile />
         </div>
         <TerminLeiste />

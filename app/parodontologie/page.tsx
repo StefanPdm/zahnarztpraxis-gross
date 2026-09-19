@@ -45,10 +45,10 @@ export default function Parodontologie() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -157,7 +157,7 @@ export default function Parodontologie() {
             Der Laser erreicht die entzündeten Taschen und reduziert die Bakterien dort gezielt, ohne sie mechanisch aufzuarbeiten. Für Sie heißt das weniger Wundschmerz, eine längere Schmerzfreiheit nach dem Termin und geringere Mengen an Betäubungsmittel.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
-            Gerade wenn Sie ungern zum Zahnarzt gehen, ist das ein Unterschied, den man merkt.
+            Gerade wenn Sie ungern zum Zahnarzt gehen, ist das ein Unterschied, den man merkt.{" "}
             <Link href="/moderne-technik">
               Mehr zur Lasertechnik
             </Link>
@@ -174,7 +174,7 @@ export default function Parodontologie() {
             Die Bakterien kommen zurück — das ist normal. Entscheidend ist, dass sie nicht wieder in die Tiefe gelangen. Deshalb folgt auf die Behandlung ein festes Recall-Programm mit kürzeren Abständen als bei gesundem Zahnfleisch.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
-            Auf Wunsch erinnern wir Sie an jeden Termin — per E-Mail, SMS, Post oder Anruf.
+            Auf Wunsch erinnern wir Sie an jeden Termin — per E-Mail, SMS, Post oder Anruf.{" "}
             <Link href="/prophylaxe">
               Mehr zur Prophylaxe
             </Link>

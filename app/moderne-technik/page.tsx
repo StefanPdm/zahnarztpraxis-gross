@@ -40,10 +40,10 @@ export default function ModerneTechnik() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -106,14 +106,14 @@ export default function ModerneTechnik() {
             ))}
           </div>
           <p style={{ fontSize: "14px", color: "var(--color-neutral-700)", margin: "20px 0 0" }}>
-            Besonders für
+            Besonders für{" "}
             <Link href="/angstpatienten">
               Angstpatienten
-            </Link>
-            und
+            </Link>{" "}
+            und{" "}
             <Link href="/kinderzahnheilkunde">
               Kinder
-            </Link>
+            </Link>{" "}
             ist die geringere Menge Betäubungsmittel ein echter Gewinn.
           </p>
         </div>
@@ -178,7 +178,7 @@ export default function ModerneTechnik() {
             Monitor, Musik, Kopfhörer.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 16px" }}>
-            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht" und „geht schon".
+            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0" }}>
             Dieselben Monitore nutzen wir, um Ihnen zu zeigen, worüber wir sprechen: ein Befund am Bildschirm ist verständlicher als jede Erklärung mit Worten.
@@ -198,7 +198,7 @@ export default function ModerneTechnik() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "56px", margin: "40px 64px 96px", paddingTop: "32px", borderTop: "1px solid var(--color-divider)" }}>
         <blockquote style={{ margin: "0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h4)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
-          „Das beste Gerät nützt nichts, wenn niemand weiß, wann man es besser weglässt."
+          „Das beste Gerät nützt nichts, wenn niemand weiß, wann man es besser weglässt.“
           <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Chantal Groß, Zahnärztin
           </cite>

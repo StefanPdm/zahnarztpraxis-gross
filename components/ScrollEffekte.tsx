@@ -1,97 +1,82 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
-  Ersetzt die Scroll-Teile aus legacy/site.v2.js.
+  Parallax und Zählwerke für die jeweils angezeigte Seite.
 
-  Die Vorlage hatte sieben einzelne Listener plus einen MutationObserver —
-  Notlösungen der Ursprungsumgebung, die das Markup nach dem Skriptlauf neu
-  aufgebaut hat. Hier reicht ein gedrosselter Listener für den Parallax und
-  je ein IntersectionObserver für Einblenden und Zählwerke.
+  Liegt im Layout und bleibt beim Seitenwechsel bestehen — deshalb hängt
+  alles am Pfad: nach jeder Navigation werden die Elemente der neuen Seite
+  gesucht. Vorher liefen die Effekte nur auf der zuerst geladenen Seite.
+
+  Ohne Skript und bei reduzierter Bewegung steht überall der Endwert im
+  Markup — Suchmaschinen und Screenreader lesen nie „0".
 */
+
 export default function ScrollEffekte() {
-  useEffect(() => {
-    const reduziert = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pfad = usePathname();
 
-    /* — Parallax — */
-    const bilder = Array.from(
-      document.querySelectorAll<HTMLElement>(".parallax-img"),
-    );
-    let angefordert = false;
-
-    const parallax = () => {
-      angefordert = false;
-      for (const bild of bilder) {
-        const rahmen = bild.parentElement;
-        if (!rahmen) continue;
-        const kasten = rahmen.getBoundingClientRect();
-        if (kasten.bottom < 0 || kasten.top > window.innerHeight) continue;
-        const fortschritt =
-          (window.innerHeight - kasten.top) / (window.innerHeight + kasten.height);
-        bild.style.transform = `translateY(${(fortschritt - 0.5) * 60}px)`;
-      }
-    };
-
-    const beiScroll = () => {
-      if (angefordert) return;
-      angefordert = true;
-      requestAnimationFrame(parallax);
-    };
-
-    if (bilder.length && !reduziert) {
-      parallax();
-      window.addEventListener("scroll", beiScroll, { passive: true });
-      window.addEventListener("resize", beiScroll, { passive: true });
+  /* — Parallax (Formel aus site.v2.js: begrenzt auf den Bildüberstand) — */
+  useBeimScrollen(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    for (const el of document.querySelectorAll<HTMLElement>(".parallax-img")) {
+      const rahmen = el.parentElement;
+      if (!rahmen) continue;
+      const kasten = rahmen.getBoundingClientRect();
+      if (kasten.bottom < -200 || kasten.top > window.innerHeight + 200) continue;
+      const abstand = kasten.top + kasten.height / 2 - window.innerHeight / 2;
+      const spiel = (el.offsetHeight - kasten.height) / 2;
+      const versatz = Math.max(-spiel, Math.min(spiel, -abstand * 0.06));
+      el.style.transform = `translate3d(0,${versatz.toFixed(1)}px,0)`;
     }
+  }, pfad);
 
-    /* — Abschnitte einblenden (Klasse .rv) — */
-    const einblenden = new IntersectionObserver(
+  /* — Zählwerke: <span class="countup" data-to data-suffix data-decimals data-static> — */
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const elemente = document.querySelectorAll<HTMLElement>(".countup[data-to]");
+    if (!elemente.length) return;
+
+    const beobachter = new IntersectionObserver(
       (eintraege) => {
         for (const e of eintraege) {
           if (!e.isIntersecting) continue;
-          e.target.classList.add("rv-in");
-          einblenden.unobserve(e.target);
+          beobachter.unobserve(e.target);
+          zaehle(e.target as HTMLElement);
         }
       },
-      { rootMargin: "0px 0px -12% 0px" },
+      { rootMargin: "0px 0px -15% 0px" },
     );
-    for (const el of document.querySelectorAll(".rv")) einblenden.observe(el);
-
-    /* — Zählwerke (Elemente mit data-zaehl) — */
-    const zaehlen = new IntersectionObserver(
-      (eintraege) => {
-        for (const e of eintraege) {
-          if (!e.isIntersecting) continue;
-          const el = e.target as HTMLElement;
-          zaehlen.unobserve(el);
-          const ziel = Number(el.dataset.zaehl ?? "0");
-          if (!ziel || reduziert) {
-            el.textContent = String(ziel || el.textContent);
-            continue;
-          }
-          const dauer = 1100;
-          const start = performance.now();
-          const schritt = (jetzt: number) => {
-            const t = Math.min(1, (jetzt - start) / dauer);
-            const weich = 1 - Math.pow(1 - t, 3);
-            el.textContent = Math.round(ziel * weich).toLocaleString("de-DE");
-            if (t < 1) requestAnimationFrame(schritt);
-          };
-          requestAnimationFrame(schritt);
-        }
-      },
-      { rootMargin: "0px 0px -20% 0px" },
-    );
-    for (const el of document.querySelectorAll("[data-zaehl]")) zaehlen.observe(el);
-
-    return () => {
-      window.removeEventListener("scroll", beiScroll);
-      window.removeEventListener("resize", beiScroll);
-      einblenden.disconnect();
-      zaehlen.disconnect();
-    };
-  }, []);
+    elemente.forEach((el) => beobachter.observe(el));
+    return () => beobachter.disconnect();
+  }, [pfad]);
 
   return null;
+}
+
+function zaehle(el: HTMLElement) {
+  const ziel = Number(el.dataset.to);
+  if (!Number.isFinite(ziel) || ziel <= 0) return;
+  const endtext = el.textContent ?? "";
+  const nachkomma = Number(el.dataset.decimals ?? 0);
+  const zusatz = el.dataset.suffix ?? "";
+  // Tausenderpunkt nur, wenn der Endwert ihn trägt: „1.200" ja, die Jahreszahl „1991" nein.
+  const gruppieren = /\d\.\d{3}/.test(el.dataset.static ?? endtext);
+  const format = new Intl.NumberFormat("de-DE", {
+    minimumFractionDigits: nachkomma,
+    maximumFractionDigits: nachkomma,
+    useGrouping: gruppieren,
+  });
+
+  const dauer = 1100;
+  const start = performance.now();
+  const schritt = (jetzt: number) => {
+    const t = Math.min(1, (jetzt - start) / dauer);
+    const weich = 1 - Math.pow(1 - t, 3);
+    el.textContent = t < 1 ? format.format(ziel * weich) + zusatz : endtext;
+    if (t < 1) requestAnimationFrame(schritt);
+  };
+  requestAnimationFrame(schritt);
 }

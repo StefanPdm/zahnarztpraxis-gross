@@ -73,10 +73,10 @@ export default function Kinderzahnheilkunde() {
         </span>
         <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
         <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
           <Link href="/zahnschmerzen">
             Notfalltermine
-          </Link>
+          </Link>{" "}
           frei.
         </span>
         <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
@@ -197,7 +197,7 @@ export default function Kinderzahnheilkunde() {
             Sie dürfen dabeibleiben, so lange Sie und Ihr Kind es möchten. Was wir sehen, erklären wir beiden: dem Kind in seinen Worten, Ihnen in Ihren.
           </p>
           <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
-            „Ich behandle viele Kinder. Sie brauchen dasselbe wie Erwachsene, die lange nicht da waren: Ruhe und eine ehrliche Ansage."
+            „Ich behandle viele Kinder. Sie brauchen dasselbe wie Erwachsene, die lange nicht da waren: Ruhe und eine ehrliche Ansage.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>
@@ -294,7 +294,7 @@ export default function Kinderzahnheilkunde() {
           Beim ersten Mal wird nur geschaut.
         </h2>
         <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
-          Wählen Sie bei der Anfrage „Kinderbehandlung" — wir planen den Termin so, dass Zeit zum Kennenlernen bleibt. Antwort innerhalb von 24 Stunden.
+          Wählen Sie bei der Anfrage „Kinderbehandlung“ — wir planen den Termin so, dass Zeit zum Kennenlernen bleibt. Antwort innerhalb von 24 Stunden.
         </p>
         <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
           <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
