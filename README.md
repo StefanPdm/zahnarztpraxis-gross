@@ -25,12 +25,13 @@ meldet einen Fehler mit Telefonnummer als Ausweg.
 
 | Befehl | Zweck |
 | --- | --- |
-| `npm run dev` | Entwicklungsserver |
+| `npm run dev` | Entwicklungsserver; Designsystem unter `/bausteine` |
 | `npm run build` | Produktions-Build |
 | `npm run lint` | ESLint (`next lint` gibt es in Next 16 nicht mehr) |
 | `npm run typecheck` | TypeScript ohne Emit |
 | `npm run styles` | `site.css` aus `site.css.original` erzeugen |
-| `npm run seiten` | alle 17 Seiten aus `handoff/` neu erzeugen |
+| `npm run pruefen` | Inhaltsprüfung: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße |
+| `npm run bilder` | Bildmaße für `<Bild>` neu erzeugen (läuft vor dev und build) |
 
 ## Struktur
 
@@ -39,27 +40,29 @@ app/
   classical.css        Design-System (Tokens + Komponentenklassen), 1:1
   site.css             ERZEUGT — nicht bearbeiten
   site.css.original    hier bearbeiten, dann `npm run styles`
+  bausteine.css        Designsystem: Bausteine mit Mobilverhalten
   layout.tsx           Schriften, Rahmen, Kopf-/Fußzeile
   page.tsx             /
   <slug>/page.tsx      die übrigen 16 Routen
+  bausteine/           lebende Übersicht des Designsystems (nur dev)
+  llms.txt/            Fakten für KI-Suchen, aus lib/ erzeugt
   api/termin/route.ts  SMTP-Versand der Terminanfrage
-components/            Kopfzeile, Fußzeile, Termin-Leiste, Laufmarke,
-                       Zurück-nach-oben, Scroll-Effekte, Angst-Regler,
-                       Anliegen-Wahl, JSON-LD
-lib/                   Navigation, Routenliste
-public/                26 Bilder, Video, Icons
-handoff/               das unveränderte Übergabepaket (Quelle der Wahrheit)
+components/            Bausteine und Client-Komponenten
+lib/                   praxis, team, seiten, navigation — jede Angabe einmal
+public/                Bilder, Video, Icons
+handoff/               das Übergabepaket (nur noch Nachschlagewerk)
 docs/
-  MIGRATION-STATUS.md  was fertig ist, was offen ist  ← hier anfangen
+  STAND.md             was fertig ist, was offen ist  ← hier anfangen
   legacy/              alte .htaccess, sitemap, robots, site.v2.js
 scripts/
-  konvertiere-seiten.mjs        Markup + Daten → page.tsx
+  bildmasse.mjs        Bildmaße für <Bild> (läuft vor dev/build)
+  pruefe.mjs           Inhaltsprüfung (läuft vor build)
   repariere-style-selektoren.mjs  site.css React-tauglich machen
 CLAUDE.md              Arbeitsanweisung für Claude Code in VS Code
 ```
 
 ## Vor dem Livegang
 
-Siehe `docs/MIGRATION-STATUS.md`. Kurz: Termin-Formular verdrahten, Großelino
-bauen, 301-Liste der alten URLs beschaffen, Impressum vervollständigen,
-Consent für die OSM-Karte, SMTP-Zugang.
+Siehe `docs/STAND.md`. Kurz: zweites Termin-Formular auf der Startseite
+verdrahten, SMTP-Zugang, 301-Liste der alten URLs beschaffen, Impressum und
+Datenschutzerklärung vervollständigen, Platzhalter-Bewertungen ersetzen.

@@ -11,7 +11,6 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "styles": "node scripts/repariere-style-selektoren.mjs app/site.css.original app/site.css",
-    "seiten": "node scripts/konvertiere-seiten.mjs handoff app",
     "bilder": "node scripts/bildmasse.mjs",
     "pruefen": "node scripts/pruefe.mjs"
   },

@@ -8,12 +8,6 @@ import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-/*
- * ACHTUNG — diese Seite hatte in der Übergabe Zustand und Handler
- * (this.state / setState). Der interaktive Teil ist hier NICHT abgebildet
- * und muss als Client-Komponente ergänzt werden. Siehe docs/MIGRATION-STATUS.md.
- */
-
 export const metadata = seitenMetadaten("/angstpatienten");
 
 const zusagen = [

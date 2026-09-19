@@ -13,12 +13,6 @@ import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from "@/components/Sprechzeiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 
-/*
- * ACHTUNG — diese Seite hatte in der Übergabe Zustand und Handler
- * (this.state / setState). Der interaktive Teil ist hier NICHT abgebildet
- * und muss als Client-Komponente ergänzt werden. Siehe docs/MIGRATION-STATUS.md.
- */
-
 export const metadata = seitenMetadaten("/");
 
 const showReviews = true;
