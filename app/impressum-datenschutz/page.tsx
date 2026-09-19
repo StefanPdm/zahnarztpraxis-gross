@@ -27,7 +27,7 @@ export default function ImpressumDatenschutz() {
     <>
       <NotfallLeiste />
       <div style={{ padding: "96px 64px 56px", borderBottom: "1px solid var(--color-divider)" }}>
-        <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+        <div className="ueberzeile">
           Rechtliches
         </div>
         <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>

@@ -44,6 +44,10 @@
   --fs-lead:    clamp(16px, 1.28vw, 19px);
   --fs-body-lg: clamp(15.5px, 1.18vw, 17px);
   --fs-body:    clamp(14.5px, 1.08vw, 16px);
+
+  /* Versalzeilen (Überzeilen, Beschriftungen) — feste Größen, nicht fließend. */
+  --fs-marke:       11px;
+  --fs-marke-klein: 10.5px;
 }
 
 body {

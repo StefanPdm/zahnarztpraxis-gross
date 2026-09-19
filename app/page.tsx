@@ -683,15 +683,7 @@ export default function Index() {
                 alignItems: 'end',
               }}>
               <div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-ui)',
-                    fontWeight: '400',
-                    fontSize: '11px',
-                    letterSpacing: '0.22em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-accent-700)',
-                  }}>
+                <div className="ueberzeile">
                   Die Praxis
                 </div>
                 <h2
@@ -952,15 +944,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontWeight: '400',
-                  fontSize: '11px',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent-700)',
-                }}>
+              <div className="ueberzeile">
                 Eigenes Zahnlabor
               </div>
               <h2
@@ -1403,15 +1387,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div style={{ padding: '116px 64px', alignSelf: 'center' }}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontWeight: '400',
-                  fontSize: '11px',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent-700)',
-                }}>
+              <div className="ueberzeile">
                 Angstpatienten
               </div>
               <h2
@@ -1667,15 +1643,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontWeight: '400',
-                  fontSize: '11px',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent-700)',
-                }}>
+              <div className="ueberzeile">
                 Termin
               </div>
               <h2
@@ -1880,15 +1848,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div style={{ padding: '104px 64px' }}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontWeight: '400',
-                  fontSize: '11px',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent-700)',
-                }}>
+              <div className="ueberzeile">
                 Öffnungszeiten
               </div>
               <Sprechzeiten />
@@ -1897,15 +1857,7 @@ export default function Index() {
               </p>
             </div>
             <div style={{ padding: '104px 64px', borderLeft: '1px solid var(--color-divider)' }}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontWeight: '400',
-                  fontSize: '11px',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-accent-700)',
-                }}>
+              <div className="ueberzeile">
                 Anfahrt &amp; Parken
               </div>
               <div
@@ -2021,14 +1973,7 @@ export default function Index() {
               background: 'linear-gradient(180deg, #17150f 0%, #211d15 100%)',
               color: '#f3f2f2',
             }}>
-            <div
-              style={{
-                fontFamily: 'var(--font-ui)',
-                fontSize: '10.5px',
-                letterSpacing: '0.28em',
-                textTransform: 'uppercase',
-                color: 'var(--color-accent-400)',
-              }}>
+            <div className="ueberzeile ueberzeile--hell">
               Neue Patienten willkommen
             </div>
             <h2

@@ -45,3 +45,19 @@
   font-size: var(--fs-body);
   font-feature-settings: "tnum";
 }
+
+/* ── Überzeile ─────────────────────────────────────────────────────────────
+   Kleine Versalzeile über Überschriften („Leistungen", „Häufige Fragen").
+   --hell: auf dunklen Bändern. */
+.ueberzeile {
+  font-family: var(--font-ui);
+  font-size: var(--fs-marke);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+.ueberzeile--hell {
+  font-size: var(--fs-marke-klein);
+  letter-spacing: 0.28em;
+  color: var(--color-accent-400);
+}

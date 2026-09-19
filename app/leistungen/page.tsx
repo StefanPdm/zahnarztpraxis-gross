@@ -33,7 +33,7 @@ export default function Leistungen() {
       <NotfallLeiste />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Leistungen
           </div>
           <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
@@ -101,7 +101,7 @@ export default function Leistungen() {
       </div>
       <div id="zahnlabor" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Eigenes Zahnlabor
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>

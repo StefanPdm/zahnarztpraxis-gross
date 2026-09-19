@@ -17,7 +17,7 @@ export default function Kontakt() {
       <NotfallLeiste />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Kontakt
           </div>
           <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
@@ -34,7 +34,7 @@ export default function Kontakt() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ padding: "44px 64px 44px 64px" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Telefon
           </div>
           <p style={{ fontFamily: "var(--font-heading)", fontSize: "30px", margin: "14px 0 0" }}>
@@ -47,7 +47,7 @@ export default function Kontakt() {
           </p>
         </div>
         <div style={{ padding: "44px 64px", borderLeft: "1px solid var(--color-divider)" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             E-Mail
           </div>
           <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h5)", margin: "14px 0 0" }}>
@@ -57,7 +57,7 @@ export default function Kontakt() {
           </p>
         </div>
         <div style={{ padding: "44px 64px", borderLeft: "1px solid var(--color-divider)" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Adresse
           </div>
           <p style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h5)", lineHeight: "1.35", margin: "14px 0 0" }}>
@@ -69,7 +69,7 @@ export default function Kontakt() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ padding: "70px 64px" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Öffnungszeiten
           </div>
           <Sprechzeiten />
@@ -78,7 +78,7 @@ export default function Kontakt() {
           </p>
         </div>
         <div style={{ padding: "70px 64px", borderLeft: "1px solid var(--color-divider)" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Anfahrt &amp; Parken
           </div>
           <p style={{ fontSize: "14.5px", lineHeight: "1.6", margin: "18px 0 0", padding: "14px 16px", borderLeft: "2px solid var(--color-accent)", background: "var(--color-accent-100)", color: "var(--color-neutral-900)" }}>
@@ -131,7 +131,7 @@ export default function Kontakt() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", padding: "80px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Akute Schmerzen
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>
@@ -142,7 +142,7 @@ export default function Kontakt() {
           </p>
         </div>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Erster Besuch
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 14px" }}>

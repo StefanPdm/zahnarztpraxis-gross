@@ -31,7 +31,7 @@ export default function AesthetischeZahnmedizin() {
       <NotfallLeiste />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 60px" }}>
         <div>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Ästhetische Zahnmedizin
           </div>
           <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
@@ -56,7 +56,7 @@ export default function AesthetischeZahnmedizin() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div style={{ padding: "80px 64px" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Unsere Haltung
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
@@ -83,7 +83,7 @@ export default function AesthetischeZahnmedizin() {
         </figure>
       </div>
       <div style={{ padding: "96px 64px 0" }}>
-        <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+        <div className="ueberzeile">
           Die Möglichkeiten
         </div>
         <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
@@ -120,7 +120,7 @@ export default function AesthetischeZahnmedizin() {
           <Bild className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" style={{ position: "absolute", left: "0", top: "-20%", width: "100%", height: "140%", objectFit: "cover", display: "block" }} />
         </figure>
         <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
-          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          <div className="ueberzeile">
             Warum das hier besser gelingt
           </div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 20px" }}>
@@ -143,7 +143,7 @@ export default function AesthetischeZahnmedizin() {
         </div>
       </div>
       <div style={{ padding: "96px 64px 0" }}>
-        <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+        <div className="ueberzeile">
           Häufige Fragen
         </div>
         <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
@@ -165,7 +165,7 @@ export default function AesthetischeZahnmedizin() {
         ))}
       </div>
       <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
-        <div style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
+        <div className="ueberzeile ueberzeile--hell">
           Beratung
         </div>
         <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>

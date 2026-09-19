@@ -36,14 +36,7 @@ export default function Termin() {
           padding: '96px 64px 60px',
         }}>
         <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '11px',
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'var(--color-accent-700)',
-            }}>
+          <div className="ueberzeile">
             Online-Terminanfrage
           </div>
           <h1
@@ -181,14 +174,7 @@ export default function Termin() {
           borderBottom: '1px solid var(--color-divider)',
         }}>
         <div style={{ padding: '70px 64px' }}>
-          <div
-            style={{
-              fontFamily: 'var(--font-ui)',
-              fontSize: '11px',
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'var(--color-accent-700)',
-            }}>
+          <div className="ueberzeile">
             Was danach passiert
           </div>
           <h2
