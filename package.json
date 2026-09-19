@@ -5,14 +5,15 @@
   "scripts": {
     "predev": "node scripts/bildmasse.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/bildmasse.mjs",
+    "prebuild": "node scripts/bildmasse.mjs && node scripts/pruefe.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "styles": "node scripts/repariere-style-selektoren.mjs app/site.css.original app/site.css",
     "seiten": "node scripts/konvertiere-seiten.mjs handoff app",
-    "bilder": "node scripts/bildmasse.mjs"
+    "bilder": "node scripts/bildmasse.mjs",
+    "pruefen": "node scripts/pruefe.mjs"
   },
   "dependencies": {
     "next": "^16.3.5",

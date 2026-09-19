@@ -9,7 +9,7 @@ import { praxis } from "./praxis";
  * Regeln für Suchmaschinen:
  *   titel         ≤ 60 Zeichen (Google kürzt danach), Marke am Ende
  *   beschreibung  ≤ 160 Zeichen, nur belegte Aussagen (CLAUDE.md)
- * `npm run pruefen:seo` meldet Verstöße.
+ * `npm run pruefen` meldet Verstöße (läuft auch vor jedem Build).
  */
 
 export type Seite = {
