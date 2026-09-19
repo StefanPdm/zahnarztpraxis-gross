@@ -1298,7 +1298,7 @@ export default function Index() {
                 <p
                   style={{
                     fontSize: '11px',
-                    color: 'var(--color-neutral-600)',
+                    color: 'var(--color-neutral-700)',
                     margin: '32px 0 0',
                   }}>
                   Platzhalter — hier stehen später echte Google-Bewertungen.

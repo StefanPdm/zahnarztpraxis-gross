@@ -19,24 +19,32 @@ import { praxis } from "@/lib/praxis";
   kein Request an Google zur Laufzeit (bei einer Arztpraxis kein Nebenthema)
   und kein Layout-Shift. Die Variablen hängen an <html>, damit --font-heading,
   --font-body und --font-ui in classical.css und site.css weiter greifen.
+
+  Nur die Schnitte, die tatsächlich vorkommen (gemessen auf allen Seiten,
+  1440 und 390 px): Cormorant 400, Lora 400, Jost 400/500. Jeder weitere
+  Schnitt wird vorab geladen und bremst auf langsamen Verbindungen das
+  erste Bild der Seite — wer einen neuen Schnitt braucht, ergänzt ihn hier.
+  Nur der Zeichensatz latin: er deckt Deutsch samt Umlauten, ß, Gedanken-
+  strichen und Anführungszeichen ab; latin-ext hätte die Zahl der vorab
+  geladenen Dateien verdoppelt, ohne ein einziges genutztes Zeichen.
 */
 const cormorant = Cormorant_Garamond({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "600"],
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
   variable: "--font-cormorant",
 });
 
 const lora = Lora({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "600"],
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
   variable: "--font-lora",
 });
 
 const jost = Jost({
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
   variable: "--font-jost",
 });

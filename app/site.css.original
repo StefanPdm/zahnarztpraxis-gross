@@ -57,6 +57,15 @@ body {
 
 a { color: var(--color-accent-700); text-decoration: none; }
 a:hover { color: var(--color-accent); text-decoration: underline; }
+/* Links mitten im Text: zusätzlich zur Farbe dezent unterstrichen — sonst nur
+   über die Farbe erkennbar (WCAG 1.4.1). Knöpfe und Navigation ausgenommen. */
+:where(p, li, dd, figcaption, label, .notfallleiste) a:not(.btn),
+a.textlink {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+}
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,

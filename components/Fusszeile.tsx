@@ -118,7 +118,7 @@ export default function Fusszeile() {
           </span>
           <span style={{ color: "var(--color-neutral-700)" }}>
             Konzept und Umsetzung{" "}
-            <a href="https://www.heinemann.berlin" target="_blank" rel="noopener" style={{ color: "var(--color-neutral-800)" }}>
+            <a className="textlink" href="https://www.heinemann.berlin" target="_blank" rel="noopener" style={{ color: "var(--color-neutral-800)" }}>
               Stefan Heinemann
             </a>
           </span>
