@@ -20,8 +20,9 @@ const showReviews = true;
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
   { value: '1991', to: 1991, decimals: 0, suffix: '', label: 'Familiengeführt in Potsdam' },
-  { value: '1.200', to: 1200, decimals: 0, suffix: '', label: 'Gesetzte Implantate' },
+  { value: '>500', to: 500, decimals: 0, suffix: '', label: 'Gesetzte Implantate' },
   { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
+  { value: '1', to: 1, decimals: 0, suffix: '', label: 'Operationssaal' },
 ];
 
 const services = [
@@ -261,7 +262,7 @@ export default function Index() {
             className='statbar'
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4,1fr)',
+              gridTemplateColumns: 'repeat(5,1fr)',
               gap: '0',
               borderBottom: '1px solid var(--color-divider)',
             }}>

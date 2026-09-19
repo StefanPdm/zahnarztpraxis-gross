@@ -43,11 +43,12 @@ export default function ScrollEffekte() {
       (eintraege) => {
         for (const e of eintraege) {
           if (!e.isIntersecting) continue;
+          if (e.intersectionRatio < 1) continue;
           beobachter.unobserve(e.target);
           zaehle(e.target as HTMLElement);
         }
       },
-      { rootMargin: "0px 0px -15% 0px" },
+      { threshold: 1 },
     );
     elemente.forEach((el) => beobachter.observe(el));
     return () => beobachter.disconnect();
@@ -59,9 +60,9 @@ export default function ScrollEffekte() {
 function zaehle(el: HTMLElement) {
   const ziel = Number(el.dataset.to);
   if (!Number.isFinite(ziel) || ziel <= 0) return;
-  const endtext = el.textContent ?? "";
   const nachkomma = Number(el.dataset.decimals ?? 0);
   const zusatz = el.dataset.suffix ?? "";
+  const endtext = `${el.dataset.static ?? el.textContent ?? ""}${zusatz}`;
   // Tausenderpunkt nur, wenn der Endwert ihn trägt: „1.200" ja, die Jahreszahl „1991" nein.
   const gruppieren = /\d\.\d{3}/.test(el.dataset.static ?? endtext);
   const format = new Intl.NumberFormat("de-DE", {
