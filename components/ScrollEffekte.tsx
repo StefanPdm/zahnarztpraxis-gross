@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import { useBeimScrollen } from "@/lib/useBeimScrollen";
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useBeimScrollen } from '@/lib/useBeimScrollen';
 
 /*
   Parallax und Zählwerke für die jeweils angezeigte Seite.
@@ -20,8 +20,8 @@ export default function ScrollEffekte() {
 
   /* — Parallax (Formel aus site.v2.js: begrenzt auf den Bildüberstand) — */
   useBeimScrollen(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    for (const el of document.querySelectorAll<HTMLElement>(".parallax-img")) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    for (const el of document.querySelectorAll<HTMLElement>('.parallax-img')) {
       const rahmen = el.parentElement;
       if (!rahmen) continue;
       const kasten = rahmen.getBoundingClientRect();
@@ -35,8 +35,8 @@ export default function ScrollEffekte() {
 
   /* — Zählwerke: <span class="countup" data-to data-suffix data-decimals data-static> — */
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const elemente = document.querySelectorAll<HTMLElement>(".countup[data-to]");
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const elemente = document.querySelectorAll<HTMLElement>('.countup[data-to]');
     if (!elemente.length) return;
 
     const beobachter = new IntersectionObserver(
@@ -61,11 +61,11 @@ function zaehle(el: HTMLElement) {
   const ziel = Number(el.dataset.to);
   if (!Number.isFinite(ziel) || ziel <= 0) return;
   const nachkomma = Number(el.dataset.decimals ?? 0);
-  const zusatz = el.dataset.suffix ?? "";
-  const endtext = `${el.dataset.static ?? el.textContent ?? ""}${zusatz}`;
+  const zusatz = el.dataset.suffix ?? '';
+  const endtext = `${el.dataset.static ?? el.textContent ?? ''}${zusatz}`;
   // Tausenderpunkt nur, wenn der Endwert ihn trägt: „1.200" ja, die Jahreszahl „1991" nein.
   const gruppieren = /\d\.\d{3}/.test(el.dataset.static ?? endtext);
-  const format = new Intl.NumberFormat("de-DE", {
+  const format = new Intl.NumberFormat('de-DE', {
     minimumFractionDigits: nachkomma,
     maximumFractionDigits: nachkomma,
     useGrouping: gruppieren,
