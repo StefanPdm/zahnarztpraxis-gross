@@ -4,6 +4,7 @@ import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import { team } from "@/lib/team";
 import Laufmarke from "@/components/Laufmarke";
+import PraxisVideo from "@/components/PraxisVideo";
 import AngstRegler from '@/components/AngstRegler';
 import AnliegenWahl from '@/components/AnliegenWahl';
 import strukturierteDaten from './jsonld.json';
@@ -417,26 +418,7 @@ export default function Index() {
           </div>
           <div id='videoband'>
             <div style={{ position: 'relative', overflow: 'hidden', height: '720px' }}>
-              <video
-                className='parallax-img'
-                src='/uploads/Praxisflug.webm'
-                poster='/uploads/photos-1786974467265-rnor.jpg'
-                autoPlay={true}
-                muted={true}
-                loop={true}
-                playsInline={true}
-                preload='auto'
-                aria-label='Rundflug durch die Praxisräume'
-                style={{
-                  position: 'absolute',
-                  left: '0',
-                  top: '-20%',
-                  width: '100%',
-                  height: '140%',
-                  objectFit: 'cover',
-                  display: 'block',
-                }}
-              />
+              <PraxisVideo standbild='/uploads/praxisflug-standbild.webp' />
               <svg
                 viewBox='0 0 1200 36'
                 preserveAspectRatio='none'
@@ -452,7 +434,7 @@ export default function Index() {
                 }}>
                 <path
                   d='M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z'
-                  style={{ fill: '#ffffff' }}
+                  style={{ fill: 'var(--color-bg)' }}
                 />
               </svg>
               <svg
@@ -471,7 +453,7 @@ export default function Index() {
                 <g transform='translate(0,36) scale(1,-1)'>
                   <path
                     d='M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z'
-                    style={{ fill: '#ffffff' }}
+                    style={{ fill: 'var(--color-bg)' }}
                   />
                 </g>
               </svg>

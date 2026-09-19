@@ -775,3 +775,28 @@ body footer a:hover { color: var(--color-accent); }
   .ai-badge img { width: 64px; }
   body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr !important; }
 }
+
+/* ── Video-Schalter (Startseite, #videoband) ─────────────────────────────── */
+/* Anhalten/Abspielen für den Praxis-Rundflug. Rund wie #totop, sitzt links
+   über der unteren Wellenkante — rechts liegt der Zurück-nach-oben-Knopf. */
+.videoschalter {
+  position: absolute;
+  left: 22px;
+  bottom: 44px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-bg) 70%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink-dark) 35%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--color-bg);
+  cursor: pointer;
+  opacity: .8;
+  transition: opacity .2s ease, background .2s ease;
+}
+.videoschalter:hover, .videoschalter:focus-visible { opacity: 1; background: color-mix(in srgb, var(--ink-dark) 55%, transparent); }
+.videoschalter:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
