@@ -1,12 +1,8 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Impressum & Datenschutz — Zahnarztpraxis Groß & Groß Potsdam",
-  description: "Impressum und Datenschutzerklärung der Zahnarztpraxis Groß & Groß, Schopenhauerstraße 37, 14467 Potsdam.",
-  alternates: { canonical: "/impressum-datenschutz" },
-};
+export const metadata = seitenMetadaten("/impressum-datenschutz");
 
 const haftung = [
         { title: "Inhalte", text: "Für eigene Inhalte auf diesen Seiten sind wir als Diensteanbieter nach den allgemeinen Gesetzen verantwortlich. Trotz sorgfältiger Kontrolle können wir keine Gewähr für Aktualität und Vollständigkeit übernehmen. Werden uns Rechtsverletzungen bekannt, entfernen wir die betreffenden Inhalte umgehend." },

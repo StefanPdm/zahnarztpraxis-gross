@@ -4,27 +4,27 @@
   "@graph": [
     {
       "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde",
       "name": "Kinderzahnarzt Potsdam — Kinderzahnheilkunde",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "about": { "@type": "MedicalCondition", "name": "Kinderzahnheilkunde" },
       "audience": { "@type": "Patient" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Kinderzahnarzt Potsdam", "item": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html" }
+        { "@type": "ListItem", "position": 2, "name": "Kinderzahnarzt Potsdam", "item": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#faq",
       "mainEntity": [
         {
           "@type": "Question",

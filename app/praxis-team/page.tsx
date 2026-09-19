@@ -1,16 +1,12 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import { team } from "@/lib/team";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Praxis & Team — familiengeführt seit 1991 | Groß & Groß Zahnmedizin Potsdam",
-  description: "Die Menschen hinter der Praxis: Behandler, Praxisteam und Zahntechnik von Groß & Groß in Potsdam. Familiengeführt seit 1991, fünf Behandlungszimmer mit Tageslicht, eigenes Zahnlabor im Haus.",
-  alternates: { canonical: "/praxis-team" },
-};
+export const metadata = seitenMetadaten("/praxis-team");
 
 const zahlen = [
         { value: "1991", label: "Familiengeführt in Potsdam" },

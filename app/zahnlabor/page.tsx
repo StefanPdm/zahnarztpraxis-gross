@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild, { VOLL } from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Eigenes Zahnlabor in Potsdam — Zahnarzt und Zahntechniker unter einem Dach | Groß & Groß",
-  description: "Praxiseigenes Zahnlabor in Potsdam: Kronen, Brücken, Inlays, Veneers, Prothesen und implantatgetragener Zahnersatz entstehen im Haus. Zahnfarbe und Korrekturen direkt vor Ort, ohne Umwege über ein Fremdlabor.",
-  alternates: { canonical: "/zahnlabor" },
-};
+export const metadata = seitenMetadaten("/zahnlabor");
 
 const proof = [
         { value: "Im Haus", label: "Zahntechniker in der Praxis" },

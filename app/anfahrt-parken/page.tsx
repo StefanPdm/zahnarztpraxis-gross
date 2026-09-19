@@ -1,16 +1,12 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import strukturierteDaten from "./jsonld.json";
 
-export const metadata: Metadata = {
-  title: "Anfahrt & Parken — Zahnarztpraxis Groß & Groß, Schopenhauerstraße 37 Potsdam",
-  description: "So finden Sie uns: Schopenhauerstraße 37 in Potsdam. Wichtig — der Praxiseingang liegt auf der Rückseite des Gebäudes, nicht an der Straße. Anfahrt mit Tram, Bus und Auto, Parken und barrierefreier Zugang.",
-  alternates: { canonical: "/anfahrt-parken" },
-};
+export const metadata = seitenMetadaten("/anfahrt-parken");
 
 const weg = [
         { no: "01", title: "Schopenhauerstraße 37", text: "Die gelbe Fassade mit den hohen Sprossenfenstern ist die Straßenseite. Hier stehen Sie richtig — aber noch nicht am Eingang." },

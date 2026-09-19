@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Professionelle Zahnreinigung in Potsdam — Prophylaxe | Groß & Groß",
-  description: "Professionelle Zahnreinigung und Prophylaxe in Potsdam: Beläge entfernen, Zahnfleisch schützen, Karies vorbeugen. Mit Fluoridierung, Putzanleitung und einem Kontrollrhythmus nach Ihrem Risiko — nicht nach Kalender.",
-  alternates: { canonical: "/prophylaxe" },
-};
+export const metadata = seitenMetadaten("/prophylaxe");
 
 const schritte = [
         { no: "01", title: "Befund", text: "Wir schauen zuerst, wo Belag sitzt, wo das Zahnfleisch reagiert und wo Sie beim Putzen nicht hinkommen." },

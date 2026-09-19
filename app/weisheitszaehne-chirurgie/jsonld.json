@@ -4,27 +4,27 @@
   "@graph": [
     {
       "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie",
       "name": "Weisheitszähne entfernen in Potsdam",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "about": { "@type": "MedicalProcedure", "name": "Weisheitszahn-Entfernung" },
       "audience": { "@type": "Patient" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Weisheitszähne & Chirurgie", "item": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html" }
+        { "@type": "ListItem", "position": 2, "name": "Weisheitszähne & Chirurgie", "item": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie#faq",
       "mainEntity": [
         { "@type": "Question", "name": "Muss ich meine Weisheitszähne entfernen lassen?", "acceptedAnswer": { "@type": "Answer", "text": "Nicht zwingend. Wenn sie gerade stehen, im Biss sind und sich putzen lassen, können sie bleiben. Entfernt wird, wenn sie Schaden anrichten oder absehbar anrichten werden — das entscheidet die Lage im Kiefer, nicht das Alter." } },
         { "@type": "Question", "name": "Tut die Entfernung weh?", "acceptedAnswer": { "@type": "Answer", "text": "Der Eingriff findet in örtlicher Betäubung statt; Sie spüren Druck, aber keinen Schmerz. Danach ist die Stelle einige Tage empfindlich — was Sie dagegen nehmen können, besprechen wir vorher." } },

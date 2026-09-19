@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
-export const metadata: Metadata = {
-  title: "Ästhetische Zahnmedizin in Potsdam — Veneers, Bleaching, Keramik | Groß & Groß",
-  description: "Ästhetische Zahnmedizin in Potsdam: Veneers, Bleaching, Keramik-Inlays und Vollkeramikkronen. Zahnfarbe direkt am Stuhl bestimmt, Arbeiten aus dem eigenen Zahnlabor — dezent dosiert statt auffällig.",
-  alternates: { canonical: "/aesthetische-zahnmedizin" },
-};
+export const metadata = seitenMetadaten("/aesthetische-zahnmedizin");
 
 const wege = [
         { title: "Veneers", icon: "M4 6h16v5a8 8 0 01-8 8 8 8 0 01-8-8V6z", text: "Dünne Keramikschalen werden auf die Frontzähne geklebt und korrigieren Form und Farbe. Sie entstehen in unserem eigenen Labor und werden an Ihre Nachbarzähne angeglichen.", fit: "Bei Form, Farbe und kleinen Kanten" },

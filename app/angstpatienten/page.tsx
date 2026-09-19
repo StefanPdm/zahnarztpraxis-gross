@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import AngstRegler from "@/components/AngstRegler";
 import strukturierteDaten from "./jsonld.json";
@@ -12,11 +12,7 @@ import strukturierteDaten from "./jsonld.json";
  * und muss als Client-Komponente ergänzt werden. Siehe docs/MIGRATION-STATUS.md.
  */
 
-export const metadata: Metadata = {
-  title: "Zahnarzt für Angstpatienten in Potsdam | Groß & Groß",
-  description: "Zahnarzt für Angstpatienten in Potsdam: erster Termin auf Wunsch nur zum Gespräch, vereinbartes Handzeichen, Behandlung in Etappen, Ablenkung per Monitor. Groß & Groß, Potsdam Mitte.",
-  alternates: { canonical: "/angstpatienten" },
-};
+export const metadata = seitenMetadaten("/angstpatienten");
 
 const zusagen = [
         { no: "01", title: "Erster Termin nur zum Kennenlernen", text: "Auf Wunsch ohne jede Behandlung. Sie sehen die Praxis, wir hören zu, und Sie entscheiden danach, ob und wann es weitergeht." },

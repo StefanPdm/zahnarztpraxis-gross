@@ -4,21 +4,21 @@
   "@graph": [
     {
       "@type": "AboutPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/praxis-team.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/praxis-team.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/praxis-team#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/praxis-team",
       "name": "Praxis & Team — familiengeführt seit 1991",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "about": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "mainEntity": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/praxis-team.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/praxis-team#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/praxis-team.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/praxis-team#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Praxis & Team", "item": "https://www.zahnmedizin-potsdam.de/praxis-team.html" }
+        { "@type": "ListItem", "position": 2, "name": "Praxis & Team", "item": "https://www.zahnmedizin-potsdam.de/praxis-team" }
       ]
     }
   ]

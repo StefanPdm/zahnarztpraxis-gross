@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Parodontitis-Behandlung in Potsdam — Parodontologie mit Laser | Groß & Groß",
-  description: "Parodontitis behandeln in Potsdam: Zahnfleischtaschen reinigen, Entzündung stoppen, Knochenabbau aufhalten — unterstützt durch Laser und ein festes Recall-Programm. Blutendes Zahnfleisch ist das erste Warnzeichen.",
-  alternates: { canonical: "/parodontologie" },
-};
+export const metadata = seitenMetadaten("/parodontologie");
 
 const zeichen = [
         "Das Zahnfleisch blutet beim Zähneputzen oder bei der Zahnseide.",

@@ -1,23 +1,14 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
+import Sprechzeiten from "@/components/Sprechzeiten";
 
-export const metadata: Metadata = {
-  title: "Kontakt — Zahnarztpraxis Groß & Groß, Schopenhauerstraße 37 Potsdam",
-  description: "Kontakt zur Zahnarztpraxis Groß & Groß in Potsdam: Telefon 0331 960926, Öffnungszeiten, Adresse Schopenhauerstraße 37. Der Eingang liegt auf der Rückseite des Gebäudes. Antwort auf Anfragen innerhalb von 24 Stunden.",
-  alternates: { canonical: "/kontakt" },
-};
+export const metadata = seitenMetadaten("/kontakt");
 
-const hours = [
-        { day: "Montag – Dienstag", time: "08:00 – 13:00 · 14:00 – 17:30" },
-        { day: "Mittwoch", time: "08:00 – 13:00" },
-        { day: "Donnerstag", time: "08:00 – 12:00" },
-        { day: "Freitag", time: "08:00 – 12:00" }
-      ];
 
 export default function Kontakt() {
   return (
@@ -96,20 +87,7 @@ export default function Kontakt() {
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
             Öffnungszeiten
           </div>
-          <div style={{ display: "grid", marginTop: "22px", fontFeatureSettings: "'tnum'" }}>
-            {hours.map((h, hI) => (
-              <Fragment key={hI}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "20px", alignItems: "baseline", padding: "13px 0", borderBottom: "1px solid var(--color-divider)" }}>
-                  <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)" }}>
-                    {h.day}
-                  </span>
-                  <span style={{ textAlign: "right", color: "var(--color-neutral-800)" }}>
-                    {h.time}
-                  </span>
-                </div>
-              </Fragment>
-            ))}
-          </div>
+          <Sprechzeiten />
           <p style={{ fontSize: "13px", color: "var(--color-neutral-700)", marginTop: "16px" }}>
             Und nach Vereinbarung. Sprechstunde nur mit Termin — so entstehen keine Wartezeiten im Wartezimmer.
           </p>

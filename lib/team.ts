@@ -17,6 +17,8 @@ export type Behandler = {
   bio: string;
   /** Kurzer Werdegang, erscheint auf der Rückseite der Porträtkarte. */
   werdegang: string;
+  /** Für JSON-LD (alumniOf). Halle: einzige Hochschule mit Zahnmedizin am Ort. */
+  hochschule: string;
   fakten: Fakt[];
   schwerpunkte: string;
 };
@@ -32,6 +34,7 @@ export const team: Behandler[] = [
     bio: "Nach dem Studium und der Assistenzzeit habe ich mich auf ästhetische und konservierende Zahnheilkunde spezialisiert — und darauf, Kinder zu behandeln, ohne sie zu überfahren. Regelmäßige Fortbildungen gehören für mich dazu, weil sich in der Zahnmedizin ständig etwas ändert.",
     werdegang:
       "Studium in Halle, Assistenzzeit in Berlin-Mitte. Curriculum Kinderzahnheilkunde und Parodontologie, jährlich rund 60 Fortbildungsstunden.",
+    hochschule: "Martin-Luther-Universität Halle-Wittenberg",
     fakten: [
       { label: "Studium", value: "Halle" },
       { label: "Schwerpunkt", value: "Kinder · Ästhetik" },
@@ -50,6 +53,7 @@ export const team: Behandler[] = [
     bio: "Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.",
     werdegang:
       "Studium in Rostock, vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie, über 1.200 gesetzte Implantate.",
+    hochschule: "Universität Rostock",
     fakten: [
       { label: "Studium", value: "Rostock" },
       { label: "Schwerpunkt", value: "Implantologie · Prothetik" },

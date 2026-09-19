@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import routen from "./lib/routes.json";
+import { seiten } from "./lib/seiten";
 
 /*
   Weiterleitungen und Header, übernommen aus legacy/.htaccess.
@@ -48,6 +48,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Verrät sonst in jeder Antwort das Framework (X-Powered-By: Next.js).
   poweredByHeader: false,
+  // next dev hängt sonst bei jedem Start einen englischen Hinweisblock an
+  // CLAUDE.md an. Derselbe Hinweis steht dort schon auf Deutsch.
+  agentRules: false,
 
   images: {
     // AVIF zuerst (≈20 % kleiner als WebP), WebP als Rückfall. Hinter einem
@@ -60,11 +63,11 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     // /<slug>.html → /<slug>. Die alten Adressen sind indexiert.
-    const htmlVarianten = routen
-      .filter((r) => r.route !== "/")
-      .map((r) => ({
-        source: `${r.route}.html`,
-        destination: r.route,
+    const htmlVarianten = seiten
+      .filter((s) => s.pfad !== "/")
+      .map((s) => ({
+        source: `${s.pfad}.html`,
+        destination: s.pfad,
         permanent: true,
       }));
 

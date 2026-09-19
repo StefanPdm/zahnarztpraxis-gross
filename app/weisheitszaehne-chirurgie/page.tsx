@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Weisheitszähne entfernen in Potsdam — Zahnchirurgie | Groß & Groß",
-  description: "Weisheitszähne entfernen in Potsdam: Lage im Kiefer per Röntgenbild bestimmen, Eingriff in örtlicher Betäubung, chirurgische Erfahrung aus der MKG. Was vorher, während und nach dem Eingriff passiert.",
-  alternates: { canonical: "/weisheitszaehne-chirurgie" },
-};
+export const metadata = seitenMetadaten("/weisheitszaehne-chirurgie");
 
 const gruende = [
         "Der Zahn liegt schief und drückt gegen den Nachbarzahn.",

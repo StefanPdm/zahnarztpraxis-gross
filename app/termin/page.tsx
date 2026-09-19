@@ -1,17 +1,12 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import TerminFormular from "@/components/TerminFormular";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: 'Termin vereinbaren — Zahnarztpraxis Groß & Groß Potsdam',
-  description:
-    'Termin in der Zahnarztpraxis Groß & Groß in Potsdam anfragen: zwei Wunschzeiten senden, Bestätigung innerhalb von 24 Stunden. Auch für Angstpatienten und Kinder, mit extra Zeit im Terminplan.',
-  alternates: { canonical: '/termin' },
-};
+export const metadata = seitenMetadaten("/termin");
 
 const steps = [
   {

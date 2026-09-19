@@ -1,16 +1,12 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Kinderzahnarzt Potsdam — Kinderzahnheilkunde | Groß & Groß",
-  description: "Kinderzahnarzt in Potsdam: behutsames Kennenlernen, kindgerechte Erklärung, Prophylaxe, Fluoridierung und Fissurenversiegelung. Erst zeigen, dann erklären, dann behandeln — Groß & Groß, Potsdam Mitte.",
-  alternates: { canonical: "/kinderzahnheilkunde" },
-};
+export const metadata = seitenMetadaten("/kinderzahnheilkunde");
 
 const regel = [
         { no: "1", title: "Zeigen", icon: "M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z M12 9a3 3 0 100 6 3 3 0 000-6z", text: "Spiegel, Licht, Stuhl, Sauger: alles darf angeschaut und angefasst werden, bevor es benutzt wird." },

@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild, { VOLL } from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Moderne Technik in der Zahnarztpraxis Potsdam — Laser, CAD/CAM, digitale Modelle | Groß & Groß",
-  description: "Moderne Zahnmedizin in Potsdam: Laserbehandlung für weniger Wundschmerz, CAD/CAM-Fertigung im eigenen Labor, digitale Modellerfassung, Röntgendiagnostik und Monitore zur Ablenkung am Behandlungsstuhl.",
-  alternates: { canonical: "/moderne-technik" },
-};
+export const metadata = seitenMetadaten("/moderne-technik");
 
 const laser = [
         { title: "Parodontosebehandlung", text: "Der Laser erreicht die entzündeten Zahnfleischtaschen, ohne sie mechanisch aufzuarbeiten." },

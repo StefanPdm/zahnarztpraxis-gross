@@ -4,27 +4,27 @@
   "@graph": [
     {
       "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/implantologie.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/implantologie.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/implantologie#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/implantologie",
       "name": "Zahnimplantate in Potsdam",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "about": { "@type": "MedicalCondition", "name": "Zahnverlust" },
       "audience": { "@type": "Patient" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/implantologie.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/implantologie#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/implantologie.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/implantologie#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Zahnimplantate in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/implantologie.html" }
+        { "@type": "ListItem", "position": 2, "name": "Zahnimplantate in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/implantologie" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/implantologie.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/implantologie#faq",
       "mainEntity": [
         {
           "@type": "Question",

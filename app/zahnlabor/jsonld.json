@@ -4,27 +4,27 @@
   "@graph": [
     {
       "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/zahnlabor.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/zahnlabor",
       "name": "Eigenes Zahnlabor in Potsdam",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "about": { "@type": "MedicalCondition", "name": "Zahnersatz" },
       "audience": { "@type": "Patient" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Eigenes Zahnlabor in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/zahnlabor.html" }
+        { "@type": "ListItem", "position": 2, "name": "Eigenes Zahnlabor in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/zahnlabor" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor#faq",
       "mainEntity": [
         {
           "@type": "Question",

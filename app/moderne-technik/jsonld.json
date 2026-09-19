@@ -4,25 +4,25 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/moderne-technik.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/moderne-technik",
       "name": "Moderne Technik in der Zahnarztpraxis Potsdam",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Moderne Technik in der Zahnarztpraxis Potsdam", "item": "https://www.zahnmedizin-potsdam.de/moderne-technik.html" }
+        { "@type": "ListItem", "position": 2, "name": "Moderne Technik in der Zahnarztpraxis Potsdam", "item": "https://www.zahnmedizin-potsdam.de/moderne-technik" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/moderne-technik#faq",
       "mainEntity": [
         {
           "@type": "Question",

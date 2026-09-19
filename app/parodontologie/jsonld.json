@@ -4,27 +4,27 @@
   "@graph": [
     {
       "@type": "MedicalWebPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie.html#webpage",
-      "url": "https://www.zahnmedizin-potsdam.de/parodontologie.html",
+      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/parodontologie",
       "name": "Parodontitis-Behandlung in Potsdam",
       "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
       "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
       "about": { "@type": "MedicalCondition", "name": "Parodontitis" },
       "audience": { "@type": "Patient" },
       "inLanguage": "de-DE",
-      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/parodontologie.html#breadcrumb" }
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie.html#breadcrumb",
+      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Parodontitis-Behandlung in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/parodontologie.html" }
+        { "@type": "ListItem", "position": 2, "name": "Parodontitis-Behandlung in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/parodontologie" }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie.html#faq",
+      "@id": "https://www.zahnmedizin-potsdam.de/parodontologie#faq",
       "mainEntity": [
         {
           "@type": "Question",

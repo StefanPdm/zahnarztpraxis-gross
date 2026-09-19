@@ -1,22 +1,17 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
+import { sprechzeitGruppen, tageKurz, zeitenKurz } from "@/lib/praxis";
 
-export const metadata: Metadata = {
-  title: "Zahnschmerzen in Potsdam — schnell einen Termin bekommen | Groß & Groß",
-  description: "Akute Zahnschmerzen in Potsdam? Rufen Sie morgens ab 8:00 an — Montag bis Freitag halten wir Notfalltermine frei. Was Sie bis zum Termin tun können und was hinter welchem Schmerz steckt.",
-  alternates: { canonical: "/zahnschmerzen" },
-};
+export const metadata = seitenMetadaten("/zahnschmerzen");
 
 const zeiten = [
-        { tag: "Mo, Di", zeit: "8:00–13:00 und 14:00–17:30" },
-        { tag: "Mi", zeit: "8:00–13:00" },
-        { tag: "Do, Fr", zeit: "8:00–12:00" },
-        { tag: "Notfälle", zeit: "Morgens ab 8:00 anrufen" }
-      ];
+  ...sprechzeitGruppen().map((g) => ({ tag: tageKurz(g), zeit: zeitenKurz(g) })),
+  { tag: "Notfälle", zeit: "Morgens ab 8:00 anrufen" },
+];
 
 const hilft = [
         { title: "Kühlen — von außen", text: "Ein feuchtes, kühles Tuch auf die Wange, mehrmals für einige Minuten. Nicht direkt mit Eis, das reizt die Haut." },

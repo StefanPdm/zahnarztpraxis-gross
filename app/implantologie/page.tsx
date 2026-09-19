@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
 
-export const metadata: Metadata = {
-  title: "Zahnimplantate in Potsdam — Planung, Implantation und Zahnersatz aus einer Hand | Groß & Groß",
-  description: "Zahnimplantate in Potsdam: über 1.200 gesetzte Implantate, Einzelzahnimplantate und implantatgetragener Zahnersatz. Planung, Implantation, Zahnersatz und Nachsorge in einer Praxis — mit eigenem Zahnlabor.",
-  alternates: { canonical: "/implantologie" },
-};
+export const metadata = seitenMetadaten("/implantologie");
 
 const proof = [
         { value: "1.200+", label: "Gesetzte Implantate" },

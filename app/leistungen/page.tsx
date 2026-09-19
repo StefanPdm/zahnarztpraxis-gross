@@ -1,15 +1,11 @@
 import { Fragment } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild, { VOLL } from "@/components/Bild";
 import strukturierteDaten from "./jsonld.json";
+import { seitenMetadaten } from "@/lib/seiten";
 
-export const metadata: Metadata = {
-  title: "Leistungen — Zahnarztpraxis Groß & Groß in Potsdam",
-  description: "Alle Leistungen der Zahnarztpraxis Groß & Groß in Potsdam: Prophylaxe, Parodontologie, Implantologie, Zahnersatz aus dem eigenen Labor, ästhetische Zahnmedizin, Weisheitszähne, Kinder- und Angstpatientenbehandlung.",
-  alternates: { canonical: "/leistungen" },
-};
+export const metadata = seitenMetadaten("/leistungen");
 
 const behandlungen = [
         { no: "01", title: "Prophylaxe & professionelle Zahnreinigung", text: "Reinigung, Fluoridierung und Anleitung zur Pflege zu Hause — mit Zahnseide, Interdentalbürste oder Munddusche, je nachdem, was zu Ihren Zwischenräumen passt. Den Kontrollrhythmus legen wir nach Ihrem Risiko fest, nicht nach Kalender." },

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import Karte from "@/components/Karte";
 import { team } from "@/lib/team";
@@ -10,6 +10,7 @@ import PraxisVideo from "@/components/PraxisVideo";
 import AngstRegler from '@/components/AngstRegler';
 import AnliegenWahl from '@/components/AnliegenWahl';
 import strukturierteDaten from './jsonld.json';
+import Sprechzeiten from "@/components/Sprechzeiten";
 
 /*
  * ACHTUNG — diese Seite hatte in der Übergabe Zustand und Handler
@@ -17,12 +18,7 @@ import strukturierteDaten from './jsonld.json';
  * und muss als Client-Komponente ergänzt werden. Siehe docs/MIGRATION-STATUS.md.
  */
 
-export const metadata: Metadata = {
-  title: 'Zahnarzt Potsdam Mitte — Zahnarztpraxis Groß & Groß, familiengeführt seit 1991',
-  description:
-    'Zahnarztpraxis in Potsdam Mitte, familiengeführt seit 1991: Implantologie, ästhetische Zahnmedizin, eigenes Zahnlabor im Haus. Behutsam mit Angstpatienten und Kindern. Termin online anfragen, Antwort innerhalb von 24 Stunden.',
-  alternates: { canonical: '/' },
-};
+export const metadata = seitenMetadaten("/");
 
 const showReviews = true;
 
@@ -150,12 +146,6 @@ const reviews = [
   },
 ];
 
-const hours = [
-  { day: 'Montag – Dienstag', time: '08:00 – 13:00 · 14:00 – 17:30' },
-  { day: 'Mittwoch', time: '08:00 – 13:00' },
-  { day: 'Donnerstag', time: '08:00 – 12:00' },
-  { day: 'Freitag', time: '08:00 – 12:00' },
-];
 
 export default function Index() {
   return (
@@ -1937,29 +1927,7 @@ export default function Index() {
                 }}>
                 Öffnungszeiten
               </div>
-              <div style={{ display: 'grid', marginTop: '22px', fontFeatureSettings: "'tnum'" }}>
-                {hours.map((h, hI) => (
-                  <Fragment key={hI}>
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr auto',
-                        gap: '20px',
-                        alignItems: 'baseline',
-                        padding: '13px 0',
-                        borderBottom: '1px solid var(--color-divider)',
-                      }}>
-                      <span
-                        style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--fs-body)' }}>
-                        {h.day}
-                      </span>
-                      <span style={{ textAlign: 'right', color: 'var(--color-neutral-800)' }}>
-                        {h.time}
-                      </span>
-                    </div>
-                  </Fragment>
-                ))}
-              </div>
+              <Sprechzeiten />
               <p style={{ fontSize: '13px', color: 'var(--color-neutral-700)', marginTop: '16px' }}>
                 Und nach Vereinbarung.
               </p>
