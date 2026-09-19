@@ -132,9 +132,9 @@ export default function Leistungen() {
                 <div style={{ fontFamily: "var(--font-heading)", fontSize: "13px", letterSpacing: "0.14em", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'" }}>
                   {a.no}
                 </div>
-                <h4 style={{ margin: "10px 0 8px", fontSize: "var(--fs-h5)", fontWeight: "400" }}>
+                <h3 style={{ margin: "10px 0 8px", fontSize: "var(--fs-h5)", fontWeight: "400" }}>
                   {a.title}
-                </h4>
+                </h3>
                 <p style={{ fontSize: "14px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "0" }}>
                   {a.text}
                 </p>

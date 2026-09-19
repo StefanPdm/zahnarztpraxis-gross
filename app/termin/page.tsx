@@ -70,9 +70,9 @@ export default function Termin() {
                 }}>
                 {s.no}
               </div>
-              <h3 style={{ fontWeight: '400', fontSize: 'var(--fs-h5)', margin: '10px 0 6px' }}>
+              <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h5)', margin: '10px 0 6px' }}>
                 {s.title}
-              </h3>
+              </h2>
               <p
                 style={{
                   fontSize: '14px',

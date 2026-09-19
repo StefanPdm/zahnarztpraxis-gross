@@ -909,10 +909,10 @@ export default function Index() {
                         {s.no}
                       </span>
                     </div>
-                    <h4
+                    <h3
                       style={{ margin: '16px 0 8px', fontSize: 'var(--fs-h5)', fontWeight: '400' }}>
                       {s.title}
-                    </h4>
+                    </h3>
                     <p
                       style={{
                         fontSize: '14px',
@@ -1539,10 +1539,10 @@ export default function Index() {
                         {a.no}
                       </span>
                     </div>
-                    <h4
+                    <h3
                       style={{ margin: '16px 0 8px', fontSize: 'var(--fs-h5)', fontWeight: '400' }}>
                       {a.title}
-                    </h4>
+                    </h3>
                     <p
                       style={{
                         fontSize: '14px',
