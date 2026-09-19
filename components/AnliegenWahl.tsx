@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { praxis } from "@/lib/praxis";
 
 /*
   „Worum geht es?" — Auswahl auf der Startseite.
@@ -65,11 +67,11 @@ export default function AnliegenWahl() {
         </div>
       </div>
       <div style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
-        <a className="btn btn-primary" href={ziel} style={{ padding: "12px 26px", fontSize: "15px" }}>
+        <Link className="btn btn-primary" href={ziel} style={{ padding: "12px 26px", fontSize: "15px" }}>
           Termin vereinbaren
-        </a>
-        <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
-          0331 960926
+        </Link>
+        <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 26px", fontSize: "15px" }}>
+          {praxis.telefon}
         </a>
       </div>
     </>

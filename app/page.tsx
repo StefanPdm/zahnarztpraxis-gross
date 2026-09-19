@@ -1576,7 +1576,7 @@ export default function Index() {
                   </Fragment>
                 ))}
               </div>
-              <AngstRegler start={5} />
+              <AngstRegler start={5} variante='start' />
               <p
                 style={{
                   fontFamily: 'var(--font-heading)',
@@ -1861,7 +1861,7 @@ export default function Index() {
                     <input
                       type='radio'
                       name='b-status'
-                      checked
+                      defaultChecked
                     />
                     <span>Neu</span>
                   </label>
@@ -1881,7 +1881,7 @@ export default function Index() {
                     <input
                       type='radio'
                       name='b-ins'
-                      checked
+                      defaultChecked
                     />
                     <span>Gesetzlich</span>
                   </label>
@@ -1903,7 +1903,7 @@ export default function Index() {
                     <input
                       type='radio'
                       name='b-angst'
-                      checked
+                      defaultChecked
                     />
                     <span>Nein</span>
                   </label>

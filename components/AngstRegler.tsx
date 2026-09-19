@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { praxis } from "@/lib/praxis";
 
 /*
   Angst-Regler.
 
-  Steht auf der Startseite und auf /angstpatienten — dort mit einem anderen
-  Startwert (5 bzw. 8). Markup und Werte 1:1 aus dem Übergabepaket; aus
-  `this.state.fear` ist useState geworden.
+  Steht auf der Startseite und auf /angstpatienten, mit Startwert 5 bzw. 8.
+  Markup und Werte 1:1 aus dem Übergabepaket; aus `this.state.fear` ist
+  useState geworden. Die Startseite hat im Design eine eigene Fassung
+  (.fearcard: Abstand oben, Lesetext größer, ohne Knopfzeile — die Knöpfe
+  stehen dort direkt darunter im Seitentext).
 */
 
 type Stufe = { min: number; max: number; label: string; icon: string; text: string };
@@ -37,13 +40,22 @@ const stufen: Stufe[] = [
   },
 ];
 
-export default function AngstRegler({ start = 8 }: { start?: number }) {
+export default function AngstRegler({
+  start = 8,
+  variante = "seite",
+}: {
+  start?: number;
+  variante?: "start" | "seite";
+}) {
+  const aufStart = variante === "start";
   const [fear, setFear] = useState(start);
   const stufe = stufen.find((t) => fear >= t.min && fear <= t.max) ?? stufen[1];
 
   return (
     <div
+      className={aufStart ? "rv fearcard" : undefined}
       style={{
+        ...(aufStart ? { marginTop: "44px" } : {}),
         border: "1px solid var(--color-accent-300)",
         borderRadius: "var(--radius-md)",
         background:
@@ -114,7 +126,7 @@ export default function AngstRegler({ start = 8 }: { start?: number }) {
           marginTop: "30px",
           borderTop: "1px solid var(--color-accent-300)",
           paddingTop: "26px",
-          minHeight: "190px",
+          minHeight: aufStart ? "170px" : "190px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "12px", color: "var(--color-accent-700)" }}>
@@ -155,7 +167,7 @@ export default function AngstRegler({ start = 8 }: { start?: number }) {
         </p>
         <p
           style={{
-            fontSize: "var(--fs-body-lg)",
+            fontSize: aufStart ? "var(--fs-lead)" : "var(--fs-body-lg)",
             lineHeight: "1.6",
             margin: "14px 0 0",
             color: "var(--color-neutral-800)",
@@ -166,22 +178,24 @@ export default function AngstRegler({ start = 8 }: { start?: number }) {
         </p>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "12px",
-          marginTop: "28px",
-          paddingTop: "24px",
-          borderTop: "1px solid var(--color-accent-300)",
-        }}
-      >
-        <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 24px", fontSize: "14px" }}>
-          Termin anfragen
-        </Link>
-        <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 24px", fontSize: "14px" }}>
-          0331 960926
-        </a>
-      </div>
+      {!aufStart && (
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+            marginTop: "28px",
+            paddingTop: "24px",
+            borderTop: "1px solid var(--color-accent-300)",
+          }}
+        >
+          <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 24px", fontSize: "14px" }}>
+            Termin anfragen
+          </Link>
+          <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 24px", fontSize: "14px" }}>
+            {praxis.telefon}
+          </a>
+        </div>
+      )}
     </div>
   );
 }
