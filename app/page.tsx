@@ -1,19 +1,19 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
-import { seitenMetadaten } from "@/lib/seiten";
-import Bild from "@/components/Bild";
-import Karte from "@/components/Karte";
-import { team } from "@/lib/team";
-import Laufmarke from "@/components/Laufmarke";
-import PraxisVideo from "@/components/PraxisVideo";
+import { seitenMetadaten } from '@/lib/seiten';
+import Bild from '@/components/Bild';
+import Karte from '@/components/Karte';
+import { team } from '@/lib/team';
+import Laufmarke from '@/components/Laufmarke';
+import PraxisVideo from '@/components/PraxisVideo';
 import AngstRegler from '@/components/AngstRegler';
 import AnliegenWahl from '@/components/AnliegenWahl';
 import strukturierteDaten from './jsonld.json';
-import Sprechzeiten from "@/components/Sprechzeiten";
-import NotfallLeiste from "@/components/NotfallLeiste";
+import Sprechzeiten from '@/components/Sprechzeiten';
+import NotfallLeiste from '@/components/NotfallLeiste';
 
-export const metadata = seitenMetadaten("/");
+export const metadata = seitenMetadaten('/');
 
 const showReviews = true;
 
@@ -141,7 +141,6 @@ const reviews = [
   },
 ];
 
-
 export default function Index() {
   return (
     <>
@@ -199,7 +198,7 @@ export default function Index() {
                       fontSize: '15px',
                       color: 'var(--color-accent-700)',
                     }}>
-                    seit 1991 familiengeführt in Potsdam Mitte
+                    seit 1991 familiengeführt in der Potsdamer Innenstadt
                   </span>
                   <span style={{ flex: '1', height: '1px', background: 'var(--color-divider)' }} />
                 </div>
@@ -677,10 +676,8 @@ export default function Index() {
                 alignItems: 'end',
               }}>
               <div>
-                <div className="ueberzeile">
-                  Die Praxis
-                </div>
-                <h2 className="titel-2 titel-2--luft">
+                <div className='ueberzeile'>Die Praxis</div>
+                <h2 className='titel-2 titel-2--luft'>
                   Helle Räume, moderne Technik, kein Praxisgeruch von 1995.
                 </h2>
                 <p
@@ -932,10 +929,8 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div>
-              <div className="ueberzeile">
-                Eigenes Zahnlabor
-              </div>
-              <h2 className="titel-2 titel-2--luft">
+              <div className='ueberzeile'>Eigenes Zahnlabor</div>
+              <h2 className='titel-2 titel-2--luft'>
                 Besonderheit: Der Zahntechniker sitzt direkt in der Praxis.
               </h2>
               <p
@@ -1369,10 +1364,8 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div style={{ padding: '116px 64px', alignSelf: 'center' }}>
-              <div className="ueberzeile">
-                Angstpatienten
-              </div>
-              <h2 className="titel-2 titel-2--luft">
+              <div className='ueberzeile'>Angstpatienten</div>
+              <h2 className='titel-2 titel-2--luft'>
                 Wenn der letzte Zahnarztbesuch Jahre zurückliegt.
               </h2>
               <p
@@ -1423,7 +1416,10 @@ export default function Index() {
                   </Fragment>
                 ))}
               </div>
-              <AngstRegler start={5} variante='start' />
+              <AngstRegler
+                start={5}
+                variante='start'
+              />
               <p
                 style={{
                   fontFamily: 'var(--font-heading)',
@@ -1435,12 +1431,12 @@ export default function Index() {
               </p>
               <div style={{ display: 'flex', gap: '14px', marginTop: '24px' }}>
                 <Link
-                  className="btn btn-primary knopf-gross"
+                  className='btn btn-primary knopf-gross'
                   href='/termin'>
                   Erstgespräch anfragen
                 </Link>
                 <a
-                  className="btn btn-secondary knopf-gross"
+                  className='btn btn-secondary knopf-gross'
                   href='tel:+49331960926'>
                   0331 960926
                 </a>
@@ -1617,12 +1613,8 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div>
-              <div className="ueberzeile">
-                Termin
-              </div>
-              <h2 className="titel-2 titel-2--luft">
-                Zwei Wunschzeiten genügen.
-              </h2>
+              <div className='ueberzeile'>Termin</div>
+              <h2 className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
               <p
                 style={{
                   textAlign: 'justify',
@@ -1816,18 +1808,14 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div style={{ padding: '104px 64px' }}>
-              <div className="ueberzeile">
-                Öffnungszeiten
-              </div>
+              <div className='ueberzeile'>Öffnungszeiten</div>
               <Sprechzeiten />
               <p style={{ fontSize: '13px', color: 'var(--color-neutral-700)', marginTop: '16px' }}>
                 Und nach Vereinbarung.
               </p>
             </div>
             <div style={{ padding: '104px 64px', borderLeft: '1px solid var(--color-divider)' }}>
-              <div className="ueberzeile">
-                Anfahrt &amp; Parken
-              </div>
+              <div className='ueberzeile'>Anfahrt &amp; Parken</div>
               <div
                 className='iconrow'
                 style={{
@@ -1902,11 +1890,11 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     margin: '12px 0 0',
                   }}>
-                  Der Eingang liegt auf der{" "}
+                  Der Eingang liegt auf der{' '}
                   <strong style={{ fontWeight: '400', color: 'var(--color-text)' }}>
                     Rückseite
-                  </strong>{" "}
-                  des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.{" "}
+                  </strong>{' '}
+                  des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.{' '}
                   <Link href='/anfahrt-parken'>Wegbeschreibung ansehen</Link>
                 </figcaption>
               </figure>
@@ -1917,7 +1905,10 @@ export default function Index() {
                   border: '1px solid var(--color-divider)',
                   overflow: 'hidden',
                 }}>
-                <Karte hoehe={230} grau />
+                <Karte
+                  hoehe={230}
+                  grau
+                />
               </div>
               <a
                 href='https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=17/52.3976/13.0484'
@@ -1941,9 +1932,7 @@ export default function Index() {
               background: 'linear-gradient(180deg, #17150f 0%, #211d15 100%)',
               color: '#f3f2f2',
             }}>
-            <div className="ueberzeile ueberzeile--hell">
-              Neue Patienten willkommen
-            </div>
+            <div className='ueberzeile ueberzeile--hell'>Neue Patienten willkommen</div>
             <h2
               style={{
                 fontWeight: '400',
@@ -1960,18 +1949,18 @@ export default function Index() {
               </span>
               .
             </h2>
-            <p className="abschluss__text">
+            <p className='abschluss__text'>
               Zwei Wunschzeiten genügen — wir bestätigen innerhalb von 24 Stunden. Für akute
               Beschwerden halten wir jeden Morgen Termine frei.
             </p>
-            <div className="knopfreihe knopfreihe--mitte">
+            <div className='knopfreihe knopfreihe--mitte'>
               <Link
-                className="btn knopf-band knopf-band--voll"
+                className='btn knopf-band knopf-band--voll'
                 href='/termin'>
                 Termin anfragen
               </Link>
               <a
-                className="btn knopf-band knopf-band--rahmen"
+                className='btn knopf-band knopf-band--rahmen'
                 href='tel:+49331960926'>
                 0331 960926
               </a>
