@@ -40,10 +40,10 @@ export default function Kopfzeile() {
       const y = window.scrollY;
       if (!geschrumpft && y > 96) {
         geschrumpft = true;
-        kopf.current?.classList.add("shrink");
+        kopf.current?.classList.add("shrunk");
       } else if (geschrumpft && y < 32) {
         geschrumpft = false;
-        kopf.current?.classList.remove("shrink");
+        kopf.current?.classList.remove("shrunk");
       }
     };
 
@@ -58,15 +58,32 @@ export default function Kopfzeile() {
     return () => window.removeEventListener("scroll", beiScroll);
   }, []);
 
-  // Beim Seitenwechsel alles schließen.
-  useEffect(() => {
+  // Beim Seitenwechsel alles schließen — im Rendern statt im Effekt,
+  // damit kein zweiter Durchlauf mit veraltetem Zustand entsteht.
+  const [letzterPfad, setLetzterPfad] = useState(pathname);
+  if (pathname !== letzterPfad) {
+    setLetzterPfad(pathname);
     setMenueOffen(false);
     setUntermenueOffen(false);
-  }, [pathname]);
+  }
 
-  // Untermenü schließt mit dem Hauptmenü.
+  const menueSchalten = (offen: boolean) => {
+    setMenueOffen(offen);
+    // Untermenü schließt mit dem Hauptmenü.
+    if (!offen) setUntermenueOffen(false);
+  };
+
+  // Escape schließt das offene Menü.
   useEffect(() => {
-    if (!menueOffen) setUntermenueOffen(false);
+    if (!menueOffen) return;
+    const beiTaste = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenueOffen(false);
+      setUntermenueOffen(false);
+      document.getElementById("navtoggle")?.focus();
+    };
+    document.addEventListener("keydown", beiTaste);
+    return () => document.removeEventListener("keydown", beiTaste);
   }, [menueOffen]);
 
   const aktiv = (href: string) => pathname === href.split("#")[0];
@@ -91,10 +108,10 @@ export default function Kopfzeile() {
       <input
         type="checkbox"
         id="navtoggle"
-        aria-label="Menü öffnen"
+        aria-label={menueOffen ? "Menü schließen" : "Menü öffnen"}
         checked={menueOffen}
-        onChange={(e) => setMenueOffen(e.target.checked)}
-        style={{ display: "none" }}
+        onChange={(e) => menueSchalten(e.target.checked)}
+        className="nur-lesbar"
       />
       <label
         htmlFor="navtoggle"
@@ -120,6 +137,7 @@ export default function Kopfzeile() {
       </label>
 
       <nav
+        aria-label="Hauptnavigation"
         style={{
           display: "flex",
           gap: "24px",
@@ -146,8 +164,7 @@ export default function Kopfzeile() {
         ))}
 
         <span
-          className="navdrop"
-          data-offen={untermenueOffen ? "" : undefined}
+          className={untermenueOffen ? "navdrop open" : "navdrop"}
           style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: "7px" }}
         >
           <span
@@ -191,11 +208,19 @@ export default function Kopfzeile() {
             </svg>
           </span>
           <span className="navmenu">
-            {behandlungen.map((b) => (
-              <Link key={b.href} href={b.href} className={aktiv(b.href) ? "is-active" : undefined}>
-                {b.label}
-              </Link>
-            ))}
+            {/* Der innere Rahmen ist nötig: mobil klappt site.css über grid-template-rows auf. */}
+            <span>
+              {behandlungen.map((b) => (
+                <Link
+                  key={b.href}
+                  href={b.href}
+                  className={aktiv(b.href) ? "is-active" : undefined}
+                  aria-current={aktiv(b.href) ? "page" : undefined}
+                >
+                  {b.label}
+                </Link>
+              ))}
+            </span>
           </span>
         </span>
       </nav>
@@ -254,6 +279,7 @@ export default function Kopfzeile() {
       </Link>
 
       <nav
+        aria-label="Kontakt und Termin"
         style={{
           display: "flex",
           gap: istStartseite ? "26px" : "24px",
