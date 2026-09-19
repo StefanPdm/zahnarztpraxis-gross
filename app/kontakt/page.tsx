@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import Karte from "@/components/Karte";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -153,7 +154,7 @@ export default function Kontakt() {
             </span>
           </div>
           <div style={{ marginTop: "26px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
-            <iframe title="Karte Schopenhauerstraße 37, Potsdam" src="https://www.openstreetmap.org/export/embed.html?bbox=13.0414%2C52.3941%2C13.0554%2C52.4011&layer=mapnik&marker=52.3976%2C13.0484" style={{ width: "100%", height: "320px", border: "0", display: "block", filter: "grayscale(0.35) contrast(1.02)" }} loading="lazy" />
+            <Karte hoehe={320} grau />
           </div>
           <a href="https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=17/52.3976/13.0484" style={{ display: "inline-block", marginTop: "10px", fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
             Route planen
