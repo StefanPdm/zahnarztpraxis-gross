@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Jost, Lora } from "next/font/google";
 // Reihenfolge ist nicht optional: zuerst die Tokens, dann die Ergänzungen.
 import "./classical.css";
 import "./site.css";
+import "./bausteine.css";
 import "./schriften.css"; // zuletzt: hängt die next/font-Familien in die Tokens
 
 import Kopfzeile from "@/components/Kopfzeile";

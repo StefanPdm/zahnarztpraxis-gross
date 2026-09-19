@@ -1,0 +1,47 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Bausteine — die wiederkehrenden Elemente der Website als Klassen.
+
+   Ebenen des Designsystems:
+     classical.css   Tokens: Farben, Schriften, Radien, Schatten, Grundklassen
+     site.css        Projekt-Tokens (Schriftgrade, Ebenen), Navigation, Effekte
+     bausteine.css   diese Datei: Bausteine mit festem Aussehen und eigenem
+                     Mobilverhalten; jeweils eine React-Komponente dazu
+                     (components/*), die das Markup liefert
+
+   Jeder Baustein ist pixelgleich zu dem Inline-Stil, den er ersetzt — geprüft
+   per Bildvergleich bei 1440 und 390 px. Das Mobilverhalten steht hier
+   ausdrücklich, statt über den Style-Text-Vergleich in site.css zu laufen.
+
+   Benennung: .baustein, .baustein__teil, .baustein--variante
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Notfallleiste (components/NotfallLeiste) ─────────────────────────────
+   Schmale Leiste unter dem Kopf: Hinweis auf Notfalltermine plus Telefon. */
+.notfallleiste {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 14px;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 14px;
+  color: var(--color-neutral-800);
+}
+.notfallleiste__marke {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+.notfallleiste__strich {
+  width: 1px;
+  height: 18px;
+  background: var(--color-divider);
+}
+.notfallleiste__telefon {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  font-feature-settings: "tnum";
+}

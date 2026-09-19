@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { seitenMetadaten } from "@/lib/seiten";
+import NotfallLeiste from "@/components/NotfallLeiste";
 
 export const metadata = seitenMetadaten("/impressum-datenschutz");
 
@@ -24,22 +25,7 @@ const datenschutz = [
 export default function ImpressumDatenschutz() {
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 16px", padding: "14px", borderBottom: "1px solid var(--color-divider)", fontSize: "14px", color: "var(--color-neutral-800)" }}>
-        <span style={{ fontFamily: "var(--font-ui)", fontSize: "11.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
-          Akute Zahnschmerzen?
-        </span>
-        <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
-        <span>
-          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir{" "}
-          <Link href="/zahnschmerzen">
-            Notfalltermine
-          </Link>{" "}
-          frei.
-        </span>
-        <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
-          0331 960926
-        </a>
-      </div>
+      <NotfallLeiste />
       <div style={{ padding: "96px 64px 56px", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
           Rechtliches
