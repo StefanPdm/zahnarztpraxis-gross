@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
 import strukturierteDaten from "./jsonld.json";
 
 export const metadata: Metadata = {
@@ -36,37 +37,7 @@ export default function Kinderzahnheilkunde() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <div id="grosselino" aria-hidden="true" style={{ position: "fixed", left: "5px", top: "18%", zIndex: "55", display: "flex", alignItems: "center", gap: "10px", pointerEvents: "none", transition: "top .35s cubic-bezier(.22,1,.36,1)" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 auto", width: "50px", height: "50px", borderRadius: "999px", background: "#fffdf8", border: "1px solid var(--color-accent-300)", boxShadow: "var(--shadow-sm)" }}>
-          <svg id="gr-svg" width="36" height="36" viewBox="0 0 100 100" fill="none" stroke="var(--color-accent-700)" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
-            <g id="gr-leg-l">
-              <ellipse cx="41" cy="88" rx="7.5" ry="5.5" fill="#fffdf8" />
-            </g>
-            <g id="gr-leg-r">
-              <ellipse cx="59" cy="88" rx="7.5" ry="5.5" fill="#fffdf8" />
-            </g>
-            <ellipse cx="50" cy="71" rx="17" ry="16" fill="#fffdf8" />
-            <ellipse cx="50" cy="73.5" rx="9" ry="8" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <path id="gr-arm-l" d="M35 64 L23 60" />
-            <g id="gr-arm-r">
-              <path d="M66 64 L79 57" />
-            </g>
-            <circle cx="31" cy="25" r="10" fill="#fffdf8" />
-            <circle cx="69" cy="25" r="10" fill="#fffdf8" />
-            <circle cx="31" cy="25" r="4" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="69" cy="25" r="4" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="50" cy="37" r="21" fill="#fffdf8" />
-            <ellipse cx="50" cy="45" rx="10" ry="7.5" fill="#fffdf8" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="41" cy="33" r="2.6" fill="#201f1d" stroke="none" />
-            <circle cx="59" cy="33" r="2.6" fill="#201f1d" stroke="none" />
-            <ellipse cx="50" cy="41.5" rx="3.2" ry="2.4" fill="#201f1d" stroke="none" />
-            <path d="M44 47.5 Q50 52.5 56 47.5" stroke="#201f1d" strokeWidth="2.4" />
-          </svg>
-        </div>
-        <span id="gr-bubble" style={{ width: "max-content", maxWidth: "14ch", padding: "8px 13px", borderRadius: "14px 14px 14px 3px", background: "#fffdf8", border: "1px solid var(--color-accent-200)", boxShadow: "var(--shadow-md)", fontFamily: "var(--font-heading)", fontSize: "13.5px", lineHeight: "1.3", color: "var(--color-neutral-900)" }}>
-          Hallo, ich bin Großelino!
-        </span>
-      </div>
+      <Grosselino />
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 16px", padding: "14px", borderBottom: "1px solid var(--color-divider)", fontSize: "14px", color: "var(--color-neutral-800)" }}>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: "11.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
           Akute Zahnschmerzen?
@@ -128,38 +99,7 @@ export default function Kinderzahnheilkunde() {
           In dieser Reihenfolge, ohne Ausnahme. Was ein Kind vorher gesehen und verstanden hat, macht ihm hinterher weniger Angst.
         </p>
       </div>
-      <div id="grosselino-mobil" style={{ alignItems: "center", gap: "16px", margin: "40px 64px 0", padding: "20px 22px", border: "1px solid var(--color-accent-200)", borderRadius: "18px", background: "var(--kid-ground)" }}>
-        <span style={{ display: "flex", alignItems: "center", justifyContent: "center", flex: "0 0 auto", width: "64px", height: "64px", borderRadius: "999px", background: "#fffdf8", border: "1px solid var(--color-accent-300)" }}>
-          <svg id="gr2-svg" width="46" height="46" viewBox="0 0 100 100" fill="none" stroke="var(--color-accent-700)" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <ellipse cx="41" cy="88" rx="7.5" ry="5.5" fill="#fffdf8" />
-            <ellipse cx="59" cy="88" rx="7.5" ry="5.5" fill="#fffdf8" />
-            <ellipse cx="50" cy="71" rx="17" ry="16" fill="#fffdf8" />
-            <ellipse cx="50" cy="73.5" rx="9" ry="8" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <path d="M35 64 L23 60" />
-            <g id="gr2-arm-r">
-              <path d="M66 64 L79 57" />
-            </g>
-            <circle cx="31" cy="25" r="10" fill="#fffdf8" />
-            <circle cx="69" cy="25" r="10" fill="#fffdf8" />
-            <circle cx="31" cy="25" r="4" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="69" cy="25" r="4" fill="none" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="50" cy="37" r="21" fill="#fffdf8" />
-            <ellipse cx="50" cy="45" rx="10" ry="7.5" fill="#fffdf8" stroke="var(--color-accent-300)" strokeWidth="2" />
-            <circle cx="41" cy="33" r="2.6" fill="#201f1d" stroke="none" />
-            <circle cx="59" cy="33" r="2.6" fill="#201f1d" stroke="none" />
-            <ellipse cx="50" cy="41.5" rx="3.2" ry="2.4" fill="#201f1d" stroke="none" />
-            <path d="M44 47.5 Q50 52.5 56 47.5" stroke="#201f1d" strokeWidth="2.4" />
-          </svg>
-        </span>
-        <span id="gr2-bubble" style={{ display: "block" }}>
-          <span style={{ display: "block", fontFamily: "var(--font-ui)", fontSize: "10px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
-            Hallo, ich bin Großelino
-          </span>
-          <span style={{ display: "block", fontFamily: "var(--font-heading)", fontSize: "var(--fs-lead)", lineHeight: "1.35", color: "var(--color-neutral-900)", marginTop: "6px" }}>
-            Beim ersten Mal wird nur geschaut. Und Hand heben heißt immer: Pause.
-          </span>
-        </span>
-      </div>
+      <GrosselinoMobil />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "22px", margin: "40px 64px 96px" }}>
         {regel.map((r, rI) => (
           <Fragment key={rI}>
