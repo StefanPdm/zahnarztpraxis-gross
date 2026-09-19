@@ -1,0 +1,715 @@
+/* ============================================================================
+   ERZEUGT — nicht von Hand bearbeiten.
+
+   Quelle: app/site.css.original
+   Erzeugt von: scripts/repariere-style-selektoren.mjs
+
+   Die [style*="…"]-Selektoren wurden um die Schreibweisen erweitert, die
+   React und das exportierte Markup tatsächlich ausgeben. Inhaltliche
+   Änderungen gehören in app/site.css.original, danach das Skript erneut laufen lassen:
+
+     npm run styles
+
+   ============================================================================ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zahnmedizin Potsdam — Groß & Groß
+   Gemeinsames Stylesheet für alle Seiten.
+
+   Aufbau:
+     1  Grundlagen (Schrift, Farben, Links)
+     2  Fließende Typografie (clamp)
+     3  Bilder und Plates
+     4  Navigation und Dropdown
+     5  Bausteine (Flipcards, Regler, Badge, Platzhalter)
+     6  Kinderseite
+     7  Responsive
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1  Grundlagen ───────────────────────────────────────────────────────── */
+
+:root {
+  --font-ui: "Jost", system-ui, sans-serif;
+  --kid-ground: #faf6ee;
+  --ink-dark: #17150f;
+
+  /* Fließende Schriftgrade — Bezugsbreite 1440px.
+     Muster: clamp(Minimum, Ideal in vw, Maximum) */
+  --fs-hero:    clamp(36px, 5.70vw, 82px);
+  --fs-hero-sm: clamp(34px, 5.00vw, 72px);
+  --fs-display: clamp(30px, 3.90vw, 56px);
+  --fs-phone:   clamp(30px, 3.60vw, 52px);
+  --fs-h2:      clamp(26px, 3.05vw, 44px);
+  --fs-h2-sm:   clamp(24px, 2.65vw, 38px);
+  --fs-h3-xl:   clamp(23px, 2.35vw, 34px);
+  --fs-h3-lg:   clamp(22px, 2.20vw, 32px);
+  --fs-h3:      clamp(20px, 1.85vw, 27px);
+  --fs-h3-sm:   clamp(19px, 1.70vw, 25px);
+  --fs-h4:      clamp(18px, 1.55vw, 23px);
+  --fs-h5:      clamp(17px, 1.45vw, 21px);
+  --fs-lead:    clamp(16px, 1.28vw, 19px);
+  --fs-body-lg: clamp(15.5px, 1.18vw, 17px);
+  --fs-body:    clamp(14.5px, 1.08vw, 16px);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+}
+
+a { color: var(--color-accent-700); text-decoration: none; }
+a:hover { color: var(--color-accent); text-decoration: underline; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn {
+  font-family: var(--font-ui);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: clamp(11.5px, 0.87vw, 12.5px);
+  font-weight: 400;
+}
+
+/* ── 2  Fließende Typografie ─────────────────────────────────────────────── */
+/* Greift über die Utility-Klassen unten. Feste px-Werte in inline styles
+   bleiben möglich, sind aber die Ausnahme (Kicker, Marker, Bildlegenden). */
+
+.t-hero    { font-size: var(--fs-hero); }
+.t-herosm  { font-size: var(--fs-hero-sm); }
+.t-display { font-size: var(--fs-display); }
+.t-phone   { font-size: var(--fs-phone); }
+.t-h2      { font-size: var(--fs-h2); }
+.t-h2sm    { font-size: var(--fs-h2-sm); }
+.t-h3xl    { font-size: var(--fs-h3-xl); }
+.t-h3lg    { font-size: var(--fs-h3-lg); }
+.t-h3      { font-size: var(--fs-h3); }
+.t-h3sm    { font-size: var(--fs-h3-sm); }
+.t-h4      { font-size: var(--fs-h4); }
+.t-h5      { font-size: var(--fs-h5); }
+.t-lead    { font-size: var(--fs-lead); }
+.t-bodylg  { font-size: var(--fs-body-lg); }
+.t-body    { font-size: var(--fs-body); }
+
+/* ── 3  Bilder und Plates ────────────────────────────────────────────────── */
+
+img, iframe { max-width: 100%; }
+.parallax-img { will-change: transform; }
+
+body img.plate,
+body video.parallax-img,
+body .flipcard img,
+body iframe {
+  filter: grayscale(0.22) sepia(0.14) saturate(0.92) contrast(1.05) brightness(1.03);
+}
+body .flipcard img {
+  filter: grayscale(0.34) sepia(0.16) saturate(0.88) contrast(1.06) brightness(1.05);
+}
+body .platecap > span:last-child { flex: 1; }
+
+.portraitframe {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--color-accent) 9%, #ffffff) 0%,
+    color-mix(in oklab, var(--color-accent) 3%, #ffffff) 100%);
+}
+.portraitframe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(78% 62% at 50% 22%,
+    rgba(255,255,255,0) 0%,
+    color-mix(in oklab, var(--color-accent) 8%, transparent) 100%);
+}
+
+/* ── 4  Navigation ───────────────────────────────────────────────────────── */
+
+/* Zurück nach oben: Kreis mit Haarlinie, keine Füllung — Farbe als Kontur.
+   Erscheint erst nach einer Bildschirmhöhe und steigt dabei sanft auf. */
+#totop {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  color: var(--color-accent-700);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 14px;
+  box-shadow: var(--shadow-sm);
+  transition: opacity .3s ease, visibility .3s ease, translate .38s cubic-bezier(.2,.9,.2,1),
+              background .2s ease, color .2s ease, border-color .2s ease, transform .3s ease;
+}
+#totop.show { opacity: 1; visibility: visible; translate: 0 0; }
+#totop:hover {
+  background: var(--color-accent-100);
+  border-color: var(--color-accent-600);
+  color: var(--color-accent-800);
+}
+#totop:active { background: var(--color-accent-200); }
+#totop:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+#totop svg { transition: translate .28s cubic-bezier(.2,.9,.2,1); }
+#totop:hover svg { translate: 0 -2px; }
+@media (prefers-reduced-motion: reduce) {
+  #totop, #totop svg { transition-duration: .01ms; }
+}
+@media (max-width: 1000px) {
+  #totop { right: 16px; bottom: 16px; width: 46px; height: 46px; }
+  /* Bei offenem Menü stört der Knopf */
+  body:has(header input#navtoggle:checked) #totop { opacity: 0; visibility: hidden; }
+}
+
+/* Kopfzeile klebt am oberen Rand und legt sich mit Weichzeichner über den Inhalt.
+   Beim Scrollen (Klasse .shrunk aus site.js) schrumpfen Höhe und Wortmarke. */
+body header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* Keine Hintergrundfarbe — der Inhalt darunter bleibt sichtbar und wird nur
+     weichgezeichnet. Die Sättigung hält das Papierweiß trotz Blur ruhig. */
+  background: transparent;
+  backdrop-filter: blur(22px) saturate(1.5);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  transition: padding .28s cubic-bezier(.2,.8,.25,1), box-shadow .28s ease, background .28s ease;
+}
+@supports not (backdrop-filter: blur(1px)) {
+  body header { background: var(--color-bg); }
+}
+body header > a > span { transition: font-size .28s cubic-bezier(.2,.8,.25,1), opacity .2s ease, margin .28s ease; }
+
+@media (min-width: 1001px) {
+  body header { padding: 26px 64px !important; }
+  body header.shrunk {
+    padding: 11px 64px !important;
+    backdrop-filter: blur(30px) saturate(1.6);
+    -webkit-backdrop-filter: blur(30px) saturate(1.6);
+    box-shadow: 0 1px 0 var(--color-divider), 0 8px 26px -22px rgba(23,21,15,0.55);
+  }
+  body header.shrunk > a { gap: 3px !important; }
+  body header.shrunk span.brand-mono { font-size: 25px !important; }
+  body header.shrunk span.brand-word { font-size: 18px !important; }
+  body header.shrunk span.brand-tagline {
+    font-size: 0 !important;
+    opacity: 0;
+    margin: 0 !important;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.navdrop > .navmenu {
+  position: absolute;
+  left: -16px;
+  top: calc(100% + 12px);
+  min-width: 252px;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 70;
+}
+.navdrop::after {
+  content: "";
+  position: absolute;
+  left: -16px;
+  right: -16px;
+  top: 100%;
+  height: 14px;
+}
+.navdrop:hover > .navmenu,
+.navdrop:focus-within > .navmenu { display: flex; }
+.navdrop .navmenu > span {
+  display: flex;
+  flex-direction: column;
+}
+.navdrop .navmenu a {
+  display: block;
+  padding: 11px 22px;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  white-space: nowrap;
+}
+.navdrop .navmenu a:hover {
+  background: var(--color-accent-100);
+  text-decoration: none;
+}
+.navmenu a.is-active {
+  background: var(--color-accent-100);
+  color: var(--color-text);
+}
+
+/* ── 5  Bausteine ────────────────────────────────────────────────────────── */
+
+/* Flipcards (Behandler-Porträts) */
+.flipcard { perspective: 1600px; }
+.flipinner {
+  position: relative;
+  transition: transform .85s cubic-bezier(.2,.8,.25,1);
+  transform-style: preserve-3d;
+}
+.flipcard:hover .flipinner,
+.flipcard:focus-within .flipinner { transform: rotateY(180deg); }
+.flipcard:hover .fliphint,
+.flipcard:focus-within .fliphint { opacity: 0; }
+.flipface { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flipback { position: absolute; inset: 0; transform: rotateY(180deg); }
+body .flipcard img.portrait {
+  height: 100% !important;
+  width: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+}
+
+/* Angst-Regler */
+#fearRange {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-accent-300);
+}
+#fearRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid var(--color-accent);
+  box-shadow: 0 2px 8px -3px rgba(23,21,15,0.3);
+  cursor: pointer;
+}
+#fearRange::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid var(--color-accent);
+  cursor: pointer;
+}
+#fearRange:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+
+/* KI-Kennzeichnung — nur auf ausdrückliche Anweisung setzen */
+.ai-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(23,21,15,0.5);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.ai-badge img { display: block; width: 82px; height: auto; filter: none !important; }
+
+/* Platzhalter-Kästen für offene Angaben aus der Praxis */
+.todo {
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  background: color-mix(in oklab, var(--color-accent) 6%, #ffffff);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--color-neutral-800);
+}
+.todo > b {
+  display: block;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin-bottom: 7px;
+}
+
+.reasonchip { transition: background .25s ease, color .25s ease, border-color .25s ease; }
+.reasonchip:hover { border-color: var(--color-accent) !important; }
+
+body footer { padding-bottom: 68px !important; }
+body footer a:hover { color: var(--color-accent); }
+
+/* ── 6  Kinderseite: Großelino ───────────────────────────────────────────── */
+
+@keyframes grBob   { 0%, 100% { transform: translateY(0); }    50% { transform: translateY(-3.5px); } }
+@keyframes grWave  { 0%, 100% { transform: rotate(4deg); }     50% { transform: rotate(-30deg); } }
+@keyframes grStepA { 0%, 100% { transform: translate(0, 0); }  50% { transform: translate(-3px, -2px); } }
+@keyframes grStepB { 0%, 100% { transform: translate(0, 0); }  50% { transform: translate(3px, -2px); } }
+
+#gr-svg { animation: grBob 2.6s ease-in-out infinite; }
+#gr-arm-r { transform-origin: 66px 64px; animation: grWave 2s ease-in-out infinite; }
+#grosselino.walking #gr-leg-l { animation: grStepA .44s ease-in-out infinite; }
+#grosselino.walking #gr-leg-r { animation: grStepB .44s ease-in-out infinite; }
+#gr-bubble {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+#grosselino.talking #gr-bubble,
+#grosselino:hover #gr-bubble,
+#grosselino:focus-within #gr-bubble { opacity: 1; transform: translateX(0); }
+/* Beim Zeigen bleibt der Spruch stehen, auch wenn das Laufen längst endete */
+#grosselino:hover #gr-bubble { transition-delay: 0s; }
+/* Der Behälter fängt keine Klicks (er liegt über der Seite), die Figur selbst
+   und ihre Sprechblase aber doch — sonst greift :hover nie. Regeln auf den
+   Kindern schlagen den geerbten Inline-Wert des Behälters. */
+#grosselino > div, #grosselino > #gr-bubble { pointer-events: auto; }
+#grosselino > div:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; border-radius: var(--radius-md); }
+
+#grosselino-mobil { display: none; }
+#gr2-arm-r { transform-origin: 66px 64px; }
+#grosselino-mobil.inview #gr2-svg { animation: grBob 2.6s ease-in-out infinite; }
+#grosselino-mobil.inview #gr2-arm-r { animation: grWave 2s ease-in-out infinite; }
+#gr2-bubble {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .5s ease .25s, transform .5s ease .25s;
+}
+#grosselino-mobil.inview #gr2-bubble { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  #gr-svg, #gr-arm-r, #gr-leg-l, #gr-leg-r,
+  #gr2-svg, #gr2-arm-r { animation: none !important; }
+  #grosselino { transition: none !important; }
+  #gr2-bubble { transition: none !important; opacity: 1 !important; transform: none !important; }
+  .flipinner { transition: none !important; }
+}
+
+/* ── 7  Responsive ───────────────────────────────────────────────────────── */
+/* Die Regeln greifen über Attribut-Textvergleich auf inline styles.
+   Konvention: Ränder ausschließlich als "margin: 0px 64px …" oder
+   "margin: 40px 64px …" schreiben, sonst greift der Reset nicht.
+   Marker-Zeilen mit "auto 1fr" sind ausgenommen — sie sollen nebeneinander
+   bleiben. */
+
+@media (max-width: 1000px) {
+  body p[style*="justify"] { text-align: left !important; }
+
+  body [style*="padding: 116px"],
+  body [style*="padding:116px"],
+  body [style*="padding: 104px"],
+  body [style*="padding:104px"],
+  body [style*="padding: 96px"] ,
+  body [style*="padding:96px"] { padding-top: 52px !important; padding-bottom: 36px !important; }
+  body [style*="padding: 80px"] ,
+  body [style*="padding:80px"] { padding-top: 52px !important; padding-bottom: 52px !important; }
+  body [style*="padding: 70px"] ,
+  body [style*="padding:70px"] { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  [style*="padding: "][style*=" 64px"] ,
+  [style*="padding:"][style*=" 64px"] { padding-left: 24px !important; padding-right: 24px !important; }
+  [style*="margin: 0px 64px"],
+  [style*="margin:0px 64px"],
+  [style*="margin: 0 64px"],
+  [style*="margin:0 64px"],
+  [style*="margin: 40px 64px"] ,
+  [style*="margin:40px 64px"] { margin-left: 24px !important; margin-right: 24px !important; }
+
+  [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { grid-template-columns: 1fr !important; }
+  body [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { gap: 30px !important; }
+  body [style*="display: grid"][style*="gap: 2px"] ,
+  body [style*="display: grid"][style*="gap:2px"] ,
+  body [style*="display:grid"][style*="gap: 2px"] ,
+  body [style*="display:grid"][style*="gap:2px"] { gap: 2px !important; }
+
+  [style*="max-width: 1440px"] ,
+  [style*="max-width:1440px"] { max-width: 100% !important; }
+  [style*="border-left: 1px solid"] ,
+  [style*="border-left:1px solid"] { border-left: 0 !important; border-top: 1px solid var(--color-divider) !important; }
+  body [style*="columns: 2"], body p[style*="columns: 2"] ,
+  body [style*="columns:2"], body p[style*="columns: 2"] ,
+  body [style*="columns:2"], body p[style*="columns:2"] { columns: 1 !important; }
+
+  body iframe { height: 280px !important; }
+  body img.plate {
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    max-height: none !important;
+  }
+  body .flipcard {
+    height: auto !important;
+    aspect-ratio: 3 / 4;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+  body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr 1fr !important; gap: 36px 40px !important; }
+  body footer > div:last-child { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .statbar { grid-template-columns: 1fr 1fr !important; }
+  body .statbar > *:nth-child(n+3) { border-top: 1px solid var(--color-divider); }
+  .photopair { grid-template-columns: 1fr !important; }
+
+  /* Kopfzeile mobil */
+  body header {
+    display: grid !important;
+    grid-template-columns: 48px 1fr 48px !important;
+    align-items: center;
+    gap: 10px !important;
+    padding: 12px 18px !important;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    /* Ebenfalls nur Weichzeichner. Bei offenem Menü braucht die Fläche
+       hinter den Einträgen aber Deckung. */
+    background: transparent;
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    text-align: center;
+    transition: padding .18s ease, background .22s ease;
+  }
+  body header:has(input#navtoggle:checked) { background: var(--color-bg); }
+  @supports not (backdrop-filter: blur(1px)) {
+    body header { background: var(--color-bg); }
+  }
+  /* Burger: 48 × 48 px Trefferfläche, Balken optisch unverändert */
+  body header > label.navburger {
+    display: flex !important;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: -6px -10px -6px 0;
+    border-radius: var(--radius-md);
+    -webkit-tap-highlight-color: transparent;
+  }
+  body header > label.navburger:active { background: var(--color-accent-100); }
+  body header > label.navburger > span:last-child { display: none; }
+  /* Balken-Container: absolute Lage, damit die Balken sich zum Kreuz drehen koennen */
+  body header > label.navburger > span:first-child {
+    display: block !important;
+    position: relative;
+    width: 22px;
+    height: 13px;
+    gap: 0 !important;
+  }
+  body header > label.navburger > span:first-child > span {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 0.5px);
+    transform-origin: 50% 50%;
+    transition: transform .52s cubic-bezier(.2,.9,.2,1), width .42s cubic-bezier(.2,.9,.2,1), opacity .18s ease;
+  }
+  body header > label.navburger > span:first-child > span:nth-child(1) { transform: translateY(-6px); }
+  body header > label.navburger > span:first-child > span:nth-child(3) { transform: translateY(6px); width: 15px !important; transition-delay: .05s; }
+  /* Offen: obere und untere Linie wandern in die Mitte und drehen eine Dreiviertelrunde,
+     die mittlere schnurrt zur Seite weg. */
+  body header input#navtoggle:checked ~ label.navburger > span:first-child > span:nth-child(1) {
+    transform: translateY(0) rotate(225deg);
+  }
+  body header input#navtoggle:checked ~ label.navburger > span:first-child > span:nth-child(2) {
+    transform: scaleX(0.12);
+    opacity: 0;
+  }
+  body header input#navtoggle:checked ~ label.navburger > span:first-child > span:nth-child(3) {
+    transform: translateY(0) rotate(-225deg);
+    width: 22px !important;
+  }
+  body header > a { grid-column: 2; grid-row: 1; flex-direction: row !important; gap: 10px; align-items: center; justify-self: center; }
+  body header > a > span { transition: font-size .18s ease; }
+  body header > a > span.brand-tagline { display: none !important; }
+  body header nav { grid-column: 1 / -1; display: none !important; order: 3; width: 100%; }
+  body header.shrunk { padding: 8px 18px !important; }
+  body header.shrunk span.brand-mono { font-size: 19px !important; }
+  body header.shrunk span.brand-word { font-size: 14px !important; }
+  body header span.brand-mono { font-size: 26px !important; }
+  body header span.brand-word { font-size: 18px !important; letter-spacing: 0.04em !important; }
+  body header:has(input#navtoggle:checked) { row-gap: 0 !important; padding-bottom: 14px !important; }
+  body header input#navtoggle:checked ~ nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    margin: 0 !important;
+  }
+  /* Bei offenem Menü: Termin-Leiste ausblenden und Seite nicht mitscrollen */
+  body:has(header input#navtoggle:checked) { overflow: hidden; }
+  body:has(header input#navtoggle:checked) #stickycta { display: none !important; }
+  body header input#navtoggle:checked ~ nav {
+    max-height: calc(100dvh - 84px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body header input#navtoggle:checked ~ nav a {
+    width: 100% !important;
+    padding: 15px 0 !important;
+    min-height: 22px;
+    border-top: 1px solid var(--color-divider);
+    text-align: left !important;
+    font-size: 13px !important;
+  }
+  body header input#navtoggle:checked ~ nav a.btn {
+    width: 100% !important;
+    margin: 14px 0 2px !important;
+    border: 1px solid var(--color-accent);
+    text-align: center !important;
+    padding: 12px 0 !important;
+  }
+
+  /* Dropdown mobil: ausgeklappte Liste statt Overlay */
+  body header .navdrop { display: block !important; width: 100%; text-align: left !important; }
+  body header .navdrop > .navlabel { text-align: left !important; }
+  body header .navdrop::after { display: none; }
+  body header .navdrop > .navmenu:has(> span) {
+    position: static !important;
+    display: grid !important;
+    grid-template-rows: 0fr;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    transition: grid-template-rows .3s cubic-bezier(.2,.8,.25,1);
+  }
+  body header .navdrop.open > .navmenu:has(> span) { grid-template-rows: 1fr; }
+  body header .navdrop > .navmenu > span {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+  }
+  /* Rückfall ohne Skript: Untermenü bleibt offen statt unerreichbar */
+  body header .navdrop > .navmenu:not(:has(> span)) {
+    position: static !important;
+    display: flex !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  body header .navdrop .navmenu a { padding-left: 18px !important; }
+  /* „Behandlungen" als Zeile mit dem Pfeil direkt hinter dem Wort */
+  body header .navdrop > .navlabel {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 9px !important;
+    width: 100% !important;
+    padding: 15px 0 !important;
+    border-top: 1px solid var(--color-divider);
+    border-bottom: 0 !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body header .navdrop > .navlabel:active { color: var(--color-accent-700); }
+  body header .navchev {
+    display: block !important;
+    flex: none;
+    transition: transform .3s cubic-bezier(.2,.8,.25,1);
+  }
+  body header .navdrop.open .navchev { transform: rotate(180deg); }
+
+  /* Offenes Menü: Seite friert ein, Termin-Leiste weicht */
+  html:has(input#navtoggle:checked) { overflow: hidden; }
+  html:has(input#navtoggle:checked) body { overflow: hidden; }
+  body:has(input#navtoggle:checked) #stickycta {
+    transform: translateY(110%) !important;
+    pointer-events: none;
+  }
+  body header input#navtoggle:checked ~ nav {
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Startseite mobil: der Praxis-Rundflug rückt vor „Worum geht es?" —
+     weniger Text vor dem ersten Bild. Reine Reihenfolge, kein doppelter Inhalt. */
+  body [id="1b"] { display: flex; flex-direction: column; }
+  body [id="1b"] > * { order: 5; }
+  body [id="1b"] > header { order: 0; }
+  body [id="1b"] > #hero { order: 1; }
+  body [id="1b"] > #videoband { order: 2; }
+  body [id="1b"] > #worumband { order: 3; }
+  body #hero { padding-top: 72px !important; padding-bottom: 24px !important; }
+  body #videoband > div:first-child { height: 62vh !important; min-height: 300px; }
+
+  /* Hochkant-Tafel (Erstgespräch): das Bild bestimmt mobil die Höhe —
+     sonst bleibt unter dem Foto die Restfläche der 640px-Spalte leer. */
+  body figure[style*="min-height:640px"],
+  body figure[style*="min-height: 640px"],
+  body figure[style*="min-height: 640px"] ,
+  body figure[style*="min-height:640px"] { min-height: 0 !important; height: auto !important; }
+  body figure[style*="min-height:640px"] > img.plate,
+  body figure[style*="min-height: 640px"] > img.plate,
+  body figure[style*="min-height: 640px"] > img.plate ,
+  body figure[style*="min-height:640px"] > img.plate { aspect-ratio: 4 / 5 !important; }
+
+  /* Anfahrt: die Gebäudeansicht trägt einen eingezeichneten Weg. Das Bild
+     behält mobil sein Seitenverhältnis, sonst schneidet der Zuschnitt die
+     Pfeilspitze ab (SVG und Foto werden identisch beschnitten). */
+  body img.wegbild { height: auto !important; aspect-ratio: 1909 / 824; }
+
+  /* Bild-Spalten, die auf Desktop die Texthöhe füllen (min-height:640px):
+     mobil schrumpft das Foto auf sein Seitenverhältnis, die Mindesthöhe
+     bliebe als leerer Block darunter stehen. */
+  body figure[style*="min-height:640px"] ,
+  body figure[style*="min-height: 640px"] { min-height: 0 !important; height: auto !important; }
+
+  /* Großelino: schwebende Variante aus, feste im Inhalt an */
+  #grosselino, #gr-bubble { display: none !important; }
+  #grosselino-mobil { display: flex !important; }
+}
+
+@media (max-width: 640px) {
+  [style*="padding: "][style*=" 64px"] ,
+  [style*="padding:"][style*=" 64px"] { padding-left: 18px !important; padding-right: 18px !important; }
+  [style*="margin: 0px 64px"],
+  [style*="margin:0px 64px"],
+  [style*="margin: 0 64px"],
+  [style*="margin:0 64px"],
+  [style*="margin: 40px 64px"] ,
+  [style*="margin:40px 64px"] { margin-left: 18px !important; margin-right: 18px !important; }
+  body [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { gap: 24px !important; }
+  body [style*="padding: 116px"] ,
+  body [style*="padding:116px"] { padding-top: 42px !important; padding-bottom: 42px !important; }
+  body [style*="padding: 104px"] ,
+  body [style*="padding:104px"] { padding-top: 36px !important; padding-bottom: 36px !important; }
+  body [style*="padding: 80px"] ,
+  body [style*="padding:80px"] { padding-top: 40px !important; padding-bottom: 40px !important; }
+  body [style*="padding: 70px"] ,
+  body [style*="padding:70px"] { padding-top: 34px !important; padding-bottom: 34px !important; }
+  body table.table td { font-size: 13px !important; }
+  body img.plate { aspect-ratio: 4 / 3; }
+  .btn { width: 100%; text-align: center; }
+  [style*="display: flex"][style*="gap: 14px"] ,
+  [style*="display: flex"][style*="gap:14px"] ,
+  [style*="display:flex"][style*="gap: 14px"] ,
+  [style*="display:flex"][style*="gap:14px"] { flex-wrap: wrap; }
+  .ai-badge { right: 8px; bottom: 8px; padding: 4px 7px; }
+  .ai-badge img { width: 64px; }
+  body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr !important; }
+}

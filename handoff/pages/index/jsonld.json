@@ -1,0 +1,112 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dentist",
+      "@id": "https://www.zahnmedizin-potsdam.de/#praxis",
+      "name": "Groß & Groß Zahnmedizin Potsdam",
+      "alternateName": "Zahnarztpraxis Groß & Groß",
+      "description": "Familiengeführte Zahnarztpraxis in Potsdam Mitte seit 1991 — Implantologie, ästhetische Zahnmedizin, eigenes Zahnlabor im Haus, Behandlung von Angstpatienten und Kindern.",
+      "url": "https://www.zahnmedizin-potsdam.de/",
+      "telephone": "+49331960926",
+      "email": "zahnarztgross.gross@outlook.de",
+      "foundingDate": "1991",
+      "priceRange": "$$",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Barzahlung, EC-Karte, Rechnung",
+      "image": "https://www.zahnmedizin-potsdam.de/uploads/schopenhauer-vorn.jpg",
+      "logo": "https://www.zahnmedizin-potsdam.de/apple-touch-icon.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Schopenhauerstraße 37",
+        "postalCode": "14467",
+        "addressLocality": "Potsdam",
+        "addressRegion": "Brandenburg",
+        "addressCountry": "DE"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 52.3976, "longitude": 13.0484 },
+      "hasMap": "https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=18/52.3976/13.0484",
+      "areaServed": [
+        { "@type": "City", "name": "Potsdam" },
+        { "@type": "AdministrativeArea", "name": "Potsdam-Mittelmark" }
+      ],
+      "publicAccess": true,
+      "isAccessibleForFree": false,
+      "availableService": [
+        { "@type": "MedicalProcedure", "name": "Professionelle Zahnreinigung und Prophylaxe", "url": "https://www.zahnmedizin-potsdam.de/prophylaxe.html" },
+        { "@type": "MedicalProcedure", "name": "Parodontitis-Behandlung", "url": "https://www.zahnmedizin-potsdam.de/parodontologie.html" },
+        { "@type": "MedicalProcedure", "name": "Zahnimplantate", "url": "https://www.zahnmedizin-potsdam.de/implantologie.html" },
+        { "@type": "MedicalProcedure", "name": "Ästhetische Zahnmedizin", "url": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html" },
+        { "@type": "MedicalProcedure", "name": "Weisheitszahn-Entfernung und Zahnchirurgie", "url": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html" },
+        { "@type": "MedicalProcedure", "name": "Kinderzahnheilkunde", "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde.html" },
+        { "@type": "MedicalProcedure", "name": "Behandlung von Angstpatienten", "url": "https://www.zahnmedizin-potsdam.de/angstpatienten.html" },
+        { "@type": "MedicalProcedure", "name": "Zahnersatz aus dem eigenen Zahnlabor", "url": "https://www.zahnmedizin-potsdam.de/zahnlabor.html" },
+        { "@type": "MedicalProcedure", "name": "Akutbehandlung bei Zahnschmerzen", "url": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html" },
+        { "@type": "MedicalProcedure", "name": "Schienentherapie bei Zähneknirschen" },
+        { "@type": "MedicalProcedure", "name": "Laserbehandlung" }
+      ],
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday"], "opens": "08:00", "closes": "13:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday"], "opens": "14:00", "closes": "17:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "08:00", "closes": "13:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "employee": [
+        { "@id": "https://www.zahnmedizin-potsdam.de/#chantal-gross" },
+        { "@id": "https://www.zahnmedizin-potsdam.de/#matthias-gross" }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Termin anfragen",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.zahnmedizin-potsdam.de/termin.html",
+          "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+        }
+      }
+    },
+    {
+      "@type": "Dentist",
+      "@id": "https://www.zahnmedizin-potsdam.de/#chantal-gross",
+      "name": "Chantal Groß",
+      "jobTitle": "Zahnärztin",
+      "worksFor": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "image": "https://www.zahnmedizin-potsdam.de/uploads/portrait-chantal-gross.jpg",
+      "url": "https://www.zahnmedizin-potsdam.de/praxis-team.html",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universität Greifswald" },
+      "knowsAbout": ["Ästhetische Zahnmedizin", "Konservierende Zahnheilkunde", "Kinderzahnheilkunde", "Parodontologie"],
+      "medicalSpecialty": "Dentistry"
+    },
+    {
+      "@type": "Dentist",
+      "@id": "https://www.zahnmedizin-potsdam.de/#matthias-gross",
+      "name": "Matthias Groß",
+      "jobTitle": "Zahnarzt",
+      "worksFor": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "image": "https://www.zahnmedizin-potsdam.de/uploads/portrait-matthias-gross.jpg",
+      "url": "https://www.zahnmedizin-potsdam.de/praxis-team.html",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universität Rostock" },
+      "knowsAbout": ["Implantologie", "Prothetik", "Zahnchirurgie", "Mund-, Kiefer- und Gesichtschirurgie"],
+      "medicalSpecialty": "Dentistry"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.zahnmedizin-potsdam.de/#website",
+      "url": "https://www.zahnmedizin-potsdam.de/",
+      "name": "Groß & Groß Zahnmedizin Potsdam",
+      "publisher": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/",
+      "name": "Zahnarztpraxis Groß & Groß in Potsdam",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "about": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "inLanguage": "de-DE"
+    }
+  ]
+}
+]

@@ -1,0 +1,36 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html",
+      "name": "Anfahrt & Parken — Schopenhauerstraße 37, Potsdam",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "about": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "inLanguage": "de-DE",
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Anfahrt & Parken", "item": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/anfahrt-parken.html#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Wo genau ist der Eingang?", "acceptedAnswer": { "@type": "Answer", "text": "Auf der Rückseite des Gebäudes, nicht an der Schopenhauerstraße. Gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort ist eine gläserne Doppeltür." } },
+        { "@type": "Question", "name": "Kann ich direkt an der Praxis parken?", "acceptedAnswer": { "@type": "Answer", "text": "An der Hofseite gibt es Kurzzeit-Parkplätze. Sind sie belegt, finden Sie weitere Stellplätze in der Zeppelinstraße, wenige Gehminuten entfernt." } },
+        { "@type": "Question", "name": "Wie komme ich mit öffentlichen Verkehrsmitteln?", "acceptedAnswer": { "@type": "Answer", "text": "Mit den Tramlinien 91, 94 und 98 bis Luisenplatz-Süd oder den Buslinien 605, 606 und 695 bis Luisenplatz. Von dort sind es etwa vier Minuten zu Fuß." } },
+        { "@type": "Question", "name": "Ist die Praxis barrierefrei?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Sagen Sie bei der Terminvereinbarung kurz Bescheid, wenn Sie Unterstützung beim Zugang möchten." } },
+        { "@type": "Question", "name": "Mein Navi führt mich an die Straßenseite — was jetzt?", "acceptedAnswer": { "@type": "Answer", "text": "Das ist normal, die Adresse liegt an der Straße. Stellen Sie das Auto ab und gehen Sie links am Gebäude vorbei nach hinten in den Hof; dort ist der Eingang." } }
+      ]
+    }
+  ]
+}
+]

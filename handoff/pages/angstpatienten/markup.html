@@ -1,0 +1,161 @@
+<!-- Angstpatienten  —  Route: /angstpatienten
+     Nur der Seiteninhalt. Kopfzeile, mitlaufende Termin-Leiste, Fußzeile und
+     der Zurück-nach-oben-Knopf wurden herausgelöst und liegen einmalig unter
+     layout/ — sie gehören nach app/layout.tsx (siehe CLAUDE.md, Schritt 3).
+     Der äußere Wrapper (max-width, Hintergrund, Grundschrift) gehört ebenfalls
+     ins Layout, nicht in jede Seite. -->
+
+<div style="max-width:1440px; margin:0 auto; background:var(--color-bg); font-family:var(--font-body)">
+
+<div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 16px; padding:14px; border-bottom:1px solid var(--color-divider); font-size:14px; color:var(--color-neutral-800)">
+    <span style="font-family:var(--font-ui); font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-700)">Akute Zahnschmerzen?</span>
+    <span style="width:1px; height:18px; background:var(--color-divider)"></span>
+    <span>Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir <a href="Zahnschmerzen.dc.html">Notfalltermine</a> frei.</span>
+    <a href="tel:+49331960926" style="font-family:var(--font-heading); font-size:var(--fs-body); font-feature-settings:'tnum'">0331 960926</a>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end; padding:96px 64px 60px">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Angstpatienten</div>
+      <h1 style="font-weight:400; font-size:var(--fs-hero); line-height:1.0; letter-spacing:-0.025em; margin:22px 0 0">Zahnarzt für<br>Angstpatienten<br>in Potsdam.</h1>
+    </div>
+    <div>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); font-size:var(--fs-body-lg); margin:0">Fünf bis zehn Prozent der Menschen meiden den Zahnarzt aus Angst. Die Folge ist meistens dieselbe: Kontrollen werden verschoben, aus kleinen Problemen werden große, und der Weg zurück fühlt sich mit jedem Jahr schwerer an. Wir behandeln viele Patienten, die lange nicht da waren — und fangen dort an, wo es für Sie machbar ist.</p>
+      <div style="display:flex; gap:14px; margin-top:26px">
+        <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 26px; font-size:15px">Erstgespräch anfragen</a>
+        <a class="btn btn-secondary" href="tel:+49331960926" style="padding:12px 26px; font-size:15px">0331 960926</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1.05fr 1fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <div style="padding:80px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Der erste Termin</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 20px">Nur reden. Ohne Behandlung.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 16px">Wenn Sie möchten, ist der erste Termin ein Gespräch und nichts weiter: Sie erzählen, was Ihnen Sorgen macht, wir sehen uns nur an, was Sie uns zeigen möchten, und Sie gehen wieder. Kein Bohrer, keine Spritze, keine Entscheidung an diesem Tag.</p>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Am Ende wissen Sie, was ansteht, in welcher Reihenfolge und was es kostet. Wann Sie damit anfangen, entscheiden Sie.</p>
+      <blockquote style="margin:32px 0 0; padding:0 0 0 22px; border-left:1px solid var(--color-accent-300); font-family:var(--font-heading); font-style:italic; font-size:var(--fs-h5); line-height:1.45; color:var(--color-neutral-900)">„Ich behandle viele Menschen, die lange keinen Zahnarzt gesehen haben. Sie brauchen dasselbe wie Kinder: Ruhe und eine ehrliche Ansage."
+        <cite style="display:block; margin-top:14px; font-family:var(--font-ui); font-style:normal; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-700)">Chantal Groß, Zahnärztin</cite>
+      </blockquote>
+    </div>
+    <div style="position:relative; overflow:hidden; min-height:560px">
+      <img class="parallax-img" src="uploads/photos-1786974461849-vuwz.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß &amp; Groß in Potsdam" style="position:absolute; left:0; top:-20%; width:100%; height:140%; object-fit:cover; display:block">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; padding:96px 64px; border-bottom:1px solid var(--color-divider)">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Sagen Sie uns, wo Sie stehen</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 18px">Wie nervös sind Sie wirklich?</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 16px">Angst ist keine Ja-oder-Nein-Frage. Zwischen „ungern, aber es geht" und „ich habe seit Jahren abgesagt" liegt ein weiter Weg — und wir planen den Termin unterschiedlich, je nachdem wo Sie stehen.</p>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Schieben Sie den Regler dorthin, wo es für Sie stimmt. Rechts sehen Sie, wie wir dann vorgehen würden.</p>
+      <p style="font-family:var(--font-heading); font-size:var(--fs-h5); line-height:1.45; margin:28px 0 0">Und wenn Sie ganz rechts landen: genau dafür ist diese Praxis gemacht.</p>
+    </div>
+    <div style="border:1px solid var(--color-accent-300); border-radius:var(--radius-md); background:linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 9%, #ffffff) 0%, #ffffff 62%); padding:34px 36px 36px">
+      <label for="fearRange" style="display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-ui); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-800)">
+        Wie nervös sind Sie vor einem Zahnarzttermin?
+        <span style="font-family:var(--font-heading); font-size:var(--fs-display); line-height:0.9; color:var(--color-accent-700); letter-spacing:-0.02em; text-transform:none; font-feature-settings:'tnum'">{{ fear }}</span>
+      </label>
+      <input id="fearRange" type="range" min="1" max="10" step="1" value="{{ fear }}" onChange="{{ onFear }}" onInput="{{ onFear }}" style="margin:26px 0 10px">
+      <div style="display:flex; justify-content:space-between; font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-neutral-700)">
+        <span>entspannt</span><span>panisch</span>
+      </div>
+      <div style="margin-top:30px; border-top:1px solid var(--color-accent-300); padding-top:26px; min-height:190px">
+        <div style="display:flex; align-items:center; gap:12px; color:var(--color-accent-700)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ fearTier.icon }}"></path></svg>
+          <span style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase">Unser Vorgehen</span>
+        </div>
+        <p style="font-family:var(--font-heading); font-size:clamp(24px,2.4vw,32px); line-height:1.16; letter-spacing:-0.015em; margin:16px 0 0">{{ fearTier.label }}</p>
+        <p style="font-size:var(--fs-body-lg); line-height:1.6; margin:14px 0 0; color:var(--color-neutral-800); text-wrap:pretty">{{ fearTier.text }}</p>
+      </div>
+      <div style="display:flex; gap:12px; margin-top:28px; padding-top:24px; border-top:1px solid var(--color-accent-300)">
+        <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 24px; font-size:14px">Termin anfragen</a>
+        <a class="btn btn-secondary" href="tel:+49331960926" style="padding:12px 24px; font-size:14px">0331 960926</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 40px">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Was Sie von uns erwarten können</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:24ch">Sieben Zusagen, die im Behandlungszimmer gelten.</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); margin:0 64px 96px">
+    <sc-for list="{{ zusagen }}" as="z" hint-placeholder-count="7">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:20px; padding:30px 34px 30px 0; border-bottom:1px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading); font-size:15px; color:var(--color-accent-700); font-feature-settings:'tnum'; padding-top:5px">{{ z.no }}</span>
+        <div>
+          <h3 style="font-weight:400; font-size:var(--fs-h4); line-height:1.16; margin:0 0 8px">{{ z.title }}</h3>
+          <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.62; margin:0">{{ z.text }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1.1fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); background:var(--color-surface)">
+    <div style="position:relative; overflow:hidden; min-height:520px">
+      <img class="parallax-img" src="uploads/photos-1786974461752-m532.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" style="position:absolute; left:0; top:-20%; width:100%; height:140%; object-fit:cover; display:block">
+    </div>
+    <div style="padding:80px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Das Handzeichen</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 20px">Ein Zeichen, und wir hören auf.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 16px">Wer im Behandlungsstuhl liegt, kann nicht reden — das ist für viele der schlimmste Teil. Deshalb legen wir vor jeder Behandlung ein Handzeichen fest: Hand heben. Sobald Sie es geben, unterbrechen wir sofort. Nicht „gleich", nicht „nur noch dieser eine Schritt".</p>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Danach entscheiden Sie, ob wir weitermachen, eine Pause einlegen oder für heute Schluss ist. Das gilt bei jedem Termin, auch beim zwanzigsten.</p>
+      <hr class="hr">
+      <p style="font-family:var(--font-heading); font-size:var(--fs-lead); line-height:1.5; margin:0; color:var(--color-neutral-900)">Und wir erklären jeden Schritt, bevor er passiert — was wir tun, wie lange es dauert, was Sie spüren werden.</p>
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">In Etappen</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:26ch">Alles auf einmal muss niemand durchhalten.</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ etappen }}" as="e" hint-placeholder-count="3">
+      <div style="padding:34px 30px 34px 0; border-bottom:1px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading); font-size:15px; color:var(--color-accent-700); font-feature-settings:'tnum'">{{ e.no }}</span>
+        <h3 style="font-weight:400; font-size:var(--fs-h3); line-height:1.14; margin:14px 0 10px">{{ e.title }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.62; margin:0">{{ e.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <div style="padding:80px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Ablenkung</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 14px">Musik, Film, oder einfach Kopfhörer.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht" und „geht schon".</p>
+    </div>
+    <div style="padding:80px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Sanfter behandeln</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 14px">Laser statt Schmerzmittel-Reflex.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Wo es möglich ist, arbeiten wir mit dem Laser — in der Parodontosebehandlung, zur Keimreduktion und bei der Fissurenversiegelung. Der Vorteil für Sie: weniger Wundschmerz, längere Schmerzfreiheit und geringere Mengen Betäubungsmittel.</p>
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Häufige Fragen</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:24ch">Was Angstpatienten uns am häufigsten fragen.</h2>
+  </div>
+
+  <div style="margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ faq }}" as="f" hint-placeholder-count="6">
+      <div style="display:grid; grid-template-columns:1fr 1.3fr; gap:40px; padding:28px 0; border-bottom:1px solid var(--color-divider)">
+        <h3 style="font-weight:400; font-size:var(--fs-h5); line-height:1.2; margin:0">{{ f.q }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:var(--fs-body); line-height:1.66; margin:0">{{ f.a }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:104px 64px; text-align:center; background:#17150f">
+    <div style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-400)">Der erste Schritt</div>
+    <h2 style="font-weight:400; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em; margin:24px auto 0; max-width:22ch; color:#f7f5f0">Sagen Sie einfach, dass Sie Angst haben.</h2>
+    <p style="font-size:var(--fs-lead); line-height:1.6; max-width:52ch; margin:24px auto 0; color:rgba(243,242,242,0.72)">Bei der Online-Anfrage wählen Sie „Angstpatient/in" — dann planen wir mehr Zeit ein und beginnen mit einem Gespräch. Wir melden uns innerhalb von 24 Stunden.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:40px">
+      <a class="btn" href="Termin.dc.html" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid var(--color-accent-400); color:#17150f; background:var(--color-accent-400)">Termin anfragen</a>
+      <a class="btn" href="tel:+49331960926" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid rgba(243,242,242,0.35); color:#f3f2f2">0331 960926</a>
+    </div>
+  </div>
+
+</div>

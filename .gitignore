@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Der Übergabeordner bleibt im Repo (Quelle der Wahrheit für den Konverter),
+# aber Next soll ihn nicht kompilieren — dafür sorgt tsconfig "exclude".

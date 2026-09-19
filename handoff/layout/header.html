@@ -1,0 +1,49 @@
+<!-- KOPFZEILE — Fassung der STARTSEITE (rechts ohne den Punkt „Home").
+     Gehört nach components/Kopfzeile.tsx.
+     Achtung: das Menü hängt bisher an #navtoggle:checked. In React an einen
+     State-Wert hängen und die Selektoren in site.css entsprechend anpassen,
+     sonst läuft die Burger-Animation nie. -->
+
+<header style="display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:26px 64px; border-bottom:1px solid var(--color-divider)">
+      <input type="checkbox" id="navtoggle" aria-label="Menü öffnen" style="display:none">
+      <label for="navtoggle" class="navburger" style="display:none; cursor:pointer; align-items:center; gap:9px; font-family:var(--font-ui); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-700)">
+        <span style="display:grid; gap:5px">
+          <span style="display:block; width:22px; height:1px; background:var(--color-text)"></span>
+          <span style="display:block; width:22px; height:1px; background:var(--color-text)"></span>
+          <span style="display:block; width:22px; height:1px; background:var(--color-text)"></span>
+        </span>
+        <span>Menü</span>
+      </label>
+      <nav style="display:flex; gap:24px; align-items:center; font-family:var(--font-ui); font-size:13px; letter-spacing:0.07em; text-transform:uppercase">
+        <a href="Praxis &amp; Team.dc.html">Praxis</a>
+        <a href="Angstpatienten.dc.html">Angst</a>
+        <a href="Kinderzahnheilkunde.dc.html">Kinder</a>
+        <span class="navdrop" style="position:relative; display:inline-flex; align-items:center; gap:7px">
+          <span class="navlabel" style="display:inline-flex; align-items:center; gap:7px; cursor:default; color:var(--color-text)">Behandlungen<svg class="navchev" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-accent-700)"><path d="M6 9l6 6 6-6"></path></svg></span>
+          <span class="navmenu">
+            <a href="Leistungen.dc.html">Alle Leistungen</a>
+            <a href="Zahnschmerzen.dc.html">Zahnschmerzen &amp; Notfall</a>
+            <a href="Prophylaxe.dc.html">Prophylaxe &amp; Zahnreinigung</a>
+            <a href="Parodontologie.dc.html">Parodontitis-Behandlung</a>
+            <a href="Weisheitszähne &amp; Chirurgie.dc.html">Weisheitszähne &amp; Chirurgie</a>
+            <a href="Implantologie.dc.html">Zahnimplantate</a>
+            <a href="Ästhetische Zahnmedizin.dc.html">Ästhetische Zahnmedizin</a>
+            <a href="Zahnlabor.dc.html">Eigenes Zahnlabor</a>
+            <a href="Moderne Technik.dc.html">Moderne Technik</a>
+          </span>
+        </span>
+      </nav>
+      <a href="Zahnarztpraxis Groß.dc.html" style="display:flex; flex-direction:column; align-items:center; gap:9px; text-decoration:none; color:var(--color-text)">
+        <span class="brand-mono" style="display:flex; align-items:center; font-family:var(--font-ui); font-weight:500; font-size:var(--fs-h2); line-height:0.86; color:var(--color-accent-700)">
+          <span style="display:block; transform:scaleX(-1); margin-right:-0.3em">G</span>
+          <span style="display:block; color:var(--color-text)">G</span>
+        </span>
+        <span class="brand-word" style="display:block; font-family:var(--font-heading); font-size:var(--fs-h3); letter-spacing:0.05em; line-height:1">GROSS &amp; GROSS</span>
+        <span class="brand-tagline" style="display:block; font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--color-neutral-700)">Zahnmedizin · Implantologie · Potsdam</span>
+      </a>
+      <nav style="display:flex; gap:26px; justify-content:flex-end; align-items:center; font-family:var(--font-ui); font-size:13px; letter-spacing:0.07em; text-transform:uppercase">
+        <a href="Kontakt.dc.html">Kontakt</a>
+        <a href="Anfahrt &amp; Parken.dc.html">Anfahrt</a>
+        <a class="btn btn-primary" href="Termin.dc.html">Termin vereinbaren</a>
+      </nav>
+    </header>

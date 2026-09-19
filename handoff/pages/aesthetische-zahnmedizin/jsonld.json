@@ -1,0 +1,39 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html",
+      "name": "Ästhetische Zahnmedizin in Potsdam",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "about": { "@type": "MedicalProcedure", "name": "Ästhetische Zahnmedizin" },
+      "audience": { "@type": "Patient" },
+      "inLanguage": "de-DE",
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Ästhetische Zahnmedizin", "item": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/aesthetische-zahnmedizin.html#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Sieht man, dass etwas gemacht wurde?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn wir es richtig machen, nicht. Deshalb arbeiten wir mit natürlichen Farben und geben der Form ihre Unregelmäßigkeiten — eine völlig gleichmäßige, sehr weiße Reihe verrät sich sofort." } },
+        { "@type": "Question", "name": "Wie lange hält ein Veneer?", "acceptedAnswer": { "@type": "Answer", "text": "Bei guter Pflege viele Jahre. Entscheidend sind gesundes Zahnfleisch, regelmäßige Kontrolle und, falls Sie nachts knirschen, eine Schiene — sonst leidet die Keramik." } },
+        { "@type": "Question", "name": "Wird Ästhetik von der Kasse bezahlt?", "acceptedAnswer": { "@type": "Answer", "text": "In der Regel nicht, weil sie medizinisch nicht notwendig ist. Sie bekommen vorher einen schriftlichen Kostenplan; wo es eine Kassenvariante gibt, steht sie zum Vergleich daneben." } },
+        { "@type": "Question", "name": "Bleaching oder Veneers — was ist besser?", "acceptedAnswer": { "@type": "Answer", "text": "Das hängt davon ab, was stört. Sind die eigenen Zähne gesund und nur nachgedunkelt, reicht meist das Bleaching. Geht es um Form, Kanten oder einzelne auffällige Zähne, führt Bleaching nicht weiter." } },
+        { "@type": "Question", "name": "Werden meine Zähne dafür beschliffen?", "acceptedAnswer": { "@type": "Answer", "text": "Für Veneers und Kronen ja, in unterschiedlichem Maß — bei Veneers nur minimal an der Vorderfläche. Wir erklären Ihnen vorher genau, was an Substanz abgetragen wird, denn das ist nicht umkehrbar." } },
+        { "@type": "Question", "name": "Kann ich mir das Ergebnis vorher ansehen?", "acceptedAnswer": { "@type": "Answer", "text": "Farbmuster und Materialien zeigen wir Ihnen im Beratungstermin in der Hand. Bei größeren Frontzahnarbeiten besprechen wir Form und Farbe zusammen mit dem Zahntechniker, der hier im Haus arbeitet." } }
+      ]
+    }
+  ]
+}
+]

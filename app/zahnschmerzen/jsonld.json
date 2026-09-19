@@ -1,0 +1,63 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html",
+      "name": "Zahnschmerzen in Potsdam — schnell einen Termin bekommen",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "about": { "@type": "MedicalCondition", "name": "Zahnschmerzen" },
+      "audience": { "@type": "Patient" },
+      "inLanguage": "de-DE",
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Zahnschmerzen in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnschmerzen.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ich bin kein Patient bei Ihnen. Kann ich trotzdem kommen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Rufen Sie an und sagen Sie, dass Sie akute Schmerzen haben — wir versuchen, Sie noch am gleichen Tag unterzubringen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wann rufe ich am besten an?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Morgens ab 8:00. Dann ist der Tag noch nicht verplant und die Chance auf einen Termin am selben Tag am größten." }
+        },
+        {
+          "@type": "Question",
+          "name": "Was mache ich am Wochenende oder nachts?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dann hilft die Notdienstsuche der Kassenzahnärztlichen Vereinigung Land Brandenburg unter kzvlb.de. Bei Atemnot, starker Schwellung oder Kreislaufproblemen rufen Sie den Rettungsdienst unter 112." }
+        },
+        {
+          "@type": "Question",
+          "name": "Der Schmerz ist über Nacht verschwunden. Muss ich noch kommen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wenn Schmerz plötzlich aufhört, ohne dass behandelt wurde, kann der Nerv abgestorben sein — die Entzündung läuft dann ohne Warnsignal weiter." }
+        },
+        {
+          "@type": "Question",
+          "name": "Mir ist ein Stück Zahn abgebrochen. Was tun?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bruchstück feucht aufbewahren, am besten in Milch oder Kochsalzlösung, und zum Termin mitbringen. Rufen Sie gleich an, auch wenn es nicht wehtut." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wird beim Schmerztermin gleich alles gemacht?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nein. Zuerst geht es darum, dass Sie schmerzfrei sind. Was darüber hinaus nötig ist, besprechen wir danach in Ruhe und mit schriftlichem Kostenplan." }
+        }
+      ]
+    }
+  ]
+}
+]

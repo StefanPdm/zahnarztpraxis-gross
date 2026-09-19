@@ -1,0 +1,134 @@
+<!-- Implantologie  —  Route: /implantologie
+     Nur der Seiteninhalt. Kopfzeile, mitlaufende Termin-Leiste, Fußzeile und
+     der Zurück-nach-oben-Knopf wurden herausgelöst und liegen einmalig unter
+     layout/ — sie gehören nach app/layout.tsx (siehe CLAUDE.md, Schritt 3).
+     Der äußere Wrapper (max-width, Hintergrund, Grundschrift) gehört ebenfalls
+     ins Layout, nicht in jede Seite. -->
+
+<div style="max-width:1440px; margin:0 auto; background:var(--color-bg); font-family:var(--font-body)">
+
+<div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 16px; padding:14px; border-bottom:1px solid var(--color-divider); font-size:14px; color:var(--color-neutral-800)">
+    <span style="font-family:var(--font-ui); font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-700)">Akute Zahnschmerzen?</span>
+    <span style="width:1px; height:18px; background:var(--color-divider)"></span>
+    <span>Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir <a href="Zahnschmerzen.dc.html">Notfalltermine</a> frei.</span>
+    <a href="tel:+49331960926" style="font-family:var(--font-heading); font-size:var(--fs-body); font-feature-settings:'tnum'">0331 960926</a>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end; padding:96px 64px 60px">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Implantologie</div>
+      <h1 style="font-weight:400; font-size:var(--fs-hero); line-height:1.0; letter-spacing:-0.025em; margin:22px 0 0">Zahnimplantate<br>in Potsdam.</h1>
+    </div>
+    <div>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); font-size:var(--fs-body-lg); margin:0">Planung, Implantation, Zahnersatz und Nachsorge — alles in derselben Praxis, bei denselben Behandlern, mit dem Zahnlabor eine Tür weiter. Sie müssen für Ihr Implantat nicht zwischen Chirurg, Zahnarzt und Labor pendeln, und niemand schiebt die Verantwortung weiter.</p>
+      <div style="display:flex; gap:14px; margin-top:26px">
+        <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 26px; font-size:15px">Beratung anfragen</a>
+        <a class="btn btn-secondary" href="tel:+49331960926" style="padding:12px 26px; font-size:15px">0331 960926</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="statbar" style="display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <sc-for list="{{ proof }}" as="p" hint-placeholder-count="4">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:7px; padding:30px 20px; text-align:center; border-left:1px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading); font-size:var(--fs-h2-sm); line-height:1; color:var(--color-accent-700); font-feature-settings:'tnum'">{{ p.value }}</span>
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-700)">{{ p.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Der Weg zum Implantat</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:26ch">Vier Etappen, die Sie vorher kennen.</h2>
+    <p style="color:var(--color-neutral-800); font-size:var(--fs-body-lg); margin:18px 0 0; max-width:62ch; text-wrap:pretty">Zwischen dem ersten Gespräch und dem fertigen Zahn liegen mehrere Monate — die meisten davon vergehen, ohne dass Sie etwas tun müssen. So sieht der Ablauf aus.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ ablauf }}" as="s" hint-placeholder-count="4">
+      <div style="padding:32px 28px 34px 0; border-bottom:1px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading); font-size:15px; color:var(--color-accent-700); font-feature-settings:'tnum'">{{ s.no }}</span>
+        <h3 style="font-weight:400; font-size:var(--fs-h3-sm); line-height:1.14; margin:14px 0 10px">{{ s.title }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.62; margin:0">{{ s.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1.05fr 1fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider); background:var(--color-surface)">
+    <div style="padding:80px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Was ein Implantat ist</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 20px">Eine künstliche Wurzel, nichts Mystisches.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 22px">Ein Implantat ersetzt nicht den ganzen Zahn, sondern zuerst nur seine Wurzel: ein kleiner Körper aus Titan wird im Kieferknochen verankert und wächst dort fest ein. Titan wird auch von empfindlichen Menschen sehr gut vertragen. Darauf kommt der sichtbare Teil — je nach Fall eine Krone, eine Brücke oder eine Prothese.</p>
+      <div style="display:grid; gap:0; border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ aufbau }}" as="a" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:auto 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:5px">{{ a.no }}</span>
+            <div>
+              <h3 style="font-weight:400; font-size:var(--fs-h5); line-height:1.16; margin:0 0 6px">{{ a.title }}</h3>
+              <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.6; margin:0">{{ a.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative; overflow:hidden; min-height:600px; border-left:1px solid var(--color-divider)">
+      <img class="parallax-img" src="uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Technik in der Zahnarztpraxis Groß &amp; Groß in Potsdam" style="position:absolute; left:0; top:-20%; width:100%; height:140%; object-fit:cover; display:block">
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Wann welche Lösung</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:26ch">Ein Zahn, mehrere Zähne, ganzer Kiefer.</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ faelle }}" as="f" hint-placeholder-count="3">
+      <div style="padding:32px 28px 34px 0; border-bottom:1px solid var(--color-divider)">
+        <h3 style="font-weight:400; font-size:var(--fs-h3); line-height:1.14; margin:0 0 12px">{{ f.title }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.64; margin:0">{{ f.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1.05fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <figure style="position:relative; overflow:hidden; min-height:520px; margin:0">
+      <img class="parallax-img" src="uploads/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" style="position:absolute; left:0; top:-20%; width:100%; height:140%; object-fit:cover; display:block">
+      <figcaption style="position:absolute; left:20px; bottom:18px; display:flex; gap:14px; padding:9px 16px; border-radius:var(--radius-md); background:rgba(255,255,255,0.92); font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-neutral-700)">Digitales Modell · Labor im Haus</figcaption>
+    </figure>
+    <div style="padding:80px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Der Unterschied</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 20px">Implantat und Zahnersatz aus einer Hand.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 16px">Der aufwendigste Teil einer Implantatversorgung ist selten die Operation — es ist die Abstimmung danach. Farbe, Form, Biss: Wenn Zahnarzt und Zahntechniker in verschiedenen Häusern sitzen, geht jede Korrektur mit Post und Wartezeit einher.</p>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 16px">Bei uns sitzt der Zahntechniker in derselben Praxis. Die Zahnfarbe wird direkt am Stuhl bestimmt, Anpassungen passieren am selben Tag, und Kronen entstehen im 3D-Verfahren mit CAD/CAM-Technologie dort, wo sie auch eingesetzt werden.</p>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Das Modell Ihres Kiefers wird dafür digital eingescannt (Bild links): Aus dem Scan entsteht am Rechner ein exaktes dreidimensionales Abbild, auf dem Krone oder Brücke konstruiert werden — ohne den Umweg über Gipsmodelle, die per Post zwischen Praxis und Fremdlabor reisen.</p>
+      <div style="display:flex; gap:14px; margin-top:24px">
+        <a class="btn btn-secondary" href="Zahnlabor.dc.html" style="padding:12px 26px; font-size:15px">Zum Zahnlabor</a>
+        <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 26px; font-size:15px">Termin anfragen</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Häufige Fragen</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:24ch">Was Patienten vor einem Implantat fragen.</h2>
+  </div>
+
+  <div style="margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ faq }}" as="f" hint-placeholder-count="6">
+      <div style="display:grid; grid-template-columns:1fr 1.3fr; gap:40px; padding:28px 0; border-bottom:1px solid var(--color-divider)">
+        <h3 style="font-weight:400; font-size:var(--fs-h5); line-height:1.2; margin:0">{{ f.q }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:var(--fs-body); line-height:1.66; margin:0">{{ f.a }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:104px 64px; text-align:center; background:#17150f">
+    <div style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-400)">Beratung</div>
+    <h2 style="font-weight:400; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em; margin:24px auto 0; max-width:22ch; color:#f7f5f0">Erst der Befund, dann der Plan.</h2>
+    <p style="font-size:var(--fs-lead); line-height:1.6; max-width:54ch; margin:24px auto 0; color:rgba(243,242,242,0.72)">Im Beratungstermin klären wir, ob ein Implantat für Sie infrage kommt, welche Alternativen es gibt und was beides kostet — schriftlich, vor jeder Entscheidung. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:40px">
+      <a class="btn" href="Termin.dc.html" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid var(--color-accent-400); color:#17150f; background:var(--color-accent-400)">Termin anfragen</a>
+      <a class="btn" href="tel:+49331960926" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid rgba(243,242,242,0.35); color:#f3f2f2">0331 960926</a>
+    </div>
+  </div>
+
+</div>

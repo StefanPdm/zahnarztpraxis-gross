@@ -1,0 +1,9 @@
+<!-- SEITLICHE LAUFMARKE (nur Startseite) — zeigt am linken Rand den
+     aktuellen Abschnitt. Client-Komponente mit IntersectionObserver. -->
+
+<div id="runhead" style="position:fixed; left:18px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; align-items:center; gap:16px; opacity:0; transition:opacity .5s ease; pointer-events:none">
+    <span id="runheadLabel" style="writing-mode:vertical-rl; transform:rotate(180deg); font-family:var(--font-ui); font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--color-neutral-700); white-space:nowrap"></span>
+    <span style="width:1px; height:120px; background:var(--color-accent-300); position:relative; overflow:hidden">
+      <span id="runheadBar" style="position:absolute; left:0; top:0; width:1px; height:0; background:var(--color-accent)"></span>
+    </span>
+  </div>

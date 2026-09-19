@@ -1,0 +1,40 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html",
+      "name": "Weisheitszähne entfernen in Potsdam",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "about": { "@type": "MedicalProcedure", "name": "Weisheitszahn-Entfernung" },
+      "audience": { "@type": "Patient" },
+      "inLanguage": "de-DE",
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Weisheitszähne & Chirurgie", "item": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/weisheitszaehne-chirurgie.html#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Muss ich meine Weisheitszähne entfernen lassen?", "acceptedAnswer": { "@type": "Answer", "text": "Nicht zwingend. Wenn sie gerade stehen, im Biss sind und sich putzen lassen, können sie bleiben. Entfernt wird, wenn sie Schaden anrichten oder absehbar anrichten werden — das entscheidet die Lage im Kiefer, nicht das Alter." } },
+        { "@type": "Question", "name": "Tut die Entfernung weh?", "acceptedAnswer": { "@type": "Answer", "text": "Der Eingriff findet in örtlicher Betäubung statt; Sie spüren Druck, aber keinen Schmerz. Danach ist die Stelle einige Tage empfindlich — was Sie dagegen nehmen können, besprechen wir vorher." } },
+        { "@type": "Question", "name": "Werden alle vier auf einmal entfernt?", "acceptedAnswer": { "@type": "Answer", "text": "Das hängt von der Lage und von Ihnen ab. Manchmal ist eine Sitzung sinnvoll, manchmal zwei — dann ist immer eine Seite zum Kauen frei." } },
+        { "@type": "Question", "name": "Wie lange bin ich danach ausgefallen?", "acceptedAnswer": { "@type": "Answer", "text": "Rechnen Sie mit zwei bis drei Tagen, in denen Sie es ruhig angehen sollten. Planen Sie den Termin so, dass danach kein wichtiger Anlass steht." } },
+        { "@type": "Question", "name": "Wie stark schwillt es an?", "acceptedAnswer": { "@type": "Answer", "text": "Eine Schwellung ist normal und erreicht meist am zweiten Tag ihren Höhepunkt. Konsequentes Kühlen in den ersten Stunden hält sie klein." } },
+        { "@type": "Question", "name": "Wann muss ich mich melden?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn Schmerz oder Schwellung nach dem dritten Tag zunehmen statt abzunehmen, bei Fieber oder bei einer Blutung, die nicht aufhört. Rufen Sie dann an." } },
+        { "@type": "Question", "name": "Zahlt die Krankenkasse die Entfernung?", "acceptedAnswer": { "@type": "Answer", "text": "Wenn die Entfernung medizinisch notwendig ist, ist sie eine Leistung der gesetzlichen Krankenkassen. Was in Ihrem Fall gilt, sagen wir Ihnen vor dem Eingriff." } }
+      ]
+    }
+  ]
+}
+]

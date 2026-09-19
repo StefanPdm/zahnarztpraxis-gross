@@ -1,0 +1,24 @@
+# robots.txt — Zahnmedizin Potsdam, Groß & Groß
+User-agent: *
+Allow: /
+
+# KI-Crawler ausdrücklich erlaubt: die Inhalte sollen in KI-Antworten auffindbar sein.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.zahnmedizin-potsdam.de/sitemap.xml

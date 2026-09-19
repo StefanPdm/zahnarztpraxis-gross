@@ -1,0 +1,101 @@
+<!-- Kontakt  —  Route: /kontakt
+     Nur der Seiteninhalt. Kopfzeile, mitlaufende Termin-Leiste, Fußzeile und
+     der Zurück-nach-oben-Knopf wurden herausgelöst und liegen einmalig unter
+     layout/ — sie gehören nach app/layout.tsx (siehe CLAUDE.md, Schritt 3).
+     Der äußere Wrapper (max-width, Hintergrund, Grundschrift) gehört ebenfalls
+     ins Layout, nicht in jede Seite. -->
+
+<div style="max-width:1440px; margin:0 auto; background:var(--color-bg); font-family:var(--font-body)">
+
+<div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 16px; padding:14px; border-bottom:1px solid var(--color-divider); font-size:14px; color:var(--color-neutral-800)">
+    <span style="font-family:var(--font-ui); font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-700)">Akute Zahnschmerzen?</span>
+    <span style="width:1px; height:18px; background:var(--color-divider)"></span>
+    <span>Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir <a href="Zahnschmerzen.dc.html">Notfalltermine</a> frei.</span>
+    <a href="tel:+49331960926" style="font-family:var(--font-heading); font-size:var(--fs-body); font-feature-settings:'tnum'">0331 960926</a>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end; padding:96px 64px 60px">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Kontakt</div>
+      <h1 style="font-weight:400; font-size:var(--fs-hero); line-height:1.0; letter-spacing:-0.025em; margin:22px 0 0">Schopenhauer-<br>straße 37,<br>Potsdam West.</h1>
+    </div>
+    <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); font-size:var(--fs-body-lg); margin:0">Rufen Sie an, schreiben Sie eine E-Mail oder senden Sie eine Terminanfrage — wir antworten innerhalb von 24 Stunden. Für akute Beschwerden halten wir jeden Morgen Termine frei; melden Sie sich in diesem Fall bitte telefonisch.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <div style="padding:44px 64px 44px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Telefon</div>
+      <p style="font-family:var(--font-heading); font-size:30px; margin:14px 0 0"><a href="tel:+49331960926" style="font-feature-settings:'tnum'">0331 960926</a></p>
+      <p style="font-size:13px; color:var(--color-neutral-700); margin:8px 0 0; font-feature-settings:'tnum'">Telefax 0331 5811 3230</p>
+    </div>
+    <div style="padding:44px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">E-Mail</div>
+      <p style="font-family:var(--font-heading); font-size:var(--fs-h5); margin:14px 0 0"><a href="mailto:zahnarztgross.gross@outlook.de">zahnarztgross.gross@outlook.de</a></p>
+    </div>
+    <div style="padding:44px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Adresse</div>
+      <p style="font-family:var(--font-heading); font-size:var(--fs-h5); line-height:1.35; margin:14px 0 0">Schopenhauerstraße 37<br>14467 Potsdam</p>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--color-divider)">
+    <div style="padding:70px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Öffnungszeiten</div>
+      <div style="display:grid; margin-top:22px; font-feature-settings:'tnum'">
+        <sc-for list="{{ hours }}" as="h" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:1fr auto; gap:20px; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading); font-size:var(--fs-body)">{{ h.day }}</span>
+            <span style="text-align:right; color:var(--color-neutral-800)">{{ h.time }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:13px; color:var(--color-neutral-700); margin-top:16px">Und nach Vereinbarung. Sprechstunde nur mit Termin — so entstehen keine Wartezeiten im Wartezimmer.</p>
+    </div>
+    <div style="padding:70px 64px; border-left:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Anfahrt &amp; Parken</div>
+      <p style="font-size:14.5px; line-height:1.6; margin:18px 0 0; padding:14px 16px; border-left:2px solid var(--color-accent); background:var(--color-accent-100); color:var(--color-neutral-900)">Der Praxiseingang liegt auf der <strong style="font-weight:400">Rückseite des Gebäudes</strong> — gehen Sie links am Gebäude vorbei nach hinten in den Hof, dort ist eine gläserne Doppeltür. <a href="Anfahrt &amp; Parken.dc.html">Wegbeschreibung mit Fotos</a></p>
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:12px 20px; font-size:14px; margin-top:22px; color:var(--color-neutral-800)">
+        <span style="color:var(--color-neutral-700)">Tram</span><span>91, 94, 98 — Haltestelle Luisenplatz-Süd, etwa 4 Minuten zu Fuß</span>
+        <span style="color:var(--color-neutral-700)">Bus</span><span>605, 606, 695 — Luisenplatz</span>
+        <span style="color:var(--color-neutral-700)">Auto</span><span>Kurzzeit-Parkplätze an der Hofseite, weitere in der Zeppelinstraße</span>
+        <span style="color:var(--color-neutral-700)">Zugang</span><span>Erdgeschoss, barrierefrei erreichbar</span>
+      </div>
+      <div style="margin-top:26px; border-radius:var(--radius-md); border:1px solid var(--color-divider); overflow:hidden">
+        <iframe title="Karte Schopenhauerstraße 37, Potsdam" src="https://www.openstreetmap.org/export/embed.html?bbox=13.0414%2C52.3941%2C13.0554%2C52.4011&amp;layer=mapnik&amp;marker=52.3976%2C13.0484" style="width:100%; height:320px; border:0; display:block; filter:grayscale(0.35) contrast(1.02)" loading="lazy"></iframe>
+      </div>
+      <a href="https://www.openstreetmap.org/?mlat=52.3976&amp;mlon=13.0484#map=17/52.3976/13.0484" style="display:inline-block; margin-top:10px; font-family:var(--font-ui); font-size:11px; letter-spacing:0.16em; text-transform:uppercase">Route planen</a>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <img class="plate" src="uploads/photos-1786974467268-lgux.jpg" alt="Wartebereich der Praxis" style="width:100%; height:480px; object-fit:cover; border-width:0; outline:0">
+    <img class="plate" src="uploads/photos-1786974467256-ovyq.jpg" alt="Behandlungszimmer" style="width:100%; height:480px; object-fit:cover; border-width:0; outline:0">
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:80px 64px; background:var(--color-surface); border-bottom:1px solid var(--color-divider)">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Akute Schmerzen</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 14px">Rufen Sie morgens ab 8:00 an.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0">Wir halten täglich Termine für Schmerzfälle frei. Sagen Sie am Telefon kurz, wo und seit wann es weh tut — dann können wir einschätzen, wie dringend es ist. Außerhalb unserer Zeiten hilft der zahnärztliche Notdienst der Kassenzahnärztlichen Vereinigung Brandenburg.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Erster Besuch</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 14px">Was Sie mitbringen sollten.</h2>
+      <div style="display:grid; gap:12px; font-size:15px; color:var(--color-neutral-800)">
+        <span style="border-top:1px solid var(--color-divider); padding-top:10px">Versichertenkarte oder Angaben zur privaten Versicherung</span>
+        <span style="border-top:1px solid var(--color-divider); padding-top:10px">Bonusheft, falls vorhanden</span>
+        <span style="border-top:1px solid var(--color-divider); padding-top:10px">Liste der Medikamente, die Sie einnehmen</span>
+        <span style="border-top:1px solid var(--color-divider); padding-top:10px">Vorhandene Röntgenbilder oder Befunde</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr auto; gap:56px; align-items:center; padding:70px 64px; border-bottom:1px solid var(--color-divider)">
+    <div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:0 0 12px">Lieber schriftlich?</h2>
+      <p style="color:var(--color-neutral-800); margin:0; max-width:56ch">Senden Sie uns zwei Wunschzeiten und Ihr Anliegen — wir bestätigen innerhalb von 24 Stunden.</p>
+    </div>
+    <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 26px; font-size:15px">Termin anfragen</a>
+  </div>
+
+</div>

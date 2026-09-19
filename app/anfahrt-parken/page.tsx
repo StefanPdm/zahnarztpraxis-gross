@@ -1,0 +1,319 @@
+import { Fragment } from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import strukturierteDaten from "./jsonld.json";
+
+export const metadata: Metadata = {
+  title: "Anfahrt & Parken — Zahnarztpraxis Groß & Groß, Schopenhauerstraße 37 Potsdam",
+  description: "So finden Sie uns: Schopenhauerstraße 37 in Potsdam. Wichtig — der Praxiseingang liegt auf der Rückseite des Gebäudes, nicht an der Straße. Anfahrt mit Tram, Bus und Auto, Parken und barrierefreier Zugang.",
+  alternates: { canonical: "/anfahrt-parken" },
+};
+
+const weg = [
+        { no: "01", title: "Schopenhauerstraße 37", text: "Die gelbe Fassade mit den hohen Sprossenfenstern ist die Straßenseite. Hier stehen Sie richtig — aber noch nicht am Eingang." },
+        { no: "02", title: "Links am Gebäude vorbei", text: "Gehen Sie links am Gebäude vorbei nach hinten. Hinter dem Haus öffnet sich ein gepflasterter Hof." },
+        { no: "03", title: "Gläserne Tür in der Mitte", text: "Auf der Rückseite führt eine gläserne Doppeltür ins Haus. Von dort erreichen Sie unsere Anmeldung." }
+      ];
+
+const faq = [
+        { q: "Wo genau ist der Eingang?", a: "Auf der Rückseite des Gebäudes, nicht an der Schopenhauerstraße. Gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort ist eine gläserne Doppeltür." },
+        { q: "Kann ich direkt an der Praxis parken?", a: "An der Hofseite gibt es Kurzzeit-Parkplätze. Sind sie belegt, finden Sie weitere Stellplätze in der Zeppelinstraße, wenige Gehminuten entfernt." },
+        { q: "Wie komme ich mit öffentlichen Verkehrsmitteln?", a: "Mit den Tramlinien 91, 94 und 98 bis Luisenplatz-Süd oder den Buslinien 605, 606 und 695 bis Luisenplatz. Von dort sind es etwa vier Minuten zu Fuß." },
+        { q: "Ist die Praxis barrierefrei?", a: "Ja, die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Sagen Sie bei der Terminvereinbarung kurz Bescheid, wenn Sie Unterstützung beim Zugang möchten." },
+        { q: "Mein Navi führt mich an die Straßenseite — was jetzt?", a: "Das ist normal, die Adresse liegt an der Straße. Stellen Sie das Auto ab und gehen Sie links am Gebäude vorbei nach hinten in den Hof; dort ist der Eingang." }
+      ];
+
+export default function AnfahrtParken() {
+  return (
+    <>
+      <JsonLd daten={strukturierteDaten} />
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 16px", padding: "14px", borderBottom: "1px solid var(--color-divider)", fontSize: "14px", color: "var(--color-neutral-800)" }}>
+        <span style={{ fontFamily: "var(--font-ui)", fontSize: "11.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          Akute Zahnschmerzen?
+        </span>
+        <span style={{ width: "1px", height: "18px", background: "var(--color-divider)" }} />
+        <span>
+          Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir
+          <Link href="/zahnschmerzen">
+            Notfalltermine
+          </Link>
+          frei.
+        </span>
+        <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", fontFeatureSettings: "'tnum'" }}>
+          0331 960926
+        </a>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 48px" }}>
+        <div>
+          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+            Anfahrt &amp; Parken
+          </div>
+          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "22px 0 0" }}>
+            So finden
+            <br />
+            Sie uns.
+          </h1>
+        </div>
+        <div>
+          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "0" }}>
+            Schopenhauerstraße 37, mitten in Potsdam. Ein Hinweis vorweg, der Ihnen den Umweg erspart:
+            <strong style={{ fontWeight: "400", borderBottom: "1px solid var(--color-accent)" }}>
+              Der Praxiseingang liegt nicht an der Straße, sondern auf der Rückseite des Gebäudes.
+            </strong>
+            Von der Schopenhauerstraße gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort führt eine gläserne Eingangstür ins Haus.
+          </p>
+          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+            <a className="btn btn-primary" href="https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener" style={{ padding: "12px 26px", fontSize: "15px" }}>
+              Route öffnen
+            </a>
+            <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px", fontSize: "15px" }}>
+              0331 960926
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="photopair" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+        <figure style={{ margin: "0", padding: "34px 34px 30px 64px" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "16px" }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+              Straßenseite
+            </span>
+            <span style={{ flex: "1", height: "1px", background: "var(--color-divider)" }} />
+          </div>
+          <div style={{ position: "relative", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
+            <img className="wegbild" src="/uploads/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover" }} />
+            <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none" }}>
+              <defs>
+                <marker id="wayarrow" viewBox="0 0 12 12" refx="7" refy="6" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+                  <path d="M1 1 L11 6 L1 11 Z" fill="#f7f5f0" />
+                </marker>
+              </defs>
+              <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="rgba(23,21,15,0.35)" strokeWidth="16" strokeLinecap="round" />
+              <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="#f7f5f0" strokeWidth="7" strokeLinecap="round" strokeDasharray="30 26" markerEnd="url(#wayarrow)" />
+            </svg>
+            <span style={{ position: "absolute", right: "16px", top: "14px", padding: "7px 13px", borderRadius: "var(--radius-md)", background: "rgba(23,21,15,0.78)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#f7f5f0" }}>
+              Links am Gebäude vorbei
+            </span>
+          </div>
+          <figcaption style={{ fontSize: "14.5px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "16px 0 0" }}>
+            Das ist die Ansicht, die Sie von der Straße sehen — gelbe Fassade, hohe Sprossenfenster, Bäume davor. Hier ist
+            <strong style={{ fontWeight: "400" }}>
+              kein Praxiseingang.
+            </strong>
+            Gehen Sie
+            <strong style={{ fontWeight: "400" }}>
+              links
+            </strong>
+            am Gebäude vorbei nach hinten.
+          </figcaption>
+        </figure>
+        <figure style={{ margin: "0", padding: "34px 64px 30px 34px", borderLeft: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "16px" }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+              Hier hinein · Rückseite
+            </span>
+            <span style={{ flex: "1", height: "1px", background: "var(--color-accent-300)" }} />
+          </div>
+          <img src="/uploads/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover", borderRadius: "var(--radius-md)", border: "1px solid var(--color-accent-300)" }} />
+          <figcaption style={{ fontSize: "14.5px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "16px 0 0" }}>
+            Auf der Rückseite liegt der Eingang: die gläserne Doppeltür in der Mitte, erreichbar über den gepflasterten Hof. Von hier kommen Sie zu uns.
+          </figcaption>
+        </figure>
+      </div>
+      <div style={{ padding: "96px 64px 0" }}>
+        <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          Der letzte Weg
+        </div>
+        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "26ch" }}>
+          Drei Schritte von der Straße zur Anmeldung.
+        </h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+        {weg.map((w, wI) => (
+          <Fragment key={wI}>
+            <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'" }}>
+                {w.no}
+              </span>
+              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3)", lineHeight: "1.14", margin: "14px 0 10px" }}>
+                {w.title}
+              </h3>
+              <p style={{ color: "var(--color-neutral-800)", fontSize: "15px", lineHeight: "1.62", margin: "0" }}>
+                {w.text}
+              </p>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+        <div style={{ padding: "80px 64px" }}>
+          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+            Mit Bus und Tram
+          </div>
+          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 22px" }}>
+            Vier Minuten vom Luisenplatz.
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              Tram
+            </span>
+            <span>
+              Linien 91, 94 und 98 bis
+              <strong style={{ fontWeight: "400" }}>
+                Luisenplatz-Süd
+              </strong>
+              , dann etwa vier Minuten zu Fuß.
+            </span>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              Bus
+            </span>
+            <span>
+              Linien 605, 606 und 695 bis
+              <strong style={{ fontWeight: "400" }}>
+                Luisenplatz
+              </strong>
+              .
+            </span>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              Zu Fuß
+            </span>
+            <span>
+              Vom Luisenplatz die Schopenhauerstraße hinein — die Praxis liegt auf der linken Seite, Eingang im Hof hinter dem Haus.
+            </span>
+          </div>
+        </div>
+        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+            Mit dem Auto
+          </div>
+          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 22px" }}>
+            Parken im Hof und in der Umgebung.
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              Direkt
+            </span>
+            <span>
+              Kurzzeit-Parkplätze unmittelbar an der Praxis, auf der Hofseite des Gebäudes.
+            </span>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              In der Nähe
+            </span>
+            <span>
+              Weitere Stellplätze in der Zeppelinstraße, wenige Gehminuten entfernt.
+            </span>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
+              Navigation
+            </span>
+            <span>
+              Geben Sie
+              <strong style={{ fontWeight: "400" }}>
+                Schopenhauerstraße 37, 14467 Potsdam
+              </strong>
+              ein. Das Navi führt Sie an die Straßenseite — der Eingang liegt dahinter im Hof.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", borderBottom: "1px solid var(--color-divider)" }}>
+        <div style={{ padding: "80px 64px" }}>
+          <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+            Zugang
+          </div>
+          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 16px" }}>
+            Barrierefrei erreichbar.
+          </h2>
+          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
+            Die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen, sagen Sie es gern kurz bei der Terminvereinbarung — dann sind wir vorbereitet und helfen beim Zugang.
+          </p>
+          <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)", fontSize: "15px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
+                Adresse
+              </span>
+              <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-lead)" }}>
+                Schopenhauerstraße 37
+                <br />
+                14467 Potsdam
+              </span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
+                Telefon
+              </span>
+              <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-lead)", fontFeatureSettings: "'tnum'" }}>
+                0331 960926
+              </a>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
+                Eingang
+              </span>
+              <span>
+                Rückseite des Gebäudes, über den Hof
+              </span>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: "14px", marginTop: "26px" }}>
+            <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 26px", fontSize: "15px" }}>
+              Termin anfragen
+            </Link>
+            <Link className="btn btn-secondary" href="/kontakt" style={{ padding: "12px 26px", fontSize: "15px" }}>
+              Öffnungszeiten
+            </Link>
+          </div>
+        </div>
+        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)" }}>
+          <div style={{ borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
+            <iframe title="Karte Schopenhauerstraße 37, Potsdam" src="https://www.openstreetmap.org/export/embed.html?bbox=13.0414%2C52.3941%2C13.0554%2C52.4011&layer=mapnik&marker=52.3976%2C13.0484" style={{ display: "block", width: "100%", height: "480px", border: "0" }} loading="lazy" />
+          </div>
+          <a href="https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener" style={{ display: "inline-block", marginTop: "12px", fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+            Größere Karte öffnen
+          </a>
+        </div>
+      </div>
+      <div style={{ padding: "96px 64px 0" }}>
+        <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
+          Häufige Fragen
+        </div>
+        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "24ch" }}>
+          Fragen zur Anfahrt.
+        </h2>
+      </div>
+      <div style={{ margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+        {faq.map((f, fI) => (
+          <Fragment key={fI}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "40px", padding: "28px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.2", margin: "0" }}>
+                {f.q}
+              </h3>
+              <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body)", lineHeight: "1.66", margin: "0" }}>
+                {f.a}
+              </p>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+      <div style={{ padding: "104px 64px", textAlign: "center", background: "#17150f" }}>
+        <div style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
+          Termin
+        </div>
+        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "22ch", color: "#f7f5f0" }}>
+          Wir erwarten Sie im Hof.
+        </h2>
+        <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "52ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
+          Senden Sie zwei Wunschzeiten — wir bestätigen innerhalb von 24 Stunden. Wenn Sie den Eingang nicht finden, rufen Sie einfach an.
+        </p>
+        <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap", marginTop: "40px" }}>
+          <Link className="btn" href="/termin" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)" }}>
+            Termin anfragen
+          </Link>
+          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid rgba(243,242,242,0.35)", color: "#f3f2f2" }}>
+            0331 960926
+          </a>
+        </div>
+      </div>
+    </>
+  );
+}

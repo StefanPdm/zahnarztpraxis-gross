@@ -1,0 +1,110 @@
+# ── Zahnmedizin Potsdam — Groß & Groß ──────────────────────────────────────
+# Apache-Konfiguration: 301-Weiterleitungen von der alten WordPress-Seite,
+# Kanonisierung auf www + HTTPS, Caching und Sicherheits-Header.
+#
+# WICHTIG: Diese Datei gehört ins Wurzelverzeichnis der Website.
+# Bei nginx statt Apache siehe unten (Abschnitt "nginx-Entsprechung").
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ── 1. Kanonisierung: HTTPS und www erzwingen ─────────────────────────────
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://www.zahnmedizin-potsdam.de/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^(.*)$ https://www.zahnmedizin-potsdam.de/$1 [R=301,L]
+
+  # ── 2. Alte WordPress-URLs → neue Seiten ──────────────────────────────────
+  # Bestätigt von der alten Website:
+  RewriteRule ^zahnbehandlung-zahnlabor-potsdam/?$ /leistungen.html [R=301,L]
+
+  # ── ⚠ ZU ERGÄNZEN ─────────────────────────────────────────────────────────
+  # Die folgenden Regeln sind Annahmen aus der üblichen WordPress-Struktur.
+  # Vor dem Livegang prüfen: welche URLs existieren wirklich? Quellen dafür
+  # sind die Google Search Console (Seiten → indexiert) und die alte
+  # sitemap.xml unter zahnmedizin-potsdam.de/sitemap.xml oder /wp-sitemap.xml.
+  # Jede alte URL, die keine Regel bekommt, verliert ihr Google-Ranking.
+  #
+  # RewriteRule ^praxis/?$                      /praxis-team.html [R=301,L]
+  # RewriteRule ^team/?$                        /praxis-team.html [R=301,L]
+  # RewriteRule ^ueber-uns/?$                   /praxis-team.html [R=301,L]
+  # RewriteRule ^leistungen/?$                  /leistungen.html [R=301,L]
+  # RewriteRule ^zahnimplantate-potsdam/?$      /implantologie.html [R=301,L]
+  # RewriteRule ^implantologie/?$               /implantologie.html [R=301,L]
+  # RewriteRule ^angstpatienten/?$              /angstpatienten.html [R=301,L]
+  # RewriteRule ^kinderzahnheilkunde/?$         /kinderzahnheilkunde.html [R=301,L]
+  # RewriteRule ^zahnlabor/?$                   /zahnlabor.html [R=301,L]
+  # RewriteRule ^prophylaxe/?$                  /prophylaxe.html [R=301,L]
+  # RewriteRule ^parodontologie/?$              /parodontologie.html [R=301,L]
+  # RewriteRule ^kontakt/?$                     /kontakt.html [R=301,L]
+  # RewriteRule ^anfahrt/?$                     /anfahrt-parken.html [R=301,L]
+  # RewriteRule ^termin/?$                      /termin.html [R=301,L]
+  # RewriteRule ^impressum/?$                   /impressum-datenschutz.html [R=301,L]
+  # RewriteRule ^datenschutz/?$                 /impressum-datenschutz.html [R=301,L]
+  # RewriteRule ^datenschutzerklaerung/?$       /impressum-datenschutz.html [R=301,L]
+
+  # WordPress-Reste ins Nichts laufen lassen statt 404-Ketten zu erzeugen:
+  RewriteRule ^wp-content/(.*)$ / [R=301,L]
+  RewriteRule ^wp-includes/(.*)$ / [R=301,L]
+  RewriteRule ^(category|tag|author)/(.*)$ / [R=301,L]
+  RewriteRule ^feed/?$ / [R=301,L]
+
+  # ── 3. Verzeichnis-URLs ohne .html unterstützen ───────────────────────────
+  # /implantologie liefert /implantologie.html aus (schönere Links, beide gültig)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+# ── 4. Caching ──────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg               "access plus 1 year"
+  ExpiresByType image/png                "access plus 1 year"
+  ExpiresByType image/webp               "access plus 1 year"
+  ExpiresByType image/svg+xml            "access plus 1 year"
+  ExpiresByType video/webm               "access plus 1 year"
+  ExpiresByType font/woff2               "access plus 1 year"
+  ExpiresByType text/css                 "access plus 1 month"
+  ExpiresByType application/javascript   "access plus 1 month"
+  ExpiresByType text/html                "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml
+</IfModule>
+
+# ── 5. Sicherheits-Header ───────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ── 6. Fehlerseite ──────────────────────────────────────────────────────────
+ErrorDocument 404 /index.html
+
+# ── nginx-Entsprechung ──────────────────────────────────────────────────────
+# Falls der Hoster nginx einsetzt, greift diese Datei NICHT. Dann gehören die
+# Weiterleitungen in den server-Block:
+#
+#   server {
+#     listen 443 ssl;
+#     server_name zahnmedizin-potsdam.de;
+#     return 301 https://www.zahnmedizin-potsdam.de$request_uri;
+#   }
+#
+#   server {
+#     listen 443 ssl;
+#     server_name www.zahnmedizin-potsdam.de;
+#     root /var/www/zahnmedizin-potsdam;
+#
+#     rewrite ^/zahnbehandlung-zahnlabor-potsdam/?$ /leistungen.html permanent;
+#     # … weitere Regeln analog, jeweils mit "permanent" für 301
+#
+#     location / { try_files $uri $uri.html $uri/ /index.html; }
+#   }

@@ -1,0 +1,28 @@
+/* =============================================================================
+   Schriften — die Brücke zwischen next/font und den Design-System-Tokens.
+
+   classical.css und site.css nennen die Familien beim Namen:
+
+     --font-heading: "Cormorant Garamond", …
+     --font-body:    "Lora", …
+     --font-ui:      "Jost", …
+
+   Das funktionierte, solange die Schriften per CDN unter genau diesen Namen
+   geladen wurden. next/font legt sie stattdessen self-hosted ab und stellt
+   sie über eine erzeugte CSS-Variable bereit — unter einem generierten
+   Familiennamen. Ohne diese Datei fände der Browser "Cormorant Garamond"
+   nicht und fiele wortlos auf system-ui zurück: die ganze Seite sähe nach
+   Systemschrift aus, ohne dass irgendwo ein Fehler erschiene.
+
+   Deshalb wird hier nur die Reihenfolge der Familien ergänzt. Die Tokens
+   selbst bleiben unverändert — wer die Schriften wechseln will, tut das in
+   classical.css bzw. site.css UND in layout.tsx.
+
+   Diese Datei wird als LETZTE importiert, damit sie beide überschreibt.
+   ============================================================================= */
+
+:root {
+  --font-heading: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-lora), "Lora", Georgia, serif;
+  --font-ui: var(--font-jost), "Jost", system-ui, sans-serif;
+}

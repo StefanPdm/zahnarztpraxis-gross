@@ -1,0 +1,58 @@
+[
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#webpage",
+      "url": "https://www.zahnmedizin-potsdam.de/zahnlabor.html",
+      "name": "Eigenes Zahnlabor in Potsdam",
+      "isPartOf": { "@id": "https://www.zahnmedizin-potsdam.de/#website" },
+      "provider": { "@id": "https://www.zahnmedizin-potsdam.de/#praxis" },
+      "about": { "@type": "MedicalCondition", "name": "Zahnersatz" },
+      "audience": { "@type": "Patient" },
+      "inLanguage": "de-DE",
+      "breadcrumb": { "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.zahnmedizin-potsdam.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Eigenes Zahnlabor in Potsdam", "item": "https://www.zahnmedizin-potsdam.de/zahnlabor.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.zahnmedizin-potsdam.de/zahnlabor.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Merke ich als Patient überhaupt einen Unterschied?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Vor allem bei Terminen und Korrekturen. Anpassungen passieren oft im laufenden Termin statt in einer zweiten Sitzung Wochen später — und bei der Farbe stimmt das Ergebnis häufiger auf Anhieb." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wird mein Zahnersatz wirklich hier gefertigt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, das Labor ist Teil der Praxis. Sie können sich die Arbeitsschritte zeigen lassen, wenn Sie möchten." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie lange dauert eine Krone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Das hängt vom Fall ab. Wichtiger ist: die Zwischenzeit überbrücken wir mit einem Provisorium, und für Anpassungen brauchen wir keine Versandwoche." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich mir Materialien vorher ansehen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Im Beratungstermin zeigen wir Ihnen Muster und erklären die Unterschiede zwischen den Materialien — auch preislich, im schriftlichen Kostenplan." }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet Zahnersatz aus dem eigenen Labor?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sie erhalten vor jeder Behandlung einen Kostenplan mit dem Kassenzuschuss und Ihrem Eigenanteil. Wenn es eine günstigere Alternative gibt, steht sie mit darin." }
+        }
+      ]
+    }
+  ]
+}
+]

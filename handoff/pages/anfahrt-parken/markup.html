@@ -1,0 +1,160 @@
+<!-- Anfahrt & Parken  —  Route: /anfahrt-parken
+     Nur der Seiteninhalt. Kopfzeile, mitlaufende Termin-Leiste, Fußzeile und
+     der Zurück-nach-oben-Knopf wurden herausgelöst und liegen einmalig unter
+     layout/ — sie gehören nach app/layout.tsx (siehe CLAUDE.md, Schritt 3).
+     Der äußere Wrapper (max-width, Hintergrund, Grundschrift) gehört ebenfalls
+     ins Layout, nicht in jede Seite. -->
+
+<div style="max-width:1440px; margin:0 auto; background:var(--color-bg); font-family:var(--font-body)">
+
+<div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 16px; padding:14px; border-bottom:1px solid var(--color-divider); font-size:14px; color:var(--color-neutral-800)">
+    <span style="font-family:var(--font-ui); font-size:11.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-700)">Akute Zahnschmerzen?</span>
+    <span style="width:1px; height:18px; background:var(--color-divider)"></span>
+    <span>Rufen Sie uns morgens ab 8:00 an — Montag bis Freitag halten wir <a href="Zahnschmerzen.dc.html">Notfalltermine</a> frei.</span>
+    <a href="tel:+49331960926" style="font-family:var(--font-heading); font-size:var(--fs-body); font-feature-settings:'tnum'">0331 960926</a>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end; padding:96px 64px 48px">
+    <div>
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Anfahrt &amp; Parken</div>
+      <h1 style="font-weight:400; font-size:var(--fs-hero); line-height:1.0; letter-spacing:-0.025em; margin:22px 0 0">So finden<br>Sie uns.</h1>
+    </div>
+    <div>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); font-size:var(--fs-body-lg); margin:0">Schopenhauerstraße 37, mitten in Potsdam. Ein Hinweis vorweg, der Ihnen den Umweg erspart: <strong style="font-weight:400; border-bottom:1px solid var(--color-accent)">Der Praxiseingang liegt nicht an der Straße, sondern auf der Rückseite des Gebäudes.</strong> Von der Schopenhauerstraße gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort führt eine gläserne Eingangstür ins Haus.</p>
+      <div style="display:flex; gap:14px; margin-top:26px">
+        <a class="btn btn-primary" href="https://www.openstreetmap.org/?mlat=52.3976&amp;mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener" style="padding:12px 26px; font-size:15px">Route öffnen</a>
+        <a class="btn btn-secondary" href="tel:+49331960926" style="padding:12px 26px; font-size:15px">0331 960926</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="photopair" style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <figure style="margin:0; padding:34px 34px 30px 64px">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px">
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-neutral-700)">Straßenseite</span>
+        <span style="flex:1; height:1px; background:var(--color-divider)"></span>
+      </div>
+      <div style="position:relative; border-radius:var(--radius-md); border:1px solid var(--color-divider); overflow:hidden">
+        <img class="wegbild" src="uploads/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style="display:block; width:100%; height:300px; object-fit:cover">
+        <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none">
+          <defs>
+            <marker id="wayarrow" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M1 1 L11 6 L1 11 Z" fill="#f7f5f0"></path>
+            </marker>
+          </defs>
+          <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="rgba(23,21,15,0.35)" stroke-width="16" stroke-linecap="round"></path>
+          <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="#f7f5f0" stroke-width="7" stroke-linecap="round" stroke-dasharray="30 26" marker-end="url(#wayarrow)"></path>
+        </svg>
+        <span style="position:absolute; right:16px; top:14px; padding:7px 13px; border-radius:var(--radius-md); background:rgba(23,21,15,0.78); font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:#f7f5f0">Links am Gebäude vorbei</span>
+      </div>
+      <figcaption style="font-size:14.5px; line-height:1.6; color:var(--color-neutral-800); margin:16px 0 0">Das ist die Ansicht, die Sie von der Straße sehen — gelbe Fassade, hohe Sprossenfenster, Bäume davor. Hier ist <strong style="font-weight:400">kein Praxiseingang.</strong> Gehen Sie <strong style="font-weight:400">links</strong> am Gebäude vorbei nach hinten.</figcaption>
+    </figure>
+    <figure style="margin:0; padding:34px 64px 30px 34px; border-left:1px solid var(--color-divider); background:var(--color-surface)">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px">
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Hier hinein · Rückseite</span>
+        <span style="flex:1; height:1px; background:var(--color-accent-300)"></span>
+      </div>
+      <img src="uploads/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style="display:block; width:100%; height:300px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--color-accent-300)">
+      <figcaption style="font-size:14.5px; line-height:1.6; color:var(--color-neutral-800); margin:16px 0 0">Auf der Rückseite liegt der Eingang: die gläserne Doppeltür in der Mitte, erreichbar über den gepflasterten Hof. Von hier kommen Sie zu uns.</figcaption>
+    </figure>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Der letzte Weg</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:26ch">Drei Schritte von der Straße zur Anmeldung.</h2>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ weg }}" as="w" hint-placeholder-count="3">
+      <div style="padding:32px 28px 34px 0; border-bottom:1px solid var(--color-divider)">
+        <span style="font-family:var(--font-heading); font-size:15px; color:var(--color-accent-700); font-feature-settings:'tnum'">{{ w.no }}</span>
+        <h3 style="font-weight:400; font-size:var(--fs-h3); line-height:1.14; margin:14px 0 10px">{{ w.title }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:15px; line-height:1.62; margin:0">{{ w.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--color-divider); border-bottom:1px solid var(--color-divider)">
+    <div style="padding:80px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Mit Bus und Tram</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 22px">Vier Minuten vom Luisenplatz.</h2>
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:16px 24px; font-size:15px; color:var(--color-neutral-800); border-top:1px solid var(--color-divider); padding-top:22px">
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">Tram</span>
+        <span>Linien 91, 94 und 98 bis <strong style="font-weight:400">Luisenplatz-Süd</strong>, dann etwa vier Minuten zu Fuß.</span>
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">Bus</span>
+        <span>Linien 605, 606 und 695 bis <strong style="font-weight:400">Luisenplatz</strong>.</span>
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">Zu Fuß</span>
+        <span>Vom Luisenplatz die Schopenhauerstraße hinein — die Praxis liegt auf der linken Seite, Eingang im Hof hinter dem Haus.</span>
+      </div>
+    </div>
+    <div style="padding:80px 64px; border-left:1px solid var(--color-divider); background:var(--color-surface)">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Mit dem Auto</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 22px">Parken im Hof und in der Umgebung.</h2>
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:16px 24px; font-size:15px; color:var(--color-neutral-800); border-top:1px solid var(--color-divider); padding-top:22px">
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">Direkt</span>
+        <span>Kurzzeit-Parkplätze unmittelbar an der Praxis, auf der Hofseite des Gebäudes.</span>
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">In der Nähe</span>
+        <span>Weitere Stellplätze in der Zeppelinstraße, wenige Gehminuten entfernt.</span>
+        <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent-700); padding-top:3px">Navigation</span>
+        <span>Geben Sie <strong style="font-weight:400">Schopenhauerstraße 37, 14467 Potsdam</strong> ein. Das Navi führt Sie an die Straßenseite — der Eingang liegt dahinter im Hof.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1.15fr; border-bottom:1px solid var(--color-divider)">
+    <div style="padding:80px 64px">
+      <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Zugang</div>
+      <h2 style="font-weight:400; font-size:var(--fs-h2-sm); line-height:1.1; margin:16px 0 16px">Barrierefrei erreichbar.</h2>
+      <p style="text-align:justify; hyphens:auto; color:var(--color-neutral-800); margin:0 0 20px">Die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen, sagen Sie es gern kurz bei der Terminvereinbarung — dann sind wir vorbereitet und helfen beim Zugang.</p>
+      <div style="display:grid; gap:0; border-top:1px solid var(--color-divider); font-size:15px">
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:24px; padding:16px 0; border-bottom:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-700); padding-top:3px">Adresse</span>
+          <span style="font-family:var(--font-heading); font-size:var(--fs-lead)">Schopenhauerstraße 37<br>14467 Potsdam</span>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:24px; padding:16px 0; border-bottom:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-700); padding-top:3px">Telefon</span>
+          <a href="tel:+49331960926" style="font-family:var(--font-heading); font-size:var(--fs-lead); font-feature-settings:'tnum'">0331 960926</a>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:24px; padding:16px 0; border-bottom:1px solid var(--color-divider)">
+          <span style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-neutral-700); padding-top:3px">Eingang</span>
+          <span>Rückseite des Gebäudes, über den Hof</span>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; margin-top:26px">
+        <a class="btn btn-primary" href="Termin.dc.html" style="padding:12px 26px; font-size:15px">Termin anfragen</a>
+        <a class="btn btn-secondary" href="Kontakt.dc.html" style="padding:12px 26px; font-size:15px">Öffnungszeiten</a>
+      </div>
+    </div>
+    <div style="padding:80px 64px; border-left:1px solid var(--color-divider)">
+      <div style="border-radius:var(--radius-md); border:1px solid var(--color-divider); overflow:hidden">
+        <iframe title="Karte Schopenhauerstraße 37, Potsdam" src="https://www.openstreetmap.org/export/embed.html?bbox=13.0414%2C52.3941%2C13.0554%2C52.4011&amp;layer=mapnik&amp;marker=52.3976%2C13.0484" style="display:block; width:100%; height:480px; border:0" loading="lazy"></iframe>
+      </div>
+      <a href="https://www.openstreetmap.org/?mlat=52.3976&amp;mlon=13.0484#map=18/52.3976/13.0484" target="_blank" rel="noopener" style="display:inline-block; margin-top:12px; font-family:var(--font-ui); font-size:11px; letter-spacing:0.16em; text-transform:uppercase">Größere Karte öffnen</a>
+    </div>
+  </div>
+
+  <div style="padding:96px 64px 0">
+    <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--color-accent-700)">Häufige Fragen</div>
+    <h2 style="font-weight:400; font-size:var(--fs-h2); line-height:1.08; margin:16px 0 0; max-width:24ch">Fragen zur Anfahrt.</h2>
+  </div>
+
+  <div style="margin:40px 64px 96px; border-top:1px solid var(--color-divider)">
+    <sc-for list="{{ faq }}" as="f" hint-placeholder-count="5">
+      <div style="display:grid; grid-template-columns:1fr 1.3fr; gap:40px; padding:28px 0; border-bottom:1px solid var(--color-divider)">
+        <h3 style="font-weight:400; font-size:var(--fs-h5); line-height:1.2; margin:0">{{ f.q }}</h3>
+        <p style="color:var(--color-neutral-800); font-size:var(--fs-body); line-height:1.66; margin:0">{{ f.a }}</p>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:104px 64px; text-align:center; background:#17150f">
+    <div style="font-family:var(--font-ui); font-size:10.5px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-400)">Termin</div>
+    <h2 style="font-weight:400; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em; margin:24px auto 0; max-width:22ch; color:#f7f5f0">Wir erwarten Sie im Hof.</h2>
+    <p style="font-size:var(--fs-lead); line-height:1.6; max-width:52ch; margin:24px auto 0; color:rgba(243,242,242,0.72)">Senden Sie zwei Wunschzeiten — wir bestätigen innerhalb von 24 Stunden. Wenn Sie den Eingang nicht finden, rufen Sie einfach an.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:40px">
+      <a class="btn" href="Termin.dc.html" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid var(--color-accent-400); color:#17150f; background:var(--color-accent-400)">Termin anfragen</a>
+      <a class="btn" href="tel:+49331960926" style="padding:15px 38px; font-size:var(--fs-body); border:1px solid rgba(243,242,242,0.35); color:#f3f2f2">0331 960926</a>
+    </div>
+  </div>
+
+</div>
