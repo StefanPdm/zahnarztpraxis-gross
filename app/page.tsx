@@ -668,13 +668,15 @@ export default function Index() {
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 10%, #ffffff) 0%, rgba(255,255,255,0) 100%)',
               borderBottom: '1px solid var(--color-divider)',
             }}>
+            {/* Text und Bild beginnen auf gleicher Höhe: oben bündig mit der
+                Bildkante, nicht unten ausgerichtet. */}
             <div
               className='rv'
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: '56px',
-                alignItems: 'end',
+                alignItems: 'start',
               }}>
               <div>
                 <div className='ueberzeile'>Die Praxis</div>
@@ -788,6 +790,36 @@ export default function Index() {
                 </figcaption>
               </figure>
             </div>
+          </div>
+          {/* Haltung statt Werbung: ein Satz von Matthias Groß, der das
+              Kapitel über die Praxis schließt. */}
+          <div
+            id='1b-zitat'
+            style={{
+              padding: '80px 64px',
+              textAlign: 'center',
+              background: 'var(--color-surface)',
+              borderBottom: '1px solid var(--color-divider)',
+            }}>
+            <figure style={{ margin: '0 auto', maxWidth: '34ch' }}>
+              <blockquote
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'var(--fs-h3-xl)',
+                  lineHeight: '1.32',
+                  letterSpacing: '-0.015em',
+                  margin: '0',
+                  textWrap: 'pretty',
+                }}>
+                „Behandle den Patienten so, wie du selbst behandelt werden möchtest. Mir ist es
+                egal, ob jemand privat oder Kassenpatient ist.“
+              </blockquote>
+              <figcaption
+                className='ueberzeile'
+                style={{ marginTop: '24px' }}>
+                Matthias Groß · Zahnarzt
+              </figcaption>
+            </figure>
           </div>
           <div
             className='colophon rv'
