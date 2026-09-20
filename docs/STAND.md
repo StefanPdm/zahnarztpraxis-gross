@@ -11,7 +11,7 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 | Kopfzeile | schrumpft beim Scrollen (151 → 69 px), Weichzeichner in allen Browsern, liegt immer vorn (`--ebene-kopf`), mobiles Untermenü klappt, per Tastatur bedienbar |
 | Termin-Leiste, Zurück nach oben | Verhalten wie im Original-Skript, nach jedem Seitenwechsel neu gemessen |
 | Praxis-Video | WebM + MP4 (Safari), mobile Fassung, lädt bei Sichtbarkeit, Anhalten-Knopf |
-| Großelino, Laufmarke, Zählwerke, Parallax | als Komponenten, laufen auch nach Navigation |
+| GROSSELINO, Laufmarke, Zählwerke, Parallax | als Komponenten, laufen auch nach Navigation |
 | Karte | Zwei-Klick-Lösung auf Start, /kontakt, /anfahrt-parken |
 | Bilder | über `next/image`: AVIF/WebP, passende Breiten; 5,45 → 1,30 MB über alle Seiten |
 | Sicherheit | Content-Security-Policy, HSTS, COOP/CORP, Permissions-Policy; `/api/termin` gehärtet (Herkunft, Größe, Typ, Header-Injection) |

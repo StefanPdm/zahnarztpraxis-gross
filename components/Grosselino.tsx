@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
-  Großelino, der Begleiter auf /kinderzahnheilkunde. Verhalten nach
+  GROSSELINO, der Begleiter auf /kinderzahnheilkunde. Verhalten nach
   site.v2.js, Abschnitt 4.
 
   Desktop (#grosselino): läuft am linken Rand mit dem Lesefortschritt mit
@@ -19,13 +19,34 @@ import { useBeimScrollen } from "@/lib/useBeimScrollen";
 */
 
 const SPRUECHE: [bis: number, text: string][] = [
-  [0.1, "Hallo, ich bin Großelino!"],
+  [0.1, "Hallo, ich bin Grosselino!"],
   [0.28, "Beim ersten Mal wird nur geschaut."],
   [0.48, "Zähne zählen darfst du selbst."],
   [0.66, "Hand heben heißt: Pause."],
   [0.86, "Du machst das ganz super."],
   [1.01, "Bis gleich in der Praxis!"],
 ];
+
+/*
+  Der Name wird als Versalie gezeigt, steht im Text aber gemischt: So liest
+  ein Screenreader „Grosselino“ als Wort, statt es zu buchstabieren, und das
+  Auge sieht trotzdem GROSSELINO. Die Versalien macht text-transform.
+*/
+function mitName(text: string) {
+  return text.split("Grosselino").flatMap((teil, i) =>
+    i === 0
+      ? [teil]
+      : [
+          <span
+            key={i}
+            style={{ textTransform: "uppercase" }}
+          >
+            Grosselino
+          </span>,
+          teil,
+        ],
+  );
+}
 
 const HELL = "#fffdf8";
 const TINTE = "var(--color-text)";
@@ -139,7 +160,7 @@ export function Grosselino() {
       <div
         tabIndex={0}
         role="img"
-        aria-label="Großelino, unser Begleiter für Kinder"
+        aria-label="Grosselino, unser Begleiter für Kinder"
         style={{
           display: "flex",
           alignItems: "center",
@@ -160,7 +181,7 @@ export function Grosselino() {
         aria-hidden="true"
         style={{
           width: "max-content",
-          maxWidth: "14ch",
+          maxWidth: "20ch",
           padding: "8px 13px",
           borderRadius: "14px 14px 14px 3px",
           background: HELL,
@@ -172,7 +193,7 @@ export function Grosselino() {
           color: "var(--color-neutral-900)",
         }}
       >
-        {spruch}
+        {mitName(spruch)}
       </span>
     </div>
   );
@@ -238,7 +259,7 @@ export function GrosselinoMobil() {
             color: "var(--color-accent-700)",
           }}
         >
-          Hallo, ich bin Großelino
+          Hallo, ich bin Grosselino
         </span>
         <span
           style={{

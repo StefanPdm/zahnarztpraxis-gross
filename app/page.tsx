@@ -838,7 +838,7 @@ export default function Index() {
                   textWrap: 'pretty',
                 }}>
                 „Behandle den Patienten so, wie du selbst behandelt werden möchtest. Mir ist es
-                egal, ob jemand privat oder Kassenpatient ist.“
+                egal, ob jemand Privat- oder Kassenpatient ist.“
               </blockquote>
               <figcaption
                 className='ueberzeile'
@@ -1734,7 +1734,12 @@ export default function Index() {
                     0331 960926
                   </a>
                 </p>
-                <p style={{ fontSize: '14px', color: 'var(--color-neutral-800)', margin: '6px 0 0' }}>
+                <p
+                  style={{
+                    fontSize: '14px',
+                    color: 'var(--color-neutral-800)',
+                    margin: '6px 0 0',
+                  }}>
                   Schopenhauerstraße 37 · 14467 Potsdam
                 </p>
               </div>

@@ -66,9 +66,9 @@ export default function Kinderzahnheilkunde() {
           </div>
         </div>
         <figure style={{ position: "relative", margin: "0" }}>
-          <Bild vorrang src="/uploads/kinder-motiv.jpg" alt="Illustration: lächelnder Zahn mit Sternen — Kinderzahnheilkunde bei Groß & Groß in Potsdam" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
+          <Bild vorrang src="/uploads/grosselino-kinderzahnheilkunde.jpg" alt="Grosselino, ein Teddybär im weißen Kittel, hält einen lachenden Zahn und eine Zahnbürste" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
           <figcaption id="gr-caption" style={{ margin: "12px 2px 0", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
-            Großelino, unser Bär, winkt euch auf dieser Seite zu
+            Grosselino, unser Bär, winkt euch auf dieser Seite zu
           </figcaption>
         </figure>
       </div>
@@ -162,8 +162,16 @@ export default function Kinderzahnheilkunde() {
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)" }}>
+        {/* Kein Parallax-Rahmen: die Figur steht rechts im Bild, der Überstand
+            von 140 % würde sie anschneiden. Der Ausschnitt liegt deshalb
+            rechts, links bleibt die helle Fläche. */}
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974468276-pkt8.jpg" alt="Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte" />
+          <Bild
+            sizes="(max-width: 1000px) 100vw, 50vw"
+            src="/uploads/zahnarzt-figur-kinderzahnheilkunde.jpg"
+            alt="Sammelfigur einer Zahnärztin mit Röntgenbild und Gebiss auf einem Tresen"
+            style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "72% 50%" }}
+          />
         </div>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

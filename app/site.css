@@ -36,7 +36,7 @@
   /* Ebenen — eine Leiter für alles, was über dem Inhalt schwebt.
      Die Kopfzeile liegt immer ganz vorn; nichts anderes darf darüber. */
   --ebene-inhalt:     1;
-  --ebene-figur:     40;  /* Großelino, Laufmarke */
+  --ebene-figur:     40;  /* GROSSELINO, Laufmarke */
   --ebene-schwebend: 50;  /* Zurück nach oben */
   --ebene-leiste:    60;  /* Termin-Leiste */
   --ebene-kopf:     100;  /* Kopfzeile inkl. Menü */
@@ -456,7 +456,7 @@ body .flipcard img.portrait {
 body footer { padding-bottom: 68px !important; }
 body footer a:hover { color: var(--color-accent); }
 
-/* ── 6  Kinderseite: Großelino ───────────────────────────────────────────── */
+/* ── 6  Kinderseite: GROSSELINO ───────────────────────────────────────────── */
 
 @keyframes grBob   { 0%, 100% { transform: translateY(0); }    50% { transform: translateY(-3.5px); } }
 @keyframes grWave  { 0%, 100% { transform: rotate(4deg); }     50% { transform: rotate(-30deg); } }
@@ -783,7 +783,7 @@ body footer a:hover { color: var(--color-accent); }
   body figure[style*="min-height:640px"] ,
   body figure[style*="min-height: 640px"] { min-height: 0 !important; height: auto !important; }
 
-  /* Großelino: schwebende Variante aus, feste im Inhalt an */
+  /* GROSSELINO: schwebende Variante aus, feste im Inhalt an */
   #grosselino, #gr-bubble { display: none !important; }
   #grosselino-mobil { display: flex !important; }
 }

@@ -73,12 +73,16 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
-  Karte, Großelino.
+  Karte, GROSSELINO.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.
 - Sprache: Bezeichner, Kommentare und Commit-Nachrichten auf Deutsch.
   Ausnahme: React-eigene Namen (`useState`, `className`) bleiben, wie sie sind.
+- Die Begleitfigur der Kinderseite heißt **GROSSELINO** — immer in Versalien,
+  immer mit Doppel-S, nie „Großelino". Im Quelltext steht „Grosselino"; die
+  Versalien macht `text-transform: uppercase`. Grund: Screenreader
+  buchstabieren durchgängig große Wörter, so bleibt der Name ein Wort.
 - Text nie unter 12 px, Trefflächen mobil nie unter 44 px, Textkontrast
   mindestens 4,5:1. Keine Emoji. (Die Versalzeilen mit 10–11,5 px aus dem
   Design verstoßen noch dagegen — offene Entscheidung, siehe `docs/STAND.md`.)
