@@ -21,7 +21,8 @@ export default function AnliegenWahl() {
     if (!feld || !ziel) return; // Formular nicht auf der Seite: normaler Link
     event.preventDefault();
     feld.value = feldwert;
-    ziel.scrollIntoView({ behavior: "smooth", block: "start" });
+    const sanft = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    ziel.scrollIntoView({ behavior: sanft ? "smooth" : "auto", block: "start" });
   }
 
   return (

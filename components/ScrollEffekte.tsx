@@ -18,6 +18,65 @@ import { useBeimScrollen } from '@/lib/useBeimScrollen';
 export default function ScrollEffekte() {
   const pfad = usePathname();
 
+  /*
+    Sprungziele zuverlässig anlaufen — betrifft vor allem die vielen
+    „Termin anfragen"-Knöpfe, die seit dem Zusammenlegen der Termin-Seite auf
+    /#termin zeigen.
+
+    Zwei Lücken schließt das:
+    1. Steht die Adresse bereits auf dem Anker, tut ein weiterer Klick von
+       sich aus nichts. Nur dann greifen wir ein — sonst bleibt das normale
+       Verhalten des Browsers samt Fokuswechsel erhalten (wichtig für den
+       Sprunglink).
+    2. Nach einem Seitenwechsel mit Anker in der Adresse springen wir nach
+       dem ersten Bild selbst ans Ziel.
+  */
+  useEffect(() => {
+    const sanft = () =>
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? ('auto' as const) : ('smooth' as const);
+
+    const beiKlick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const link = (e.target as HTMLElement | null)?.closest?.('a');
+      const ziel = link?.getAttribute('href') ?? '';
+      const [seite, anker] = ziel.split('#');
+      if (!anker || (seite !== '' && seite !== pfad)) return;
+      if (window.location.hash !== `#${anker}`) return; // sonst macht der Browser es selbst
+      const element = document.getElementById(anker);
+      if (!element) return;
+      e.preventDefault();
+      element.scrollIntoView({ behavior: sanft(), block: 'start' });
+    };
+
+    /*
+      In der Erfassungsphase (`true`), also bevor React und der Router den
+      Klick sehen. Der <Link> von Next ruft selbst `preventDefault()` auf und
+      schiebt die Route nach; ein Handler danach fände nur noch einen
+      abgeräumten Klick vor und liefe ins Leere — genau daran scheiterte der
+      Knopf in der Fußzeile beim zweiten Mal. Unterbinden wir den Klick hier,
+      steigt der Router seinerseits aus (er prüft `defaultPrevented`), und der
+      Sprung liegt in einer Hand.
+    */
+    document.addEventListener('click', beiKlick, true);
+    return () => document.removeEventListener('click', beiKlick, true);
+  }, [pfad]);
+
+  useEffect(() => {
+    const anker = window.location.hash.slice(1);
+    if (!anker) return;
+    let abgebrochen = false;
+    // Zwei Bilder warten: Erst danach steht das Markup der neuen Seite.
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        if (abgebrochen) return;
+        document.getElementById(anker)?.scrollIntoView({ block: 'start' });
+      }),
+    );
+    return () => {
+      abgebrochen = true;
+    };
+  }, [pfad]);
+
   /* — Parallax (Formel aus site.v2.js: begrenzt auf den Bildüberstand) — */
   useBeimScrollen(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

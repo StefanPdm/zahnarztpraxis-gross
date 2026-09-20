@@ -73,6 +73,24 @@ export default function Kopfzeile() {
     if (!offen) setUntermenueOffen(false);
   };
 
+  /*
+    Wird das Fenster bei offenem Menü breiter als der Umbruchpunkt, schließt
+    es sich: Am Desktop verschwindet der Menüknopf, es gäbe also keinen Weg
+    mehr, es zuzubekommen — und beim Verkleinern stünde es unvermittelt offen.
+  */
+  useEffect(() => {
+    if (!menueOffen) return;
+    const breit = window.matchMedia(`(min-width: ${UMBRUCH + 1}px)`);
+    const pruefe = () => {
+      if (!breit.matches) return;
+      setMenueOffen(false);
+      setUntermenueOffen(false);
+    };
+    pruefe();
+    breit.addEventListener("change", pruefe);
+    return () => breit.removeEventListener("change", pruefe);
+  }, [menueOffen]);
+
   // Escape schließt das offene Menü.
   useEffect(() => {
     if (!menueOffen) return;
@@ -86,6 +104,36 @@ export default function Kopfzeile() {
     return () => document.removeEventListener("keydown", beiTaste);
   }, [menueOffen]);
 
+  /*
+    Ein Klick auf irgendeinen Link im Kopf schließt das Menü. Nötig, weil das
+    Menü ein kontrolliertes Kontrollkästchen ist: Es schließt sonst nur beim
+    Seitenwechsel — und „Termin vereinbaren" führt seit dem Zusammenlegen der
+    Termin-Seite auf /#termin, ändert auf der Startseite also nur den Anker.
+
+    Zeigt der Link auf ein Ziel derselben Seite, springen wir selbst dorthin.
+    Zwei Gründe: Steht die Adresse schon auf dem Anker, löst ein weiterer
+    Klick von sich aus nichts mehr aus. Und bei offenem Menü liegt
+    `overflow: hidden` auf <html> — deshalb erst scrollen, wenn das Menü zu
+    ist, sonst verpufft der Sprung.
+  */
+  const beiKlickImKopf = (event: React.MouseEvent<HTMLElement>) => {
+    const link = (event.target as HTMLElement).closest("a");
+    if (!link) return;
+    const warOffen = menueOffen;
+    menueSchalten(false);
+
+    const [pfad, anker] = (link.getAttribute("href") ?? "").split("#");
+    if (!anker || (pfad !== "" && pfad !== pathname)) return;
+    const ziel = document.getElementById(anker);
+    if (!ziel) return;
+
+    event.preventDefault();
+    const sanft = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const springe = () => ziel.scrollIntoView({ behavior: sanft ? "smooth" : "auto", block: "start" });
+    if (warOffen) requestAnimationFrame(() => requestAnimationFrame(springe));
+    else springe();
+  };
+
   const aktiv = (href: string) => pathname === href.split("#")[0];
   const behandlungAktiv = behandlungen.some((b) => aktiv(b.href));
 
@@ -97,6 +145,7 @@ export default function Kopfzeile() {
   return (
     <header
       ref={kopf}
+      onClick={beiKlickImKopf}
       style={{
         display: "grid",
         gridTemplateColumns: "1fr auto 1fr",
@@ -109,6 +158,7 @@ export default function Kopfzeile() {
         type="checkbox"
         id="navtoggle"
         aria-label={menueOffen ? "Menü schließen" : "Menü öffnen"}
+        aria-expanded={menueOffen}
         checked={menueOffen}
         onChange={(e) => menueSchalten(e.target.checked)}
         className="nur-lesbar"
