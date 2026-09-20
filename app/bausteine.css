@@ -158,3 +158,26 @@
 .frage__antwort { color: var(--color-neutral-800); font-size: var(--fs-body); line-height: 1.66; margin: 0; }
 @media (max-width: 1000px) { .frage { grid-template-columns: 1fr; gap: 30px; } }
 @media (max-width: 640px)  { .frage { gap: 24px; } }
+
+/* ── Bildhinweis ───────────────────────────────────────────────────────────
+   Kurzer Vermerk auf dem Bild, z. B. „Symbolbild". Liegt unten links und
+   ist damit das Gegenstück zur KI-Kennzeichnung (.ai-badge) unten rechts.
+   Der Untergrund trägt den Kontrast: ausreichend dunkel auch über hellen
+   Fotos. Braucht ein Elternteil mit position: relative. */
+.bildhinweis {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(23,21,15,0.78);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  pointer-events: none;
+}
+@media (max-width: 640px) { .bildhinweis { left: 8px; bottom: 8px; padding: 5px 9px; } }

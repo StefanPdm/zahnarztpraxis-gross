@@ -6,5 +6,10 @@ out
 next-env.d.ts
 .DS_Store
 
+# Rohfotos der Praxis: Ausgangsmaterial, kein Auslieferungsbestand. Bewusst
+# außerhalb von public/, sonst lägen die Originale unter /images/ öffentlich
+# im Netz. Was gebraucht wird, wird zugeschnitten nach public/uploads gelegt.
+rohfotos/
+
 # Der Übergabeordner bleibt im Repo (Quelle der Wahrheit für den Konverter),
 # aber Next soll ihn nicht kompilieren — dafür sorgt tsconfig "exclude".

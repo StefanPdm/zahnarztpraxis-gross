@@ -66,6 +66,10 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 - Ebenen nur über `--ebene-*`; die Kopfzeile liegt mit `--ebene-kopf` vorn.
 - Bilder immer über `<Bild>` (next/image). Neues Bild in `public/uploads`
   ablegen — die Maße erzeugt `npm run bilder` (läuft vor dev und build).
+  Unbearbeitete Fotos der Praxis liegen in `rohfotos/` — außerhalb von
+  `public/`, damit die Originale nicht öffentlich abrufbar sind, und per
+  `.gitignore` außerhalb des Repos. Was gebraucht wird, wird zugeschnitten
+  und verkleinert nach `public/uploads` kopiert.
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,

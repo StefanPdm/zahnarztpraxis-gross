@@ -386,7 +386,9 @@ body .flipcard img.portrait {
   align-items: center;
   padding: 5px 9px;
   border-radius: 999px;
-  background: rgba(23,21,15,0.5);
+  /* Die Schrift der Plakette ist ausgestanzt — sie wird nur durch diesen
+     Untergrund lesbar. Über hellen Bildern reichten 50 % nicht für 4,5:1. */
+  background: rgba(23,21,15,0.78);
   backdrop-filter: blur(4px);
   pointer-events: none;
 }

@@ -40,7 +40,8 @@ export const team: Behandler[] = [
       { label: 'Studium', value: 'Halle/Saale' },
       { label: 'Schwerpunkt', value: 'Kinder · Ästhetik' },
       { label: 'Zertifikate', value: 'Curriculum Paro (DG PARO)' },
-      { label: 'Hobby', value: 'Backen' },
+      { label: 'Hobby', value: 'Backen, Sport' },
+      { label: 'Besonderheit', value: 'großes Herz' },
     ],
     schwerpunkte:
       'Ästhetische Zahnmedizin · Konservierende Zahnheilkunde · Kinderzahnheilkunde · Parodontologie',
@@ -52,15 +53,16 @@ export const team: Behandler[] = [
     alt: 'Porträt von Matthias Groß, Zahnarzt und Implantologe bei Groß & Groß in Potsdam',
     zitat:
       '„Beim Zahnersatz entscheidet der halbe Millimeter. Deshalb arbeite ich mit unserem eigenen Meisterlabor direkt in der Praxis.“',
-    bio: 'Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.',
+    bio: 'Vor dem Studium habe ich Zahntechniker gelernt. Ich kenne die Arbeit deshalb aus beiden Welten — vom Behandlungsstuhl und von der Werkbank. Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.',
     werdegang:
-      'Studium in Halle/Saale, vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie.',
+      'Ausbildung zum Zahntechniker, danach Studium in Halle/Saale und vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie.',
     hochschule: 'Martin-Luther-Universität Halle-Wittenberg',
     fakten: [
       { label: 'Studium', value: 'Halle/Saale' },
       { label: 'Schwerpunkt', value: 'Implantologie · Prothetik' },
-      { label: 'Erfahrung', value: '500+ Implantate' },
+      { label: 'Erfahrung', value: '1.200+ Implantate' },
       { label: 'Hobbys', value: 'Wassersport, Angeln' },
+      { label: 'Besonderheit', value: 'echter Potsdamer' },
     ],
     schwerpunkte: 'Implantologie · Prothetik · Chirurgie · Zahnersatz aus dem eigenen Labor',
   },
