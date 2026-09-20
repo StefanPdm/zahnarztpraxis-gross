@@ -125,6 +125,12 @@ main:focus { outline: none; }
 html { scroll-padding-top: 96px; }
 @media (max-width: 1000px) { html { scroll-padding-top: 72px; } }
 
+/* Sprungmarken gleiten, statt zu springen — z. B. der Pfeil in der Hero.
+   Next.js schaltet das beim Seitenwechsel selbst kurz ab, die Rückkehr
+   nach oben bleibt also übergangslos. */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 /* Nur für Screenreader und Tastatur: unsichtbar, aber fokussierbar. */
 .nur-lesbar {
   position: absolute !important;
@@ -428,6 +434,21 @@ body .flipcard img.portrait {
   background: var(--color-accent-100);
   color: var(--color-accent-800) !important;
   text-decoration: none;
+}
+
+/* Der Pfeil unter der Hero wandert von oben nach unten und blendet dabei
+   aus — er zeigt die Richtung, in die der Klick führt. */
+@keyframes pfeilAbwaerts {
+  0%        { transform: translateY(-7px); opacity: 0; }
+  25%, 60%  { transform: translateY(0);    opacity: 1; }
+  100%      { transform: translateY(8px);  opacity: 0; }
+}
+.scrollcue svg { animation: pfeilAbwaerts 2.4s cubic-bezier(.4, 0, .5, 1) infinite; }
+/* Beim Zeigen und bei Tastaturfokus anhalten, damit das Ziel ruhig steht. */
+.scrollcue:hover svg,
+.scrollcue:focus-visible svg { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .scrollcue svg { animation: none; opacity: 1; }
 }
 
 body footer { padding-bottom: 68px !important; }
