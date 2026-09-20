@@ -181,3 +181,12 @@
   pointer-events: none;
 }
 @media (max-width: 640px) { .bildhinweis { left: 8px; bottom: 8px; padding: 5px 9px; } }
+
+/* ── Angst-Regler: Antwortfläche ───────────────────────────────────────────
+   Feste Höhe, damit beim Schieben weder die Karte noch das Bild daneben
+   springt. Bemessen für den längsten der zehn Texte (rund 150 Zeichen) samt
+   zweizeiliger Überschrift; wird ein Text länger, wächst die Fläche, statt
+   ihn abzuschneiden. Mobil trägt die Karte niemand daneben — dort frei. */
+.angst-antwort { min-height: 205px; }
+@media (max-width: 1200px) { .angst-antwort { min-height: 245px; } }
+@media (max-width: 1000px) { .angst-antwort { min-height: 0; } }

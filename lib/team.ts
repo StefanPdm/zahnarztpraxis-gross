@@ -60,7 +60,7 @@ export const team: Behandler[] = [
     fakten: [
       { label: 'Studium', value: 'Halle/Saale' },
       { label: 'Schwerpunkt', value: 'Implantologie · Prothetik' },
-      { label: 'Erfahrung', value: '1.200+ Implantate' },
+      { label: 'Erfahrung', value: '500+ Implantate' },
       { label: 'Hobbys', value: 'Wassersport, Angeln' },
       { label: 'Besonderheit', value: 'echter Potsdamer' },
     ],

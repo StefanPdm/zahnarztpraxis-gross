@@ -14,30 +14,44 @@ import { praxis } from "@/lib/praxis";
   stehen dort direkt darunter im Seitentext).
 */
 
-type Stufe = { min: number; max: number; label: string; icon: string; text: string };
+type Stufe = { min: number; max: number; label: string; icon: string };
 
+/* Drei Vorgehensweisen — sie geben der Antwort Überschrift und Zeichen. */
 const stufen: Stufe[] = [
-  {
-    min: 1,
-    max: 3,
-    label: "Routine",
-    icon: "M20 6L9 17l-5-5",
-    text: "Dann halten wir es kurz: Kontrolle, Reinigung, klare Ansage — und ein Recall-Intervall, das zu Ihren Zähnen passt statt zum Kalender.",
-  },
+  { min: 1, max: 3, label: "Routine", icon: "M20 6L9 17l-5-5" },
   {
     min: 4,
     max: 7,
     label: "Mit Ansage",
     icon: "M20 15a2 2 0 01-2 2H8l-4 4V6a2 2 0 012-2h12a2 2 0 012 2z",
-    text: "Wir erklären jeden Schritt, bevor er kommt, und legen Pausen ein, wenn Sie es brauchen. Betäubung besprechen wir vorher, nicht erst am Stuhl.",
   },
   {
     min: 8,
     max: 10,
     label: "Ohne Behandlung beginnen",
     icon: "M12 20.5s-7.3-4.6-7.3-9.8A4.6 4.6 0 0112 8.2a4.6 4.6 0 017.3 2.5c0 5.2-7.3 9.8-7.3 9.8z",
-    text: "Erster Termin: nur Gespräch, wenn Sie möchten ohne Blick in den Mund. Danach vereinbaren wir ein Handzeichen, blocken einen längeren Termin und stellen Musik oder einen Film über den Deckenmonitor ein.",
   },
+];
+
+/*
+  Ein eigener Text je Reglerwert 1–10 (Index 0 = Wert 1). Sie sind bewusst
+  ähnlich lang: die Antwortfläche hat eine feste Höhe, damit weder die Karte
+  noch das Bild daneben bei jedem Schieben springt. Wer hier ändert, bleibt
+  bei rund 150 Zeichen. Inhaltlich nur, was die Praxis belegt anbietet —
+  Gespräch, Pausen, Handzeichen, Zeitpuffer, Musik oder Film über den
+  Deckenmonitor.
+*/
+const texte: string[] = [
+  "Für Sie ist das ein Termin wie jeder andere. Dann halten wir ihn kurz: Kontrolle, Reinigung, klare Ansage — und ein Recall, das zu Ihren Zähnen passt.",
+  "Ein mulmiges Gefühl im Wartezimmer kennt fast jeder. Sagen Sie es ruhig beim Hinsetzen, dann erklären wir jeden Schritt, bevor wir ihn tun.",
+  "Sie sind gelassen, mögen aber keine Überraschungen. Deshalb hören Sie vorher, was ansteht, wie lange es dauert und was es kostet.",
+  "Der Termin steht im Kalender und macht sich bemerkbar. Wir nehmen das ernst: kurze Ansage vor jedem Schritt — und Sie bestimmen das Tempo.",
+  "Unangenehm, aber machbar: so beschreiben es die meisten. Wir legen Pausen ein, sobald Sie es brauchen, und erklären, was als Nächstes kommt.",
+  "Vor allem die Geräusche gehen Ihnen nahe. Auf Wunsch läuft Musik oder ein Film über den Monitor an der Decke, während wir arbeiten.",
+  "Sie schieben Termine eher auf. Die Betäubung besprechen wir vorher, nicht erst am Stuhl, und wir blocken genug Zeit, damit nichts hetzt.",
+  "Der Gedanke allein kostet Sie Schlaf. Der erste Termin kann ein reines Gespräch sein — wenn Sie möchten, ohne jeden Blick in den Mund.",
+  "Sie waren lange nicht mehr da und rechnen mit Vorwürfen. Die gibt es hier nicht. Wir fangen dort an, wo Sie heute stehen, in Ihrem Tempo.",
+  "Panik ist kein Makel, sondern ein Grund, anders vorzugehen: ein Handzeichen, das sofort stoppt, ein längerer Termin, kein Schritt ohne Ihr Ja.",
 ];
 
 export default function AngstRegler({
@@ -50,6 +64,7 @@ export default function AngstRegler({
   const aufStart = variante === "start";
   const [fear, setFear] = useState(start);
   const stufe = stufen.find((t) => fear >= t.min && fear <= t.max) ?? stufen[1];
+  const text = texte[fear - 1] ?? texte[4];
 
   return (
     <div
@@ -122,11 +137,11 @@ export default function AngstRegler({
 
       <div
         aria-live="polite"
+        className="angst-antwort"
         style={{
           marginTop: "30px",
           borderTop: "1px solid var(--color-accent-300)",
           paddingTop: "26px",
-          minHeight: aufStart ? "170px" : "190px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "12px", color: "var(--color-accent-700)" }}>
@@ -157,24 +172,24 @@ export default function AngstRegler({
         <p
           style={{
             fontFamily: "var(--font-heading)",
-            fontSize: "clamp(24px,2.4vw,32px)",
-            lineHeight: "1.16",
+            fontSize: "clamp(20px,1.8vw,25px)",
+            lineHeight: "1.18",
             letterSpacing: "-0.015em",
-            margin: "16px 0 0",
+            margin: "14px 0 0",
           }}
         >
           {stufe.label}
         </p>
         <p
           style={{
-            fontSize: aufStart ? "var(--fs-lead)" : "var(--fs-body-lg)",
+            fontSize: "var(--fs-body)",
             lineHeight: "1.6",
-            margin: "14px 0 0",
+            margin: "12px 0 0",
             color: "var(--color-neutral-800)",
             textWrap: "pretty",
           }}
         >
-          {stufe.text}
+          {text}
         </p>
       </div>
 
