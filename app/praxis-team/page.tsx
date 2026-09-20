@@ -12,7 +12,7 @@ export const metadata = seitenMetadaten('/praxis-team');
 const zahlen = [
   { value: '1991', label: 'Familiengeführt in Potsdam' },
   { value: '5', label: 'Behandlungszimmer mit Tageslicht' },
-  { value: '1.200+', label: 'Gesetzte Implantate' },
+  { value: '> 500', label: 'Gesetzte Implantate' },
   { value: '1', label: 'Eigenes Labor im Haus' },
 ];
 
@@ -88,24 +88,26 @@ const mitgliedschaften: Gesellschaft[] = [
   },
 ];
 
+/* Die Galerie zeigt Räume, keine Menschen: weder Patienten noch Behandler
+   (Ansage des Auftraggebers). Die ersten drei Fotos stammen aus rohfotos/. */
 const raeume = [
   {
-    src: '/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg',
-    alt: 'Behandlungszimmer mit Deckenmonitor und Röntgenbild am Bildschirm',
+    src: '/uploads/behandlungszimmer-fenster-zahnarztpraxis-potsdam.jpg',
+    alt: 'Behandlungszimmer mit Stuhl, Deckenleuchte und Fenster in der Zahnarztpraxis Groß & Groß',
     no: 'I',
-    cap: 'Deckenmonitor und Röntgenbild',
+    cap: 'Behandlungsplatz am Fenster',
   },
   {
-    src: '/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg',
-    alt: 'Behandlung mit Assistenz am Stuhl in der Zahnarztpraxis Groß & Groß',
+    src: '/uploads/behandlungszimmer-tageslicht-zahnarztpraxis-potsdam.jpg',
+    alt: 'Blick in ein Behandlungszimmer mit Stuhl, Bildschirm und Tageslicht',
     no: 'II',
-    cap: 'Behandlung mit Assistenz',
+    cap: 'Ein Zimmer, von der Tür aus',
   },
   {
-    src: '/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg',
-    alt: 'Zahnarzt bei der Untersuchung eines Patienten im Behandlungszimmer',
+    src: '/uploads/behandlungseinheit-instrumente-zahnarztpraxis-potsdam.jpg',
+    alt: 'Instrumente der Behandlungseinheit in ihrer Halterung',
     no: 'III',
-    cap: 'Untersuchung am Stuhl',
+    cap: 'Instrumente am Stuhl',
   },
   {
     src: '/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg',

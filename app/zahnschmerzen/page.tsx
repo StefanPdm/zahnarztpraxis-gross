@@ -185,7 +185,7 @@ export default function Zahnschmerzen() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild src="/uploads/dr-zahnarzt-praxis-potsdam-gross-und-gross-1030x687.jpg" alt="Zahnarzt untersucht einen Patienten in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "88% 32%", display: "block" }} />
+          <Bild src="/uploads/behandlungszimmer-bereit-zahnarztpraxis-potsdam.jpg" alt="Vorbereitetes Behandlungszimmer in der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
       </div>
       <div className="abschnitt-oben">

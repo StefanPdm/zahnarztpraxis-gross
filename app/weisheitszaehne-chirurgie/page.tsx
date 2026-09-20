@@ -155,7 +155,7 @@ export default function WeisheitszaehneChirurgie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0" }}>
-          <Bild src="/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg" alt="Behandlungszimmer mit Röntgenbild am Bildschirm in der Zahnarztpraxis Groß & Groß Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Bild src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungszimmer der Zahnarztpraxis Groß & Groß in Potsdam" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

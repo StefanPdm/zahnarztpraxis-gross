@@ -698,8 +698,8 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg'
-                  alt='Behandlungszimmer mit Deckenmonitor und Röntgenbild am Bildschirm, Patientin im Stuhl'
+                  src='/uploads/photos-1786974461752-m532.jpg'
+                  alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß'
                   style={{
                     width: '100%',
                     height: '460px',
@@ -720,7 +720,7 @@ export default function Index() {
                     color: 'var(--color-neutral-700)',
                   }}>
                   <span style={{ color: 'var(--color-accent-700)' }}>Tafel III</span>
-                  <span>Deckenmonitor und Röntgenbild</span>
+                  <span>Deckenmonitor über dem Stuhl</span>
                 </figcaption>
               </figure>
             </div>
@@ -734,8 +734,8 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg'
-                  alt='Behandlung mit Assistenz am Stuhl in der Zahnarztpraxis Groß & Groß in Potsdam'
+                  src='/uploads/photos-1786974461834-65xv.jpg'
+                  alt='Behandlungszimmer mit Stuhl und Schränken in der Zahnarztpraxis Groß & Groß in Potsdam'
                   style={{
                     width: '100%',
                     height: '520px',
@@ -756,7 +756,7 @@ export default function Index() {
                     color: 'var(--color-neutral-700)',
                   }}>
                   <span style={{ color: 'var(--color-accent-700)' }}>Tafel IV</span>
-                  <span>Behandlung mit Assistenz</span>
+                  <span>Ein Zimmer, bereit</span>
                 </figcaption>
               </figure>
               <figure style={{ margin: '0' }}>

@@ -129,7 +129,7 @@ export default function Prophylaxe() {
           </p>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-10-1.jpg" alt="Zahnreinigung mit Assistenz am Behandlungsstuhl in der Praxis Groß & Groß Potsdam" />
+          <Bild vorrang className="parallax-img" src="/uploads/behandlungsplatz-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungsplatz mit Monitor an der Decke in der Praxis Groß & Groß Potsdam" />
         </figure>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)" }}>
@@ -194,7 +194,7 @@ export default function Prophylaxe() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/zahnarzt-potsdam-praxis-gross-und-gross-1030x687-1.jpg" alt="Behandlungszimmer mit Deckenmonitor in der Zahnarztpraxis Groß & Groß Potsdam" />
+          <Bild className="parallax-img" src="/uploads/photos-1786974461803-v5uo.jpg" alt="Behandlungszimmer mit Fenster in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
