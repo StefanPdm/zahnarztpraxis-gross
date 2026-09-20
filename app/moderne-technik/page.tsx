@@ -50,7 +50,7 @@ export default function ModerneTechnik() {
             Geräte sind kein Selbstzweck. Wir schaffen an, was für Sie einen Unterschied macht: weniger Wundschmerz, weniger Betäubungsmittel, weniger Termine, genauere Passung. Was Sie hier lesen, steht auch wirklich in unseren Behandlungsräumen — und wir zeigen es Ihnen gern, wenn Sie fragen.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -224,7 +224,7 @@ export default function ModerneTechnik() {
           Fragen Sie im Termin einfach nach — wir erklären jedes Gerät, das bei Ihnen zum Einsatz kommt. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

@@ -1,21 +1,29 @@
+"use client";
+
 import Link from "next/link";
 import { praxis } from "@/lib/praxis";
+import { anliegen, TERMIN_ANKER } from "@/lib/anliegen";
 
 /*
   „Worum geht es?" — Einstieg auf der Startseite.
 
-  Jeder Knopf führt direkt zum Formular auf /termin; das Formular wählt das
-  Anliegen anhand von ?anliegen=… selbst aus (components/TerminFormular,
-  ANLIEGEN_AUS_LINK). Neue Knöpfe dort mit eintragen.
+  Das Formular steht seit dem Zusammenlegen der Termin-Seite weiter unten auf
+  derselben Seite. Ein Klick setzt das Anliegen deshalb direkt im Feld und
+  gleitet dorthin — ohne Neuladen. Ohne JavaScript bleibt der Link als solcher
+  bestehen: /?anliegen=…#termin lädt die Seite, das Formular liest den
+  Parameter dann selbst (components/TerminFormular).
 */
 
-const anliegen = [
-  { label: "Kontrolle", value: "kontrolle" },
-  { label: "Schmerzen", value: "schmerzen" },
-  { label: "Beratung", value: "beratung" },
-];
-
 export default function AnliegenWahl() {
+  function waehle(event: React.MouseEvent<HTMLAnchorElement>, feldwert: string) {
+    const feld = document.getElementById("t-anliegen") as HTMLSelectElement | null;
+    const ziel = document.getElementById(TERMIN_ANKER);
+    if (!feld || !ziel) return; // Formular nicht auf der Seite: normaler Link
+    event.preventDefault();
+    feld.value = feldwert;
+    ziel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <>
       <div id="worum" style={{ scrollMarginTop: "110px" }}>
@@ -32,9 +40,10 @@ export default function AnliegenWahl() {
         </div>
         <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap", marginTop: "16px" }}>
           {anliegen.map((a) => (
-            <Link
-              key={a.value}
-              href={`/termin?anliegen=${a.value}#formular`}
+            <a
+              key={a.schluessel}
+              href={`/?anliegen=${a.schluessel}#${TERMIN_ANKER}`}
+              onClick={(event) => waehle(event, a.feldwert)}
               className="reasonchip"
               style={{
                 fontFamily: "var(--font-heading)",
@@ -46,12 +55,12 @@ export default function AnliegenWahl() {
               }}
             >
               {a.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>
       <div style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
-        <Link className="btn btn-primary knopf-gross" href="/termin">
+        <Link className="btn btn-primary knopf-gross" href={`/#${TERMIN_ANKER}`}>
           Termin vereinbaren
         </Link>
         <a className="btn btn-secondary knopf-gross" href={praxis.telefonHref}>

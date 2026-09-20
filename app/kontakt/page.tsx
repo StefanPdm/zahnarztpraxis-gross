@@ -261,7 +261,7 @@ export default function Kontakt() {
         </div>
         <Link
           className='btn btn-primary knopf-gross'
-          href='/termin'>
+          href='/#termin'>
           Termin anfragen
         </Link>
       </div>

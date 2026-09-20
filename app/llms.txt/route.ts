@@ -31,7 +31,7 @@ export function GET() {
     `- Wichtig: Der Praxiseingang liegt auf der Rückseite des Gebäudes, nicht an der Straße.`,
     `- Telefon: ${praxis.telefon}`,
     `- E-Mail: ${praxis.email}`,
-    `- Terminanfrage online: ${url("/termin")} – Rückmeldung ${praxis.antwortzeit}`,
+    `- Terminanfrage online: ${url("/")}#termin (Formular auf der Startseite) – Rückmeldung ${praxis.antwortzeit}`,
     `- Akute Zahnschmerzen: morgens ab 8:00 anrufen; Montag bis Freitag werden Notfalltermine freigehalten.`,
     `- Außerhalb der Sprechzeiten: zahnärztlicher Notdienst der KZV Land Brandenburg, https://www.kzvlb.de/patienten/notdienstsuche`,
     "",

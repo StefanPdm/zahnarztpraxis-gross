@@ -12,10 +12,36 @@ import AnliegenWahl from '@/components/AnliegenWahl';
 import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
+import TerminFormular from '@/components/TerminFormular';
 
 export const metadata = seitenMetadaten('/');
 
 const showReviews = true;
+
+/* Termin-Sektion: übernommen von der früheren Seite /termin. */
+const zusagen = [
+  'Bestätigung innerhalb von 24 Stunden',
+  'Schmerztermine täglich am Morgen',
+  'Gesetzlich und privat versichert',
+];
+
+const terminschritte = [
+  {
+    no: '01',
+    title: 'Anfrage senden',
+    text: 'Zwei Wunschzeiten, Ihr Anliegen und wie wir Sie erreichen.',
+  },
+  {
+    no: '02',
+    title: 'Bestätigung',
+    text: 'Wir sehen uns Ihre Anfrage im Team an und melden uns innerhalb von 24 Stunden mit einem konkreten Vorschlag — telefonisch oder per E-Mail.',
+  },
+  {
+    no: '03',
+    title: 'Ihr Termin',
+    text: 'Mit der Zeit, die Ihr Anliegen tatsächlich braucht. Wird früher etwas frei, fragen wir, ob es Ihnen passt.',
+  },
+];
 
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
@@ -1465,7 +1491,7 @@ export default function Index() {
               <div style={{ display: 'flex', gap: '14px', marginTop: '24px' }}>
                 <Link
                   className='btn btn-primary knopf-gross'
-                  href='/termin'>
+                  href='/#termin'>
                   Erstgespräch anfragen
                 </Link>
                 <a
@@ -1634,204 +1660,124 @@ export default function Index() {
               Ihr Termin
             </div>
           </div>
+          {/* Terminanfrage — die frühere Seite /termin ist hier aufgegangen.
+              Das Formular ist components/TerminFormular (Client Component,
+              versendet an app/api/termin). Der Anker heißt `termin`, alle
+              „Termin anfragen“-Knöpfe der Website zeigen auf /#termin. */}
           <div
-            id='1b-termin'
+            id='termin'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1.05fr',
-              gap: '64px',
+              scrollMarginTop: '110px',
               padding: '116px 64px',
               background:
                 'linear-gradient(180deg, rgba(255,255,255,0) 0%, color-mix(in oklab, var(--color-accent) 11%, #ffffff) 100%)',
               borderBottom: '1px solid var(--color-divider)',
             }}>
-            <div>
-              <div className='ueberzeile'>Termin</div>
-              <h2 className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
-              <p
-                style={{
-                  textAlign: 'justify',
-                  hyphens: 'auto',
-                  maxWidth: '44ch',
-                  color: 'var(--color-neutral-800)',
-                }}>
-                Wir bestätigen Anfragen innerhalb von 24 Stunden. Für akute Beschwerden halten wir
-                jeden Morgen Termine frei — rufen Sie in diesem Fall bitte direkt an.
-              </p>
-              <hr className='hr' />
-              <p
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: 'var(--fs-h3)',
-                  margin: '0',
-                }}>
-                <a
-                  href='tel:+49331960926'
-                  style={{ fontFeatureSettings: "'tnum'" }}>
-                  0331 960926
-                </a>
-              </p>
-              <p style={{ fontSize: '14px', color: 'var(--color-neutral-800)' }}>
-                Schopenhauerstraße 37 · 14467 Potsdam
-              </p>
-            </div>
-            <form style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px' }}>
-              <div className='field'>
-                <label htmlFor='b-name'>Name</label>
-                <input
-                  className='input'
-                  id='b-name'
-                  placeholder='Vor- und Nachname'
-                />
-              </div>
-              <div className='field'>
-                <label htmlFor='b-tel'>Telefon</label>
-                <input
-                  className='input'
-                  id='b-tel'
-                  type='tel'
-                  placeholder='Für die Rückbestätigung'
-                />
-              </div>
-              <div className='field'>
-                <label htmlFor='b-mail'>E-Mail</label>
-                <input
-                  className='input'
-                  id='b-mail'
-                  type='email'
-                  placeholder='name@beispiel.de'
-                />
-              </div>
-              <div className='field'>
-                <label htmlFor='b-date'>Wunschtermin</label>
-                <input
-                  className='input'
-                  id='b-date'
-                  type='date'
-                />
-              </div>
-              <div className='field'>
-                <label>Patientenstatus</label>
-                <div className='seg'>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-status'
-                      defaultChecked
-                    />
-                    <span>Neu</span>
-                  </label>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-status'
-                    />
-                    <span>Bestandspatient</span>
-                  </label>
-                </div>
-              </div>
-              <div className='field'>
-                <label>Versicherung</label>
-                <div className='seg'>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-ins'
-                      defaultChecked
-                    />
-                    <span>Gesetzlich</span>
-                  </label>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-ins'
-                    />
-                    <span>Privat</span>
-                  </label>
-                </div>
-              </div>
-              <div
-                className='field'
-                style={{ gridColumn: '1/-1' }}>
-                <label>Angst vor der Behandlung?</label>
-                <div className='seg'>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-angst'
-                      defaultChecked
-                    />
-                    <span>Nein</span>
-                  </label>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-angst'
-                    />
-                    <span>Ja — ich bin Angstpatient/in</span>
-                  </label>
-                  <label className='seg-opt'>
-                    <input
-                      type='radio'
-                      name='b-angst'
-                    />
-                    <span>Erstmal nur ein Gespräch</span>
-                  </label>
-                </div>
-              </div>
-              <div
-                className='field'
-                style={{ gridColumn: '1/-1' }}>
-                <label htmlFor='b-anliegen'>Anliegen</label>
-                <select
-                  className='input'
-                  id='b-anliegen'>
-                  <option>Kontrolle &amp; Prophylaxe</option>
-                  <option>Schmerzen / akutes Problem</option>
-                  <option>Zahnersatz, Krone oder Implantat</option>
-                  <option>Ästhetische Beratung (Veneers, Bleaching)</option>
-                  <option>Kinderbehandlung</option>
-                  <option>Weisheitszähne / MKG-Chirurgie</option>
-                  <option>Etwas anderes</option>
-                </select>
-              </div>
-              <div
-                className='field'
-                style={{ gridColumn: '1/-1' }}>
-                <label htmlFor='b-msg'>Nachricht</label>
-                <textarea
-                  className='input'
-                  id='b-msg'
-                  placeholder='Was sollten wir vorab wissen?'
-                />
-              </div>
-              <div
-                style={{
-                  gridColumn: '1/-1',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '20px',
-                  flexWrap: 'wrap',
-                }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1.15fr',
+                gap: '64px',
+              }}>
+              <div>
+                <div className='ueberzeile'>Termin</div>
+                <h2 className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
                 <p
                   style={{
-                    fontSize: '11px',
-                    color: 'var(--color-neutral-700)',
-                    margin: '0',
-                    maxWidth: '38ch',
+                    textAlign: 'justify',
+                    hyphens: 'auto',
+                    maxWidth: '46ch',
+                    color: 'var(--color-neutral-800)',
                   }}>
-                  Ihre Angaben werden ausschließlich zur Terminvergabe genutzt. Wir melden uns
-                  innerhalb von 24 Stunden zurück.
+                  Diese Anfrage ist noch keine feste Buchung: Wir prüfen Ihre Wunschzeit und
+                  bestätigen innerhalb von 24 Stunden, telefonisch oder per E-Mail. Für akute
+                  Beschwerden halten wir jeden Morgen Termine frei — rufen Sie in diesem Fall bitte
+                  direkt an.
                 </p>
-                <button
-                  className='btn btn-primary'
-                  type='button'
-                  style={{ padding: '15px 40px', fontSize: 'var(--fs-body)' }}>
-                  Anfrage senden
-                </button>
+                <p
+                  style={{
+                    textAlign: 'justify',
+                    hyphens: 'auto',
+                    maxWidth: '46ch',
+                    color: 'var(--color-neutral-800)',
+                    margin: '16px 0 0',
+                  }}>
+                  Je genauer Ihr Anliegen, desto passender der Termin: Eine Kontrolle braucht 20
+                  Minuten, eine Implantatberatung deutlich mehr. Neue Patienten planen wir bewusst
+                  länger ein.
+                </p>
+                <hr className='hr' />
+                <div
+                  style={{
+                    display: 'grid',
+                    gap: '12px',
+                    fontSize: '14px',
+                    color: 'var(--color-neutral-800)',
+                  }}>
+                  {zusagen.map((z, zI) => (
+                    <span
+                      key={zI}
+                      style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
+                      {z}
+                    </span>
+                  ))}
+                </div>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: 'var(--fs-h3)',
+                    margin: '28px 0 0',
+                  }}>
+                  <a
+                    href='tel:+49331960926'
+                    style={{ fontFeatureSettings: "'tnum'" }}>
+                    0331 960926
+                  </a>
+                </p>
+                <p style={{ fontSize: '14px', color: 'var(--color-neutral-800)', margin: '6px 0 0' }}>
+                  Schopenhauerstraße 37 · 14467 Potsdam
+                </p>
               </div>
-            </form>
+              <TerminFormular />
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3,1fr)',
+                margin: '72px 0 0',
+                borderTop: '1px solid var(--color-divider)',
+              }}>
+              {terminschritte.map((s, sI) => (
+                <div
+                  key={sI}
+                  style={{
+                    padding: '28px 28px 0 0',
+                  }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '13px',
+                      letterSpacing: '0.14em',
+                      color: 'var(--color-accent-700)',
+                      fontFeatureSettings: "'tnum'",
+                    }}>
+                    {s.no}
+                  </div>
+                  <h3 style={{ fontWeight: '400', fontSize: 'var(--fs-h5)', margin: '10px 0 6px' }}>
+                    {s.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: '1.6',
+                      color: 'var(--color-neutral-800)',
+                      margin: '0',
+                    }}>
+                    {s.text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <div
             id='1b-kontakt'
@@ -1989,7 +1935,7 @@ export default function Index() {
             <div className='knopfreihe knopfreihe--mitte'>
               <Link
                 className='btn knopf-band knopf-band--voll'
-                href='/termin'>
+                href='/#termin'>
                 Termin anfragen
               </Link>
               <a

@@ -65,7 +65,7 @@ export default function Implantologie() {
             Planung, Implantation, Zahnersatz und Nachsorge — alles in derselben Praxis, bei denselben Behandlern, mit dem Zahnlabor eine Tür weiter. Sie müssen für Ihr Implantat nicht zwischen Chirurg, Zahnarzt und Labor pendeln, und niemand schiebt die Verantwortung weiter.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Beratung anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -200,7 +200,7 @@ export default function Implantologie() {
             <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum Zahnlabor
             </Link>
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
           </div>
@@ -226,7 +226,7 @@ export default function Implantologie() {
           Im Beratungstermin klären wir, ob ein Implantat für Sie infrage kommt, welche Alternativen es gibt und was beides kostet — schriftlich, vor jeder Entscheidung. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

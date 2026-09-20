@@ -57,7 +57,7 @@ export default function Kinderzahnheilkunde() {
             Unsere kleinen Patienten behandeln wir mit viel Einfühlungsvermögen: Kinder sind bei uns ausdrücklich willkommen — nicht nebenbei, sondern als eigene Patienten mit eigenem Tempo. Unser Ziel ist einfach: dass Ihr Kind gar keine Angst vor dem Zahnarzt entwickelt. Dafür nehmen wir uns beim ersten Mal Zeit für nichts als Kennenlernen.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Kindertermin anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -179,7 +179,7 @@ export default function Kinderzahnheilkunde() {
             Ein Hinweis, der oft überrascht: Karies- und Parodontitisbakterien können von Eltern auf das Kind übertragen werden. Auf die eigene Mundgesundheit zu achten — gerade vor und während einer Schwangerschaft — schützt also beide.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
             <Link className="btn btn-secondary knopf-gross" href="/angstpatienten">
@@ -208,7 +208,7 @@ export default function Kinderzahnheilkunde() {
           Wählen Sie bei der Anfrage „Kinderbehandlung“ — wir planen den Termin so, dass Zeit zum Kennenlernen bleibt. Antwort innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

@@ -112,7 +112,7 @@ export default function Fusszeile() {
             <Link href="/impressum-datenschutz#datenschutz">
               Datenschutz
             </Link>
-            <Link href="/termin">
+            <Link href="/#termin">
               Termin vereinbaren
             </Link>
           </span>

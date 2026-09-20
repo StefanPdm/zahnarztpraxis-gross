@@ -46,7 +46,7 @@ export default function AesthetischeZahnmedizin() {
             Gute ästhetische Zahnmedizin fällt nicht auf. Kein zu weißes Weiß, keine gleichförmige Reihe — sondern Zähne, die zu Ihrem Gesicht und Ihrem Alter passen und von denen niemand vermutet, dass daran gearbeitet wurde. Material und Technik erlauben heute Ergebnisse, die man als solche nicht erkennt.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Beratung anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -137,7 +137,7 @@ export default function AesthetischeZahnmedizin() {
             <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum eigenen Zahnlabor
             </Link>
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
           </div>
@@ -163,7 +163,7 @@ export default function AesthetischeZahnmedizin() {
           Im Beratungstermin schauen wir gemeinsam, was möglich ist und was nicht — mit Farbmustern in der Hand und einem schriftlichen Kostenplan. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

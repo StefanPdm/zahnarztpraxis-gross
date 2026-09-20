@@ -9,8 +9,8 @@ import { useBeimScrollen } from "@/lib/useBeimScrollen";
 /*
   Mitlaufende Termin-Leiste. Markup und Werte 1:1 aus layout/stickycta.html,
   Verhalten nach site.v2.js: erscheint ab 620 px Scrollweg und verschwindet,
-  sobald die Fußzeile ins Bild kommt. Auf /termin entfällt sie — dort steht
-  das Formular.
+  sobald die Fußzeile ins Bild kommt. Ihr Knopf führt auf /#termin, also zum
+  Formular auf der Startseite (die frühere Seite /termin ist dort aufgegangen).
 
   Ihre Höhe plus 14 px steht als --terminleiste-abstand auf <html>; der
   Zurück-nach-oben-Knopf weicht ihr darüber aus.
@@ -25,7 +25,6 @@ export default function TerminLeiste() {
   useBeimScrollen(() => {
     const fuss = document.querySelector("footer");
     const zeigen =
-      pfad !== "/termin" &&
       window.scrollY > AB_SCROLLWEG &&
       !(fuss && fuss.getBoundingClientRect().top < window.innerHeight);
     setSichtbar(zeigen);
@@ -62,7 +61,7 @@ export default function TerminLeiste() {
         Termin frei? Wir melden uns innerhalb von 24 Stunden.
       </span>
       <span style={{ display: "flex", gap: "10px" }}>
-        <Link className="btn btn-primary" href="/termin" style={{ padding: "9px 22px", fontSize: "13px" }}>
+        <Link className="btn btn-primary" href="/#termin" style={{ padding: "9px 22px", fontSize: "13px" }}>
           Termin anfragen
         </Link>
         <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "9px 22px", fontSize: "13px" }}>

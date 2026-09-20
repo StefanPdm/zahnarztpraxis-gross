@@ -144,14 +144,6 @@ export const seiten: Seite[] = [
       "Telefon 0331 960926, Öffnungszeiten und Adresse: Schopenhauerstraße 37, Potsdam – Eingang auf der Rückseite. Antwort auf Anfragen innerhalb von 24 Stunden.",
   },
   {
-    pfad: "/termin",
-    name: "Termin anfragen",
-    rubrik: "Service",
-    titel: "Termin online anfragen | Zahnarzt Groß & Groß Potsdam",
-    beschreibung:
-      "Zwei Wunschzeiten senden, Bestätigung innerhalb von 24 Stunden. Auch für Angstpatienten und Kinder – mit extra Zeit im Terminplan.",
-  },
-  {
     pfad: "/impressum-datenschutz",
     name: "Impressum & Datenschutz",
     rubrik: "Rechtliches",

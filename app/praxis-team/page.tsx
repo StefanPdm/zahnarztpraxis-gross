@@ -181,7 +181,7 @@ export default function PraxisTeam() {
           <div className='knopfreihe'>
             <Link
               className='btn btn-primary knopf-gross'
-              href='/termin'>
+              href='/#termin'>
               Termin anfragen
             </Link>
             <a
@@ -823,7 +823,7 @@ export default function PraxisTeam() {
         <div className='knopfreihe knopfreihe--mitte'>
           <Link
             className='btn knopf-band knopf-band--voll'
-            href='/termin'>
+            href='/#termin'>
             Termin anfragen
           </Link>
           <a

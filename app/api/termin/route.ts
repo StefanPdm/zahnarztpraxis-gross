@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { praxis } from '@/lib/praxis';
+import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
 
 /*
   Termin-Anfrage.
@@ -20,8 +21,10 @@ const einzeilig = /^[^\u0000-\u001f\u007f]*$/;
 const Anfrage = z
   .object({
     name: z.string().trim().min(2).max(120).regex(einzeilig),
-    tel: z.string().trim().max(60).regex(einzeilig).optional().or(z.literal('')),
-    mail: z.string().trim().email().max(180).optional().or(z.literal('')),
+    // Pflicht: die Praxis meldet sich in der Regel telefonisch zurück.
+    tel: z.string().trim().min(5).max(60).regex(einzeilig),
+    // Pflicht: ohne Adresse gäbe es keine Bestätigung an die Patientin/den Patienten.
+    mail: z.string().trim().email().max(180),
     geburt: z.string().trim().max(40).optional().or(z.literal('')),
     termin1: z.string().trim().min(1).max(60),
     termin2: z.string().trim().max(60).optional().or(z.literal('')),
@@ -35,10 +38,6 @@ const Anfrage = z
     // Spamschutz
     website: z.string().max(0), // Honeypot: muss leer bleiben
     gestartet: z.number(),
-  })
-  .refine((d) => Boolean(d.tel) || Boolean(d.mail), {
-    message: 'Bitte Telefonnummer oder E-Mail angeben.',
-    path: ['tel'],
   });
 
 /** Einfache Begrenzung pro IP. Reicht für eine Praxisseite. */
@@ -151,7 +150,8 @@ export async function POST(request: Request) {
   });
 
   const anPraxis =
-    `Neue Terminanfrage über die Website\n\n` +
+    `Hallo liebes Praxisteam,\n\n` +
+    `über die Website ist eine neue Terminanfrage eingegangen:\n\n` +
     zeile('Name', d.name) +
     zeile('Telefon', d.tel) +
     zeile('E-Mail', d.mail) +
@@ -166,21 +166,21 @@ export async function POST(request: Request) {
     zeile('Zahnarztangst', d.angst) +
     zeile('Anliegen', d.anliegen) +
     (d.nachricht ? `\nNachricht:\n${d.nachricht}\n` : '') +
-    `\n—\nZusage an die Patientin/den Patienten: Rückmeldung innerhalb von 24 Stunden.\n`;
+    `\n—\n\n` +
+    `Eine Eingangsbestätigung ist bereits an ${d.mail} gegangen, mit der Zusage:\n` +
+    `Rückmeldung innerhalb von 24 Stunden. Ein „Antworten“ auf diese Mail geht\n` +
+    `direkt an die Patientin oder den Patienten.\n\n` +
+    `Viel Erfolg\n` +
+    `Dein Webmaster\n`;
 
-  const anAbsender =
-    `Guten Tag ${d.name},\n\n` +
-    `vielen Dank für Ihre Terminanfrage. Wir melden uns innerhalb von ` +
-    `24 Stunden bei Ihnen.\n\n` +
-    `Ihre Angaben:\n` +
-    zeile('Wunschtermin 1', d.termin1) +
-    zeile('Wunschtermin 2', d.termin2) +
-    zeile('Tageszeit', d.tageszeit) +
-    `\nWenn es dringend ist, erreichen Sie uns telefonisch unter 0331 960926.\n\n` +
-    `Mit freundlichen Grüßen\n` +
-    `Zahnarztpraxis Groß & Groß\n` +
-    `Schopenhauerstraße 37, 14467 Potsdam\n` +
-    `Eingang auf der Rückseite des Gebäudes\n`;
+  // Bestätigung an die Patientin/den Patienten: gestaltete HTML-Fassung plus
+  // Textfassung für Programme, die kein HTML anzeigen (lib/mailvorlage.ts).
+  const bestaetigung = {
+    name: d.name,
+    termin1: d.termin1,
+    termin2: d.termin2 || undefined,
+    tageszeit: d.tageszeit,
+  };
 
   try {
     await versand.sendMail({
@@ -191,14 +191,15 @@ export async function POST(request: Request) {
       text: anPraxis,
     });
 
-    if (d.mail) {
-      await versand.sendMail({
-        from: SMTP_FROM,
-        to: d.mail,
-        subject: 'Ihre Terminanfrage bei Groß & Groß',
-        text: anAbsender,
-      });
-    }
+    // Die Adresse ist Pflichtfeld, die Bestätigung geht also immer raus.
+    await versand.sendMail({
+      from: SMTP_FROM,
+      to: d.mail,
+      replyTo: PRAXIS_MAIL,
+      subject: `Ihre Terminanfrage bei ${praxis.name}`,
+      text: bestaetigungText(bestaetigung),
+      html: bestaetigungHtml(bestaetigung),
+    });
   } catch (fehler) {
     console.error('SMTP-Versand fehlgeschlagen:', (fehler as Error).message);
     return NextResponse.json(

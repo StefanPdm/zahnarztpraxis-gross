@@ -203,7 +203,7 @@ export default function AngstRegler({
             borderTop: "1px solid var(--color-accent-300)",
           }}
         >
-          <Link className="btn btn-primary" href="/termin" style={{ padding: "12px 24px", fontSize: "14px" }}>
+          <Link className="btn btn-primary" href="/#termin" style={{ padding: "12px 24px", fontSize: "14px" }}>
             Termin anfragen
           </Link>
           <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 24px", fontSize: "14px" }}>

@@ -57,7 +57,7 @@ export default function Parodontologie() {
             Parodontitis tut lange nicht weh — das ist ihr Problem. Bakterieller Belag am Zahnfleischsaum verhärtet zu Zahnstein, das Zahnfleisch entzündet sich und blutet, es entstehen Taschen. Unbehandelt baut der Kieferknochen ab, und die Zähne verlieren ihren Halt. Deshalb ist blutendes Zahnfleisch kein Schönheitsfehler, sondern ein Termingrund.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Zahnfleisch prüfen lassen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -184,7 +184,7 @@ export default function Parodontologie() {
             Was verloren ist, ersetzen wir mit Implantaten oder Zahnersatz aus dem eigenen Labor. Besser ist es, bis dahin nicht zu kommen.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
             <Link className="btn btn-secondary knopf-gross" href="/implantologie">
@@ -213,7 +213,7 @@ export default function Parodontologie() {
           Lassen Sie Ihr Zahnfleisch anschauen, bevor Taschen entstehen. Senden Sie zwei Wunschzeiten — wir bestätigen innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

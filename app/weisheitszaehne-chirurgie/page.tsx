@@ -72,7 +72,7 @@ export default function WeisheitszaehneChirurgie() {
             Bei den meisten Menschen ist im Kiefer nicht genug Platz für die Weisheitszähne: sie wachsen schief, drücken auf die Nachbarzähne und verursachen Schmerzen. Ob sie raus müssen, entscheidet ihre Lage im Kiefer — und die sieht man nicht von außen. Deshalb steht am Anfang immer ein Röntgenbild, nicht eine Empfehlung.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Beurteilung anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -229,7 +229,7 @@ export default function WeisheitszaehneChirurgie() {
             <Link className="btn btn-secondary knopf-gross" href="/angstpatienten">
               Für Angstpatienten
             </Link>
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
           </div>
@@ -255,7 +255,7 @@ export default function WeisheitszaehneChirurgie() {
           Im Beratungstermin sehen wir anhand des Röntgenbildes, wie Ihre Weisheitszähne liegen — und sagen Ihnen offen, ob überhaupt etwas gemacht werden muss. Antwort auf Ihre Anfrage innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

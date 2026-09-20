@@ -153,7 +153,7 @@ export default function Leistungen() {
           </p>
         </div>
         <div style={{ display: "flex", gap: "14px" }}>
-          <Link className="btn btn-primary knopf-gross" href="/termin">
+          <Link className="btn btn-primary knopf-gross" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">

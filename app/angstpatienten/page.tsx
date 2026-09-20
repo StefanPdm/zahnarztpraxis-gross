@@ -58,7 +58,7 @@ export default function Angstpatienten() {
             Fünf bis zehn Prozent der Menschen meiden den Zahnarzt aus Angst. Die Folge ist meistens dieselbe: Kontrollen werden verschoben, aus kleinen Problemen werden große, und der Weg zurück fühlt sich mit jedem Jahr schwerer an. Wir behandeln viele Patienten, die lange nicht da waren — und fangen dort an, wo es für Sie machbar ist.
           </p>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Erstgespräch anfragen
             </Link>
             <a className="btn btn-secondary knopf-gross" href="tel:+49331960926">
@@ -231,7 +231,7 @@ export default function Angstpatienten() {
           Bei der Online-Anfrage wählen Sie „Angstpatient/in“ — dann planen wir mehr Zeit ein und beginnen mit einem Gespräch. Wir melden uns innerhalb von 24 Stunden.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

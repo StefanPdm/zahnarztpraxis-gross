@@ -241,7 +241,7 @@ export default function AnfahrtParken() {
             </div>
           </div>
           <div className="knopfreihe">
-            <Link className="btn btn-primary knopf-gross" href="/termin">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>
             <Link className="btn btn-secondary knopf-gross" href="/kontakt">
@@ -278,7 +278,7 @@ export default function AnfahrtParken() {
           Senden Sie zwei Wunschzeiten — wir bestätigen innerhalb von 24 Stunden. Wenn Sie den Eingang nicht finden, rufen Sie einfach an.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <Link className="btn knopf-band knopf-band--voll" href="/termin">
+          <Link className="btn knopf-band knopf-band--voll" href="/#termin">
             Termin anfragen
           </Link>
           <a className="btn knopf-band knopf-band--rahmen" href="tel:+49331960926">

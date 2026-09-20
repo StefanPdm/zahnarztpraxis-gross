@@ -2,11 +2,12 @@
 
 import { FormEvent, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { feldwertZuSchluessel } from "@/lib/anliegen";
 
 /*
   Termin-Formular, verdrahtet gegen app/api/termin/route.ts.
 
-  Markup 1:1 aus dem Übergabepaket (app/termin), ergänzt um name, required
+  Markup 1:1 aus dem Übergabepaket, ergänzt um name, required
   und den Versand. Die Seite selbst bleibt Server Component, damit
   `metadata` und JSON-LD dort stehen bleiben können.
 
@@ -18,12 +19,20 @@ import Link from "next/link";
 
 const nichts = () => () => {};
 
-/** Vorbelegung aus /termin?anliegen=… (AnliegenWahl auf der Startseite). */
-const ANLIEGEN_AUS_LINK: Record<string, string> = {
-  kontrolle: "Kontrolle & Prophylaxe",
-  schmerzen: "Schmerzen / akutes Problem",
-  beratung: "Beratung",
-};
+/*
+  Sternchen am Pflichtfeld. `aria-hidden`, weil Screenreader das `required`
+  am Feld selbst ansagen — gesprochen wäre der Stern nur ein „Sternchen“
+  zwischen Wörtern. Die Erklärung dazu steht unten im Formular.
+*/
+function Pflicht() {
+  return (
+    <span
+      aria-hidden='true'
+      style={{ color: 'var(--color-accent-700)' }}>
+      *
+    </span>
+  );
+}
 
 export default function TerminFormular() {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
@@ -34,12 +43,54 @@ export default function TerminFormular() {
   // Zeitstempel für den Spamschutz — erst im Browser setzen, nicht beim Rendern.
   const gestartet = useRef(0);
   const anliegenFeld = useRef<HTMLSelectElement>(null);
+  const formularFeld = useRef<HTMLFormElement>(null);
+
+  /*
+    Testhilfe: füllt alle Felder mit Beispieldaten, damit der Versand ohne
+    Tipparbeit geprüft werden kann. Ausgelöst wird sie durch einen Klick auf
+    das Wort „Formular“ im Hinweissatz neben dem Absendeknopf — es sieht aus
+    wie normaler Text. Vor dem Livegang entfernen oder in eine Prüfung auf
+    process.env.NODE_ENV fassen.
+  */
+  function fuelleTestdaten() {
+    const f = formularFeld.current;
+    if (!f) return;
+    const inTagen = (tage: number) =>
+      new Date(Date.now() + tage * 86400000).toISOString().slice(0, 10);
+    const setze = (name: string, wert: string) => {
+      const feld = f.elements.namedItem(name) as
+        | HTMLInputElement
+        | HTMLSelectElement
+        | HTMLTextAreaElement
+        | RadioNodeList
+        | null;
+      if (feld) feld.value = wert;
+    };
+
+    setze("name", "Max Mustermann");
+    setze("tel", "0331 1234567");
+    setze("mail", "nurso@schiebetuer.com");
+    setze("geburt", "1985-04-17");
+    setze("termin1", inTagen(7));
+    setze("termin2", inTagen(9));
+    setze("tageszeit", "Nachmittag");
+    setze("status", "Neu");
+    setze("versicherung", "Gesetzlich");
+    setze("angst", "Ja — Angstpatient/in");
+    setze("anliegen", "Kontrolle & Prophylaxe");
+    setze("nachricht", "Testanfrage über das Formular — bitte nicht bearbeiten.");
+    const haken = f.elements.namedItem("einverstaendnis") as HTMLInputElement | null;
+    if (haken) haken.checked = true;
+    // Der Spamschutz verwirft Anfragen, die in unter 3 Sekunden entstehen —
+    // beim Testen wäre das ein stiller Fehlschlag. Zeitstempel zurückdatieren.
+    gestartet.current = Date.now() - 5000;
+  }
 
   useEffect(() => {
     gestartet.current = Date.now();
-    // Im Browser statt auf dem Server gelesen: so bleibt /termin eine statische Seite.
+    // Im Browser statt auf dem Server gelesen: so bleibt die Seite statisch.
     const wunsch = new URLSearchParams(window.location.search).get("anliegen");
-    const wert = wunsch ? ANLIEGEN_AUS_LINK[wunsch] : undefined;
+    const wert = wunsch ? feldwertZuSchluessel[wunsch] : undefined;
     if (wert && anliegenFeld.current) anliegenFeld.current.value = wert;
   }, []);
 
@@ -50,12 +101,6 @@ export default function TerminFormular() {
     const wert = (name: string) => String(daten.get(name) ?? "").trim();
     // Leere Auswahl gar nicht mitschicken — die Route erwartet dort einen festen Wert oder nichts.
     const auswahl = (name: string) => wert(name) || undefined;
-
-    if (!wert("tel") && !wert("mail")) {
-      setRueckmeldung({ art: "fehler", text: "Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an." });
-      formular.querySelector<HTMLInputElement>("#t-tel")?.focus();
-      return;
-    }
 
     setWirdGesendet(true);
     setRueckmeldung(null);
@@ -109,10 +154,13 @@ export default function TerminFormular() {
   return (
     <form
       method='post'
+      ref={formularFeld}
       onSubmit={sendeAnfrage}
       style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       <div className='field'>
-        <label htmlFor='t-name'>Name</label>
+        <label htmlFor='t-name'>
+          Name <Pflicht />
+        </label>
         <input
           className='input'
           id='t-name'
@@ -125,7 +173,9 @@ export default function TerminFormular() {
         />
       </div>
       <div className='field'>
-        <label htmlFor='t-tel'>Telefon</label>
+        <label htmlFor='t-tel'>
+          Telefon <Pflicht />
+        </label>
         <input
           className='input'
           id='t-tel'
@@ -133,11 +183,15 @@ export default function TerminFormular() {
           type='tel'
           placeholder='Für die Rückbestätigung'
           autoComplete='tel'
+          minLength={5}
           maxLength={60}
+          required
         />
       </div>
       <div className='field'>
-        <label htmlFor='t-mail'>E-Mail</label>
+        <label htmlFor='t-mail'>
+          E-Mail <Pflicht />
+        </label>
         <input
           className='input'
           id='t-mail'
@@ -146,6 +200,7 @@ export default function TerminFormular() {
           placeholder='name@beispiel.de'
           autoComplete='email'
           maxLength={180}
+          required
         />
       </div>
       <div className='field'>
@@ -159,7 +214,9 @@ export default function TerminFormular() {
         />
       </div>
       <div className='field'>
-        <label htmlFor='t-date1'>Wunschtermin 1</label>
+        <label htmlFor='t-date1'>
+          Wunschtermin 1 <Pflicht />
+        </label>
         <input
           className='input'
           id='t-date1'
@@ -281,7 +338,9 @@ export default function TerminFormular() {
         </p>
       </div>
       <div className='field'>
-        <label htmlFor='t-anliegen'>Anliegen</label>
+        <label htmlFor='t-anliegen'>
+          Anliegen <Pflicht />
+        </label>
         <select
           className='input'
           id='t-anliegen'
@@ -331,7 +390,7 @@ export default function TerminFormular() {
         />
         <span>
           Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Terminanfrage
-          gespeichert werden.{" "}
+          gespeichert werden. <Pflicht />{" "}
           <Link href='/impressum-datenschutz'>Datenschutzerklärung</Link>
         </span>
       </label>
@@ -359,8 +418,18 @@ export default function TerminFormular() {
             margin: '0',
             maxWidth: '44ch',
           }}>
-          Wir melden uns innerhalb von 24 Stunden zurück. Bitte senden Sie keine medizinischen
-          Notfälle über dieses Formular — bei akuten Schmerzen rufen Sie uns direkt an.
+          <Pflicht /> Pflichtfeld. Wir melden uns innerhalb von 24 Stunden zurück. Bitte senden Sie
+          keine medizinischen Notfälle über dieses{" "}
+          {/* Unsichtbarer Auslöser für die Testdaten: ein Klick auf dieses eine
+              Wort füllt das Formular. Es sieht aus wie der übrige Text und ist
+              bewusst kein <button> — sonst würde es der Screenreader als
+              Schaltfläche ansagen und den Satz zerreißen. */}
+          <span
+            onClick={fuelleTestdaten}
+            title='Testdaten einfügen'>
+            Formular
+          </span>{" "}
+          — bei akuten Schmerzen rufen Sie uns direkt an.
         </p>
         <button
           className='btn btn-primary'

@@ -114,7 +114,7 @@ export default function Prophylaxe() {
           <div className='knopfreihe'>
             <Link
               className='btn btn-primary knopf-gross'
-              href='/termin'>
+              href='/#termin'>
               Zahnreinigung anfragen
             </Link>
             <a
@@ -382,7 +382,7 @@ export default function Prophylaxe() {
             </Link>
             <Link
               className='btn btn-primary knopf-gross'
-              href='/termin'>
+              href='/#termin'>
               Termin anfragen
             </Link>
           </div>
@@ -406,7 +406,7 @@ export default function Prophylaxe() {
         <div className='knopfreihe knopfreihe--mitte'>
           <Link
             className='btn knopf-band knopf-band--voll'
-            href='/termin'>
+            href='/#termin'>
             Termin anfragen
           </Link>
           <a

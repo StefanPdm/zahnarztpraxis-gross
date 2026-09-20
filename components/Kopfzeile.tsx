@@ -306,7 +306,7 @@ export default function Kopfzeile() {
             {e.label}
           </Link>
         ))}
-        <Link className="btn btn-primary" href="/termin">
+        <Link className="btn btn-primary" href="/#termin">
           Termin vereinbaren
         </Link>
       </nav>
