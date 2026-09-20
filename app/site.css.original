@@ -99,8 +99,25 @@ input:focus-visible,
 .sprunglink:focus-visible { translate: 0 0; }
 main:focus { outline: none; }
 
-/* Laufmarke nur auf breiten Bildschirmen — mobil läge sie über dem Text. */
-@media (max-width: 1000px) { #runhead { display: none; } }
+/* Laufmarke nur am Desktop: Sie steht 18 px vom linken Fensterrand und
+   braucht den freien Streifen neben dem Satzspiegel. Auf schmaleren Fenstern
+   läge sie über dem Text. Zwei Bedingungen, damit auch ein breites Tablet
+   ausgenommen ist: unter 1280 px Breite — und auf allem, was mit dem Finger
+   bedient wird (`pointer: coarse`), unabhängig von der Breite.
+
+   `display` gehört deshalb hierher und nicht in den Inline-Stil der
+   Komponente: Ein Inline-Wert schlägt jede Regel von hier, und die Marke
+   ließe sich nicht mehr ausblenden — genau das war sie lange. */
+#runhead { display: flex; }
+@media (max-width: 1280px), (pointer: coarse) {
+  #runhead { display: none; }
+}
+
+/* Luft zwischen dem Zitatband und dem nächsten Kapitel. Steht hier statt im
+   Inline-Stil, damit der Wert mobil kleiner werden kann — eine ID, die mit
+   einer Ziffer beginnt, wird als [id="…"] geschrieben. */
+body [id="1b-zitat"] { margin-bottom: 96px; }
+@media (max-width: 1000px) { body [id="1b-zitat"] { margin-bottom: 52px; } }
 
 /* Termin-Leiste: Knöpfe mobil mit voller Trefffläche. */
 @media (max-width: 1000px) {

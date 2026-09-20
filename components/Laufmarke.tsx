@@ -29,13 +29,15 @@ export default function Laufmarke() {
     <div
       id="runhead"
       aria-hidden="true"
+      /* `display` steht bewusst in site.css, nicht hier: Ein Inline-Wert
+         würde jede Regel überstimmen, und die Marke ließe sich mobil nicht
+         mehr ausblenden. */
       style={{
         position: "fixed",
         left: "18px",
         top: "50%",
         transform: "translateY(-50%)",
         zIndex: "var(--ebene-figur)",
-        display: "flex",
         flexDirection: "column",
         alignItems: "center",
         gap: "16px",

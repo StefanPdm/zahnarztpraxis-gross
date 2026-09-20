@@ -822,7 +822,7 @@ export default function Index() {
           <div
             id='1b-zitat'
             style={{
-              padding: '80px 64px',
+              padding: '104px 64px',
               textAlign: 'center',
               background: 'var(--color-surface)',
               borderBottom: '1px solid var(--color-divider)',
