@@ -25,7 +25,10 @@ const fehler = [];
 
 /* 1 — Gesperrte Begriffe: von der Praxis nicht bestätigt, dürfen nicht erscheinen. */
 const GESPERRT = [
-  /intraoral\s*-?\s*scan/i,
+  /* „Intraoralscanner" stand hier, bis der Auftraggeber das Gerät am
+     21.09.2026 bestätigt und den Text dazu geliefert hat (/moderne-technik).
+     Kommt die Bestätigung ins Wanken, gehört die Zeile zurück:
+     /intraoral\s*-?\s*scan/i */
   /\bDVT\b/,
   /3\s*-?\s*D\s*-?\s*Implantatplanung/i,
   /Knochenaufbau/i,

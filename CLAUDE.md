@@ -90,7 +90,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 ## Inhaltsregeln — vom Auftraggeber, gelten weiter
 
 1. **Nur veröffentlichen, was belegt ist.** Gesperrt, weil von der Praxis
-   nicht bestätigt: Intraoralscanner, DVT/3-D-Implantatplanung, Knochenaufbau,
+   nicht bestätigt: DVT/3-D-Implantatplanung, Knochenaufbau,
    Wurzelkanalbehandlung, Wurzelspitzenresektion, Sedierung/Narkose. Diese
    Begriffe nicht ergänzen, auch nicht, um eine dünne Seite zu füllen.
    `npm run pruefen` schlägt fehl, sobald einer davon im Code steht.
@@ -106,7 +106,8 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;
    über 2.000 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
-   immer „Halle/Saale").
+   immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
+   (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt).
 4. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
    (Klasse `.todo`) und nachfragen. Die offenen Stellen stehen in
    `docs/STAND.md`.

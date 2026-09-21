@@ -15,6 +15,14 @@ const laser = [
         { title: "Fissurenversiegelung", text: "Vor allem bei Kindern: die feinen Rillen der Backenzähne werden schonend versiegelt." }
       ];
 
+/* Vorteile des digitalen Abdrucks — Text vom Auftraggeber (21.09.2026),
+   zusammen mit der Bestätigung, dass die Praxis einen Intraoralscanner hat. */
+const scanVorteile = [
+        { title: "Kein Würgereiz", text: "Das unangenehme Gefühl von Abformmasse im Rachen entfällt komplett." },
+        { title: "Höchste Präzision", text: "Das digitale 3D-Modell ist exakter als ein herkömmlicher Abdruck — für Zahnersatz, der von Anfang an sitzt." },
+        { title: "Schneller und bequemer", text: "Der Scan dauert nur wenige Minuten, und Sie können zwischendurch schlucken oder durchatmen." }
+      ];
+
 const digital = [
         { no: "01", title: "Modell einscannen", text: "Das Modell Ihres Kiefers wird digital erfasst. Daraus entsteht am Rechner ein exaktes dreidimensionales Abbild." },
         { no: "02", title: "Am Rechner konstruieren", text: "Krone, Brücke oder Inlay werden auf dem digitalen Modell konstruiert — Passung und Kontaktpunkte lassen sich vorher prüfen." },
@@ -59,6 +67,85 @@ export default function ModerneTechnik() {
           </div>
         </div>
       </div>
+      {/* Reihenfolge nach dem Arbeitsablauf: erst der Scan, dann die
+          Fertigung daraus, dann der Laser. Zugleich wechseln die Seiten —
+          hier Bild links, beim Laser Text links. */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+        {/* Kein Parallax-Rahmen: Bildschirm und Handstück stehen mittig und
+            würden vom Überstand seitlich angeschnitten. Der Rahmen ist
+            schmaler als das Bild; mit `objectPosition: 100%` liegt der
+            Beschnitt vollständig links, rechts bleibt das Gerät ganz. */}
+        <figure style={{ position: "relative", overflow: "hidden", minHeight: "560px", margin: "0" }}>
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/intraoralscanner-digitaler-abdruck.jpg" alt="Intraoralscanner am Behandlungsplatz: das Handstück in der Halterung, auf dem Bildschirm das digitale Kiefermodell" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "100% 50%" }} />
+        </figure>
+        <div className="abschnitt abschnitt--linie">
+          <div className="ueberzeile">
+            Digitaler Abdruck
+          </div>
+          <h2 className="titel-2 titel-2--luft">
+            Entspannt zum Zahnersatz — ohne klebrigen Abdruck.
+          </h2>
+          <p className="fliesstext fliesstext--absatz">
+            Gehören Sie auch zu den Menschen, für die der klassische Zahnabdruck mit der gummiartigen Masse im Mund das Unangenehmste am Zahnarztbesuch ist? Dann haben wir eine gute Nachricht: In unserer Praxis gehört das der Vergangenheit an.
+          </p>
+          <p className="fliesstext">
+            Wir nutzen einen Intraoralscanner, der Ihre Zähne rein digital erfasst. Statt eines Abdrucklöffels gleitet nur eine kleine Kamera sanft über Ihre Zahnreihen. Aus hunderten Einzelbildern entsteht in wenigen Minuten ein genaues dreidimensionales Abbild Ihres Kiefers — die Grundlage für alles, was danach im eigenen Labor entsteht.
+          </p>
+          <div style={{ display: "grid", gap: "0", margin: "28px 0 0", borderTop: "1px solid var(--color-divider)" }}>
+            {scanVorteile.map((v, vI) => (
+              <Fragment key={vI}>
+                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "18px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "4px" }}>
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  <div>
+                    <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h5)", lineHeight: "1.16", margin: "0 0 5px" }}>
+                      {v.title}
+                    </h3>
+                    <p className="text-15 text-15--dicht">
+                      {v.text}
+                    </p>
+                  </div>
+                </div>
+              </Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="abschnitt-oben">
+        <div className="ueberzeile">
+          Digitale Fertigung
+        </div>
+        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "28ch" }}>
+          Vom Scan zum fertigen Zahn — im Haus.
+        </h2>
+        <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "18px 0 0", maxWidth: "64ch", textWrap: "pretty" }}>
+          Der digitale Weg spart nicht nur Zeit, er ist auch genauer als jede Handarbeit am Gipsmodell allein. Bei uns läuft er komplett in der Praxis ab, weil das Zahnlabor eine Tür weiter liegt.
+        </p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 0", borderTop: "1px solid var(--color-divider)" }}>
+        {digital.map((d, dI) => (
+          <Fragment key={dI}>
+            <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'" }}>
+                {d.no}
+              </span>
+              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3)", lineHeight: "1.14", margin: "14px 0 10px" }}>
+                {d.title}
+              </h3>
+              <p className="text-15">
+                {d.text}
+              </p>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+      <figure style={{ position: "relative", overflow: "hidden", height: "560px", margin: "0 64px 96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
+        <Bild sizes={VOLL} className="parallax-img" src="/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
+        <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+          Modellscan und digitale Konstruktion · im eigenen Labor
+        </figcaption>
+      </figure>
       <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
@@ -101,44 +188,16 @@ export default function ModerneTechnik() {
             ist die geringere Menge Betäubungsmittel ein echter Gewinn.
           </p>
         </div>
+        {/* Kein Parallax-Rahmen: Das Bild ist hochformatig, der Überstand von
+            140 % würde es beim Scrollen quer durchs Gesicht schieben. */}
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild vorrang className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Ausstattung in der Zahnarztpraxis Groß & Groß Potsdam" />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/laserbehandlung-symbolbild.jpg" alt="Laserbehandlung am Behandlungsstuhl: Patientin mit Schutzbrille, Behandlerin führt das Handstück" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+          <span className="ai-badge">
+            {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
+            <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
+          </span>
         </figure>
       </div>
-      <div className="abschnitt-oben">
-        <div className="ueberzeile">
-          Digitale Fertigung
-        </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "28ch" }}>
-          Vom Scan zum fertigen Zahn — im Haus.
-        </h2>
-        <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "18px 0 0", maxWidth: "64ch", textWrap: "pretty" }}>
-          Der digitale Weg spart nicht nur Zeit, er ist auch genauer als jede Handarbeit am Gipsmodell allein. Bei uns läuft er komplett in der Praxis ab, weil das Zahnlabor eine Tür weiter liegt.
-        </p>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 0", borderTop: "1px solid var(--color-divider)" }}>
-        {digital.map((d, dI) => (
-          <Fragment key={dI}>
-            <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>
-              <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'" }}>
-                {d.no}
-              </span>
-              <h3 style={{ fontWeight: "400", fontSize: "var(--fs-h3)", lineHeight: "1.14", margin: "14px 0 10px" }}>
-                {d.title}
-              </h3>
-              <p className="text-15">
-                {d.text}
-              </p>
-            </div>
-          </Fragment>
-        ))}
-      </div>
-      <figure style={{ position: "relative", overflow: "hidden", height: "560px", margin: "0 64px 96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
-        <Bild sizes={VOLL} className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
-        <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
-          Modellscan und digitale Konstruktion · im eigenen Labor
-        </figcaption>
-      </figure>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
