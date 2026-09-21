@@ -24,6 +24,12 @@ export const praxis = {
   implantate: "über 1.200",
   antwortzeit: "innerhalb von 24 Stunden",
   domain: "https://www.zahnmedizin-potsdam.de",
+  /* Eintrag der Praxis bei Google. Öffentlich — sie steht in jedem
+     Maps-Link und im Quelltext der Bewertungssektion. Sie stand vorher
+     in einer Umgebungsvariable; Netlify prüft deren Werte gegen das
+     Build-Ergebnis und brach den Build ab, weil der Wert dort auftaucht.
+     Als Stammdatum gehört sie ohnehin hierher, nicht in die Umgebung. */
+  googlePlaceId: "ChIJl7tfQs71qEcRzhoT541HJqw",
 } as const;
 
 /* ── Sprechzeiten ─────────────────────────────────────────────────────────── */

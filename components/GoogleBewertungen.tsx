@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Bild from "@/components/Bild";
 import BewertungText from "@/components/BewertungText";
+import { praxis } from "@/lib/praxis";
 
 /*
   Echte Google-Bewertungen auf der Startseite.
@@ -42,10 +43,10 @@ const LANG = 190;
 
 async function holeBewertungen(): Promise<Antwort["result"] | null> {
   const schluessel = process.env.GOOGLE_PLACES_API_KEY;
-  const ort = process.env.NEXT_PUBLIC_PLACE_ID;
+  const ort = praxis.googlePlaceId;
   if (!schluessel || !ort) {
     // Ohne Zugang keine Sektion — aber auch kein Fehler beim Bauen.
-    console.warn("Google-Bewertungen: GOOGLE_PLACES_API_KEY oder NEXT_PUBLIC_PLACE_ID fehlt.");
+    console.warn("Google-Bewertungen: GOOGLE_PLACES_API_KEY fehlt.");
     return null;
   }
 
@@ -110,8 +111,7 @@ export default async function GoogleBewertungen() {
   const bewertungen = (ergebnis?.reviews ?? []).filter((b) => b.text?.trim() && b.rating >= 4);
   if (bewertungen.length === 0) return null;
 
-  const ort = process.env.NEXT_PUBLIC_PLACE_ID ?? "";
-  const beiGoogle = `https://search.google.com/local/reviews?placeid=${encodeURIComponent(ort)}`;
+  const beiGoogle = `https://search.google.com/local/reviews?placeid=${encodeURIComponent(praxis.googlePlaceId)}`;
   const schnitt = ergebnis?.rating;
   const anzahl = ergebnis?.user_ratings_total;
 
