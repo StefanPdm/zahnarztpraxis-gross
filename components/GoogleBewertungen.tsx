@@ -179,6 +179,7 @@ export default async function GoogleBewertungen() {
             <BewertungText
               text={b.text.trim()}
               lang={b.text.trim().length > LANG}
+              verfasser={b.author_name}
             />
             <div
               style={{

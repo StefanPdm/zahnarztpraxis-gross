@@ -37,7 +37,7 @@ export const seiten: Seite[] = [
     rubrik: "Praxis",
     titel: "Praxis & Team – seit 1991 in Potsdam | Groß & Groß",
     beschreibung:
-      "Die Menschen hinter der Praxis: Behandler, Praxisteam und Zahntechnik. Familiengeführt seit 1991, fünf Behandlungszimmer, eigenes Zahnlabor im Haus.",
+      "Die Menschen hinter der Praxis: Behandler, Praxisteam und Zahntechnik. Familiengeführt seit 1991, fünf Behandlungszimmer, eigenes Zahnlabor in der Praxis.",
   },
   {
     pfad: "/angstpatienten",
@@ -117,7 +117,7 @@ export const seiten: Seite[] = [
     rubrik: "Behandlungen",
     titel: "Eigenes Zahnlabor in der Praxis, Potsdam | Groß & Groß",
     beschreibung:
-      "Kronen, Brücken, Inlays, Veneers und Prothesen entstehen im Haus. Zahnfarbe und Korrekturen direkt vor Ort – ohne Umweg über ein Fremdlabor.",
+      "Kronen, Brücken, Inlays, Veneers und Prothesen entstehen in der Praxis. Zahnfarbe und Korrekturen direkt vor Ort – ohne Umweg über ein Fremdlabor.",
   },
   {
     pfad: "/moderne-technik",

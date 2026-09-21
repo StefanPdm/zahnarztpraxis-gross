@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Familiengeführte Zahnarztpraxis in Potsdam Mitte, seit 1991. Fünf Behandlungszimmer, eigenes Zahnlabor im Haus.",
+    "Familiengeführte Zahnarztpraxis in Potsdam Mitte, seit 1991. Fünf Behandlungszimmer, eigenes Zahnlabor in der Praxis.",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",

@@ -89,7 +89,7 @@ export default function Angstpatienten() {
           </blockquote>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px" }}>
-          <Bild vorrang className="parallax-img" src="/images/photos-1786974461849-vuwz.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
+          <Bild vorrang className="parallax-img" src="/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start", padding: "96px 64px", borderBottom: "1px solid var(--color-divider)" }}>
@@ -141,7 +141,7 @@ export default function Angstpatienten() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "520px" }}>
-          <Bild className="parallax-img" src="/images/photos-1786974461752-m532.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" />
+          <Bild className="parallax-img" src="/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" />
         </div>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

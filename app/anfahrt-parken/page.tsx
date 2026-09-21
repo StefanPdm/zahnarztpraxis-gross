@@ -20,7 +20,7 @@ const faq = [
         { q: "Wo genau ist der Eingang?", a: "Auf der Rückseite des Gebäudes, nicht an der Schopenhauerstraße. Gehen Sie links am Gebäude vorbei nach hinten in den Hof — dort ist eine gläserne Doppeltür." },
         { q: "Kann ich direkt an der Praxis parken?", a: "An der Hofseite gibt es Kurzzeit-Parkplätze. Sind sie belegt, finden Sie weitere Stellplätze in der Zeppelinstraße, wenige Gehminuten entfernt." },
         { q: "Wie komme ich mit öffentlichen Verkehrsmitteln?", a: "Mit den Tramlinien 91, 94 und 98 bis Luisenplatz-Süd oder den Buslinien 605, 606 und 695 bis Luisenplatz. Von dort sind es etwa vier Minuten zu Fuß." },
-        { q: "Ist die Praxis barrierefrei?", a: "Ja, die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Sagen Sie bei der Terminvereinbarung kurz Bescheid, wenn Sie Unterstützung beim Zugang möchten." },
+        { q: "Ist die Praxis barrierefrei?", a: "Nein. Die Praxis liegt im 1. Stock und ist nur über das Treppenhaus erreichbar, einen Aufzug gibt es nicht. Sagen Sie bei der Terminvereinbarung kurz Bescheid, wenn Sie Unterstützung beim Zugang brauchen — dann finden wir gemeinsam eine Lösung." },
         { q: "Mein Navi führt mich an die Straßenseite — was jetzt?", a: "Das ist normal, die Adresse liegt an der Straße. Stellen Sie das Auto ab und gehen Sie links am Gebäude vorbei nach hinten in den Hof; dort ist der Eingang." }
       ];
 
@@ -100,7 +100,10 @@ export default function AnfahrtParken() {
             </span>
             <span style={{ flex: "1", height: "1px", background: "var(--color-accent-300)" }} />
           </div>
-          <Bild vorrang src="/images/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover", borderRadius: "var(--radius-md)", border: "1px solid var(--color-accent-300)" }} />
+          {/* Kein `vorrang`: Das Bild steht weit unter der Falz. Zwei
+              vorgeladene Bilder konkurrieren sonst um dieselbe Leitung, und
+              das obere — das tatsächlich sichtbare — kommt später. */}
+          <Bild src="/images/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover", borderRadius: "var(--radius-md)", border: "1px solid var(--color-accent-300)" }} />
           <figcaption style={{ fontSize: "14.5px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "16px 0 0" }}>
             Auf der Rückseite liegt der Eingang: die gläserne Doppeltür in der Mitte, erreichbar über den gepflasterten Hof. Von hier kommen Sie zu uns.
           </figcaption>
@@ -207,10 +210,10 @@ export default function AnfahrtParken() {
             Zugang
           </div>
           <h2 className="titel-3">
-            Barrierefrei erreichbar.
+            Im 1. Stock, über die Treppe.
           </h2>
           <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
-            Die Praxis liegt im Erdgeschoss und ist barrierefrei erreichbar. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen, sagen Sie es gern kurz bei der Terminvereinbarung — dann sind wir vorbereitet und helfen beim Zugang.
+            Die Praxis liegt im 1. Stock und ist über das Treppenhaus erreichbar. Einen Aufzug gibt es nicht — die Räume sind damit nicht barrierefrei. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen oder Treppen für Sie schwierig sind, sagen Sie es bitte vor dem Termin: Wir besprechen dann, wie wir Ihnen weiterhelfen können.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)", fontSize: "15px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>

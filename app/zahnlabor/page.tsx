@@ -10,14 +10,14 @@ import Fragen from "@/components/Fragen";
 export const metadata = seitenMetadaten("/zahnlabor");
 
 const proof = [
-        { value: "Im Haus", label: "Zahntechniker in der Praxis" },
+        { value: "Eigenes Labor", label: "Zahntechniker in der Praxis" },
         { value: "Vor Ort", label: "Zahnfarbe am Behandlungsstuhl" },
         { value: "CAD/CAM", label: "Kronen im 3D-Verfahren" },
         { value: "1991", label: "Familiengeführt in Potsdam Mitte" }
       ];
 
 const vorteile = [
-        { no: "01", title: "Kurze Wege", text: "Kein Postweg, kein Fremdlabor, keine Wartezeit dazwischen. Ihr Zahnersatz entsteht in demselben Haus, in dem er eingesetzt wird." },
+        { no: "01", title: "Kurze Wege", text: "Kein Postweg, kein Fremdlabor, keine Wartezeit dazwischen. Ihr Zahnersatz entsteht in derselben Praxis, in der er eingesetzt wird." },
         { no: "02", title: "Zahnfarbe direkt vor Ort", text: "Der Techniker bestimmt die Farbe an Ihrem Zahn, im gleichen Licht — nicht nach einer Notiz und einem Farbschlüssel-Code auf dem Auftragszettel." },
         { no: "03", title: "Korrekturen ohne Umwege", text: "Sitzt eine Krone einen Hauch zu hoch, wird sie angepasst, während Sie da sind. Sonst wären dafür ein weiterer Termin und eine Woche Wartezeit fällig." },
         { no: "04", title: "Direkte Abstimmung", text: "Zahnärztin und Zahntechniker sprechen über Ihren Fall, nicht über ein Formular. Bei aufwendigen Versorgungen ist das der Unterschied zwischen passend und wirklich passend." }
@@ -30,7 +30,7 @@ const arbeiten = [
         { title: "Veneers", text: "Dünne Verblendungen für die Frontzähne, wenn Form oder Farbe verbessert werden sollen." },
         { title: "Prothesen", text: "Von der Interimsprothese bis zur endgültigen Versorgung, inklusive Anpassungen und Reparaturen." },
         { title: "Implantatgetragener Zahnersatz", text: "Kronen, Brücken und Prothesen auf Implantaten — geplant zusammen mit der Implantation." },
-        { title: "Schienen", text: "Knirscherschienen bei Bruxismus, individuell angepasst und im Haus nachgearbeitet." },
+        { title: "Schienen", text: "Knirscherschienen bei Bruxismus, individuell angepasst und in der Praxis nachgearbeitet." },
         { title: "Provisorien", text: "Mittels Tiefziehschienen gefertigt, damit Sie in der Zwischenzeit nicht mit einer Lücke leben müssen." }
       ];
 
@@ -57,12 +57,12 @@ export default function Zahnlabor() {
             <br />
             Zahntechniker
             <br />
-            unter einem Dach.
+            in einer Praxis.
           </h1>
         </div>
         <div>
           <p className="fliesstext fliesstext--gross">
-            In den meisten Praxen wandert Ihr Zahnersatz per Post in ein Fremdlabor und Wochen später zurück. Bei uns geht er eine Tür weiter. Der Zahntechniker arbeitet im Haus — er kann Sie sehen, Ihre Zahnfarbe im Tageslicht bestimmen und eine Korrektur machen, während Sie im Stuhl sitzen.
+            In den meisten Praxen wandert Ihr Zahnersatz per Post in ein Fremdlabor und Wochen später zurück. Bei uns geht er eine Tür weiter. Der Zahntechniker arbeitet in der Praxis — er kann Sie sehen, Ihre Zahnfarbe im Tageslicht bestimmen und eine Korrektur machen, während Sie im Stuhl sitzen.
           </p>
           <div className="knopfreihe">
             <Link className="btn btn-primary knopf-gross" href="/#termin">
@@ -186,10 +186,10 @@ export default function Zahnlabor() {
             Zusammen mit der Implantologie
           </div>
           <h2 className="titel-3">
-            Implantat, Zahnersatz, Nachsorge — ein Haus.
+            Implantat, Zahnersatz, Nachsorge — eine Praxis.
           </h2>
           <p className="fliesstext fliesstext--absatz">
-            Der größte Nutzen entsteht, wenn beides zusammenkommt: Wir setzen das Implantat und fertigen den Zahn darauf im eigenen Labor. Sie müssen nicht zwischen Chirurg, Zahnarzt und Fremdlabor vermitteln, und bei einer Anpassung sitzen alle Beteiligten im selben Haus.
+            Der größte Nutzen entsteht, wenn beides zusammenkommt: Wir setzen das Implantat und fertigen den Zahn darauf im eigenen Labor. Sie müssen nicht zwischen Chirurg, Zahnarzt und Fremdlabor vermitteln, und bei einer Anpassung sitzen alle Beteiligten in derselben Praxis.
           </p>
           <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
             <Link className="btn btn-secondary knopf-gross" href="/implantologie">

@@ -1,30 +1,38 @@
-import { Fragment } from "react";
 import { sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
 
 /*
-  Sprechzeiten als Tabelle — Startseite und /kontakt.
-  Daten aus lib/praxis.ts; Markup und Werte wie im Design.
+  Sprechzeiten — Startseite und /kontakt.
+  Daten aus lib/praxis.ts; Optik und Werte wie im Design.
+
+  Als Beschreibungsliste statt als Reihe von <div>: Tag und Zeit gehören
+  zusammen, vorher standen sie als vier lose Textstücke nebeneinander. Der
+  Screenreader kündigt jetzt „Liste mit … Einträgen" an und liest jeden Tag
+  mit seiner Zeit. Die Gitterzeile bleibt ein <div> — das ist in einer <dl>
+  ausdrücklich erlaubt und hält die Optik unverändert.
 */
 export default function Sprechzeiten() {
   return (
-    <div style={{ display: "grid", marginTop: "22px", fontFeatureSettings: "'tnum'" }}>
+    <dl style={{ display: "grid", margin: "22px 0 0", fontFeatureSettings: "'tnum'" }}>
       {sprechzeitGruppen().map((g) => (
-        <Fragment key={g.tage.join()}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto",
-              gap: "20px",
-              alignItems: "baseline",
-              padding: "13px 0",
-              borderBottom: "1px solid var(--color-divider)",
-            }}
-          >
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)" }}>{tageLang(g)}</span>
-            <span style={{ textAlign: "right", color: "var(--color-neutral-800)" }}>{zeitenLang(g)}</span>
-          </div>
-        </Fragment>
+        <div
+          key={g.tage.join()}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr auto",
+            gap: "20px",
+            alignItems: "baseline",
+            padding: "13px 0",
+            borderBottom: "1px solid var(--color-divider)",
+          }}
+        >
+          <dt style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", margin: "0" }}>
+            {tageLang(g)}
+          </dt>
+          <dd style={{ textAlign: "right", color: "var(--color-neutral-800)", margin: "0" }}>
+            {zeitenLang(g)}
+          </dd>
+        </div>
       ))}
-    </div>
+    </dl>
   );
 }

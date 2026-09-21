@@ -70,7 +70,11 @@ body {
 }
 
 a { color: var(--color-accent-700); text-decoration: none; }
-a:hover { color: var(--color-accent); text-decoration: underline; }
+/* Hover dunkler statt heller: --color-accent (#b68235) liegt auf dem hellen
+   Grund bei 3,02:1 und damit unter den geforderten 4,5:1 — ein Link wurde
+   also schlechter lesbar, sobald man ihn ansteuert. --color-accent-800
+   bleibt in der Farbfamilie und erfüllt den Kontrast. */
+a:hover { color: var(--color-accent-800); text-decoration: underline; }
 /* Links mitten im Text: zusätzlich zur Farbe dezent unterstrichen — sonst nur
    über die Farbe erkennbar (WCAG 1.4.1). Knöpfe und Navigation ausgenommen. */
 :where(p, li, dd, figcaption, label, .notfallleiste) a:not(.btn),
@@ -371,10 +375,18 @@ body header > a > span { transition: font-size .28s cubic-bezier(.2,.8,.25,1), o
   transition: transform .85s cubic-bezier(.2,.8,.25,1);
   transform-style: preserve-3d;
 }
-.flipcard:hover .flipinner,
-.flipcard:focus-within .flipinner { transform: rotateY(180deg); }
-.flipcard:hover .fliphint,
-.flipcard:focus-within .fliphint { opacity: 0; }
+/* Maus: Hover dreht wie bisher. Touch und Tastatur: die Karte ist eine
+   Schaltfläche (components/Flipkarte) und setzt .gedreht — früher hing das
+   allein an :focus-within, was auf dem Handy nie ausgelöst wurde und mit
+   aria-expanded auseinanderlief. */
+.flipcard.gedreht .flipinner { transform: rotateY(180deg); }
+.flipcard.gedreht .fliphint { opacity: 0; }
+/* Hover nur dort, wo es echten Hover gibt: Touch-Browser halten :hover nach
+   dem Tippen fest, die Karte bliebe sonst gedreht stehen. */
+@media (hover: hover) {
+  .flipcard:hover .flipinner { transform: rotateY(180deg); }
+  .flipcard:hover .fliphint { opacity: 0; }
+}
 .flipface { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .flipback { position: absolute; inset: 0; transform: rotateY(180deg); }
 body .flipcard img.portrait {
@@ -589,8 +601,12 @@ body footer a:hover { color: var(--color-accent); }
   }
   body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr 1fr !important; gap: 36px 40px !important; }
   body footer > div:last-child { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-  .statbar { grid-template-columns: 1fr 1fr !important; }
-  body .statbar > *:nth-child(n+3) { border-top: 1px solid var(--color-divider); }
+  /* Kennzahlenband: Die Regel weiter oben („grid-template-columns → 1fr")
+     ist spezifischer als ein `.statbar` hier, mobil steht also jede Zahl in
+     einer eigenen Zeile. Der Trennstrich gehört deshalb zwischen alle
+     Zeilen. Vorher stand hier `:nth-child(n+3)` — gedacht für zwei Spalten,
+     mit der Folge, dass die Linie über der zweiten Kennzahl fehlte. */
+  body .statbar > * + * { border-top: 1px solid var(--color-divider); }
   .photopair { grid-template-columns: 1fr !important; }
 
   /* Kopfzeile mobil */

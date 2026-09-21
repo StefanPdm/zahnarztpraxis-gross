@@ -41,7 +41,7 @@ export default function Leistungen() {
             <br />
             und Zahntechnik
             <br />
-            unter einem Dach.
+            in einer Praxis.
           </h1>
         </div>
         <p className="fliesstext fliesstext--gross">

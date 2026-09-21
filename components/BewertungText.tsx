@@ -18,7 +18,15 @@ import { useState, useSyncExternalStore } from "react";
 
 const nichts = () => () => {};
 
-export default function BewertungText({ text, lang }: { text: string; lang: boolean }) {
+export default function BewertungText({
+  text,
+  lang,
+  verfasser,
+}: {
+  text: string;
+  lang: boolean;
+  verfasser: string;
+}) {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
   const [offen, setOffen] = useState(false);
   const gekuerzt = bereit && lang && !offen;
@@ -49,6 +57,10 @@ export default function BewertungText({ text, lang }: { text: string; lang: bool
           type="button"
           onClick={() => setOffen((o) => !o)}
           aria-expanded={offen}
+          /* Vier gleich beschriftete Knöpfe nebeneinander sind in der
+             Elementliste eines Screenreaders nicht auseinanderzuhalten —
+             der Name nennt deshalb die Bewertung, um die es geht. */
+          aria-label={`Bewertung von ${verfasser} ${offen ? "wieder kürzen" : "vollständig lesen"}`}
           style={{
             alignSelf: "flex-start",
             margin: "10px 0 0",

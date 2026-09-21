@@ -234,8 +234,8 @@ export default function TerminFormular() {
           type='date'
         />
       </div>
-      <div className='field'>
-        <label>Tageszeit</label>
+      <fieldset className='field'>
+        <legend>Tageszeit</legend>
         <div className='seg'>
           <label className='seg-opt'>
             <input
@@ -255,9 +255,9 @@ export default function TerminFormular() {
             <span>Nachmittag</span>
           </label>
         </div>
-      </div>
-      <div className='field'>
-        <label>Patientenstatus</label>
+      </fieldset>
+      <fieldset className='field'>
+        <legend>Patientenstatus</legend>
         <div className='seg'>
           <label className='seg-opt'>
             <input
@@ -277,9 +277,9 @@ export default function TerminFormular() {
             <span>Bestandspatient</span>
           </label>
         </div>
-      </div>
-      <div className='field'>
-        <label>Versicherung</label>
+      </fieldset>
+      <fieldset className='field'>
+        <legend>Versicherung</legend>
         <div className='seg'>
           <label className='seg-opt'>
             <input
@@ -299,11 +299,11 @@ export default function TerminFormular() {
             <span>Privat</span>
           </label>
         </div>
-      </div>
-      <div
+      </fieldset>
+      <fieldset
         className='field'
         style={{ gridColumn: '1/-1' }}>
-        <label>Angst vor der Behandlung?</label>
+        <legend>Angst vor der Behandlung?</legend>
         <div className='seg'>
           <label className='seg-opt'>
             <input
@@ -336,7 +336,7 @@ export default function TerminFormular() {
           was Sie möchten — ohne Behandlung.{" "}
           <Link href='/angstpatienten'>Wie wir Angstpatienten begleiten</Link>
         </p>
-      </div>
+      </fieldset>
       <div className='field'>
         <label htmlFor='t-anliegen'>
           Anliegen <Pflicht />
@@ -423,12 +423,20 @@ export default function TerminFormular() {
           {/* Unsichtbarer Auslöser für die Testdaten: ein Klick auf dieses eine
               Wort füllt das Formular. Es sieht aus wie der übrige Text und ist
               bewusst kein <button> — sonst würde es der Screenreader als
-              Schaltfläche ansagen und den Satz zerreißen. */}
-          <span
-            onClick={fuelleTestdaten}
-            title='Testdaten einfügen'>
-            Formular
-          </span>{" "}
+              Schaltfläche ansagen und den Satz zerreißen.
+
+              Nur in der Entwicklung: Im Produktionsbuild fällt der Zweig weg
+              und mit ihm die Testadresse, die sonst im ausgelieferten
+              JavaScript stünde. */}
+          {process.env.NODE_ENV === 'production' ? (
+            'Formular'
+          ) : (
+            <span
+              onClick={fuelleTestdaten}
+              title='Testdaten einfügen'>
+              Formular
+            </span>
+          )}{" "}
           — bei akuten Schmerzen rufen Sie uns direkt an.
         </p>
         <button

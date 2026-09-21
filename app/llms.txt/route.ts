@@ -22,7 +22,7 @@ export function GET() {
     `# ${praxis.vollerName}, Potsdam`,
     "",
     `> Familiengeführte Zahnarztpraxis in Potsdam Mitte seit ${praxis.gegruendet}. ` +
-      `${praxis.behandlungszimmer} Behandlungszimmer, eigenes Zahnlabor im Haus, ` +
+      `${praxis.behandlungszimmer} Behandlungszimmer, eigenes Zahnlabor in der Praxis, ` +
       `${praxis.implantate} gesetzte Implantate. Behutsam mit Angstpatienten und Kindern.`,
     "",
     "## Auf einen Blick",

@@ -18,6 +18,11 @@ export const praxis = {
   ort: "14467 Potsdam",
   region: "Brandenburg",
   eingang: "Eingang auf der Rückseite des Gebäudes",
+  /* Zugang: Die Praxis ist **nicht** barrierefrei (Auftraggeber, 21.09.2026).
+     Die Angabe stand auf drei Seiten unterschiedlich — einmal „Erdgeschoss,
+     barrierefrei", einmal „1. Stock über Treppe". Wer sich darauf verlässt,
+     steht sonst vor einer Treppe. Deshalb hier, an einer Stelle. */
+  zugang: "1. Stock, über das Treppenhaus",
   geo: { breite: 52.3976, laenge: 13.0484 },
   gegruendet: 1991,
   behandlungszimmer: 5,

@@ -136,7 +136,6 @@ export default function AngstRegler({
       </div>
 
       <div
-        aria-live="polite"
         className="angst-antwort"
         style={{
           marginTop: "30px",
@@ -180,7 +179,11 @@ export default function AngstRegler({
         >
           {stufe.label}
         </p>
+        {/* Nur der Ergebnistext meldet sich, nicht der ganze Block: Sonst
+            liest der Screenreader bei jedem Schieberschritt auch Zeichen und
+            Überschrift erneut vor. */}
         <p
+          aria-live="polite"
           style={{
             fontSize: "var(--fs-body)",
             lineHeight: "1.6",

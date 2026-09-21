@@ -7,12 +7,15 @@ import { mitStammdaten } from "@/lib/strukturierteDaten";
   lib/team.ts ein — sie können hier nicht veralten.
 
   „<" wird maskiert, damit kein Text im JSON ein </script> bilden kann.
+  Ersetzt wird durch die sechs Zeichen Backslash-u-0-0-3-c. Vorher stand im
+  Quelltext das Escape, das der Compiler zum Zeichen auflöst — die Ersetzung
+  tauschte es also gegen sich selbst und schützte vor nichts.
 */
 export default function JsonLd({ daten }: { daten: unknown }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(mitStammdaten(daten)).replace(/</g, "\u003c") }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(mitStammdaten(daten)).replaceAll("<", "\\u003c") }}
     />
   );
 }

@@ -22,7 +22,7 @@ const faq = [
         { q: "Wird Ästhetik von der Kasse bezahlt?", a: "In der Regel nicht, weil sie medizinisch nicht notwendig ist. Sie bekommen vorher einen schriftlichen Kostenplan; wo es eine Kassenvariante gibt, steht sie zum Vergleich daneben." },
         { q: "Bleaching oder Veneers — was ist besser?", a: "Das hängt davon ab, was stört. Sind die eigenen Zähne gesund und nur nachgedunkelt, reicht meist das Bleaching. Geht es um Form, Kanten oder einzelne auffällige Zähne, führt Bleaching nicht weiter." },
         { q: "Werden meine Zähne dafür beschliffen?", a: "Für Veneers und Kronen ja, in unterschiedlichem Maß — bei Veneers nur minimal an der Vorderfläche. Wir erklären Ihnen vorher genau, was an Substanz abgetragen wird, denn das ist nicht umkehrbar." },
-        { q: "Kann ich mir das Ergebnis vorher ansehen?", a: "Farbmuster und Materialien zeigen wir Ihnen im Beratungstermin in der Hand. Bei größeren Frontzahnarbeiten besprechen wir Form und Farbe zusammen mit dem Zahntechniker, der hier im Haus arbeitet." }
+        { q: "Kann ich mir das Ergebnis vorher ansehen?", a: "Farbmuster und Materialien zeigen wir Ihnen im Beratungstermin in der Hand. Bei größeren Frontzahnarbeiten besprechen wir Form und Farbe zusammen mit dem Zahntechniker, der hier in der Praxis arbeitet." }
       ];
 
 export default function AesthetischeZahnmedizin() {
@@ -87,7 +87,7 @@ export default function AesthetischeZahnmedizin() {
             <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
-            Zahnfarbe und Form · im Haus konstruiert
+            Zahnfarbe und Form · in der Praxis konstruiert
           </figcaption>
         </figure>
       </div>

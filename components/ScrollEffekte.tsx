@@ -77,9 +77,17 @@ export default function ScrollEffekte() {
     };
   }, [pfad]);
 
-  /* — Parallax (Formel aus site.v2.js: begrenzt auf den Bildüberstand) — */
+  /*
+    Parallax (Formel aus site.v2.js: begrenzt auf den Bildüberstand).
+
+    Zwei Durchgänge: erst alle Maße lesen, dann alle Werte schreiben. Wechselt
+    man beides ab, erzwingt jedes Lesen nach einem Schreiben ein neues Layout —
+    bei mehreren Bildern pro Seite in jedem Scroll-Frame.
+  */
   useBeimScrollen(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const zuSetzen: { el: HTMLElement; versatz: number }[] = [];
     for (const el of document.querySelectorAll<HTMLElement>('.parallax-img')) {
       const rahmen = el.parentElement;
       if (!rahmen) continue;
@@ -87,7 +95,10 @@ export default function ScrollEffekte() {
       if (kasten.bottom < -200 || kasten.top > window.innerHeight + 200) continue;
       const abstand = kasten.top + kasten.height / 2 - window.innerHeight / 2;
       const spiel = (el.offsetHeight - kasten.height) / 2;
-      const versatz = Math.max(-spiel, Math.min(spiel, -abstand * 0.06));
+      zuSetzen.push({ el, versatz: Math.max(-spiel, Math.min(spiel, -abstand * 0.06)) });
+    }
+
+    for (const { el, versatz } of zuSetzen) {
       el.style.transform = `translate3d(0,${versatz.toFixed(1)}px,0)`;
     }
   }, pfad);

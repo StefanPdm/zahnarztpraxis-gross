@@ -14,6 +14,7 @@ import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
+import Flipkarte from '@/components/Flipkarte';
 
 export const metadata = seitenMetadaten('/');
 
@@ -231,7 +232,7 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     textWrap: 'pretty',
                   }}>
-                  Zwei Zahnärzte. Ein eigenes Labor. Wir nehmen uns die Zeit.
+                  Wir nehmen uns die Zeit. Zwei Zahnärzte. Ein eigenes Labor.
                 </p>
                 {/* Mobil steht der Baum hier im Fluss unter dem Absatz, am
                     Desktop hebt ihn .hero-bonsai in die rechte untere Ecke.
@@ -463,15 +464,9 @@ export default function Index() {
               {team.map((m, mI) => (
                 <Fragment key={mI}>
                   <div>
-                    <div
-                      className='flipcard'
-                      tabIndex={0}
-                      style={{
-                        position: 'relative',
-                        height: '460px',
-                        borderRadius: 'var(--radius-md)',
-                        outlineOffset: '4px',
-                      }}>
+                    <Flipkarte
+                      name={m.name}
+                      hoehe='460px'>
                       <div
                         className='fliphint'
                         style={{
@@ -588,7 +583,7 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Flipkarte>
                     <h3
                       style={{
                         fontWeight: '400',
@@ -727,7 +722,7 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/images/photos-1786974461752-m532.jpg'
+                  src='/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg'
                   alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß'
                   style={{
                     width: '100%',
@@ -1235,7 +1230,7 @@ export default function Index() {
                         color: 'var(--color-accent-700)',
                         flex: '1 1 40%',
                       }}>
-                      Labor im eigenen Haus
+                      Labor in der eigenen Praxis
                     </span>
                     <span
                       style={{
@@ -1643,21 +1638,11 @@ export default function Index() {
                   länger ein.
                 </p>
                 <hr className='hr' />
-                <div
-                  style={{
-                    display: 'grid',
-                    gap: '12px',
-                    fontSize: '14px',
-                    color: 'var(--color-neutral-800)',
-                  }}>
+                <ul className='strichliste strichliste--klein'>
                   {zusagen.map((z, zI) => (
-                    <span
-                      key={zI}
-                      style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
-                      {z}
-                    </span>
+                    <li key={zI}>{z}</li>
                   ))}
-                </div>
+                </ul>
                 <p
                   style={{
                     fontFamily: 'var(--font-heading)',
@@ -1787,7 +1772,7 @@ export default function Index() {
                   style={{ marginTop: '2px' }}>
                   <path d='M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5' />
                 </svg>
-                <span>Im 1. Stock über Treppe erreichbar</span>
+                <span>Im 1. Stock, über das Treppenhaus erreichbar — kein Aufzug</span>
               </div>
               <figure style={{ margin: '24px 0 0' }}>
                 <Bild
@@ -1899,8 +1884,8 @@ export default function Index() {
                 color: 'rgba(243,242,242,0.5)',
               }}>
               <span>Gesetzlich &amp; privat versichert</span>
-              <span>Barrierefrei im Erdgeschoss</span>
-              <span>Eigenes Zahnlabor im Haus</span>
+              <span>1. Stock, über die Treppe</span>
+              <span>Eigenes Zahnlabor in der Praxis</span>
             </div>
           </div>
         </div>

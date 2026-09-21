@@ -229,3 +229,89 @@
     margin: 0;
   }
 }
+
+/* ── Radiogruppen im Formular ──────────────────────────────────────────────
+   Die vier Auswahlgruppen (Tageszeit, Status, Versicherung, Angst) sind
+   <fieldset> mit <legend>, damit Screenreader die Frage zur Auswahl
+   mitlesen. Der Browser gibt einem <fieldset> von Haus aus Rahmen, Abstand
+   und eine Mindestbreite — alles drei zurücksetzen, sonst verschiebt sich
+   das abgenommene Layout. `min-width: 0` ist der wichtigste Teil: Ohne ihn
+   sprengt ein <fieldset> im Raster die Spaltenbreite. */
+fieldset.field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+/* Entspricht .field > label in classical.css — dort wird nichts geändert. */
+fieldset.field > legend {
+  display: block;
+  padding: 0;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+
+/* ── Trefflächen auf Mobil ─────────────────────────────────────────────────
+   Projektregel: mobil nie unter 44 px. Rechnerisch lagen Knöpfe bei ~33 px
+   (.btn), Segmentschalter bei ~31 px und Fußzeilenlinks bei ~24 px — mit dem
+   Finger trifft man das schlecht, und wer zittert, trifft es gar nicht.
+
+   `inline-flex` statt `block`: Die Knöpfe stehen teils im Textfluss, ein
+   Blockelement würde den Umbruch verändern. Die Termin-Leiste hat diese
+   Regel längst (site.css), hier gilt sie für alle. */
+@media (max-width: 1000px) {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+  .seg-opt {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Fußzeile: Die Spalten werden dadurch höher — das ist der Preis dafür,
+     dass die Links mit dem Daumen zu treffen sind. Der Abstand steckt jetzt
+     in der Trefffläche selbst, deshalb schrumpft die Lücke dazwischen. */
+  body footer .fussliste { gap: 0; }
+  body footer nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* ── Linkspalten der Fußzeile ──────────────────────────────────────────────
+   Echte Liste, damit Screenreader „Liste mit sieben Einträgen" ansagen.
+   Die Aufzählungszeichen und der Einzug des Browsers müssen weg; Abstand
+   und Richtung übernimmt die Liste vom früheren Inline-Stil des <nav>. */
+.fussliste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* ── Aufzählung mit Trennstrich ────────────────────────────────────────────
+   Die Einträge waren lose <span> im Gitter: optisch eine Liste, für den
+   Screenreader vier zusammenhanglose Textstücke. Gleiche Optik, echte
+   Liste — die Striche trägt jetzt der Listeneintrag. */
+.strichliste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--color-neutral-800);
+}
+.strichliste > li {
+  border-top: 1px solid var(--color-divider);
+  padding-top: 10px;
+}
+.strichliste--klein { font-size: 14px; }

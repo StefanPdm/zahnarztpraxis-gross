@@ -53,7 +53,7 @@ export const team: Behandler[] = [
     alt: 'Porträt von Matthias Groß, Zahnarzt und Implantologe bei Groß & Groß in Potsdam',
     zitat:
       '„Beim Zahnersatz entscheidet der halbe Millimeter. Deshalb arbeite ich mit unserem eigenen Meisterlabor direkt in der Praxis.“',
-    bio: 'Vor dem Studium habe ich Zahntechniker gelernt. Ich kenne die Arbeit deshalb aus beiden Welten — vom Behandlungsstuhl und von der Werkbank. Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor im Haus sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.',
+    bio: 'Vor dem Studium habe ich Zahntechniker gelernt. Ich kenne die Arbeit deshalb aus beiden Welten — vom Behandlungsstuhl und von der Werkbank. Mein Schwerpunkt liegt auf Implantologie und Prothetik, dazu chirurgische Eingriffe aus der MKG-Erfahrung. Weil unser Labor in der Praxis sitzt, kann ich Passung und Farbe direkt am Patienten prüfen, statt auf eine Lieferung zu warten.',
     werdegang:
       'Ausbildung zum Zahntechniker, danach Studium in Halle/Saale und vier Jahre MKG-Chirurgie am Klinikum. Tätigkeitsschwerpunkt Implantologie.',
     hochschule: 'Martin-Luther-Universität Halle-Wittenberg',

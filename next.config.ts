@@ -82,6 +82,13 @@ const nextConfig: NextConfig = {
     return [
       ...htmlVarianten,
       { source: "/index.html", destination: "/", permanent: true },
+      /*
+        Die Seite /termin ist in der Startseite aufgegangen (Formular unter
+        /#termin). Beide Adressen waren indexiert — /termin.html steht in
+        docs/legacy/sitemap.xml —, ohne Regel verlören sie ihr Ranking.
+      */
+      { source: "/termin", destination: "/#termin", permanent: true },
+      { source: "/termin.html", destination: "/#termin", permanent: true },
       // Einzige belegte Altadresse aus der WordPress-Zeit.
       {
         source: "/zahnbehandlung-zahnlabor-potsdam",

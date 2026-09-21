@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { praxis } from "@/lib/praxis";
 
 export default function NichtGefunden() {
   return (
@@ -33,8 +34,8 @@ export default function NichtGefunden() {
         <Link className="btn btn-primary" href="/" style={{ padding: "12px 26px" }}>
           Zur Startseite
         </Link>
-        <a className="btn btn-secondary" href="tel:+49331960926" style={{ padding: "12px 26px" }}>
-          0331 960926
+        <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 26px" }}>
+          {praxis.telefon}
         </a>
       </div>
     </div>

@@ -108,7 +108,14 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
    (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt).
-4. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
+4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,
+   21.09.2026). Labor und Zahntechniker sitzen **in der eigenen Praxis** —
+   auch in Fließtext, Bildunterschriften, Metadaten und JSON-LD. „Im Haus"
+   und „im selben Haus" sind damit erledigt, ebenso „unter einem Dach" —
+   auch in den Überschriften von `/leistungen` und `/zahnlabor`. Das Gebäude
+   selbst darf weiter Haus heißen, etwa in der Wegbeschreibung auf
+   `/anfahrt-parken`.
+5. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
    (Klasse `.todo`) und nachfragen. Die offenen Stellen stehen in
    `docs/STAND.md`.
 

@@ -32,7 +32,7 @@ const digital = [
 const faq = [
         { q: "Tut die Laserbehandlung weh?", a: "Sie ist in der Regel schonender als das klassische Vorgehen. Der Vorteil liegt vor allem danach: weniger Wundschmerz und eine längere Schmerzfreiheit." },
         { q: "Brauche ich beim Laser überhaupt eine Spritze?", a: "Oft genügt weniger Betäubungsmittel als sonst. Ob und wie viel nötig ist, entscheiden wir zusammen mit Ihnen — je nach Eingriff und Ihrer Empfindlichkeit." },
-        { q: "Was heißt CAD/CAM für mich als Patient?", a: "Ihr Zahnersatz wird am Rechner konstruiert und im 3D-Verfahren gefertigt, hier im Haus. Das macht die Passung genauer und spart die Wartezeit, die der Versand an ein Fremdlabor kostet." },
+        { q: "Was heißt CAD/CAM für mich als Patient?", a: "Ihr Zahnersatz wird am Rechner konstruiert und im 3D-Verfahren gefertigt, hier in der Praxis. Das macht die Passung genauer und spart die Wartezeit, die der Versand an ein Fremdlabor kostet." },
         { q: "Wie oft wird geröntgt?", a: "Nur, wenn ein Bild eine Behandlungsentscheidung trägt — etwa bei Weisheitszähnen, vor einem Implantat oder bei tiefer Entzündung. Wir sagen Ihnen vorher, warum." },
         { q: "Kann ich mir die Geräte ansehen?", a: "Ja. Fragen Sie im Termin danach — wir zeigen Ihnen, was bei Ihnen zum Einsatz kommt, und erklären, was es tut." }
       ];
@@ -117,7 +117,7 @@ export default function ModerneTechnik() {
           Digitale Fertigung
         </div>
         <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", lineHeight: "1.08", margin: "16px 0 0", maxWidth: "28ch" }}>
-          Vom Scan zum fertigen Zahn — im Haus.
+          Vom Scan zum fertigen Zahn — in der Praxis.
         </h2>
         <p style={{ color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "18px 0 0", maxWidth: "64ch", textWrap: "pretty" }}>
           Der digitale Weg spart nicht nur Zeit, er ist auch genauer als jede Handarbeit am Gipsmodell allein. Bei uns läuft er komplett in der Praxis ab, weil das Zahnlabor eine Tür weiter liegt.

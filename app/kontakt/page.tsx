@@ -130,7 +130,7 @@ export default function Kontakt() {
             <span style={{ color: 'var(--color-neutral-700)' }}>Auto</span>
             <span>Kurzzeit-Parkplätze an der Hofseite, weitere in der Zeppelinstraße</span>
             <span style={{ color: 'var(--color-neutral-700)' }}>Zugang</span>
-            <span>Im 1. Stock über Treppe erreichbar</span>
+            <span>Im 1. Stock, über das Treppenhaus erreichbar — kein Aufzug</span>
           </div>
           <div
             style={{
@@ -213,26 +213,12 @@ export default function Kontakt() {
         <div>
           <div className='ueberzeile'>Erster Besuch</div>
           <h2 className='titel-3 titel-3--eng'>Was Sie mitbringen sollten.</h2>
-          <div
-            style={{
-              display: 'grid',
-              gap: '12px',
-              fontSize: '15px',
-              color: 'var(--color-neutral-800)',
-            }}>
-            <span style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
-              Versichertenkarte oder Angaben zur privaten Versicherung
-            </span>
-            <span style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
-              Bonusheft, falls vorhanden
-            </span>
-            <span style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
-              Liste der Medikamente, die Sie einnehmen
-            </span>
-            <span style={{ borderTop: '1px solid var(--color-divider)', paddingTop: '10px' }}>
-              Vorhandene Röntgenbilder oder Befunde
-            </span>
-          </div>
+          <ul className='strichliste'>
+            <li>Versichertenkarte oder Angaben zur privaten Versicherung</li>
+            <li>Bonusheft, falls vorhanden</li>
+            <li>Liste der Medikamente, die Sie einnehmen</li>
+            <li>Vorhandene Röntgenbilder oder Befunde</li>
+          </ul>
         </div>
       </div>
       <div

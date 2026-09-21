@@ -29,6 +29,11 @@ export default function Kopfzeile() {
      Liste bliebe offen. Diese Sperre klappt sie zu, bis der Zeiger sie
      verlässt (onMouseLeave weiter unten). */
   const [dropdownZu, setDropdownZu] = useState(false);
+  /* Ob die Liste am Desktop gerade sichtbar ist. Das entscheidet dort das CSS
+     (:hover, :focus-within), React weiß nichts davon — `aria-expanded` hätte
+     also dauerhaft „zugeklappt" gemeldet, während die Liste offen stand.
+     Deshalb dieselben Auslöser hier noch einmal, nur für die Ansage. */
+  const [dropdownSichtbar, setDropdownSichtbar] = useState(false);
   const kopf = useRef<HTMLElement>(null);
 
   /*
@@ -71,6 +76,7 @@ export default function Kopfzeile() {
     setMenueOffen(false);
     setUntermenueOffen(false);
     setDropdownZu(false);
+    setDropdownSichtbar(false);
   }
 
   const menueSchalten = (offen: boolean) => {
@@ -137,7 +143,10 @@ export default function Kopfzeile() {
     */
     if (event.detail > 0) {
       link.blur();
-      if (link.closest(".navdrop") && window.innerWidth > UMBRUCH) setDropdownZu(true);
+      if (link.closest(".navdrop") && window.innerWidth > UMBRUCH) {
+        setDropdownZu(true);
+        setDropdownSichtbar(false);
+      }
     }
 
     const [pfad, anker] = (link.getAttribute("href") ?? "").split("#");
@@ -158,6 +167,11 @@ export default function Kopfzeile() {
   /** Unter 1000px schaltet das Untermenü auf Tipp, darüber auf Hover (CSS). */
   const untermenueSchalten = () => {
     if (window.innerWidth <= UMBRUCH) setUntermenueOffen((o) => !o);
+  };
+
+  /** Führt etwas nur am Desktop aus — mobil klappt das Untermenü über .open. */
+  const nurDesktop = (tue: () => void) => {
+    if (window.innerWidth > UMBRUCH) tue();
   };
 
   return (
@@ -233,14 +247,37 @@ export default function Kopfzeile() {
 
         <span
           className={`navdrop${untermenueOffen ? " open" : ""}${dropdownZu ? " zu" : ""}`}
-          onMouseLeave={() => setDropdownZu(false)}
+          onMouseEnter={() => nurDesktop(() => setDropdownSichtbar(true))}
+          onMouseLeave={() => {
+            setDropdownZu(false);
+            nurDesktop(() => setDropdownSichtbar(false));
+          }}
+          onFocus={() => nurDesktop(() => setDropdownSichtbar(true))}
+          onBlur={(ev) => {
+            // Nur wenn der Fokus die Gruppe wirklich verlässt — beim Wandern
+            // vom Knopf zum ersten Eintrag bleibt die Liste offen.
+            if (ev.currentTarget.contains(ev.relatedTarget as Node | null)) return;
+            setDropdownZu(false); // die Escape-Sperre gilt nur für diesen Besuch
+            nurDesktop(() => setDropdownSichtbar(false));
+          }}
+          onKeyDown={(ev) => {
+            // Escape klappt die Liste zu und setzt den Fokus zurück auf den
+            // Knopf — sonst stünde man mitten in unsichtbaren Einträgen.
+            if (ev.key !== "Escape" || !dropdownSichtbar) return;
+            ev.stopPropagation();
+            setDropdownZu(true);
+            setDropdownSichtbar(false);
+            ev.currentTarget.querySelector<HTMLElement>(".navlabel")?.focus();
+          }}
           style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: "7px" }}
         >
           <span
             className="navlabel"
             role="button"
             tabIndex={0}
-            aria-expanded={untermenueOffen}
+            aria-haspopup="true"
+            aria-controls="navmenu-behandlungen"
+            aria-expanded={untermenueOffen || (dropdownSichtbar && !dropdownZu)}
             onClick={untermenueSchalten}
             onKeyDown={(ev) => {
               if (ev.key === "Enter" || ev.key === " ") {
@@ -276,7 +313,7 @@ export default function Kopfzeile() {
               <path d="M6 9l6 6 6-6" />
             </svg>
           </span>
-          <span className="navmenu">
+          <span className="navmenu" id="navmenu-behandlungen">
             {/* Der innere Rahmen ist nötig: mobil klappt site.css über grid-template-rows auf. */}
             <span>
               {behandlungen.map((b) => (

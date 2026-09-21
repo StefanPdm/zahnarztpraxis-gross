@@ -180,7 +180,7 @@ export default function Implantologie() {
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
           <Bild className="parallax-img" src="/images/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
-            Digitales Modell · Labor im Haus
+            Digitales Modell · Labor in der Praxis
           </figcaption>
         </figure>
         <div className="abschnitt abschnitt--linie">

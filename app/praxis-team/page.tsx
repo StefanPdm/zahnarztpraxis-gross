@@ -6,6 +6,7 @@ import { team } from '@/lib/team';
 import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
+import Flipkarte from '@/components/Flipkarte';
 
 export const metadata = seitenMetadaten('/praxis-team');
 
@@ -35,7 +36,7 @@ const personal = [
   },
   {
     bereich: 'Zahntechnik',
-    title: 'Das Labor im Haus',
+    title: 'Das Labor in der Praxis',
     text: 'Kronen, Brücken, Inlays, Veneers, Prothesen und Schienen entstehen hier. Die Zahnfarbe wird direkt am Behandlungsstuhl bestimmt.',
     bild: '/images/zahnlabor-werkbank-drucker-zahnarztpraxis-potsdam.jpg',
     alt: 'Werkbank im praxiseigenen Zahnlabor mit 3-D-Drucker und Artikulator',
@@ -56,14 +57,15 @@ const historie = [
   {
     jahr: '2014',
     title: 'Eigenes Zahnlabor',
-    text: 'Die Zahntechnik zieht in die Praxis. Seither arbeitet ein eigener Zahntechniker im Haus, Kronen, Brücken und Prothesen entstehen hier.',
+    text: 'Die Zahntechnik zieht in die Praxis. Seither arbeitet ein eigener Zahntechniker in der Praxis, Kronen, Brücken und Prothesen entstehen hier.',
   },
-  // Vierte Station: Platzhalter bis zur Ansage der Praxis. Jahr und Text
-  // ersetzen, dann ist die Reihe vollständig.
+  /* Vierte Station: vorläufig formuliert, vom Auftraggeber noch nicht
+     bestätigt (Stand 21.09.2026). Inhaltlich belegt ist nur der Scanner
+     selbst — das Jahr ist geraten und gehört vor dem Livegang geprüft. */
   {
-    jahr: '202x',
-    title: 'Platzhalter',
-    text: 'Blindtext: Hier steht die jüngste Station der Praxisgeschichte — ein Satz zum Ereignis, ein Satz dazu, was sich damit für Patientinnen und Patienten geändert hat.',
+    jahr: '2024',
+    title: 'Digitaler Abdruck',
+    text: 'Ein Intraoralscanner ersetzt die Abformmasse: Der Kiefer wird mit einer kleinen Kamera erfasst, das Modell entsteht am Rechner — und geht von dort direkt ins eigene Labor.',
   },
 ];
 
@@ -175,8 +177,8 @@ export default function PraxisTeam() {
           <p className='fliesstext fliesstext--gross'>
             Eine Praxis, die seit über drei Jahrzehnten in denselben Händen liegt, arbeitet anders
             als eine, die alle paar Jahre den Betreiber wechselt. Wir kennen viele unserer Patienten
-            über zwei Generationen — und weil Zahnärztin, Zahnarzt und Zahntechniker hier zusammen
-            unter einem Dach arbeiten, entscheidet nicht der Kalender, sondern der Fall.
+            über zwei Generationen — und weil Zahnärztin, Zahnarzt und Zahntechniker hier in
+            derselben Praxis arbeiten, entscheidet nicht der Kalender, sondern der Fall.
           </p>
           <div className='knopfreihe'>
             <Link
@@ -265,15 +267,9 @@ export default function PraxisTeam() {
             {/* Spalte als Flex-Säule: die Schwerpunktzeile sitzt unten, damit
                 ihre Linie bei beiden Behandlern auf gleicher Höhe liegt. */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div
-                className='flipcard'
-                tabIndex={0}
-                style={{
-                  position: 'relative',
-                  height: '520px',
-                  borderRadius: 'var(--radius-md)',
-                  outlineOffset: '4px',
-                }}>
+              <Flipkarte
+                name={m.name}
+                hoehe='520px'>
                 <div
                   className='fliphint'
                   style={{
@@ -388,7 +384,7 @@ export default function PraxisTeam() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Flipkarte>
               <h3 style={{ fontWeight: '400', fontSize: 'var(--fs-h3-xl)', margin: '26px 0 6px' }}>
                 {m.name}
               </h3>
@@ -718,7 +714,7 @@ export default function PraxisTeam() {
             maxWidth: '62ch',
             textWrap: 'pretty',
           }}>
-          Die Praxis liegt im 1. Stock eines Altbaus, barrierefrei erreichbar. Fünf
+          Die Praxis liegt im 1. Stock eines Altbaus, erreichbar über das Treppenhaus. Fünf
           Behandlungszimmer, ein Wartebereich, in dem man sitzen mag — und das eigene Zahnlabor eine
           Tür weiter.
         </p>
