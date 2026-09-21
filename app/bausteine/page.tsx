@@ -142,7 +142,7 @@ export default function Bausteine() {
 
       <Abschnitt titel="Bild (next/image, Maße aus lib/bildmasse.json)">
         <div style={{ maxWidth: "520px" }}>
-          <Bild className="plate" src="/uploads/Zahnlabor.jpg" alt="Beispielbild" style={{ width: "100%", height: "auto" }} />
+          <Bild className="plate" src="/images/Zahnlabor.jpg" alt="Beispielbild" style={{ width: "100%", height: "auto" }} />
         </div>
       </Abschnitt>
 

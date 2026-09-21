@@ -75,7 +75,7 @@ export default function Zahnlabor() {
         </div>
       </div>
       <figure style={{ position: "relative", overflow: "hidden", height: "620px", margin: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <Bild sizes={VOLL} vorrang className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor: Gipsmodelle, Zahnfarbmuster und Werkzeug unter der Arbeitsleuchte" />
+        <Bild sizes={VOLL} vorrang className="parallax-img" src="/images/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor: Gipsmodelle, Zahnfarbmuster und Werkzeug unter der Arbeitsleuchte" />
         <figcaption style={{ position: "absolute", left: "24px", bottom: "20px", display: "flex", gap: "14px", padding: "10px 18px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Der Labortisch · eine Tür neben dem Behandlungszimmer
         </figcaption>
@@ -149,7 +149,7 @@ export default function Zahnlabor() {
           {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
               nähme 43 % der Breite weg — Monitor und Scanner stünden nur
               noch halb im Bild. So füllt es den Rahmen und bleibt ganz. */}
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Modellscan · digitale Konstruktion
           </figcaption>
@@ -179,7 +179,7 @@ export default function Zahnlabor() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche in der Zahnarztpraxis Groß & Groß Potsdam" />
+          <Bild className="parallax-img" src="/images/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

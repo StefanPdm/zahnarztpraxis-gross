@@ -123,10 +123,10 @@ export default function Parodontologie() {
           </div>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "640px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" />
+          <Bild className="parallax-img" src="/images/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
-            <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
+            <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
         </figure>
       </div>
@@ -168,7 +168,7 @@ export default function Parodontologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam" />
+          <Bild className="parallax-img" src="/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

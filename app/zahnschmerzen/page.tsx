@@ -187,10 +187,10 @@ export default function Zahnschmerzen() {
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
           {/* Ausschnitt etwas nach oben: Der Rahmen ist quer, das Bild hoch —
               mittig zentriert würde der Kopf oben angeschnitten. */}
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/zahnschmerzen-wartebereich-symbolbild.jpg" alt="Frau im Wartebereich hält sich die Wange" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%", display: "block" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/zahnschmerzen-wartebereich-symbolbild.jpg" alt="Frau im Wartebereich hält sich die Wange" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%", display: "block" }} />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
-            <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
+            <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
         </figure>
       </div>

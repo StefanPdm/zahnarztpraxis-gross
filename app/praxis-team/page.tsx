@@ -23,21 +23,21 @@ const personal = [
     bereich: 'Anmeldung',
     title: 'Ihr erster Kontakt',
     text: 'Terminvergabe, Rückfragen zu Kostenplänen und die Recall-Erinnerung per E-Mail, SMS, Post oder Anruf.',
-    bild: '/uploads/empfang-tresen-flur-zahnarztpraxis-potsdam.jpg',
+    bild: '/images/empfang-tresen-flur-zahnarztpraxis-potsdam.jpg',
     alt: 'Empfangstresen und Flur mit Bildern in der Zahnarztpraxis Groß & Groß',
   },
   {
     bereich: 'Prophylaxe',
     title: 'Zahnreinigung und Vorsorge',
     text: 'Professionelle Zahnreinigung, Fluoridierung, Fissurenversiegelung und die Anleitung zur Pflege zu Hause — für Erwachsene und Kinder.',
-    bild: '/uploads/behandlungszimmer-prophylaxe-zahnarztpraxis-potsdam.jpg',
+    bild: '/images/behandlungszimmer-prophylaxe-zahnarztpraxis-potsdam.jpg',
     alt: 'Behandlungsplatz mit Stuhl und Tageslicht in der Zahnarztpraxis Groß & Groß',
   },
   {
     bereich: 'Zahntechnik',
     title: 'Das Labor im Haus',
     text: 'Kronen, Brücken, Inlays, Veneers, Prothesen und Schienen entstehen hier. Die Zahnfarbe wird direkt am Behandlungsstuhl bestimmt.',
-    bild: '/uploads/zahnlabor-werkbank-drucker-zahnarztpraxis-potsdam.jpg',
+    bild: '/images/zahnlabor-werkbank-drucker-zahnarztpraxis-potsdam.jpg',
     alt: 'Werkbank im praxiseigenen Zahnlabor mit 3-D-Drucker und Artikulator',
   },
 ];
@@ -69,7 +69,7 @@ const historie = [
 
 /* Nur Mitgliedschaften — Zertifikate und Fortbildungsstunden gehören nicht in
    dieselbe Liste. Beide Gesellschaften vom Auftraggeber bestätigt.
-   `logo`: sobald die offizielle Bilddatei in public/uploads liegt, hier den
+   `logo`: sobald die offizielle Bilddatei in public/images liegt, hier den
    Pfad eintragen — dann steht das Logo statt des Kürzels in der Zeile. */
 type Gesellschaft = { name: string; kurz: string; url: string; logo?: string };
 
@@ -78,13 +78,13 @@ const mitgliedschaften: Gesellschaft[] = [
     name: 'Deutsche Gesellschaft für Zahn-, Mund- und Kieferheilkunde',
     kurz: 'DGZMK',
     url: 'https://www.dgzmk.de/',
-    logo: '/uploads/dgzmk-logo.png',
+    logo: '/images/dgzmk-logo.png',
   },
   {
     name: 'Deutsche Gesellschaft für Implantologie im Zahn-, Mund- und Kieferbereich',
     kurz: 'DGI',
     url: 'https://www.dginet.de/',
-    logo: '/uploads/dgi-logo.png',
+    logo: '/images/dgi-logo.png',
   },
 ];
 
@@ -92,37 +92,37 @@ const mitgliedschaften: Gesellschaft[] = [
    (Ansage des Auftraggebers). Die ersten drei Fotos stammen aus rohfotos/. */
 const raeume = [
   {
-    src: '/uploads/behandlungszimmer-fenster-zahnarztpraxis-potsdam.jpg',
+    src: '/images/behandlungszimmer-fenster-zahnarztpraxis-potsdam.jpg',
     alt: 'Behandlungszimmer mit Stuhl, Deckenleuchte und Fenster in der Zahnarztpraxis Groß & Groß',
     no: 'I',
     cap: 'Behandlungsplatz am Fenster',
   },
   {
-    src: '/uploads/behandlungszimmer-sitzecke-zahnarztpraxis-potsdam.jpg',
+    src: '/images/behandlungszimmer-sitzecke-zahnarztpraxis-potsdam.jpg',
     alt: 'Behandlungszimmer mit Sitzecke, hohen Fenstern und Behandlungsstuhl',
     no: 'II',
     cap: 'Ein Zimmer, von der Tür aus',
   },
   {
-    src: '/uploads/behandlungseinheit-instrumente-zahnarztpraxis-potsdam.jpg',
+    src: '/images/behandlungseinheit-instrumente-zahnarztpraxis-potsdam.jpg',
     alt: 'Instrumente der Behandlungseinheit in ihrer Halterung',
     no: 'III',
     cap: 'Instrumente am Stuhl',
   },
   {
-    src: '/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg',
+    src: '/images/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg',
     alt: 'Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand',
     no: 'IV',
     cap: 'Flur, hinter dem Empfang',
   },
   {
-    src: '/uploads/Zahnlabor.jpg',
+    src: '/images/Zahnlabor.jpg',
     alt: 'Arbeitsplatz im praxiseigenen Zahnlabor',
     no: 'V',
     cap: 'Das Labor, eine Tür weiter',
   },
   {
-    src: '/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg',
+    src: '/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg',
     alt: 'Behandlungszimmer mit Monitor an der Decke, Stuhl und Orchidee',
     no: 'VI',
     cap: 'Zimmer mit Deckenmonitor',
@@ -686,7 +686,7 @@ export default function PraxisTeam() {
           }}>
           <Bild
             sizes='(max-width: 1000px) 100vw, 50vw'
-            src='/uploads/beratung-zahnimplantat-modell.jpg'
+            src='/images/beratung-zahnimplantat-modell.jpg'
             alt='Beratungsgespräch am Tisch: ein Zahnarzt erklärt einem Paar ein Implantatmodell'
             style={{
               display: 'block',
@@ -701,7 +701,7 @@ export default function PraxisTeam() {
           <span className='ai-badge'>
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
             <img
-              src='/uploads/ai-generated-badge.svg'
+              src='/images/ai-generated-badge.svg'
               alt='KI-generiertes Bild'
             />
           </span>

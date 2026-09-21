@@ -224,7 +224,7 @@ export default async function GoogleBewertungen() {
           keine Anfrage an Google entsteht. */}
       <div style={{ marginTop: "44px" }}>
         <Bild
-          src="/uploads/powered-by-google-on-white.png"
+          src="/images/powered-by-google-on-white.png"
           alt="Powered by Google"
           sizes="120px"
           style={{ display: "block", width: "120px", height: "auto" }}

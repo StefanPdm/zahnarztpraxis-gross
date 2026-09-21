@@ -151,7 +151,7 @@ export default function Implantologie() {
           {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
               schnitte fast die Hälfte der Breite weg — die Krone läge
               außerhalb. So füllt es die Spalte und bleibt vollständig. */}
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/implantat-schema-krone-abutment-schraube.jpg" alt="Darstellung eines Implantats im Querschnitt: Krone, Verbindungsstück und Schraube im Kieferknochen" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/implantat-schema-krone-abutment-schraube.jpg" alt="Darstellung eines Implantats im Querschnitt: Krone, Verbindungsstück und Schraube im Kieferknochen" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
       </div>
       <div className="abschnitt-oben">
@@ -178,7 +178,7 @@ export default function Implantologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
+          <Bild className="parallax-img" src="/images/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Digitales Modell · Labor im Haus
           </figcaption>

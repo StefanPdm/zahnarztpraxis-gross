@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 /**
  * bildmasse.mjs — schreibt lib/bildmasse.json: Breite und Höhe jedes Bildes
- * unter public/uploads.
+ * unter public/images.
  *
  * <Bild> (components/Bild.tsx) braucht die Maße, damit next/image Platz
  * reservieren kann (kein Springen beim Laden) und passende Größen ausliefert.
- * Läuft automatisch vor `dev` und `build` — ein neues Bild in public/uploads
+ * Läuft automatisch vor `dev` und `build` — ein neues Bild in public/images
  * ist damit sofort verwendbar, ohne dass jemand Maße abtippt.
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const WURZEL = path.resolve(import.meta.dirname, "..");
-const ORDNER = path.join(WURZEL, "public", "uploads");
+const ORDNER = path.join(WURZEL, "public", "images");
 const ZIEL = path.join(WURZEL, "lib", "bildmasse.json");
 const ENDUNGEN = /\.(jpe?g|png|webp|avif|gif)$/i;
 
@@ -28,7 +28,7 @@ try {
 const masse = {};
 for (const datei of fs.readdirSync(ORDNER).filter((d) => ENDUNGEN.test(d)).sort()) {
   const { width, height } = await sharp(path.join(ORDNER, datei)).metadata();
-  masse[`/uploads/${datei}`] = [width, height];
+  masse[`/images/${datei}`] = [width, height];
 }
 
 const neu = JSON.stringify(masse, null, 2) + "\n";

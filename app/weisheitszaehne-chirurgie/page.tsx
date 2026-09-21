@@ -155,7 +155,7 @@ export default function WeisheitszaehneChirurgie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0" }}>
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/nach-dem-eingriff-kuehlen-weiche-kost.jpg" alt="Kühlkissen in ein Tuch gewickelt, daneben ein Glas Wasser, weiche Kost und Mullkompressen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/nach-dem-eingriff-kuehlen-weiche-kost.jpg" alt="Kühlkissen in ein Tuch gewickelt, daneben ein Glas Wasser, weiche Kost und Mullkompressen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

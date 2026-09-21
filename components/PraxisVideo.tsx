@@ -19,10 +19,10 @@ import { useEffect, useRef, useState } from "react";
 */
 
 const quellen = [
-  { src: "/uploads/praxisflug-960.webm", type: 'video/webm; codecs="vp9"', media: "(max-width: 1000px)" },
-  { src: "/uploads/praxisflug-960.mp4", type: "video/mp4", media: "(max-width: 1000px)" },
-  { src: "/uploads/praxisflug-1280.webm", type: 'video/webm; codecs="vp9"' },
-  { src: "/uploads/praxisflug-1280.mp4", type: "video/mp4" },
+  { src: "/video/praxisflug-960.webm", type: 'video/webm; codecs="vp9"', media: "(max-width: 1000px)" },
+  { src: "/video/praxisflug-960.mp4", type: "video/mp4", media: "(max-width: 1000px)" },
+  { src: "/video/praxisflug-1280.webm", type: 'video/webm; codecs="vp9"' },
+  { src: "/video/praxisflug-1280.mp4", type: "video/mp4" },
 ];
 
 export default function PraxisVideo({ standbild }: { standbild: string }) {

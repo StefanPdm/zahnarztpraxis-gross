@@ -124,7 +124,11 @@ const nextConfig: NextConfig = {
       {
         // Bilder, Video, Karte: Dateinamen ändern sich bei neuem Inhalt nicht
         // zwingend – darum 30 Tage statt „immutable".
-        source: "/uploads/:datei*",
+        source: "/images/:datei*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/video/:datei*",
         headers: [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }],
       },
     ];

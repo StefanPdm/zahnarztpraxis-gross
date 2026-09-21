@@ -168,7 +168,7 @@ export default function Kontakt() {
         }}>
         <Bild
           className='plate'
-          src='/uploads/photos-1786974467268-lgux.jpg'
+          src='/images/photos-1786974467268-lgux.jpg'
           alt='Wartebereich der Praxis'
           style={{
             width: '100%',
@@ -180,7 +180,7 @@ export default function Kontakt() {
         />
         <Bild
           className='plate'
-          src='/uploads/photos-1786974467256-ovyq.jpg'
+          src='/images/photos-1786974467256-ovyq.jpg'
           alt='Behandlungszimmer'
           style={{
             width: '100%',

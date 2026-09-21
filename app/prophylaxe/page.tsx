@@ -250,7 +250,7 @@ export default function Prophylaxe() {
           <Bild
             vorrang
             sizes='(max-width: 1000px) 100vw, 50vw'
-            src='/uploads/zahnreinigung-instrumente-zahnarztpraxis-potsdam.jpg'
+            src='/images/zahnreinigung-instrumente-zahnarztpraxis-potsdam.jpg'
             alt='Zahnmodell und Instrumente für die professionelle Zahnreinigung auf einer Ablage'
             style={{
               display: 'block',
@@ -358,7 +358,7 @@ export default function Prophylaxe() {
           style={{ position: 'relative', overflow: 'hidden', minHeight: '460px', margin: '0' }}>
           <Bild
             className='parallax-img'
-            src='/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg'
+            src='/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg'
             alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam'
           />
         </figure>

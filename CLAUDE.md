@@ -64,12 +64,12 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
   immer `var(--rand)` (64 / 24 / 18 px).
 - Umbruchpunkte **1000 px** (Desktop/Mobil) und **640 px** (schmal).
 - Ebenen nur über `--ebene-*`; die Kopfzeile liegt mit `--ebene-kopf` vorn.
-- Bilder immer über `<Bild>` (next/image). Neues Bild in `public/uploads`
+- Bilder immer über `<Bild>` (next/image). Neues Bild in `public/images`
   ablegen — die Maße erzeugt `npm run bilder` (läuft vor dev und build).
   Unbearbeitete Fotos der Praxis liegen in `rohfotos/` — außerhalb von
   `public/`, damit die Originale nicht öffentlich abrufbar sind, und per
   `.gitignore` außerhalb des Repos. Was gebraucht wird, wird zugeschnitten
-  und verkleinert nach `public/uploads` kopiert.
+  und verkleinert nach `public/images` kopiert.
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
@@ -94,7 +94,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    Wurzelkanalbehandlung, Wurzelspitzenresektion, Sedierung/Narkose. Diese
    Begriffe nicht ergänzen, auch nicht, um eine dünne Seite zu füllen.
    `npm run pruefen` schlägt fehl, sobald einer davon im Code steht.
-2. **KI-Kennzeichnung** (`/uploads/ai-generated-badge.svg`, Klasse
+2. **KI-Kennzeichnung** (`/images/ai-generated-badge.svg`, Klasse
    `.ai-badge`) nur auf ausdrückliche Ansage des Auftraggebers. Bisher
    gekennzeichnet: `/parodontologie` (Zahnfleisch), `/praxis-team`
    (Beratung bei den Mitgliedschaften), `/zahnschmerzen` (Wartebereich)

@@ -28,7 +28,7 @@ export const team: Behandler[] = [
   {
     name: 'Chantal Groß',
     rolle: 'Zahnärztin',
-    foto: '/uploads/portrait-chantal-gross.jpg',
+    foto: '/images/portrait-chantal-gross.jpg',
     alt: 'Porträt von Chantal Groß, Zahnärztin bei Groß & Groß in Potsdam',
     zitat:
       '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe, eine liebesvolle Atmospäre und viel Verständnis“',
@@ -49,7 +49,7 @@ export const team: Behandler[] = [
   {
     name: 'Matthias Groß',
     rolle: 'Zahnarzt',
-    foto: '/uploads/portrait-matthias-gross.jpg',
+    foto: '/images/portrait-matthias-gross.jpg',
     alt: 'Porträt von Matthias Groß, Zahnarzt und Implantologe bei Groß & Groß in Potsdam',
     zitat:
       '„Beim Zahnersatz entscheidet der halbe Millimeter. Deshalb arbeite ich mit unserem eigenen Meisterlabor direkt in der Praxis.“',

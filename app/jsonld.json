@@ -15,7 +15,7 @@
         "priceRange": "$$",
         "currenciesAccepted": "EUR",
         "paymentAccepted": "Barzahlung, EC-Karte, Rechnung",
-        "image": "https://www.zahnmedizin-potsdam.de/uploads/schopenhauer-vorn.jpg",
+        "image": "https://www.zahnmedizin-potsdam.de/images/schopenhauer-vorn.jpg",
         "logo": "https://www.zahnmedizin-potsdam.de/apple-touch-icon.png",
         "address": {
           "@type": "PostalAddress",
@@ -162,7 +162,7 @@
         "worksFor": {
           "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        "image": "https://www.zahnmedizin-potsdam.de/uploads/portrait-chantal-gross.jpg",
+        "image": "https://www.zahnmedizin-potsdam.de/images/portrait-chantal-gross.jpg",
         "url": "https://www.zahnmedizin-potsdam.de/praxis-team",
         "alumniOf": {
           "@type": "CollegeOrUniversity",
@@ -183,7 +183,7 @@
         "worksFor": {
           "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        "image": "https://www.zahnmedizin-potsdam.de/uploads/portrait-matthias-gross.jpg",
+        "image": "https://www.zahnmedizin-potsdam.de/images/portrait-matthias-gross.jpg",
         "url": "https://www.zahnmedizin-potsdam.de/praxis-team",
         "alumniOf": {
           "@type": "CollegeOrUniversity",

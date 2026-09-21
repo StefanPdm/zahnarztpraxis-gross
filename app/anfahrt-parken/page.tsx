@@ -67,7 +67,7 @@ export default function AnfahrtParken() {
             <span style={{ flex: "1", height: "1px", background: "var(--color-divider)" }} />
           </div>
           <div style={{ position: "relative", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
-            <Bild vorrang className="wegbild" src="/uploads/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover" }} />
+            <Bild vorrang className="wegbild" src="/images/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover" }} />
             <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none" }}>
               <defs>
                 <marker id="wayarrow" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -100,7 +100,7 @@ export default function AnfahrtParken() {
             </span>
             <span style={{ flex: "1", height: "1px", background: "var(--color-accent-300)" }} />
           </div>
-          <Bild vorrang src="/uploads/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover", borderRadius: "var(--radius-md)", border: "1px solid var(--color-accent-300)" }} />
+          <Bild vorrang src="/images/Schopenhauer_Str_37_hinten_cropped.webp" alt="Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover", borderRadius: "var(--radius-md)", border: "1px solid var(--color-accent-300)" }} />
           <figcaption style={{ fontSize: "14.5px", lineHeight: "1.6", color: "var(--color-neutral-800)", margin: "16px 0 0" }}>
             Auf der Rückseite liegt der Eingang: die gläserne Doppeltür in der Mitte, erreichbar über den gepflasterten Hof. Von hier kommen Sie zu uns.
           </figcaption>

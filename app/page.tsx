@@ -238,7 +238,7 @@ export default function Index() {
                     Rein schmückend: kein Alt-Text, keine Trefffläche. */}
                 <Bild
                   className='hero-bonsai'
-                  src='/uploads/bonsai-praxis-gross-und-gross.png'
+                  src='/images/bonsai-praxis-gross-und-gross.png'
                   alt=''
                   sizes='(max-width: 1100px) 50vw, 19vw'
                 />
@@ -335,7 +335,7 @@ export default function Index() {
           </div>
           <div id='videoband'>
             <div style={{ position: 'relative', overflow: 'hidden', height: '720px' }}>
-              <PraxisVideo standbild='/uploads/praxisflug-standbild.webp' />
+              <PraxisVideo standbild='/images/praxisflug-standbild.webp' />
               <svg
                 viewBox='0 0 1200 36'
                 preserveAspectRatio='none'
@@ -387,7 +387,7 @@ export default function Index() {
             <figure style={{ margin: '0', background: '#ffffff' }}>
               <Bild
                 className='plate'
-                src='/uploads/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg'
+                src='/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg'
                 alt='Wartebereich mit Sesseln, Teppich und dem Surfbrett an der Wand'
                 style={{
                   width: '100%',
@@ -416,7 +416,7 @@ export default function Index() {
             <figure style={{ margin: '0', background: '#ffffff' }}>
               <Bild
                 className='plate'
-                src='/uploads/photos-1786974461785-ksjv.jpg'
+                src='/images/photos-1786974461785-ksjv.jpg'
                 alt='Behandlungseinheit'
                 style={{
                   width: '100%',
@@ -727,7 +727,7 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/photos-1786974461752-m532.jpg'
+                  src='/images/photos-1786974461752-m532.jpg'
                   alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß'
                   style={{
                     width: '100%',
@@ -763,7 +763,7 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/krokodil-wartebereich-zahnarztpraxis-potsdam.jpg'
+                  src='/images/krokodil-wartebereich-zahnarztpraxis-potsdam.jpg'
                   alt='Bunt bemalte Krokodil-Skulptur mit Krone auf dem Boden des Wartebereichs'
                   style={{
                     width: '100%',
@@ -791,7 +791,7 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/praxisflur-logo-zahnarztpraxis-gross-und-gross.jpg'
+                  src='/images/praxisflur-logo-zahnarztpraxis-gross-und-gross.jpg'
                   alt='Beleuchtetes Groß-&-Groß-Logo an der Wand, dahinter der Flur mit Bildern'
                   style={{
                     width: '100%',
@@ -1269,7 +1269,7 @@ export default function Index() {
             <figure style={{ margin: '0' }}>
               <Bild
                 className='plate'
-                src='/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg'
+                src='/images/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg'
                 alt='Modellscanner im Zahnlabor, daneben der Bildschirm mit dem digitalen Kiefermodell'
                 style={{
                   width: '100%',
@@ -1441,7 +1441,7 @@ export default function Index() {
               style={{ position: 'relative', margin: '0', height: '100%', minHeight: '640px' }}>
               <Bild
                 className='plate'
-                src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-12-1-687x1030-1.jpg'
+                src='/images/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-12-1-687x1030-1.jpg'
                 alt='Wartebereich der Praxis mit Sitzgruppe, Orchideen und Buddha-Figur'
                 style={{
                   width: '100%',
@@ -1791,7 +1791,7 @@ export default function Index() {
               </div>
               <figure style={{ margin: '24px 0 0' }}>
                 <Bild
-                  src='/uploads/Schopenhauer_Str_37_hinten_cropped.webp'
+                  src='/images/Schopenhauer_Str_37_hinten_cropped.webp'
                   alt='Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof'
                   style={{
                     display: 'block',

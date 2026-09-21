@@ -66,7 +66,7 @@ export default function Kinderzahnheilkunde() {
           </div>
         </div>
         <figure style={{ position: "relative", margin: "0" }}>
-          <Bild vorrang src="/uploads/grosselino-kinderzahnheilkunde.jpg" alt="Grosselino, ein Teddybär im weißen Kittel, hält einen lachenden Zahn und eine Zahnbürste" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
+          <Bild vorrang src="/images/grosselino-kinderzahnheilkunde.jpg" alt="Grosselino, ein Teddybär im weißen Kittel, hält einen lachenden Zahn und eine Zahnbürste" style={{ display: "block", width: "100%", height: "auto", borderRadius: "18px", border: "1px solid var(--color-accent-200)" }} />
           <figcaption id="gr-caption" style={{ margin: "12px 2px 0", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Grosselino, unser Bär, winkt euch auf dieser Seite zu
           </figcaption>
@@ -128,7 +128,7 @@ export default function Kinderzahnheilkunde() {
           </blockquote>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" />
+          <Bild className="parallax-img" src="/images/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>
       </div>
       <div style={{ padding: "96px 64px 0", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
@@ -168,7 +168,7 @@ export default function Kinderzahnheilkunde() {
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
           <Bild
             sizes="(max-width: 1000px) 100vw, 50vw"
-            src="/uploads/zahnarzt-figur-kinderzahnheilkunde.jpg"
+            src="/images/zahnarzt-figur-kinderzahnheilkunde.jpg"
             alt="Sammelfigur einer Zahnärztin mit Röntgenbild und Gebiss auf einem Tresen"
             style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "72% 50%" }}
           />

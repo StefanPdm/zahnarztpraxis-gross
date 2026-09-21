@@ -81,10 +81,10 @@ export default function AesthetischeZahnmedizin() {
               um bis zu 116 px, und der Kopf stünde zeitweise halb im
               Rahmen. So füllt es die Spalte, oben und unten fallen nur
               je 30 px weg. */}
-          <Bild vorrang sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/aesthetik-laecheln-symbolbild.jpg" alt="Lächelnder Mann in einem hellen Raum" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+          <Bild vorrang sizes="(max-width: 1000px) 100vw, 50vw" src="/images/aesthetik-laecheln-symbolbild.jpg" alt="Lächelnder Mann in einem hellen Raum" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
-            <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
+            <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Zahnfarbe und Form · im Haus konstruiert
@@ -126,7 +126,7 @@ export default function AesthetischeZahnmedizin() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" />
+          <Bild className="parallax-img" src="/images/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

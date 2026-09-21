@@ -29,7 +29,7 @@ type Eigenschaften = Omit<ImageProps, "src" | "width" | "height" | "priority" | 
 export default function Bild({ src, alt, sizes = HALB, vorrang = false, ...rest }: Eigenschaften) {
   const m = masse[src];
   if (!m) {
-    throw new Error(`Bild: keine Maße für ${src}. Liegt die Datei in public/uploads? Dann \`npm run bilder\`.`);
+    throw new Error(`Bild: keine Maße für ${src}. Liegt die Datei in public/images? Dann \`npm run bilder\`.`);
   }
   return (
     <Image

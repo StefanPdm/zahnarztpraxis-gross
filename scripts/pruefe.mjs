@@ -68,7 +68,7 @@ for (const p of verzeichnet) if (!vorhanden.has(p)) fehler.push(`lib/seiten.ts n
 const masse = JSON.parse(lies("lib/bildmasse.json"));
 for (const d of [...dateien("app", /\.tsx$/), ...dateien("components", /\.tsx$/)]) {
   for (const [, src] of lies(d).matchAll(/<Bild\b[^>]*?\bsrc=["']([^"']+)["']/g)) {
-    if (!masse[src]) fehler.push(`${d}: ${src} ohne Maße – liegt die Datei in public/uploads? (npm run bilder)`);
+    if (!masse[src]) fehler.push(`${d}: ${src} ohne Maße – liegt die Datei in public/images? (npm run bilder)`);
   }
 }
 

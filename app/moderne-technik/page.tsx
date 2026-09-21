@@ -76,7 +76,7 @@ export default function ModerneTechnik() {
             schmaler als das Bild; mit `objectPosition: 100%` liegt der
             Beschnitt vollständig links, rechts bleibt das Gerät ganz. */}
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "560px", margin: "0" }}>
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/intraoralscanner-digitaler-abdruck.jpg" alt="Intraoralscanner am Behandlungsplatz: das Handstück in der Halterung, auf dem Bildschirm das digitale Kiefermodell" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "100% 50%" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/intraoralscanner-digitaler-abdruck.jpg" alt="Intraoralscanner am Behandlungsplatz: das Handstück in der Halterung, auf dem Bildschirm das digitale Kiefermodell" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "100% 50%" }} />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">
@@ -141,7 +141,7 @@ export default function ModerneTechnik() {
         ))}
       </div>
       <figure style={{ position: "relative", overflow: "hidden", height: "560px", margin: "0 64px 96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
-        <Bild sizes={VOLL} className="parallax-img" src="/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
+        <Bild sizes={VOLL} className="parallax-img" src="/images/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
         <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Modellscan und digitale Konstruktion · im eigenen Labor
         </figcaption>
@@ -191,10 +191,10 @@ export default function ModerneTechnik() {
         {/* Kein Parallax-Rahmen: Das Bild ist hochformatig, der Überstand von
             140 % würde es beim Scrollen quer durchs Gesicht schieben. */}
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/laserbehandlung-symbolbild.jpg" alt="Laserbehandlung am Behandlungsstuhl: Patientin mit Schutzbrille, Behandlerin führt das Handstück" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/laserbehandlung-symbolbild.jpg" alt="Laserbehandlung am Behandlungsstuhl: Patientin mit Schutzbrille, Behandlerin führt das Handstück" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
-            <img src="/uploads/ai-generated-badge.svg" alt="KI-generiertes Bild" />
+            <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
         </figure>
       </div>

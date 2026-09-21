@@ -34,7 +34,7 @@ export default function Karte({ hoehe, grau = false }: { hoehe: number; grau?: b
 
   return (
     <div className="karte karte-vorschau" style={flaeche}>
-      <Bild src="/uploads/karte-schopenhauerstrasse.webp" alt="" />
+      <Bild src="/images/karte-schopenhauerstrasse.webp" alt="" />
       <div className="karte-hinweis">
         <button type="button" className="btn btn-primary" onClick={() => setGeladen(true)}>
           Interaktive Karte laden
