@@ -397,14 +397,14 @@ export default function Ausbildung() {
       </div>
       {/* Was die Praxis noch nicht bestätigt hat — sichtbarer Platzhalter
           statt erfundener Angaben (CLAUDE.md, „Nichts erfinden"). */}
-      <div
+      {/* <div
         className='todo'
         style={{ margin: '0 var(--rand) 40px' }}>
         <b>Von der Praxis zu bestätigen</b>
         Höhe der Ausbildungsvergütung · zuständige Berufsschule · Ansprechpartnerin für Bewerbungen
         · ob ein Praktikum oder Schnuppertag möglich ist · Bewerbungsfrist (steht im JobPosting
         derzeit auf dem Tag vor Ausbildungsbeginn) · Instagram oder Facebook, falls vorhanden.
-      </div>
+      </div> */}
       <div
         style={{
           display: 'grid',
