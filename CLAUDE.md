@@ -97,7 +97,10 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 2. **KI-Kennzeichnung** (`/uploads/ai-generated-badge.svg`, Klasse
    `.ai-badge`) nur auf ausdrückliche Ansage des Auftraggebers. Bisher
    gekennzeichnet: `/parodontologie` (Zahnfleisch), `/praxis-team`
-   (Beratung bei den Mitgliedschaften) und `/zahnschmerzen` (Wartebereich).
+   (Beratung bei den Mitgliedschaften), `/zahnschmerzen` (Wartebereich)
+   und `/aesthetische-zahnmedizin` (Porträt). Faustregel aus der Praxis:
+   Zeigt ein erzeugtes Bild **Menschen**, wird es gekennzeichnet;
+   Räume, Geräte und Stillleben bisher nicht.
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;

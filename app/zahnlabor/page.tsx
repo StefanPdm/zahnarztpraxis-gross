@@ -146,7 +146,10 @@ export default function Zahnlabor() {
           </blockquote>
         </div>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/scanner-labor.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" />
+          {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
+              nähme 43 % der Breite weg — Monitor und Scanner stünden nur
+              noch halb im Bild. So füllt es den Rahmen und bleibt ganz. */}
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Modellscan · digitale Konstruktion
           </figcaption>
