@@ -316,6 +316,37 @@ fieldset.field > legend {
 }
 .strichliste--klein { font-size: 14px; }
 
+/* ── Breitbild-Band ────────────────────────────────────────────────────────
+   Für Panoramen, die keinen Seitenbeschnitt vertragen. Die übrigen Bänder
+   der Website arbeiten mit `.parallax-img` und fester Höhe; bei einem 3:1-
+   Bild schneidet das links und rechts je ein Fünftel weg. Hier bestimmt
+   stattdessen das Seitenverhältnis die Höhe — bei 1440 px ist nichts
+   beschnitten. Schmaler wird das Band höher und der Ausschnitt wandert
+   nach rechts, dorthin, wo auf dem Ausbildungsbild die Person steht. */
+.breitband {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  aspect-ratio: 3 / 1;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+/* Nur das unmittelbare Kind: `.breitband img` träfe auch das SVG der
+   KI-Plakette im <span> darin und blähte es auf Bandbreite auf. */
+.breitband > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+}
+@media (max-width: 1000px) {
+  .breitband { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 640px) {
+  .breitband { aspect-ratio: 4 / 3; }
+}
+
 /* ── Entwurfsmarke ─────────────────────────────────────────────────────────
    Für Textstellen, die geschrieben, aber noch nicht vom Auftraggeber
    freigegeben sind — derzeit die neuen Abschnitte der Datenschutzerklärung.

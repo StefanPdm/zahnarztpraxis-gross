@@ -15,6 +15,12 @@ export const ausbildung = {
   stellen: 1,
   beruf: "Zahnmedizinische Fachangestellte",
   kuerzel: "ZFA",
+  /* Geschlechtszusatz nach dem AGG: Eine Stellenausschreibung darf nicht
+     auf ein Geschlecht hindeuten, und die weibliche Berufsbezeichnung tut
+     das. Der Zusatz gehört überall dorthin, wo die Stelle angeboten wird —
+     auf /ausbildung, in den Hinweisen auf Start- und Team-Seite und in die
+     Stellenanzeige für Google. */
+  zusatz: "(w/m/d)",
   /* Festes Datum, kein `new Date()`: Sonst trüge das JSON-LD bei jedem
      Deploy ein neues Veröffentlichungsdatum, und Google läse jede
      Neuveröffentlichung der Website als neu ausgeschriebene Stelle. */

@@ -1860,9 +1860,9 @@ export default function Index() {
               </h2>
               <p style={{ color: 'var(--color-neutral-800)', margin: '0', maxWidth: '58ch' }}>
                 Zum {ausbildung.beginnLang} ist bei uns ein Ausbildungsplatz zur
-                Zahnmedizinischen Fachangestellten frei — in einem Team von acht, mit eigenem
-                Labor in der Praxis. Schau dir an, was dich erwartet, oder komm einfach mit uns
-                ins Gespräch.
+                Zahnmedizinischen Fachangestellten {ausbildung.zusatz} frei — in einem Team von
+                acht, mit eigenem Labor in der Praxis. Schau dir an, was dich erwartet, oder komm
+                einfach mit uns ins Gespräch.
               </p>
             </div>
             <Link

@@ -538,8 +538,9 @@ export default function PraxisTeam() {
         <div>
           <div className='ueberzeile'>Ausbildung · Start {ausbildung.beginnLang}</div>
           <p style={{ color: 'var(--color-neutral-800)', margin: '10px 0 0', maxWidth: '58ch' }}>
-            Zum {ausbildung.beginnLang} bilden wir zur Zahnmedizinischen Fachangestellten aus.
-            Wenn dich der Beruf interessiert: Ein Anruf genügt für den Anfang.
+            Zum {ausbildung.beginnLang} bilden wir zur Zahnmedizinischen Fachangestellten{' '}
+            {ausbildung.zusatz} aus. Wenn dich der Beruf interessiert: Ein Anruf genügt für den
+            Anfang.
           </p>
         </div>
         <Link
