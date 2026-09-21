@@ -358,8 +358,8 @@ export default function Prophylaxe() {
           style={{ position: 'relative', overflow: 'hidden', minHeight: '460px', margin: '0' }}>
           <Bild
             className='parallax-img'
-            src='/uploads/photos-1786974461803-v5uo.jpg'
-            alt='Behandlungszimmer mit Fenster in der Zahnarztpraxis Groß & Groß Potsdam'
+            src='/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg'
+            alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam'
           />
         </figure>
         <div className='abschnitt abschnitt--linie'>

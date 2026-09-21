@@ -190,3 +190,42 @@
 .angst-antwort { min-height: 205px; }
 @media (max-width: 1200px) { .angst-antwort { min-height: 245px; } }
 @media (max-width: 1000px) { .angst-antwort { min-height: 0; } }
+
+/* ── Bonsai in der Hero ────────────────────────────────────────────────────
+   Ein Bild, zwei Lagen — im Markup steht es unter dem Absatz „Zwei
+   Zahnärzte …".
+
+   Ab 1101 px: aus dem Fluss gehoben in die rechte untere Ecke der Hero,
+   neben den mittigen Textblock. Der ist auf 56–70 Zeichen begrenzt, rechts
+   davon bleibt bei jeder Breite Platz — der Baum kommt keinem Wort in die
+   Quere. Hinter der Schrift stand er vorher; dunkle Buchstaben auf dunklem
+   Laub waren schlecht zu lesen.
+
+   Bis 1100 px: bleibt er, wo er im Markup steht — mittig unter dem Absatz,
+   über dem Pfeil nach unten. Die Hero bekommt dafür unten Luft, damit er
+   nicht auf der Trennlinie zur nächsten Sektion aufsitzt.
+
+   Die Breite wächst in beiden Fällen mit dem Fenster: Die Überschrift ist
+   mit clamp(48px, 8.4vw, 124px) ebenfalls fließend. */
+.hero-bonsai {
+  display: block;
+  width: clamp(150px, 42vw, 230px);
+  height: auto;
+  margin: 26px auto 0;
+  pointer-events: none;
+}
+@media (max-width: 1100px) {
+  /* Luft unter dem Baum, sonst steht er auf der Kante zur nächsten Sektion.
+     `!important`, weil die Hero ihr `padding` als Inline-Stil trägt (und dort
+     unten 0 steht) — ohne das gewinnt der Inline-Wert. */
+  body #hero { padding-bottom: 28px !important; }
+}
+@media (min-width: 1101px) {
+  .hero-bonsai {
+    position: absolute;
+    right: 24px;
+    bottom: -12px;
+    width: clamp(190px, 19vw, 320px);
+    margin: 0;
+  }
+}

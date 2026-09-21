@@ -168,7 +168,7 @@ export default function Parodontologie() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974467256-ovyq.jpg" alt="Behandlungszimmer der Zahnarztpraxis Groß & Groß in Potsdam" />
+          <Bild className="parallax-img" src="/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

@@ -23,7 +23,7 @@ const personal = [
     bereich: 'Anmeldung',
     title: 'Ihr erster Kontakt',
     text: 'Terminvergabe, Rückfragen zu Kostenplänen und die Recall-Erinnerung per E-Mail, SMS, Post oder Anruf.',
-    bild: '/uploads/empfang-und-flur-zahnarztpraxis-gross-und-gross-potsdam.jpg',
+    bild: '/uploads/empfang-tresen-flur-zahnarztpraxis-potsdam.jpg',
     alt: 'Empfangstresen und Flur mit Bildern in der Zahnarztpraxis Groß & Groß',
   },
   {
@@ -37,7 +37,7 @@ const personal = [
     bereich: 'Zahntechnik',
     title: 'Das Labor im Haus',
     text: 'Kronen, Brücken, Inlays, Veneers, Prothesen und Schienen entstehen hier. Die Zahnfarbe wird direkt am Behandlungsstuhl bestimmt.',
-    bild: '/uploads/zahnlabor-werkbank-zahnarztpraxis-potsdam.jpg',
+    bild: '/uploads/zahnlabor-werkbank-drucker-zahnarztpraxis-potsdam.jpg',
     alt: 'Werkbank im praxiseigenen Zahnlabor mit 3-D-Drucker und Artikulator',
   },
 ];
@@ -98,8 +98,8 @@ const raeume = [
     cap: 'Behandlungsplatz am Fenster',
   },
   {
-    src: '/uploads/behandlungszimmer-tageslicht-zahnarztpraxis-potsdam.jpg',
-    alt: 'Blick in ein Behandlungszimmer mit Stuhl, Bildschirm und Tageslicht',
+    src: '/uploads/behandlungszimmer-sitzecke-zahnarztpraxis-potsdam.jpg',
+    alt: 'Behandlungszimmer mit Sitzecke, hohen Fenstern und Behandlungsstuhl',
     no: 'II',
     cap: 'Ein Zimmer, von der Tür aus',
   },
@@ -122,10 +122,10 @@ const raeume = [
     cap: 'Das Labor, eine Tür weiter',
   },
   {
-    src: '/uploads/photos-1786974461824-wn8d.jpg',
-    alt: 'Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß',
+    src: '/uploads/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg',
+    alt: 'Behandlungszimmer mit Monitor an der Decke, Stuhl und Orchidee',
     no: 'VI',
-    cap: 'Behandlungszimmer, Südlicht',
+    cap: 'Zimmer mit Deckenmonitor',
   },
 ];
 
@@ -465,9 +465,9 @@ export default function PraxisTeam() {
             maxWidth: '62ch',
             textWrap: 'pretty',
           }}>
-          Acht Kolleginnen und Kollegen arbeiten am Empfang, in der Prophylaxe und im Labor. Alle
-          sind bestens ausgebildet und arbeiten mit den neuesten Techniken — Fortbildungen und
-          Schulungen sind hier selbstverständlich, nicht die Ausnahme.
+          Egal ob am Empfang, in der Prophylaxe, bei der Assistenz oder im Labor – wir sind ein
+          eingespieltes Team. Alle sind bestens ausgebildet und arbeiten mit den neuesten Techniken
+          — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
         </p>
         <div
           style={{

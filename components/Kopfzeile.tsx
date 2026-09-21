@@ -24,6 +24,11 @@ export default function Kopfzeile() {
 
   const [menueOffen, setMenueOffen] = useState(false);
   const [untermenueOffen, setUntermenueOffen] = useState(false);
+  /* Am Desktop öffnet das Dropdown über :hover und :focus-within (site.css).
+     Nach einem Klick auf einen Eintrag steht der Zeiger noch darüber — die
+     Liste bliebe offen. Diese Sperre klappt sie zu, bis der Zeiger sie
+     verlässt (onMouseLeave weiter unten). */
+  const [dropdownZu, setDropdownZu] = useState(false);
   const kopf = useRef<HTMLElement>(null);
 
   /*
@@ -65,6 +70,7 @@ export default function Kopfzeile() {
     setLetzterPfad(pathname);
     setMenueOffen(false);
     setUntermenueOffen(false);
+    setDropdownZu(false);
   }
 
   const menueSchalten = (offen: boolean) => {
@@ -121,6 +127,18 @@ export default function Kopfzeile() {
     if (!link) return;
     const warOffen = menueOffen;
     menueSchalten(false);
+
+    /*
+      Den Fokus vom Link nehmen: Das Dropdown steht auch über :focus-within
+      offen, und nach einem Mausklick behält der Link den Fokus — es bliebe
+      stehen, bis irgendwo hingeklickt wird. Nur beim Zeigerklick
+      (`detail > 0`); wer mit der Tastatur ausgelöst hat, soll den Fokus
+      behalten, sonst landet er im Nirgendwo.
+    */
+    if (event.detail > 0) {
+      link.blur();
+      if (link.closest(".navdrop") && window.innerWidth > UMBRUCH) setDropdownZu(true);
+    }
 
     const [pfad, anker] = (link.getAttribute("href") ?? "").split("#");
     if (!anker || (pfad !== "" && pfad !== pathname)) return;
@@ -214,7 +232,8 @@ export default function Kopfzeile() {
         ))}
 
         <span
-          className={untermenueOffen ? "navdrop open" : "navdrop"}
+          className={`navdrop${untermenueOffen ? " open" : ""}${dropdownZu ? " zu" : ""}`}
+          onMouseLeave={() => setDropdownZu(false)}
           style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: "7px" }}
         >
           <span

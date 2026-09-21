@@ -31,7 +31,7 @@ export const team: Behandler[] = [
     foto: '/uploads/portrait-chantal-gross.jpg',
     alt: 'Porträt von Chantal Groß, Zahnärztin bei Groß & Groß in Potsdam',
     zitat:
-      '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe und eine ehrliche Ansage.“',
+      '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe, eine liebesvolle Atmospäre und viel Verständnis“',
     bio: 'Nach dem Studium und der Assistenzzeit habe ich mich auf ästhetische und konservierende Zahnheilkunde spezialisiert — und darauf, Kinder zu behandeln, ohne sie zu überfahren. Regelmäßige Fortbildungen gehören für mich dazu, weil sich in der Zahnmedizin ständig etwas ändert.',
     werdegang:
       'Studium in Halle/Saale, Assistenzzeit in Berlin-Mitte. Curriculum Kinderzahnheilkunde und Parodontologie, jährlich rund 60 Fortbildungsstunden.',
@@ -41,7 +41,7 @@ export const team: Behandler[] = [
       { label: 'Schwerpunkt', value: 'Kinder · Ästhetik' },
       { label: 'Zertifikate', value: 'Curriculum Paro (DG PARO)' },
       { label: 'Hobby', value: 'Backen, Sport' },
-      { label: 'Besonderheit', value: 'großes Herz' },
+      { label: 'Besonderheit', value: 'Großes Herz aus dem Ruhrpott' },
     ],
     schwerpunkte:
       'Ästhetische Zahnmedizin · Konservierende Zahnheilkunde · Kinderzahnheilkunde · Parodontologie',
@@ -62,7 +62,7 @@ export const team: Behandler[] = [
       { label: 'Schwerpunkt', value: 'Implantologie · Prothetik' },
       { label: 'Erfahrung', value: '2.000+ Implantate' },
       { label: 'Hobbys', value: 'Wassersport, Angeln' },
-      { label: 'Besonderheit', value: 'echter Potsdamer' },
+      { label: 'Besonderheit', value: 'Echter Potsdamer' },
     ],
     schwerpunkte: 'Implantologie · Prothetik · Chirurgie · Zahnersatz aus dem eigenen Labor',
   },

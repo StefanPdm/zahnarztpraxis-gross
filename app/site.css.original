@@ -319,6 +319,13 @@ body header > a > span { transition: font-size .28s cubic-bezier(.2,.8,.25,1), o
 }
 .navdrop:hover > .navmenu,
 .navdrop:focus-within > .navmenu { display: flex; }
+/* Nach einem Klick auf einen Eintrag bleibt die Liste sonst offen: Der Zeiger
+   steht noch darüber (:hover). Die Klasse kommt beim Klick dazu und geht,
+   sobald der Zeiger die Liste verlässt (components/Kopfzeile). Nur am
+   Desktop — mobil klappt die Liste über .navdrop.open auf, nicht über hover. */
+@media (min-width: 1001px) {
+  .navdrop.zu > .navmenu { display: none; }
+}
 .navdrop .navmenu > span {
   display: flex;
   flex-direction: column;

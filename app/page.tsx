@@ -162,8 +162,15 @@ export default function Index() {
           style={{ maxWidth: '1440px', margin: '0 auto', background: 'transparent' }}>
           <div
             id='hero'
-            style={{ padding: '132px 64px 0px', textAlign: 'center', overflow: 'hidden' }}>
-            <div id='heroInner'>
+            style={{
+              position: 'relative',
+              padding: '132px 64px 0px',
+              textAlign: 'center',
+              overflow: 'hidden',
+            }}>
+            <div
+              id='heroInner'
+              style={{ position: 'relative', zIndex: 1 }}>
               <div className='herofold'>
                 <div
                   style={{
@@ -177,6 +184,9 @@ export default function Index() {
                 </div>
                 <h1
                   style={{
+                    /* Vor dem Bonsai: Die Krone reicht hinter die Zeilen. */
+                    position: 'relative',
+                    zIndex: 1,
                     fontWeight: '400',
                     fontSize: 'clamp(48px,8.4vw,124px)',
                     lineHeight: '0.94',
@@ -221,8 +231,17 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     textWrap: 'pretty',
                   }}>
-                  Zwei Zahnärzte. Ein eigenes Labor. Und die Zeit, die Sie brauchen.
+                  Zwei Zahnärzte. Ein eigenes Labor. Wir nehmen uns die Zeit.
                 </p>
+                {/* Mobil steht der Baum hier im Fluss unter dem Absatz, am
+                    Desktop hebt ihn .hero-bonsai in die rechte untere Ecke.
+                    Rein schmückend: kein Alt-Text, keine Trefffläche. */}
+                <Bild
+                  className='hero-bonsai'
+                  src='/uploads/bonsai-praxis-gross-und-gross.png'
+                  alt=''
+                  sizes='(max-width: 1100px) 50vw, 19vw'
+                />
                 <a
                   className='scrollcue'
                   href='#worum'
