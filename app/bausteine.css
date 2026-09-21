@@ -213,6 +213,12 @@
   height: auto;
   margin: 26px auto 0;
   pointer-events: none;
+  /* `drop-shadow` statt `box-shadow`: Der Baum ist ein PNG mit
+     durchsichtigem Rand — ein box-shadow legte ein Rechteck darunter,
+     drop-shadow folgt der Silhouette. Der Token passt unverändert hinein,
+     weil `--shadow-md` die Form „x y Weichzeichnung Farbe" hat; käme dort
+     je ein vierter Wert (Spread) dazu, müsste hier ein eigener stehen. */
+  filter: drop-shadow(var(--shadow-md));
 }
 @media (max-width: 1100px) {
   /* Luft unter dem Baum, sonst steht er auf der Kante zur nächsten Sektion.
@@ -227,7 +233,73 @@
     bottom: -12px;
     width: clamp(190px, 19vw, 320px);
     margin: 0;
+    /* Der Baum hängt beim Scrollen nach (components/ScrollEffekte). `will-change`
+       hält ihn auf einer eigenen Ebene, sonst zeichnet der Browser die halbe
+       Hero in jedem Bild neu. */
+    will-change: transform, translate;
+    /* Er kommt nicht sofort, sondern sinkt nach kurzer Wartezeit von oben in
+       sein Feld — erst liest man die Überschrift, dann rückt der Baum ins
+       Bild. Weiche Kurve und eine Sekunde Laufzeit: Ein schneller Einflug
+       läse sich wie ein Werbebanner. */
+    animation:
+      baumEinzug 1000ms 700ms linear backwards,
+      baumAufblenden 420ms 700ms ease-out backwards;
   }
+  /* Die Hero trägt `overflow: hidden` als Inline-Stil. Zwei Dinge müssen hier
+     zugleich gelten, und dafür gibt es genau eine Kombination:
+
+     `overflow-y: visible` — damit der Baum beim Nachhängen nach unten bis zur
+     Notfall-Zeile wandern kann. Am ruhenden Bild ändert das nichts: Die
+     untersten zwölf dargestellten Pixel des PNG sind durchsichtig, es wurde
+     also nie etwas abgeschnitten.
+
+     `overflow-x: clip` — der Baum steht am rechten Rand und trägt einen
+     Schatten; so kann nichts davon die Seite breiter machen. `hidden` ginge
+     hier nicht: Es erzeugt einen Scroll-Container und zwingt die andere
+     Achse auf `auto`, womit die Wanderung nach unten wieder abgeschnitten
+     wäre. `clip` tut beides nicht.
+
+     `!important`, weil ein Inline-Stil sonst gewinnt. */
+  body #hero {
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+  }
+}
+/* Eigene Achse für den Einzug: Das Nachhängen beim Scrollen schreibt
+   `transform` direkt ins Element. Läge der Einzug ebenfalls dort, würde eines
+   das andere überschreiben — der Baum spränge am Ende der Animation. Die
+   `translate`-Eigenschaft ist davon unabhängig, beide wirken zusammen. */
+@keyframes baumEinzug {
+  /* Von oben herab statt von der Seite: Seitlich musste der Baum durch die
+     Beschneidung am rechten Rand, und ein halber Baum sieht nicht gut aus.
+     Von oben bleibt er die ganze Zeit vollständig sichtbar — er sinkt in
+     sein Feld, schiebt sich vierzehn Pixel zu tief und hebt sich zurück.
+     Das liest sich wie ein Absetzen und nicht wie ein Einflug.
+
+     Die Kurven stehen an den Stufen, nicht in der `animation`-Zeile (die
+     deshalb `linear` sagt): erst ein weiches Auslaufen, dann ein ruhiges
+     Einschwingen. */
+  0% {
+    translate: 0 -180px;
+    animation-timing-function: cubic-bezier(0.16, 0.7, 0.3, 1);
+  }
+  72% {
+    translate: 0 14px;
+    animation-timing-function: cubic-bezier(0.34, 0, 0.64, 1);
+  }
+  100% { translate: 0 0; }
+}
+/* Die Deckkraft läuft getrennt und kürzer: Läge sie als Stufe in `baumEinzug`,
+   bekäme der Abschnitt ab dieser Stufe seine eigene Kurve, und die Bewegung
+   bekäme auf halber Strecke einen Knick. So blendet der Baum auf, während er
+   noch über der Überschrift steht, und ist unten längst deckend. */
+@keyframes baumAufblenden {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (min-width: 1101px) and (prefers-reduced-motion: reduce) {
+  /* Ohne Bewegung steht der Baum von Anfang an da, wo er hingehört. */
+  .hero-bonsai { will-change: auto; animation: none; }
 }
 
 /* ── Radiogruppen im Formular ──────────────────────────────────────────────

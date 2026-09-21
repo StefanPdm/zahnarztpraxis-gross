@@ -15,6 +15,9 @@ import { useBeimScrollen } from '@/lib/useBeimScrollen';
   Markup — Suchmaschinen und Screenreader lesen nie „0".
 */
 
+/** Anteil der Scrollstrecke, den der Bonsai mitgeht: 0 = klebt, 1 = kein Effekt. */
+const BAUM_TEMPO = 0.3;
+
 export default function ScrollEffekte() {
   const pfad = usePathname();
 
@@ -96,6 +99,32 @@ export default function ScrollEffekte() {
       const abstand = kasten.top + kasten.height / 2 - window.innerHeight / 2;
       const spiel = (el.offsetHeight - kasten.height) / 2;
       zuSetzen.push({ el, versatz: Math.max(-spiel, Math.min(spiel, -abstand * 0.06)) });
+    }
+
+    /*
+      Der Bonsai in der Hero hängt nach: Er wandert mit einem Bruchteil der
+      Scrollstrecke mit nach unten und bleibt dadurch länger im Bild.
+
+      Die Grenze ist die Trennlinie über der Notfall-Zeile mit der
+      Telefonnummer — bis dorthin, keinen Pixel weiter. Sie wird aus dem
+      Layout gelesen statt fest eingetragen: Die Höhe der Anliegen-Sektion
+      darüber hängt an `vh` und ändert sich mit dem Fenster.
+
+      Nur am Desktop. Darunter steht der Baum im Textfluss und hätte keinen
+      Platz zum Wandern (bausteine.css, `.hero-bonsai`).
+    */
+    const baum = document.querySelector<HTMLElement>('.hero-bonsai');
+    const hero = document.getElementById('hero');
+    const leiste = document.querySelector<HTMLElement>('.notfallleiste');
+    if (baum && hero && leiste && window.matchMedia('(min-width: 1101px)').matches) {
+      /* `offsetTop`/`offsetHeight` statt `getBoundingClientRect`: Das sind
+         Layoutmaße und damit von der eigenen Verschiebung unberührt — sonst
+         verschöbe sich die Grenze mit jedem Bild ein Stück weiter. */
+      const baumUnten =
+        hero.getBoundingClientRect().top + window.scrollY + baum.offsetTop + baum.offsetHeight;
+      const grenze = leiste.getBoundingClientRect().top + window.scrollY;
+      const spielraum = Math.max(0, grenze - baumUnten);
+      zuSetzen.push({ el: baum, versatz: Math.min(window.scrollY * BAUM_TEMPO, spielraum) });
     }
 
     for (const { el, versatz } of zuSetzen) {
