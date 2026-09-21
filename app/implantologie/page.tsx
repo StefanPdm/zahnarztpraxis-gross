@@ -148,7 +148,10 @@ export default function Implantologie() {
           </div>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "600px", borderLeft: "1px solid var(--color-divider)" }}>
-          <Bild className="parallax-img" src="/uploads/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit moderner Technik in der Zahnarztpraxis Groß & Groß in Potsdam" />
+          {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
+              schnitte fast die Hälfte der Breite weg — die Krone läge
+              außerhalb. So füllt es die Spalte und bleibt vollständig. */}
+          <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/uploads/implantat-schema-krone-abutment-schraube.jpg" alt="Darstellung eines Implantats im Querschnitt: Krone, Verbindungsstück und Schraube im Kieferknochen" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
       </div>
       <div className="abschnitt-oben">

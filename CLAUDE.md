@@ -96,7 +96,8 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    `npm run pruefen` schlägt fehl, sobald einer davon im Code steht.
 2. **KI-Kennzeichnung** (`/uploads/ai-generated-badge.svg`, Klasse
    `.ai-badge`) nur auf ausdrückliche Ansage des Auftraggebers. Bisher
-   gekennzeichnet: das Bild auf `/parodontologie`.
+   gekennzeichnet: `/parodontologie` (Zahnfleisch), `/praxis-team`
+   (Beratung bei den Mitgliedschaften) und `/zahnschmerzen` (Wartebereich).
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;

@@ -45,7 +45,7 @@ const terminschritte = [
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
   { value: '1991', to: 1991, decimals: 0, suffix: '', label: 'Familiengeführt in Potsdam' },
-  { value: '2.000+', to: 2000, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
+  { value: '2.000', to: 2000, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
   { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
   { value: '1', to: 1, decimals: 0, suffix: '', label: 'Operationssaal' },
 ];
@@ -387,8 +387,8 @@ export default function Index() {
             <figure style={{ margin: '0', background: '#ffffff' }}>
               <Bild
                 className='plate'
-                src='/uploads/photos-1786974468276-pkt8.jpg'
-                alt='Wartebereich'
+                src='/uploads/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg'
+                alt='Wartebereich mit Sesseln, Teppich und dem Surfbrett an der Wand'
                 style={{
                   width: '100%',
                   height: '520px',
@@ -763,8 +763,8 @@ export default function Index() {
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/photos-1786974461834-65xv.jpg'
-                  alt='Behandlungszimmer mit Stuhl und Schränken in der Zahnarztpraxis Groß & Groß in Potsdam'
+                  src='/uploads/krokodil-wartebereich-zahnarztpraxis-potsdam.jpg'
+                  alt='Bunt bemalte Krokodil-Skulptur mit Krone auf dem Boden des Wartebereichs'
                   style={{
                     width: '100%',
                     height: '520px',
@@ -785,14 +785,14 @@ export default function Index() {
                     color: 'var(--color-neutral-700)',
                   }}>
                   <span style={{ color: 'var(--color-accent-700)' }}>Tafel IV</span>
-                  <span>Ein Zimmer, bereit</span>
+                  <span>Liebevoll gestalteter Wartebereich</span>
                 </figcaption>
               </figure>
               <figure style={{ margin: '0' }}>
                 <Bild
                   className='plate'
-                  src='/uploads/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg'
-                  alt='Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand'
+                  src='/uploads/praxisflur-logo-zahnarztpraxis-gross-und-gross.jpg'
+                  alt='Beleuchtetes Groß-&-Groß-Logo an der Wand, dahinter der Flur mit Bildern'
                   style={{
                     width: '100%',
                     height: '520px',
@@ -1269,8 +1269,8 @@ export default function Index() {
             <figure style={{ margin: '0' }}>
               <Bild
                 className='plate'
-                src='/uploads/photos-1786974479454-rmck.jpg'
-                alt='Behandlungsraum mit Technik'
+                src='/uploads/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg'
+                alt='Modellscanner im Zahnlabor, daneben der Bildschirm mit dem digitalen Kiefermodell'
                 style={{
                   width: '100%',
                   height: '440px',
@@ -1291,7 +1291,7 @@ export default function Index() {
                   color: 'var(--color-neutral-700)',
                 }}>
                 <span style={{ color: 'var(--color-accent-700)' }}>Tafel VI</span>
-                <span>Zahnlabor, Arbeitsplatz Keramik</span>
+                <span>Zahnlabor, Modell wird digitalisiert</span>
               </figcaption>
             </figure>
           </div>
