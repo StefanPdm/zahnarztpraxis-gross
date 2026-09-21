@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { praxis } from "@/lib/praxis";
+import { kontakt } from "@/lib/kontakt";
 import { useBeimScrollen } from "@/lib/useBeimScrollen";
 
 /*
@@ -64,7 +64,7 @@ export default function TerminLeiste() {
         <Link className="btn btn-primary" href="/#termin" style={{ padding: "9px 22px", fontSize: "13px" }}>
           Termin anfragen
         </Link>
-        <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "9px 22px", fontSize: "13px" }}>
+        <a className="btn btn-secondary" href={kontakt.telefonHref} style={{ padding: "9px 22px", fontSize: "13px" }}>
           Anrufen
         </a>
       </span>

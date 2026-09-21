@@ -144,6 +144,18 @@ export const seiten: Seite[] = [
       "Telefon 0331 960926, Öffnungszeiten und Adresse: Schopenhauerstraße 37, Potsdam – Eingang auf der Rückseite. Antwort auf Anfragen innerhalb von 24 Stunden.",
   },
   {
+    /* Die einzige Seite, die sich nicht an Patienten richtet. Rubrik
+       „Praxis", weil sie inhaltlich an /praxis-team hängt — in der
+       Patientennavigation taucht sie bewusst nicht auf, sondern in der
+       Fußzeile, auf der Startseite und auf der Team-Seite. */
+    pfad: "/ausbildung",
+    name: "Ausbildung",
+    rubrik: "Praxis",
+    titel: "Ausbildung ZFA 2027 in Potsdam | Groß & Groß",
+    beschreibung:
+      "Ausbildung zur Zahnmedizinischen Fachangestellten in Potsdam Mitte, Start 1. August 2027. Familiengeführte Praxis seit 1991, eigenes Zahnlabor, kleines Team.",
+  },
+  {
     pfad: "/impressum-datenschutz",
     name: "Impressum & Datenschutz",
     rubrik: "Rechtliches",

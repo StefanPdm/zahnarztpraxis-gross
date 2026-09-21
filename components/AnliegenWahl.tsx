@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { praxis } from "@/lib/praxis";
+import { kontakt } from "@/lib/kontakt";
 import { anliegen, TERMIN_ANKER } from "@/lib/anliegen";
 
 /*
@@ -64,8 +64,8 @@ export default function AnliegenWahl() {
         <Link className="btn btn-primary knopf-gross" href={`/#${TERMIN_ANKER}`}>
           Termin vereinbaren
         </Link>
-        <a className="btn btn-secondary knopf-gross" href={praxis.telefonHref}>
-          {praxis.telefon}
+        <a className="btn btn-secondary knopf-gross" href={kontakt.telefonHref}>
+          {kontakt.telefon}
         </a>
       </div>
     </>

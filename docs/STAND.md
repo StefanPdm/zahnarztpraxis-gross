@@ -60,6 +60,26 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 - Zahnärztekammer, Aufsichtsbehörde, Berufsordnung, USt-IdNr. im Impressum
 - Medizinische Freigaben für die sechs gesperrten Themen
 
+### Ausbildungsplatz — Pflege nach dem Livegang
+
+`/ausbildung` trägt ein **JobPosting-JSON-LD**. Google verlangt, dass eine
+Stellenanzeige verschwindet, sobald die Stelle besetzt ist; eine Anzeige,
+die weiterläuft, wird abgewertet. Dafür genügt in `lib/ausbildung.ts`:
+
+```ts
+offen: false   // Markup und Bewerbungsaufforderung entfallen zugleich
+```
+
+Die Seite bleibt dann als Information über den Beruf stehen. Offen sind
+noch: Höhe der Vergütung, Berufsschule, Ansprechpartnerin, Praktikum oder
+Schnuppertag, eine echte Bewerbungsfrist (`gueltigBis` steht vorläufig auf
+dem Tag vor Ausbildungsbeginn) und die Frage nach Social-Media-Konten.
+Sie stehen als `.todo`-Box sichtbar auf der Seite.
+
+Nach dem Livegang lohnen zwei kostenlose Einträge, die bei einer einzelnen
+Stelle mehr bringen als jede Optimierung an der Seite: die Lehrstellenbörse
+der Zahnärztekammer Brandenburg und die Jobbörse der Agentur für Arbeit.
+
 ### Datenschutzerklärung — Freigabe und zwei Lücken
 
 Die Erklärung ist am 21.09.2026 gegen den Code geprüft und umgeschrieben

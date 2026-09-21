@@ -15,6 +15,7 @@ import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
+import { ausbildung } from '@/lib/ausbildung';
 
 export const metadata = seitenMetadaten('/');
 
@@ -1828,6 +1829,47 @@ export default function Index() {
                 Größere Karte öffnen
               </a>
             </div>
+          </div>
+          {/* Der einzige Abschnitt der Startseite, der nicht Patienten
+              anspricht — deshalb schmal, hell abgesetzt und mit „du". Er
+              steht bewusst am Ende: Wer bis hierher liest, ist ohnehin
+              interessiert, und der Patientenfluss bleibt ungestört. */}
+          <div
+            id='ausbildung'
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              gap: '56px',
+              alignItems: 'center',
+              padding: '70px 64px',
+              borderBottom: '1px solid var(--color-divider)',
+              background: 'var(--color-surface)',
+            }}>
+            <div>
+              <div className='ueberzeile'>
+                Ausbildung · Start {ausbildung.beginnLang}
+              </div>
+              <h2
+                style={{
+                  fontWeight: '400',
+                  fontSize: 'var(--fs-h2-sm)',
+                  lineHeight: '1.1',
+                  margin: '10px 0 12px',
+                }}>
+                Interessierst du dich beruflich für Zahnmedizin?
+              </h2>
+              <p style={{ color: 'var(--color-neutral-800)', margin: '0', maxWidth: '58ch' }}>
+                Zum {ausbildung.beginnLang} ist bei uns ein Ausbildungsplatz zur
+                Zahnmedizinischen Fachangestellten frei — in einem Team von acht, mit eigenem
+                Labor in der Praxis. Schau dir an, was dich erwartet, oder komm einfach mit uns
+                ins Gespräch.
+              </p>
+            </div>
+            <Link
+              className='btn btn-primary knopf-gross'
+              href='/ausbildung'>
+              Ausbildungsplatz ansehen
+            </Link>
           </div>
           <div
             className='rv'

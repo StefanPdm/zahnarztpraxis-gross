@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { praxis } from "@/lib/praxis";
+import { kontakt } from "@/lib/kontakt";
 
 /*
   Angst-Regler.
@@ -209,8 +209,8 @@ export default function AngstRegler({
           <Link className="btn btn-primary" href="/#termin" style={{ padding: "12px 24px", fontSize: "14px" }}>
             Termin anfragen
           </Link>
-          <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 24px", fontSize: "14px" }}>
-            {praxis.telefon}
+          <a className="btn btn-secondary" href={kontakt.telefonHref} style={{ padding: "12px 24px", fontSize: "14px" }}>
+            {kontakt.telefon}
           </a>
         </div>
       )}

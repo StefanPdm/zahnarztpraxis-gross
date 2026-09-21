@@ -19,7 +19,8 @@ arbeiten.
 
 | Wo | Was |
 | --- | --- |
-| `lib/praxis.ts` | Stammdaten: Telefon, Adresse, E-Mail, Sprechzeiten, Kennzahlen |
+| `lib/praxis.ts` | Stammdaten: Telefon, Adresse, E-Mail, Sprechzeiten, Kennzahlen — **nur serverseitig** |
+| `lib/kontakt.ts` | Telefon und Anschrift allein — das Einzige, was eine Client-Komponente importieren darf |
 | `lib/team.ts` | Behandler (Startseite, /praxis-team, JSON-LD, llms.txt) |
 | `lib/seiten.ts` | Alle Seiten: Titel, Beschreibung, Rubrik → Metadaten, Sitemap, Weiterleitungen, llms.txt |
 | `lib/strukturierteDaten.ts` | setzt Stammdaten in jedes JSON-LD ein |
@@ -32,6 +33,14 @@ arbeiten.
 Eine Angabe steht **genau einmal**. Wer die Telefonnummer, eine Sprechzeit
 oder einen Seitentitel ändert, ändert ihn in `lib/` — Seiten, JSON-LD,
 Sitemap und `llms.txt` ziehen mit.
+
+**`lib/praxis.ts` gehört nie in eine Datei mit `"use client"`.** Ein
+Objektliteral lässt sich nicht aufteilen: Wer `praxis` in einer
+Client-Komponente importiert, schiebt E-Mail-Adresse, Kennzahlen und
+Google-Place-ID in ein Bündel, das jeder Besucher lädt — und eine Adresse
+im JavaScript erntet ein Bot leichter als eine im HTML. Client-Komponenten
+importieren `kontakt` aus `lib/kontakt.ts`. Zum Nachprüfen nach einem
+Build: `grep -rl "praxis@" .next/static/` muss leer bleiben.
 
 ## Was nicht verändert wird
 
@@ -107,7 +116,9 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    über 2.000 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
-   (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt).
+   (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt); **ein
+   Ausbildungsplatz zur ZFA, Beginn 1. August 2027** (bestätigt 21.09.2026,
+   Eckdaten in `lib/ausbildung.ts`).
 4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,
    21.09.2026). Labor und Zahntechniker sitzen **in der eigenen Praxis** —
    auch in Fließtext, Bildunterschriften, Metadaten und JSON-LD. „Im Haus"

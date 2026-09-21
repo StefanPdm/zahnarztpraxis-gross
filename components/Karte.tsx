@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { praxis } from "@/lib/praxis";
+import { kontakt } from "@/lib/kontakt";
 import Bild from "@/components/Bild";
 
 /*
@@ -19,7 +19,7 @@ const EINBETTUNG =
 
 export default function Karte({ hoehe, grau = false }: { hoehe: number; grau?: boolean }) {
   const [geladen, setGeladen] = useState(false);
-  const titel = `Karte ${praxis.strasse}, ${praxis.stadt}`;
+  const titel = `Karte ${kontakt.strasse}, ${kontakt.stadt}`;
   const flaeche = {
     width: "100%",
     height: `${hoehe}px`,

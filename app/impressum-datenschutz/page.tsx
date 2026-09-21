@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { seitenMetadaten } from '@/lib/seiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
+import { praxis } from '@/lib/praxis';
 
 export const metadata = seitenMetadaten('/impressum-datenschutz');
 
@@ -173,7 +174,7 @@ export default function ImpressumDatenschutz() {
             <span style={{ fontFeatureSettings: "'tnum'" }}>0331 / 58 11 32 30</span>
             <span style={{ color: 'var(--color-neutral-700)' }}>E-Mail</span>
             <span>
-              <a href='mailto:praxis@zahnmedizin-potsdam.de'>praxis@zahnmedizin-potsdam.de</a>
+              <a href={`mailto:${praxis.email}`}>{praxis.email}</a>
             </span>
             <span style={{ color: 'var(--color-neutral-700)' }}>Berufsbezeichnung</span>
             <span>Zahnärztin / Zahnarzt, verliehen in der Bundesrepublik Deutschland</span>
@@ -335,7 +336,7 @@ export default function ImpressumDatenschutz() {
         <div style={{ display: 'flex', gap: '14px' }}>
           <a
             className='btn btn-secondary knopf-gross'
-            href='mailto:zahnarztgross.gross@outlook.de'>
+            href={`mailto:${praxis.email}`}>
             E-Mail schreiben
           </a>
           <Link

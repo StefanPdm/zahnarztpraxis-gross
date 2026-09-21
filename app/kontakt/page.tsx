@@ -6,6 +6,7 @@ import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
+import { praxis } from '@/lib/praxis';
 
 export const metadata = seitenMetadaten('/kontakt');
 
@@ -65,7 +66,7 @@ export default function Kontakt() {
               fontSize: 'var(--fs-h5)',
               margin: '14px 0 0',
             }}>
-            <a href='mailto:zahnarztgross.gross@outlook.de'>zahnarztgross.gross@outlook.de</a>
+            <a href={`mailto:${praxis.email}`}>{praxis.email}</a>
           </p>
         </div>
         <div style={{ padding: '44px 64px', borderLeft: '1px solid var(--color-divider)' }}>

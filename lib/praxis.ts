@@ -1,22 +1,25 @@
+import { kontakt } from "./kontakt";
+
 /**
  * Stammdaten der Praxis — die einzige Stelle, an der sie stehen.
  * Kopf, Fuß, Seiten, JSON-LD (lib/strukturierteDaten.ts), sitemap und
  * llms.txt lesen von hier. Wer eine Angabe ändert, ändert sie überall.
  *
  * Nur belegte Angaben (siehe CLAUDE.md, „Belegte Fakten").
+ *
+ * Telefon und Anschrift stehen in lib/kontakt.ts und werden hier
+ * eingesetzt — sie sind die einzigen Angaben, die eine Client-Komponente
+ * braucht. Dort steht auch, warum die Trennung nötig ist. **Diese Datei
+ * gehört nicht in eine Datei mit `"use client"`.**
  */
 export const praxis = {
+  ...kontakt,
   name: "Groß & Groß",
   vollerName: "Zahnarztpraxis Groß & Groß",
-  telefon: "0331 960926",
-  telefonHref: "tel:+49331960926",
-  telefonIntl: "+49331960926",
-  email: "zahnarztgross.gross@outlook.de",
-  strasse: "Schopenhauerstraße 37",
-  plz: "14467",
-  stadt: "Potsdam",
-  ort: "14467 Potsdam",
-  region: "Brandenburg",
+  /* Die Adresse auf der eigenen Domain, nicht das alte Outlook-Konto
+     (Auftraggeber, 21.09.2026). Sie stand vorher an drei Stellen fest im
+     Markup, zwei davon veraltet — deshalb jetzt nur noch von hier. */
+  email: "praxis@zahnmedizin-potsdam.de",
   eingang: "Eingang auf der Rückseite des Gebäudes",
   /* Zugang: Die Praxis ist **nicht** barrierefrei (Auftraggeber, 21.09.2026).
      Die Angabe stand auf drei Seiten unterschiedlich — einmal „Erdgeschoss,
