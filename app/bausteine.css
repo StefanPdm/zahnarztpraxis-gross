@@ -315,3 +315,22 @@ fieldset.field > legend {
   padding-top: 10px;
 }
 .strichliste--klein { font-size: 14px; }
+
+/* ── Entwurfsmarke ─────────────────────────────────────────────────────────
+   Für Textstellen, die geschrieben, aber noch nicht vom Auftraggeber
+   freigegeben sind — derzeit die neuen Abschnitte der Datenschutzerklärung.
+   Sichtbar und auffällig, damit sie nicht versehentlich live gehen. 12 px
+   ist die Untergrenze aus den Konventionen, deshalb nicht kleiner. */
+.entwurf {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 8px;
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--color-accent) 8%, #ffffff);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  color: var(--color-accent-800);
+}

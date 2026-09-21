@@ -388,9 +388,15 @@ export default function TerminFormular() {
           required
           style={{ marginTop: '3px', accentColor: 'var(--color-accent)' }}
         />
+        {/* Ausdrückliche Einwilligung nach Art. 9 Abs. 2 lit. a DSGVO: Der
+            Angst-Regler und das Nachrichtenfeld können Gesundheitsdaten
+            enthalten. Die frühere Fassung sprach nur von „meine Angaben" —
+            das deckt Art. 9 nicht. Der Satz muss benennen, worum es geht. */}
         <span>
-          Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Terminanfrage
-          gespeichert werden. <Pflicht />{" "}
+          Ich bin damit einverstanden, dass die Praxis meine Angaben zur Bearbeitung dieser
+          Terminanfrage verarbeitet. Das gilt ausdrücklich auch für Angaben zu meiner Gesundheit —
+          etwa zu Beschwerden, Medikamenten oder Angst vor der Behandlung. Ich kann diese
+          Einwilligung jederzeit widerrufen. <Pflicht />{" "}
           <Link href='/impressum-datenschutz'>Datenschutzerklärung</Link>
         </span>
       </label>

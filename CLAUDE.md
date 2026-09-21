@@ -135,6 +135,13 @@ Profilbilder liefert `next/image` von unserer Domain aus. Im Browser der
 Besucher entsteht keine einzige Anfrage an Google. Wer das ändert — etwa ein
 Bild direkt einbindet —, hebelt genau das aus.
 
+**Kein Einwilligungsbanner — und das ist kein Versehen.** Die Seite setzt
+kein Cookie und legt nichts im Browser ab (`localStorage`, `sessionStorage`,
+`indexedDB` kommen im Quelltext nicht vor). Damit greift § 25 TDDDG nicht.
+Abschnitt 03 der Datenschutzerklärung sagt das ausdrücklich zu. Wer ein
+Analysewerkzeug, eine CDN-Schrift oder ein fremdes Video ergänzt, braucht
+beides: ein Banner **und** eine neue Fassung dieses Abschnitts.
+
 Die Angabe zur Zahnarztangst im Termin-Formular ist ein **Gesundheitsdatum**:
 nur an die Praxis versenden, nicht protokollieren, nicht speichern, nicht an
 Dritte. Keine Zugangsdaten ins Repository.

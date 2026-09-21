@@ -20,7 +20,26 @@ const haftung = [
   },
 ];
 
-const datenschutz = [
+/*
+  Datenschutzerklärung.
+
+  Die mit `entwurf` markierten Abschnitte sind neu oder umgeschrieben und vor
+  dem Livegang von der Praxis beziehungsweise ihrem Anwalt freizugeben. Sie
+  beschreiben, was der Code nachweislich tut — geprüft am 21.09.2026:
+
+  · kein Cookie, kein localStorage, kein sessionStorage, kein indexedDB
+  · vor einer Einwilligung keine einzige Anfrage an Dritte (CSP in
+    next.config.ts: default-src 'self', frame-src nur OpenStreetMap)
+  · Bewertungen holt der Server, die Profilbilder liefert next/image von
+    unserer Domain (components/GoogleBewertungen)
+  · Karte erst nach Klick (components/Karte)
+
+  Wer eines davon ändert, ändert hier mit — sonst steht in der Erklärung
+  etwas anderes als im Auslieferungszustand.
+*/
+type Abschnitt = { no: string; title: string; text: string; entwurf?: boolean };
+
+const datenschutz: Abschnitt[] = [
   {
     no: '01',
     title: 'Verantwortliche Stelle',
@@ -28,38 +47,79 @@ const datenschutz = [
   },
   {
     no: '02',
-    title: 'Terminanfrage & Kontaktformular',
-    text: 'Ihre Angaben aus dem Formular — Name, Kontaktdaten, Wunschtermin und Ihr Anliegen — speichern wir zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Rechtsgrundlage ist Ihre Einwilligung sowie die Anbahnung des Behandlungsvertrags. Wir geben diese Daten nicht an Dritte weiter.',
+    title: 'Datenschutzbeauftragter',
+    text: 'Platzhalter — bitte ausfüllen oder streichen: Hat die Praxis einen Datenschutzbeauftragten benannt, gehören Name und Kontaktdaten an diese Stelle. Bei einer Praxis, die Gesundheitsdaten verarbeitet, ist die Benennung in der Regel Pflicht (Art. 37 DSGVO, § 38 BDSG).',
+    entwurf: true,
   },
   {
     no: '03',
-    title: 'Gesundheitsdaten',
-    text: 'Angaben zu Beschwerden, Medikamenten oder Ängsten sind besonders schützenswert. Bitte senden Sie nur, was für die Terminvergabe nötig ist; Details klären wir im Gespräch. In der Praxis unterliegen Ihre Behandlungsdaten der zahnärztlichen Schweigepflicht und den gesetzlichen Aufbewahrungsfristen.',
+    title: 'Keine Cookies, kein Tracking',
+    text: 'Diese Website setzt keine Cookies und speichert nichts auf Ihrem Gerät — weder für Statistik noch für Werbung. Es gibt keine Analyse-Werkzeuge, keine Zählpixel und keine Weitergabe Ihres Besuchs an Dritte. Deshalb sehen Sie hier auch kein Einwilligungsbanner: Es gibt nichts, worin Sie einwilligen müssten.',
+    entwurf: true,
   },
   {
     no: '04',
-    title: 'Server-Logdateien',
-    text: 'Unser Hoster erhebt automatisch Zugriffsdaten wie Browsertyp, Betriebssystem, Referrer-URL, Uhrzeit und gekürzte IP-Adresse. Diese Daten dienen dem sicheren, störungsfreien Betrieb und werden nicht mit anderen Datenquellen zusammengeführt.',
+    title: 'Terminanfrage & Kontaktformular',
+    text: 'Ihre Angaben aus dem Formular — Name, Kontaktdaten, Wunschtermin und Ihr Anliegen — verarbeiten wir zur Bearbeitung der Anfrage und für mögliche Anschlussfragen. Rechtsgrundlage sind Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und die Anbahnung des Behandlungsvertrags (lit. b). Die Anfrage erreicht uns per E-Mail; eine Datenbank auf dieser Website gibt es nicht. Wir löschen die Nachricht, sobald sie erledigt ist und keine Aufbewahrungspflicht entgegensteht. Ihre Einwilligung können Sie jederzeit formlos widerrufen — für die Zukunft.',
+    entwurf: true,
   },
   {
     no: '05',
-    title: 'Cookies',
-    text: 'Technisch notwendige Cookies ermöglichen den Betrieb der Seite und werden nach Ihrem Besuch gelöscht. Cookies für Statistik oder eingebettete Karten setzen wir nur mit Ihrer Einwilligung; Sie können diese jederzeit widerrufen und Cookies in Ihrem Browser blockieren oder löschen.',
+    title: 'Gesundheitsdaten',
+    text: 'Angaben zu Beschwerden, Medikamenten oder zur Angst vor der Behandlung sind Gesundheitsdaten nach Art. 9 DSGVO. Wir verarbeiten sie ausschließlich auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 9 Abs. 2 lit. a) und nur, um Ihren Termin passend zu planen. Sie gehen unverändert an die Praxis und an niemanden sonst; die Website protokolliert und speichert sie nicht. Bitte senden Sie nur, was für die Terminvergabe nötig ist — Details klären wir im Gespräch. In der Praxis unterliegen Ihre Behandlungsdaten der zahnärztlichen Schweigepflicht und den gesetzlichen Aufbewahrungsfristen.',
+    entwurf: true,
   },
   {
     no: '06',
-    title: 'Kartenanbieter',
-    text: 'Für die Anfahrt kann eine Kartendarstellung eines externen Anbieters eingebettet sein. Dabei wird Ihre IP-Adresse an dessen Server übertragen. Die Karte lädt erst, wenn Sie sie ausdrücklich aktivieren.',
+    title: 'Hosting und technischer Betrieb',
+    text: 'Betrieb und Pflege dieser Website hat die Praxis an Stefan Heinemann, Potsdam, vergeben, der dabei als Auftragsverarbeiter nach Art. 28 DSGVO für uns tätig ist. Die Seiten liegen auf der Infrastruktur der Netlify, Inc., USA, die als Unterauftragsverarbeiter eingebunden ist; für die Übermittlung in die USA bestehen Standardvertragsklauseln. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und schnellen Betrieb (Art. 6 Abs. 1 lit. f DSGVO). Der E-Mail-Verkehr der Praxis läuft davon getrennt über die STRATO AG (siehe Abschnitt 08).',
+    entwurf: true,
   },
   {
     no: '07',
+    title: 'Server-Logdateien',
+    text: 'Beim Abruf der Seiten fallen automatisch Zugriffsdaten an: Browsertyp, Betriebssystem, Referrer-URL, Uhrzeit und IP-Adresse. Sie dienen dem sicheren, störungsfreien Betrieb und der Abwehr von Angriffen, werden nicht mit anderen Datenquellen zusammengeführt und nicht zur Wiedererkennung einzelner Personen ausgewertet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.',
+  },
+  {
+    no: '08',
+    title: 'E-Mail-Versand',
+    text: 'Für den Versand der Terminanfrage an die Praxis und Ihrer Eingangsbestätigung nutzen wir die STRATO AG, Pascalstraße 10, 10587 Berlin, als Auftragsverarbeiter nach Art. 28 DSGVO. Die Daten bleiben damit in der Europäischen Union. Ihre Bestätigungsmail enthält Ihre Kontaktangaben und Wunschtermine, aber bewusst keine Angaben zu Ihrer Gesundheit — diese gehen ausschließlich an die Praxis.',
+    entwurf: true,
+  },
+  {
+    no: '09',
+    title: 'Schriften, Bilder und Video',
+    text: 'Alle Schriften, Bilder und das Praxisvideo liegen auf unserem eigenen Server. Es werden keine Google Fonts, keine Bilddienste und keine Videoplattformen von außen eingebunden. Beim Aufruf dieser Seiten entsteht daher keine Verbindung zu Dritten.',
+    entwurf: true,
+  },
+  {
+    no: '10',
+    title: 'Google-Bewertungen',
+    text: 'Auf der Startseite zeigen wir Bewertungen aus unserem Google-Unternehmensprofil. Die Texte holt unser Server einmal täglich über die Google Places API, die Profilbilder liefern wir anschließend von unserer eigenen Domain aus. Ihr Browser baut dabei keine Verbindung zu Google auf, es wird nichts über Ihren Besuch an Google übermittelt und kein Cookie gesetzt. Die Namen und Bilder stammen von den Verfassern der Bewertungen; deren Daten verarbeitet Google als eigenständiger Verantwortlicher.',
+    entwurf: true,
+  },
+  {
+    no: '11',
+    title: 'Kartenanbieter',
+    text: 'Auf der Seite „Anfahrt & Parken" und im Kontaktbereich steht zunächst nur ein Standbild von unserem Server. Erst wenn Sie auf „Interaktive Karte laden" klicken, binden wir eine Karte der OpenStreetMap Foundation ein; dabei werden Ihre IP-Adresse und Browserdaten an deren Server in Großbritannien übertragen. Rechtsgrundlage ist Ihre Einwilligung durch diesen Klick (Art. 6 Abs. 1 lit. a DSGVO). Ohne Klick geschieht nichts.',
+    entwurf: true,
+  },
+  {
+    no: '12',
+    title: 'Schutz vor Massenanfragen',
+    text: 'Damit das Terminformular nicht automatisiert missbraucht wird, merkt sich unser Server für wenige Minuten, von welcher IP-Adresse eine Anfrage kam. Die Angabe liegt nur im Arbeitsspeicher, wird nicht gespeichert und nicht ausgewertet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.',
+    entwurf: true,
+  },
+  {
+    no: '13',
     title: 'SSL-Verschlüsselung',
     text: 'Diese Seite überträgt Daten verschlüsselt. Eine gesicherte Verbindung erkennen Sie am „https://“ in der Adresszeile und am Schloss-Symbol Ihres Browsers.',
   },
   {
-    no: '08',
+    no: '14',
     title: 'Ihre Rechte',
-    text: 'Sie haben jederzeit das Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten, deren Herkunft und Zweck, sowie auf Berichtigung, Einschränkung, Löschung und Datenübertragbarkeit. Zudem können Sie sich bei der zuständigen Aufsichtsbehörde beschweren. Der Nutzung unserer Kontaktdaten für unverlangte Werbung widersprechen wir ausdrücklich.',
+    text: 'Sie haben jederzeit das Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten, deren Herkunft und Zweck, sowie auf Berichtigung, Einschränkung, Löschung, Datenübertragbarkeit und Widerspruch. Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO). Zudem können Sie sich bei der zuständigen Aufsichtsbehörde beschweren — für uns ist das die Landesbeauftragte für den Datenschutz und für das Recht auf Akteneinsicht Brandenburg. Der Nutzung unserer Kontaktdaten für unverlangte Werbung widersprechen wir ausdrücklich.',
+    entwurf: true,
   },
 ];
 
@@ -197,6 +257,15 @@ export default function ImpressumDatenschutz() {
             ausschließlich dafür.
           </p>
         </div>
+        <div
+          className='todo'
+          style={{ marginBottom: '44px' }}>
+          <b>Vor dem Livegang</b>
+          Die als <em>Entwurf</em> markierten Abschnitte sind neu formuliert und beschreiben, was
+          die Website technisch tut. Sie gehören von der Praxis oder ihrem Anwalt geprüft und
+          freigegeben. Offen ist außerdem eine Angabe: der Datenschutzbeauftragte (Abschnitt 02).
+          Diese Box und die Marken entfernen, sobald alles steht.
+        </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '44px 72px' }}>
           {datenschutz.map((d, dI) => (
             <Fragment key={dI}>
@@ -213,6 +282,7 @@ export default function ImpressumDatenschutz() {
                 </div>
                 <h3 style={{ fontWeight: '400', fontSize: 'var(--fs-h4)', margin: '10px 0 10px' }}>
                   {d.title}
+                  {d.entwurf && <span className='entwurf'>Entwurf, noch nicht freigegeben</span>}
                 </h3>
                 <p
                   style={{

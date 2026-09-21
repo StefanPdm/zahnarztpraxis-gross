@@ -60,6 +60,45 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 - Zahnärztekammer, Aufsichtsbehörde, Berufsordnung, USt-IdNr. im Impressum
 - Medizinische Freigaben für die sechs gesperrten Themen
 
+### Datenschutzerklärung — Freigabe und zwei Lücken
+
+Die Erklärung ist am 21.09.2026 gegen den Code geprüft und umgeschrieben
+worden. Elf Abschnitte tragen die Marke „Entwurf, noch nicht freigegeben"
+(Klasse `.entwurf`), darüber steht eine `.todo`-Box. Beides gehört weg,
+sobald die Praxis oder ihr Anwalt zugestimmt hat.
+
+Eine Angabe fehlt noch und steht als Platzhalter im Text:
+
+- **Datenschutzbeauftragter** (Abschnitt 02) — Name und Kontakt, oder die
+  Feststellung, dass keiner benannt ist. Bei einer Praxis mit
+  Gesundheitsdaten ist die Benennung in der Regel Pflicht.
+
+**Die Verarbeitungskette** (Auftraggeber, 21.09.2026) — so steht sie in den
+Abschnitten 06 und 08:
+
+| Rolle | Wer |
+| --- | --- |
+| Verantwortliche | Praxis Groß & Groß |
+| Auftragsverarbeiter Website | Stefan Heinemann, Berlin |
+| Unterauftragsverarbeiter Hosting | Netlify, Inc., USA |
+| Auftragsverarbeiter E-Mail | STRATO AG, Berlin |
+
+Die Praxis war vorher vollständig bei STRATO; dort liegt weiterhin der
+E-Mail-Verkehr, die Website ist zu Netlify umgezogen. Zwei Verträge gehören
+in die Unterlagen der Praxis, nicht auf die Website: der AV-Vertrag
+Praxis ↔ Heinemann und der AV-Vertrag Praxis ↔ STRATO. Die Netlify-DPA
+liegt beim Auftragsverarbeiter.
+
+Der alte STRATO-Auftritt ist zugleich die Quelle für die offene 301-Liste
+weiter oben — solange er erreichbar ist, lassen sich die alten URLs dort
+ablesen.
+
+**Kein Einwilligungsbanner.** Geprüft und so gewollt: kein Cookie, kein
+`localStorage`, keine Anfrage an Dritte vor einer Einwilligung. Wer ein
+Analysewerkzeug, eine Schriftart vom CDN oder ein eingebettetes Video
+ergänzt, macht ein Banner nötig **und** muss Abschnitt 03 der Erklärung
+umschreiben — dort steht ausdrücklich, dass es nichts davon gibt.
+
 ## Die Selektor-Reparatur (Brücke für die restlichen Inline-Styles)
 
 `site.css` steuert das mobile Verhalten der verbliebenen Inline-Styles über
