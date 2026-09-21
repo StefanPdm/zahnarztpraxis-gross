@@ -45,8 +45,16 @@ async function holeBewertungen(): Promise<Antwort["result"] | null> {
   const schluessel = process.env.GOOGLE_PLACES_API_KEY;
   const ort = praxis.googlePlaceId;
   if (!schluessel || !ort) {
-    // Ohne Zugang keine Sektion — aber auch kein Fehler beim Bauen.
-    console.warn("Google-Bewertungen: GOOGLE_PLACES_API_KEY fehlt.");
+    /*
+      Fehlende Einrichtung bricht den Produktionsbuild ab — absichtlich laut.
+      Vorher verschwand die Sektion in so einem Fall stillschweigend, und beim
+      Umstellen der Place ID fiel erst am fertigen Deploy auf, dass sie fehlt.
+      Ein Ausfall bei Google (unten) bleibt dagegen harmlos: Dafür kann der
+      Build nichts, und eine Störung dort soll kein Deploy verhindern.
+    */
+    const hinweis = "Google-Bewertungen: GOOGLE_PLACES_API_KEY oder praxis.googlePlaceId fehlt.";
+    if (process.env.NODE_ENV === "production") throw new Error(hinweis);
+    console.warn(hinweis);
     return null;
   }
 
