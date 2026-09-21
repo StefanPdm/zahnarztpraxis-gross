@@ -13,10 +13,9 @@ import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
+import GoogleBewertungen from '@/components/GoogleBewertungen';
 
 export const metadata = seitenMetadaten('/');
-
-const showReviews = true;
 
 /* Termin-Sektion: übernommen von der früheren Seite /termin. */
 const zusagen = [
@@ -152,21 +151,6 @@ const ablauf = [
   },
 ];
 
-const reviews = [
-  {
-    quote:
-      '„Mir wurde vorher genau erklärt, was gemacht wird — das nimmt einem die halbe Angst.\u201c',
-    who: 'Platzhalter · Google',
-  },
-  {
-    quote: '„Krone in derselben Woche fertig, weil das Labor im Haus ist. Sehr angenehm.\u201c',
-    who: 'Platzhalter · Google',
-  },
-  {
-    quote: '„Termin am Telefon in zwei Minuten, keine Wartezeit im Wartezimmer.\u201c',
-    who: 'Platzhalter · Google',
-  },
-];
 
 export default function Index() {
   return (
@@ -1294,72 +1278,7 @@ export default function Index() {
               </figcaption>
             </figure>
           </div>
-          {showReviews ? (
-            <>
-              <div
-                style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    gap: '20px',
-                    marginBottom: '40px',
-                  }}>
-                  <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h2)', margin: '0' }}>
-                    Bewertungen
-                  </h2>
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '12px',
-                      letterSpacing: '0.16em',
-                      textTransform: 'uppercase',
-                      color: 'var(--color-neutral-700)',
-                      fontFeatureSettings: "'tnum'",
-                    }}>
-                    Platzhalter · echte Google-Bewertungen folgen
-                  </span>
-                </div>
-                <div
-                  className='rv'
-                  style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '44px' }}>
-                  {reviews.map((r, rI) => (
-                    <Fragment key={rI}>
-                      <div>
-                        <p
-                          style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: 'var(--fs-h4)',
-                            lineHeight: '1.4',
-                          }}>
-                          {r.quote}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: 'var(--font-ui)',
-                            fontSize: '11.5px',
-                            letterSpacing: '0.14em',
-                            textTransform: 'uppercase',
-                            color: 'var(--color-neutral-700)',
-                            margin: '0',
-                          }}>
-                          {r.who}
-                        </p>
-                      </div>
-                    </Fragment>
-                  ))}
-                </div>
-                <p
-                  style={{
-                    fontSize: '11px',
-                    color: 'var(--color-neutral-700)',
-                    margin: '32px 0 0',
-                  }}>
-                  Platzhalter — hier stehen später echte Google-Bewertungen.
-                </p>
-              </div>
-            </>
-          ) : null}
+          <GoogleBewertungen />
           <div
             className='colophon rv'
             data-abschnitt='Kapitel III · Wenn Angst im Weg steht'

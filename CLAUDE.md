@@ -116,6 +116,13 @@ ohne Einwilligung. Die Content-Security-Policy in `next.config.ts` erlaubt
 fremde Quellen nur für den Karten-Frame; wer einen Dienst ergänzt, muss sie
 bewusst erweitern.
 
+Die **Google-Bewertungen** auf der Startseite
+(`components/GoogleBewertungen`) halten sich daran: Der Abruf läuft auf dem
+Server (einmal am Tag, `revalidate`), der API-Schlüssel bleibt dort, und die
+Profilbilder liefert `next/image` von unserer Domain aus. Im Browser der
+Besucher entsteht keine einzige Anfrage an Google. Wer das ändert — etwa ein
+Bild direkt einbindet —, hebelt genau das aus.
+
 Die Angabe zur Zahnarztangst im Termin-Formular ist ein **Gesundheitsdatum**:
 nur an die Praxis versenden, nicht protokollieren, nicht speichern, nicht an
 Dritte. Keine Zugangsdaten ins Repository.

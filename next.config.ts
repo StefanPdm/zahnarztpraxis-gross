@@ -59,6 +59,14 @@ const nextConfig: NextConfig = {
     qualities: [75],
     // Bilder ändern sich selten; die optimierten Fassungen dürfen lange liegen.
     minimumCacheTTL: 60 * 60 * 24 * 30,
+    /*
+      Profilbilder der Google-Bewertungen (components/GoogleBewertungen).
+      Freigeben heißt hier nicht „einbetten": next/image lädt das Bild auf
+      dem Server, optimiert es und liefert es von unserer Domain aus. Der
+      Browser der Besucher spricht nie mit Google — sonst ginge bei jedem
+      Seitenaufruf die IP-Adresse dorthin.
+    */
+    remotePatterns: [{ protocol: "https", hostname: "lh3.googleusercontent.com" }],
   },
 
   async redirects() {
