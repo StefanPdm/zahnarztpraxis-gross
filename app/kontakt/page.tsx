@@ -130,7 +130,7 @@ export default function Kontakt() {
             <span style={{ color: 'var(--color-neutral-700)' }}>Auto</span>
             <span>Kurzzeit-Parkplätze an der Hofseite, weitere in der Zeppelinstraße</span>
             <span style={{ color: 'var(--color-neutral-700)' }}>Zugang</span>
-            <span>Erdgeschoss, barrierefrei erreichbar</span>
+            <span>Im 1. Stock über Treppe erreichbar</span>
           </div>
           <div
             style={{

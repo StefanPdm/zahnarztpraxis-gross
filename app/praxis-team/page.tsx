@@ -12,8 +12,8 @@ export const metadata = seitenMetadaten('/praxis-team');
 const zahlen = [
   { value: '1991', label: 'Familiengeführt in Potsdam' },
   { value: '5', label: 'Behandlungszimmer mit Tageslicht' },
-  { value: '> 500', label: 'Gesetzte Implantate' },
-  { value: '1', label: 'Eigenes Labor im Haus' },
+  { value: '2.000+', label: 'Gesetzte Implantate' },
+  { value: '1', label: 'Eigenes Labor in der Praxis' },
 ];
 
 /* Die drei Stationen einer Behandlung. Bebildert wird der Ort, nicht die

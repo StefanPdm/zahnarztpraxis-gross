@@ -21,7 +21,7 @@ export const praxis = {
   geo: { breite: 52.3976, laenge: 13.0484 },
   gegruendet: 1991,
   behandlungszimmer: 5,
-  implantate: "über 1.200",
+  implantate: "über 2.000",
   antwortzeit: "innerhalb von 24 Stunden",
   domain: "https://www.zahnmedizin-potsdam.de",
   /* Eintrag der Praxis bei Google. Öffentlich — sie steht in jedem

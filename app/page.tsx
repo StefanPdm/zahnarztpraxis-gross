@@ -45,7 +45,7 @@ const terminschritte = [
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
   { value: '1991', to: 1991, decimals: 0, suffix: '', label: 'Familiengeführt in Potsdam' },
-  { value: '>500', to: 500, decimals: 0, suffix: '', label: 'Gesetzte Implantate' },
+  { value: '2.000+', to: 2000, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
   { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
   { value: '1', to: 1, decimals: 0, suffix: '', label: 'Operationssaal' },
 ];
@@ -151,7 +151,6 @@ const ablauf = [
   },
 ];
 
-
 export default function Index() {
   return (
     <>
@@ -222,8 +221,7 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     textWrap: 'pretty',
                   }}>
-                  Zwei Zahnärzte, ein eigenes Labor und eine Praxis, in der Termine nicht im
-                  Minutentakt vergeben werden.
+                  Zwei Zahnärzte. Ein eigenes Labor. Und die Zeit, die Sie brauchen.
                 </p>
                 <a
                   className='scrollcue'
@@ -1770,7 +1768,7 @@ export default function Index() {
                   style={{ marginTop: '2px' }}>
                   <path d='M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5' />
                 </svg>
-                <span>Erdgeschoss, barrierefrei — Zugang ebenerdig</span>
+                <span>Im 1. Stock über Treppe erreichbar</span>
               </div>
               <figure style={{ margin: '24px 0 0' }}>
                 <Bild

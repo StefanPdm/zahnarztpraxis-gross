@@ -10,7 +10,7 @@ import Fragen from "@/components/Fragen";
 export const metadata = seitenMetadaten("/implantologie");
 
 const proof = [
-        { value: "1.200+", label: "Gesetzte Implantate" },
+        { value: "2.000+", label: "Gesetzte Implantate" },
         { value: "DGI", label: "Tätigkeitsschwerpunkt Implantologie" },
         { value: "1", label: "Praxis für OP, Zahnersatz und Nachsorge" },
         { value: "1991", label: "Familiengeführt in Potsdam Mitte" }

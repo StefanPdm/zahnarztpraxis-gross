@@ -101,7 +101,7 @@ export const seiten: Seite[] = [
     rubrik: "Behandlungen",
     titel: "Zahnimplantate in Potsdam | Groß & Groß",
     beschreibung:
-      "Zahnimplantate in Potsdam: über 1.200 gesetzte Implantate. Planung, Implantation, Zahnersatz und Nachsorge in einer Praxis – mit eigenem Zahnlabor.",
+      "Zahnimplantate in Potsdam: über 2.000 gesetzte Implantate. Planung, Implantation, Zahnersatz und Nachsorge in einer Praxis – mit eigenem Zahnlabor.",
   },
   {
     pfad: "/aesthetische-zahnmedizin",

@@ -100,7 +100,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;
-   über 1.200 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
+   über 2.000 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale").
 4. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
