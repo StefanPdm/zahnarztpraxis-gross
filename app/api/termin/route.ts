@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { praxis } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
+import { istZulaessigerWunschtermin } from '@/lib/wunschtermin';
 
 /*
   Termin-Anfrage.
@@ -103,7 +104,7 @@ export async function POST(request: Request) {
 
   if (zuHaeufig(ip)) {
     return NextResponse.json(
-      { fehler: 'Zu viele Anfragen. Bitte rufen Sie uns an: 0331 960926.' },
+      { fehler: `Zu viele Anfragen. Bitte rufen Sie uns an: ${praxis.telefon}.` },
       { status: 429 },
     );
   }
@@ -126,6 +127,16 @@ export async function POST(request: Request) {
   }
 
   const d = geprueft.data;
+
+  // Wunschtermine frühestens morgen (Potsdamer Zeit). Das Datumsfeld verhindert
+  // das schon im Browser; hier gilt es auch für umgangene Felder und für den,
+  // der das Formular vor Mitternacht öffnet und danach absendet.
+  if (!istZulaessigerWunschtermin(d.termin1) || (d.termin2 && !istZulaessigerWunschtermin(d.termin2))) {
+    return NextResponse.json(
+      { fehler: `Bitte wählen Sie Wunschtermine ab morgen. Bei akuten Beschwerden rufen Sie uns bitte an: ${praxis.telefon}.` },
+      { status: 422 },
+    );
+  }
 
   // Formular in unter 3 Sekunden ausgefüllt → mit hoher Wahrscheinlichkeit ein Bot.
   if (Date.now() - d.gestartet < 3000) {

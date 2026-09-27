@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { feldwertZuSchluessel } from "@/lib/anliegen";
+import { fruehesterWunschtermin } from "@/lib/wunschtermin";
 
 /*
   Termin-Formular, verdrahtet gegen app/api/termin/route.ts.
@@ -36,6 +37,10 @@ function Pflicht() {
 
 export default function TerminFormular() {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
+  // Frühestes Wunschdatum: morgen. Erst im Browser bekannt — die Seite ist
+  // statisch gebaut, das Datum beim Bauen wäre längst veraltet. Bis dahin
+  // ist der Absendeknopf ohnehin gesperrt (`bereit`).
+  const morgen = useSyncExternalStore(nichts, () => fruehesterWunschtermin(), () => undefined);
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
     { art: "erfolg" } | { art: "fehler"; text: string } | null
@@ -222,6 +227,7 @@ export default function TerminFormular() {
           id='t-date1'
           name='termin1'
           type='date'
+          min={morgen}
           required
         />
       </div>
@@ -232,6 +238,7 @@ export default function TerminFormular() {
           id='t-date2'
           name='termin2'
           type='date'
+          min={morgen}
         />
       </div>
       <fieldset className='field'>
