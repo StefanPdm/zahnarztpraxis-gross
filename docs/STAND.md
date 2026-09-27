@@ -138,8 +138,10 @@ Schritt für Schritt, samt DNS-Umstellung bei STRATO: **`docs/LIVEGANG.md`**.
   übernehmen. ChatGPT sucht über Bing, Gemini über Google — beide Einträge
   sind damit auch die Grundlage für die KI-Suchen.
 - **Google-Unternehmensprofil** abgleichen: Website-Link auf die neue Seite,
-  Sprechzeiten wie in `lib/praxis.ts`. Der Name dort lautet „Gemeinschafts-
-  praxis Groß & Groß" — die Website nennt ihn im JSON-LD als `alternateName`.
+  Sprechzeiten wie in `lib/praxis.ts`. Geprüft am 27.09.2026: Website,
+  Sprechzeiten, Telefon und Adresse stimmen bereits. Der Name dort lautet
+  „Zahnarztpraxis für Ästhetik Groß & Groß" — die Website nennt ihn im
+  JSON-LD als `alternateName`.
 - **Hoster:** `www` als Hauptdomain, `zahnmedizin-potsdam.de` leitet
   dauerhaft darauf um (heute schon so beim alten Auftritt).
 

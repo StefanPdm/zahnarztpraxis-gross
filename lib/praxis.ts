@@ -41,10 +41,12 @@ export const praxis = {
      Build-Ergebnis und brach den Build ab, weil der Wert dort auftaucht.
      Als Stammdatum gehört sie ohnehin hierher, nicht in die Umgebung. */
   googlePlaceId: "ChIJl7tfQs71qEcRzhoT541HJqw",
-  /* Name des Google-Eintrags, wie er in Maps steht. Er weicht vom Namen der
-     Website ab; im JSON-LD steht er deshalb als alternateName, damit Google
-     und KI-Suchen Website und Eintrag als dieselbe Praxis erkennen. */
-  googleName: "Gemeinschaftspraxis Groß & Groß",
+  /* Name des Google-Eintrags, wie er in Maps steht (per Places API gelesen,
+     27.09.2026). Er weicht vom Namen der Website ab; im JSON-LD steht er
+     deshalb als alternateName, damit Google und KI-Suchen Website und
+     Eintrag als dieselbe Praxis erkennen. Ändert die Praxis den Namen im
+     Profil, hier nachziehen. */
+  googleName: "Zahnarztpraxis für Ästhetik Groß & Groß",
   /* Profile der Praxis im Netz — im JSON-LD als `sameAs`. Beide stammen von
      der alten Website (27.09.2026). Kommt ein Profil dazu (jameda, Doctolib,
      Instagram …), hier ergänzen. */
