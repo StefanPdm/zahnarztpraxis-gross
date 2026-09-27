@@ -1,4 +1,5 @@
-import { sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
+import { schliesstage, sprechzeiten, sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
+import OffenStatus from "@/components/OffenStatus";
 
 /*
   Sprechzeiten — Startseite und /kontakt.
@@ -9,30 +10,37 @@ import { sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
   Screenreader kündigt jetzt „Liste mit … Einträgen" an und liest jeden Tag
   mit seiner Zeit. Die Gitterzeile bleibt ein <div> — das ist in einer <dl>
   ausdrücklich erlaubt und hält die Optik unverändert.
+
+  Darüber der Status „Jetzt geöffnet · bis 13:00" (components/OffenStatus).
 */
 export default function Sprechzeiten() {
   return (
-    <dl style={{ display: "grid", margin: "22px 0 0", fontFeatureSettings: "'tnum'" }}>
-      {sprechzeitGruppen().map((g) => (
-        <div
-          key={g.tage.join()}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "20px",
-            alignItems: "baseline",
-            padding: "13px 0",
-            borderBottom: "1px solid var(--color-divider)",
-          }}
-        >
-          <dt style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", margin: "0" }}>
-            {tageLang(g)}
-          </dt>
-          <dd style={{ textAlign: "right", color: "var(--color-neutral-800)", margin: "0" }}>
-            {zeitenLang(g)}
-          </dd>
-        </div>
-      ))}
-    </dl>
+    <>
+      <p className="offen-zeile">
+        <OffenStatus plan={sprechzeiten} schliesstage={schliesstage} />
+      </p>
+      <dl style={{ display: "grid", margin: "22px 0 0", fontFeatureSettings: "'tnum'" }}>
+        {sprechzeitGruppen().map((g) => (
+          <div
+            key={g.tage.join()}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: "20px",
+              alignItems: "baseline",
+              padding: "13px 0",
+              borderBottom: "1px solid var(--color-divider)",
+            }}
+          >
+            <dt style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", margin: "0" }}>
+              {tageLang(g)}
+            </dt>
+            <dd style={{ textAlign: "right", color: "var(--color-neutral-800)", margin: "0" }}>
+              {zeitenLang(g)}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </>
   );
 }

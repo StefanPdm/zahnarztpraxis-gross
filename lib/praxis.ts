@@ -54,6 +54,14 @@ export const sprechzeiten: Record<Tag, readonly Zeitraum[]> = {
   Fr: [["08:00", "12:00"]],
 };
 
+/**
+ * Tage, an denen die Praxis zusätzlich zu den gesetzlichen Feiertagen
+ * geschlossen ist (Betriebsferien, Brückentage) — als ISO-Datum,
+ * z. B. "2026-12-28". Der Öffnungsstatus („Jetzt geöffnet") liest von hier;
+ * fehlt ein Urlaub, stünde dort in den Ferien „geöffnet".
+ */
+export const schliesstage: readonly string[] = [];
+
 const TAGNAME: Record<Tag, { lang: string; schema: string }> = {
   Mo: { lang: "Montag", schema: "Monday" },
   Di: { lang: "Dienstag", schema: "Tuesday" },

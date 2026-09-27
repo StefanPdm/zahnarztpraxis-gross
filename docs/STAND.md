@@ -59,6 +59,15 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
   oder `showReviews = false`.
 - Medizinische Freigaben für die sechs gesperrten Themen
 
+### Öffnungsstatus — Pflege
+
+Notfallleiste und Sprechzeiten zeigen „Jetzt geöffnet · bis 13:00" bzw.
+„Geschlossen · wieder morgen ab 8:00" (`components/OffenStatus`). Die
+gesetzlichen Feiertage in Brandenburg sind eingerechnet. **Betriebsferien
+und Brückentage nicht** — die gehören als ISO-Datum in `schliesstage` in
+`lib/praxis.ts`, sonst steht im Urlaub „Jetzt geöffnet". Vor jedem Urlaub
+eintragen, oder die Praxis schickt die Termine einmal im Jahr.
+
 ### Ausbildungsplatz — Pflege nach dem Livegang
 
 `/ausbildung` trägt ein **JobPosting-JSON-LD**. Google verlangt, dass eine

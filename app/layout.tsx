@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { Cormorant_Garamond, Jost, Lora } from "next/font/google";
 
 // Reihenfolge ist nicht optional: zuerst die Tokens, dann die Ergänzungen.
@@ -13,6 +14,7 @@ import TerminLeiste from "@/components/TerminLeiste";
 import ZurueckNachOben from "@/components/ZurueckNachOben";
 import ScrollEffekte from "@/components/ScrollEffekte";
 import { praxis } from "@/lib/praxis";
+import { TAGESZEIT_SKRIPT } from "@/lib/tageszeit";
 
 /*
   Die drei Familien des Design-Systems, über next/font self-hosted:
@@ -73,6 +75,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de" className={`${cormorant.variable} ${lora.variable} ${jost.variable}`}>
+      <head>
+        {/* Vor dem ersten Bild: welche Tageszeit das Hero-Licht zeigt (lib/tageszeit.ts). */}
+        <script dangerouslySetInnerHTML={{ __html: TAGESZEIT_SKRIPT }} />
+      </head>
       <body>
         <a className="sprunglink" href="#inhalt">
           Zum Inhalt springen
@@ -93,7 +99,13 @@ export default function RootLayout({
           <Kopfzeile />
           {/* tabIndex -1: Ziel für Sprunglink und „Zurück nach oben", ohne Tab-Stopp. */}
           <main id="inhalt" tabIndex={-1}>
-            {children}
+            {/*
+              Seitenwechsel blenden weich über, statt hart umzuspringen
+              (View Transitions; Stile in bausteine.css, `.seitenwechsel`).
+              Kopf und Fuß stehen außerhalb und bleiben ruhig. Browser ohne
+              Unterstützung wechseln wie bisher.
+            */}
+            <ViewTransition default="seitenwechsel">{children}</ViewTransition>
           </main>
           <Fusszeile />
         </div>

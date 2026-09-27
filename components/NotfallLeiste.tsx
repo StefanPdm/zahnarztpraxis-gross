@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { praxis } from "@/lib/praxis";
+import { praxis, schliesstage, sprechzeiten } from "@/lib/praxis";
+import OffenStatus from "@/components/OffenStatus";
 
 /** Hinweis auf Notfalltermine unter dem Kopf — auf allen Seiten außer /zahnschmerzen. */
 export default function NotfallLeiste() {
@@ -14,6 +15,7 @@ export default function NotfallLeiste() {
       <a href={praxis.telefonHref} className="notfallleiste__telefon">
         {praxis.telefon}
       </a>
+      <OffenStatus plan={sprechzeiten} schliesstage={schliesstage} kurz />
     </div>
   );
 }

@@ -380,18 +380,38 @@ fieldset.field > legend {
   position: absolute;
   inset: -25%;
   background:
-    radial-gradient(
-      ellipse 34% 30% at 34% 30%,
-      color-mix(in srgb, var(--color-accent-200) 75%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 28% 24% at 68% 62%,
-      color-mix(in srgb, var(--color-accent-100) 85%, transparent),
-      transparent 70%
-    );
+    radial-gradient(ellipse 34% 30% at var(--licht-a-ort), var(--licht-a-farbe), transparent 70%),
+    radial-gradient(ellipse 28% 24% at var(--licht-b-ort), var(--licht-b-farbe), transparent 70%);
   animation: tageslicht 28s ease-in-out infinite alternate;
 }
+
+/* Das Licht folgt der Uhrzeit in Potsdam (lib/tageszeit.ts setzt das
+   Attribut vor dem ersten Bild). Ohne Attribut — kein Skript — gilt Mittag.
+   Die Orte beziehen sich auf das um 25 % überstehende `::before`: sichtbar
+   ist etwa der Bereich von 17 % bis 83 %. */
+.hero-licht {
+  /* Mittag: von oben, neutral-warm */
+  --licht-a-ort: 42% 26%;
+  --licht-a-farbe: color-mix(in srgb, var(--color-accent-200) 75%, transparent);
+  --licht-b-ort: 66% 62%;
+  --licht-b-farbe: color-mix(in srgb, var(--color-accent-100) 85%, transparent);
+  transition: opacity 1.2s ease;
+}
+:root[data-tageszeit="morgen"] .hero-licht {
+  /* Morgen: flach von links, heller und kühler */
+  --licht-a-ort: 24% 38%;
+  --licht-a-farbe: color-mix(in srgb, white 80%, var(--color-accent-100));
+  --licht-b-ort: 52% 58%;
+  --licht-b-farbe: color-mix(in srgb, var(--color-accent-100) 70%, transparent);
+}
+:root[data-tageszeit="abend"] .hero-licht {
+  /* Abend: tief von rechts, wärmer */
+  --licht-a-ort: 74% 58%;
+  --licht-a-farbe: color-mix(in srgb, var(--color-accent-300) 55%, transparent);
+  --licht-b-ort: 46% 36%;
+  --licht-b-farbe: color-mix(in srgb, var(--color-accent-200) 55%, transparent);
+}
+:root[data-tageszeit="nacht"] .hero-licht { opacity: 0.35; }
 @keyframes tageslicht {
   from { transform: translate3d(-3%, -2%, 0) rotate(-2deg); opacity: 0.7; }
   to { transform: translate3d(3%, 2%, 0) rotate(2deg); opacity: 1; }
@@ -450,4 +470,91 @@ fieldset.field > legend {
   .leistungskarte { transition: none; }
   .leistungskarte:hover { translate: none; }
   .leistungskarte:hover path { animation: none; }
+}
+
+/* ── Öffnungsstatus (components/OffenStatus) ───────────────────────────────
+   Punkt plus Text. Geöffnet: Akzentfarbe, der Punkt atmet langsam — ein
+   Lebenszeichen, kein Blinklicht. Geschlossen: ruhig und grau. */
+.offen-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+  white-space: nowrap;
+}
+.offen-status[data-offen] { color: var(--color-accent-700); }
+.offen-status__punkt {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-neutral-500);
+  flex-shrink: 0;
+}
+.offen-status[data-offen] .offen-status__punkt {
+  background: var(--color-accent);
+  animation: punktAtmen 2.8s ease-in-out infinite;
+}
+@keyframes punktAtmen {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent); }
+  50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 0%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offen-status[data-offen] .offen-status__punkt { animation: none; }
+}
+/* Unter der Überzeile „Öffnungszeiten", über der Liste. */
+.offen-zeile { margin: 16px 0 0; }
+
+/* ── Zitat, das sich einschreibt (Startseite) ──────────────────────────────
+   Die Wörter gehen beim Scrollen von blass in volle Farbe über — im Tempo
+   des Lesens, fertig, bevor das Zitat die Mitte des Fensters erreicht.
+   Reines CSS über eine Scroll-Zeitleiste (`view-timeline`): kein Skript,
+   keine Messung pro Bild. Jedes Wort bekommt sein Stück der Strecke über
+   `--anfang`/`--ende` (0…1, im Markup gesetzt).
+
+   Nur wo der Browser das kann und Bewegung erwünscht ist; überall sonst
+   steht das Zitat einfach vollständig da. Einmal eingeschrieben, bleibt es
+   beim Weiterscrollen stehen (`animation-fill-mode: both` und ein Bereich,
+   der vor dem Verlassen endet). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .zitat-einschreiben { view-timeline: --zitat block; }
+    .zitat-wort {
+      animation: wortEinschreiben linear both;
+      animation-timeline: --zitat;
+      /* Beginnt, sobald das Zitat unten ins Bild kommt, und ist fertig,
+         wenn seine Mitte etwa bei zwei Dritteln der Fensterhöhe steht. */
+      animation-range:
+        cover calc(6% + var(--anfang) * 30%)
+        cover calc(8% + var(--ende) * 30%);
+    }
+  }
+}
+@keyframes wortEinschreiben {
+  from { opacity: 0.22; }
+  to { opacity: 1; }
+}
+
+/* ── Seitenwechsel (View Transitions, app/layout.tsx) ──────────────────────
+   Die alte Seite blendet schnell aus, die neue etwas langsamer ein — ein
+   ruhiges Überblenden, keine Bewegung. Bei reduzierter Bewegung wechselt
+   die Seite sofort. */
+::view-transition-old(.seitenwechsel) {
+  animation: 160ms ease-out both seiteAus;
+}
+::view-transition-new(.seitenwechsel) {
+  animation: 280ms ease-out 80ms both seiteEin;
+}
+@keyframes seiteAus { to { opacity: 0; } }
+@keyframes seiteEin { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }

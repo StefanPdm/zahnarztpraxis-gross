@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, type CSSProperties } from 'react';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
 import { seitenMetadaten } from '@/lib/seiten';
@@ -44,6 +44,12 @@ const terminschritte = [
     text: 'Mit der Zeit, die Ihr Anliegen tatsächlich braucht. Wird früher etwas frei, fragen wir, ob es Ihnen passt.',
   },
 ];
+
+/* Wort für Wort, damit es sich beim Scrollen einschreiben kann (bausteine.css). */
+const zitatWoerter =
+  '„Behandle den Patienten so, wie du selbst behandelt werden möchtest. Mir ist es egal, ob jemand Privat- oder Kassenpatient ist.“'.split(
+    ' ',
+  );
 
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
@@ -838,6 +844,7 @@ export default function Index() {
             }}>
             <figure style={{ margin: '0 auto', maxWidth: '34ch' }}>
               <blockquote
+                className='zitat-einschreiben'
                 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'var(--fs-h3-xl)',
@@ -846,8 +853,17 @@ export default function Index() {
                   margin: '0',
                   textWrap: 'pretty',
                 }}>
-                „Behandle den Patienten so, wie du selbst behandelt werden möchtest. Mir ist es
-                egal, ob jemand Privat- oder Kassenpatient ist.“
+                {zitatWoerter.map((wort, i) => (
+                  <Fragment key={i}>
+                    <span
+                      className='zitat-wort'
+                      style={
+                        { '--anfang': i / zitatWoerter.length, '--ende': (i + 1) / zitatWoerter.length } as CSSProperties
+                      }>
+                      {wort}
+                    </span>{' '}
+                  </Fragment>
+                ))}
               </blockquote>
               <figcaption
                 className='ueberzeile'
