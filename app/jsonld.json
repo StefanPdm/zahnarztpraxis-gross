@@ -95,6 +95,11 @@
           {
             "@type": "MedicalProcedure",
             "name": "Laserbehandlung"
+          },
+          {
+            "@type": "MedicalProcedure",
+            "name": "Digitaler Abdruck mit dem Intraoralscanner (abdruckfrei)",
+            "url": "https://www.zahnmedizin-potsdam.de/moderne-technik"
           }
         ],
         "openingHoursSpecification": [

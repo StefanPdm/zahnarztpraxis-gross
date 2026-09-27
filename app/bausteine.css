@@ -510,7 +510,7 @@ fieldset.field > legend {
 
 /* ── Zitat, das sich einschreibt (Startseite) ──────────────────────────────
    Die Wörter gehen beim Scrollen von blass in volle Farbe über — im Tempo
-   des Lesens, fertig, bevor das Zitat die Mitte des Fensters erreicht.
+   des Lesens, fertig, wenn die Mitte des Zitats in der Fenstermitte steht.
    Reines CSS über eine Scroll-Zeitleiste (`view-timeline`): kein Skript,
    keine Messung pro Bild. Jedes Wort bekommt sein Stück der Strecke über
    `--anfang`/`--ende` (0…1, im Markup gesetzt).
@@ -525,11 +525,13 @@ fieldset.field > legend {
     .zitat-wort {
       animation: wortEinschreiben linear both;
       animation-timeline: --zitat;
-      /* Beginnt, sobald das Zitat unten ins Bild kommt, und ist fertig,
-         wenn seine Mitte etwa bei zwei Dritteln der Fensterhöhe steht. */
+      /* `cover 50 %` heißt: Die Mitte des Zitats steht in der Mitte des
+         Fensters — unabhängig von Fenster- und Zitathöhe. Genau dort wird
+         das letzte Wort fertig. Begonnen wird bei 22 %: Bis dahin ist das
+         Zitat schon ein gutes Stück im Bild, aber noch ganz blass. */
       animation-range:
-        cover calc(6% + var(--anfang) * 30%)
-        cover calc(8% + var(--ende) * 30%);
+        cover calc(22% + var(--anfang) * 26%)
+        cover calc(24% + var(--ende) * 26%);
     }
   }
 }
