@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { praxis } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
-import { istZulaessigerWunschtermin } from '@/lib/wunschtermin';
+import { pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
 /*
   Termin-Anfrage.
@@ -128,12 +128,15 @@ export async function POST(request: Request) {
 
   const d = geprueft.data;
 
-  // Wunschtermine frühestens morgen (Potsdamer Zeit). Das Datumsfeld verhindert
-  // das schon im Browser; hier gilt es auch für umgangene Felder und für den,
-  // der das Formular vor Mitternacht öffnet und danach absendet.
-  if (!istZulaessigerWunschtermin(d.termin1) || (d.termin2 && !istZulaessigerWunschtermin(d.termin2))) {
+  // Wunschtermine frühestens morgen (Potsdamer Zeit), Montag bis Freitag. Das
+  // Formular prüft das schon im Browser; hier gilt es auch für umgangene Felder
+  // und für den, der das Formular vor Mitternacht öffnet und danach absendet.
+  const terminfehler = pruefeWunschtermin(d.termin1) ?? (d.termin2 ? pruefeWunschtermin(d.termin2) : null);
+  if (terminfehler) {
     return NextResponse.json(
-      { fehler: `Bitte wählen Sie Wunschtermine ab morgen. Bei akuten Beschwerden rufen Sie uns bitte an: ${praxis.telefon}.` },
+      {
+        fehler: `${WUNSCHTERMIN_HINWEIS[terminfehler]} Bei akuten Beschwerden rufen Sie uns bitte an: ${praxis.telefon}.`,
+      },
       { status: 422 },
     );
   }

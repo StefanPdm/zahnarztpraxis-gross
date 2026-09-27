@@ -562,3 +562,15 @@ fieldset.field > legend {
     animation-delay: 0s !important;
   }
 }
+
+/* ── Hinweis am Formularfeld (components/TerminFormular) ───────────────────
+   Steht direkt unter dem Feld, sobald eine Eingabe nicht passt — etwa ein
+   Samstag als Wunschtermin. Farbe wie die übrigen Formularmeldungen. */
+.feldhinweis {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-accent-700);
+}
+.input[aria-invalid="true"] { border-color: var(--color-accent-700); }
+

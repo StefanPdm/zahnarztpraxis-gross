@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { feldwertZuSchluessel } from "@/lib/anliegen";
-import { fruehesterWunschtermin } from "@/lib/wunschtermin";
+import { fruehesterWunschtermin, pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from "@/lib/wunschtermin";
 
 /*
   Termin-Formular, verdrahtet gegen app/api/termin/route.ts.
@@ -41,6 +41,22 @@ export default function TerminFormular() {
   // statisch gebaut, das Datum beim Bauen wäre längst veraltet. Bis dahin
   // ist der Absendeknopf ohnehin gesperrt (`bereit`).
   const morgen = useSyncExternalStore(nichts, () => fruehesterWunschtermin(), () => undefined);
+  // Hinweis je Datumsfeld, z. B. wenn ein Samstag gewählt wurde. Das Datumsfeld
+  // selbst kann keine Wochentage sperren (lib/wunschtermin.ts).
+  const [terminHinweis, setTerminHinweis] = useState<Record<string, string>>({});
+
+  /*
+    Prüft ein Wunschdatum, sobald es gewählt ist: Der Hinweis steht sofort
+    sichtbar am Feld, und `setCustomValidity` sperrt das Absenden — der
+    Browser zeigt die Meldung dann noch einmal am Feld und springt hin.
+    Ein leeres Feld meldet nichts; ob Wunschtermin 1 fehlt, regelt `required`.
+  */
+  function pruefeTermin(feld: HTMLInputElement) {
+    const fehler = feld.value ? pruefeWunschtermin(feld.value) : null;
+    const text = fehler ? WUNSCHTERMIN_HINWEIS[fehler] : "";
+    feld.setCustomValidity(text);
+    setTerminHinweis((bisher) => ({ ...bisher, [feld.name]: text }));
+  }
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
     { art: "erfolg" } | { art: "fehler"; text: string } | null
@@ -60,8 +76,12 @@ export default function TerminFormular() {
   function fuelleTestdaten() {
     const f = formularFeld.current;
     if (!f) return;
-    const inTagen = (tage: number) =>
-      new Date(Date.now() + tage * 86400000).toISOString().slice(0, 10);
+    // Nächster Werktag ab `tage` Tagen — ein Wochenende würde die Prüfung abweisen.
+    const inTagen = (tage: number) => {
+      const d = new Date(Date.now() + tage * 86400000);
+      while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+      return d.toISOString().slice(0, 10);
+    };
     const setze = (name: string, wert: string) => {
       const feld = f.elements.namedItem(name) as
         | HTMLInputElement
@@ -135,6 +155,7 @@ export default function TerminFormular() {
 
       if (antwort.ok) {
         formular.reset();
+        setTerminHinweis({});
         setRueckmeldung({ art: "erfolg" });
         return;
       }
@@ -229,7 +250,18 @@ export default function TerminFormular() {
           type='date'
           min={morgen}
           required
+          onChange={(e) => pruefeTermin(e.currentTarget)}
+          aria-invalid={terminHinweis.termin1 ? true : undefined}
+          aria-describedby={terminHinweis.termin1 ? 't-date1-hinweis' : undefined}
         />
+        {terminHinweis.termin1 && (
+          <p
+            id='t-date1-hinweis'
+            className='feldhinweis'
+            role='alert'>
+            {terminHinweis.termin1}
+          </p>
+        )}
       </div>
       <div className='field'>
         <label htmlFor='t-date2'>Wunschtermin 2</label>
@@ -239,7 +271,18 @@ export default function TerminFormular() {
           name='termin2'
           type='date'
           min={morgen}
+          onChange={(e) => pruefeTermin(e.currentTarget)}
+          aria-invalid={terminHinweis.termin2 ? true : undefined}
+          aria-describedby={terminHinweis.termin2 ? 't-date2-hinweis' : undefined}
         />
+        {terminHinweis.termin2 && (
+          <p
+            id='t-date2-hinweis'
+            className='feldhinweis'
+            role='alert'>
+            {terminHinweis.termin2}
+          </p>
+        )}
       </div>
       <fieldset className='field'>
         <legend>Tageszeit</legend>
