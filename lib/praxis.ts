@@ -26,7 +26,10 @@ export const praxis = {
      barrierefrei", einmal „1. Stock über Treppe". Wer sich darauf verlässt,
      steht sonst vor einer Treppe. Deshalb hier, an einer Stelle. */
   zugang: "1. Stock, über das Treppenhaus",
-  geo: { breite: 52.3976, laenge: 13.0484 },
+  /* Die Stecknadel des Google-Eintrags der Praxis (aus dem Maps-Link der
+     alten Website, 27.09.2026). Vorher standen hier gerundete Werte, rund
+     40 m daneben — Google gleicht Website und Eintrag auch über den Ort ab. */
+  geo: { breite: 52.39726, laenge: 13.04823 },
   gegruendet: 1991,
   behandlungszimmer: 5,
   implantate: "über 2.500",
@@ -38,6 +41,17 @@ export const praxis = {
      Build-Ergebnis und brach den Build ab, weil der Wert dort auftaucht.
      Als Stammdatum gehört sie ohnehin hierher, nicht in die Umgebung. */
   googlePlaceId: "ChIJl7tfQs71qEcRzhoT541HJqw",
+  /* Name des Google-Eintrags, wie er in Maps steht. Er weicht vom Namen der
+     Website ab; im JSON-LD steht er deshalb als alternateName, damit Google
+     und KI-Suchen Website und Eintrag als dieselbe Praxis erkennen. */
+  googleName: "Gemeinschaftspraxis Groß & Groß",
+  /* Profile der Praxis im Netz — im JSON-LD als `sameAs`. Beide stammen von
+     der alten Website (27.09.2026). Kommt ein Profil dazu (jameda, Doctolib,
+     Instagram …), hier ergänzen. */
+  profile: [
+    "https://maps.google.com/?cid=12404680898431359694",
+    "https://www.facebook.com/zahnarzt.in.potsdam/",
+  ],
 } as const;
 
 /* ── Sprechzeiten ─────────────────────────────────────────────────────────── */

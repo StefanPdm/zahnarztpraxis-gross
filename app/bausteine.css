@@ -533,8 +533,12 @@ fieldset.field > legend {
     }
   }
 }
+/* Blass heißt hier: 65 % Deckkraft. Das sind 4,7:1 auf dem Hintergrund —
+   auch ein noch nicht eingeschriebenes Wort bleibt lesbar (Projektregel
+   ≥ 4,5:1). Darunter wäre der Effekt deutlicher, das Zitat für schwache
+   Augen aber unlesbar, bis es die Mitte erreicht. */
 @keyframes wortEinschreiben {
-  from { opacity: 0.22; }
+  from { opacity: 0.65; }
   to { opacity: 1; }
 }
 

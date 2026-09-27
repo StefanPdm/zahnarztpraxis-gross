@@ -16,7 +16,8 @@ const personId = (name: string) => `${basis}/#${name.toLowerCase().replace(/ß/g
 function praxisFakten() {
   return {
     name: `${praxis.name} Zahnmedizin Potsdam`,
-    alternateName: praxis.vollerName,
+    alternateName: [praxis.vollerName, praxis.googleName],
+    sameAs: [...praxis.profile],
     url: `${basis}/`,
     telephone: praxis.telefonIntl,
     email: praxis.email,

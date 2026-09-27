@@ -172,6 +172,19 @@ export function seite(pfad: string): Seite {
 }
 
 /** Vollständige Metadaten einer Seite: Titel, Beschreibung, kanonische URL, Vorschau für soziale Netze. */
+/*
+  Vorschaubild für WhatsApp, Facebook, LinkedIn, Slack … auf jeder Seite.
+  Die Datei app/opengraph-image.jpg greift von sich aus nur auf der
+  Startseite: Sobald eine Unterseite ein eigenes `openGraph` setzt, ersetzt
+  es das geerbte vollständig — samt Bild. Deshalb hier ausdrücklich.
+*/
+const vorschaubild = {
+  url: "/opengraph-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte",
+};
+
 export function seitenMetadaten(pfad: string): Metadata {
   const s = seite(pfad);
   const url = `${praxis.domain}${pfad === "/" ? "" : pfad}`;
@@ -186,7 +199,13 @@ export function seitenMetadaten(pfad: string): Metadata {
       title: s.titel,
       description: s.beschreibung,
       url,
+      images: [vorschaubild],
     },
-    twitter: { card: "summary_large_image", title: s.titel, description: s.beschreibung },
+    twitter: {
+      card: "summary_large_image",
+      title: s.titel,
+      description: s.beschreibung,
+      images: [vorschaubild],
+    },
   };
 }

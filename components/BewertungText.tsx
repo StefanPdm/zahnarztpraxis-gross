@@ -59,8 +59,10 @@ export default function BewertungText({
           aria-expanded={offen}
           /* Vier gleich beschriftete Knöpfe nebeneinander sind in der
              Elementliste eines Screenreaders nicht auseinanderzuhalten —
-             der Name nennt deshalb die Bewertung, um die es geht. */
-          aria-label={`Bewertung von ${verfasser} ${offen ? "wieder kürzen" : "vollständig lesen"}`}
+             der Name nennt deshalb die Bewertung, um die es geht. Er beginnt
+             mit dem sichtbaren Text, damit Sprachsteuerung („Klicke Mehr
+             lesen") den Knopf findet (WCAG 2.5.3). */
+          aria-label={`${offen ? "Weniger" : "Mehr lesen"}: Bewertung von ${verfasser}`}
           style={{
             alignSelf: "flex-start",
             margin: "10px 0 0",

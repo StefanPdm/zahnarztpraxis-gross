@@ -48,10 +48,6 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 
 ## Noch zu tun — Inhalte, nicht erfinden
 
-- Vollständige 301-Liste der alten WordPress-URLs. In `next.config.ts` ist
-  nur die eine belegte Regel gesetzt. Quellen: Google Search Console
-  (Seiten → indexiert) und die alte `wp-sitemap.xml`. **Jede alte URL ohne
-  Regel verliert ihr Ranking.**
 - Mitarbeiternamen und Funktionen für `/praxis-team`
 - Eckdaten der Praxisgeschichte seit 1991
 - Echte Google-Bewertungen (die Startseite zeigt sie hinter `showReviews`
@@ -120,9 +116,25 @@ in die Unterlagen der Praxis, nicht auf die Website: der AV-Vertrag
 Praxis ↔ Heinemann und der AV-Vertrag Praxis ↔ STRATO. Die Netlify-DPA
 liegt beim Auftragsverarbeiter.
 
-Der alte STRATO-Auftritt ist zugleich die Quelle für die offene 301-Liste
-weiter oben — solange er erreichbar ist, lassen sich die alten URLs dort
-ablesen.
+**Weiterleitungen der alten Website — erledigt (27.09.2026).** Alle Seiten
+aus der `sitemap_index.xml` des alten Auftritts leiten jetzt dauerhaft auf
+ihr neues Gegenstück (`next.config.ts`, `wordpressSeiten`). Die Demo-Inhalte
+des alten Themes (`/portfolio-items/…`, `/faq-items/…`) enden bewusst mit
+404. Nach dem Umzug in der Search Console unter „Seiten" prüfen, ob Google
+weitere alte Adressen kennt, die dort nicht standen.
+
+### Vor und nach dem Livegang — Suchmaschinen und KI
+
+- **Google Search Console** und **Bing Webmaster Tools** für
+  `https://www.zahnmedizin-potsdam.de` einrichten, Sitemap einreichen
+  (`/sitemap.xml`). Bing kann die Einstellungen aus der Search Console
+  übernehmen. ChatGPT sucht über Bing, Gemini über Google — beide Einträge
+  sind damit auch die Grundlage für die KI-Suchen.
+- **Google-Unternehmensprofil** abgleichen: Website-Link auf die neue Seite,
+  Sprechzeiten wie in `lib/praxis.ts`. Der Name dort lautet „Gemeinschafts-
+  praxis Groß & Groß" — die Website nennt ihn im JSON-LD als `alternateName`.
+- **Hoster:** `www` als Hauptdomain, `zahnmedizin-potsdam.de` leitet
+  dauerhaft darauf um (heute schon so beim alten Auftritt).
 
 **Kein Einwilligungsbanner.** Geprüft und so gewollt: kein Cookie, kein
 `localStorage`, keine Anfrage an Dritte vor einer Einwilligung. Wer ein

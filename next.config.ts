@@ -9,6 +9,25 @@ import { seiten } from "./lib/seiten";
   Bei Vercel: Domain-Einstellungen. Bei eigenem nginx: server-Block.
 */
 
+/*
+  Die Seiten der alten WordPress-Website, vollständig — gelesen aus deren
+  sitemap_index.xml am 27.09.2026, Ziel jeweils nach Titel und Inhalt der
+  alten Seite. /kontakt/ heißt gleich und braucht keine Regel (den
+  Schrägstrich am Ende entfernt Next von selbst).
+
+  Bewusst ohne Regel: /portfolio-items/… und /faq-items/… sind Demo-Inhalte
+  des alten WordPress-Themes (Tierpflege, Lorem ipsum). Sie sollen mit 404
+  aus dem Index fallen, nicht auf die Startseite umgeleitet werden — Google
+  wertet so etwas ohnehin als „Soft 404".
+*/
+const wordpressSeiten = [
+  { source: "/zahnarztpraxis-gross-potsdam", destination: "/praxis-team", permanent: true },
+  { source: "/zahnbehandlung-zahnlabor-potsdam", destination: "/leistungen", permanent: true },
+  { source: "/datenschutz-impressum", destination: "/impressum-datenschutz", permanent: true },
+  { source: "/online-termin-zahnarzt-potsdam", destination: "/#termin", permanent: true },
+  { source: "/news", destination: "/", permanent: true },
+];
+
 const wordpressReste = [
   { source: "/wp-content/:pfad*", destination: "/", permanent: true },
   { source: "/wp-includes/:pfad*", destination: "/", permanent: true },
@@ -89,20 +108,8 @@ const nextConfig: NextConfig = {
       */
       { source: "/termin", destination: "/#termin", permanent: true },
       { source: "/termin.html", destination: "/#termin", permanent: true },
-      // Einzige belegte Altadresse aus der WordPress-Zeit.
-      {
-        source: "/zahnbehandlung-zahnlabor-potsdam",
-        destination: "/leistungen",
-        permanent: true,
-      },
+      ...wordpressSeiten,
       ...wordpressReste,
-      /*
-        ⚠ HIER FEHLT DIE VOLLSTÄNDIGE 301-LISTE.
-        Die übrigen alten WordPress-Adressen sind nicht belegt und dürfen
-        nicht geraten werden. Quellen: Google Search Console (Seiten →
-        indexiert) und die alte wp-sitemap.xml. Jede alte URL ohne Regel
-        verliert ihr Ranking. Siehe docs/legacy/.htaccess.
-      */
     ];
   },
 

@@ -30,6 +30,7 @@ export function GET() {
     `- Adresse: ${praxis.strasse}, ${praxis.ort}`,
     `- Wichtig: Der Praxiseingang liegt auf der Rückseite des Gebäudes, nicht an der Straße.`,
     `- Telefon: ${praxis.telefon}`,
+    `- Google Maps: ${praxis.profile[0]}`,
     `- E-Mail: ${praxis.email}`,
     `- Terminanfrage online: ${url("/")}#termin (Formular auf der Startseite) – Rückmeldung ${praxis.antwortzeit}`,
     `- Akute Zahnschmerzen: morgens ab 8:00 anrufen; Montag bis Freitag werden Notfalltermine freigehalten.`,
