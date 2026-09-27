@@ -39,7 +39,7 @@ export const team: Behandler[] = [
     fakten: [
       { label: 'Studium', value: 'Halle/Saale' },
       { label: 'Schwerpunkt', value: 'Kinder · Ästhetik' },
-      { label: 'Zertifikate', value: 'Curriculum Paro (DG PARO)' },
+      { label: 'Zertifikate', value: 'Curriculum Ästhetische Zahnmedizin' },
       { label: 'Hobby', value: 'Backen, Sport' },
       { label: 'Besonderheit', value: 'Großes Herz aus dem Ruhrpott' },
     ],
@@ -60,7 +60,7 @@ export const team: Behandler[] = [
     fakten: [
       { label: 'Studium', value: 'Halle/Saale' },
       { label: 'Schwerpunkt', value: 'Implantologie · Prothetik' },
-      { label: 'Erfahrung', value: '2.000+ Implantate' },
+      { label: 'Erfahrung', value: '2.500+ Implantate' },
       { label: 'Hobbys', value: 'Wassersport, Angeln' },
       { label: 'Besonderheit', value: 'Echter Potsdamer' },
     ],

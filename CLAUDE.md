@@ -113,7 +113,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
    **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;
-   über 2.000 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
+   über 2.500 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
    (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt); **ein
@@ -149,7 +149,7 @@ Bild direkt einbindet —, hebelt genau das aus.
 **Kein Einwilligungsbanner — und das ist kein Versehen.** Die Seite setzt
 kein Cookie und legt nichts im Browser ab (`localStorage`, `sessionStorage`,
 `indexedDB` kommen im Quelltext nicht vor). Damit greift § 25 TDDDG nicht.
-Abschnitt 03 der Datenschutzerklärung sagt das ausdrücklich zu. Wer ein
+Abschnitt 02 der Datenschutzerklärung sagt das ausdrücklich zu. Wer ein
 Analysewerkzeug, eine CDN-Schrift oder ein fremdes Video ergänzt, braucht
 beides: ein Banner **und** eine neue Fassung dieses Abschnitts.
 

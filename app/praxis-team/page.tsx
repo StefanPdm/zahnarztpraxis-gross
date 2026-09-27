@@ -14,7 +14,7 @@ export const metadata = seitenMetadaten('/praxis-team');
 const zahlen = [
   { value: '1991', label: 'Familiengeführt in Potsdam' },
   { value: '5', label: 'Behandlungszimmer mit Tageslicht' },
-  { value: '2.000+', label: 'Gesetzte Implantate' },
+  { value: '2.500+', label: 'Gesetzte Implantate' },
   { value: '1', label: 'Eigenes Labor in der Praxis' },
 ];
 
@@ -95,10 +95,10 @@ const mitgliedschaften: Gesellschaft[] = [
    (Ansage des Auftraggebers). Die ersten drei Fotos stammen aus rohfotos/. */
 const raeume = [
   {
-    src: '/images/behandlungszimmer-fenster-zahnarztpraxis-potsdam.jpg',
-    alt: 'Behandlungszimmer mit Stuhl, Deckenleuchte und Fenster in der Zahnarztpraxis Groß & Groß',
+    src: '/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg',
+    alt: 'Behandlungszimmer mit Monitor an der Decke, Stuhl und Orchidee',
     no: 'I',
-    cap: 'Behandlungsplatz am Fenster',
+    cap: 'Zimmer mit Deckenmonitor',
   },
   {
     src: '/images/behandlungszimmer-sitzecke-zahnarztpraxis-potsdam.jpg',
@@ -113,8 +113,8 @@ const raeume = [
     cap: 'Instrumente am Stuhl',
   },
   {
-    src: '/images/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-5-1-1030x687-1.jpg',
-    alt: 'Praxisflur mit beleuchtetem Groß-&-Groß-Logo an der Wand',
+    src: '/images/praxisflur-logo-zahnarztpraxis-gross-und-gross.jpg',
+    alt: 'Beleuchtetes Groß-&-Groß-Logo an der Wand, dahinter der Flur mit Bildern',
     no: 'IV',
     cap: 'Flur, hinter dem Empfang',
   },
@@ -125,10 +125,28 @@ const raeume = [
     cap: 'Das Labor, eine Tür weiter',
   },
   {
-    src: '/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg',
-    alt: 'Behandlungszimmer mit Monitor an der Decke, Stuhl und Orchidee',
+    src: '/images/behandlungszimmer-fenster-zahnarztpraxis-potsdam.jpg',
+    alt: 'Behandlungszimmer mit Stuhl, Deckenleuchte und Fenster in der Zahnarztpraxis Groß & Groß',
     no: 'VI',
-    cap: 'Zimmer mit Deckenmonitor',
+    cap: 'Behandlungsplatz am Fenster',
+  },
+  {
+    src: '/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg',
+    alt: 'Wartebereich mit Sesseln, Teppich und dem Surfbrett an der Wand',
+    no: 'VII',
+    cap: 'Der Wartebereich',
+  },
+  {
+    src: '/images/kuehlschrank-bonsai-zahnarztpraxis-potsdam.jpg',
+    alt: 'Oranger Kühlschrank, darauf ein Bonsai in einer Schale',
+    no: 'VIII',
+    cap: 'Kostenlose Getränke unter dem Bonsai',
+  },
+  {
+    src: '/images/krokodil-wartebereich-zahnarztpraxis-potsdam.jpg',
+    alt: 'Bunt bemalte Krokodil-Skulptur mit Krone auf dem Boden des Wartebereichs',
+    no: 'IX',
+    cap: 'Moderne Kunst',
   },
 ];
 
@@ -436,24 +454,9 @@ export default function PraxisTeam() {
           </Fragment>
         ))}
       </div>
-      <div
-        style={{
-          padding: '80px 64px',
-          borderTop: '1px solid var(--color-divider)',
-          borderBottom: '1px solid var(--color-divider)',
-          background: 'var(--color-surface)',
-        }}>
-        <div className='ueberzeile'>Das Praxisteam</div>
-        <h2
-          style={{
-            fontWeight: '400',
-            fontSize: 'var(--fs-h2)',
-            lineHeight: '1.08',
-            margin: '16px 0 0',
-            maxWidth: '28ch',
-          }}>
-          Die Menschen, die Sie am Telefon und am Stuhl treffen.
-        </h2>
+      <div className='abschnitt-oben abschnitt-oben--linie'>
+        <div className='ueberzeile'>Die Räume</div>
+        <h2 className='titel-2 breite-26'>Fünf Behandlungszimmer mit Tageslicht.</h2>
         <p
           style={{
             color: 'var(--color-neutral-800)',
@@ -462,94 +465,53 @@ export default function PraxisTeam() {
             maxWidth: '62ch',
             textWrap: 'pretty',
           }}>
-          Egal ob am Empfang, in der Prophylaxe, bei der Assistenz oder im Labor – wir sind ein
-          eingespieltes Team. Alle sind bestens ausgebildet und arbeiten mit den neuesten Techniken
-          — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
+          Die Praxis liegt im 1. Stock eines Altbaus, erreichbar über das Treppenhaus. Fünf
+          Behandlungszimmer, ein Wartebereich, in dem man sitzen mag — und das eigene Zahnlabor eine
+          Tür weiter.
         </p>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-            gap: '0 48px',
-            margin: '40px 0 0',
-          }}>
-          {personal.map((p, pI) => (
-            <Fragment key={pI}>
-              <div>
-                <Bild
-                  sizes='(max-width: 1000px) 100vw, 30vw'
-                  className='plate'
-                  src={p.bild}
-                  alt={p.alt}
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    height: '200px',
-                    objectFit: 'cover',
-                    borderRadius: 'var(--radius-md)',
-                  }}
-                />
-                <div
-                  style={{
-                    borderTop: '1px solid var(--color-accent-300)',
-                    padding: '22px 0',
-                    marginTop: '22px',
-                  }}>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-ui)',
-                      fontSize: '10.5px',
-                      letterSpacing: '0.2em',
-                      textTransform: 'uppercase',
-                      color: 'var(--color-accent-700)',
-                    }}>
-                    {p.bereich}
-                  </div>
-                  <h3
-                    style={{
-                      fontWeight: '400',
-                      fontSize: 'var(--fs-h4)',
-                      lineHeight: '1.16',
-                      margin: '10px 0 8px',
-                    }}>
-                    {p.title}
-                  </h3>
-                  <p className='text-15'>{p.text}</p>
-                </div>
-              </div>
-            </Fragment>
-          ))}
-        </div>
       </div>
-      {/* Wer wissen will, wie hier gearbeitet wird, liest diese Seite —
-          deshalb steht der Hinweis auf den Ausbildungsplatz direkt unter
-          dem Praxisteam und nicht in der Patientennavigation. */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '56px',
-          alignItems: 'center',
-          padding: '48px 64px',
-          borderTop: '1px solid var(--color-divider)',
-          borderBottom: '1px solid var(--color-divider)',
-          background: 'var(--color-surface)',
+          gridTemplateColumns: 'repeat(3,1fr)',
+          gap: '20px',
+          margin: '40px 64px 96px',
         }}>
-        <div>
-          <div className='ueberzeile'>Ausbildung · Start {ausbildung.beginnLang}</div>
-          <p style={{ color: 'var(--color-neutral-800)', margin: '10px 0 0', maxWidth: '58ch' }}>
-            Zum {ausbildung.beginnLang} bilden wir zur Zahnmedizinischen Fachangestellten{' '}
-            {ausbildung.zusatz} aus. Wenn dich der Beruf interessiert: Ein Anruf genügt für den
-            Anfang.
-          </p>
-        </div>
-        <Link
-          className='btn btn-secondary knopf-gross'
-          href='/ausbildung'>
-          Ausbildungsplatz ansehen
-        </Link>
+        {raeume.map((r, rI) => (
+          <Fragment key={rI}>
+            <figure style={{ margin: '0' }}>
+              <Bild
+                sizes='(max-width: 1000px) 100vw, 30vw'
+                className='plate'
+                src={r.src}
+                alt={r.alt}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '240px',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-md)',
+                }}
+              />
+              <figcaption
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  padding: '11px 2px 0',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '10.5px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral-700)',
+                }}>
+                <span style={{ color: 'var(--color-accent-700)' }}>{r.no}</span>
+                <span>{r.cap}</span>
+              </figcaption>
+            </figure>
+          </Fragment>
+        ))}
       </div>
-      <div className='abschnitt-oben'>
+      <div className='abschnitt-oben abschnitt-oben--linie'>
         <div className='ueberzeile'>Praxisgeschichte</div>
         <h2 className='titel-2 breite-24'>Drei Jahrzehnte, eine Familie.</h2>
       </div>
@@ -732,9 +694,23 @@ export default function PraxisTeam() {
           </span>
         </figure>
       </div>
-      <div className='abschnitt-oben'>
-        <div className='ueberzeile'>Die Räume</div>
-        <h2 className='titel-2 breite-26'>Fünf Behandlungszimmer mit Tageslicht.</h2>
+      <div
+        style={{
+          padding: '80px 64px',
+          borderBottom: '1px solid var(--color-divider)',
+          background: 'var(--color-surface)',
+        }}>
+        <div className='ueberzeile'>Das Praxisteam</div>
+        <h2
+          style={{
+            fontWeight: '400',
+            fontSize: 'var(--fs-h2)',
+            lineHeight: '1.08',
+            margin: '16px 0 0',
+            maxWidth: '28ch',
+          }}>
+          Die Menschen, die Sie am Telefon und am Stuhl treffen.
+        </h2>
         <p
           style={{
             color: 'var(--color-neutral-800)',
@@ -743,57 +719,97 @@ export default function PraxisTeam() {
             maxWidth: '62ch',
             textWrap: 'pretty',
           }}>
-          Die Praxis liegt im 1. Stock eines Altbaus, erreichbar über das Treppenhaus. Fünf
-          Behandlungszimmer, ein Wartebereich, in dem man sitzen mag — und das eigene Zahnlabor eine
-          Tür weiter.
+          Egal ob am Empfang, in der Prophylaxe, bei der Assistenz oder im Labor – wir sind ein
+          eingespieltes Team. Alle sind bestens ausgebildet und arbeiten mit den neuesten Techniken
+          — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
         </p>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3,1fr)',
+            gap: '0 48px',
+            margin: '40px 0 0',
+          }}>
+          {personal.map((p, pI) => (
+            <Fragment key={pI}>
+              <div>
+                <Bild
+                  sizes='(max-width: 1000px) 100vw, 30vw'
+                  className='plate'
+                  src={p.bild}
+                  alt={p.alt}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    borderRadius: 'var(--radius-md)',
+                  }}
+                />
+                <div
+                  style={{
+                    borderTop: '1px solid var(--color-accent-300)',
+                    padding: '22px 0',
+                    marginTop: '22px',
+                  }}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-ui)',
+                      fontSize: '10.5px',
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-accent-700)',
+                    }}>
+                    {p.bereich}
+                  </div>
+                  <h3
+                    style={{
+                      fontWeight: '400',
+                      fontSize: 'var(--fs-h4)',
+                      lineHeight: '1.16',
+                      margin: '10px 0 8px',
+                    }}>
+                    {p.title}
+                  </h3>
+                  <p className='text-15'>{p.text}</p>
+                </div>
+              </div>
+            </Fragment>
+          ))}
+        </div>
       </div>
+      {/* Wer wissen will, wie hier gearbeitet wird, liest diese Seite —
+          deshalb steht der Hinweis auf den Ausbildungsplatz direkt unter
+          dem Praxisteam und nicht in der Patientennavigation. */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          gap: '20px',
-          margin: '40px 64px 96px',
-        }}>
-        {raeume.map((r, rI) => (
-          <Fragment key={rI}>
-            <figure style={{ margin: '0' }}>
-              <Bild
-                sizes='(max-width: 1000px) 100vw, 30vw'
-                className='plate'
-                src={r.src}
-                alt={r.alt}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  height: '240px',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-md)',
-                }}
-              />
-              <figcaption
-                style={{
-                  display: 'flex',
-                  gap: '12px',
-                  padding: '11px 2px 0',
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '10.5px',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-neutral-700)',
-                }}>
-                <span style={{ color: 'var(--color-accent-700)' }}>{r.no}</span>
-                <span>{r.cap}</span>
-              </figcaption>
-            </figure>
-          </Fragment>
-        ))}
-      </div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
+          gridTemplateColumns: '1fr auto',
+          gap: '56px',
+          alignItems: 'center',
+          padding: '48px 64px',
           borderTop: '1px solid var(--color-divider)',
+          borderBottom: '1px solid var(--color-divider)',
+          background: 'var(--color-surface)',
+        }}>
+        <div>
+          <div className='ueberzeile'>Ausbildung · Start {ausbildung.beginnLang}</div>
+          <p style={{ color: 'var(--color-neutral-800)', margin: '10px 0 0', maxWidth: '58ch' }}>
+            Zum {ausbildung.beginnLang} bilden wir zur Zahnmedizinischen Fachangestellten{' '}
+            {ausbildung.zusatz} aus. Wenn dich der Beruf interessiert: Ein Anruf genügt für den
+            Anfang.
+          </p>
+        </div>
+        <Link
+          className='btn btn-secondary knopf-gross'
+          href='/ausbildung'>
+          Ausbildungsplatz ansehen
+        </Link>
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3,1fr)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         {verweise.map((v, vI) => (

@@ -57,7 +57,6 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 - Echte Google-Bewertungen (die Startseite zeigt sie hinter `showReviews`
   als sichtbar gekennzeichnete Platzhalter) — vor dem Livegang ersetzen
   oder `showReviews = false`.
-- Zahnärztekammer, Aufsichtsbehörde, Berufsordnung, USt-IdNr. im Impressum
 - Medizinische Freigaben für die sechs gesperrten Themen
 
 ### Ausbildungsplatz — Pflege nach dem Livegang
@@ -80,21 +79,24 @@ Nach dem Livegang lohnen zwei kostenlose Einträge, die bei einer einzelnen
 Stelle mehr bringen als jede Optimierung an der Seite: die Lehrstellenbörse
 der Zahnärztekammer Brandenburg und die Jobbörse der Agentur für Arbeit.
 
-### Datenschutzerklärung — Freigabe und zwei Lücken
+### Impressum
+
+Vom Auftraggeber am 27.09.2026 als vollständig bestätigt — so, wie es
+steht.
+
+### Datenschutzerklärung
 
 Die Erklärung ist am 21.09.2026 gegen den Code geprüft und umgeschrieben
-worden. Elf Abschnitte tragen die Marke „Entwurf, noch nicht freigegeben"
-(Klasse `.entwurf`), darüber steht eine `.todo`-Box. Beides gehört weg,
-sobald die Praxis oder ihr Anwalt zugestimmt hat.
+worden. Die Bearbeitungshinweise (Marken „Entwurf", `.todo`-Box) sind am
+27.09.2026 auf Ansage des Auftraggebers entfernt worden.
 
-Eine Angabe fehlt noch und steht als Platzhalter im Text:
-
-- **Datenschutzbeauftragter** (Abschnitt 02) — Name und Kontakt, oder die
-  Feststellung, dass keiner benannt ist. Bei einer Praxis mit
-  Gesundheitsdaten ist die Benennung in der Regel Pflicht.
+Einen Abschnitt zum **Datenschutzbeauftragten** gibt es nicht mehr
+(Auftraggeber, 27.09.2026): Die Praxis hat weniger als 20 Mitarbeiter und
+muss nach § 38 BDSG keinen benennen. Die Abschnitte sind seitdem ab 02
+neu nummeriert.
 
 **Die Verarbeitungskette** (Auftraggeber, 21.09.2026) — so steht sie in den
-Abschnitten 06 und 08:
+Abschnitten 05 und 07:
 
 | Rolle | Wer |
 | --- | --- |
@@ -116,7 +118,7 @@ ablesen.
 **Kein Einwilligungsbanner.** Geprüft und so gewollt: kein Cookie, kein
 `localStorage`, keine Anfrage an Dritte vor einer Einwilligung. Wer ein
 Analysewerkzeug, eine Schriftart vom CDN oder ein eingebettetes Video
-ergänzt, macht ein Banner nötig **und** muss Abschnitt 03 der Erklärung
+ergänzt, macht ein Banner nötig **und** muss Abschnitt 02 der Erklärung
 umschreiben — dort steht ausdrücklich, dass es nichts davon gibt.
 
 ## Die Selektor-Reparatur (Brücke für die restlichen Inline-Styles)

@@ -47,9 +47,10 @@ const terminschritte = [
 const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
   { value: '1991', to: 1991, decimals: 0, suffix: '', label: 'Familiengeführt in Potsdam' },
-  { value: '2.000', to: 2000, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
+  { value: '2.500', to: 2500, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
   { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
   { value: '1', to: 1, decimals: 0, suffix: '', label: 'Operationssaal' },
+  { value: '1', to: 1, decimals: 0, suffix: '', label: 'Praxislabor' },
 ];
 
 const services = [
@@ -186,9 +187,6 @@ export default function Index() {
                 </div>
                 <h1
                   style={{
-                    /* Vor dem Bonsai: Die Krone reicht hinter die Zeilen. */
-                    position: 'relative',
-                    zIndex: 1,
                     fontWeight: '400',
                     fontSize: 'clamp(48px,8.4vw,124px)',
                     lineHeight: '0.94',
@@ -235,15 +233,6 @@ export default function Index() {
                   }}>
                   Wir nehmen uns die Zeit. Zwei Zahnärzte. Ein eigenes Labor.
                 </p>
-                {/* Mobil steht der Baum hier im Fluss unter dem Absatz, am
-                    Desktop hebt ihn .hero-bonsai in die rechte untere Ecke.
-                    Rein schmückend: kein Alt-Text, keine Trefffläche. */}
-                <Bild
-                  className='hero-bonsai'
-                  src='/images/bonsai-praxis-gross-und-gross.png'
-                  alt=''
-                  sizes='(max-width: 1100px) 50vw, 19vw'
-                />
                 <a
                   className='scrollcue'
                   href='#worum'
@@ -291,7 +280,7 @@ export default function Index() {
             className='statbar'
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(5,1fr)',
+              gridTemplateColumns: 'repeat(6,1fr)',
               gap: '0',
               borderBottom: '1px solid var(--color-divider)',
             }}>
