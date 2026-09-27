@@ -574,3 +574,41 @@ fieldset.field > legend {
 }
 .input[aria-invalid="true"] { border-color: var(--color-accent-700); }
 
+/* ── Gut zu wissen (Startseite) ────────────────────────────────────────────
+   Kurzes Band mit einer Besonderheit der Praxis: links Überzeile und Titel,
+   rechts Text, drei Punkte und ein Link. Heller Grund wie das Zitat-Band,
+   damit es sich vom Labor-Abschnitt darüber abhebt. */
+.gutzuwissen {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: start;
+  padding: 104px var(--rand);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-divider);
+}
+.gutzuwissen__liste {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.gutzuwissen__liste > li {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  border-top: 1px solid var(--color-accent-300);
+  padding-top: 16px;
+}
+@media (max-width: 1000px) {
+  .gutzuwissen {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+  .gutzuwissen__liste { grid-template-columns: 1fr; gap: 18px; }
+}
+

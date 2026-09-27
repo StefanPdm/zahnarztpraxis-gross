@@ -6,6 +6,7 @@ import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
+import { scanVorteile } from "@/lib/digitalerAbdruck";
 
 export const metadata = seitenMetadaten("/moderne-technik");
 
@@ -13,14 +14,6 @@ const laser = [
         { title: "Parodontosebehandlung", text: "Der Laser erreicht die entzündeten Zahnfleischtaschen, ohne sie mechanisch aufzuarbeiten." },
         { title: "Keimreduktion", text: "Bakterien werden gezielt reduziert — die Wunde heilt ruhiger und die Schmerzfreiheit hält länger an." },
         { title: "Fissurenversiegelung", text: "Vor allem bei Kindern: die feinen Rillen der Backenzähne werden schonend versiegelt." }
-      ];
-
-/* Vorteile des digitalen Abdrucks — Text vom Auftraggeber (21.09.2026),
-   zusammen mit der Bestätigung, dass die Praxis einen Intraoralscanner hat. */
-const scanVorteile = [
-        { title: "Kein Würgereiz", text: "Das unangenehme Gefühl von Abformmasse im Rachen entfällt komplett." },
-        { title: "Höchste Präzision", text: "Das digitale 3D-Modell ist exakter als ein herkömmlicher Abdruck — für Zahnersatz, der von Anfang an sitzt." },
-        { title: "Schneller und bequemer", text: "Der Scan dauert nur wenige Minuten, und Sie können zwischendurch schlucken oder durchatmen." }
       ];
 
 const digital = [

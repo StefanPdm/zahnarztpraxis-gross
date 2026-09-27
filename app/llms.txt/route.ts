@@ -23,7 +23,8 @@ export function GET() {
     "",
     `> Familiengeführte Zahnarztpraxis in Potsdam Mitte seit ${praxis.gegruendet}. ` +
       `${praxis.behandlungszimmer} Behandlungszimmer, eigenes Zahnlabor in der Praxis, ` +
-      `${praxis.implantate} gesetzte Implantate. Behutsam mit Angstpatienten und Kindern.`,
+      `${praxis.implantate} gesetzte Implantate. Abdruckfrei und volldigital: digitaler Abdruck ` +
+      `mit dem Intraoralscanner statt Abformmasse. Behutsam mit Angstpatienten und Kindern.`,
     "",
     "## Auf einen Blick",
     "",

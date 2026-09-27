@@ -17,6 +17,7 @@ import { schliesstage, sprechzeiten } from '@/lib/praxis';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
+import { scanVorteile } from '@/lib/digitalerAbdruck';
 import Einblenden from '@/components/Einblenden';
 
 export const metadata = seitenMetadaten('/');
@@ -1332,6 +1333,45 @@ export default function Index() {
               </figcaption>
             </figure>
           </div>
+          {/* Gut zu wissen: abdruckfrei und volldigital (bestätigt 27.09.2026).
+              Steht hinter dem Labor, weil der Scan dort weiterverarbeitet wird. */}
+          <section
+            className='gutzuwissen'
+            aria-labelledby='gutzuwissen-titel'>
+            <div>
+              <div
+                className='ueberzeile'
+                data-einblenden>
+                Gut zu wissen
+              </div>
+              <h2
+                id='gutzuwissen-titel'
+                data-einblenden
+                className='titel-2'>
+                Abdruckfrei und volldigital.
+              </h2>
+            </div>
+            <div>
+              <p className='fliesstext fliesstext--gross'>
+                Bei uns gibt es keine Abformmasse und keinen Abdrucklöffel. Ein Intraoralscanner
+                erfasst Ihre Zähne in wenigen Minuten digital. Und so geht es weiter: Röntgen am
+                Bildschirm, Kronen und Inlays im CAD/CAM-Verfahren aus unserem eigenen Labor.
+              </p>
+              <ul className='gutzuwissen__liste'>
+                {scanVorteile.map((v) => (
+                  <li key={v.title}>
+                    <span className='titel-5'>{v.title}</span>
+                    <p className='text-15'>{v.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                className='btn btn-secondary knopf-gross'
+                href='/moderne-technik'>
+                Mehr zur modernen Technik
+              </Link>
+            </div>
+          </section>
           <GoogleBewertungen />
           <div
             className='colophon rv'

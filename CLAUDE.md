@@ -116,7 +116,9 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
    über 2.500 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
-   (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt); **ein
+   (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt); die Praxis
+   arbeitet **abdruckfrei und volldigital** (bestätigt 27.09.2026, Sektion
+   „Gut zu wissen" auf der Startseite); **ein
    Ausbildungsplatz zur ZFA, Beginn 1. August 2027** (bestätigt 21.09.2026,
    Eckdaten in `lib/ausbildung.ts`).
 4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,
