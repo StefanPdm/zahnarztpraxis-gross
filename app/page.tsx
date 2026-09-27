@@ -18,6 +18,7 @@ import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
 import { scanVorteile } from '@/lib/digitalerAbdruck';
+import ScanGrafik from '@/components/ScanGrafik';
 import Einblenden from '@/components/Einblenden';
 
 export const metadata = seitenMetadaten('/');
@@ -1350,6 +1351,7 @@ export default function Index() {
                 className='titel-2'>
                 Abdruckfrei und volldigital.
               </h2>
+              <ScanGrafik />
             </div>
             <div>
               <p className='fliesstext fliesstext--gross'>

@@ -612,3 +612,72 @@ fieldset.field > legend {
   .gutzuwissen__liste { grid-template-columns: 1fr; gap: 18px; }
 }
 
+/* ── Scan-Grafik (components/ScanGrafik, „Gut zu wissen") ─────────────────
+   Ein Zahn wird gescannt: Die Scanlinie fährt in 3,6 s von oben nach unten
+   und deckt dabei das Punktemodell auf, dann steht das Ergebnis, blendet
+   aus, und es beginnt von vorn — ein Durchlauf dauert 8 s. Linie und
+   Aufdecken teilen sich Dauer, Kurve und Stufen, sonst liefen sie
+   auseinander.
+
+   Die Scanlinie fährt 215 Einheiten: die Höhe der digitalen Lage im SVG.
+   `clip-path: inset()` bezieht sich bei SVG-Elementen auf deren
+   Begrenzungsrahmen, das Aufdecken läuft also über dieselbe Strecke.
+
+   Bei reduzierter Bewegung: kein Scan, der fertige digitale Zahn steht da. */
+.scangrafik {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin-top: 44px;
+  overflow: visible;
+}
+.scangrafik__analog {
+  fill: none;
+  stroke: var(--color-neutral-500);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 5;
+  stroke-linecap: round;
+}
+.scangrafik__kontur {
+  fill: none;
+  stroke: var(--color-accent-700);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.scangrafik__punkte { fill: url(#scangrafik-punkte); }
+.scangrafik pattern circle { fill: var(--color-accent-500); }
+.scangrafik__linie line {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.scangrafik__schein-rand { stop-color: var(--color-accent-300); stop-opacity: 0; }
+.scangrafik__schein-mitte { stop-color: var(--color-accent-300); stop-opacity: 0.55; }
+
+.scangrafik__digital {
+  animation: scanAufdecken 8s cubic-bezier(0.45, 0, 0.3, 1) infinite;
+}
+.scangrafik__linie {
+  animation: scanLinie 8s cubic-bezier(0.45, 0, 0.3, 1) infinite;
+}
+@keyframes scanAufdecken {
+  0%, 8% { clip-path: inset(0 0 100% 0); opacity: 1; }
+  53% { clip-path: inset(0 0 0 0); opacity: 1; }
+  88% { clip-path: inset(0 0 0 0); opacity: 1; }
+  100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+@keyframes scanLinie {
+  0% { transform: translateY(0); opacity: 0; }
+  8% { transform: translateY(0); opacity: 1; }
+  53% { transform: translateY(215px); opacity: 1; }
+  60%, 100% { transform: translateY(215px); opacity: 0; }
+}
+@media (max-width: 1000px) {
+  .scangrafik { max-width: 220px; margin: 28px auto 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scangrafik__digital { animation: none; }
+  .scangrafik__linie { display: none; }
+}
+
