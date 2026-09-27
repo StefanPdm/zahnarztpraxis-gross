@@ -125,6 +125,8 @@ weitere alte Adressen kennt, die dort nicht standen.
 
 ### Vor und nach dem Livegang — Suchmaschinen und KI
 
+Schritt für Schritt, samt DNS-Umstellung bei STRATO: **`docs/LIVEGANG.md`**.
+
 - **Google Search Console** und **Bing Webmaster Tools** für
   `https://www.zahnmedizin-potsdam.de` einrichten, Sitemap einreichen
   (`/sitemap.xml`). Bing kann die Einstellungen aus der Search Console
