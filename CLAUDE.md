@@ -82,7 +82,7 @@ bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
-  Karte, GROSSELINO.
+  Karte, GROSSELINO, Einblenden.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.

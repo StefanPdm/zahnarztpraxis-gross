@@ -53,6 +53,21 @@
    .btn und .btn-primary/-secondary kommen aus classical.css; hier nur die
    große Fassung, die auf den Seiten Standard ist. */
 .knopf-gross { padding: 12px 26px; font-size: 15px; }
+/* Rückmeldung: Farbwechsel weich statt schlagartig, beim Drücken gibt der
+   Knopf einen Pixel nach. `translate` statt `transform`, damit keine
+   bestehende Verschiebung überschrieben wird. */
+.btn {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    translate 120ms ease;
+}
+.btn:active:not(:disabled) { translate: 0 1px; }
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  .btn:active:not(:disabled) { translate: none; }
+}
 
 /* ── Parallax-Bild ─────────────────────────────────────────────────────────
    Bild oder Video füllt seinen Rahmen mit 20 % Überstand oben und unten —
@@ -328,4 +343,91 @@ fieldset.field > legend {
   letter-spacing: 0.04em;
   vertical-align: middle;
   color: var(--color-accent-800);
+}
+
+/* ── Tageslicht in der Hero (Startseite) ───────────────────────────────────
+   Ein warmer, sehr weicher Lichtschein, als fiele Morgensonne durchs
+   Fenster. Er wandert in knapp einer halben Minute kaum merklich hin und
+   zurück — merkt man ihn auf Anhieb, ist er zu stark eingestellt.
+
+   Größer als die Hero (`inset: -25%`), damit beim Wandern nie eine Kante ins
+   Bild rückt; die Hero schneidet ihn ab (`overflow: hidden`, Inline-Stil).
+   Nur `transform` und `opacity` bewegen sich — das rechnet die Grafikkarte,
+   ohne die Seite neu zu setzen. Liegt unter #heroInner (z-index 1). */
+.hero-licht {
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 34% 30% at 30% 24%,
+      color-mix(in srgb, var(--color-accent-200) 75%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 28% 24% at 72% 66%,
+      color-mix(in srgb, var(--color-accent-100) 85%, transparent),
+      transparent 70%
+    );
+  animation: tageslicht 28s ease-in-out infinite alternate;
+}
+@keyframes tageslicht {
+  from { transform: translate3d(-3%, -2%, 0) rotate(-2deg); opacity: 0.7; }
+  to { transform: translate3d(3%, 2%, 0) rotate(2deg); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Ohne Bewegung bleibt das Licht stehen — in voller Stärke. */
+  .hero-licht { animation: none; }
+}
+
+/* ── Einblenden beim Scrollen (components/Einblenden) ──────────────────────
+   Abschnittsköpfe steigen einmalig 8 px auf und blenden ein. Die Klasse
+   `wartet` setzt nur das Skript, und nur unterhalb des Fensters — ohne
+   Skript oder bei reduzierter Bewegung ist nichts versteckt. */
+[data-einblenden] {
+  transition:
+    opacity 450ms ease-out,
+    translate 450ms cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+[data-einblenden].wartet { opacity: 0; translate: 0 8px; }
+/* Überschrift kurz nach ihrer Überzeile — liest sich als eine Bewegung. */
+[data-einblenden] + [data-einblenden] { transition-delay: 90ms; }
+/* Kennzahlen nacheinander, von links nach rechts. */
+.statbar > :nth-child(2) { transition-delay: 70ms; }
+.statbar > :nth-child(3) { transition-delay: 140ms; }
+.statbar > :nth-child(4) { transition-delay: 210ms; }
+.statbar > :nth-child(5) { transition-delay: 280ms; }
+.statbar > :nth-child(6) { transition-delay: 350ms; }
+
+/* ── Leistungskarte (Startseite) ───────────────────────────────────────────
+   Die ganze Karte ist ein Link auf die Leistungsseite. Beim Überfahren hebt
+   sie sich um 2 px, die Überschrift nimmt die Akzentfarbe an und das
+   Symbol zeichnet sich einmal nach (`pathLength={1}` am Pfad macht die
+   Strichlänge unabhängig von der Form). Nur bei echtem Hover — auf
+   Touch-Geräten bliebe der Zustand sonst nach dem Tippen hängen. */
+.leistungskarte {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: translate 250ms cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+.leistungskarte:hover,
+.leistungskarte:focus-visible { color: inherit; text-decoration: none; }
+.leistungskarte h3 { transition: color 200ms ease; }
+.leistungskarte path { stroke-dasharray: 1; }
+@keyframes symbolZeichnen {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@media (hover: hover) {
+  .leistungskarte:hover { translate: 0 -2px; }
+  .leistungskarte:hover h3 { color: var(--color-accent-700); }
+  .leistungskarte:hover path { animation: symbolZeichnen 700ms ease-out; }
+}
+.leistungskarte:focus-visible h3 { color: var(--color-accent-700); }
+@media (prefers-reduced-motion: reduce) {
+  .leistungskarte { transition: none; }
+  .leistungskarte:hover { translate: none; }
+  .leistungskarte:hover path { animation: none; }
 }

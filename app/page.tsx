@@ -16,6 +16,7 @@ import TerminFormular from '@/components/TerminFormular';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
+import Einblenden from '@/components/Einblenden';
 
 export const metadata = seitenMetadaten('/');
 
@@ -57,48 +58,56 @@ const services = [
   {
     no: '01',
     title: 'Prophylaxe',
+    href: '/prophylaxe',
     text: 'Professionelle Reinigung und Kontrolle im Rhythmus, der zu Ihren Zähnen passt.',
     icon: 'M12 22c-1.6 0-2-3.4-2.6-5.3C8.8 14.6 7.6 14 6.4 14 4.5 14 3 12 3 9.2 3 6.3 5 4 7.7 4c1.5 0 2.6.6 4.3.6S14.8 4 16.3 4C19 4 21 6.3 21 9.2c0 2.8-1.5 4.8-3.4 4.8-1.2 0-2.4.6-3 2.7C14 18.6 13.6 22 12 22z',
   },
   {
     no: '02',
     title: 'Ästhetische Zahnmedizin',
+    href: '/aesthetische-zahnmedizin',
     text: 'Veneers, Bleaching und Füllungen, die man nicht sieht.',
     icon: 'M12 3l1.9 4.9L19 9.8l-4.4 3.2 1.4 5.2L12 15.4 8 18.2l1.4-5.2L5 9.8l5.1-.9L12 3z',
   },
   {
     no: '03',
     title: 'Implantologie',
+    href: '/implantologie',
     text: 'Planung, Setzen und Versorgung des Implantats aus einer Hand.',
     icon: 'M9 3h6M9 6h6M10 9h4M12 9v11M10.5 13h3M10.5 16.5h3',
   },
   {
     no: '04',
     title: 'Prothetik',
+    href: '/zahnlabor',
     text: 'Kronen, Brücken und Zahnersatz — gefertigt im eigenen Labor.',
     icon: 'M3 17l2-9 4 4 3-6 3 6 4-4 2 9H3z',
   },
   {
     no: '05',
     title: 'Weisheitszähne & MKG',
+    href: '/weisheitszaehne-chirurgie',
     text: 'Chirurgische Eingriffe mit eigener Erfahrung aus der MKG-Chirurgie.',
     icon: 'M14 4l6 6-9.5 9.5H4v-6.5L14 4zM11.5 6.5l6 6',
   },
   {
     no: '06',
     title: 'Kinderzahnheilkunde',
+    href: '/kinderzahnheilkunde',
     text: 'Erst zeigen, dann erklären, dann behandeln — im Tempo des Kindes.',
     icon: 'M12 21a8 8 0 100-16 8 8 0 000 16zM9 10h.01M15 10h.01M8.5 14.5c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8',
   },
   {
     no: '07',
     title: 'Angstpatienten',
+    href: '/angstpatienten',
     text: 'Längere Termine, Pausen auf Zeichen, jeder Schritt vorher angekündigt.',
     icon: 'M12 20.5s-7.3-4.6-7.3-9.8A4.6 4.6 0 0112 8.2a4.6 4.6 0 017.3 2.5c0 5.2-7.3 9.8-7.3 9.8z',
   },
   {
     no: '08',
     title: 'Parodontologie',
+    href: '/parodontologie',
     text: 'Behandlung von Zahnfleischentzündungen, Schienentherapie und Laser.',
     icon: 'M4 15c2-1 3-3 3-6M20 15c-2-1-3-3-3-6M4 15c0 3 3.6 5 8 5s8-2 8-5M8 9h8',
   },
@@ -159,6 +168,7 @@ export default function Index() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <Laufmarke />
+      <Einblenden />
       <section style={{ fontFamily: 'var(--font-body)' }}>
         <div
           id='1b'
@@ -171,6 +181,11 @@ export default function Index() {
               textAlign: 'center',
               overflow: 'hidden',
             }}>
+            {/* Tageslicht: rein schmückend, liegt unter dem Text (bausteine.css). */}
+            <div
+              className='hero-licht'
+              aria-hidden='true'
+            />
             <div
               id='heroInner'
               style={{ position: 'relative', zIndex: 1 }}>
@@ -287,6 +302,7 @@ export default function Index() {
             {proof.map((p, pI) => (
               <Fragment key={pI}>
                 <div
+                  data-einblenden
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -436,6 +452,7 @@ export default function Index() {
           </div>
           <div style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
             <div
+              data-einblenden
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr',
@@ -691,8 +708,14 @@ export default function Index() {
                 alignItems: 'start',
               }}>
               <div>
-                <div className='ueberzeile'>Die Praxis</div>
-                <h2 className='titel-2 titel-2--luft'>
+                <div
+                  className='ueberzeile'
+                  data-einblenden>
+                  Die Praxis
+                </div>
+                <h2
+                  data-einblenden
+                  className='titel-2 titel-2--luft'>
                   Helle Räume, moderne Technik, kein Praxisgeruch von 1995.
                 </h2>
                 <p
@@ -891,6 +914,7 @@ export default function Index() {
             id='1b-leistungen'
             style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
             <div
+              data-einblenden
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr auto',
@@ -913,7 +937,9 @@ export default function Index() {
               style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '36px 44px' }}>
               {services.map((s, sI) => (
                 <Fragment key={sI}>
-                  <div
+                  <Link
+                    className='leistungskarte'
+                    href={s.href}
                     style={{ borderTop: '1px solid var(--color-accent-300)', paddingTop: '20px' }}>
                     <div
                       style={{
@@ -933,7 +959,10 @@ export default function Index() {
                         strokeLinecap='round'
                         strokeLinejoin='round'
                         aria-hidden='true'>
-                        <path d={s.icon} />
+                        <path
+                          d={s.icon}
+                          pathLength={1}
+                        />
                       </svg>
                       <span
                         style={{
@@ -958,7 +987,7 @@ export default function Index() {
                       }}>
                       {s.text}
                     </p>
-                  </div>
+                  </Link>
                 </Fragment>
               ))}
             </div>
@@ -974,8 +1003,14 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div>
-              <div className='ueberzeile'>Eigenes Zahnlabor</div>
-              <h2 className='titel-2 titel-2--luft'>
+              <div
+                className='ueberzeile'
+                data-einblenden>
+                Eigenes Zahnlabor
+              </div>
+              <h2
+                data-einblenden
+                className='titel-2 titel-2--luft'>
                 Besonderheit: Der Zahntechniker sitzt direkt in der Praxis.
               </h2>
               <p
@@ -1344,8 +1379,14 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div style={{ padding: '116px 64px', alignSelf: 'center' }}>
-              <div className='ueberzeile'>Angstpatienten</div>
-              <h2 className='titel-2 titel-2--luft'>
+              <div
+                className='ueberzeile'
+                data-einblenden>
+                Angstpatienten
+              </div>
+              <h2
+                data-einblenden
+                className='titel-2 titel-2--luft'>
                 Wenn der letzte Zahnarztbesuch Jahre zurückliegt.
               </h2>
               <p
@@ -1460,6 +1501,7 @@ export default function Index() {
           </div>
           <div style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
             <div
+              data-einblenden
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr',
@@ -1601,8 +1643,14 @@ export default function Index() {
                 gap: '64px',
               }}>
               <div>
-                <div className='ueberzeile'>Termin</div>
-                <h2 className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
+                <div
+                  className='ueberzeile'
+                  data-einblenden>
+                  Termin
+                </div>
+                <h2
+                  data-einblenden
+                  className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
                 <p
                   style={{
                     textAlign: 'justify',
@@ -1835,10 +1883,13 @@ export default function Index() {
               background: 'var(--color-surface)',
             }}>
             <div>
-              <div className='ueberzeile'>
+              <div
+                className='ueberzeile'
+                data-einblenden>
                 Ausbildung · Start {ausbildung.beginnLang}
               </div>
               <h2
+                data-einblenden
                 style={{
                   fontWeight: '400',
                   fontSize: 'var(--fs-h2-sm)',
@@ -1868,8 +1919,13 @@ export default function Index() {
               background: 'linear-gradient(180deg, #17150f 0%, #211d15 100%)',
               color: '#f3f2f2',
             }}>
-            <div className='ueberzeile ueberzeile--hell'>Neue Patienten willkommen</div>
+            <div
+              className='ueberzeile ueberzeile--hell'
+              data-einblenden>
+              Neue Patienten willkommen
+            </div>
             <h2
+              data-einblenden
               style={{
                 fontWeight: '400',
                 fontSize: 'clamp(34px,4.6vw,62px)',
