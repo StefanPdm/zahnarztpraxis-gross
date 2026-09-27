@@ -55,8 +55,8 @@ const proof = [
   { value: '5', to: 5, decimals: 0, suffix: '', label: 'Behandlungszimmer' },
   { value: '1991', to: 1991, decimals: 0, suffix: '', label: 'Familiengeführt in Potsdam' },
   { value: '2.500', to: 2500, decimals: 0, suffix: '+', label: 'Gesetzte Implantate' },
-  { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
   { value: '1', to: 1, decimals: 0, suffix: '', label: 'Operationssaal' },
+  { value: '24', to: 24, decimals: 0, suffix: ' h', label: 'Bis zur Antwort' },
   { value: '1', to: 1, decimals: 0, suffix: '', label: 'Praxislabor' },
 ];
 
