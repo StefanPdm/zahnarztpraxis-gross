@@ -350,23 +350,43 @@ fieldset.field > legend {
    Fenster. Er wandert in knapp einer halben Minute kaum merklich hin und
    zurück — merkt man ihn auf Anhieb, ist er zu stark eingestellt.
 
-   Größer als die Hero (`inset: -25%`), damit beim Wandern nie eine Kante ins
-   Bild rückt; die Hero schneidet ihn ab (`overflow: hidden`, Inline-Stil).
-   Nur `transform` und `opacity` bewegen sich — das rechnet die Grafikkarte,
-   ohne die Seite neu zu setzen. Liegt unter #heroInner (z-index 1). */
+   Zwei Lagen: `.hero-licht` deckt genau die Hero ab und blendet zu den
+   Rändern hin aus; das `::before` darin trägt das Licht und wandert. Die
+   Ausblendung ist nötig, weil die Hero ab 1440 px Fensterbreite ein
+   zentrierter Kasten ist — ohne sie endete das Licht an dessen Kante mit
+   einer harten senkrechten Linie. Unten ebenso, zur Anliegen-Wahl hin.
+
+   Das `::before` ist größer als die Hero (`inset: -25%`), damit beim
+   Wandern nie seine eigene Kante ins Bild rückt. Nur `transform` und
+   `opacity` bewegen sich — das rechnet die Grafikkarte, ohne die Seite neu
+   zu setzen. Liegt unter #heroInner (z-index 1). */
 .hero-licht {
   position: absolute;
-  inset: -25%;
+  inset: 0;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, #000 65%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, #000 65%, transparent);
+  mask-composite: intersect;
+}
+.hero-licht::before {
+  content: '';
+  position: absolute;
+  inset: -25%;
   background:
     radial-gradient(
-      ellipse 34% 30% at 30% 24%,
+      ellipse 34% 30% at 34% 30%,
       color-mix(in srgb, var(--color-accent-200) 75%, transparent),
       transparent 70%
     ),
     radial-gradient(
-      ellipse 28% 24% at 72% 66%,
+      ellipse 28% 24% at 68% 62%,
       color-mix(in srgb, var(--color-accent-100) 85%, transparent),
       transparent 70%
     );
@@ -378,7 +398,7 @@ fieldset.field > legend {
 }
 @media (prefers-reduced-motion: reduce) {
   /* Ohne Bewegung bleibt das Licht stehen — in voller Stärke. */
-  .hero-licht { animation: none; }
+  .hero-licht::before { animation: none; }
 }
 
 /* ── Einblenden beim Scrollen (components/Einblenden) ──────────────────────
