@@ -1,22 +1,34 @@
+import { istFeiertag, KURZTAGE, TAGNAMEN, type Wochenplan } from "@/lib/oeffnungsstatus";
+
 /**
- * Wunschtermine im Formular: frühestens morgen (Potsdamer Zeit) und nur
- * Montag bis Freitag.
+ * Wunschtermine im Formular: nur Tage, an denen die Praxis Sprechstunde hat.
  *
- * Heute ist ausgeschlossen, weil die Praxis Anfragen innerhalb von 24 Stunden
- * beantwortet — ein Termin für heute wäre bis dahin verstrichen. Für akute
- * Beschwerden verweist das Formular aufs Telefon. Am Wochenende ist die
- * Praxis geschlossen.
+ * - frühestens morgen (Potsdamer Zeit): Die Praxis antwortet innerhalb von
+ *   24 Stunden, ein Termin für heute wäre bis dahin verstrichen. Für akute
+ *   Beschwerden verweist das Formular aufs Telefon.
+ * - kein Wochenende, kein gesetzlicher Feiertag in Brandenburg, keine
+ *   Betriebsferien (`schliesstage` in lib/praxis.ts)
+ * - „Nachmittag" nur an Tagen mit Nachmittagssprechstunde
  *
  * Das Datumsfeld des Browsers kann nur einen frühesten Tag sperren (`min`),
- * keine Wochentage. Ein Wochenende lässt sich also auswählen — das Formular
- * meldet es sofort am Feld und lässt sich so nicht absenden.
+ * keine einzelnen Tage. Ein gesperrter Tag lässt sich also auswählen — das
+ * Formular meldet es sofort am Feld und lässt sich so nicht absenden.
  *
  * Genutzt im Browser (components/TerminFormular) und auf dem Server
  * (app/api/termin), damit die Regel auch gilt, wenn jemand das Feld umgeht.
- * Keine Stammdaten — darf in eine Client-Komponente.
+ * Sprechzeiten und Schließtage kommen als Argument herein (aus lib/praxis.ts,
+ * über eine Server-Komponente) — diese Datei darf in eine Client-Komponente.
  */
 
-export type Wunschterminfehler = "ungueltig" | "zu-frueh" | "wochenende";
+export type Sprechzeitregeln = { plan: Wochenplan; schliesstage: readonly string[] };
+
+export type Wunschterminfehler =
+  | "ungueltig"
+  | "zu-frueh"
+  | "wochenende"
+  | "feiertag"
+  | "betriebsferien"
+  | "keine-sprechstunde";
 
 /** Was am Feld steht, wenn ein Datum nicht passt. */
 export const WUNSCHTERMIN_HINWEIS: Record<Wunschterminfehler, string> = {
@@ -24,6 +36,9 @@ export const WUNSCHTERMIN_HINWEIS: Record<Wunschterminfehler, string> = {
   "zu-frueh": "Bitte wählen Sie einen Tag ab morgen.",
   wochenende:
     "Samstags und sonntags ist die Praxis geschlossen. Bitte wählen Sie einen Tag von Montag bis Freitag.",
+  feiertag: "An diesem Tag ist ein gesetzlicher Feiertag, die Praxis ist geschlossen. Bitte wählen Sie einen anderen Tag.",
+  betriebsferien: "An diesem Tag ist die Praxis geschlossen (Betriebsferien). Bitte wählen Sie einen anderen Tag.",
+  "keine-sprechstunde": "An diesem Tag hat die Praxis keine Sprechstunde. Bitte wählen Sie einen anderen Tag.",
 };
 
 /** Kalenderdatum in Europe/Berlin als „JJJJ-MM-TT", `abstand` Tage nach `jetzt`. */
@@ -43,19 +58,62 @@ export function fruehesterWunschtermin(jetzt: Date = new Date()): string {
   return potsdamerDatum(jetzt, 1);
 }
 
-/**
- * `null`, wenn das Datum passt, sonst der Grund. Ein Datumsfeld liefert
- * „JJJJ-MM-TT"; in diesem Format ist der Zeichenkettenvergleich zugleich ein
- * Datumsvergleich.
- */
-export function pruefeWunschtermin(wert: string, jetzt: Date = new Date()): Wunschterminfehler | null {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(wert)) return "ungueltig";
+/** Wochentag (0 = Sonntag) eines kalendarisch gültigen „JJJJ-MM-TT", sonst null. */
+function wochentag(wert: string): number | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(wert)) return null;
   const [j, m, t] = wert.split("-").map(Number);
   const d = new Date(Date.UTC(j, m - 1, t));
-  // Kalendarisch gültig? (fängt z. B. den 31.02. ab)
-  if (d.getUTCFullYear() !== j || d.getUTCMonth() !== m - 1 || d.getUTCDate() !== t) return "ungueltig";
+  // fängt z. B. den 31.02. ab
+  if (d.getUTCFullYear() !== j || d.getUTCMonth() !== m - 1 || d.getUTCDate() !== t) return null;
+  return d.getUTCDay();
+}
+
+/**
+ * `null`, wenn das Datum passt, sonst der Grund. In „JJJJ-MM-TT" ist der
+ * Zeichenkettenvergleich zugleich ein Datumsvergleich.
+ */
+export function pruefeWunschtermin(
+  wert: string,
+  { plan, schliesstage }: Sprechzeitregeln,
+  jetzt: Date = new Date(),
+): Wunschterminfehler | null {
+  const tag = wochentag(wert);
+  if (tag === null) return "ungueltig";
   if (wert < fruehesterWunschtermin(jetzt)) return "zu-frueh";
-  const wochentag = d.getUTCDay(); // 0 = Sonntag, 6 = Samstag
-  if (wochentag === 0 || wochentag === 6) return "wochenende";
+  if (tag === 0 || tag === 6) return "wochenende";
+  if (istFeiertag(wert)) return "feiertag";
+  if (schliesstage.includes(wert)) return "betriebsferien";
+  if (!plan[KURZTAGE[tag]]?.length) return "keine-sprechstunde";
   return null;
+}
+
+/** Hat die Sprechzeit an diesem Wochentag einen Teil nach 13 Uhr? */
+function hatNachmittag(plan: Wochenplan, tag: number): boolean {
+  return (plan[KURZTAGE[tag]] ?? []).some(([, bis]) => bis > "13:00");
+}
+
+/** „montags und dienstags" — aus dem Plan, damit der Text nie veraltet. */
+function nachmittagsTage(plan: Wochenplan): string {
+  const tage = [1, 2, 3, 4, 5].filter((t) => hatNachmittag(plan, t)).map((t) => `${TAGNAMEN[t].toLowerCase()}s`);
+  return tage.length > 1 ? `${tage.slice(0, -1).join(", ")} und ${tage.at(-1)}` : (tage[0] ?? "");
+}
+
+/**
+ * Passt „Nachmittag" zu den gewählten Tagen? Geprüft werden nur Tage, die
+ * für sich zulässig sind — sonst stünden zwei Meldungen für denselben Fehler.
+ * Gibt den Hinweis zurück oder `null`.
+ */
+export function pruefeTageszeit(
+  tageszeit: string | undefined,
+  termine: readonly string[],
+  regeln: Sprechzeitregeln,
+  jetzt: Date = new Date(),
+): string | null {
+  if (tageszeit !== "Nachmittag") return null;
+  const ohne = termine.filter((w) => w && !pruefeWunschtermin(w, regeln, jetzt) && !hatNachmittag(regeln.plan, wochentag(w)!));
+  if (!ohne.length) return null;
+  const tage = nachmittagsTage(regeln.plan);
+  return tage
+    ? `Nachmittags ist die Praxis nur ${tage} geöffnet. Bitte wählen Sie „Vormittag“ oder einen passenden Tag.`
+    : `Nachmittags hat die Praxis keine Sprechstunde. Bitte wählen Sie „Vormittag“.`;
 }

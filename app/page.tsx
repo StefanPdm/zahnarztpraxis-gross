@@ -13,6 +13,7 @@ import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
+import { schliesstage, sprechzeiten } from '@/lib/praxis';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
@@ -1718,7 +1719,10 @@ export default function Index() {
                   Schopenhauerstraße 37 · 14467 Potsdam
                 </p>
               </div>
-              <TerminFormular />
+              <TerminFormular
+                plan={sprechzeiten}
+                schliesstage={schliesstage}
+              />
             </div>
             <div
               style={{

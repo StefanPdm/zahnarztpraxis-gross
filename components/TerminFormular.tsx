@@ -3,7 +3,13 @@
 import { FormEvent, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { feldwertZuSchluessel } from "@/lib/anliegen";
-import { fruehesterWunschtermin, pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from "@/lib/wunschtermin";
+import {
+  fruehesterWunschtermin,
+  pruefeTageszeit,
+  pruefeWunschtermin,
+  WUNSCHTERMIN_HINWEIS,
+  type Sprechzeitregeln,
+} from "@/lib/wunschtermin";
 
 /*
   Termin-Formular, verdrahtet gegen app/api/termin/route.ts.
@@ -35,27 +41,41 @@ function Pflicht() {
   );
 }
 
-export default function TerminFormular() {
+/*
+  Sprechzeiten und Schließtage kommen als Props von der Startseite (Server):
+  lib/praxis.ts gehört nicht in eine Client-Datei (CLAUDE.md).
+*/
+export default function TerminFormular({ plan, schliesstage }: Sprechzeitregeln) {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
   // Frühestes Wunschdatum: morgen. Erst im Browser bekannt — die Seite ist
   // statisch gebaut, das Datum beim Bauen wäre längst veraltet. Bis dahin
   // ist der Absendeknopf ohnehin gesperrt (`bereit`).
   const morgen = useSyncExternalStore(nichts, () => fruehesterWunschtermin(), () => undefined);
-  // Hinweis je Datumsfeld, z. B. wenn ein Samstag gewählt wurde. Das Datumsfeld
-  // selbst kann keine Wochentage sperren (lib/wunschtermin.ts).
-  const [terminHinweis, setTerminHinweis] = useState<Record<string, string>>({});
+  // Hinweise je Feld: termin1, termin2, tageszeit. Das Datumsfeld selbst kann
+  // keine einzelnen Tage sperren (lib/wunschtermin.ts).
+  const [hinweis, setHinweis] = useState<Record<string, string>>({});
 
   /*
-    Prüft ein Wunschdatum, sobald es gewählt ist: Der Hinweis steht sofort
-    sichtbar am Feld, und `setCustomValidity` sperrt das Absenden — der
-    Browser zeigt die Meldung dann noch einmal am Feld und springt hin.
+    Prüft Wunschtermine und Tageszeit gemeinsam, sobald sich eins davon
+    ändert — „Nachmittag“ hängt an den gewählten Tagen. Der Hinweis steht
+    sofort sichtbar am Feld, und `setCustomValidity` sperrt das Absenden: Der
+    Browser zeigt die Meldung dann noch einmal und springt zum Feld.
     Ein leeres Feld meldet nichts; ob Wunschtermin 1 fehlt, regelt `required`.
   */
-  function pruefeTermin(feld: HTMLInputElement) {
-    const fehler = feld.value ? pruefeWunschtermin(feld.value) : null;
-    const text = fehler ? WUNSCHTERMIN_HINWEIS[fehler] : "";
-    feld.setCustomValidity(text);
-    setTerminHinweis((bisher) => ({ ...bisher, [feld.name]: text }));
+  function pruefeTermine(f: HTMLFormElement) {
+    const regeln = { plan, schliesstage };
+    const feld = (name: string) => f.elements.namedItem(name) as HTMLInputElement;
+    const neu: Record<string, string> = {};
+    for (const name of ["termin1", "termin2"]) {
+      const wert = feld(name).value;
+      const fehler = wert ? pruefeWunschtermin(wert, regeln) : null;
+      neu[name] = fehler ? WUNSCHTERMIN_HINWEIS[fehler] : "";
+      feld(name).setCustomValidity(neu[name]);
+    }
+    const tageszeit = (f.elements.namedItem("tageszeit") as RadioNodeList).value;
+    neu.tageszeit = pruefeTageszeit(tageszeit, [feld("termin1").value, feld("termin2").value], regeln) ?? "";
+    f.querySelector<HTMLInputElement>("input[name=tageszeit][value=Nachmittag]")?.setCustomValidity(neu.tageszeit);
+    setHinweis(neu);
   }
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
@@ -155,7 +175,7 @@ export default function TerminFormular() {
 
       if (antwort.ok) {
         formular.reset();
-        setTerminHinweis({});
+        setHinweis({});
         setRueckmeldung({ art: "erfolg" });
         return;
       }
@@ -182,6 +202,10 @@ export default function TerminFormular() {
       method='post'
       ref={formularFeld}
       onSubmit={sendeAnfrage}
+      onChange={(e) => {
+        const name = e.target instanceof HTMLInputElement ? e.target.name : "";
+        if (name === "termin1" || name === "termin2" || name === "tageszeit") pruefeTermine(e.currentTarget);
+      }}
       style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       <div className='field'>
         <label htmlFor='t-name'>
@@ -250,16 +274,15 @@ export default function TerminFormular() {
           type='date'
           min={morgen}
           required
-          onChange={(e) => pruefeTermin(e.currentTarget)}
-          aria-invalid={terminHinweis.termin1 ? true : undefined}
-          aria-describedby={terminHinweis.termin1 ? 't-date1-hinweis' : undefined}
+          aria-invalid={hinweis.termin1 ? true : undefined}
+          aria-describedby={hinweis.termin1 ? 't-date1-hinweis' : undefined}
         />
-        {terminHinweis.termin1 && (
+        {hinweis.termin1 && (
           <p
             id='t-date1-hinweis'
             className='feldhinweis'
             role='alert'>
-            {terminHinweis.termin1}
+            {hinweis.termin1}
           </p>
         )}
       </div>
@@ -271,20 +294,21 @@ export default function TerminFormular() {
           name='termin2'
           type='date'
           min={morgen}
-          onChange={(e) => pruefeTermin(e.currentTarget)}
-          aria-invalid={terminHinweis.termin2 ? true : undefined}
-          aria-describedby={terminHinweis.termin2 ? 't-date2-hinweis' : undefined}
+          aria-invalid={hinweis.termin2 ? true : undefined}
+          aria-describedby={hinweis.termin2 ? 't-date2-hinweis' : undefined}
         />
-        {terminHinweis.termin2 && (
+        {hinweis.termin2 && (
           <p
             id='t-date2-hinweis'
             className='feldhinweis'
             role='alert'>
-            {terminHinweis.termin2}
+            {hinweis.termin2}
           </p>
         )}
       </div>
-      <fieldset className='field'>
+      <fieldset
+        className='field'
+        aria-describedby={hinweis.tageszeit ? 't-tageszeit-hinweis' : undefined}>
         <legend>Tageszeit</legend>
         <div className='seg'>
           <label className='seg-opt'>
@@ -305,6 +329,14 @@ export default function TerminFormular() {
             <span>Nachmittag</span>
           </label>
         </div>
+        {hinweis.tageszeit && (
+          <p
+            id='t-tageszeit-hinweis'
+            className='feldhinweis'
+            role='alert'>
+            {hinweis.tageszeit}
+          </p>
+        )}
       </fieldset>
       <fieldset className='field'>
         <legend>Patientenstatus</legend>

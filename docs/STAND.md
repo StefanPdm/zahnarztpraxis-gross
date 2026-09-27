@@ -64,6 +64,11 @@ und Brückentage nicht** — die gehören als ISO-Datum in `schliesstage` in
 `lib/praxis.ts`, sonst steht im Urlaub „Jetzt geöffnet". Vor jedem Urlaub
 eintragen, oder die Praxis schickt die Termine einmal im Jahr.
 
+Dieselben Schließtage und Feiertage sperren im Terminformular die
+Wunschtermine (`lib/wunschtermin.ts`), dazu Wochenenden und „Nachmittag"
+an Tagen ohne Nachmittagssprechstunde. Wer die Sprechzeiten in
+`lib/praxis.ts` ändert, ändert damit auch diese Regeln.
+
 ### Ausbildungsplatz — Pflege nach dem Livegang
 
 `/ausbildung` trägt ein **JobPosting-JSON-LD**. Google verlangt, dass eine

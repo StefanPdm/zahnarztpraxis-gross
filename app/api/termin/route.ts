@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { praxis } from '@/lib/praxis';
+import { praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
-import { pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
+import { pruefeTageszeit, pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
 /*
   Termin-Anfrage.
@@ -128,15 +128,18 @@ export async function POST(request: Request) {
 
   const d = geprueft.data;
 
-  // Wunschtermine frühestens morgen (Potsdamer Zeit), Montag bis Freitag. Das
-  // Formular prüft das schon im Browser; hier gilt es auch für umgangene Felder
-  // und für den, der das Formular vor Mitternacht öffnet und danach absendet.
-  const terminfehler = pruefeWunschtermin(d.termin1) ?? (d.termin2 ? pruefeWunschtermin(d.termin2) : null);
-  if (terminfehler) {
+  // Wunschtermine nur an Sprechtagen ab morgen, „Nachmittag“ nur mit
+  // Nachmittagssprechstunde (lib/wunschtermin.ts). Das Formular prüft das schon
+  // im Browser; hier gilt es auch für umgangene Felder und für den, der das
+  // Formular vor Mitternacht öffnet und danach absendet.
+  const regeln = { plan: sprechzeiten, schliesstage };
+  const terminfehler =
+    pruefeWunschtermin(d.termin1, regeln) ?? (d.termin2 ? pruefeWunschtermin(d.termin2, regeln) : null);
+  const tageszeitfehler = pruefeTageszeit(d.tageszeit, [d.termin1, d.termin2 ?? ''], regeln);
+  const grund = terminfehler ? WUNSCHTERMIN_HINWEIS[terminfehler] : tageszeitfehler;
+  if (grund) {
     return NextResponse.json(
-      {
-        fehler: `${WUNSCHTERMIN_HINWEIS[terminfehler]} Bei akuten Beschwerden rufen Sie uns bitte an: ${praxis.telefon}.`,
-      },
+      { fehler: `${grund} Bei akuten Beschwerden rufen Sie uns bitte an: ${praxis.telefon}.` },
       { status: 422 },
     );
   }

@@ -6,7 +6,8 @@
  * (aus lib/praxis.ts, über eine Server-Komponente). Deshalb darf diese Datei
  * in eine Client-Komponente — lib/praxis.ts darf das nicht (CLAUDE.md).
  *
- * Gesetzliche Feiertage in Brandenburg sind eingerechnet. Betriebsferien
+ * Gesetzliche Feiertage in Brandenburg sind eingerechnet. Das Terminformular
+ * nutzt dieselben Feiertage und Wochentage (lib/wunschtermin.ts). Betriebsferien
  * kennt die Rechnung nur, wenn sie in `schliesstage` (lib/praxis.ts)
  * eingetragen sind — sonst stünde im Urlaub „Jetzt geöffnet".
  */
@@ -15,9 +16,10 @@ export type Zeitraum = readonly [von: string, bis: string];
 export type Wochenplan = Partial<Record<Kurztag, readonly Zeitraum[]>>;
 export type Oeffnungsstatus = { offen: boolean; kurz: string; lang: string };
 
-type Kurztag = "So" | "Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa";
-const KURZTAGE: Kurztag[] = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
-const TAGNAMEN = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+export type Kurztag = "So" | "Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa";
+/** Index = Wochentag wie `Date.getUTCDay()`: 0 = Sonntag. */
+export const KURZTAGE: Kurztag[] = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+export const TAGNAMEN = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 
 const minuten = (hhmm: string) => {
   const [h, m] = hhmm.split(":").map(Number);
@@ -100,6 +102,11 @@ function feiertage(jahr: number) {
   ]);
   feiertagsCache.set(jahr, menge);
   return menge;
+}
+
+/** Gesetzlicher Feiertag in Brandenburg? `iso` als „JJJJ-MM-TT". */
+export function istFeiertag(iso: string): boolean {
+  return feiertage(Number(iso.slice(0, 4))).has(iso);
 }
 
 export function oeffnungsstatus(
