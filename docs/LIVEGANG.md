@@ -130,8 +130,9 @@ die Eingangsbestätigung, die das Terminformular an Patienten schickt.
 - [ ] Netlify schlägt vor, auch `zahnmedizin-potsdam.de` (ohne www)
       hinzuzufügen: **annehmen**.
 - [ ] **`www.zahnmedizin-potsdam.de` als Primary domain** festlegen. Dann
-      leitet Netlify die Adresse ohne www und die `netlify.app`-Adresse
-      dauerhaft auf www um.
+      leitet Netlify die Adresse ohne www dauerhaft auf www um. Die
+      `netlify.app`-Adresse leitet Netlify **nicht** um; das übernimmt eine
+      Regel in `next.config.ts`.
 - [ ] Netlify zeigt jetzt „Awaiting External DNS“ oder Ähnliches. Das ist
       richtig so, die DNS-Einträge folgen in Schritt 3.
 - [ ] Falls Netlify einen TXT-Eintrag zur Bestätigung verlangt (z. B.
@@ -214,7 +215,7 @@ Jede Zeile im Browser aufrufen, am besten in einem privaten Fenster:
 | `https://www.zahnmedizin-potsdam.de` | neue Startseite, Schloss-Symbol |
 | `http://www.zahnmedizin-potsdam.de` | → `https://www.…` |
 | `https://zahnmedizin-potsdam.de` | → `https://www.zahnmedizin-potsdam.de` |
-| `https://zahnarztpraxis-gross.netlify.app` | → `https://www.zahnmedizin-potsdam.de` (wenn nicht: unkritisch, jede Seite nennt www als Canonical) |
+| `https://zahnarztpraxis-gross.netlify.app/…` | → `https://www.zahnmedizin-potsdam.de/…` (Regel in `next.config.ts`; Netlify leitet das nicht von selbst um) |
 | `…/zahnarztpraxis-gross-potsdam/` | → `/praxis-team` |
 | `…/zahnbehandlung-zahnlabor-potsdam/` | → `/leistungen` |
 | `…/datenschutz-impressum/` | → `/impressum-datenschutz` |

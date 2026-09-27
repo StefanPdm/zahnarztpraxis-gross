@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { seiten } from "./lib/seiten";
+import { praxis } from "./lib/praxis";
 
 /*
   Weiterleitungen und Header, übernommen aus legacy/.htaccess.
@@ -99,6 +100,19 @@ const nextConfig: NextConfig = {
       }));
 
     return [
+      /*
+        Die Netlify-Adresse leitet dauerhaft auf die eigene Domain, Pfad
+        inklusive. Netlify tut das nicht von selbst, und sonst stünde die
+        Seite doppelt im Netz. Steht zuerst, damit keine andere Regel
+        vorher greift. Vorschau-Adressen (deploy-preview-…, Branch-Deploys)
+        haben einen anderen Hostnamen und bleiben erreichbar.
+      */
+      {
+        source: "/:pfad*",
+        has: [{ type: "host" as const, value: "zahnarztpraxis-gross.netlify.app" }],
+        destination: `${praxis.domain}/:pfad*`,
+        permanent: true,
+      },
       ...htmlVarianten,
       { source: "/index.html", destination: "/", permanent: true },
       /*
