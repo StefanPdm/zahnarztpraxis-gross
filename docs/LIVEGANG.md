@@ -151,6 +151,21 @@ anders.
 
 - [ ] **A-Record** der Domain: von `81.169.145.74` auf **`75.2.60.5`**.
 - [ ] **AAAA-Record** der Domain: **entfernen bzw. deaktivieren.**
+      Bei STRATO lässt sich das Feld nicht leeren: Die Maske bietet nur
+      „STRATO Standard IP-Adresse“ oder „Eigene IP-Adresse“, und die will
+      eine gültige IPv6-Adresse. **Nicht „STRATO Standard“ wählen**, das
+      ist der alte Server. Am 27.09.2026 war nach dem Umstellen des
+      A-Records kein AAAA-Eintrag mehr veröffentlicht, auch nicht am
+      STRATO-Nameserver selbst. Die AAAA-Maske also abbrechen und nur
+      prüfen:
+      `nslookup -type=AAAA zahnmedizin-potsdam.de docks11.rzone.de`
+      darf keine Adresse liefern.
+      *Plan B, falls doch ein AAAA auf STRATO zeigt:* A und AAAA beide auf
+      „STRATO Standard“ lassen, im Reiter *Webserver* die Domain dauerhaft
+      (301) auf `https://www.zahnmedizin-potsdam.de` umleiten und nur `www`
+      per CNAME zu Netlify schicken. Bei Netlify dann nur die www-Domain
+      eintragen. Die Domain ohne www bleibt so bei STRATO und leitet weiter;
+      dafür muss das SSL-Zertifikat für sie bei STRATO aktiv bleiben.
 - [ ] **www:** Bei STRATO erbt `www` oft still die Einstellungen der
       Hauptdomain. Falls sich für `www` kein eigener Eintrag setzen lässt,
       zuerst unter *Subdomains* die Subdomain `www` anlegen. Dann für `www`
@@ -169,7 +184,13 @@ anders.
       aus. Dauert es länger als ein paar Stunden: „Verify DNS configuration“
       und „Provision certificate“ anklicken.
 - [ ] Hängt es trotzdem, ist fast immer noch ein AAAA-Eintrag auf den alten
-      Server gesetzt (Schritt 3).
+      Server gesetzt (Schritt 3). War beim ersten Versuch noch einer
+      gesetzt, versucht Netlify es nicht von selbst erneut: dann
+      „Provision certificate“ bzw. „Renew certificate“ von Hand anstoßen.
+- [ ] **Bis das Zertifikat steht, zeigt `https://` eine Sicherheitswarnung**
+      (Netlify antwortet mit seinem Zertifikat für `*.netlify.app`). Deshalb
+      Schritt 3 und 4 zügig nacheinander erledigen und nicht über Nacht
+      halb umgestellt lassen.
 
 ## Schritt 5 — Prüfen, ob alles läuft
 
