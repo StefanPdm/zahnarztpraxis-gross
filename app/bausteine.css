@@ -294,6 +294,29 @@ fieldset.field > legend {
   padding-top: 10px;
 }
 .strichliste--klein { font-size: 14px; }
+/* Mit Icon vor dem Text — Icon oben an der ersten Zeile ausgerichtet. */
+.strichliste--icons > li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+.strichliste--icons > li > svg { flex: none; margin-top: 2px; }
+/* Terminsektion: Die Liste bringt ihre Linie selbst mit (Oberkante des
+   ersten Punkts) — vorher stand darüber noch ein <hr>, das ergab eine
+   doppelte Linie. Der Abstand ersetzt den des <hr>. */
+.termin-zusagen { margin-top: var(--space-4); }
+/* Linke Spalte der Terminsektion, Desktop: drei Blöcke — Text, Zusagen,
+   Öffnungszeiten — mit gleichem Abstand über die Höhe des Formulars
+   verteilt, oben und unten bündig mit ihm. Die Außenabstände der Blöcke
+   bleiben als Mindestabstand. */
+@media (min-width: 1001px) {
+  .termin-spalte {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+.anfahrt-telefon { font-feature-settings: 'tnum'; }
 
 /* ── Breitbild-Band ────────────────────────────────────────────────────────
    Für Panoramen, die keinen Seitenbeschnitt vertragen. Die übrigen Bänder
@@ -578,7 +601,25 @@ fieldset.field > legend {
 /* Erklärt, warum ein Knopf gesperrt ist — Auskunft, kein Fehler. */
 .feldhinweis-leise { color: var(--color-neutral-700); }
 
-/* Tageszeit direkt unter dem Datum des Wunschtermins. */
+/* Wunschtermin: Datum und Tageszeit in einem Kasten — sie gehören
+   zusammen, jeder Termin hat seine eigene Tageszeit. Die Legende steht als
+   Überschrift im Kasten, nicht auf dem Rahmen: `float` nimmt sie aus der
+   Rahmenlinie, `width: 100%` gibt ihr eine eigene Zeile. */
+fieldset.wunschtermin {
+  padding: var(--space-4);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 2%, transparent);
+}
+fieldset.wunschtermin > legend {
+  float: left;
+  width: 100%;
+  margin-bottom: var(--space-3);
+  font-size: 13px;
+  color: var(--color-text);
+}
+fieldset.wunschtermin > legend + * { clear: both; }
+/* Tageszeit direkt unter dem Datum. */
 fieldset.tageszeitwahl { margin-top: var(--space-3); }
 /* „Nachmittag" an einem Tag ohne Nachmittag: sichtbar, aber erkennbar
    nicht wählbar. Gesperrte Bedienelemente sind von der Kontrastregel
@@ -697,3 +738,45 @@ fieldset.tageszeitwahl { margin-top: var(--space-3); }
   .scangrafik__linie { display: none; }
 }
 
+
+/* ── Öffnungszeiten auf der Startseite ─────────────────────────────────────
+   Desktop: in der Terminsektion unter Telefon und Adresse, neben dem
+   Formular — wer die Tageszeit wählt, sieht, wann vormittags und wann
+   nachmittags geöffnet ist. Mobil bleiben sie in der Kontaktsektion.
+   `!important`, weil die Blöcke Inline-Stile tragen. */
+@media (min-width: 1001px) {
+  .nur-mobil { display: none !important; }
+}
+@media (max-width: 1000px) {
+  .nur-desktop { display: none !important; }
+}
+.termin-sprechzeiten { margin-top: var(--space-8); }
+.termin-sprechzeiten-notiz {
+  margin: var(--space-3) 0 0;
+  font-size: 13px;
+  color: var(--color-neutral-700);
+}
+
+/* Kontaktsektion, Desktop: Ohne die Öffnungszeiten nimmt „Anfahrt & Parken“
+   die ganze Breite — links Hinweise und Foto, rechts die Karte in der Höhe
+   der linken Spalte. Mobil bleibt alles untereinander wie bisher. */
+@media (min-width: 1001px) {
+  .kontakt-anfahrt {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    border-left: 0 !important;
+  }
+  .anfahrt-karte { display: flex; flex-direction: column; }
+  .anfahrt-karte > div:first-child {
+    flex: 1;
+    display: flex;
+    margin-top: 0 !important;
+  }
+  .anfahrt-karte .karte {
+    flex: 1;
+    height: auto !important;
+    min-height: 230px;
+  }
+}

@@ -13,7 +13,7 @@ import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
-import { nachmittagNachVereinbarung, schliesstage, sprechzeiten } from '@/lib/praxis';
+import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
@@ -25,9 +25,21 @@ export const metadata = seitenMetadaten('/');
 
 /* Termin-Sektion: übernommen von der früheren Seite /termin. */
 const zusagen = [
-  'Bestätigung innerhalb von 24 Stunden',
-  'Schmerztermine täglich am Morgen',
-  'Gesetzlich und privat versichert',
+  {
+    text: 'Bestätigung innerhalb von 24 Stunden',
+    // Uhr
+    icon: 'M12 7v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    text: 'Schmerztermine täglich am Morgen',
+    // Sonne
+    icon: 'M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4M16 12a4 4 0 11-8 0 4 4 0 018 0z',
+  },
+  {
+    text: 'Gesetzlich und privat versichert',
+    // Schild mit Haken
+    icon: 'M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3zM9 12l2 2 4-4',
+  },
 ];
 
 const terminschritte = [
@@ -1701,65 +1713,69 @@ export default function Index() {
                 gridTemplateColumns: '1fr 1.15fr',
                 gap: '64px',
               }}>
-              <div>
-                <div
-                  className='ueberzeile'
-                  data-einblenden>
-                  Termin
+              <div className='termin-spalte'>
+                <div>
+                  <div
+                    className='ueberzeile'
+                    data-einblenden>
+                    Termin
+                  </div>
+                  <h2
+                    data-einblenden
+                    className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
+                  <p
+                    style={{
+                      textAlign: 'justify',
+                      hyphens: 'auto',
+                      maxWidth: '46ch',
+                      color: 'var(--color-neutral-800)',
+                    }}>
+                    Diese Anfrage ist noch keine feste Buchung: Wir prüfen Ihre Wunschzeit und
+                    bestätigen innerhalb von 24 Stunden, telefonisch oder per E-Mail. Für akute
+                    Beschwerden halten wir jeden Morgen Termine frei — rufen Sie in diesem Fall bitte
+                    direkt an.
+                  </p>
+                  <p
+                    style={{
+                      textAlign: 'justify',
+                      hyphens: 'auto',
+                      maxWidth: '46ch',
+                      color: 'var(--color-neutral-800)',
+                      margin: '16px 0 0',
+                    }}>
+                    Je genauer Ihr Anliegen, desto passender der Termin: Eine Kontrolle braucht 20
+                    Minuten, eine Implantatberatung deutlich mehr. Neue Patienten planen wir bewusst
+                    länger ein.
+                  </p>
                 </div>
-                <h2
-                  data-einblenden
-                  className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
-                <p
-                  style={{
-                    textAlign: 'justify',
-                    hyphens: 'auto',
-                    maxWidth: '46ch',
-                    color: 'var(--color-neutral-800)',
-                  }}>
-                  Diese Anfrage ist noch keine feste Buchung: Wir prüfen Ihre Wunschzeit und
-                  bestätigen innerhalb von 24 Stunden, telefonisch oder per E-Mail. Für akute
-                  Beschwerden halten wir jeden Morgen Termine frei — rufen Sie in diesem Fall bitte
-                  direkt an.
-                </p>
-                <p
-                  style={{
-                    textAlign: 'justify',
-                    hyphens: 'auto',
-                    maxWidth: '46ch',
-                    color: 'var(--color-neutral-800)',
-                    margin: '16px 0 0',
-                  }}>
-                  Je genauer Ihr Anliegen, desto passender der Termin: Eine Kontrolle braucht 20
-                  Minuten, eine Implantatberatung deutlich mehr. Neue Patienten planen wir bewusst
-                  länger ein.
-                </p>
-                <hr className='hr' />
-                <ul className='strichliste strichliste--klein'>
-                  {zusagen.map((z, zI) => (
-                    <li key={zI}>{z}</li>
+                <ul className='strichliste strichliste--klein strichliste--icons termin-zusagen'>
+                  {zusagen.map((z) => (
+                    <li key={z.text}>
+                      <svg
+                        width='17'
+                        height='17'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='var(--color-accent-700)'
+                        strokeWidth='1.3'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        aria-hidden='true'>
+                        <path d={z.icon} />
+                      </svg>
+                      <span>{z.text}</span>
+                    </li>
                   ))}
                 </ul>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'var(--fs-h3)',
-                    margin: '28px 0 0',
-                  }}>
-                  <a
-                    href='tel:+49331960926'
-                    style={{ fontFeatureSettings: "'tnum'" }}>
-                    0331 960926
-                  </a>
-                </p>
-                <p
-                  style={{
-                    fontSize: '14px',
-                    color: 'var(--color-neutral-800)',
-                    margin: '6px 0 0',
-                  }}>
-                  Schopenhauerstraße 37 · 14467 Potsdam
-                </p>
+                {/* Desktop: Öffnungszeiten neben dem Formular, damit beim
+                    Wählen der Tageszeit sichtbar ist, wann vormittags und
+                    wann nachmittags geöffnet ist. Mobil stehen sie
+                    weiter unten in der Kontaktsektion (#1b-kontakt). */}
+                <div className='nur-desktop termin-sprechzeiten'>
+                  <div className='ueberzeile'>Öffnungszeiten</div>
+                  <Sprechzeiten />
+                  <p className='termin-sprechzeiten-notiz'>Und nach Vereinbarung.</p>
+                </div>
               </div>
               <TerminFormular
                 plan={sprechzeiten}
@@ -1813,121 +1829,167 @@ export default function Index() {
               gridTemplateColumns: '1fr 1fr',
               borderBottom: '1px solid var(--color-divider)',
             }}>
-            <div style={{ padding: '104px 64px' }}>
+            {/* Nur mobil — auf dem Desktop stehen die Öffnungszeiten in der
+                Terminsektion, und „Anfahrt & Parken“ nimmt die ganze Breite. */}
+            <div
+              className='nur-mobil'
+              style={{ padding: '104px 64px' }}>
               <div className='ueberzeile'>Öffnungszeiten</div>
               <Sprechzeiten />
               <p style={{ fontSize: '13px', color: 'var(--color-neutral-700)', marginTop: '16px' }}>
                 Und nach Vereinbarung.
               </p>
             </div>
-            <div style={{ padding: '104px 64px', borderLeft: '1px solid var(--color-divider)' }}>
-              <div className='ueberzeile'>Anfahrt &amp; Parken</div>
-              <div
-                className='iconrow'
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'auto 1fr',
-                  gap: '14px 18px',
-                  fontSize: '14px',
-                  marginTop: '22px',
-                  color: 'var(--color-neutral-800)',
-                }}>
-                <svg
-                  width='19'
-                  height='19'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='var(--color-accent-700)'
-                  strokeWidth='1.3'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  aria-hidden='true'
-                  style={{ marginTop: '2px' }}>
-                  <path d='M4 11h16M8 3h8M6 3h12a2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM8 22l2-4M16 22l-2-4' />
-                </svg>
-                <span>Tram 91, 94, 98 — Luisenplatz-Süd, 4 Minuten zu Fuß</span>
-                <svg
-                  width='19'
-                  height='19'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='var(--color-accent-700)'
-                  strokeWidth='1.3'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  aria-hidden='true'
-                  style={{ marginTop: '2px' }}>
-                  <path d='M5 17H3v-5l2-5h14l2 5v5h-2M5 17a2 2 0 104 0M15 17a2 2 0 104 0M5 17h14M5 12h14' />
-                </svg>
-                <span>Kurzzeit-Parkplätze direkt vor der Praxis</span>
-                <svg
-                  width='19'
-                  height='19'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='var(--color-accent-700)'
-                  strokeWidth='1.3'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  aria-hidden='true'
-                  style={{ marginTop: '2px' }}>
-                  <path d='M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5' />
-                </svg>
-                <span>Im 1. Stock, über das Treppenhaus erreichbar — kein Aufzug</span>
-              </div>
-              <figure style={{ margin: '24px 0 0' }}>
-                <Bild
-                  src='/images/Schopenhauer_Str_37_hinten_cropped.webp'
-                  alt='Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof'
+            <div
+              className='kontakt-anfahrt'
+              style={{ padding: '104px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+              <div className='anfahrt-text'>
+                <div className='ueberzeile'>Anfahrt &amp; Parken</div>
+                <div
+                  className='iconrow'
                   style={{
-                    display: 'block',
-                    width: '100%',
-                    height: 'auto',
-                    aspectRatio: '16/9',
-                    objectFit: 'cover',
+                    display: 'grid',
+                    gridTemplateColumns: 'auto 1fr',
+                    gap: '14px 18px',
+                    fontSize: '14px',
+                    marginTop: '22px',
+                    color: 'var(--color-neutral-800)',
+                  }}>
+                  <svg
+                    width='19'
+                    height='19'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='var(--color-accent-700)'
+                    strokeWidth='1.3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                    style={{ marginTop: '2px' }}>
+                    <path d='M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2' />
+                  </svg>
+                  <span>
+                    <a
+                      href={praxis.telefonHref}
+                      className='anfahrt-telefon'>
+                      {praxis.telefon}
+                    </a>
+                  </span>
+                  <svg
+                    width='19'
+                    height='19'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='var(--color-accent-700)'
+                    strokeWidth='1.3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                    style={{ marginTop: '2px' }}>
+                    <path d='M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 100-5 2.5 2.5 0 000 5z' />
+                  </svg>
+                  <span>
+                    {praxis.strasse} · {praxis.ort}
+                  </span>
+                  <svg
+                    width='19'
+                    height='19'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='var(--color-accent-700)'
+                    strokeWidth='1.3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                    style={{ marginTop: '2px' }}>
+                    <path d='M4 11h16M8 3h8M6 3h12a2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM8 22l2-4M16 22l-2-4' />
+                  </svg>
+                  <span>Tram 91, 94, 98 — Luisenplatz-Süd, 4 Minuten zu Fuß</span>
+                  <svg
+                    width='19'
+                    height='19'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='var(--color-accent-700)'
+                    strokeWidth='1.3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                    style={{ marginTop: '2px' }}>
+                    <path d='M5 17H3v-5l2-5h14l2 5v5h-2M5 17a2 2 0 104 0M15 17a2 2 0 104 0M5 17h14M5 12h14' />
+                  </svg>
+                  <span>Kurzzeit-Parkplätze direkt vor der Praxis</span>
+                  <svg
+                    width='19'
+                    height='19'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='var(--color-accent-700)'
+                    strokeWidth='1.3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                    style={{ marginTop: '2px' }}>
+                    <path d='M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5' />
+                  </svg>
+                  <span>Im 1. Stock, über das Treppenhaus erreichbar — kein Aufzug</span>
+                </div>
+                <figure style={{ margin: '24px 0 0' }}>
+                  <Bild
+                    src='/images/Schopenhauer_Str_37_hinten_cropped.webp'
+                    alt='Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof'
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      height: 'auto',
+                      aspectRatio: '16/9',
+                      objectFit: 'cover',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--color-divider)',
+                    }}
+                  />
+                  <figcaption
+                    style={{
+                      fontSize: '13.5px',
+                      lineHeight: '1.6',
+                      color: 'var(--color-neutral-800)',
+                      margin: '12px 0 0',
+                    }}>
+                    Der Eingang liegt auf der{' '}
+                    <strong style={{ fontWeight: '400', color: 'var(--color-text)' }}>
+                      Rückseite
+                    </strong>{' '}
+                    des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.{' '}
+                    <Link href='/anfahrt-parken'>Wegbeschreibung ansehen</Link>
+                  </figcaption>
+                </figure>
+              </div>
+              <div className='anfahrt-karte'>
+                <div
+                  style={{
+                    marginTop: '24px',
                     borderRadius: 'var(--radius-md)',
                     border: '1px solid var(--color-divider)',
-                  }}
-                />
-                <figcaption
-                  style={{
-                    fontSize: '13.5px',
-                    lineHeight: '1.6',
-                    color: 'var(--color-neutral-800)',
-                    margin: '12px 0 0',
+                    overflow: 'hidden',
                   }}>
-                  Der Eingang liegt auf der{' '}
-                  <strong style={{ fontWeight: '400', color: 'var(--color-text)' }}>
-                    Rückseite
-                  </strong>{' '}
-                  des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof.{' '}
-                  <Link href='/anfahrt-parken'>Wegbeschreibung ansehen</Link>
-                </figcaption>
-              </figure>
-              <div
-                style={{
-                  marginTop: '24px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--color-divider)',
-                  overflow: 'hidden',
-                }}>
-                <Karte
-                  hoehe={230}
-                  grau
-                />
+                  <Karte
+                    hoehe={230}
+                    grau
+                  />
+                </div>
+                <a
+                  href='https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=17/52.3976/13.0484'
+                  style={{
+                    display: 'inline-block',
+                    marginTop: '10px',
+                    fontFamily: 'var(--font-ui)',
+                    fontSize: '11px',
+                    letterSpacing: '0.16em',
+                    textTransform: 'uppercase',
+                  }}>
+                  Größere Karte öffnen
+                </a>
               </div>
-              <a
-                href='https://www.openstreetmap.org/?mlat=52.3976&mlon=13.0484#map=17/52.3976/13.0484'
-                style={{
-                  display: 'inline-block',
-                  marginTop: '10px',
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '11px',
-                  letterSpacing: '0.16em',
-                  textTransform: 'uppercase',
-                }}>
-                Größere Karte öffnen
-              </a>
             </div>
           </div>
           {/* Der einzige Abschnitt der Startseite, der nicht Patienten

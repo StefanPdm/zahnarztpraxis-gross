@@ -44,54 +44,95 @@ function Pflicht() {
 }
 
 /*
-  Tageszeit zu einem Wunschtermin — steht direkt unter dessen Datum, weil zwei
-  Tage verschiedene Nachmittage haben können. „Nachmittag" ist gesperrt, wenn
-  der gewählte Tag keinen hat; war er schon gewählt, bleibt er wählbar und
-  der Hinweis erklärt, warum er nicht passt. Die Legende nennt den Termin für
-  Screenreader mit — sichtbar steht nur „Tageszeit".
+  Ein Wunschtermin: Datum und Tageszeit in einem Kasten, damit sichtbar ist,
+  was zusammengehört — zwei Tage können verschiedene Nachmittage haben.
+  Der Kasten ist ein <fieldset>; der Screenreader liest „Wunschtermin 1“ vor
+  „Datum“ und „Tageszeit“ mit.
+
+  „Nachmittag“ ist gesperrt, wenn der gewählte Tag keinen hat; war er schon
+  gewählt, bleibt er wählbar und der Hinweis erklärt, warum er nicht passt.
 */
-function Tageszeitwahl({ nr, hinweis, nachmittagGesperrt }: { nr: 1 | 2; hinweis?: string; nachmittagGesperrt?: boolean }) {
-  const hinweisId = `t-tageszeit${nr}-hinweis`;
-  const notizId = `t-tageszeit${nr}-notiz`;
+function Wunschtermin({
+  nr,
+  pflicht,
+  morgen,
+  hinweisDatum,
+  hinweisZeit,
+  nachmittagGesperrt,
+}: {
+  nr: 1 | 2;
+  pflicht?: boolean;
+  morgen?: string;
+  hinweisDatum?: string;
+  hinweisZeit?: string;
+  nachmittagGesperrt?: boolean;
+}) {
+  const datumId = `t-date${nr}`;
+  const zeitHinweisId = `t-tageszeit${nr}-hinweis`;
+  const zeitNotizId = `t-tageszeit${nr}-notiz`;
   return (
-    <fieldset
-      className='field tageszeitwahl'
-      aria-describedby={hinweis ? hinweisId : nachmittagGesperrt ? notizId : undefined}>
+    <fieldset className='field wunschtermin'>
       <legend>
-        Tageszeit<span className='nur-lesbar'> zu Wunschtermin {nr}</span>
+        Wunschtermin {nr} {pflicht && <Pflicht />}
       </legend>
-      <div className='seg'>
-        {TAGESZEITEN.map((zeit) => (
-          <label
-            key={zeit}
-            className='seg-opt'>
-            <input
-              type='radio'
-              name={`tageszeit${nr}`}
-              value={zeit}
-              defaultChecked={zeit === 'Egal'}
-              disabled={zeit === 'Nachmittag' && nachmittagGesperrt}
-            />
-            <span>{zeit}</span>
-          </label>
-        ))}
-      </div>
-      {hinweis ? (
-        <p
-          id={hinweisId}
-          className='feldhinweis'
-          role='alert'>
-          {hinweis}
-        </p>
-      ) : (
-        nachmittagGesperrt && (
+      <div className='field'>
+        <label htmlFor={datumId}>Datum</label>
+        <input
+          className='input'
+          id={datumId}
+          name={`termin${nr}`}
+          type='date'
+          min={morgen}
+          required={pflicht}
+          aria-invalid={hinweisDatum ? true : undefined}
+          aria-describedby={hinweisDatum ? `${datumId}-hinweis` : undefined}
+        />
+        {hinweisDatum && (
           <p
-            id={notizId}
-            className='feldhinweis feldhinweis-leise'>
-            An diesem Tag hat die Praxis nachmittags keine Sprechstunde.
+            id={`${datumId}-hinweis`}
+            className='feldhinweis'
+            role='alert'>
+            {hinweisDatum}
           </p>
-        )
-      )}
+        )}
+      </div>
+      <fieldset
+        className='field tageszeitwahl'
+        aria-describedby={hinweisZeit ? zeitHinweisId : nachmittagGesperrt ? zeitNotizId : undefined}>
+        <legend>Tageszeit</legend>
+        <div className='seg'>
+          {TAGESZEITEN.map((zeit) => (
+            <label
+              key={zeit}
+              className='seg-opt'>
+              <input
+                type='radio'
+                name={`tageszeit${nr}`}
+                value={zeit}
+                defaultChecked={zeit === 'Egal'}
+                disabled={zeit === 'Nachmittag' && nachmittagGesperrt}
+              />
+              <span>{zeit}</span>
+            </label>
+          ))}
+        </div>
+        {hinweisZeit ? (
+          <p
+            id={zeitHinweisId}
+            className='feldhinweis'
+            role='alert'>
+            {hinweisZeit}
+          </p>
+        ) : (
+          nachmittagGesperrt && (
+            <p
+              id={zeitNotizId}
+              className='feldhinweis feldhinweis-leise'>
+              An diesem Tag hat die Praxis nachmittags keine Sprechstunde.
+            </p>
+          )
+        )}
+      </fieldset>
     </fieldset>
   );
 }
@@ -330,59 +371,21 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
           autoComplete='bday'
         />
       </div>
-      <div className='field'>
-        <label htmlFor='t-date1'>
-          Wunschtermin 1 <Pflicht />
-        </label>
-        <input
-          className='input'
-          id='t-date1'
-          name='termin1'
-          type='date'
-          min={morgen}
-          required
-          aria-invalid={hinweis.termin1 ? true : undefined}
-          aria-describedby={hinweis.termin1 ? 't-date1-hinweis' : undefined}
-        />
-        {hinweis.termin1 && (
-          <p
-            id='t-date1-hinweis'
-            className='feldhinweis'
-            role='alert'>
-            {hinweis.termin1}
-          </p>
-        )}
-        <Tageszeitwahl
-          nr={1}
-          hinweis={hinweis.tageszeit1}
-          nachmittagGesperrt={ohneNm[1]}
-        />
-      </div>
-      <div className='field'>
-        <label htmlFor='t-date2'>Wunschtermin 2</label>
-        <input
-          className='input'
-          id='t-date2'
-          name='termin2'
-          type='date'
-          min={morgen}
-          aria-invalid={hinweis.termin2 ? true : undefined}
-          aria-describedby={hinweis.termin2 ? 't-date2-hinweis' : undefined}
-        />
-        {hinweis.termin2 && (
-          <p
-            id='t-date2-hinweis'
-            className='feldhinweis'
-            role='alert'>
-            {hinweis.termin2}
-          </p>
-        )}
-        <Tageszeitwahl
-          nr={2}
-          hinweis={hinweis.tageszeit2}
-          nachmittagGesperrt={ohneNm[2]}
-        />
-      </div>
+      <Wunschtermin
+        nr={1}
+        pflicht
+        morgen={morgen}
+        hinweisDatum={hinweis.termin1}
+        hinweisZeit={hinweis.tageszeit1}
+        nachmittagGesperrt={ohneNm[1]}
+      />
+      <Wunschtermin
+        nr={2}
+        morgen={morgen}
+        hinweisDatum={hinweis.termin2}
+        hinweisZeit={hinweis.tageszeit2}
+        nachmittagGesperrt={ohneNm[2]}
+      />
       <fieldset className='field'>
         <legend>Patientenstatus</legend>
         <div className='seg'>
