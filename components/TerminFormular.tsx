@@ -5,8 +5,10 @@ import Link from "next/link";
 import { feldwertZuSchluessel } from "@/lib/anliegen";
 import {
   fruehesterWunschtermin,
+  ohneNachmittag,
   pruefeTageszeit,
   pruefeWunschtermin,
+  TAGESZEITEN,
   WUNSCHTERMIN_HINWEIS,
   type Sprechzeitregeln,
 } from "@/lib/wunschtermin";
@@ -42,6 +44,59 @@ function Pflicht() {
 }
 
 /*
+  Tageszeit zu einem Wunschtermin — steht direkt unter dessen Datum, weil zwei
+  Tage verschiedene Nachmittage haben können. „Nachmittag" ist gesperrt, wenn
+  der gewählte Tag keinen hat; war er schon gewählt, bleibt er wählbar und
+  der Hinweis erklärt, warum er nicht passt. Die Legende nennt den Termin für
+  Screenreader mit — sichtbar steht nur „Tageszeit".
+*/
+function Tageszeitwahl({ nr, hinweis, nachmittagGesperrt }: { nr: 1 | 2; hinweis?: string; nachmittagGesperrt?: boolean }) {
+  const hinweisId = `t-tageszeit${nr}-hinweis`;
+  const notizId = `t-tageszeit${nr}-notiz`;
+  return (
+    <fieldset
+      className='field tageszeitwahl'
+      aria-describedby={hinweis ? hinweisId : nachmittagGesperrt ? notizId : undefined}>
+      <legend>
+        Tageszeit<span className='nur-lesbar'> zu Wunschtermin {nr}</span>
+      </legend>
+      <div className='seg'>
+        {TAGESZEITEN.map((zeit) => (
+          <label
+            key={zeit}
+            className='seg-opt'>
+            <input
+              type='radio'
+              name={`tageszeit${nr}`}
+              value={zeit}
+              defaultChecked={zeit === 'Egal'}
+              disabled={zeit === 'Nachmittag' && nachmittagGesperrt}
+            />
+            <span>{zeit}</span>
+          </label>
+        ))}
+      </div>
+      {hinweis ? (
+        <p
+          id={hinweisId}
+          className='feldhinweis'
+          role='alert'>
+          {hinweis}
+        </p>
+      ) : (
+        nachmittagGesperrt && (
+          <p
+            id={notizId}
+            className='feldhinweis feldhinweis-leise'>
+            An diesem Tag hat die Praxis nachmittags keine Sprechstunde.
+          </p>
+        )
+      )}
+    </fieldset>
+  );
+}
+
+/*
   Sprechzeiten und Schließtage kommen als Props von der Startseite (Server):
   lib/praxis.ts gehört nicht in eine Client-Datei (CLAUDE.md).
 */
@@ -51,13 +106,15 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
   // statisch gebaut, das Datum beim Bauen wäre längst veraltet. Bis dahin
   // ist der Absendeknopf ohnehin gesperrt (`bereit`).
   const morgen = useSyncExternalStore(nichts, () => fruehesterWunschtermin(), () => undefined);
-  // Hinweise je Feld: termin1, termin2, tageszeit. Das Datumsfeld selbst kann
-  // keine einzelnen Tage sperren (lib/wunschtermin.ts).
+  // Hinweise je Feld: termin1, termin2, tageszeit1, tageszeit2. Das
+  // Datumsfeld selbst kann keine einzelnen Tage sperren (lib/wunschtermin.ts).
   const [hinweis, setHinweis] = useState<Record<string, string>>({});
+  // Je Wunschtermin: „Nachmittag" sperren, weil der Tag keinen hat.
+  const [ohneNm, setOhneNm] = useState<Record<number, boolean>>({});
 
   /*
-    Prüft Wunschtermine und Tageszeit gemeinsam, sobald sich eins davon
-    ändert — „Nachmittag“ hängt an den gewählten Tagen. Der Hinweis steht
+    Prüft jeden Wunschtermin mit seiner Tageszeit, sobald sich eins davon
+    ändert — „Nachmittag“ hängt am gewählten Tag. Der Hinweis steht
     sofort sichtbar am Feld, und `setCustomValidity` sperrt das Absenden: Der
     Browser zeigt die Meldung dann noch einmal und springt zum Feld.
     Ein leeres Feld meldet nichts; ob Wunschtermin 1 fehlt, regelt `required`.
@@ -66,16 +123,22 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
     const regeln = { plan, schliesstage, nachVereinbarung };
     const feld = (name: string) => f.elements.namedItem(name) as HTMLInputElement;
     const neu: Record<string, string> = {};
-    for (const name of ["termin1", "termin2"]) {
-      const wert = feld(name).value;
-      const fehler = wert ? pruefeWunschtermin(wert, regeln) : null;
-      neu[name] = fehler ? WUNSCHTERMIN_HINWEIS[fehler] : "";
-      feld(name).setCustomValidity(neu[name]);
+    const sperre: Record<number, boolean> = {};
+    for (const nr of [1, 2]) {
+      const termin = feld(`termin${nr}`);
+      const fehler = termin.value ? pruefeWunschtermin(termin.value, regeln) : null;
+      neu[`termin${nr}`] = fehler ? WUNSCHTERMIN_HINWEIS[fehler] : "";
+      termin.setCustomValidity(neu[`termin${nr}`]);
+
+      const tageszeit = (f.elements.namedItem(`tageszeit${nr}`) as RadioNodeList).value;
+      neu[`tageszeit${nr}`] = pruefeTageszeit(tageszeit, termin.value, regeln) ?? "";
+      f.querySelector<HTMLInputElement>(`input[name=tageszeit${nr}][value=Nachmittag]`)?.setCustomValidity(
+        neu[`tageszeit${nr}`],
+      );
+      sperre[nr] = tageszeit !== "Nachmittag" && ohneNachmittag(termin.value, regeln);
     }
-    const tageszeit = (f.elements.namedItem("tageszeit") as RadioNodeList).value;
-    neu.tageszeit = pruefeTageszeit(tageszeit, [feld("termin1").value, feld("termin2").value], regeln) ?? "";
-    f.querySelector<HTMLInputElement>("input[name=tageszeit][value=Nachmittag]")?.setCustomValidity(neu.tageszeit);
     setHinweis(neu);
+    setOhneNm(sperre);
   }
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
@@ -118,7 +181,8 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
     setze("geburt", "1985-04-17");
     setze("termin1", inTagen(7));
     setze("termin2", inTagen(9));
-    setze("tageszeit", "Nachmittag");
+    setze("tageszeit1", "Vormittag");
+    setze("tageszeit2", "Egal");
     setze("status", "Neu");
     setze("versicherung", "Gesetzlich");
     setze("angst", "Ja — Angstpatient/in");
@@ -160,8 +224,10 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
           mail: wert("mail"),
           geburt: wert("geburt"),
           termin1: wert("termin1"),
+          tageszeit1: auswahl("tageszeit1"),
           termin2: wert("termin2"),
-          tageszeit: auswahl("tageszeit"),
+          // Ohne zweites Datum keine Tageszeit dazu.
+          tageszeit2: wert("termin2") ? auswahl("tageszeit2") : undefined,
           status: auswahl("status"),
           versicherung: auswahl("versicherung"),
           angst: auswahl("angst"),
@@ -176,6 +242,7 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
       if (antwort.ok) {
         formular.reset();
         setHinweis({});
+        setOhneNm({});
         setRueckmeldung({ art: "erfolg" });
         return;
       }
@@ -204,7 +271,7 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
       onSubmit={sendeAnfrage}
       onChange={(e) => {
         const name = e.target instanceof HTMLInputElement ? e.target.name : "";
-        if (name === "termin1" || name === "termin2" || name === "tageszeit") pruefeTermine(e.currentTarget);
+        if (/^(termin|tageszeit)[12]$/.test(name)) pruefeTermine(e.currentTarget);
       }}
       style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       <div className='field'>
@@ -285,6 +352,11 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
             {hinweis.termin1}
           </p>
         )}
+        <Tageszeitwahl
+          nr={1}
+          hinweis={hinweis.tageszeit1}
+          nachmittagGesperrt={ohneNm[1]}
+        />
       </div>
       <div className='field'>
         <label htmlFor='t-date2'>Wunschtermin 2</label>
@@ -305,39 +377,12 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
             {hinweis.termin2}
           </p>
         )}
+        <Tageszeitwahl
+          nr={2}
+          hinweis={hinweis.tageszeit2}
+          nachmittagGesperrt={ohneNm[2]}
+        />
       </div>
-      <fieldset
-        className='field'
-        aria-describedby={hinweis.tageszeit ? 't-tageszeit-hinweis' : undefined}>
-        <legend>Tageszeit</legend>
-        <div className='seg'>
-          <label className='seg-opt'>
-            <input
-              type='radio'
-              name='tageszeit'
-              value='Vormittag'
-              defaultChecked
-            />
-            <span>Vormittag</span>
-          </label>
-          <label className='seg-opt'>
-            <input
-              type='radio'
-              name='tageszeit'
-              value='Nachmittag'
-            />
-            <span>Nachmittag</span>
-          </label>
-        </div>
-        {hinweis.tageszeit && (
-          <p
-            id='t-tageszeit-hinweis'
-            className='feldhinweis'
-            role='alert'>
-            {hinweis.tageszeit}
-          </p>
-        )}
-      </fieldset>
       <fieldset className='field'>
         <legend>Patientenstatus</legend>
         <div className='seg'>

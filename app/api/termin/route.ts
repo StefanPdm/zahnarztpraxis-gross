@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
-import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
-import { pruefeTageszeit, pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
+import { bestaetigungHtml, bestaetigungText, wunschtermin } from '@/lib/mailvorlage';
+import { pruefeTageszeit, pruefeWunschtermin, TAGESZEITEN, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
 /*
   Termin-Anfrage.
@@ -28,8 +28,9 @@ const Anfrage = z
     mail: z.string().trim().email().max(180),
     geburt: z.string().trim().max(40).optional().or(z.literal('')),
     termin1: z.string().trim().min(1).max(60),
+    tageszeit1: z.enum(TAGESZEITEN).optional(),
     termin2: z.string().trim().max(60).optional().or(z.literal('')),
-    tageszeit: z.enum(['Vormittag', 'Nachmittag']).optional(),
+    tageszeit2: z.enum(TAGESZEITEN).optional(),
     status: z.enum(['Neu', 'Bestandspatient']).optional(),
     versicherung: z.enum(['Gesetzlich', 'Privat']).optional(),
     angst: z.enum(['Nein', 'Ja — Angstpatient/in', 'Erstmal nur ein Gespräch']).optional(),
@@ -128,14 +129,15 @@ export async function POST(request: Request) {
 
   const d = geprueft.data;
 
-  // Wunschtermine nur an Sprechtagen ab morgen, „Nachmittag“ nur mit
-  // Nachmittagssprechstunde (lib/wunschtermin.ts). Das Formular prüft das schon
+  // Wunschtermine nur an Sprechtagen ab morgen, „Nachmittag“ je Termin nur
+  // mit Nachmittag an diesem Tag (lib/wunschtermin.ts). Das Formular prüft das schon
   // im Browser; hier gilt es auch für umgangene Felder und für den, der das
   // Formular vor Mitternacht öffnet und danach absendet.
   const regeln = { plan: sprechzeiten, schliesstage, nachVereinbarung: nachmittagNachVereinbarung };
   const terminfehler =
     pruefeWunschtermin(d.termin1, regeln) ?? (d.termin2 ? pruefeWunschtermin(d.termin2, regeln) : null);
-  const tageszeitfehler = pruefeTageszeit(d.tageszeit, [d.termin1, d.termin2 ?? ''], regeln);
+  const tageszeitfehler =
+    pruefeTageszeit(d.tageszeit1, d.termin1, regeln) ?? pruefeTageszeit(d.tageszeit2, d.termin2 ?? '', regeln);
   const grund = terminfehler ? WUNSCHTERMIN_HINWEIS[terminfehler] : tageszeitfehler;
   if (grund) {
     return NextResponse.json(
@@ -174,9 +176,8 @@ export async function POST(request: Request) {
     zeile('E-Mail', d.mail) +
     zeile('Geburtsdatum', d.geburt) +
     `\n` +
-    zeile('Wunschtermin 1', d.termin1) +
-    zeile('Wunschtermin 2', d.termin2) +
-    zeile('Tageszeit', d.tageszeit) +
+    zeile('Wunschtermin 1', wunschtermin(d.termin1, d.tageszeit1)) +
+    zeile('Wunschtermin 2', wunschtermin(d.termin2, d.tageszeit2)) +
     `\n` +
     zeile('Status', d.status) +
     zeile('Versicherung', d.versicherung) +
@@ -195,8 +196,9 @@ export async function POST(request: Request) {
   const bestaetigung = {
     name: d.name,
     termin1: d.termin1,
+    tageszeit1: d.tageszeit1,
     termin2: d.termin2 || undefined,
-    tageszeit: d.tageszeit,
+    tageszeit2: d.termin2 ? d.tageszeit2 : undefined,
   };
 
   try {

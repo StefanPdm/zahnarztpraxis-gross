@@ -8,7 +8,8 @@ import { istFeiertag, KURZTAGE, TAGNAMEN, type Kurztag, type Wochenplan } from "
  *   Beschwerden verweist das Formular aufs Telefon.
  * - kein Wochenende, kein gesetzlicher Feiertag in Brandenburg, keine
  *   Betriebsferien (`schliesstage` in lib/praxis.ts)
- * - „Nachmittag" nur an Tagen mit Nachmittagssprechstunde oder mit
+ * - jeder Wunschtermin mit eigener Tageszeit (Vormittag, Nachmittag, Egal);
+ *   „Nachmittag" nur an Tagen mit Nachmittagssprechstunde oder mit
  *   Nachmittag nach Vereinbarung
  *
  * Das Datumsfeld des Browsers kann nur einen frühesten Tag sperren (`min`),
@@ -109,27 +110,36 @@ function aufzaehlung(tage: number[]): string {
   return namen.length > 1 ? `${namen.slice(0, -1).join(", ")} und ${namen.at(-1)}` : (namen[0] ?? "");
 }
 
+/** Tageszeiten je Wunschtermin. „Egal" lässt der Praxis die Wahl. */
+export const TAGESZEITEN = ["Vormittag", "Nachmittag", "Egal"] as const;
+export type Tageszeit = (typeof TAGESZEITEN)[number];
+
 /**
- * Passt „Nachmittag" zu den gewählten Tagen? Geprüft werden nur Tage, die
+ * Ist „Nachmittag" an diesem Wunschtermin ausgeschlossen? Nur für Tage, die
  * für sich zulässig sind — sonst stünden zwei Meldungen für denselben Fehler.
+ * Das Formular sperrt damit den Knopf „Nachmittag".
+ */
+export function ohneNachmittag(wert: string, regeln: Sprechzeitregeln, jetzt: Date = new Date()): boolean {
+  return !!wert && !pruefeWunschtermin(wert, regeln, jetzt) && !nachmittagMoeglich(regeln, wochentag(wert)!);
+}
+
+/**
+ * Passt die Tageszeit zu ihrem Wunschtermin? Jeder Termin hat seine eigene
+ * Wahl — zwei Tage können unterschiedliche Nachmittage haben.
  * Gibt den Hinweis zurück oder `null`.
  */
 export function pruefeTageszeit(
   tageszeit: string | undefined,
-  termine: readonly string[],
+  termin: string,
   regeln: Sprechzeitregeln,
   jetzt: Date = new Date(),
 ): string | null {
-  if (tageszeit !== "Nachmittag") return null;
-  const ohne = termine.filter(
-    (w) => w && !pruefeWunschtermin(w, regeln, jetzt) && !nachmittagMoeglich(regeln, wochentag(w)!),
-  );
-  if (!ohne.length) return null;
+  if (tageszeit !== "Nachmittag" || !ohneNachmittag(termin, regeln, jetzt)) return null;
   const werktage = [1, 2, 3, 4, 5];
   const offen = aufzaehlung(werktage.filter((t) => hatNachmittag(regeln.plan, t)));
   const vereinbart = aufzaehlung(werktage.filter((t) => !hatNachmittag(regeln.plan, t) && nachmittagMoeglich(regeln, t)));
   const zusatz = vereinbart ? `, ${vereinbart} nach Vereinbarung` : "";
   return offen
-    ? `Nachmittags ist die Praxis nur ${offen} geöffnet${zusatz}. Bitte wählen Sie „Vormittag“ oder einen passenden Tag.`
-    : `Nachmittags hat die Praxis keine Sprechstunde. Bitte wählen Sie „Vormittag“.`;
+    ? `Nachmittags ist die Praxis nur ${offen} geöffnet${zusatz}. Bitte wählen Sie „Vormittag“, „Egal“ oder einen passenden Tag.`
+    : `Nachmittags hat die Praxis keine Sprechstunde. Bitte wählen Sie „Vormittag“ oder „Egal“.`;
 }

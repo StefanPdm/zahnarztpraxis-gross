@@ -41,14 +41,30 @@ function esc(wert: string): string {
 export type Bestaetigung = {
   name: string;
   termin1: string;
+  tageszeit1?: string;
   termin2?: string;
-  tageszeit?: string;
+  tageszeit2?: string;
 };
 
-/** „2026-09-24" → „24.09.2026"; alles andere unverändert zurück. */
+const WOCHENTAGE = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
+/** „2026-09-24" → „Donnerstag, 24.09.2026"; alles andere unverändert zurück. */
 function datum(wert: string): string {
   const treffer = /^(\d{4})-(\d{2})-(\d{2})$/.exec(wert);
-  return treffer ? `${treffer[3]}.${treffer[2]}.${treffer[1]}` : wert;
+  if (!treffer) return wert;
+  const [, j, m, t] = treffer;
+  const tag = WOCHENTAGE[new Date(Date.UTC(Number(j), Number(m) - 1, Number(t))).getUTCDay()];
+  return `${tag}, ${t}.${m}.${j}`;
+}
+
+/**
+ * Ein Wunschtermin mit seiner Tageszeit: „Montag, 12.10.2026 · Nachmittag".
+ * Auch für die Mail an die Praxis (app/api/termin). Leer ohne Datum.
+ */
+export function wunschtermin(termin?: string, tageszeit?: string): string {
+  if (!termin) return "";
+  const zeit = tageszeit === "Egal" ? "Tageszeit egal" : tageszeit;
+  return zeit ? `${datum(termin)} · ${zeit}` : datum(termin);
 }
 
 function zeile(bezeichnung: string, wert?: string): string {
@@ -68,9 +84,8 @@ export function bestaetigungText(d: Bestaetigung): string {
     "mit einem konkreten Vorschlag — telefonisch oder per E-Mail.",
     "",
     "Ihre Wunschzeiten:",
-    `- Wunschtermin 1: ${datum(d.termin1)}`,
-    d.termin2 ? `- Wunschtermin 2: ${datum(d.termin2)}` : "",
-    d.tageszeit ? `- Tageszeit: ${d.tageszeit}` : "",
+    `- Wunschtermin 1: ${wunschtermin(d.termin1, d.tageszeit1)}`,
+    d.termin2 ? `- Wunschtermin 2: ${wunschtermin(d.termin2, d.tageszeit2)}` : "",
     "",
     `Wenn es dringend ist oder Sie Schmerzen haben, rufen Sie uns bitte direkt an: ${praxis.telefon}.`,
     "",
@@ -133,9 +148,8 @@ export function bestaetigungHtml(d: Bestaetigung): string {
           <td style="padding:28px 40px 0;">
             <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:${FARBEN.akzent};">Ihre Wunschzeiten</div>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;border-top:1px solid ${FARBEN.linie};">
-              ${zeile("Wunschtermin 1", datum(d.termin1))}
-              ${zeile("Wunschtermin 2", d.termin2 ? datum(d.termin2) : "")}
-              ${zeile("Tageszeit", d.tageszeit)}
+              ${zeile("Wunschtermin 1", wunschtermin(d.termin1, d.tageszeit1))}
+              ${zeile("Wunschtermin 2", wunschtermin(d.termin2, d.tageszeit2))}
             </table>
           </td>
         </tr>

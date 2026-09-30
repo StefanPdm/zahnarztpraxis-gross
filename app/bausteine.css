@@ -575,6 +575,20 @@ fieldset.field > legend {
   color: var(--color-accent-700);
 }
 .input[aria-invalid="true"] { border-color: var(--color-accent-700); }
+/* Erklärt, warum ein Knopf gesperrt ist — Auskunft, kein Fehler. */
+.feldhinweis-leise { color: var(--color-neutral-700); }
+
+/* Tageszeit direkt unter dem Datum des Wunschtermins. */
+fieldset.tageszeitwahl { margin-top: var(--space-3); }
+/* „Nachmittag" an einem Tag ohne Nachmittag: sichtbar, aber erkennbar
+   nicht wählbar. Gesperrte Bedienelemente sind von der Kontrastregel
+   ausgenommen; der Hinweis darunter trägt die Information. */
+.seg-opt:has(input:disabled) {
+  color: var(--color-neutral-600);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+.seg-opt:has(input:disabled):hover { background: none; }
 
 /* ── Gut zu wissen (Startseite) ────────────────────────────────────────────
    Kurzes Band mit einer Besonderheit der Praxis: links Überzeile und Titel,
