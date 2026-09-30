@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
-import { praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
+import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText } from '@/lib/mailvorlage';
 import { pruefeTageszeit, pruefeWunschtermin, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
   // Nachmittagssprechstunde (lib/wunschtermin.ts). Das Formular prüft das schon
   // im Browser; hier gilt es auch für umgangene Felder und für den, der das
   // Formular vor Mitternacht öffnet und danach absendet.
-  const regeln = { plan: sprechzeiten, schliesstage };
+  const regeln = { plan: sprechzeiten, schliesstage, nachVereinbarung: nachmittagNachVereinbarung };
   const terminfehler =
     pruefeWunschtermin(d.termin1, regeln) ?? (d.termin2 ? pruefeWunschtermin(d.termin2, regeln) : null);
   const tageszeitfehler = pruefeTageszeit(d.tageszeit, [d.termin1, d.termin2 ?? ''], regeln);

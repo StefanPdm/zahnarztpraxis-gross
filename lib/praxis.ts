@@ -61,14 +61,22 @@ export const praxis = {
 type Tag = "Mo" | "Di" | "Mi" | "Do" | "Fr";
 type Zeitraum = readonly [von: string, bis: string];
 
-/** Je Tag die Zeiträume. Nach Vereinbarung auch außerhalb. */
+/** Je Tag die Zeiträume (Auftraggeber, 30.09.2026). Nach Vereinbarung auch außerhalb. */
 export const sprechzeiten: Record<Tag, readonly Zeitraum[]> = {
-  Mo: [["08:00", "13:00"], ["14:00", "17:30"]],
-  Di: [["08:00", "13:00"], ["14:00", "17:30"]],
+  Mo: [["08:00", "13:00"], ["14:00", "18:30"]],
+  Di: [["08:00", "13:00"], ["14:00", "18:30"]],
   Mi: [["08:00", "13:00"]],
-  Do: [["08:00", "12:00"]],
+  Do: [["08:00", "14:00"]],
   Fr: [["08:00", "12:00"]],
 };
+
+/**
+ * Tage mit Nachmittag „nach Vereinbarung" (Auftraggeber, 30.09.2026).
+ * Keine Sprechstunde: Der Öffnungsstatus zeigt dann „geschlossen", und im
+ * JSON-LD steht nichts dazu. Das Terminformular lässt „Nachmittag" an diesen
+ * Tagen zu — eine Anfrage ist genau die Vereinbarung.
+ */
+export const nachmittagNachVereinbarung: readonly Tag[] = ["Fr"];
 
 /**
  * Tage, an denen die Praxis zusätzlich zu den gesetzlichen Feiertagen
@@ -86,17 +94,18 @@ const TAGNAME: Record<Tag, { lang: string; schema: string }> = {
   Fr: { lang: "Freitag", schema: "Friday" },
 };
 
-export type Sprechzeitgruppe = { tage: Tag[]; zeiten: readonly Zeitraum[] };
+export type Sprechzeitgruppe = { tage: Tag[]; zeiten: readonly Zeitraum[]; vereinbarung: boolean };
 
-/** Aufeinanderfolgende Tage mit gleichen Zeiten zusammengefasst: Mo–Di, Mi, Do–Fr. */
+/**
+ * Jeder Tag als eigene Zeile — auch bei gleichen Zeiten nicht zusammengefasst
+ * (Auftraggeber, 30.09.2026).
+ */
 export function sprechzeitGruppen(): Sprechzeitgruppe[] {
-  const gruppen: Sprechzeitgruppe[] = [];
-  for (const [tag, zeiten] of Object.entries(sprechzeiten) as [Tag, readonly Zeitraum[]][]) {
-    const letzte = gruppen.at(-1);
-    if (letzte && JSON.stringify(letzte.zeiten) === JSON.stringify(zeiten)) letzte.tage.push(tag);
-    else gruppen.push({ tage: [tag], zeiten });
-  }
-  return gruppen;
+  return (Object.entries(sprechzeiten) as [Tag, readonly Zeitraum[]][]).map(([tag, zeiten]) => ({
+    tage: [tag],
+    zeiten,
+    vereinbarung: nachmittagNachVereinbarung.includes(tag),
+  }));
 }
 
 /** „Montag – Dienstag" */
@@ -106,12 +115,16 @@ export const tageLang = (g: Sprechzeitgruppe) =>
 /** „Mo, Di" */
 export const tageKurz = (g: Sprechzeitgruppe) => g.tage.join(", ");
 
-/** „08:00 – 13:00 · 14:00 – 17:30" */
-export const zeitenLang = (g: Sprechzeitgruppe) => g.zeiten.map(([v, b]) => `${v} – ${b}`).join(" · ");
+/** „08:00 – 13:00 · 14:00 – 18:30", „08:00 – 12:00 · nachmittags nach Vereinbarung" */
+export const zeitenLang = (g: Sprechzeitgruppe) =>
+  [...g.zeiten.map(([v, b]) => `${v} – ${b}`), ...(g.vereinbarung ? ["nachmittags nach Vereinbarung"] : [])].join(
+    " · ",
+  );
 
-/** „8:00–13:00 und 14:00–17:30" */
+/** „8:00–13:00 und 14:00–18:30", „8:00–12:00, nachmittags nach Vereinbarung" */
 export const zeitenKurz = (g: Sprechzeitgruppe) =>
-  g.zeiten.map(([v, b]) => `${v.replace(/^0/, "")}–${b.replace(/^0/, "")}`).join(" und ");
+  g.zeiten.map(([v, b]) => `${v.replace(/^0/, "")}–${b.replace(/^0/, "")}`).join(" und ") +
+  (g.vereinbarung ? ", nachmittags nach Vereinbarung" : "");
 
 /** Für JSON-LD (schema.org OpeningHoursSpecification). */
 export const schemaTage = (g: Sprechzeitgruppe) => g.tage.map((t) => TAGNAME[t].schema);

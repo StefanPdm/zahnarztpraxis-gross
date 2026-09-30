@@ -45,7 +45,7 @@ function Pflicht() {
   Sprechzeiten und Schließtage kommen als Props von der Startseite (Server):
   lib/praxis.ts gehört nicht in eine Client-Datei (CLAUDE.md).
 */
-export default function TerminFormular({ plan, schliesstage }: Sprechzeitregeln) {
+export default function TerminFormular({ plan, schliesstage, nachVereinbarung }: Sprechzeitregeln) {
   const bereit = useSyncExternalStore(nichts, () => true, () => false);
   // Frühestes Wunschdatum: morgen. Erst im Browser bekannt — die Seite ist
   // statisch gebaut, das Datum beim Bauen wäre längst veraltet. Bis dahin
@@ -63,7 +63,7 @@ export default function TerminFormular({ plan, schliesstage }: Sprechzeitregeln)
     Ein leeres Feld meldet nichts; ob Wunschtermin 1 fehlt, regelt `required`.
   */
   function pruefeTermine(f: HTMLFormElement) {
-    const regeln = { plan, schliesstage };
+    const regeln = { plan, schliesstage, nachVereinbarung };
     const feld = (name: string) => f.elements.namedItem(name) as HTMLInputElement;
     const neu: Record<string, string> = {};
     for (const name of ["termin1", "termin2"]) {

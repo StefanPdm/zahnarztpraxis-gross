@@ -1,4 +1,4 @@
-import { istFeiertag, KURZTAGE, TAGNAMEN, type Wochenplan } from "@/lib/oeffnungsstatus";
+import { istFeiertag, KURZTAGE, TAGNAMEN, type Kurztag, type Wochenplan } from "@/lib/oeffnungsstatus";
 
 /**
  * Wunschtermine im Formular: nur Tage, an denen die Praxis Sprechstunde hat.
@@ -8,7 +8,8 @@ import { istFeiertag, KURZTAGE, TAGNAMEN, type Wochenplan } from "@/lib/oeffnung
  *   Beschwerden verweist das Formular aufs Telefon.
  * - kein Wochenende, kein gesetzlicher Feiertag in Brandenburg, keine
  *   Betriebsferien (`schliesstage` in lib/praxis.ts)
- * - „Nachmittag" nur an Tagen mit Nachmittagssprechstunde
+ * - „Nachmittag" nur an Tagen mit Nachmittagssprechstunde oder mit
+ *   Nachmittag nach Vereinbarung
  *
  * Das Datumsfeld des Browsers kann nur einen frühesten Tag sperren (`min`),
  * keine einzelnen Tage. Ein gesperrter Tag lässt sich also auswählen — das
@@ -20,7 +21,12 @@ import { istFeiertag, KURZTAGE, TAGNAMEN, type Wochenplan } from "@/lib/oeffnung
  * über eine Server-Komponente) — diese Datei darf in eine Client-Komponente.
  */
 
-export type Sprechzeitregeln = { plan: Wochenplan; schliesstage: readonly string[] };
+export type Sprechzeitregeln = {
+  plan: Wochenplan;
+  schliesstage: readonly string[];
+  /** Tage, an denen nachmittags nach Vereinbarung behandelt wird. */
+  nachVereinbarung?: readonly Kurztag[];
+};
 
 export type Wunschterminfehler =
   | "ungueltig"
@@ -92,10 +98,15 @@ function hatNachmittag(plan: Wochenplan, tag: number): boolean {
   return (plan[KURZTAGE[tag]] ?? []).some(([, bis]) => bis > "13:00");
 }
 
-/** „montags und dienstags" — aus dem Plan, damit der Text nie veraltet. */
-function nachmittagsTage(plan: Wochenplan): string {
-  const tage = [1, 2, 3, 4, 5].filter((t) => hatNachmittag(plan, t)).map((t) => `${TAGNAMEN[t].toLowerCase()}s`);
-  return tage.length > 1 ? `${tage.slice(0, -1).join(", ")} und ${tage.at(-1)}` : (tage[0] ?? "");
+/** Nachmittag mit Sprechstunde oder nach Vereinbarung? */
+function nachmittagMoeglich({ plan, nachVereinbarung = [] }: Sprechzeitregeln, tag: number): boolean {
+  return hatNachmittag(plan, tag) || nachVereinbarung.includes(KURZTAGE[tag]);
+}
+
+/** „montags, dienstags und donnerstags" — aus dem Plan, damit der Text nie veraltet. */
+function aufzaehlung(tage: number[]): string {
+  const namen = tage.map((t) => `${TAGNAMEN[t].toLowerCase()}s`);
+  return namen.length > 1 ? `${namen.slice(0, -1).join(", ")} und ${namen.at(-1)}` : (namen[0] ?? "");
 }
 
 /**
@@ -110,10 +121,15 @@ export function pruefeTageszeit(
   jetzt: Date = new Date(),
 ): string | null {
   if (tageszeit !== "Nachmittag") return null;
-  const ohne = termine.filter((w) => w && !pruefeWunschtermin(w, regeln, jetzt) && !hatNachmittag(regeln.plan, wochentag(w)!));
+  const ohne = termine.filter(
+    (w) => w && !pruefeWunschtermin(w, regeln, jetzt) && !nachmittagMoeglich(regeln, wochentag(w)!),
+  );
   if (!ohne.length) return null;
-  const tage = nachmittagsTage(regeln.plan);
-  return tage
-    ? `Nachmittags ist die Praxis nur ${tage} geöffnet. Bitte wählen Sie „Vormittag“ oder einen passenden Tag.`
+  const werktage = [1, 2, 3, 4, 5];
+  const offen = aufzaehlung(werktage.filter((t) => hatNachmittag(regeln.plan, t)));
+  const vereinbart = aufzaehlung(werktage.filter((t) => !hatNachmittag(regeln.plan, t) && nachmittagMoeglich(regeln, t)));
+  const zusatz = vereinbart ? `, ${vereinbart} nach Vereinbarung` : "";
+  return offen
+    ? `Nachmittags ist die Praxis nur ${offen} geöffnet${zusatz}. Bitte wählen Sie „Vormittag“ oder einen passenden Tag.`
     : `Nachmittags hat die Praxis keine Sprechstunde. Bitte wählen Sie „Vormittag“.`;
 }

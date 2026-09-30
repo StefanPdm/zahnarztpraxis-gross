@@ -13,7 +13,7 @@ import strukturierteDaten from './jsonld.json';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import TerminFormular from '@/components/TerminFormular';
-import { schliesstage, sprechzeiten } from '@/lib/praxis';
+import { nachmittagNachVereinbarung, schliesstage, sprechzeiten } from '@/lib/praxis';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
 import { ausbildung } from '@/lib/ausbildung';
@@ -1764,6 +1764,7 @@ export default function Index() {
               <TerminFormular
                 plan={sprechzeiten}
                 schliesstage={schliesstage}
+                nachVereinbarung={nachmittagNachVereinbarung}
               />
             </div>
             <div

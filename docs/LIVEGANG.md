@@ -264,7 +264,8 @@ curl -sI https://zahnmedizin-potsdam.de/zahnarztpraxis-gross-potsdam/ | grep -i 
 - [ ] **Google-Unternehmensprofil** (business.google.com):
   - [ ] Website: `https://www.zahnmedizin-potsdam.de`
   - [ ] Sprechzeiten mit `lib/praxis.ts` abgleichen. Mo/Di 8–13 und
-        14–17:30, Mi 8–13, Do/Fr 8–12.
+        14–18:30, Mi 8–13, Do 8–14, Fr 8–12 (nachmittags nach
+        Vereinbarung).
   - [ ] Terminlink: `https://www.zahnmedizin-potsdam.de/#termin`
 - [ ] **Facebook-Seite** der Praxis: Website-Link prüfen.
 
