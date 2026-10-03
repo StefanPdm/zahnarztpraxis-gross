@@ -223,7 +223,10 @@ export default function Index() {
                   }}>
                   Praxis für ästhetische Zahnmedizin &amp; Implantologie
                 </div>
+                {/* aria-label: Das bewegte „s" (.glanz__ruck) ist ein eigenes
+                    inline-block — Screenreader läsen sonst „Präzi s e". */}
                 <h1
+                  aria-label='Ruhig behandeln. Präzise arbeiten.'
                   style={{
                     fontWeight: '400',
                     fontSize: 'clamp(48px,8.4vw,124px)',
@@ -235,7 +238,7 @@ export default function Index() {
                   Ruhig behandeln.
                   <br />
                   <span className='glanz' style={{ fontStyle: 'italic' }}>
-                    Präzise&nbsp;
+                    Präzi<span className='glanz__ruck'>s</span>e&nbsp;
                   </span>
                   arbeiten.
                 </h1>
