@@ -125,7 +125,7 @@ export default function Prophylaxe() {
           </div>
         </div>
       </div>
-      <div style={{ padding: '0 64px 96px' }}>
+      <div className='abschnitt-unten'>
         <div className='ueberzeile'>Ein Termin, fünf Schritte</div>
         <h2 className='titel-2 breite-26'>Was bei der Reinigung passiert.</h2>
         <div

@@ -39,7 +39,7 @@ export default function Kontakt() {
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
-        <div style={{ padding: '44px 64px 44px 64px' }}>
+        <div className='abschnitt abschnitt--eng'>
           <div className='ueberzeile'>Telefon</div>
           <p style={{ fontFamily: 'var(--font-heading)', fontSize: '30px', margin: '14px 0 0' }}>
             <a
@@ -58,7 +58,7 @@ export default function Kontakt() {
             Telefax 0331 5811 3230
           </p>
         </div>
-        <div style={{ padding: '44px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+        <div className='abschnitt abschnitt--eng abschnitt--linie'>
           <div className='ueberzeile'>E-Mail</div>
           <p
             style={{
@@ -69,7 +69,7 @@ export default function Kontakt() {
             <a href={`mailto:${praxis.email}`}>{praxis.email}</a>
           </p>
         </div>
-        <div style={{ padding: '44px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+        <div className='abschnitt abschnitt--eng abschnitt--linie'>
           <div className='ueberzeile'>Adresse</div>
           <p
             style={{
@@ -90,7 +90,7 @@ export default function Kontakt() {
           gridTemplateColumns: '1fr 1fr',
           borderBottom: '1px solid var(--color-divider)',
         }}>
-        <div style={{ padding: '70px 64px' }}>
+        <div className='abschnitt abschnitt--knapp'>
           <div className='ueberzeile'>Öffnungszeiten</div>
           <Sprechzeiten />
           <p style={{ fontSize: '13px', color: 'var(--color-neutral-700)', marginTop: '16px' }}>
@@ -98,7 +98,7 @@ export default function Kontakt() {
             Wartezimmer.
           </p>
         </div>
-        <div style={{ padding: '70px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+        <div className='abschnitt abschnitt--knapp abschnitt--linie'>
           <div className='ueberzeile'>Anfahrt &amp; Parken</div>
           <p
             style={{

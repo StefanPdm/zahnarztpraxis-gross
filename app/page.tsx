@@ -471,7 +471,7 @@ export default function Index() {
               </figcaption>
             </figure>
           </div>
-          <div style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
+          <div className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
               style={{
@@ -943,7 +943,7 @@ export default function Index() {
           </div>
           <div
             id='1b-leistungen'
-            style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
+            className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
               style={{
@@ -1570,7 +1570,7 @@ export default function Index() {
               </figcaption>
             </figure>
           </div>
-          <div style={{ padding: '116px 64px', borderBottom: '1px solid var(--color-divider)' }}>
+          <div className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
               style={{
@@ -1832,8 +1832,7 @@ export default function Index() {
             {/* Nur mobil — auf dem Desktop stehen die Öffnungszeiten in der
                 Terminsektion, und „Anfahrt & Parken“ nimmt die ganze Breite. */}
             <div
-              className='nur-mobil'
-              style={{ padding: '104px 64px' }}>
+              className='nur-mobil abschnitt abschnitt--band'>
               <div className='ueberzeile'>Öffnungszeiten</div>
               <Sprechzeiten />
               <p style={{ fontSize: '13px', color: 'var(--color-neutral-700)', marginTop: '16px' }}>
@@ -1841,8 +1840,7 @@ export default function Index() {
               </p>
             </div>
             <div
-              className='kontakt-anfahrt'
-              style={{ padding: '104px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+              className='kontakt-anfahrt abschnitt abschnitt--band abschnitt--linie'>
               <div className='anfahrt-text'>
                 <div className='ueberzeile'>Anfahrt &amp; Parken</div>
                 <div

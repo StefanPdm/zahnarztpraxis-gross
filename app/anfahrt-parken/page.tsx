@@ -171,7 +171,7 @@ export default function AnfahrtParken() {
             </span>
           </div>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+        <div className="abschnitt abschnitt--linie abschnitt--flaeche">
           <div className="ueberzeile">
             Mit dem Auto
           </div>

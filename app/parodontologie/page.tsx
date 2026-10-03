@@ -66,7 +66,7 @@ export default function Parodontologie() {
           </div>
         </div>
       </div>
-      <div style={{ padding: "0 64px 96px" }}>
+      <div className="abschnitt-unten">
         <div className="ueberzeile">
           Warnzeichen
         </div>

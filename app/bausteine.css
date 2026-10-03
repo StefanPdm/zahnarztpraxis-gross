@@ -40,6 +40,28 @@
 @media (max-width: 640px) {
   .abschnitt { padding-top: 40px; padding-bottom: 40px; }
 }
+/* Weitere Höhen des Designs. Die Mobilwerte sind die, die site.css über den
+   Style-Text vergab (Abschnitt 7) — darum setzen sie oben und unten neu,
+   auch wo die Desktop-Fassung unten anders endet. Stehen nach den
+   Media-Queries von .abschnitt, damit sie dessen Mobilwerte überschreiben. */
+.abschnitt--weit { padding: 116px var(--rand); }
+.abschnitt--band { padding: 104px var(--rand); }
+.abschnitt--knapp { padding: 70px var(--rand); }
+.abschnitt--eng { padding: 44px var(--rand); } /* mobil unverändert */
+.abschnitt--linie-unten { border-bottom: 1px solid var(--color-divider); }
+.abschnitt--flaeche { background: var(--color-surface); }
+/* Fortsetzung eines Abschnitts ohne eigenen Kopfabstand. */
+.abschnitt-unten { padding: 0 var(--rand) 96px; }
+@media (max-width: 1000px) {
+  .abschnitt--weit,
+  .abschnitt--band { padding-top: 52px; padding-bottom: 36px; }
+  .abschnitt--knapp { padding-top: 44px; padding-bottom: 44px; }
+}
+@media (max-width: 640px) {
+  .abschnitt--weit { padding-top: 42px; padding-bottom: 42px; }
+  .abschnitt--band { padding-top: 36px; padding-bottom: 36px; }
+  .abschnitt--knapp { padding-top: 34px; padding-bottom: 34px; }
+}
 
 /* ── Fließtext ─────────────────────────────────────────────────────────────
    Blocksatz mit Silbentrennung; mobil linksbündig (schmale Spalten

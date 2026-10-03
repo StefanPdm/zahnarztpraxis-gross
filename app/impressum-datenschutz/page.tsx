@@ -125,7 +125,7 @@ export default function ImpressumDatenschutz() {
           gridTemplateColumns: '1fr 1fr',
           borderBottom: '1px solid var(--color-divider)',
         }}>
-        <div style={{ padding: '70px 64px' }}>
+        <div className='abschnitt abschnitt--knapp'>
           <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h3-xl)', margin: '0 0 24px' }}>
             Impressum
           </h2>
@@ -169,7 +169,7 @@ export default function ImpressumDatenschutz() {
             <span>Chantal Groß und Matthias Groß, Anschrift wie oben</span>
           </div>
         </div>
-        <div style={{ padding: '70px 64px', borderLeft: '1px solid var(--color-divider)' }}>
+        <div className='abschnitt abschnitt--knapp abschnitt--linie'>
           <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h3-xl)', margin: '0 0 24px' }}>
             Haftung &amp; Urheberrecht
           </h2>
@@ -202,11 +202,7 @@ export default function ImpressumDatenschutz() {
       </div>
       <div
         id='datenschutz'
-        style={{
-          padding: '80px 64px',
-          background: 'var(--color-surface)',
-          borderBottom: '1px solid var(--color-divider)',
-        }}>
+        className='abschnitt abschnitt--flaeche abschnitt--linie-unten'>
         <div
           style={{
             display: 'grid',

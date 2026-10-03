@@ -124,7 +124,7 @@ export default async function GoogleBewertungen() {
   const anzahl = ergebnis?.user_ratings_total;
 
   return (
-    <div style={{ padding: "116px 64px", borderBottom: "1px solid var(--color-divider)" }}>
+    <div className="abschnitt abschnitt--weit abschnitt--linie-unten">
       <div
         style={{
           display: "flex",

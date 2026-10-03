@@ -695,11 +695,7 @@ export default function PraxisTeam() {
         </figure>
       </div>
       <div
-        style={{
-          padding: '80px 64px',
-          borderBottom: '1px solid var(--color-divider)',
-          background: 'var(--color-surface)',
-        }}>
+        className='abschnitt abschnitt--flaeche abschnitt--linie-unten'>
         <div className='ueberzeile'>Das Praxisteam</div>
         <h2
           style={{

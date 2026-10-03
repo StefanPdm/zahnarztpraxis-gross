@@ -3,7 +3,7 @@ import { praxis } from "@/lib/praxis";
 
 export default function NichtGefunden() {
   return (
-    <div style={{ padding: "116px 64px", borderBottom: "1px solid var(--color-divider)" }}>
+    <div className="abschnitt abschnitt--weit abschnitt--linie-unten">
       <div
         style={{
           fontFamily: "var(--font-ui)",

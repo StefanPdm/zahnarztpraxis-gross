@@ -206,7 +206,7 @@ export default function ModerneTechnik() {
             Bei Weisheitszähnen zum Beispiel entscheidet die Lage im Kiefer darüber, ob und wie entfernt wird — das sieht man nicht von außen.
           </p>
         </div>
-        <div style={{ padding: "80px 64px", borderLeft: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+        <div className="abschnitt abschnitt--linie abschnitt--flaeche">
           <div className="ueberzeile">
             Am Behandlungsstuhl
           </div>

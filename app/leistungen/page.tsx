@@ -59,7 +59,7 @@ export default function Leistungen() {
           </g>
         </svg>
       </div>
-      <div id="behandlungen" style={{ padding: "80px 64px", borderBottom: "1px solid var(--color-divider)" }}>
+      <div id="behandlungen" className="abschnitt abschnitt--linie-unten">
         <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "52px" }}>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>
             Zahnbehandlungen
@@ -118,7 +118,7 @@ export default function Leistungen() {
           <Bild src="/images/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor mit Gipsmodellen und Zahnfarbmustern" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
       </div>
-      <div style={{ padding: "80px 64px", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="abschnitt abschnitt--linie-unten">
         <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "44px" }}>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>
             Wie eine Behandlung abläuft
