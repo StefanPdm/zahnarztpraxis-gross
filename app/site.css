@@ -597,9 +597,13 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
     object-fit: cover;
     max-height: none !important;
   }
+  /* width: 100 % — ohne sie leitet der Browser die Breite aus der Höhe ab
+     (Inhaltshöhe × 3/4), und die Karte ragte bei 390 px um 22 px über den
+     Rand: Die ganze Seite ließ sich seitlich verschieben. */
   body .flipcard {
     height: auto !important;
     aspect-ratio: 3 / 4;
+    width: 100%;
     max-width: 420px;
     margin-inline: auto;
   }
@@ -857,6 +861,20 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
   [style*="display: flex"][style*="gap:14px"] ,
   [style*="display:flex"][style*="gap: 14px"] ,
   [style*="display:flex"][style*="gap:14px"] { flex-wrap: wrap; }
+  /* Porträtkarte: Auf dem Desktop liegt die Rückseite absolut über der
+     Karte. Schmal wird der Werdegang höher als das Porträt und liefe unten
+     über den Rand. Darum hier umgekehrt: Die Rückseite bleibt im Fluss und
+     bestimmt die Höhe, das Porträt liegt absolut darunter und füllt sie.
+     Das Seitenverhältnis sitzt dafür innen: Ein Block mit aspect-ratio
+     wächst mit seinem Inhalt, 3 : 4 bleibt Mindestmaß. Auf der Karte selbst
+     ginge das nicht — dort deckelt max-width × 4/3 die Höhe (560 px). */
+  body .flipcard { aspect-ratio: auto; }
+  body .flipinner { height: auto !important; aspect-ratio: 3 / 4; }
+  body .flipinner > .portraitframe { position: absolute; inset: 0; height: auto !important; }
+  body .flipback { position: relative; inset: auto; }
+  /* Der Öffnungsstatus läuft sonst in einer Zeile weiter: „Geschlossen ·
+     wieder am Montag ab 8:00" ist bei 360 px breiter als die Spalte. */
+  body .offen-status { white-space: normal; }
   .ai-badge { right: 8px; bottom: 8px; padding: 4px 7px; }
   .ai-badge img { width: 64px; }
   body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr !important; }

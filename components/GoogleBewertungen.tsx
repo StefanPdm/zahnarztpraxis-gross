@@ -130,7 +130,8 @@ export default async function GoogleBewertungen() {
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-between",
-          gap: "24px",
+          flexWrap: "wrap",
+          gap: "16px 24px",
           marginBottom: "44px",
         }}
       >
