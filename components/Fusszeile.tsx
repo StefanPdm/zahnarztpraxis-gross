@@ -7,8 +7,8 @@ import { praxis } from "@/lib/praxis";
 
 export default function Fusszeile() {
   return (
-      <footer style={{ borderTop: "1px solid var(--color-divider)", padding: "64px 64px 0px", fontSize: "14px", lineHeight: "1.7", color: "var(--color-neutral-800)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1.15fr", gap: "40px 48px" }}>
+      <footer className="fusszeile">
+        <div className="fusszeile__spalten">
           <div>
             <span style={{ display: "flex", alignItems: "center", fontFamily: "var(--font-ui)", fontWeight: "500", fontSize: "34px", lineHeight: "0.86", color: "var(--color-accent-700)" }}>
               <span style={{ display: "block", transform: "scaleX(-1)", marginRight: "-0.3em" }}>

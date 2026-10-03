@@ -73,10 +73,10 @@ export default function Parodontologie() {
         <h2 className="titel-2 breite-26">
           Sechs Anzeichen, die Sie ernst nehmen sollten.
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "36px 0 0", borderTop: "1px solid var(--color-divider)" }}>
+        <div className="spalten spalten--2" style={{ margin: "36px 0 0", borderTop: "1px solid var(--color-divider)", "--abstand": "0 56px" }}>
           {zeichen.map((z, zI) => (
             <Fragment key={zI}>
-              <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
+              <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "4px" }}>
                   <path d="M12 9v4M12 17h.01M10.3 3.9L2.6 17a1.6 1.6 0 001.4 2.4h16a1.6 1.6 0 001.4-2.4L13.7 3.9a1.6 1.6 0 00-2.8 0z" />
                 </svg>
@@ -91,7 +91,7 @@ export default function Parodontologie() {
           Eines dieser Zeichen genügt für einen Termin. Je früher wir schauen, desto weniger muss behandelt werden — verlorener Kieferknochen wächst nicht zurück.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Die Behandlung
@@ -105,7 +105,7 @@ export default function Parodontologie() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {ablauf.map((a, aI) => (
               <Fragment key={aI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'", paddingTop: "4px" }}>
                     {a.no}
                   </span>
@@ -130,7 +130,7 @@ export default function Parodontologie() {
           </span>
         </figure>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Laserunterstützt
@@ -166,7 +166,7 @@ export default function Parodontologie() {
           </p>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1fr 1.05fr" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "460px", margin: "0" }}>
           <Bild className="parallax-img" src="/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß Potsdam" />
         </figure>

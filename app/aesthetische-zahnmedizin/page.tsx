@@ -55,7 +55,7 @@ export default function AesthetischeZahnmedizin() {
           </div>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Unsere Haltung
@@ -124,7 +124,7 @@ export default function AesthetischeZahnmedizin() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
           <Bild className="parallax-img" src="/images/Zahnlabor.jpg" alt="Zahnfarbmuster und Modelle im praxiseigenen Zahnlabor" />
         </figure>

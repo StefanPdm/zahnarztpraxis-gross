@@ -314,7 +314,8 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
         const name = e.target instanceof HTMLInputElement ? e.target.name : "";
         if (/^(termin|tageszeit)[12]$/.test(name)) pruefeTermine(e.currentTarget);
       }}
-      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+      className='spalten spalten--2'
+      style={{ '--abstand': '20px' }}>
       <div className='field'>
         <label htmlFor='t-name'>
           Name <Pflicht />

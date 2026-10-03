@@ -129,11 +129,11 @@ export default function Prophylaxe() {
         <div className='ueberzeile'>Ein Termin, fünf Schritte</div>
         <h2 className='titel-2 breite-26'>Was bei der Reinigung passiert.</h2>
         <div
+          className='spalten'
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5,1fr)',
             margin: '40px 0 0',
             borderTop: '1px solid var(--color-divider)',
+            '--spalten': 'repeat(5,1fr)',
           }}>
           {schritte.map((s, sI) => (
             <Fragment key={sI}>
@@ -175,12 +175,12 @@ export default function Prophylaxe() {
         </div>
       </div>
       <div
+        className='spalten'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1.05fr 1fr',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
+          '--spalten': '1.05fr 1fr',
         }}>
         <div className='abschnitt'>
           <div className='ueberzeile'>Der Rhythmus</div>
@@ -263,9 +263,8 @@ export default function Prophylaxe() {
         </figure>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         <div className='abschnitt'>
@@ -341,12 +340,12 @@ export default function Prophylaxe() {
         ))}
       </div>
       <div
+        className='spalten'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.05fr',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
+          '--spalten': '1fr 1.05fr',
         }}>
         <figure
           style={{ position: 'relative', overflow: 'hidden', minHeight: '460px', margin: '0' }}>

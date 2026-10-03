@@ -55,7 +55,7 @@ export default function Zahnschmerzen() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center", padding: "70px 64px", background: "var(--ink-dark)", color: "var(--papier)" }}>
+      <div className="spalten" style={{ alignItems: "center", padding: "70px 64px", background: "var(--ink-dark)", color: "var(--papier)", "--spalten": "1.1fr 1fr", "--abstand": "56px" }}>
         <div>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
             Akute Zahnschmerzen
@@ -79,7 +79,7 @@ export default function Zahnschmerzen() {
           <div style={{ display: "grid", gap: "10px", paddingTop: "18px", borderTop: "1px solid rgba(182,130,53,0.35)", fontSize: "14.5px", color: "rgba(243,242,242,0.78)" }}>
             {zeiten.map((z, zI) => (
               <Fragment key={zI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px" }}>
                   <span style={{ minWidth: "74px", fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-accent-400)", paddingTop: "2px" }}>
                     {z.tag}
                   </span>
@@ -153,7 +153,7 @@ export default function Zahnschmerzen() {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Woran es liegen kann
@@ -167,7 +167,7 @@ export default function Zahnschmerzen() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {ursachen.map((u, uI) => (
               <Fragment key={uI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <span style={{ minWidth: "118px", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "5px", whiteSpace: "nowrap" }}>
                     {u.dringend}
                   </span>
@@ -222,7 +222,7 @@ export default function Zahnschmerzen() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Auch wenn Sie Angst haben

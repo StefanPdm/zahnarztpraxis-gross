@@ -170,7 +170,7 @@ export default async function GoogleBewertungen() {
         </a>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "36px" }}>
+      <div className="spalten spalten--4" style={{ "--abstand": "36px" }}>
         {bewertungen.slice(0, 4).map((b, i) => (
           <div
             key={i}

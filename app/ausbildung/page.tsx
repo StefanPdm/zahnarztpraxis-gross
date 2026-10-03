@@ -238,10 +238,8 @@ export default function Ausbildung() {
         </figcaption>
       </figure>
       <div
-        className='statbar'
+        className='statbar spalten spalten--4'
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4,1fr)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         {zahlen.map((z, zI) => (
@@ -284,16 +282,16 @@ export default function Ausbildung() {
         <h2 className='titel-2 breite-26'>Fünf Bereiche, kein Schubladendenken.</h2>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '0 56px',
           margin: '40px var(--rand) 96px',
           borderTop: '1px solid var(--color-divider)',
+          '--abstand': '0 56px',
         }}>
         {lernen.map((l, lI) => (
           <Fragment key={lI}>
             <div
+              className='paar'
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr',
@@ -328,14 +326,13 @@ export default function Ausbildung() {
         ))}
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           alignItems: 'start',
           padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
+          '--abstand': '64px',
         }}>
         <div>
           <div className='ueberzeile'>Warum hier</div>
@@ -368,13 +365,12 @@ export default function Ausbildung() {
         </div>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           alignItems: 'start',
           padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
+          '--abstand': '64px',
         }}>
         <div>
           <div className='ueberzeile'>Das bringst du mit</div>
@@ -406,13 +402,12 @@ export default function Ausbildung() {
         derzeit auf dem Tag vor Ausbildungsbeginn) · Instagram oder Facebook, falls vorhanden.
       </div> */}
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           alignItems: 'start',
           padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
+          '--abstand': '64px',
         }}>
         <div>
           <div className='ueberzeile'>So bewirbst du dich</div>

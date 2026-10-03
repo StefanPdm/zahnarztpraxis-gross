@@ -23,13 +23,13 @@ export default function Sprechzeiten() {
         {sprechzeitGruppen().map((g) => (
           <div
             key={g.tage.join()}
+            className="spalten"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto",
-              gap: "20px",
               alignItems: "baseline",
               padding: "13px 0",
               borderBottom: "1px solid var(--color-divider)",
+              "--spalten": "1fr auto",
+              "--abstand": "20px",
             }}
           >
             <dt style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-body)", margin: "0" }}>

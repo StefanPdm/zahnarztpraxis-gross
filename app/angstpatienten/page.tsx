@@ -67,7 +67,7 @@ export default function Angstpatienten() {
           </div>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Der erste Termin
@@ -92,7 +92,7 @@ export default function Angstpatienten() {
           <Bild vorrang className="parallax-img" src="/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start", padding: "96px 64px", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ alignItems: "start", padding: "96px 64px", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Sagen Sie uns, wo Sie stehen
@@ -120,10 +120,10 @@ export default function Angstpatienten() {
           Sieben Zusagen, die im Behandlungszimmer gelten.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", margin: "0 64px 96px" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", margin: "0 64px 96px" }}>
         {zusagen.map((z, zI) => (
           <Fragment key={zI}>
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "30px 34px 30px 0", borderBottom: "1px solid var(--color-divider)" }}>
+            <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "30px 34px 30px 0", borderBottom: "1px solid var(--color-divider)" }}>
               <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'", paddingTop: "5px" }}>
                 {z.no}
               </span>
@@ -139,7 +139,7 @@ export default function Angstpatienten() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1fr 1.1fr" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "520px" }}>
           <Bild className="parallax-img" src="/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg" alt="Behandlungszimmer mit Monitor über dem Behandlungsstuhl" />
         </div>
@@ -187,7 +187,7 @@ export default function Angstpatienten() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Ablenkung

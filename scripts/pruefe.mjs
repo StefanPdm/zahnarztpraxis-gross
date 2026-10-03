@@ -77,7 +77,7 @@ for (const d of [...dateien("app", /\.tsx$/), ...dateien("components", /\.tsx$/)
    nach in Bausteine überführt (CLAUDE.md, „Inline-Styles und Bausteine");
    neuer Code verwendet nur Klassen und Tokens. Wer Inline-Styles abbaut,
    senkt OBERGRENZE auf den neuen Stand — erhöht wird sie nicht. */
-const OBERGRENZE_INLINE_STYLES = 760;
+const OBERGRENZE_INLINE_STYLES = 758;
 const inlineStyles = [...dateien("app", /.tsx$/), ...dateien("components", /.tsx$/)].reduce(
   (summe, d) => summe + (lies(d).match(/style={{/g)?.length ?? 0),
   0,

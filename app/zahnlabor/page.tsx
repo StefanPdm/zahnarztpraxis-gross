@@ -80,7 +80,7 @@ export default function Zahnlabor() {
           Der Labortisch · eine Tür neben dem Behandlungszimmer
         </figcaption>
       </figure>
-      <div className="statbar" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="statbar spalten spalten--4" style={{ borderBottom: "1px solid var(--color-divider)" }}>
         {proof.map((p, pI) => (
           <Fragment key={pI}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center", borderLeft: "1px solid var(--color-divider)" }}>
@@ -105,7 +105,7 @@ export default function Zahnlabor() {
       <div className="raster raster--2 raster--spalten-56 raster--linie">
         {vorteile.map((v, vI) => (
           <Fragment key={vI}>
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "26px 0", borderBottom: "1px solid var(--color-divider)" }}>
+            <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "26px 0", borderBottom: "1px solid var(--color-divider)" }}>
               <span style={{ fontFamily: "var(--font-heading)", fontSize: "15px", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'", paddingTop: "5px" }}>
                 {v.no}
               </span>
@@ -121,7 +121,7 @@ export default function Zahnlabor() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Handwerk und Digitaltechnik
@@ -177,7 +177,7 @@ export default function Zahnlabor() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "480px" }}>
           <Bild className="parallax-img" src="/images/photos-1786974461834-65xv.jpg" alt="Behandlungszimmer mit Arbeitsfläche in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>

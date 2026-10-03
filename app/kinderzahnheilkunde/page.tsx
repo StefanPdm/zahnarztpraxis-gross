@@ -38,7 +38,7 @@ export default function Kinderzahnheilkunde() {
       <JsonLd daten={strukturierteDaten} />
       <Grosselino />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: "56px", alignItems: "center", padding: "80px 64px 70px", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ alignItems: "center", padding: "80px 64px 70px", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1.15fr 1fr", "--abstand": "56px" }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true">
@@ -106,7 +106,7 @@ export default function Kinderzahnheilkunde() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Der erste Besuch
@@ -141,10 +141,10 @@ export default function Kinderzahnheilkunde() {
         <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "20px 0 0", maxWidth: "62ch" }}>
           Eine individuelle Prophylaxe ist auch bei Kindern äußerst wichtig — damit sich karies- und parodontitisverursachende Bakterien gar nicht erst im Mundraum einnisten. Diese vier Bausteine beugen schon bei den kleinsten Patienten Karies und Entzündungen vor und schaffen die Voraussetzung für dauerhafte Mundgesundheit.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "36px 0 0", paddingBottom: "20px" }}>
+        <div className="spalten spalten--2" style={{ margin: "36px 0 0", paddingBottom: "20px", "--abstand": "0 56px" }}>
           {prophylaxe.map((p, pI) => (
             <Fragment key={pI}>
-              <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "24px 0", borderTop: "1px solid var(--color-accent-200)" }}>
+              <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "24px 0", borderTop: "1px solid var(--color-accent-200)" }}>
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "5px" }}>
                   <path d={p.icon} />
                 </svg>
@@ -161,7 +161,7 @@ export default function Kinderzahnheilkunde() {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         {/* Kein Parallax-Rahmen: die Figur steht rechts im Bild, der Überstand
             von 140 % würde sie anschneiden. Der Ausschnitt liegt deshalb
             rechts, links bleibt die helle Fläche. */}

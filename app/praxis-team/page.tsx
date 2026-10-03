@@ -177,12 +177,11 @@ export default function PraxisTeam() {
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           alignItems: 'end',
           padding: '96px 64px 56px',
+          '--abstand': '64px',
         }}>
         <div>
           <div className='ueberzeile'>Praxis &amp; Team</div>
@@ -214,10 +213,8 @@ export default function PraxisTeam() {
         </div>
       </div>
       <div
-        className='statbar'
+        className='statbar spalten spalten--4'
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4,1fr)',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
@@ -274,12 +271,11 @@ export default function PraxisTeam() {
         </p>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           margin: '40px 64px 0',
           paddingBottom: '96px',
+          '--abstand': '64px',
         }}>
         {team.map((m, mI) => (
           <Fragment key={mI}>
@@ -544,9 +540,8 @@ export default function PraxisTeam() {
         ))}
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
@@ -710,11 +705,10 @@ export default function PraxisTeam() {
           — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
         </p>
         <div
+          className='spalten spalten--3'
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-            gap: '0 48px',
             margin: '40px 0 0',
+            '--abstand': '0 48px',
           }}>
           {personal.map((p, pI) => (
             <Fragment key={pI}>
@@ -768,15 +762,15 @@ export default function PraxisTeam() {
           deshalb steht der Hinweis auf den Ausbildungsplatz direkt unter
           dem Praxisteam und nicht in der Patientennavigation. */}
       <div
+        className='spalten'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '56px',
           alignItems: 'center',
           padding: '48px 64px',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
+          '--spalten': '1fr auto',
+          '--abstand': '56px',
         }}>
         <div>
           <div className='ueberzeile'>Ausbildung · Start {ausbildung.beginnLang}</div>
@@ -793,9 +787,8 @@ export default function PraxisTeam() {
         </Link>
       </div>
       <div
+        className='spalten spalten--3'
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         {verweise.map((v, vI) => (

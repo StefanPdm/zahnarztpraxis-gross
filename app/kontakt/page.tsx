@@ -33,9 +33,8 @@ export default function Kontakt() {
         </p>
       </div>
       <div
+        className='spalten spalten--3'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
         }}>
@@ -85,9 +84,8 @@ export default function Kontakt() {
         </div>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         <div className='abschnitt abschnitt--knapp'>
@@ -116,6 +114,7 @@ export default function Kontakt() {
             <Link href='/anfahrt-parken'>Wegbeschreibung mit Fotos</Link>
           </p>
           <div
+            className='paar'
             style={{
               display: 'grid',
               gridTemplateColumns: 'auto 1fr',
@@ -160,12 +159,11 @@ export default function Kontakt() {
         </div>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '2px',
           background: 'var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
+          '--abstand': '2px',
         }}>
         <Bild
           className='plate'
@@ -193,13 +191,12 @@ export default function Kontakt() {
         />
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
           padding: '80px 64px',
           background: 'var(--color-surface)',
           borderBottom: '1px solid var(--color-divider)',
+          '--abstand': '64px',
         }}>
         <div>
           <div className='ueberzeile'>Akute Schmerzen</div>
@@ -223,13 +220,13 @@ export default function Kontakt() {
         </div>
       </div>
       <div
+        className='spalten'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '56px',
           alignItems: 'center',
           padding: '70px 64px',
           borderBottom: '1px solid var(--color-divider)',
+          '--spalten': '1fr auto',
+          '--abstand': '56px',
         }}>
         <div>
           <h2

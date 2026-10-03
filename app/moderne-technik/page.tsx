@@ -63,7 +63,7 @@ export default function ModerneTechnik() {
       {/* Reihenfolge nach dem Arbeitsablauf: erst der Scan, dann die
           Fertigung daraus, dann der Laser. Zugleich wechseln die Seiten —
           hier Bild links, beim Laser Text links. */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         {/* Kein Parallax-Rahmen: Bildschirm und Handstück stehen mittig und
             würden vom Überstand seitlich angeschnitten. Der Rahmen ist
             schmaler als das Bild; mit `objectPosition: 100%` liegt der
@@ -87,7 +87,7 @@ export default function ModerneTechnik() {
           <div style={{ display: "grid", gap: "0", margin: "28px 0 0", borderTop: "1px solid var(--color-divider)" }}>
             {scanVorteile.map((v, vI) => (
               <Fragment key={vI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "18px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "18px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "4px" }}>
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -139,7 +139,7 @@ export default function ModerneTechnik() {
           Modellscan und digitale Konstruktion · im eigenen Labor
         </figcaption>
       </figure>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Laserbehandlung
@@ -153,7 +153,7 @@ export default function ModerneTechnik() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {laser.map((l, lI) => (
               <Fragment key={lI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "18px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "18px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "4px" }}>
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -191,7 +191,7 @@ export default function ModerneTechnik() {
           </span>
         </figure>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Diagnostik
@@ -232,7 +232,7 @@ export default function ModerneTechnik() {
           Fortbildung, nicht nur Anschaffung.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "56px", margin: "40px 64px 96px", paddingTop: "32px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ margin: "40px 64px 96px", paddingTop: "32px", borderTop: "1px solid var(--color-divider)", "--spalten": "1fr 1.3fr", "--abstand": "56px" }}>
         <blockquote style={{ margin: "0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h4)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
           „Das beste Gerät nützt nichts, wenn niemand weiß, wann man es besser weglässt.“
           <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>

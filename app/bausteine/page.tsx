@@ -65,7 +65,7 @@ export default function Bausteine() {
       </div>
 
       <Abschnitt titel="Farben">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "12px" }}>
+        <div className="spalten" style={{ "--spalten": "repeat(auto-fill, minmax(180px, 1fr))", "--abstand": "12px" }}>
           {farben.map(([name, wert]) => (
             <div key={name} style={{ border: "1px solid var(--color-divider)", borderRadius: "var(--radius-md)", overflow: "hidden" }}>
               <div style={{ height: "56px", background: `var(${name})` }} />
@@ -80,7 +80,7 @@ export default function Bausteine() {
 
       <Abschnitt titel="Schriftgrade">
         {schriftgrade.map(([name, wert]) => (
-          <div key={name} style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: "20px", alignItems: "baseline", padding: "10px 0", borderBottom: "1px solid var(--color-divider)" }}>
+          <div key={name} className="spalten" style={{ alignItems: "baseline", padding: "10px 0", borderBottom: "1px solid var(--color-divider)", "--spalten": "220px 1fr", "--abstand": "20px" }}>
             <span>
               <Code>{name}</Code>
               <div style={{ fontSize: "12px", color: "var(--color-neutral-700)" }}>{wert}</div>
@@ -91,7 +91,7 @@ export default function Bausteine() {
       </Abschnitt>
 
       <Abschnitt titel="Abstände, Radien, Schatten, Ebenen">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "10px 24px" }}>
+        <div className="spalten" style={{ "--spalten": "repeat(auto-fill, minmax(240px, 1fr))", "--abstand": "10px 24px" }}>
           {[...formen, ...ebenen, ["--rand", "64 / 24 / 18 px (Desktop / ≤1000 / ≤640)"]].map(([name, wert]) => (
             <div key={name} style={{ padding: "8px 0", borderBottom: "1px solid var(--color-divider)", fontSize: "13px" }}>
               <Code>{name}</Code> <span style={{ color: "var(--color-neutral-700)" }}>{wert}</span>

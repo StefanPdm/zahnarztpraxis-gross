@@ -81,7 +81,7 @@ export default function WeisheitszaehneChirurgie() {
           </div>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Raus oder drin?
@@ -95,7 +95,7 @@ export default function WeisheitszaehneChirurgie() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {gruende.map((g, gI) => (
               <Fragment key={gI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: "4px" }}>
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -153,7 +153,7 @@ export default function WeisheitszaehneChirurgie() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0" }}>
           <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/nach-dem-eingriff-kuehlen-weiche-kost.jpg" alt="Kühlkissen in ein Tuch gewickelt, daneben ein Glas Wasser, weiche Kost und Mullkompressen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </figure>
@@ -170,7 +170,7 @@ export default function WeisheitszaehneChirurgie() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {danach.map((d, dI) => (
               <Fragment key={dI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "15px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", padding: "15px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <span style={{ minWidth: "80px", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "4px" }}>
                     {d.wann}
                   </span>
@@ -186,7 +186,7 @@ export default function WeisheitszaehneChirurgie() {
           </p>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten spalten--2" style={{ borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Auch chirurgisch

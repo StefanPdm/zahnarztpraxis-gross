@@ -178,6 +178,7 @@ export default function Kopfzeile() {
     <header
       ref={kopf}
       onClick={beiKlickImKopf}
+      className="paar"
       style={{
         display: "grid",
         gridTemplateColumns: "1fr auto 1fr",

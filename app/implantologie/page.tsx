@@ -74,7 +74,7 @@ export default function Implantologie() {
           </div>
         </div>
       </div>
-      <div className="statbar" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="statbar spalten spalten--4" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         {proof.map((p, pI) => (
           <Fragment key={pI}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center", borderLeft: "1px solid var(--color-divider)" }}>
@@ -116,7 +116,7 @@ export default function Implantologie() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", background: "var(--color-surface)", "--spalten": "1.05fr 1fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Was ein Implantat ist
@@ -130,7 +130,7 @@ export default function Implantologie() {
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {aufbau.map((a, aI) => (
               <Fragment key={aI}>
-                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
+                <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "20px 0", borderBottom: "1px solid var(--color-divider)" }}>
                   <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "5px" }}>
                     {a.no}
                   </span>
@@ -176,7 +176,7 @@ export default function Implantologie() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
           <Bild className="parallax-img" src="/images/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
           <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>

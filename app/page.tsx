@@ -313,12 +313,10 @@ export default function Index() {
           </div>
           <NotfallLeiste />
           <div
-            className='statbar'
+            className='statbar spalten'
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(6,1fr)',
-              gap: '0',
               borderBottom: '1px solid var(--color-divider)',
+              '--spalten': 'repeat(6,1fr)',
             }}>
             {proof.map((p, pI) => (
               <Fragment key={pI}>
@@ -405,12 +403,11 @@ export default function Index() {
             </div>
           </div>
           <div
+            className='spalten spalten--2'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '2px',
               background: 'var(--color-divider)',
               borderBottom: '1px solid var(--color-divider)',
+              '--abstand': '2px',
             }}>
             <figure style={{ margin: '0', background: 'var(--weiss)' }}>
               <Bild
@@ -474,6 +471,7 @@ export default function Index() {
           <div className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
+              className='paar'
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr',
@@ -487,8 +485,8 @@ export default function Index() {
               <span style={{ height: '1px', background: 'var(--color-divider)' }} />
             </div>
             <div
-              className='rv'
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px' }}>
+              className='rv spalten spalten--2'
+              style={{ '--abstand': '64px' }}>
               {team.map((m, mI) => (
                 <Fragment key={mI}>
                   <div>
@@ -721,12 +719,10 @@ export default function Index() {
             {/* Text und Bild beginnen auf gleicher Höhe: oben bündig mit der
                 Bildkante, nicht unten ausgerichtet. */}
             <div
-              className='rv'
+              className='rv spalten spalten--2'
               style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '56px',
                 alignItems: 'start',
+                '--abstand': '56px',
               }}>
               <div>
                 <div
@@ -783,11 +779,11 @@ export default function Index() {
               </figure>
             </div>
             <div
+              className='spalten'
               style={{
-                display: 'grid',
-                gridTemplateColumns: '1.35fr 1fr',
-                gap: '22px',
                 margin: '40px 0 0',
+                '--spalten': '1.35fr 1fr',
+                '--abstand': '22px',
               }}>
               <figure style={{ margin: '0' }}>
                 <Bild
@@ -946,6 +942,7 @@ export default function Index() {
             className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
+              className='paar'
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr auto',
@@ -964,8 +961,8 @@ export default function Index() {
               </Link>
             </div>
             <div
-              className='rv'
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '36px 44px' }}>
+              className='rv spalten spalten--4'
+              style={{ '--abstand': '36px 44px' }}>
               {services.map((s, sI) => (
                 <Fragment key={sI}>
                   <Link
@@ -1025,13 +1022,13 @@ export default function Index() {
           </div>
           <div
             id='1b-labor'
+            className='spalten'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1.1fr',
-              gap: '64px',
               alignItems: 'center',
               padding: '116px 64px',
               borderBottom: '1px solid var(--color-divider)',
+              '--spalten': '1fr 1.1fr',
+              '--abstand': '64px',
             }}>
             <div>
               <div
@@ -1055,13 +1052,11 @@ export default function Index() {
                 über Wochen und Wege zu einem externen Labor.
               </p>
               <div
-                className='labgrid'
+                className='labgrid spalten spalten--3'
                 style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  gap: '16px 28px',
                   marginTop: '28px',
                   fontSize: '14px',
+                  '--abstand': '16px 28px',
                 }}>
                 <span
                   className='labitem'
@@ -1443,11 +1438,10 @@ export default function Index() {
           </div>
           <div
             id='1b-angst'
+            className='spalten'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1.05fr',
-              gap: '0',
               borderBottom: '1px solid var(--color-divider)',
+              '--spalten': '1fr 1.05fr',
             }}>
             <div style={{ padding: '116px 64px', alignSelf: 'center' }}>
               <div
@@ -1481,7 +1475,7 @@ export default function Index() {
                 {angst.map((a, aI) => (
                   <Fragment key={aI}>
                     <div
-                      className='iconrow'
+                      className='iconrow paar'
                       style={{
                         display: 'grid',
                         gridTemplateColumns: 'auto 1fr',
@@ -1573,6 +1567,7 @@ export default function Index() {
           <div className='abschnitt abschnitt--weit abschnitt--linie-unten'>
             <div
               data-einblenden
+              className='paar'
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'auto 1fr',
@@ -1586,8 +1581,8 @@ export default function Index() {
               <span style={{ height: '1px', background: 'var(--color-divider)' }} />
             </div>
             <div
-              className='rv'
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '44px' }}>
+              className='rv spalten spalten--4'
+              style={{ '--abstand': '44px' }}>
               {ablauf.map((a, aI) => (
                 <Fragment key={aI}>
                   <div
@@ -1708,10 +1703,10 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div
+              className='spalten'
               style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1.15fr',
-                gap: '64px',
+                '--spalten': '1fr 1.15fr',
+                '--abstand': '64px',
               }}>
               <div className='termin-spalte'>
                 <div>
@@ -1784,9 +1779,8 @@ export default function Index() {
               />
             </div>
             <div
+              className='spalten spalten--3'
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3,1fr)',
                 margin: '72px 0 0',
                 borderTop: '1px solid var(--color-divider)',
               }}>
@@ -1824,9 +1818,8 @@ export default function Index() {
           </div>
           <div
             id='1b-kontakt'
+            className='spalten spalten--2'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
               borderBottom: '1px solid var(--color-divider)',
             }}>
             {/* Nur mobil — auf dem Desktop stehen die Öffnungszeiten in der
@@ -1844,7 +1837,7 @@ export default function Index() {
               <div className='anfahrt-text'>
                 <div className='ueberzeile'>Anfahrt &amp; Parken</div>
                 <div
-                  className='iconrow'
+                  className='iconrow paar'
                   style={{
                     display: 'grid',
                     gridTemplateColumns: 'auto 1fr',
@@ -1996,14 +1989,14 @@ export default function Index() {
               interessiert, und der Patientenfluss bleibt ungestört. */}
           <div
             id='ausbildung'
+            className='spalten'
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              gap: '56px',
               alignItems: 'center',
               padding: '70px 64px',
               borderBottom: '1px solid var(--color-divider)',
               background: 'var(--color-surface)',
+              '--spalten': '1fr auto',
+              '--abstand': '56px',
             }}>
             <div>
               <div

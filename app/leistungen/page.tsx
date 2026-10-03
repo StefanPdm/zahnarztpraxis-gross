@@ -60,13 +60,13 @@ export default function Leistungen() {
         </svg>
       </div>
       <div id="behandlungen" className="abschnitt abschnitt--linie-unten">
-        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "52px" }}>
+        <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "52px" }}>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>
             Zahnbehandlungen
           </h2>
           <span style={{ height: "1px", background: "var(--color-divider)" }} />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px 72px" }}>
+        <div className="spalten spalten--2" style={{ "--abstand": "56px 72px" }}>
           {behandlungen.map((b, bI) => (
             <Fragment key={bI}>
               <div style={{ borderTop: "1px solid var(--color-accent-300)", paddingTop: "20px" }}>
@@ -84,7 +84,7 @@ export default function Leistungen() {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ background: "var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--abstand": "2px" }}>
         <Bild className="plate" src="/images/photos-1786974479454-rmck.jpg" alt="Behandlungsraum mit Technik" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
         <Bild className="plate" src="/images/photos-1786974461803-v5uo.jpg" alt="Behandlungszimmer" style={{ width: "100%", height: "520px", objectFit: "cover", borderWidth: "0", outline: "0" }} />
       </div>
@@ -99,7 +99,7 @@ export default function Leistungen() {
           </g>
         </svg>
       </div>
-      <div id="zahnlabor" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div id="zahnlabor" className="spalten spalten--2" style={{ alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Eigenes Zahnlabor
@@ -119,13 +119,13 @@ export default function Leistungen() {
         </figure>
       </div>
       <div className="abschnitt abschnitt--linie-unten">
-        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "44px" }}>
+        <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "40px", alignItems: "baseline", marginBottom: "44px" }}>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>
             Wie eine Behandlung abläuft
           </h2>
           <span style={{ height: "1px", background: "var(--color-divider)" }} />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "44px" }}>
+        <div className="spalten spalten--4" style={{ "--abstand": "44px" }}>
           {ablauf.map((a, aI) => (
             <Fragment key={aI}>
               <div style={{ borderTop: "1px solid var(--color-accent-300)", paddingTop: "18px" }}>
@@ -143,7 +143,7 @@ export default function Leistungen() {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "56px", alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr auto", "--abstand": "56px" }}>
         <div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "0 0 12px" }}>
             Nicht sicher, was Sie brauchen?

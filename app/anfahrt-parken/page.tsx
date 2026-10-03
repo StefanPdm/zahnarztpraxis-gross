@@ -29,7 +29,7 @@ export default function AnfahrtParken() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "end", padding: "96px 64px 48px" }}>
+      <div className="spalten spalten--2" style={{ alignItems: "end", padding: "96px 64px 48px", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Anfahrt &amp; Parken
@@ -58,7 +58,7 @@ export default function AnfahrtParken() {
           </div>
         </div>
       </div>
-      <div className="photopair" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="photopair spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <figure style={{ margin: "0", padding: "34px 34px 30px 64px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "16px" }}>
             <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
@@ -134,7 +134,7 @@ export default function AnfahrtParken() {
           </Fragment>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Mit Bus und Tram
@@ -142,7 +142,7 @@ export default function AnfahrtParken() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 22px" }}>
             Vier Minuten vom Luisenplatz.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
+          <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
             <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
               Tram
             </span>
@@ -178,7 +178,7 @@ export default function AnfahrtParken() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 22px" }}>
             Parken im Hof und in der Umgebung.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
+          <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px 24px", fontSize: "15px", color: "var(--color-neutral-800)", borderTop: "1px solid var(--color-divider)", paddingTop: "22px" }}>
             <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-accent-700)", paddingTop: "3px" }}>
               Direkt
             </span>
@@ -204,7 +204,7 @@ export default function AnfahrtParken() {
           </div>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="spalten" style={{ borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.15fr" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
             Zugang
@@ -216,7 +216,7 @@ export default function AnfahrtParken() {
             Die Praxis liegt im 1. Stock und ist über das Treppenhaus erreichbar. Einen Aufzug gibt es nicht — die Räume sind damit nicht barrierefrei. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen oder Treppen für Sie schwierig sind, sagen Sie es bitte vor dem Termin: Wir besprechen dann, wie wir Ihnen weiterhelfen können.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)", fontSize: "15px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+            <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
               <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
                 Adresse
               </span>
@@ -226,7 +226,7 @@ export default function AnfahrtParken() {
                 14467 Potsdam
               </span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+            <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
               <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
                 Telefon
               </span>
@@ -234,7 +234,7 @@ export default function AnfahrtParken() {
                 0331 960926
               </a>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
+            <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", padding: "16px 0", borderBottom: "1px solid var(--color-divider)" }}>
               <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)", paddingTop: "3px" }}>
                 Eingang
               </span>

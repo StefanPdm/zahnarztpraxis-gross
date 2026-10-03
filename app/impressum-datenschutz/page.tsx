@@ -120,9 +120,8 @@ export default function ImpressumDatenschutz() {
         </h1>
       </div>
       <div
+        className='spalten spalten--2'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           borderBottom: '1px solid var(--color-divider)',
         }}>
         <div className='abschnitt abschnitt--knapp'>
@@ -130,6 +129,7 @@ export default function ImpressumDatenschutz() {
             Impressum
           </h2>
           <div
+            className='paar'
             style={{
               display: 'grid',
               gridTemplateColumns: 'auto 1fr',
@@ -204,12 +204,11 @@ export default function ImpressumDatenschutz() {
         id='datenschutz'
         className='abschnitt abschnitt--flaeche abschnitt--linie-unten'>
         <div
+          className='spalten spalten--2'
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '64px',
             alignItems: 'end',
             marginBottom: '52px',
+            '--abstand': '64px',
           }}>
           <h2
             style={{
@@ -227,7 +226,7 @@ export default function ImpressumDatenschutz() {
             ausschließlich dafür.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '44px 72px' }}>
+        <div className='spalten spalten--2' style={{ '--abstand': '44px 72px' }}>
           {datenschutz.map((d, dI) => (
             <Fragment key={dI}>
               <div style={{ borderTop: '1px solid var(--color-accent-300)', paddingTop: '18px' }}>
@@ -270,13 +269,13 @@ export default function ImpressumDatenschutz() {
         </p>
       </div>
       <div
+        className='spalten'
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '56px',
           alignItems: 'center',
           padding: '70px 64px',
           borderBottom: '1px solid var(--color-divider)',
+          '--spalten': '1fr auto',
+          '--abstand': '56px',
         }}>
         <div>
           <h2

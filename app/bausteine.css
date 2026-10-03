@@ -85,6 +85,50 @@
   .raster { gap: 24px; }
 }
 
+/* ── Spalten ───────────────────────────────────────────────────────────────
+   Allgemeines Raster für alles, was auf dem Desktop nebeneinander und mobil
+   untereinander steht. Häufige Aufteilungen als Modifikator, Einzelfälle
+   setzen die Variable im Markup:
+
+     <div className="spalten" style={{ "--spalten": "1fr 1.05fr", "--abstand": "56px" }}>
+
+   Mobil immer eine Spalte, 30 / 24 px Abstand — auch das ersetzt den
+   Desktop-Abstand, auch bei den Fotokacheln mit 2-px-Fuge (die alte
+   Regel, die dort mobil 2 px halten sollte, hat nie gegriffen).
+   Die Variablen vererben sich nicht (@property), sonst übernähme ein
+   inneres Raster ohne eigenen Abstand den des äußeren. */
+@property --spalten { syntax: "*"; inherits: false; }
+@property --abstand { syntax: "*"; inherits: false; }
+.spalten { display: grid; grid-template-columns: var(--spalten); gap: var(--abstand, 0); }
+.spalten--2 { --spalten: 1fr 1fr; }
+.spalten--3 { --spalten: repeat(3, 1fr); }
+.spalten--4 { --spalten: repeat(4, 1fr); }
+@media (max-width: 1000px) {
+  .spalten { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 640px) {
+  .spalten { gap: 24px; }
+}
+
+/* Zweispaltige Angaben (Bezeichnung | Wert, Symbol | Text) bleiben auch
+   mobil nebeneinander; lange Werte wie E-Mail-Adressen brechen dafür um,
+   statt die Seite zu verbreitern. */
+@media (max-width: 1000px) {
+  .paar > * { min-width: 0; overflow-wrap: anywhere; }
+}
+
+/* ── Fußzeile (components/Fusszeile) ──────────────────────────────────── */
+.fusszeile {
+  border-top: 1px solid var(--color-divider);
+  padding: 64px var(--rand) 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-neutral-800);
+}
+.fusszeile__spalten { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.15fr; gap: 40px 48px; }
+@media (max-width: 1000px) { .fusszeile__spalten { grid-template-columns: 1fr 1fr; gap: 36px 40px; } }
+@media (max-width: 640px)  { .fusszeile__spalten { grid-template-columns: 1fr; } }
+
 /* ── Fließtext ─────────────────────────────────────────────────────────────
    Blocksatz mit Silbentrennung; mobil linksbündig (schmale Spalten
    reißen im Blocksatz Löcher). */
