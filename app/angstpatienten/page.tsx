@@ -81,7 +81,7 @@ export default function Angstpatienten() {
           <p className="fliesstext">
             Am Ende wissen Sie, was ansteht, in welcher Reihenfolge und was es kostet. Wann Sie damit anfangen, entscheiden Sie.
           </p>
-          <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+          <blockquote className="linie-links" style={{ margin: "32px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Ich behandle viele Menschen, die lange keinen Zahnarzt gesehen haben. Sie brauchen dasselbe wie Kinder: Ruhe und eine ehrliche Ansage.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
@@ -92,7 +92,7 @@ export default function Angstpatienten() {
           <Bild vorrang className="parallax-img" src="/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />
         </div>
       </div>
-      <div className="spalten spalten--2" style={{ alignItems: "start", padding: "96px 64px", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
+      <div className="spalten spalten--2 abschnitt abschnitt--hoch" style={{ alignItems: "start", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Sagen Sie uns, wo Sie stehen
@@ -112,7 +112,7 @@ export default function Angstpatienten() {
         </div>
         <AngstRegler start={8} />
       </div>
-      <div style={{ padding: "96px 64px 40px" }}>
+      <div className="abschnitt abschnitt--hoch" style={{ "--unten": "40px" }}>
         <div className="ueberzeile">
           Was Sie von uns erwarten können
         </div>
@@ -120,7 +120,7 @@ export default function Angstpatienten() {
           Sieben Zusagen, die im Behandlungszimmer gelten.
         </h2>
       </div>
-      <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", margin: "0 64px 96px" }}>
+      <div className="spalten spalten--2 rand-aussen" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", marginTop: "0", marginBottom: "96px" }}>
         {zusagen.map((z, zI) => (
           <Fragment key={zI}>
             <div className="paar" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "30px 34px 30px 0", borderBottom: "1px solid var(--color-divider)" }}>

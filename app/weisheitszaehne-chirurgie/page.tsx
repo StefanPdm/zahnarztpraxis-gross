@@ -89,7 +89,7 @@ export default function WeisheitszaehneChirurgie() {
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "16px 0 18px" }}>
             Nicht jeder Weisheitszahn muss weg.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
             Wenn ein Weisheitszahn gerade durchgebrochen ist, sauber im Biss steht und sich putzen lässt, kann er bleiben. Entfernt wird er, wenn er Schaden anrichtet oder absehbar anrichten wird. Diese Gründe sprechen dafür:
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -120,7 +120,7 @@ export default function WeisheitszaehneChirurgie() {
           <p className="fliesstext">
             Was wir nicht selbst machen können, sagen wir Ihnen offen und verweisen weiter. Auch das gehört zur Erfahrung.
           </p>
-          <blockquote style={{ margin: "28px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+          <blockquote className="linie-links" style={{ margin: "28px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Bei einem Eingriff zählt vor allem, dass man vorher weiß, was man vor sich hat.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Matthias Groß, Zahnarzt
@@ -164,7 +164,7 @@ export default function WeisheitszaehneChirurgie() {
           <h2 className="titel-2 titel-2--luft">
             Die ersten zwei Tage entscheiden.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
             Wie gut die Wunde heilt, hängt vor allem davon ab, was Sie in den ersten 48 Stunden tun. Sie bekommen die Hinweise schriftlich mit — hier die wichtigsten:
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -194,7 +194,7 @@ export default function WeisheitszaehneChirurgie() {
           <h2 className="titel-3">
             Weitere Eingriffe.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
             Neben den Weisheitszähnen führen wir weitere chirurgische Eingriffe durch — vor allem im Zusammenhang mit Implantaten und dem Erhalt von Zähnen.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>

@@ -99,7 +99,7 @@ export default function Parodontologie() {
           <h2 className="titel-2 titel-2--luft">
             Taschen reinigen, Entzündung stoppen.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
             Der Kern der Behandlung ist immer derselbe: die Bakterien müssen aus den Zahnfleischtaschen heraus. Wir reinigen die Wurzeloberflächen unterhalb des Zahnfleischsaums — dort, wo weder Zahnbürste noch normale Reinigung hinkommen — und unterstützen mit dem Laser zur Keimreduktion.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -122,7 +122,7 @@ export default function Parodontologie() {
             ))}
           </div>
         </div>
-        <figure style={{ position: "relative", overflow: "hidden", minHeight: "640px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
+        <figure className="linie-links bildspalte" style={{ position: "relative", overflow: "hidden", margin: "0" }}>
           <Bild className="parallax-img" src="/images/zahnfleischblutung.jpg" alt="Untersuchung des Zahnfleischs mit Mundspiegel: gerötetes, blutendes Zahnfleisch am Zahnfleischsaum" />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}

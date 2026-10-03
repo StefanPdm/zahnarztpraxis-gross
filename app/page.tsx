@@ -196,9 +196,11 @@ export default function Index() {
           style={{ maxWidth: '1440px', margin: '0 auto', background: 'transparent' }}>
           <div
             id='hero'
+            className='rand'
             style={{
               position: 'relative',
-              padding: '132px 64px 0px',
+              paddingTop: '132px',
+              paddingBottom: '0px',
               textAlign: 'center',
               overflow: 'hidden',
             }}>
@@ -304,8 +306,10 @@ export default function Index() {
           </div>
           <div
             id='worumband'
+            className='rand'
             style={{
-              padding: 'clamp(38px,5.4vh,58px) 64px 88px',
+              paddingTop: 'clamp(38px,5.4vh,58px)',
+              paddingBottom: '88px',
               textAlign: 'center',
               borderBottom: '1px solid var(--color-divider)',
             }}>
@@ -423,7 +427,7 @@ export default function Index() {
                 }}
               />
               <figcaption
-                className='platecap'
+                className='platecap umbruch-schmal'
                 style={{
                   display: 'flex',
                   gap: '14px',
@@ -452,7 +456,7 @@ export default function Index() {
                 }}
               />
               <figcaption
-                className='platecap'
+                className='platecap umbruch-schmal'
                 style={{
                   display: 'flex',
                   gap: '14px',
@@ -639,11 +643,11 @@ export default function Index() {
                       {m.zitat}
                     </p>
                     <p
+                      className='blocksatz'
                       style={{
                         fontSize: '14px',
                         lineHeight: '1.6',
                         color: 'var(--color-neutral-800)',
-                        textAlign: 'justify',
                         hyphens: 'auto',
                         margin: '0',
                       }}>
@@ -655,7 +659,7 @@ export default function Index() {
             </div>
           </div>
           <div
-            className='colophon rv'
+            className='colophon rv rand'
             data-abschnitt='Kapitel I · Die Praxis'
             style={{
               position: 'relative',
@@ -663,7 +667,8 @@ export default function Index() {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '40px',
-              padding: '40px 64px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
               background:
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
@@ -710,8 +715,8 @@ export default function Index() {
           </div>
           <div
             id='1b-praxis'
+            className='abschnitt abschnitt--weit'
             style={{
-              padding: '116px 64px',
               background:
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 10%, var(--weiss)) 0%, rgba(255,255,255,0) 100%)',
               borderBottom: '1px solid var(--color-divider)',
@@ -736,11 +741,10 @@ export default function Index() {
                   Helle Räume, moderne Technik, kein Praxisgeruch von 1995.
                 </h2>
                 <p
+                  className='blocksatz zweispaltig'
                   style={{
-                    textAlign: 'justify',
                     hyphens: 'auto',
                     color: 'var(--color-neutral-800)',
-                    columns: '2',
                     columnGap: '36px',
                   }}>
                   Fünf Behandlungszimmer mit Tageslicht, digitales Röntgen, Laser und Lupenbrille —
@@ -762,7 +766,7 @@ export default function Index() {
                   }}
                 />
                 <figcaption
-                  className='platecap'
+                  className='platecap umbruch-schmal'
                   style={{
                     display: 'flex',
                     gap: '14px',
@@ -798,7 +802,7 @@ export default function Index() {
                   }}
                 />
                 <figcaption
-                  className='platecap'
+                  className='platecap umbruch-schmal'
                   style={{
                     display: 'flex',
                     gap: '14px',
@@ -826,7 +830,7 @@ export default function Index() {
                   }}
                 />
                 <figcaption
-                  className='platecap'
+                  className='platecap umbruch-schmal'
                   style={{
                     display: 'flex',
                     gap: '14px',
@@ -847,8 +851,8 @@ export default function Index() {
               Kapitel über die Praxis schließt. */}
           <div
             id='1b-zitat'
+            className='abschnitt abschnitt--band'
             style={{
-              padding: '104px 64px',
               textAlign: 'center',
               background: 'var(--color-surface)',
               borderBottom: '1px solid var(--color-divider)',
@@ -884,7 +888,7 @@ export default function Index() {
             </figure>
           </div>
           <div
-            className='colophon rv'
+            className='colophon rv rand'
             data-abschnitt='Kapitel II · Was wir behandeln'
             style={{
               position: 'relative',
@@ -892,7 +896,8 @@ export default function Index() {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '40px',
-              padding: '40px 64px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
               background:
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
@@ -1022,10 +1027,9 @@ export default function Index() {
           </div>
           <div
             id='1b-labor'
-            className='spalten'
+            className='spalten abschnitt abschnitt--weit'
             style={{
               alignItems: 'center',
-              padding: '116px 64px',
               borderBottom: '1px solid var(--color-divider)',
               '--spalten': '1fr 1.1fr',
               '--abstand': '64px',
@@ -1042,8 +1046,8 @@ export default function Index() {
                 Besonderheit: Der Zahntechniker sitzt direkt in der Praxis.
               </h2>
               <p
+                className='blocksatz'
                 style={{
-                  textAlign: 'justify',
                   hyphens: 'auto',
                   color: 'var(--color-neutral-800)',
                 }}>
@@ -1325,7 +1329,7 @@ export default function Index() {
                 }}
               />
               <figcaption
-                className='platecap'
+                className='platecap umbruch-schmal'
                 style={{
                   display: 'flex',
                   gap: '14px',
@@ -1383,7 +1387,7 @@ export default function Index() {
           </section>
           <GoogleBewertungen />
           <div
-            className='colophon rv'
+            className='colophon rv rand'
             data-abschnitt='Kapitel III · Wenn Angst im Weg steht'
             style={{
               position: 'relative',
@@ -1391,7 +1395,8 @@ export default function Index() {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '40px',
-              padding: '40px 64px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
               background:
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
@@ -1443,7 +1448,7 @@ export default function Index() {
               borderBottom: '1px solid var(--color-divider)',
               '--spalten': '1fr 1.05fr',
             }}>
-            <div style={{ padding: '116px 64px', alignSelf: 'center' }}>
+            <div className='abschnitt abschnitt--weit' style={{ alignSelf: 'center' }}>
               <div
                 className='ueberzeile'
                 data-einblenden>
@@ -1455,8 +1460,8 @@ export default function Index() {
                 Wenn der letzte Zahnarztbesuch Jahre zurückliegt.
               </h2>
               <p
+                className='blocksatz'
                 style={{
-                  textAlign: 'justify',
                   hyphens: 'auto',
                   color: 'var(--color-neutral-800)',
                   margin: '0 0 28px',
@@ -1515,7 +1520,7 @@ export default function Index() {
                 }}>
                 Sagen Sie es uns einfach am Telefon — dann planen wir von Anfang an anders.
               </p>
-              <div style={{ display: 'flex', gap: '14px', marginTop: '24px' }}>
+              <div className='umbruch-schmal' style={{ display: 'flex', gap: '14px', marginTop: '24px' }}>
                 <Link
                   className='btn btn-primary knopf-gross'
                   href='/#termin'>
@@ -1529,7 +1534,8 @@ export default function Index() {
               </div>
             </div>
             <figure
-              style={{ position: 'relative', margin: '0', height: '100%', minHeight: '640px' }}>
+              className='bildspalte bildspalte--fuellt'
+              style={{ position: 'relative', margin: '0' }}>
               <Bild
                 className='plate'
                 src='/images/Zahnarzt-Potsdam-Zahnarztpraxis-Gross-Gross-12-1-687x1030-1.jpg'
@@ -1543,7 +1549,7 @@ export default function Index() {
                 }}
               />
               <figcaption
-                className='platecap'
+                className='platecap umbruch-schmal'
                 style={{
                   position: 'absolute',
                   left: '20px',
@@ -1636,7 +1642,7 @@ export default function Index() {
             </div>
           </div>
           <div
-            className='colophon rv'
+            className='colophon rv rand'
             data-abschnitt='Kapitel IV · Ihr Termin'
             style={{
               position: 'relative',
@@ -1644,7 +1650,8 @@ export default function Index() {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '40px',
-              padding: '40px 64px',
+              paddingTop: '40px',
+              paddingBottom: '40px',
               background:
                 'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
@@ -1695,9 +1702,9 @@ export default function Index() {
               „Termin anfragen“-Knöpfe der Website zeigen auf /#termin. */}
           <div
             id='termin'
+            className='abschnitt abschnitt--weit'
             style={{
               scrollMarginTop: '110px',
-              padding: '116px 64px',
               background:
                 'linear-gradient(180deg, rgba(255,255,255,0) 0%, color-mix(in oklab, var(--color-accent) 11%, var(--weiss)) 100%)',
               borderBottom: '1px solid var(--color-divider)',
@@ -1719,8 +1726,8 @@ export default function Index() {
                     data-einblenden
                     className='titel-2 titel-2--luft'>Zwei Wunschzeiten genügen.</h2>
                   <p
+                    className='blocksatz'
                     style={{
-                      textAlign: 'justify',
                       hyphens: 'auto',
                       maxWidth: '46ch',
                       color: 'var(--color-neutral-800)',
@@ -1731,8 +1738,8 @@ export default function Index() {
                     direkt an.
                   </p>
                   <p
+                    className='blocksatz'
                     style={{
-                      textAlign: 'justify',
                       hyphens: 'auto',
                       maxWidth: '46ch',
                       color: 'var(--color-neutral-800)',
@@ -1989,10 +1996,9 @@ export default function Index() {
               interessiert, und der Patientenfluss bleibt ungestört. */}
           <div
             id='ausbildung'
-            className='spalten'
+            className='spalten abschnitt abschnitt--knapp'
             style={{
               alignItems: 'center',
-              padding: '70px 64px',
               borderBottom: '1px solid var(--color-divider)',
               background: 'var(--color-surface)',
               '--spalten': '1fr auto',
@@ -2028,9 +2034,8 @@ export default function Index() {
             </Link>
           </div>
           <div
-            className='rv'
+            className='rv abschnitt abschnitt--band'
             style={{
-              padding: '104px 64px',
               textAlign: 'center',
               background: 'linear-gradient(180deg, var(--ink-dark) 0%, #211d15 100%)',
               color: '#f3f2f2',

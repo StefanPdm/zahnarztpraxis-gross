@@ -30,7 +30,7 @@ export default function NichtGefunden() {
         Möglicherweise wurde die Adresse geändert. Über die Navigation oben
         finden Sie alle Seiten, oder rufen Sie uns einfach an.
       </p>
-      <div style={{ display: "flex", gap: "14px", marginTop: "28px", flexWrap: "wrap" }}>
+      <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "28px", flexWrap: "wrap" }}>
         <Link className="btn btn-primary" href="/" style={{ padding: "12px 26px" }}>
           Zur Startseite
         </Link>

@@ -76,14 +76,14 @@ export default function Zahnlabor() {
       </div>
       <figure style={{ position: "relative", overflow: "hidden", height: "620px", margin: "0", borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <Bild sizes={VOLL} vorrang className="parallax-img" src="/images/Zahnlabor.jpg" alt="Arbeitsplatz im praxiseigenen Zahnlabor: Gipsmodelle, Zahnfarbmuster und Werkzeug unter der Arbeitsleuchte" />
-        <figcaption style={{ position: "absolute", left: "24px", bottom: "20px", display: "flex", gap: "14px", padding: "10px 18px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+        <figcaption className="umbruch-schmal" style={{ position: "absolute", left: "24px", bottom: "20px", display: "flex", gap: "14px", padding: "10px 18px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Der Labortisch · eine Tür neben dem Behandlungszimmer
         </figcaption>
       </figure>
       <div className="statbar spalten spalten--4" style={{ borderBottom: "1px solid var(--color-divider)" }}>
         {proof.map((p, pI) => (
           <Fragment key={pI}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center", borderLeft: "1px solid var(--color-divider)" }}>
+            <div className="linie-links" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center" }}>
               <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h3-xl)", lineHeight: "1.1", color: "var(--color-accent-700)" }}>
                 {p.value}
               </span>
@@ -138,19 +138,19 @@ export default function Zahnlabor() {
           <p className="fliesstext fliesstext--absatz">
             Dahinter steht ein bestens ausgebildetes Praxisteam, das mit den neuesten Techniken arbeitet — Fortbildungen und Schulungen sind hier selbstverständlich, nicht die Ausnahme.
           </p>
-          <blockquote style={{ margin: "28px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+          <blockquote className="linie-links" style={{ margin: "28px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Zahnärztliche Leistungen von höchster Qualität bieten wir Ihnen auch beim Zahnersatz und bei aufwendigen zahntechnischen Versorgungen.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>
           </blockquote>
         </div>
-        <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
+        <figure className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0" }}>
           {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
               nähme 43 % der Breite weg — Monitor und Scanner stünden nur
               noch halb im Bild. So füllt es den Rahmen und bleibt ganz. */}
           <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im Zahnlabor mit dem digitalen Kiefermodell auf dem Monitor" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
-          <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+          <figcaption className="umbruch-schmal" style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Modellscan · digitale Konstruktion
           </figcaption>
         </figure>
@@ -191,7 +191,7 @@ export default function Zahnlabor() {
           <p className="fliesstext fliesstext--absatz">
             Der größte Nutzen entsteht, wenn beides zusammenkommt: Wir setzen das Implantat und fertigen den Zahn darauf im eigenen Labor. Sie müssen nicht zwischen Chirurg, Zahnarzt und Fremdlabor vermitteln, und bei einer Anpassung sitzen alle Beteiligten in derselben Praxis.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
+          <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
             <Link className="btn btn-secondary knopf-gross" href="/implantologie">
               Zu den Implantaten
             </Link>

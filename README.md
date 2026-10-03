@@ -29,8 +29,7 @@ meldet einen Fehler mit Telefonnummer als Ausweg.
 | `npm run build` | Produktions-Build |
 | `npm run lint` | ESLint (`next lint` gibt es in Next 16 nicht mehr) |
 | `npm run typecheck` | TypeScript ohne Emit |
-| `npm run styles` | `site.css` aus `site.css.original` erzeugen |
-| `npm run pruefen` | Inhaltsprüfung: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße |
+| `npm run pruefen` | Inhaltsprüfung: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße, Inline-Styles, keine Style-Text-Selektoren |
 | `npm run bilder` | Bildmaße für `<Bild>` neu erzeugen (läuft vor dev und build) |
 
 ## Struktur
@@ -38,8 +37,7 @@ meldet einen Fehler mit Telefonnummer als Ausweg.
 ```
 app/
   classical.css        Design-System (Tokens + Komponentenklassen), 1:1
-  site.css             ERZEUGT — nicht bearbeiten
-  site.css.original    hier bearbeiten, dann `npm run styles`
+  site.css             Projekt-Tokens, Navigation, Effekte, Sonderfälle mobil
   bausteine.css        Designsystem: Bausteine mit Mobilverhalten
   layout.tsx           Schriften, Rahmen, Kopf-/Fußzeile
   page.tsx             /
@@ -57,7 +55,6 @@ docs/
 scripts/
   bildmasse.mjs        Bildmaße für <Bild> (läuft vor dev/build)
   pruefe.mjs           Inhaltsprüfung (läuft vor build)
-  repariere-style-selektoren.mjs  site.css React-tauglich machen
 CLAUDE.md              Arbeitsanweisung für Claude Code in VS Code
 ```
 

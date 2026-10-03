@@ -38,7 +38,7 @@ export default function Kinderzahnheilkunde() {
       <JsonLd daten={strukturierteDaten} />
       <Grosselino />
       <NotfallLeiste />
-      <div className="spalten" style={{ alignItems: "center", padding: "80px 64px 70px", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1.15fr 1fr", "--abstand": "56px" }}>
+      <div className="spalten abschnitt" style={{ alignItems: "center", "--unten": "70px", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1.15fr 1fr", "--abstand": "56px" }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true">
@@ -53,10 +53,10 @@ export default function Kinderzahnheilkunde() {
             <br />
             in Potsdam.
           </h1>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "26px 0 0", maxWidth: "52ch" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "26px 0 0", maxWidth: "52ch" }}>
             Unsere kleinen Patienten behandeln wir mit viel Einfühlungsvermögen: Kinder sind bei uns ausdrücklich willkommen — nicht nebenbei, sondern als eigene Patienten mit eigenem Tempo. Unser Ziel ist einfach: dass Ihr Kind gar keine Angst vor dem Zahnarzt entwickelt. Dafür nehmen wir uns beim ersten Mal Zeit für nichts als Kennenlernen.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
+          <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
             <Link className="btn btn-primary knopf-gross" href="/#termin">
               Kindertermin anfragen
             </Link>
@@ -120,25 +120,25 @@ export default function Kinderzahnheilkunde() {
           <p className="fliesstext">
             Sie dürfen dabeibleiben, so lange Sie und Ihr Kind es möchten. Was wir sehen, erklären wir beiden: dem Kind in seinen Worten, Ihnen in Ihren.
           </p>
-          <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+          <blockquote className="linie-links" style={{ margin: "32px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Ich behandle viele Kinder. Sie brauchen dasselbe wie Erwachsene, die lange nicht da waren: Ruhe und eine ehrliche Ansage.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>
           </blockquote>
         </div>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "560px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "560px" }}>
           <Bild className="parallax-img" src="/images/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" />
         </div>
       </div>
-      <div style={{ padding: "96px 64px 0", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
+      <div className="abschnitt abschnitt--hoch" style={{ "--unten": "0", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="ueberzeile">
           Vorsorge &amp; Prophylaxe
         </div>
         <h2 className="titel-2 breite-26">
           Damit Karies gar nicht erst anfängt.
         </h2>
-        <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "20px 0 0", maxWidth: "62ch" }}>
+        <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "20px 0 0", maxWidth: "62ch" }}>
           Eine individuelle Prophylaxe ist auch bei Kindern äußerst wichtig — damit sich karies- und parodontitisverursachende Bakterien gar nicht erst im Mundraum einnisten. Diese vier Bausteine beugen schon bei den kleinsten Patienten Karies und Entzündungen vor und schaffen die Voraussetzung für dauerhafte Mundgesundheit.
         </p>
         <div className="spalten spalten--2" style={{ margin: "36px 0 0", paddingBottom: "20px", "--abstand": "0 56px" }}>
@@ -186,7 +186,7 @@ export default function Kinderzahnheilkunde() {
           <p className="fliesstext">
             Ein Hinweis, der oft überrascht: Karies- und Parodontitisbakterien können von Eltern auf das Kind übertragen werden. Auf die eigene Mundgesundheit zu achten — gerade vor und während einer Schwangerschaft — schützt also beide.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
+          <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
             <Link className="btn btn-primary knopf-gross" href="/#termin">
               Termin anfragen
             </Link>

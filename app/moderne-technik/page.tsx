@@ -133,7 +133,7 @@ export default function ModerneTechnik() {
           </Fragment>
         ))}
       </div>
-      <figure style={{ position: "relative", overflow: "hidden", height: "560px", margin: "0 64px 96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
+      <figure className="rand-aussen" style={{ position: "relative", overflow: "hidden", height: "560px", marginTop: "0", marginBottom: "96px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)" }}>
         <Bild sizes={VOLL} className="parallax-img" src="/images/zahnlabor-modellscanner-zahnarztpraxis-potsdam.jpg" alt="Modellscanner im praxiseigenen Zahnlabor: das Gebissmodell im Gerät, das digitale Kiefermodell auf dem Monitor" />
         <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
           Modellscan und digitale Konstruktion · im eigenen Labor
@@ -147,7 +147,7 @@ export default function ModerneTechnik() {
           <h2 className="titel-2 titel-2--luft">
             Weniger Wundschmerz, weniger Betäubung.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
             Wir setzen den Laser dort ein, wo er dem klassischen Instrument voraus ist: in der Parodontosebehandlung, zur Keimreduktion und bei der Fissurenversiegelung. Für Sie heißt das weniger Wundschmerz, eine längere Schmerzfreiheit nach der Behandlung und geringere Mengen an Betäubungsmittel.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -183,7 +183,7 @@ export default function ModerneTechnik() {
         </div>
         {/* Kein Parallax-Rahmen: Das Bild ist hochformatig, der Überstand von
             140 % würde es beim Scrollen quer durchs Gesicht schieben. */}
-        <figure style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
+        <figure className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "620px", margin: "0" }}>
           <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/laserbehandlung-symbolbild.jpg" alt="Laserbehandlung am Behandlungsstuhl: Patientin mit Schutzbrille, Behandlerin führt das Handstück" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
           <span className="ai-badge">
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
@@ -232,8 +232,8 @@ export default function ModerneTechnik() {
           Fortbildung, nicht nur Anschaffung.
         </h2>
       </div>
-      <div className="spalten" style={{ margin: "40px 64px 96px", paddingTop: "32px", borderTop: "1px solid var(--color-divider)", "--spalten": "1fr 1.3fr", "--abstand": "56px" }}>
-        <blockquote style={{ margin: "0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h4)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+      <div className="spalten rand-aussen" style={{ marginTop: "40px", marginBottom: "96px", paddingTop: "32px", borderTop: "1px solid var(--color-divider)", "--spalten": "1fr 1.3fr", "--abstand": "56px" }}>
+        <blockquote className="linie-links" style={{ margin: "0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h4)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
           „Das beste Gerät nützt nichts, wenn niemand weiß, wann man es besser weglässt.“
           <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Chantal Groß, Zahnärztin

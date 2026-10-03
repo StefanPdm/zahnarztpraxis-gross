@@ -25,8 +25,11 @@
 
 /* ── Abschnitte ────────────────────────────────────────────────────────────
    Vertikaler Rhythmus der Seiten. Mobil werden die Abstände kürzer, genau
-   wie es site.css bisher über den Style-Text geregelt hat. */
-.abschnitt { padding: 80px var(--rand); }
+   wie es site.css bisher über den Style-Text geregelt hat. Endet ein
+   Abschnitt unten anders als oben, setzt das Markup --unten
+   (style={{ "--unten": "48px" }}); mobil gelten die festen Werte. */
+@property --unten { syntax: "*"; inherits: false; }
+.abschnitt { padding: 80px var(--rand) var(--unten, 80px); }
 .abschnitt--linie { border-left: 1px solid var(--color-divider); }
 .abschnitt-oben { padding: 96px var(--rand) 0; }
 /* Trennlinie über einem Abschnittskopf, der auf eine Bildreihe mit eigenem
@@ -44,9 +47,10 @@
    Style-Text vergab (Abschnitt 7) — darum setzen sie oben und unten neu,
    auch wo die Desktop-Fassung unten anders endet. Stehen nach den
    Media-Queries von .abschnitt, damit sie dessen Mobilwerte überschreiben. */
-.abschnitt--weit { padding: 116px var(--rand); }
-.abschnitt--band { padding: 104px var(--rand); }
-.abschnitt--knapp { padding: 70px var(--rand); }
+.abschnitt--weit { padding: 116px var(--rand) var(--unten, 116px); }
+.abschnitt--band { padding: 104px var(--rand) var(--unten, 104px); }
+.abschnitt--hoch { padding: 96px var(--rand) var(--unten, 96px); }
+.abschnitt--knapp { padding: 70px var(--rand) var(--unten, 70px); }
 .abschnitt--eng { padding: 44px var(--rand); } /* mobil unverändert */
 .abschnitt--linie-unten { border-bottom: 1px solid var(--color-divider); }
 .abschnitt--flaeche { background: var(--color-surface); }
@@ -54,13 +58,61 @@
 .abschnitt-unten { padding: 0 var(--rand) 96px; }
 @media (max-width: 1000px) {
   .abschnitt--weit,
-  .abschnitt--band { padding-top: 52px; padding-bottom: 36px; }
+  .abschnitt--band,
+  .abschnitt--hoch { padding-top: 52px; padding-bottom: 36px; }
   .abschnitt--knapp { padding-top: 44px; padding-bottom: 44px; }
 }
 @media (max-width: 640px) {
   .abschnitt--weit { padding-top: 42px; padding-bottom: 42px; }
   .abschnitt--band { padding-top: 36px; padding-bottom: 36px; }
   .abschnitt--knapp { padding-top: 34px; padding-bottom: 34px; }
+}
+
+/* ── Seitenrand ────────────────────────────────────────────────────────────
+   .rand: Innenabstand links/rechts = Seitenrand. Weicht eine Seite auf dem
+   Desktop ab, setzt das Markup --rand-links / --rand-rechts; mobil gilt
+   beidseitig --rand. .rand-aussen: dasselbe als Außenabstand. */
+@property --rand-links { syntax: "*"; inherits: false; }
+@property --rand-rechts { syntax: "*"; inherits: false; }
+.rand { padding-left: var(--rand-links, var(--rand)); padding-right: var(--rand-rechts, var(--rand)); }
+.rand-aussen { margin-left: var(--rand); margin-right: var(--rand); }
+@media (max-width: 1000px) {
+  .rand { padding-left: var(--rand); padding-right: var(--rand); }
+}
+
+/* ── Linie links ───────────────────────────────────────────────────────────
+   Senkrechte Trennlinie zwischen Spalten, mobil eine waagerechte darüber —
+   immer in der Trennfarbe, auch wo die Linie links farbig ist (Zitate). */
+@property --linienfarbe { syntax: "*"; inherits: false; }
+.linie-links { border-left: 1px solid var(--linienfarbe, var(--color-divider)); }
+@media (max-width: 1000px) {
+  .linie-links { border-left: 0; border-top: 1px solid var(--color-divider); }
+}
+
+/* ── Blocksatz, zweispaltiger Text ─────────────────────────────────────────
+   Mobil linksbündig und einspaltig: schmale Spalten reißen im Blocksatz
+   Löcher. */
+.blocksatz { text-align: justify; }
+.zweispaltig { columns: 2; }
+@media (max-width: 1000px) {
+  .blocksatz { text-align: left; }
+  .zweispaltig { columns: 1; }
+}
+
+/* ── Bildspalte ────────────────────────────────────────────────────────────
+   Foto neben einem Textblock, mindestens 640 px hoch. Mobil auf das
+   Seitenverhältnis des Fotos (4 : 5), sonst bliebe die Mindesthöhe als
+   leerer Block stehen. */
+.bildspalte { min-height: 640px; }
+.bildspalte--fuellt { height: 100%; }
+@media (max-width: 1000px) {
+  .bildspalte { min-height: 0; height: auto; }
+  .bildspalte > img.plate { aspect-ratio: 4 / 5; } /* spezifischer als body img.plate (site.css) */
+}
+
+/* Knopf- und Merkmalsreihen: schmal umbrechen statt überlaufen. */
+@media (max-width: 640px) {
+  .umbruch-schmal { flex-wrap: wrap; }
 }
 
 /* ── Raster ────────────────────────────────────────────────────────────────

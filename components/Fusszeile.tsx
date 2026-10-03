@@ -117,7 +117,7 @@ export default function Fusszeile() {
             </div>
           </div>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "14px 32px", marginTop: "52px", padding: "20px 0px 40px", borderTop: "1px solid var(--color-divider)", fontSize: "12.5px", color: "var(--color-neutral-700)" }}>
+        <div className="umbruch-schmal" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "14px 32px", marginTop: "52px", padding: "20px 0px 40px", borderTop: "1px solid var(--color-divider)", fontSize: "12.5px", color: "var(--color-neutral-700)" }}>
           <span>
             © {new Date().getFullYear()} {praxis.vollerName}, {praxis.stadt}
           </span>

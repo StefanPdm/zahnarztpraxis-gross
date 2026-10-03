@@ -193,8 +193,8 @@ export default function Prophylaxe() {
             Verhältnisse hat, kommt mit weniger aus.
           </p>
           <p
+            className='blocksatz'
             style={{
-              textAlign: 'justify',
               hyphens: 'auto',
               color: 'var(--color-neutral-800)',
               margin: '0 0 22px',
@@ -237,12 +237,12 @@ export default function Prophylaxe() {
           </p>
         </div>
         <figure
+          className='linie-links'
           style={{
             position: 'relative',
             overflow: 'hidden',
             minHeight: '620px',
             margin: '0',
-            borderLeft: '1px solid var(--color-divider)',
           }}>
           {/* Kein Parallax-Rahmen: das Motiv ist breit angelegt, der Überstand
               von 140 % würde Modell und Instrumente seitlich abschneiden.

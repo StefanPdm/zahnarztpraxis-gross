@@ -25,7 +25,7 @@ arbeiten.
 | `lib/seiten.ts` | Alle Seiten: Titel, Beschreibung, Rubrik → Metadaten, Sitemap, Weiterleitungen, llms.txt |
 | `lib/strukturierteDaten.ts` | setzt Stammdaten in jedes JSON-LD ein |
 | `app/classical.css` | Tokens: Farben, Schriften, Abstände, Radien, Schatten |
-| `app/site.css.original` | Projekt-Tokens (Schriftgrade, Ebenen), Navigation, Effekte → `npm run styles` erzeugt `app/site.css` |
+| `app/site.css` | Projekt-Tokens (Schriftgrade, Ebenen), Navigation, Effekte, Sonderfälle mobil |
 | `app/bausteine.css` | Bausteine als Klassen, mit eigenem Mobilverhalten |
 | `components/` | React-Bausteine (NotfallLeiste, Fragen, Bild, Karte, Sprechzeiten, …) |
 | `/bausteine` | lebende Übersicht aller Tokens und Bausteine — nur `npm run dev` |
@@ -47,8 +47,6 @@ Build: `grep -rl "praxis@" .next/static/` muss leer bleiben.
 - **`app/classical.css`** — das Design-System, 1:1 übernommen. Wer die Optik
   ändern will, ändert sie hier und nirgends sonst. (Einzige Abweichung vom
   Original: der Google-Fonts-`@import` ist entfernt, siehe Datenschutz.)
-- **`app/site.css`** ist **erzeugt**. Änderungen gehören in
-  `app/site.css.original`, danach `npm run styles`.
 - **Das Aussehen bei 1440 px.** Das ist die abgenommene Leinwand.
 
 ## Inline-Styles und Bausteine
@@ -57,15 +55,22 @@ Die häufigen Muster sind Klassen in `app/bausteine.css` (Überzeile, Titel,
 Abschnitte, Fließtext, Knöpfe, Seitenkopf, Abschlussband, Fragen …). Neuer
 Code verwendet **nur** diese Klassen und Tokens.
 
-Die übrigen Inline-Styles (Einzelfälle) tragen weiterhin mobiles Verhalten:
-`site.css` adressiert sie über ihren Style-Text (`[style*="padding: 80px"]`).
-Wer so einen Wert ändert, kann eine Mobilregel abschalten, ohne dass etwas
-bricht — es sieht nur falsch aus. Beim Umstellen auf eine Klasse:
+Mobilverhalten steht **immer** in einer Klasse, nie im Inline-Style:
+Abschnitte (`.abschnitt` + Modifikator), Raster (`.spalten`, `.raster`),
+Seitenrand (`.rand`, `.rand-aussen`), Linie links (`.linie-links`),
+Blocksatz (`.blocksatz`). Einzelwerte, die nur eine Stelle braucht, setzt
+das Markup als CSS-Variable (`style={{ "--spalten": "1fr 1.05fr" }}`) — die
+Klasse liest sie auf dem Desktop und ersetzt sie mobil.
 
-1. Klasse in `app/bausteine.css`, pixelgleich zum Inline-Stil.
-2. Jede Mobilregel, die den alten Style-Text traf, ausdrücklich in die
-   Klasse übernehmen (Seitenrand über `--rand`, Abstände, Grid → eine Spalte).
-3. Bildvergleich aller Seiten bei 1440 und 390 px vor/nach.
+Die verbliebenen Inline-Styles (rund 750) sind Einzelfälle **ohne**
+Mobilverhalten: Farbe, Schriftgrad, ein Abstand. Sie werden nebenbei in
+Klassen überführt, wenn man eine Seite ohnehin anfasst; `npm run pruefen`
+achtet darauf, dass es nicht mehr werden.
+
+**Keine Selektoren auf den Style-Text** (`[style*="padding: 80px"]`). So
+lief das mobile Verhalten früher; wer einen Wert änderte, schaltete
+unbemerkt eine Mobilregel ab. `npm run pruefen` schlägt fehl, sobald so ein
+Selektor in einer CSS-Datei steht.
 
 ## Konventionen
 

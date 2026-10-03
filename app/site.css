@@ -1,17 +1,3 @@
-/* ============================================================================
-   ERZEUGT — nicht von Hand bearbeiten.
-
-   Quelle: app/site.css.original
-   Erzeugt von: scripts/repariere-style-selektoren.mjs
-
-   Die [style*="…"]-Selektoren wurden um die Schreibweisen erweitert, die
-   React und das exportierte Markup tatsächlich ausgeben. Inhaltliche
-   Änderungen gehören in app/site.css.original, danach das Skript erneut laufen lassen:
-
-     npm run styles
-
-   ============================================================================ */
-
 /* ═══════════════════════════════════════════════════════════════════════════
    Zahnmedizin Potsdam — Groß & Groß
    Gemeinsames Stylesheet für alle Seiten.
@@ -543,53 +529,13 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
 }
 
 /* ── 7  Responsive ───────────────────────────────────────────────────────── */
-/* Die Regeln greifen über Attribut-Textvergleich auf inline styles.
-   Konvention: Ränder ausschließlich als "margin: 0px 64px …" oder
-   "margin: 40px 64px …" schreiben, sonst greift der Reset nicht.
-   Marker-Zeilen mit "auto 1fr" sind ausgenommen — sie sollen nebeneinander
-   bleiben. */
+/* Das Mobilverhalten von Abständen, Rastern, Linien und Blocksatz steht in
+   den Bausteinen (app/bausteine.css: .abschnitt, .spalten, .rand, …). Hier
+   nur, was einzelne Bereiche betrifft. Früher lief all das über
+   Attribut-Selektoren auf den Text der Inline-Styles —
+   die gibt es nicht mehr, und es sollen keine neuen dazukommen. */
 
 @media (max-width: 1000px) {
-  body p[style*="justify"] { text-align: left !important; }
-
-  body [style*="padding: 116px"],
-  body [style*="padding:116px"],
-  body [style*="padding: 104px"],
-  body [style*="padding:104px"],
-  body [style*="padding: 96px"] ,
-  body [style*="padding:96px"] { padding-top: 52px !important; padding-bottom: 36px !important; }
-  body [style*="padding: 80px"] ,
-  body [style*="padding:80px"] { padding-top: 52px !important; padding-bottom: 52px !important; }
-  body [style*="padding: 70px"] ,
-  body [style*="padding:70px"] { padding-top: 44px !important; padding-bottom: 44px !important; }
-
-  [style*="padding: "][style*=" 64px"] ,
-  [style*="padding:"][style*=" 64px"] { padding-left: 24px !important; padding-right: 24px !important; }
-  [style*="margin: 0px 64px"],
-  [style*="margin:0px 64px"],
-  [style*="margin: 0 64px"],
-  [style*="margin:0 64px"],
-  [style*="margin: 40px 64px"] ,
-  [style*="margin:40px 64px"] { margin-left: 24px !important; margin-right: 24px !important; }
-
-  [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { grid-template-columns: 1fr !important; }
-  /* Zweispaltige Angaben (Bezeichnung | Wert) bleiben nebeneinander — lange
-     Werte wie E-Mail-Adressen dürfen dafür umbrechen, statt die Seite zu verbreitern. */
-  [style*="grid-template-columns"][style*="auto 1fr"] > * { min-width: 0; overflow-wrap: anywhere; }
-  body [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { gap: 30px !important; }
-  body [style*="display: grid"][style*="gap: 2px"] ,
-  body [style*="display: grid"][style*="gap:2px"] ,
-  body [style*="display:grid"][style*="gap: 2px"] ,
-  body [style*="display:grid"][style*="gap:2px"] { gap: 2px !important; }
-
-  [style*="max-width: 1440px"] ,
-  [style*="max-width:1440px"] { max-width: 100% !important; }
-  [style*="border-left: 1px solid"] ,
-  [style*="border-left:1px solid"] { border-left: 0 !important; border-top: 1px solid var(--color-divider) !important; }
-  body [style*="columns: 2"], body p[style*="columns: 2"] ,
-  body [style*="columns:2"], body p[style*="columns: 2"] ,
-  body [style*="columns:2"], body p[style*="columns:2"] { columns: 1 !important; }
-
   body iframe { height: 280px !important; }
   body img.plate {
     height: auto !important;
@@ -607,11 +553,9 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
     max-width: 420px;
     margin-inline: auto;
   }
-  body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr 1fr !important; gap: 36px 40px !important; }
   body footer > div:last-child { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-  /* Kennzahlenband: Die Regel weiter oben („grid-template-columns → 1fr")
-     ist spezifischer als ein `.statbar` hier, mobil steht also jede Zahl in
-     einer eigenen Zeile. Der Trennstrich gehört deshalb zwischen alle
+  /* Kennzahlenband: Es trägt .spalten (bausteine.css), mobil steht also
+     jede Zahl in einer eigenen Zeile. Der Trennstrich gehört deshalb zwischen alle
      Zeilen. Vorher stand hier `:nth-child(n+3)` — gedacht für zwei Spalten,
      mit der Folge, dass die Linie über der zweiten Kennzahl fehlte. */
   body .statbar > * + * { border-top: 1px solid var(--color-divider); }
@@ -623,7 +567,7 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
     grid-template-columns: 48px 1fr 48px !important;
     align-items: center;
     gap: 10px !important;
-    padding: 12px 18px !important;
+    padding: 12px var(--rand) !important; /* Seitenrand wie der Inhalt: 24 bzw. 18 px */
     position: sticky;
     top: 0;
     z-index: var(--ebene-kopf);
@@ -809,27 +753,10 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
   body #hero { padding-top: 72px !important; padding-bottom: 24px !important; }
   body #videoband > div:first-child { height: 62vh !important; min-height: 300px; }
 
-  /* Hochkant-Tafel (Erstgespräch): das Bild bestimmt mobil die Höhe —
-     sonst bleibt unter dem Foto die Restfläche der 640px-Spalte leer. */
-  body figure[style*="min-height:640px"],
-  body figure[style*="min-height: 640px"],
-  body figure[style*="min-height: 640px"] ,
-  body figure[style*="min-height:640px"] { min-height: 0 !important; height: auto !important; }
-  body figure[style*="min-height:640px"] > img.plate,
-  body figure[style*="min-height: 640px"] > img.plate,
-  body figure[style*="min-height: 640px"] > img.plate ,
-  body figure[style*="min-height:640px"] > img.plate { aspect-ratio: 4 / 5 !important; }
-
   /* Anfahrt: die Gebäudeansicht trägt einen eingezeichneten Weg. Das Bild
      behält mobil sein Seitenverhältnis, sonst schneidet der Zuschnitt die
      Pfeilspitze ab (SVG und Foto werden identisch beschnitten). */
   body img.wegbild { height: auto !important; aspect-ratio: 1909 / 824; }
-
-  /* Bild-Spalten, die auf Desktop die Texthöhe füllen (min-height:640px):
-     mobil schrumpft das Foto auf sein Seitenverhältnis, die Mindesthöhe
-     bliebe als leerer Block darunter stehen. */
-  body figure[style*="min-height:640px"] ,
-  body figure[style*="min-height: 640px"] { min-height: 0 !important; height: auto !important; }
 
   /* GROSSELINO: schwebende Variante aus, feste im Inhalt an */
   #grosselino, #gr-bubble { display: none !important; }
@@ -837,30 +764,9 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
 }
 
 @media (max-width: 640px) {
-  [style*="padding: "][style*=" 64px"] ,
-  [style*="padding:"][style*=" 64px"] { padding-left: 18px !important; padding-right: 18px !important; }
-  [style*="margin: 0px 64px"],
-  [style*="margin:0px 64px"],
-  [style*="margin: 0 64px"],
-  [style*="margin:0 64px"],
-  [style*="margin: 40px 64px"] ,
-  [style*="margin:40px 64px"] { margin-left: 18px !important; margin-right: 18px !important; }
-  body [style*="grid-template-columns"]:not(header):not([style*="auto 1fr"]) { gap: 24px !important; }
-  body [style*="padding: 116px"] ,
-  body [style*="padding:116px"] { padding-top: 42px !important; padding-bottom: 42px !important; }
-  body [style*="padding: 104px"] ,
-  body [style*="padding:104px"] { padding-top: 36px !important; padding-bottom: 36px !important; }
-  body [style*="padding: 80px"] ,
-  body [style*="padding:80px"] { padding-top: 40px !important; padding-bottom: 40px !important; }
-  body [style*="padding: 70px"] ,
-  body [style*="padding:70px"] { padding-top: 34px !important; padding-bottom: 34px !important; }
   body table.table td { font-size: 13px !important; }
   body img.plate { aspect-ratio: 4 / 3; }
   .btn { width: 100%; text-align: center; }
-  [style*="display: flex"][style*="gap: 14px"] ,
-  [style*="display: flex"][style*="gap:14px"] ,
-  [style*="display:flex"][style*="gap: 14px"] ,
-  [style*="display:flex"][style*="gap:14px"] { flex-wrap: wrap; }
   /* Porträtkarte: Auf dem Desktop liegt die Rückseite absolut über der
      Karte. Schmal wird der Werdegang höher als das Porträt und liefe unten
      über den Rand. Darum hier umgekehrt: Die Rückseite bleibt im Fluss und
@@ -877,7 +783,6 @@ body footer a:hover { color: var(--color-accent-800); } /* wie a:hover oben: Gol
   body .offen-status { white-space: normal; }
   .ai-badge { right: 8px; bottom: 8px; padding: 4px 7px; }
   .ai-badge img { width: 64px; }
-  body footer > div[style*="grid-template-columns"]:first-child { grid-template-columns: 1fr !important; }
 }
 
 /* ── Video-Schalter (Startseite, #videoband) ─────────────────────────────── */

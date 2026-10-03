@@ -77,7 +77,7 @@ export default function Implantologie() {
       <div className="statbar spalten spalten--4" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         {proof.map((p, pI) => (
           <Fragment key={pI}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center", borderLeft: "1px solid var(--color-divider)" }}>
+            <div className="linie-links" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "7px", padding: "30px 20px", textAlign: "center" }}>
               <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-h2-sm)", lineHeight: "1", color: "var(--color-accent-700)", fontFeatureSettings: "'tnum'" }}>
                 {p.value}
               </span>
@@ -124,7 +124,7 @@ export default function Implantologie() {
           <h2 className="titel-2 titel-2--luft">
             Eine künstliche Wurzel, nichts Mystisches.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 22px" }}>
             Ein Implantat ersetzt nicht den ganzen Zahn, sondern zuerst nur seine Wurzel: ein kleiner Körper aus Titan wird im Kieferknochen verankert und wächst dort fest ein. Titan wird auch von empfindlichen Menschen sehr gut vertragen. Darauf kommt der sichtbare Teil — je nach Fall eine Krone, eine Brücke oder eine Prothese.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -147,7 +147,7 @@ export default function Implantologie() {
             ))}
           </div>
         </div>
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "600px", borderLeft: "1px solid var(--color-divider)" }}>
+        <div className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "600px" }}>
           {/* Kein Parallax-Rahmen: Der zeigt das Bild auf 140 % Höhe und
               schnitte fast die Hälfte der Breite weg — die Krone läge
               außerhalb. So füllt es die Spalte und bleibt vollständig. */}
@@ -179,7 +179,7 @@ export default function Implantologie() {
       <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         <figure style={{ position: "relative", overflow: "hidden", minHeight: "520px", margin: "0" }}>
           <Bild className="parallax-img" src="/images/scanner-labor.jpg" alt="Digitaler Scanner im praxiseigenen Zahnlabor: Gebissmodell im Scanner, das digitale Kiefermodell auf dem Monitor" />
-          <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+          <figcaption className="umbruch-schmal" style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Digitales Modell · Labor in der Praxis
           </figcaption>
         </figure>
@@ -199,7 +199,7 @@ export default function Implantologie() {
           <p className="fliesstext">
             Das Modell Ihres Kiefers wird dafür digital eingescannt (Bild links): Aus dem Scan entsteht am Rechner ein exaktes dreidimensionales Abbild, auf dem Krone oder Brücke konstruiert werden — ohne den Umweg über Gipsmodelle, die per Post zwischen Praxis und Fremdlabor reisen.
           </p>
-          <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
+          <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
             <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">
               Zum Zahnlabor
             </Link>

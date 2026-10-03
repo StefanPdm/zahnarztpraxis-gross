@@ -219,6 +219,7 @@ export default function Ausbildung() {
           />
         </span>
         <figcaption
+          className='umbruch-schmal'
           style={{
             position: 'absolute',
             left: '24px',
@@ -245,6 +246,7 @@ export default function Ausbildung() {
         {zahlen.map((z, zI) => (
           <Fragment key={zI}>
             <div
+              className='linie-links'
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -252,7 +254,6 @@ export default function Ausbildung() {
                 gap: '7px',
                 padding: '30px 20px',
                 textAlign: 'center',
-                borderLeft: '1px solid var(--color-divider)',
               }}>
               <span
                 style={{
@@ -326,10 +327,9 @@ export default function Ausbildung() {
         ))}
       </div>
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 abschnitt abschnitt--hoch'
         style={{
           alignItems: 'start',
-          padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
           '--abstand': '64px',
@@ -365,10 +365,9 @@ export default function Ausbildung() {
         </div>
       </div>
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 abschnitt abschnitt--hoch'
         style={{
           alignItems: 'start',
-          padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
           '--abstand': '64px',
         }}>
@@ -402,10 +401,9 @@ export default function Ausbildung() {
         derzeit auf dem Tag vor Ausbildungsbeginn) · Instagram oder Facebook, falls vorhanden.
       </div> */}
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 abschnitt abschnitt--hoch'
         style={{
           alignItems: 'start',
-          padding: '96px var(--rand)',
           borderTop: '1px solid var(--color-divider)',
           '--abstand': '64px',
         }}>

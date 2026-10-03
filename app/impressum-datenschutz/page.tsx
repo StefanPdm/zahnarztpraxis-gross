@@ -111,7 +111,7 @@ export default function ImpressumDatenschutz() {
   return (
     <>
       <NotfallLeiste />
-      <div style={{ padding: '96px 64px 56px', borderBottom: '1px solid var(--color-divider)' }}>
+      <div className='abschnitt abschnitt--hoch' style={{ '--unten': '56px', borderBottom: '1px solid var(--color-divider)' }}>
         <div className='ueberzeile'>Rechtliches</div>
         <h1 className='seitentitel'>
           Impressum &amp;
@@ -185,11 +185,11 @@ export default function ImpressumDatenschutz() {
                   {h.title}
                 </h3>
                 <p
+                  className='blocksatz'
                   style={{
                     fontSize: '14px',
                     lineHeight: '1.62',
                     color: 'var(--color-neutral-800)',
-                    textAlign: 'justify',
                     hyphens: 'auto',
                     margin: '0',
                   }}>
@@ -244,11 +244,11 @@ export default function ImpressumDatenschutz() {
                   {d.title}
                 </h3>
                 <p
+                  className='blocksatz'
                   style={{
                     fontSize: '14px',
                     lineHeight: '1.62',
                     color: 'var(--color-neutral-800)',
-                    textAlign: 'justify',
                     hyphens: 'auto',
                     margin: '0',
                   }}>
@@ -269,10 +269,9 @@ export default function ImpressumDatenschutz() {
         </p>
       </div>
       <div
-        className='spalten'
+        className='spalten abschnitt abschnitt--knapp'
         style={{
           alignItems: 'center',
-          padding: '70px 64px',
           borderBottom: '1px solid var(--color-divider)',
           '--spalten': '1fr auto',
           '--abstand': '56px',
@@ -291,7 +290,7 @@ export default function ImpressumDatenschutz() {
             Auskunft, Berichtigung oder Löschung: eine kurze Nachricht an die Praxis genügt.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '14px' }}>
+        <div className='umbruch-schmal' style={{ display: 'flex', gap: '14px' }}>
           <a
             className='btn btn-secondary knopf-gross'
             href={`mailto:${praxis.email}`}>

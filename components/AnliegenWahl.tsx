@@ -60,7 +60,7 @@ export default function AnliegenWahl() {
           ))}
         </div>
       </div>
-      <div style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
+      <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", justifyContent: "center", marginTop: "28px" }}>
         <Link className="btn btn-primary knopf-gross" href={`/#${TERMIN_ANKER}`}>
           Termin vereinbaren
         </Link>

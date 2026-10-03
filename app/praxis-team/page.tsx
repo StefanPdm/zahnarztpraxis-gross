@@ -177,10 +177,10 @@ export default function PraxisTeam() {
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 abschnitt abschnitt--hoch'
         style={{
           alignItems: 'end',
-          padding: '96px 64px 56px',
+          '--unten': '56px',
           '--abstand': '64px',
         }}>
         <div>
@@ -221,6 +221,7 @@ export default function PraxisTeam() {
         {zahlen.map((z, zI) => (
           <Fragment key={zI}>
             <div
+              className='linie-links'
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -228,7 +229,6 @@ export default function PraxisTeam() {
                 gap: '7px',
                 padding: '30px 20px',
                 textAlign: 'center',
-                borderLeft: '1px solid var(--color-divider)',
               }}>
               <span
                 style={{
@@ -271,9 +271,10 @@ export default function PraxisTeam() {
         </p>
       </div>
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 rand-aussen'
         style={{
-          margin: '40px 64px 0',
+          marginTop: '40px',
+          marginBottom: '0',
           paddingBottom: '96px',
           '--abstand': '64px',
         }}>
@@ -425,11 +426,11 @@ export default function PraxisTeam() {
                 {m.zitat}
               </p>
               <p
+                className='blocksatz'
                 style={{
                   fontSize: '15px',
                   lineHeight: '1.65',
                   color: 'var(--color-neutral-800)',
-                  textAlign: 'justify',
                   hyphens: 'auto',
                   margin: '0 0 16px',
                 }}>
@@ -650,11 +651,11 @@ export default function PraxisTeam() {
             Das Bild füllt die Rasterzelle ganz aus — sonst bliebe unten ein
             weißer Streifen, auf dem die KI-Kennzeichnung liegen würde. */}
         <figure
+          className='linie-links'
           style={{
             position: 'relative',
             overflow: 'hidden',
             margin: '0',
-            borderLeft: '1px solid var(--color-divider)',
           }}>
           <Bild
             sizes='(max-width: 1000px) 100vw, 50vw'
@@ -762,10 +763,11 @@ export default function PraxisTeam() {
           deshalb steht der Hinweis auf den Ausbildungsplatz direkt unter
           dem Praxisteam und nicht in der Patientennavigation. */}
       <div
-        className='spalten'
+        className='spalten rand'
         style={{
           alignItems: 'center',
-          padding: '48px 64px',
+          paddingTop: '48px',
+          paddingBottom: '48px',
           borderTop: '1px solid var(--color-divider)',
           borderBottom: '1px solid var(--color-divider)',
           background: 'var(--color-surface)',
@@ -795,12 +797,12 @@ export default function PraxisTeam() {
           <Fragment key={vI}>
             <a
               href={v.href}
+              className='linie-links'
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '10px',
                 padding: '44px 40px',
-                borderLeft: '1px solid var(--color-divider)',
                 color: 'var(--color-text)',
                 textDecoration: 'none',
               }}>

@@ -8,6 +8,7 @@
  *   3  Jede Seite unter app/ steht in lib/seiten.ts und umgekehrt
  *   4  Jedes Bild in <Bild src="…"> hat Maße in lib/bildmasse.json
  *   5  Die Zahl der Inline-Styles steigt nicht (Obergrenze, nur nach unten)
+ *   6  Kein CSS-Selektor auf den Style-Text ([style*="…"])
  *
  * Bricht mit Fehlercode ab, sobald eine Regel verletzt ist.
  */
@@ -84,6 +85,15 @@ const inlineStyles = [...dateien("app", /.tsx$/), ...dateien("components", /.tsx
 );
 if (inlineStyles > OBERGRENZE_INLINE_STYLES)
   fehler.push(`${inlineStyles} Inline-Styles (Obergrenze ${OBERGRENZE_INLINE_STYLES}) – neue Gestaltung über Klassen in app/bausteine.css`);
+
+/* 6 — Selektoren auf den Text eines Inline-Styles: So lief das Mobilverhalten
+   bis Oktober 2026 (docs/STAND.md). Wer dort einen Wert änderte, schaltete
+   unbemerkt eine Regel ab. Mobilverhalten gehört in eine Klasse. */
+for (const d of dateien("app", /\.css$/)) {
+  for (const [z, inhalt] of lies(d).split("\n").entries()) {
+    if (/\[style[*^$~|]?=/.test(inhalt)) fehler.push(`${d}:${z + 1}: Selektor auf den Style-Text – Mobilverhalten gehört in eine Klasse (app/bausteine.css)`);
+  }
+}
 
 if (fehler.length) {
   console.error(`✗ ${fehler.length} Problem(e):\n  ` + fehler.join("\n  "));

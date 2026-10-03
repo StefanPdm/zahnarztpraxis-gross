@@ -222,12 +222,16 @@ export function GrosselinoMobil() {
     <div
       id="grosselino-mobil"
       ref={karte}
-      className={imBild ? "inview" : undefined}
+      className={imBild ? "rand rand-aussen inview" : "rand rand-aussen"}
       style={{
         alignItems: "center",
         gap: "16px",
-        margin: "40px 64px 0",
-        padding: "20px 22px",
+        marginTop: "40px",
+        marginBottom: "0",
+        paddingTop: "20px",
+        paddingBottom: "20px",
+        "--rand-links": "22px",
+        "--rand-rechts": "22px",
         border: "1px solid var(--color-accent-200)",
         borderRadius: "18px",
         background: "var(--kid-ground)",

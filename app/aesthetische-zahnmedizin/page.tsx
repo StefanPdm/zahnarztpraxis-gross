@@ -69,14 +69,14 @@ export default function AesthetischeZahnmedizin() {
           <p className="fliesstext">
             Vor jedem Eingriff kommt die Gesundheit: Karies, Zahnfleischentzündungen und lockere Füllungen werden zuerst behandelt. Ästhetik auf kranke Zähne zu setzen hält nicht — weder medizinisch noch optisch.
           </p>
-          <blockquote style={{ margin: "32px 0 0", padding: "0 0 0 22px", borderLeft: "1px solid var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
+          <blockquote className="linie-links" style={{ margin: "32px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Das schönste Ergebnis ist das, bei dem niemand fragt, was Sie machen ließen.“
             <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Chantal Groß, Zahnärztin
             </cite>
           </blockquote>
         </div>
-        <figure style={{ position: "relative", overflow: "hidden", minHeight: "580px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
+        <figure className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "580px", margin: "0" }}>
           {/* Kein Parallax-Rahmen: Der verschiebt das Bild beim Scrollen
               um bis zu 116 px, und der Kopf stünde zeitweise halb im
               Rahmen. So füllt es die Spalte, oben und unten fallen nur
@@ -86,7 +86,7 @@ export default function AesthetischeZahnmedizin() {
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
             <img src="/images/ai-generated-badge.svg" alt="KI-generiertes Bild" />
           </span>
-          <figcaption style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
+          <figcaption className="umbruch-schmal" style={{ position: "absolute", left: "20px", bottom: "18px", display: "flex", gap: "14px", padding: "9px 16px", borderRadius: "var(--radius-md)", background: "rgba(255,255,255,0.92)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
             Zahnfarbe und Form · in der Praxis konstruiert
           </figcaption>
         </figure>

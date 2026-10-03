@@ -10,7 +10,6 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "styles": "node scripts/repariere-style-selektoren.mjs app/site.css.original app/site.css",
     "bilder": "node scripts/bildmasse.mjs",
     "pruefen": "node scripts/pruefe.mjs"
   },

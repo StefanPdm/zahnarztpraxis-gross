@@ -7,7 +7,7 @@
 > (Übersicht unter `/bausteine`). Wo die abgenommene Website bewusst
 > abweicht, gilt der Code:
 >
-> - Knöpfe in Jost-Versalien (`.btn` in `app/site.css.original`), und es
+> - Knöpfe in Jost-Versalien (`.btn` in `app/site.css`), und es
 >   gibt gefüllte Knöpfe (`knopf-band--voll`).
 > - Große Überschriften im normalen Schnitt (400). `--font-heading-weight: 600`
 >   gilt nur für die kleinen Überschriften der Komponenten-Klassen.

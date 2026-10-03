@@ -76,7 +76,7 @@ export default function Leistungen() {
                 <h3 style={{ margin: "10px 0 12px", fontSize: "30px", fontWeight: "400", lineHeight: "1.14" }}>
                   {b.title}
                 </h3>
-                <p style={{ fontSize: "15px", lineHeight: "1.62", color: "var(--color-neutral-800)", textAlign: "justify", hyphens: "auto", margin: "0" }}>
+                <p className="blocksatz" style={{ fontSize: "15px", lineHeight: "1.62", color: "var(--color-neutral-800)", hyphens: "auto", margin: "0" }}>
                   {b.text}
                 </p>
               </div>
@@ -99,7 +99,7 @@ export default function Leistungen() {
           </g>
         </svg>
       </div>
-      <div id="zahnlabor" className="spalten spalten--2" style={{ alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
+      <div id="zahnlabor" className="spalten spalten--2 abschnitt abschnitt--knapp" style={{ alignItems: "center", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Eigenes Zahnlabor
@@ -107,7 +107,7 @@ export default function Leistungen() {
           <h2 className="titel-3 titel-3--eng">
             Der Zahntechniker sitzt direkt in der Praxis.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>
             Präzisionsabformungen, Modelle, Provisorien, Schienen und Keramikarbeiten entstehen im Labor der Praxis. Farbe und Passung prüfen wir direkt am Stuhl, Korrekturen laufen oft am selben Tag — statt über Wochen und Wege zu einem externen Labor.
           </p>
           <Link className="btn btn-primary knopf-gross" href="/zahnlabor">
@@ -143,7 +143,7 @@ export default function Leistungen() {
           ))}
         </div>
       </div>
-      <div className="spalten" style={{ alignItems: "center", padding: "70px 64px", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr auto", "--abstand": "56px" }}>
+      <div className="spalten abschnitt abschnitt--knapp" style={{ alignItems: "center", background: "var(--color-surface)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr auto", "--abstand": "56px" }}>
         <div>
           <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2-sm)", lineHeight: "1.1", margin: "0 0 12px" }}>
             Nicht sicher, was Sie brauchen?
@@ -152,7 +152,7 @@ export default function Leistungen() {
             Beschreiben Sie kurz Ihr Anliegen — wir sagen Ihnen, welcher Termin dafür der richtige ist, und wie lange er dauert.
           </p>
         </div>
-        <div style={{ display: "flex", gap: "14px" }}>
+        <div className="umbruch-schmal" style={{ display: "flex", gap: "14px" }}>
           <Link className="btn btn-primary knopf-gross" href="/#termin">
             Termin anfragen
           </Link>

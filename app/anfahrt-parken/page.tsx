@@ -29,7 +29,7 @@ export default function AnfahrtParken() {
     <>
       <JsonLd daten={strukturierteDaten} />
       <NotfallLeiste />
-      <div className="spalten spalten--2" style={{ alignItems: "end", padding: "96px 64px 48px", "--abstand": "64px" }}>
+      <div className="spalten spalten--2 abschnitt abschnitt--hoch" style={{ alignItems: "end", "--unten": "48px", "--abstand": "64px" }}>
         <div>
           <div className="ueberzeile">
             Anfahrt &amp; Parken
@@ -59,7 +59,7 @@ export default function AnfahrtParken() {
         </div>
       </div>
       <div className="photopair spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
-        <figure style={{ margin: "0", padding: "34px 34px 30px 64px" }}>
+        <figure className="rand" style={{ margin: "0", paddingTop: "34px", paddingBottom: "30px", "--rand-rechts": "34px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "16px" }}>
             <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
               Straßenseite
@@ -93,7 +93,7 @@ export default function AnfahrtParken() {
             am Gebäude vorbei nach hinten.
           </figcaption>
         </figure>
-        <figure style={{ margin: "0", padding: "34px 64px 30px 34px", borderLeft: "1px solid var(--color-divider)", background: "var(--color-surface)" }}>
+        <figure className="rand linie-links" style={{ margin: "0", paddingTop: "34px", paddingBottom: "30px", "--rand-links": "34px", background: "var(--color-surface)" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "12px", marginBottom: "16px" }}>
             <span style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-700)" }}>
               Hier hinein · Rückseite
@@ -212,7 +212,7 @@ export default function AnfahrtParken() {
           <h2 className="titel-3">
             Im 1. Stock, über die Treppe.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
             Die Praxis liegt im 1. Stock und ist über das Treppenhaus erreichbar. Einen Aufzug gibt es nicht — die Räume sind damit nicht barrierefrei. Wenn Sie mit Rollstuhl, Rollator oder Kinderwagen kommen oder Treppen für Sie schwierig sind, sagen Sie es bitte vor dem Termin: Wir besprechen dann, wie wir Ihnen weiterhelfen können.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)", fontSize: "15px" }}>

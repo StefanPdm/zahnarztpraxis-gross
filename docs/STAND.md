@@ -21,14 +21,14 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 | KI-Lesbarkeit | `/llms.txt` aus denselben Daten, alle Crawler zugelassen |
 | Designsystem | `app/bausteine.css` + Komponenten, lebende Übersicht unter `/bausteine`; Inline-Styles 1382 → 760 (Zählweise `style={{`); Obergrenze in `npm run pruefen`, darf nur sinken |
 | Qualitätssicherung | `npm run pruefen`: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße, Obergrenze Inline-Styles — läuft vor jedem Build |
-| Farben im Markup | keine Hexwerte mehr in TSX: `--ink-dark`, `--papier`, `--weiss` (`app/site.css.original`). Ausnahme `lib/mailvorlage.ts` — Mailprogramme kennen keine CSS-Variablen |
+| Farben im Markup | keine Hexwerte mehr in TSX: `--ink-dark`, `--papier`, `--weiss` (`app/site.css`). Ausnahme `lib/mailvorlage.ts` — Mailprogramme kennen keine CSS-Variablen |
 
 ## Noch zu tun — Entscheidungen
 
 - **Schrift unter 12 px.** Die Versalzeilen des Designs haben 10–11,5 px;
   CLAUDE.md verlangt mindestens 12 px. Beides lässt sich nicht zugleich
   halten. Umsetzung, wenn entschieden: die Tokens `--fs-marke` und
-  `--fs-marke-klein` in `app/site.css.original` auf 12px setzen; die
+  `--fs-marke-klein` in `app/site.css` auf 12px setzen; die
   restlichen Einzelfälle stehen noch inline.
 - **Link „Wie wir Angstpatienten begleiten"** im Termin-Formular führt jetzt
   zu `/angstpatienten` (vorher `/leistungen`).
@@ -41,9 +41,13 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
       `.env.local` (Vorlage `.env.example`).
 - [ ] Datenschutzerklärung um OpenStreetMap (Karte nach Klick) ergänzen —
       juristischer Text, nicht erfinden.
-- [ ] Restliche Inline-Styles (Einzelfälle) nach und nach in Bausteine
-      überführen; Verfahren in CLAUDE.md, Abschnitt „Inline-Styles und
-      Bausteine". Danach entfällt die Selektor-Reparatur (unten).
+- [ ] Restliche Inline-Styles (Einzelfälle ohne Mobilverhalten) nebenbei
+      in Bausteine überführen, wenn eine Seite ohnehin angefasst wird;
+      siehe CLAUDE.md, Abschnitt „Inline-Styles und Bausteine".
+- [ ] Gestaltung: Die Fotokacheln (Startseite, /kontakt, /leistungen)
+      stehen auf dem Desktop mit 2-px-Fuge, mobil mit 30 / 24 px Abstand.
+      Das Original wollte die Fuge mobil halten, die Regel dafür griff aber
+      nie. Bei Wunsch: `.spalten` mit `--abstand: 2px` mobil ausnehmen.
 - [ ] Flip-Karten (Porträts) auf Touch-Geräten prüfen: sie drehen über
       `:focus-within`.
 
@@ -171,29 +175,26 @@ Damit diese Punkte nicht erneut als Befund auftauchen:
   Schmuckziffern.
 - **CSP mit `unsafe-inline`:** Bei Skripten fällt es nur mit Nonces weg, und
   dann würde jede Seite pro Anfrage gerendert (Begründung in
-  `next.config.ts`). Bei Stilen fällt es erst weg, wenn alle Inline-Styles
-  überführt sind.
+  `next.config.ts`). Bei Stilen bräuchte es null Inline-Styles; der
+  Sicherheitsgewinn wäre ohne Nutzerinhalte im Markup gering.
 
-## Die Selektor-Reparatur (Brücke für die restlichen Inline-Styles)
+## Mobilverhalten: früher über den Style-Text, jetzt in Klassen
 
-`site.css` steuert das mobile Verhalten der verbliebenen Inline-Styles über
-den **Text** des `style`-Attributs:
+Bis Oktober 2026 steuerte `site.css` das mobile Verhalten über Selektoren
+auf den **Text** des `style`-Attributs (`[style*="padding: 116px"]`) — ein
+Erbe der Ursprungsumgebung. Weil React anders schreibt als der Browser des
+Designwerkzeugs, brauchte es dazu ein Reparatur-Skript, und wer einen Wert
+änderte, schaltete unbemerkt eine Mobilregel ab.
 
-```css
-[style*="padding: 116px"]    { … }
-[style*="margin: 0px 64px"]  { … }
-```
-
-Diese Schreibweise stammt aus der Ursprungsumgebung, in der der Browser das
-Attribut normalisiert hat. React schreibt `style="padding:80px 64px"` — ohne
-Leerzeichen. `scripts/repariere-style-selektoren.mjs` erweitert jeden
-betroffenen Selektor um die tatsächlich vorkommenden Schreibweisen
-(`npm run styles`, bearbeitet wird `app/site.css.original`).
-
-Das ist die Brücke, nicht das Ziel. Für die Bausteine in
-`app/bausteine.css` gilt sie nicht mehr: dort steht das Mobilverhalten
-ausdrücklich. Sind alle Inline-Styles überführt, fallen Skript und
-`site.css`-Erzeugung weg.
+Das ist abgelöst (03.–04.10.2026): Jede dieser Stellen trägt jetzt eine
+Klasse mit ausdrücklichem Mobilverhalten (`.abschnitt`, `.spalten`,
+`.paar`, `.rand`, `.linie-links`, `.blocksatz`, …). Umgestellt per
+TypeScript-Parser, der jede alte Regel genau so nachgebildet hat, wie der
+Browser sie anwandte — auch dort, wo sie mehr traf als gemeint (ein
+`margin: 40px 64px` setzte mobil auch das Padding auf den Seitenrand).
+Bildvergleich aller 17 Seiten bei 1440, 1000, 800, 640, 390 und 360 px:
+pixelgleich. Skript und `site.css.original` sind entfernt;
+`npm run pruefen` verhindert, dass solche Selektoren zurückkommen.
 
 ## Stolperstellen, die schon einmal gebissen haben
 

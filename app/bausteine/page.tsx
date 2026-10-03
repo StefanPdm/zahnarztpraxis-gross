@@ -46,9 +46,9 @@ export default function Bausteine() {
   if (process.env.NODE_ENV === "production") notFound();
 
   const farben = tokens("classical.css", /^--color-/);
-  const schriftgrade = [...tokens("site.css.original", /^--fs-/)];
+  const schriftgrade = [...tokens("site.css", /^--fs-/)];
   const formen = tokens("classical.css", /^--(space|radius|shadow)-/);
-  const ebenen = tokens("site.css.original", /^--ebene-/);
+  const ebenen = tokens("site.css", /^--ebene-/);
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function Bausteine() {
           <h1 className="seitentitel">Bausteine</h1>
         </div>
         <p className="fliesstext fliesstext--gross">
-          Tokens aus <Code>app/classical.css</Code> und <Code>app/site.css.original</Code>, Bausteine aus{" "}
+          Tokens aus <Code>app/classical.css</Code> und <Code>app/site.css</Code>, Bausteine aus{" "}
           <Code>app/bausteine.css</Code> und <Code>components/</Code>. Neue Seiten setzen sich aus diesen Teilen
           zusammen — Werte nie als Rohzahl, immer als Token oder Klasse.
         </p>

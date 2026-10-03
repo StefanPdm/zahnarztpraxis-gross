@@ -55,7 +55,7 @@ export default function Zahnschmerzen() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <div className="spalten" style={{ alignItems: "center", padding: "70px 64px", background: "var(--ink-dark)", color: "var(--papier)", "--spalten": "1.1fr 1fr", "--abstand": "56px" }}>
+      <div className="spalten abschnitt abschnitt--knapp" style={{ alignItems: "center", background: "var(--ink-dark)", color: "var(--papier)", "--spalten": "1.1fr 1fr", "--abstand": "56px" }}>
         <div>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
             Akute Zahnschmerzen
@@ -161,7 +161,7 @@ export default function Zahnschmerzen() {
           <h2 className="titel-2 titel-2--luft">
             Der Schmerz sagt etwas über die Ursache.
           </h2>
-          <p style={{ textAlign: "justify", hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>
+          <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 24px" }}>
             Wie ein Zahn wehtut, ist ein Hinweis — keine Diagnose. Die stellen wir im Termin. Für Ihre Einschätzung, wie dringend es ist, hilft die Unterscheidung aber weiter.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
@@ -184,7 +184,7 @@ export default function Zahnschmerzen() {
             ))}
           </div>
         </div>
-        <figure style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0", borderLeft: "1px solid var(--color-divider)" }}>
+        <figure className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "540px", margin: "0" }}>
           {/* Ausschnitt etwas nach oben: Der Rahmen ist quer, das Bild hoch —
               mittig zentriert würde der Kopf oben angeschnitten. */}
           <Bild sizes="(max-width: 1000px) 100vw, 50vw" src="/images/zahnschmerzen-wartebereich-symbolbild.jpg" alt="Frau im Wartebereich hält sich die Wange" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%", display: "block" }} />

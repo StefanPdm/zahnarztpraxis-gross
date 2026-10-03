@@ -191,9 +191,8 @@ export default function Kontakt() {
         />
       </div>
       <div
-        className='spalten spalten--2'
+        className='spalten spalten--2 abschnitt'
         style={{
-          padding: '80px 64px',
           background: 'var(--color-surface)',
           borderBottom: '1px solid var(--color-divider)',
           '--abstand': '64px',
@@ -220,10 +219,9 @@ export default function Kontakt() {
         </div>
       </div>
       <div
-        className='spalten'
+        className='spalten abschnitt abschnitt--knapp'
         style={{
           alignItems: 'center',
-          padding: '70px 64px',
           borderBottom: '1px solid var(--color-divider)',
           '--spalten': '1fr auto',
           '--abstand': '56px',
