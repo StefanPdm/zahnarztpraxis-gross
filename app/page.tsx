@@ -234,7 +234,7 @@ export default function Index() {
                   }}>
                   Ruhig behandeln.
                   <br />
-                  <span style={{ fontStyle: 'italic', color: 'var(--color-accent-700)' }}>
+                  <span className='glanz' style={{ fontStyle: 'italic' }}>
                     Präzise&nbsp;
                   </span>
                   arbeiten.

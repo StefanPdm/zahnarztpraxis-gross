@@ -584,6 +584,45 @@ fieldset.field > legend {
   .hero-licht::before { animation: none; }
 }
 
+/* ── Glanz (Startseite, „Präzise" in der Hero) ─────────────────────────────
+   Ein heller Reflex läuft einmal über das goldene Wort — wie Blattgold, das
+   kurz das Licht fängt. Kein Dauer-Shimmer: Die Zeile heißt „Ruhig
+   behandeln", und das Tageslicht bewegt sich in der Hero schon.
+
+   Der Verlauf ist an beiden Enden reines --color-accent-700; vorher und
+   nachher sieht das Wort also genau so aus wie ohne Effekt. Nur der schmale
+   Reflex in der Mitte ist heller — er liegt gut eine Sekunde lang auf
+   jeweils einem Buchstaben, der Rest bleibt bei 4,5 : 1.
+
+   Nur mit Bewegung erwünscht und ohne Kontrastmodus: Unter forced-colors
+   entfernt der Browser Hintergrundbilder, mit background-clip: text wäre
+   das Wort dann unsichtbar. Ohne Unterstützung bleibt es einfach golden. */
+.glanz { color: var(--color-accent-700); }
+@media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .glanz {
+      background: linear-gradient(
+          105deg,
+          var(--color-accent-700) 42%,
+          var(--color-accent-400) 50%,
+          var(--color-accent-700) 58%
+        )
+        100% 0 / 250% 100% no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: glanz 1.4s cubic-bezier(0.45, 0, 0.25, 1) 1s both;
+    }
+    /* Mit der Maus noch einmal — eigener Name, sonst startet die Animation
+       nicht neu. */
+    @media (hover: hover) {
+      .glanz:hover { animation-name: glanzErneut; animation-delay: 0s; }
+    }
+  }
+}
+@keyframes glanz { from { background-position: 100% 0; } to { background-position: 0 0; } }
+@keyframes glanzErneut { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
 /* ── Einblenden beim Scrollen (components/Einblenden) ──────────────────────
    Abschnittsköpfe steigen einmalig 8 px auf und blenden ein. Die Klasse
    `wartet` setzt nur das Skript, und nur unterhalb des Fensters — ohne
