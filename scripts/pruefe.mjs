@@ -7,6 +7,7 @@
  *   2  Titel ≤ 60 und Beschreibung ≤ 160 Zeichen (lib/seiten.ts)
  *   3  Jede Seite unter app/ steht in lib/seiten.ts und umgekehrt
  *   4  Jedes Bild in <Bild src="…"> hat Maße in lib/bildmasse.json
+ *   5  Die Zahl der Inline-Styles steigt nicht (Obergrenze, nur nach unten)
  *
  * Bricht mit Fehlercode ab, sobald eine Regel verletzt ist.
  */
@@ -72,8 +73,20 @@ for (const d of [...dateien("app", /\.tsx$/), ...dateien("components", /\.tsx$/)
   }
 }
 
+/* 5 — Inline-Styles: Sperrklinke. Die verbliebenen Einzelfälle werden nach und
+   nach in Bausteine überführt (CLAUDE.md, „Inline-Styles und Bausteine");
+   neuer Code verwendet nur Klassen und Tokens. Wer Inline-Styles abbaut,
+   senkt OBERGRENZE auf den neuen Stand — erhöht wird sie nicht. */
+const OBERGRENZE_INLINE_STYLES = 797;
+const inlineStyles = [...dateien("app", /.tsx$/), ...dateien("components", /.tsx$/)].reduce(
+  (summe, d) => summe + (lies(d).match(/style={{/g)?.length ?? 0),
+  0,
+);
+if (inlineStyles > OBERGRENZE_INLINE_STYLES)
+  fehler.push(`${inlineStyles} Inline-Styles (Obergrenze ${OBERGRENZE_INLINE_STYLES}) – neue Gestaltung über Klassen in app/bausteine.css`);
+
 if (fehler.length) {
   console.error(`✗ ${fehler.length} Problem(e):\n  ` + fehler.join("\n  "));
   process.exit(1);
 }
-console.log(`✓ Inhaltsprüfung: ${eintraege.length} Seiten, keine gesperrten Begriffe, alle Bildmaße vorhanden.`);
+console.log(`✓ Inhaltsprüfung: ${eintraege.length} Seiten, keine gesperrten Begriffe, alle Bildmaße vorhanden, ${inlineStyles} Inline-Styles (≤ ${OBERGRENZE_INLINE_STYLES}).`);

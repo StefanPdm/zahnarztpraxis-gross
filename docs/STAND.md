@@ -19,8 +19,9 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 | SEO | Titel ≤ 60, Beschreibungen ≤ 160 Zeichen, Open Graph mit Bild, kanonische URLs, Sitemap mit echten Änderungsdaten, Überschriften ohne Sprünge |
 | Strukturierte Daten | Stammdaten aus `lib/`, FAQ aus den sichtbaren Fragen erzeugt (64 Einträge), Behandler als `Person` |
 | KI-Lesbarkeit | `/llms.txt` aus denselben Daten, alle Crawler zugelassen |
-| Designsystem | `app/bausteine.css` + Komponenten, lebende Übersicht unter `/bausteine`; Inline-Styles 1382 → 751 |
-| Qualitätssicherung | `npm run pruefen`: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße — läuft vor jedem Build |
+| Designsystem | `app/bausteine.css` + Komponenten, lebende Übersicht unter `/bausteine`; Inline-Styles 1382 → 797 (Zählweise `style={{`); Obergrenze in `npm run pruefen`, darf nur sinken |
+| Qualitätssicherung | `npm run pruefen`: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße, Obergrenze Inline-Styles — läuft vor jedem Build |
+| Farben im Markup | keine Hexwerte mehr in TSX: `--ink-dark`, `--papier`, `--weiss` (`app/site.css.original`). Ausnahme `lib/mailvorlage.ts` — Mailprogramme kennen keine CSS-Variablen |
 
 ## Noch zu tun — Entscheidungen
 
@@ -150,6 +151,28 @@ Schritt für Schritt, samt DNS-Umstellung bei STRATO: **`docs/LIVEGANG.md`**.
 Analysewerkzeug, eine Schriftart vom CDN oder ein eingebettetes Video
 ergänzt, macht ein Banner nötig **und** muss Abschnitt 02 der Erklärung
 umschreiben — dort steht ausdrücklich, dass es nichts davon gibt.
+
+## Geprüft und bewusst so belassen (03.10.2026)
+
+Damit diese Punkte nicht erneut als Befund auftauchen:
+
+- **`--color-accent-2`** ist fast gleich `--color-accent` und wird nirgends
+  benutzt. Bleibt stehen, weil `classical.css` 1:1 übernommen ist.
+- **`--font-heading-weight: 600`**, aber Seitentitel in 400: Das ist so
+  gewollt, siehe den Kommentar in `classical.css` (Display-Schrift im
+  normalen Schnitt).
+- **`--space-*`** (4,6 / 9,2 … px) auf den Seiten ungenutzt: Die Skala passt
+  nicht zu den abgenommenen Abständen. Ein Umstellen würde die Optik bei
+  1440 px verändern.
+- **Serifen-Fallback `sans-serif`** in `classical.css`: `app/schriften.css`
+  überschreibt ihn mit `Georgia, serif`.
+- **Gold-Akzent mit 3:1:** Text und Links nutzen `accent-700/800`. Reines
+  `--color-accent` steht nur noch auf Grafik (Sterne, 3:1 genügt) und auf
+  Schmuckziffern.
+- **CSP mit `unsafe-inline`:** Bei Skripten fällt es nur mit Nonces weg, und
+  dann würde jede Seite pro Anfrage gerendert (Begründung in
+  `next.config.ts`). Bei Stilen fällt es erst weg, wenn alle Inline-Styles
+  überführt sind.
 
 ## Die Selektor-Reparatur (Brücke für die restlichen Inline-Styles)
 

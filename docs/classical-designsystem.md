@@ -1,5 +1,21 @@
 # Classical design system
 
+> **Hinweis für dieses Repo:** Das ist die unveränderte Readme des
+> Designsystems aus dem Claude-Design-Projekt. `theme.json`, `templates/`,
+> `styles.css` und die HTML-Komponentenseiten gibt es hier **nicht** — die
+> Tokens stehen in `app/classical.css`, die Bausteine in `app/bausteine.css`
+> (Übersicht unter `/bausteine`). Wo die abgenommene Website bewusst
+> abweicht, gilt der Code:
+>
+> - Knöpfe in Jost-Versalien (`.btn` in `app/site.css.original`), und es
+>   gibt gefüllte Knöpfe (`knopf-band--voll`).
+> - Große Überschriften im normalen Schnitt (400). `--font-heading-weight: 600`
+>   gilt nur für die kleinen Überschriften der Komponenten-Klassen.
+> - Die `--space-*`-Skala trägt nur die Komponenten aus `classical.css`;
+>   die Seitenabstände kommen aus dem Design (`--rand`, Bausteine).
+> - `--color-accent` (#b68235) erreicht auf dem Grund nur 3:1 — für Text gilt
+>   `--color-accent-700`, für Hover `--color-accent-800`.
+
 Classical is an editorial, book-like system on a soft near-white ground: Cormorant Garamond headings over Lora body, justified columns, hairline rules, and color applied as stroke rather than fill. Surfaces stay quiet — cards are bordered, buttons are outlined — and photographs sit matted on the page like tipped-in plates.
 
 ## How to use this

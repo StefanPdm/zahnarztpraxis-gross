@@ -68,16 +68,16 @@ export default function AnfahrtParken() {
           </div>
           <div style={{ position: "relative", borderRadius: "var(--radius-md)", border: "1px solid var(--color-divider)", overflow: "hidden" }}>
             <Bild vorrang className="wegbild" src="/images/schopenhauer-vorn.jpg" alt="Gebäudeansicht von der Schopenhauerstraße: gelbe Fassade mit hohen Sprossenfenstern und Straßenbäumen" style={{ display: "block", width: "100%", height: "300px", objectFit: "cover" }} />
-            <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none" }}>
+            <svg viewBox="0 0 1909 824" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none", color: "var(--papier)" }}>
               <defs>
                 <marker id="wayarrow" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M1 1 L11 6 L1 11 Z" fill="#f7f5f0" />
+                  <path d="M1 1 L11 6 L1 11 Z" fill="currentColor" />
                 </marker>
               </defs>
               <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="rgba(23,21,15,0.35)" strokeWidth="16" strokeLinecap="round" />
-              <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="#f7f5f0" strokeWidth="7" strokeLinecap="round" strokeDasharray="30 26" markerEnd="url(#wayarrow)" />
+              <path d="M1180 700 C820 690 560 660 400 590 C330 560 300 500 305 430" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeDasharray="30 26" markerEnd="url(#wayarrow)" />
             </svg>
-            <span style={{ position: "absolute", right: "16px", top: "14px", padding: "7px 13px", borderRadius: "var(--radius-md)", background: "rgba(23,21,15,0.78)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#f7f5f0" }}>
+            <span style={{ position: "absolute", right: "16px", top: "14px", padding: "7px 13px", borderRadius: "var(--radius-md)", background: "rgba(23,21,15,0.78)", fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--papier)" }}>
               Links am Gebäude vorbei
             </span>
           </div>

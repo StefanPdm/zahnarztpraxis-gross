@@ -74,7 +74,7 @@ export default function AngstRegler({
         border: "1px solid var(--color-accent-300)",
         borderRadius: "var(--radius-md)",
         background:
-          "linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 9%, #ffffff) 0%, #ffffff 62%)",
+          "linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 9%, var(--weiss)) 0%, var(--weiss) 62%)",
         padding: "34px 36px 36px",
       }}
     >

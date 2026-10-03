@@ -352,7 +352,7 @@ export default function PraxisTeam() {
                       border: '1px solid var(--color-divider)',
                       borderRadius: 'var(--radius-md)',
                       background:
-                        'linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, #ffffff 100%)',
+                        'linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, var(--weiss) 100%)',
                       padding: '38px',
                       display: 'flex',
                       flexDirection: 'column',

@@ -55,12 +55,12 @@ export default function Zahnschmerzen() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center", padding: "70px 64px", background: "#17150f", color: "#f7f5f0" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center", padding: "70px 64px", background: "var(--ink-dark)", color: "var(--papier)" }}>
         <div>
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
             Akute Zahnschmerzen
           </div>
-          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero-sm)", lineHeight: "1.02", letterSpacing: "-0.025em", margin: "20px 0 0", color: "#f7f5f0" }}>
+          <h1 style={{ fontWeight: "400", fontSize: "var(--fs-hero-sm)", lineHeight: "1.02", letterSpacing: "-0.025em", margin: "20px 0 0", color: "var(--papier)" }}>
             Rufen Sie an.
             <br />
             Nicht schreiben.
@@ -73,7 +73,7 @@ export default function Zahnschmerzen() {
           <div style={{ fontFamily: "var(--font-ui)", fontSize: "10.5px", letterSpacing: "0.24em", textTransform: "uppercase", color: "var(--color-accent-400)" }}>
             Direkt anrufen
           </div>
-          <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-phone)", lineHeight: "1", letterSpacing: "-0.01em", color: "#f7f5f0", fontFeatureSettings: "'tnum'" }}>
+          <a href="tel:+49331960926" style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-phone)", lineHeight: "1", letterSpacing: "-0.01em", color: "var(--papier)", fontFeatureSettings: "'tnum'" }}>
             0331 960926
           </a>
           <div style={{ display: "grid", gap: "10px", paddingTop: "18px", borderTop: "1px solid rgba(182,130,53,0.35)", fontSize: "14.5px", color: "rgba(243,242,242,0.78)" }}>
@@ -271,14 +271,14 @@ export default function Zahnschmerzen() {
         <div className="ueberzeile ueberzeile--hell">
           Jetzt
         </div>
-        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "20ch", color: "#f7f5f0" }}>
+        <h2 style={{ fontWeight: "400", fontSize: "var(--fs-display)", lineHeight: "1.04", letterSpacing: "-0.03em", margin: "24px auto 0", maxWidth: "20ch", color: "var(--papier)" }}>
           Warten macht es nicht besser.
         </h2>
         <p style={{ fontSize: "var(--fs-lead)", lineHeight: "1.6", maxWidth: "50ch", margin: "24px auto 0", color: "rgba(243,242,242,0.72)" }}>
           Ein Zahn, der wehtut, heilt nicht von allein. Rufen Sie an — auch wenn Sie noch nie bei uns waren.
         </p>
         <div className="knopfreihe knopfreihe--mitte">
-          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "#17150f", background: "var(--color-accent-400)", fontFeatureSettings: "'tnum'" }}>
+          <a className="btn" href="tel:+49331960926" style={{ padding: "15px 38px", fontSize: "var(--fs-body)", border: "1px solid var(--color-accent-400)", color: "var(--ink-dark)", background: "var(--color-accent-400)", fontFeatureSettings: "'tnum'" }}>
             0331 960926
           </a>
           <Link className="btn knopf-band knopf-band--rahmen" href="/anfahrt-parken">

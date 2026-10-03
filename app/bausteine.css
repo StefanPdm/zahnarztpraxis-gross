@@ -160,7 +160,7 @@
 /* ── Abschlussband ─────────────────────────────────────────────────────────
    Dunkles Band am Seitenende mit Einladung zum Termin. */
 .abschluss { padding: 104px var(--rand); text-align: center; background: var(--ink-dark); }
-.abschluss__titel { font-weight: 400; font-size: var(--fs-display); line-height: 1.04; letter-spacing: -0.03em; margin: 24px auto 0; max-width: 22ch; color: #f7f5f0; }
+.abschluss__titel { font-weight: 400; font-size: var(--fs-display); line-height: 1.04; letter-spacing: -0.03em; margin: 24px auto 0; max-width: 22ch; color: var(--papier); }
 .abschluss__text { font-size: var(--fs-lead); line-height: 1.6; max-width: 52ch; margin: 24px auto 0; color: color-mix(in srgb, var(--color-bg) 72%, transparent); }
 .abschluss__text--breit { max-width: 54ch; }
 .knopf-band { padding: 15px 38px; font-size: var(--fs-body); }
@@ -360,7 +360,7 @@ fieldset.field > legend {
   padding: 2px 8px;
   border: 1px dashed var(--color-accent);
   border-radius: var(--radius-sm);
-  background: color-mix(in oklab, var(--color-accent) 8%, #ffffff);
+  background: color-mix(in oklab, var(--color-accent) 8%, var(--weiss));
   font-family: var(--font-ui);
   font-size: 12px;
   letter-spacing: 0.04em;

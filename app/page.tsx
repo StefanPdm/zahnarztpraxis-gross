@@ -412,7 +412,7 @@ export default function Index() {
               background: 'var(--color-divider)',
               borderBottom: '1px solid var(--color-divider)',
             }}>
-            <figure style={{ margin: '0', background: '#ffffff' }}>
+            <figure style={{ margin: '0', background: 'var(--weiss)' }}>
               <Bild
                 className='plate'
                 src='/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg'
@@ -441,7 +441,7 @@ export default function Index() {
                 <span>Wartebereich, Blick zum Innenhof</span>
               </figcaption>
             </figure>
-            <figure style={{ margin: '0', background: '#ffffff' }}>
+            <figure style={{ margin: '0', background: 'var(--weiss)' }}>
               <Bild
                 className='plate'
                 src='/images/photos-1786974461785-ksjv.jpg'
@@ -558,7 +558,7 @@ export default function Index() {
                             border: '1px solid var(--color-divider)',
                             borderRadius: 'var(--radius-md)',
                             background:
-                              'linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, #ffffff 100%)',
+                              'linear-gradient(165deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, var(--weiss) 100%)',
                             padding: '38px',
                             display: 'flex',
                             flexDirection: 'column',
@@ -667,7 +667,7 @@ export default function Index() {
               gap: '40px',
               padding: '40px 64px',
               background:
-                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, color-mix(in oklab, var(--color-accent) 6%, #ffffff) 100%)',
+                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
               borderTop: '1px solid var(--color-accent-300)',
               borderBottom: '1px solid var(--color-accent-300)',
@@ -715,7 +715,7 @@ export default function Index() {
             style={{
               padding: '116px 64px',
               background:
-                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 10%, #ffffff) 0%, rgba(255,255,255,0) 100%)',
+                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 10%, var(--weiss)) 0%, rgba(255,255,255,0) 100%)',
               borderBottom: '1px solid var(--color-divider)',
             }}>
             {/* Text und Bild beginnen auf gleicher Höhe: oben bündig mit der
@@ -898,7 +898,7 @@ export default function Index() {
               gap: '40px',
               padding: '40px 64px',
               background:
-                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, color-mix(in oklab, var(--color-accent) 6%, #ffffff) 100%)',
+                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
               borderTop: '1px solid var(--color-accent-300)',
               borderBottom: '1px solid var(--color-accent-300)',
@@ -1398,7 +1398,7 @@ export default function Index() {
               gap: '40px',
               padding: '40px 64px',
               background:
-                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, color-mix(in oklab, var(--color-accent) 6%, #ffffff) 100%)',
+                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
               borderTop: '1px solid var(--color-accent-300)',
               borderBottom: '1px solid var(--color-accent-300)',
@@ -1651,7 +1651,7 @@ export default function Index() {
               gap: '40px',
               padding: '40px 64px',
               background:
-                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, #ffffff) 0%, color-mix(in oklab, var(--color-accent) 6%, #ffffff) 100%)',
+                'linear-gradient(180deg, color-mix(in oklab, var(--color-accent) 13%, var(--weiss)) 0%, color-mix(in oklab, var(--color-accent) 6%, var(--weiss)) 100%)',
               color: 'var(--color-text)',
               borderTop: '1px solid var(--color-accent-300)',
               borderBottom: '1px solid var(--color-accent-300)',
@@ -1704,7 +1704,7 @@ export default function Index() {
               scrollMarginTop: '110px',
               padding: '116px 64px',
               background:
-                'linear-gradient(180deg, rgba(255,255,255,0) 0%, color-mix(in oklab, var(--color-accent) 11%, #ffffff) 100%)',
+                'linear-gradient(180deg, rgba(255,255,255,0) 0%, color-mix(in oklab, var(--color-accent) 11%, var(--weiss)) 100%)',
               borderBottom: '1px solid var(--color-divider)',
             }}>
             <div
@@ -2041,7 +2041,7 @@ export default function Index() {
             style={{
               padding: '104px 64px',
               textAlign: 'center',
-              background: 'linear-gradient(180deg, #17150f 0%, #211d15 100%)',
+              background: 'linear-gradient(180deg, var(--ink-dark) 0%, #211d15 100%)',
               color: '#f3f2f2',
             }}>
             <div
@@ -2058,7 +2058,7 @@ export default function Index() {
                 letterSpacing: '-0.03em',
                 margin: '24px auto 0',
                 maxWidth: '20ch',
-                color: '#f7f5f0',
+                color: 'var(--papier)',
               }}>
               Der erste Termin ist oft nur ein
               <span style={{ fontStyle: 'italic', color: 'var(--color-accent-400)' }}>
