@@ -116,7 +116,7 @@ export default function ModerneTechnik() {
           Der digitale Weg spart nicht nur Zeit, er ist auch genauer als jede Handarbeit am Gipsmodell allein. Bei uns läuft er komplett in der Praxis ab, weil das Zahnlabor eine Tür weiter liegt.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 0", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--linie raster--ohne-unten">
         {digital.map((d, dI) => (
           <Fragment key={dI}>
             <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>

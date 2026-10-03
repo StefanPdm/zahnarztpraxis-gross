@@ -170,7 +170,7 @@ export default function Angstpatienten() {
           Alles auf einmal muss niemand durchhalten.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--linie">
         {etappen.map((e, eI) => (
           <Fragment key={eI}>
             <div style={{ padding: "34px 30px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>

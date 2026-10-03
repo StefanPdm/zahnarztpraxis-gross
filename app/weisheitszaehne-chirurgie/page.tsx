@@ -136,7 +136,7 @@ export default function WeisheitszaehneChirurgie() {
           Vom Röntgenbild bis zum Fädenziehen.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--4 raster--linie">
         {ablauf.map((a, aI) => (
           <Fragment key={aI}>
             <div style={{ padding: "32px 26px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>

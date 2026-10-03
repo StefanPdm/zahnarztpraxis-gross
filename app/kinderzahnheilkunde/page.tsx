@@ -84,7 +84,7 @@ export default function Kinderzahnheilkunde() {
         </p>
       </div>
       <GrosselinoMobil />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "22px", margin: "40px 64px 96px" }}>
+      <div className="raster raster--3 raster--luft-22">
         {regel.map((r, rI) => (
           <Fragment key={rI}>
             <div style={{ border: "1px solid var(--color-accent-200)", borderRadius: "18px", background: "var(--kid-ground)", padding: "32px 30px 34px" }}>

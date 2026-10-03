@@ -471,12 +471,7 @@ export default function PraxisTeam() {
         </p>
       </div>
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          gap: '20px',
-          margin: '40px 64px 96px',
-        }}>
+        className='raster raster--3 raster--luft-20'>
         {raeume.map((r, rI) => (
           <Fragment key={rI}>
             <figure style={{ margin: '0' }}>
@@ -516,12 +511,7 @@ export default function PraxisTeam() {
         <h2 className='titel-2 breite-24'>Drei Jahrzehnte, eine Familie.</h2>
       </div>
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4,1fr)',
-          margin: '40px 64px 96px',
-          borderTop: '1px solid var(--color-divider)',
-        }}>
+        className='raster raster--4 raster--linie'>
         {historie.map((h, hI) => (
           <Fragment key={hI}>
             <div

@@ -63,6 +63,28 @@
   .abschnitt--knapp { padding-top: 34px; padding-bottom: 34px; }
 }
 
+/* ── Raster ────────────────────────────────────────────────────────────────
+   Spalten unter einem Abschnittskopf (Ablauf, Vorteile, Karten). Mobil eine
+   Spalte mit 30 / 24 px Abstand — die Werte, die site.css bisher über den
+   Style-Text vergab; sie ersetzen auch den Desktop-Abstand. Die Media-
+   Queries stehen nach allen Modifikatoren, damit sie gewinnen. */
+.raster { display: grid; margin: 40px var(--rand) 96px; }
+.raster--2 { grid-template-columns: 1fr 1fr; }
+.raster--3 { grid-template-columns: repeat(3, 1fr); }
+.raster--4 { grid-template-columns: repeat(4, 1fr); }
+.raster--linie { border-top: 1px solid var(--color-divider); }
+.raster--spalten-48 { column-gap: 48px; }
+.raster--spalten-56 { column-gap: 56px; }
+.raster--luft-20 { gap: 20px; }
+.raster--luft-22 { gap: 22px; }
+.raster--ohne-unten { margin-bottom: 0; }
+@media (max-width: 1000px) {
+  .raster { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 640px) {
+  .raster { gap: 24px; }
+}
+
 /* ── Fließtext ─────────────────────────────────────────────────────────────
    Blocksatz mit Silbentrennung; mobil linksbündig (schmale Spalten
    reißen im Blocksatz Löcher). */

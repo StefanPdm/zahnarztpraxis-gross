@@ -102,7 +102,7 @@ export default function Zahnlabor() {
           Kurze Wege, direkte Abstimmung.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--2 raster--spalten-56 raster--linie">
         {vorteile.map((v, vI) => (
           <Fragment key={vI}>
             <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "20px", padding: "26px 0", borderBottom: "1px solid var(--color-divider)" }}>
@@ -163,7 +163,7 @@ export default function Zahnlabor() {
           Vom Inlay bis zur ganzen Versorgung.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0 48px", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--spalten-48 raster--linie">
         {arbeiten.map((a, aI) => (
           <Fragment key={aI}>
             <div style={{ padding: "24px 0", borderBottom: "1px solid var(--color-divider)" }}>

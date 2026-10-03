@@ -300,13 +300,7 @@ export default function Prophylaxe() {
         <h2 className='titel-2 breite-26'>Was die Reinigung verhindert.</h2>
       </div>
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          gap: '0 48px',
-          margin: '40px 64px 96px',
-          borderTop: '1px solid var(--color-divider)',
-        }}>
+        className='raster raster--3 raster--spalten-48 raster--linie'>
         {nutzen.map((n, nI) => (
           <Fragment key={nI}>
             <div style={{ padding: '26px 0', borderBottom: '1px solid var(--color-divider)' }}>

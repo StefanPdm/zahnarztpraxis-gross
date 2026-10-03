@@ -99,7 +99,7 @@ export default function Implantologie() {
           Zwischen dem ersten Gespräch und dem fertigen Zahn liegen mehrere Monate — die meisten davon vergehen, ohne dass Sie etwas tun müssen. So sieht der Ablauf aus.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--4 raster--linie">
         {ablauf.map((s, sI) => (
           <Fragment key={sI}>
             <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>
@@ -162,7 +162,7 @@ export default function Implantologie() {
           Ein Zahn, mehrere Zähne, ganzer Kiefer.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--linie">
         {faelle.map((f, fI) => (
           <Fragment key={fI}>
             <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>

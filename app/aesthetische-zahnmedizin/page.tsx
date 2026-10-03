@@ -102,7 +102,7 @@ export default function AesthetischeZahnmedizin() {
           Welcher davon in Frage kommt, hängt vom Zustand der Zähne ab — nicht vom Wunsch allein. Im Beratungstermin sagen wir Ihnen offen, was Ihr Fall hergibt.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--2 raster--spalten-56 raster--linie">
         {wege.map((w, wI) => (
           <Fragment key={wI}>
             <div style={{ padding: "30px 0", borderBottom: "1px solid var(--color-divider)" }}>

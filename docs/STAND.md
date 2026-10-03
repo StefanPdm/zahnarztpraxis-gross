@@ -19,7 +19,7 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 | SEO | Titel ≤ 60, Beschreibungen ≤ 160 Zeichen, Open Graph mit Bild, kanonische URLs, Sitemap mit echten Änderungsdaten, Überschriften ohne Sprünge |
 | Strukturierte Daten | Stammdaten aus `lib/`, FAQ aus den sichtbaren Fragen erzeugt (64 Einträge), Behandler als `Person` |
 | KI-Lesbarkeit | `/llms.txt` aus denselben Daten, alle Crawler zugelassen |
-| Designsystem | `app/bausteine.css` + Komponenten, lebende Übersicht unter `/bausteine`; Inline-Styles 1382 → 797 (Zählweise `style={{`); Obergrenze in `npm run pruefen`, darf nur sinken |
+| Designsystem | `app/bausteine.css` + Komponenten, lebende Übersicht unter `/bausteine`; Inline-Styles 1382 → 760 (Zählweise `style={{`); Obergrenze in `npm run pruefen`, darf nur sinken |
 | Qualitätssicherung | `npm run pruefen`: gesperrte Begriffe, Titellängen, Seitenverzeichnis, Bildmaße, Obergrenze Inline-Styles — läuft vor jedem Build |
 | Farben im Markup | keine Hexwerte mehr in TSX: `--ink-dark`, `--papier`, `--weiss` (`app/site.css.original`). Ausnahme `lib/mailvorlage.ts` — Mailprogramme kennen keine CSS-Variablen |
 

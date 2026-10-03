@@ -117,7 +117,7 @@ export default function AnfahrtParken() {
           Drei Schritte von der Straße zur Anmeldung.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--linie">
         {weg.map((w, wI) => (
           <Fragment key={wI}>
             <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>

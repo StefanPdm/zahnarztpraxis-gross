@@ -107,7 +107,7 @@ export default function Zahnschmerzen() {
           Was hilft — und was Sie besser lassen.
         </h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 56px", margin: "40px 64px 96px" }}>
+      <div className="raster raster--2 raster--spalten-56">
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: "11px", paddingBottom: "14px", borderBottom: "1px solid var(--color-accent-300)" }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -205,7 +205,7 @@ export default function Zahnschmerzen() {
           Ein Schmerztermin ist kein Sanierungstermin. Wir bringen Sie aus den Schmerzen heraus und besprechen danach in Ruhe, was langfristig zu tun ist — mit schriftlichem Kostenplan, nicht unter Druck.
         </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", margin: "40px 64px 96px", borderTop: "1px solid var(--color-divider)" }}>
+      <div className="raster raster--3 raster--linie">
         {ablauf.map((a, aI) => (
           <Fragment key={aI}>
             <div style={{ padding: "32px 28px 34px 0", borderBottom: "1px solid var(--color-divider)" }}>
