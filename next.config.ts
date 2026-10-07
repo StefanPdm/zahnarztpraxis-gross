@@ -68,6 +68,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Verrät sonst in jeder Antwort das Framework (X-Powered-By: Next.js).
   poweredByHeader: false,
+  // Ohnehin Vorgabe von Next — hier ausdrücklich, weil die Canonicals in
+  // lib/seiten.ts und die Sitemap darauf bauen: /kontakt/ → /kontakt.
+  trailingSlash: false,
   // next dev hängt sonst bei jedem Start einen englischen Hinweisblock an
   // CLAUDE.md an. Derselbe Hinweis steht dort schon auf Deutsch.
   agentRules: false,
