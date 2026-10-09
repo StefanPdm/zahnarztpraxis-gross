@@ -629,29 +629,31 @@ fieldset.field > legend {
    minimal nach; dazwischen Pausen, damit es nach Justieren aussieht und
    nicht nach Wackeln. Danach (2 s) läuft der Glanz.
 
-   Nur transform: Die Zeile verschiebt sich nicht. Die Farbe steht in den
-   Schlüsselbildern, weil das bewegte „s" während der Animation eine eigene
-   Ebene ist und nicht im Textverlauf des Elternteils liegt — ohne eigene
-   Farbe wäre es dann durchsichtig. Nach der Animation erbt es wieder und
-   bekommt den Glanz mit. */
+   Nur transform: Die Zeile verschiebt sich nicht. Das „s" trägt seine
+   Farbe dauerhaft selbst: Als inline-block liegt es nicht in der Textmaske
+   von background-clip: text des Elternteils. Chrome nimmt es trotzdem mit,
+   WebKit (Safari, jeder Browser auf dem iPhone) nicht — mit geerbtem
+   transparent wäre es dort nach der Animation unsichtbar. Der Glanz läuft
+   deshalb über „Präzi_e" und lässt das „s" aus. */
 @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
   .glanz__ruck {
     display: inline-block;
+    color: var(--color-accent-700);
     transform-origin: 50% 80%;
     animation: ruck 1.3s linear 0.45s backwards;
   }
 }
 @keyframes ruck {
-  0%   { transform: translateY(0.3em) rotate(7deg);    color: var(--color-accent-700); }
-  18%  { transform: translateY(0.3em) rotate(7deg);    color: var(--color-accent-700); }
-  23%  { transform: translateY(0.18em) rotate(4deg);   color: var(--color-accent-700); }
-  27%  { transform: translateY(0.2em) rotate(4.5deg);  color: var(--color-accent-700); }
-  50%  { transform: translateY(0.2em) rotate(4.5deg);  color: var(--color-accent-700); }
-  55%  { transform: translateY(0.08em) rotate(1.5deg); color: var(--color-accent-700); }
-  59%  { transform: translateY(0.1em) rotate(2deg);    color: var(--color-accent-700); }
-  82%  { transform: translateY(0.1em) rotate(2deg);    color: var(--color-accent-700); }
-  87%  { transform: translateY(-0.015em) rotate(0deg); color: var(--color-accent-700); }
-  91%, 100% { transform: none;                         color: var(--color-accent-700); }
+  0%   { transform: translateY(0.3em) rotate(7deg); }
+  18%  { transform: translateY(0.3em) rotate(7deg); }
+  23%  { transform: translateY(0.18em) rotate(4deg); }
+  27%  { transform: translateY(0.2em) rotate(4.5deg); }
+  50%  { transform: translateY(0.2em) rotate(4.5deg); }
+  55%  { transform: translateY(0.08em) rotate(1.5deg); }
+  59%  { transform: translateY(0.1em) rotate(2deg); }
+  82%  { transform: translateY(0.1em) rotate(2deg); }
+  87%  { transform: translateY(-0.015em) rotate(0deg); }
+  91%, 100% { transform: none; }
 }
 
 /* ── Einblenden beim Scrollen (components/Einblenden) ──────────────────────
