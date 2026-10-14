@@ -6,7 +6,7 @@
         "@type": "WebPage",
         "@id": "https://www.zahnmedizin-potsdam.de/ausbildung#webpage",
         "url": "https://www.zahnmedizin-potsdam.de/ausbildung",
-        "name": "Ausbildung zur Zahnmedizinischen Fachangestellten",
+        "name": "Ausbildung zur oder zum Zahnmedizinischen Fachangestellten",
         "isPartOf": {
           "@id": "https://www.zahnmedizin-potsdam.de/#website"
         },
@@ -31,7 +31,7 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Ausbildung zur Zahnmedizinischen Fachangestellten",
+            "name": "Ausbildung zur oder zum Zahnmedizinischen Fachangestellten",
             "item": "https://www.zahnmedizin-potsdam.de/ausbildung"
           }
         ]

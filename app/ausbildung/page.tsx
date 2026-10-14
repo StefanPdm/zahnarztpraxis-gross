@@ -27,7 +27,7 @@ export const metadata = seitenMetadaten('/ausbildung');
   dort ebenfalls im Du.
 */
 
-const stellentitel = `Auszubildende zur Zahnmedizinischen Fachangestellten (${ausbildung.kuerzel}) ${ausbildung.zusatz}`;
+const stellentitel = `Ausbildung ${ausbildung.ausbildungZum} (${ausbildung.kuerzel}) ${ausbildung.zusatz}`;
 
 const zahlen = [
   { value: ausbildung.beginnLang, label: 'Ausbildungsbeginn' },
@@ -70,7 +70,7 @@ const lernen = [
 const gruende = [
   {
     title: 'Ein kleines Team',
-    text: 'Acht Menschen. Niemand geht hier unter, und niemand macht drei Jahre lang nur eine Sache. Du bist vom ersten Tag an Teil des Ablaufs, nicht Zuschauerin.',
+    text: 'Acht Menschen. Niemand geht hier unter, und niemand macht drei Jahre lang nur eine Sache. Du bist vom ersten Tag an Teil des Ablaufs und schaust nicht nur zu.',
   },
   {
     title: 'Familiengeführt seit 1991',
@@ -129,7 +129,7 @@ const stellenanzeige = {
   '@type': 'JobPosting',
   title: stellentitel,
   description: [
-    `<p>Wir bilden zur ${ausbildung.beruf} ${ausbildung.zusatz} aus. Ausbildungsbeginn ist der ${ausbildung.beginnLang}, die Ausbildung dauert ${ausbildung.dauerJahre} Jahre.</p>`,
+    `<p>Wir bilden ${ausbildung.ausbildungZum} ${ausbildung.zusatz} aus. Ausbildungsbeginn ist der ${ausbildung.beginnLang}, die Ausbildung dauert ${ausbildung.dauerJahre} Jahre.</p>`,
     '<p>Du lernst alle Bereiche kennen: Behandlungsassistenz, Prophylaxe, Empfang mit Terminvergabe und Abrechnung, Hygiene und Röntgen sowie das praxiseigene Zahnlabor.</p>',
     `<p>Wir sind eine familiengeführte Zahnarztpraxis in Potsdam Mitte, seit ${praxis.gegruendet} in derselben Familie, mit ${praxis.behandlungszimmer} Behandlungszimmern und eigenem Labor in der Praxis.</p>`,
     '<p>Voraussetzung ist ein erfolgreicher Schulabschluss. Wir bieten sehr gute Übernahmechancen, eine Ausbildungsvergütung, geregelte Arbeitszeiten und Unterstützung bei der Prüfungsvorbereitung.</p>',
@@ -139,7 +139,7 @@ const stellenanzeige = {
   jobStartDate: ausbildung.beginn,
   employmentType: 'FULL_TIME',
   totalJobOpenings: ausbildung.stellen,
-  occupationalCategory: 'Zahnmedizinische Fachangestellte',
+  occupationalCategory: ausbildung.beruf,
   industry: 'Zahnmedizin',
   educationRequirements: {
     '@type': 'EducationalOccupationalCredential',
@@ -184,7 +184,7 @@ export default function Ausbildung() {
         </div>
         <div>
           <p className='fliesstext fliesstext--gross'>
-            Wir bilden aus — zur Zahnmedizinischen Fachangestellten {ausbildung.zusatz}. <br />
+            Wir bilden aus — {ausbildung.ausbildungZum} {ausbildung.zusatz}. <br />
             Beginn am {ausbildung.beginnLang}. In einer Praxis, die seit 1991 in Familienhand ist,
             mit tollen Kollegen, fünf Behandlungszimmern und einem eigenen Zahnlabor eine Tür
             weiter. <br />

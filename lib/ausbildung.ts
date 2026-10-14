@@ -13,7 +13,13 @@ export const ausbildung = {
   /** Steht die Stelle noch offen? Steuert Markup und Aufforderung. */
   offen: true,
   stellen: 1,
-  beruf: "Zahnmedizinische Fachangestellte",
+  /* Beide Formen ausgeschrieben, nicht nur „Fachangestellte" (Auftraggeber,
+     15.10.2026): Die weibliche Form allein deutet auf ein Geschlecht hin,
+     auch mit (w/m/d) dahinter. Im Dativ fallen beide zusammen — daher
+     „zur oder zum Zahnmedizinischen Fachangestellten". Amtliche Bezeichnung
+     nach der Ausbildungsverordnung, beide Formen. */
+  beruf: "Zahnmedizinische Fachangestellte oder Zahnmedizinischer Fachangestellter",
+  ausbildungZum: "zur oder zum Zahnmedizinischen Fachangestellten",
   kuerzel: "ZFA",
   /* Geschlechtszusatz nach dem AGG: Eine Stellenausschreibung darf nicht
      auf ein Geschlecht hindeuten, und die weibliche Berufsbezeichnung tut

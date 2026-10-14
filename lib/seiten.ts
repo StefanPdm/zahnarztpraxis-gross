@@ -169,7 +169,7 @@ export const seiten: Seite[] = [
     rubrik: "Praxis",
     titel: "Ausbildung ZFA 2027 in Potsdam | Groß & Groß",
     beschreibung:
-      "Ausbildung zur Zahnmedizinischen Fachangestellten in Potsdam Mitte, Start 1. August 2027. Familiengeführte Praxis seit 1991, eigenes Zahnlabor, kleines Team.",
+      "Ausbildung zur oder zum Zahnmedizinischen Fachangestellten (w/m/d) in Potsdam Mitte ab 1. August 2027. Familienpraxis seit 1991, eigenes Zahnlabor.",
   },
   {
     pfad: "/impressum-datenschutz",

@@ -34,7 +34,7 @@ const karten: Record<string, { art: string; titel: string; text: string; punkte:
   },
   '/ausbildung': {
     art: 'Ausbildung',
-    titel: 'Zahnmedizinische Fachangestellte (w/m/d)',
+    titel: 'Zahnmedizinische Fachangestellte oder Zahnmedizinischer Fachangestellter (w/m/d)',
     text: 'Drei Jahre, in denen der ganze Beruf auf dem Plan steht: Behandlungsassistenz, Prophylaxe, Empfang, Hygiene und Röntgen — und ein Blick ins eigene Labor.',
     punkte: ['Drei Jahre, dual mit Berufsschule', 'Ein erfolgreicher Schulabschluss genügt', 'Sehr gute Übernahmechancen'],
     knopf: 'Zum Ausbildungsplatz',
