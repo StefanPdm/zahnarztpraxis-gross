@@ -18,7 +18,8 @@ import { behandlungen, navLinks, navRechts } from "@/lib/navigation";
 
 const UMBRUCH = 1000;
 
-export default function Kopfzeile() {
+/** `stellen`: Zahl der offenen Stellen (lib/karriere.ts, vom Layout). */
+export default function Kopfzeile({ stellen }: { stellen: number }) {
   const pathname = usePathname();
   const istStartseite = pathname === "/";
 
@@ -231,6 +232,21 @@ export default function Kopfzeile() {
           textTransform: "uppercase",
         }}
       >
+        {/* Nur im mobilen Menü, ganz oben. Am Desktop übernimmt das die
+            Karriere-Fahne am rechten Rand (components/KarriereFahne) — dort
+            bleibt die Navigation bei vier Punkten. */}
+        {stellen > 0 && (
+          <Link
+            href="/karriere"
+            className="nav-karriere nur-mobil"
+            aria-current={pathname.startsWith("/karriere") ? "page" : undefined}
+          >
+            Karriere
+            <span className="nav-karriere__zahl">
+              {stellen} {stellen === 1 ? "offene Stelle" : "offene Stellen"}
+            </span>
+          </Link>
+        )}
         {navLinks.map((e) => (
           <Link
             key={e.href}

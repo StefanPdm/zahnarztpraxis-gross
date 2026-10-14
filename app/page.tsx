@@ -16,7 +16,7 @@ import TerminFormular from '@/components/TerminFormular';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import GoogleBewertungen from '@/components/GoogleBewertungen';
 import Flipkarte from '@/components/Flipkarte';
-import { ausbildung } from '@/lib/ausbildung';
+import { offeneStellen } from '@/lib/karriere';
 import { scanVorteile } from '@/lib/digitalerAbdruck';
 import ScanGrafik from '@/components/ScanGrafik';
 import Einblenden from '@/components/Einblenden';
@@ -366,6 +366,26 @@ export default function Index() {
               </Fragment>
             ))}
           </div>
+          {/* Offene Stellen, gleich zu Beginn — Gegenstück zur Karriere-Fahne,
+              die mobil beim Lesen eingezogen ist. Steht nur, solange etwas
+              offen ist (lib/karriere.ts). */}
+          {offeneStellen.length > 0 && (
+            <div className='stellenband'>
+              <span className='stellenband__marke'>Wir stellen ein</span>
+              <ul className='stellenband__liste'>
+                {offeneStellen.map((s) => (
+                  <li key={s.pfad}>
+                    {s.kurz} · {s.beginn}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                className='stellenband__link'
+                href='/karriere'>
+                Zur Karriereseite
+              </Link>
+            </div>
+          )}
           <div id='videoband'>
             <div style={{ position: 'relative', overflow: 'hidden', height: '720px' }}>
               <PraxisVideo standbild='/images/praxisflug-standbild.webp' />
@@ -1994,48 +2014,43 @@ export default function Index() {
             </div>
           </div>
           {/* Der einzige Abschnitt der Startseite, der nicht Patienten
-              anspricht — deshalb schmal, hell abgesetzt und mit „du". Er
-              steht bewusst am Ende: Wer bis hierher liest, ist ohnehin
-              interessiert, und der Patientenfluss bleibt ungestört. */}
-          <div
-            id='ausbildung'
-            className='spalten abschnitt abschnitt--knapp'
-            style={{
-              alignItems: 'center',
-              borderBottom: '1px solid var(--color-divider)',
-              background: 'var(--color-surface)',
-              '--spalten': '1fr auto',
-              '--abstand': '56px',
-            }}>
-            <div>
-              <div
-                className='ueberzeile'
-                data-einblenden>
-                Ausbildung · Start {ausbildung.beginnLang}
+              anspricht — deshalb schmal und hell abgesetzt. Er steht am
+              Ende: Wer bis hierher liest, ist ohnehin interessiert. Oben
+              steht dazu das Stellenband. */}
+          {offeneStellen.length > 0 && (
+            <div
+              id='karriere'
+              className='spalten abschnitt abschnitt--knapp stellenhinweis'>
+              <div>
+                <div
+                  className='ueberzeile'
+                  data-einblenden>
+                  Karriere · {offeneStellen.length}{' '}
+                  {offeneStellen.length === 1 ? 'offene Stelle' : 'offene Stellen'}
+                </div>
+                <h2
+                  className='titel-3 titel-3--eng'
+                  data-einblenden>
+                  Arbeiten Sie mit uns.
+                </h2>
+                <p className='stellenhinweis__text'>
+                  Wir suchen{' '}
+                  {offeneStellen.map((s, i) => (
+                    <Fragment key={s.pfad}>
+                      {i > 0 && (i === offeneStellen.length - 1 ? ' und ' : ', ')}
+                      <Link href={s.pfad}>{s.kurz}</Link> {s.beginn}
+                    </Fragment>
+                  ))}
+                  {' — für ein Team von acht, mit eigenem Labor in der Praxis.'}
+                </p>
               </div>
-              <h2
-                data-einblenden
-                style={{
-                  fontWeight: '400',
-                  fontSize: 'var(--fs-h2-sm)',
-                  lineHeight: '1.1',
-                  margin: '10px 0 12px',
-                }}>
-                Interessierst du dich beruflich für Zahnmedizin?
-              </h2>
-              <p style={{ color: 'var(--color-neutral-800)', margin: '0', maxWidth: '58ch' }}>
-                Zum {ausbildung.beginnLang} ist bei uns ein Ausbildungsplatz zur
-                Zahnmedizinischen Fachangestellten {ausbildung.zusatz} frei — in einem Team von
-                acht, mit eigenem Labor in der Praxis. Schau dir an, was dich erwartet, oder komm
-                einfach mit uns ins Gespräch.
-              </p>
+              <Link
+                className='btn btn-primary knopf-gross'
+                href='/karriere'>
+                Offene Stellen ansehen
+              </Link>
             </div>
-            <Link
-              className='btn btn-primary knopf-gross'
-              href='/ausbildung'>
-              Ausbildungsplatz ansehen
-            </Link>
-          </div>
+          )}
           <div
             className='rv abschnitt abschnitt--band'
             style={{

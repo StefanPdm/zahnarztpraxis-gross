@@ -1,0 +1,47 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.zahnmedizin-potsdam.de/karriere/zahntechniker#webpage",
+        "url": "https://www.zahnmedizin-potsdam.de/karriere/zahntechniker",
+        "name": "Zahntechniker (w/m/d) gesucht",
+        "isPartOf": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#website"
+        },
+        "about": {
+          "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
+        },
+        "inLanguage": "de-DE",
+        "breadcrumb": {
+          "@id": "https://www.zahnmedizin-potsdam.de/karriere/zahntechniker#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.zahnmedizin-potsdam.de/karriere/zahntechniker#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Startseite",
+            "item": "https://www.zahnmedizin-potsdam.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Karriere",
+            "item": "https://www.zahnmedizin-potsdam.de/karriere"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Zahntechniker (w/m/d)",
+            "item": "https://www.zahnmedizin-potsdam.de/karriere/zahntechniker"
+          }
+        ]
+      }
+    ]
+  }
+]

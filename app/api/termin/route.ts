@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText, wunschtermin } from '@/lib/mailvorlage';
+import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
 import { pruefeTageszeit, pruefeWunschtermin, TAGESZEITEN, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
 /*
@@ -42,52 +43,10 @@ const Anfrage = z
     gestartet: z.number(),
   });
 
-/** Einfache Begrenzung pro IP. Reicht für eine Praxisseite. */
-const zugriffe = new Map<string, number[]>();
-const FENSTER = 10 * 60 * 1000;
-const MAXIMUM = 5;
+/** Höchstens 5 Anfragen je IP in 10 Minuten (lib/formularschutz.ts). */
+const zuHaeufig = begrenzung(5, 10 * 60 * 1000);
 /** Größer ist keine echte Anfrage: alle Felder zusammen bleiben weit darunter. */
 const MAX_BYTES = 16 * 1024;
-
-function zuHaeufig(ip: string): boolean {
-  const jetzt = Date.now();
-  // Abgelaufene Einträge anderer IPs mit aufräumen, damit die Liste nicht wächst.
-  if (zugriffe.size > 1000) {
-    for (const [schluessel, zeiten] of zugriffe) {
-      if (zeiten.every((z) => jetzt - z >= FENSTER)) zugriffe.delete(schluessel);
-    }
-  }
-  const bisher = (zugriffe.get(ip) ?? []).filter((t) => jetzt - t < FENSTER);
-  bisher.push(jetzt);
-  zugriffe.set(ip, bisher);
-  return bisher.length > MAXIMUM;
-}
-
-/**
- * Nur Anfragen von der eigenen Seite annehmen (Schutz vor fremden Formularen).
- * Verglichen wird mit dem Host der Anfrage — hinter einem Proxy steht der
- * öffentliche Name in x-forwarded-host — und mit der Praxis-Domain samt und
- * ohne www.
- */
-function vonEigenerSeite(request: Request): boolean {
-  const herkunft = request.headers.get("origin");
-  if (!herkunft) return false;
-  const praxisHost = new URL(praxis.domain).host;
-  const erlaubt = new Set(
-    [
-      new URL(request.url).host,
-      request.headers.get("host"),
-      request.headers.get("x-forwarded-host")?.split(",")[0].trim(),
-      praxisHost,
-      praxisHost.replace(/^www./, ""),
-    ].filter(Boolean),
-  );
-  try {
-    return erlaubt.has(new URL(herkunft).host);
-  } catch {
-    return false;
-  }
-}
 
 function zeile(bezeichnung: string, wert?: string) {
   return wert ? `${bezeichnung}: ${wert}\n` : '';
@@ -101,7 +60,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ fehler: 'Ungültige Anfrage.' }, { status: 415 });
   }
 
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unbekannt';
+  const ip = absenderIp(request);
 
   if (zuHaeufig(ip)) {
     return NextResponse.json(

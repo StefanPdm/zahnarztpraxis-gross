@@ -199,3 +199,146 @@ export function bestaetigungHtml(d: Bestaetigung): string {
 </body>
 </html>`;
 }
+
+/* ── Bewerbung ────────────────────────────────────────────────────────────── */
+
+/**
+ * Eingangsbestätigung an Bewerberinnen und Bewerber (app/api/bewerbung).
+ * Gleiche Gestaltung wie die Terminbestätigung. Wiederholt wird nur, worum
+ * es ging — keine Nachricht, keine Anhänge.
+ *
+ * `du`: Die Ausbildungsseite duzt, also auch ihre Bestätigung.
+ */
+export type Bewerbungseingang = { name: string; interesse: string; du: boolean };
+
+function bewerbungsSaetze(d: Bewerbungseingang) {
+  return d.du
+    ? {
+        anrede: `Hallo ${d.name},`,
+        dank: "danke für deine Bewerbung — schön, dass du dich für uns interessierst.",
+        weiter: `Wir sehen sie uns an und melden uns innerhalb von 24 Stunden bei dir, um ein persönliches Gespräch zu vereinbaren. Vorbereiten musst du dafür nichts.`,
+        frage: "Wenn du vorher eine Frage hast, ruf einfach an:",
+        titel: "Deine Bewerbung",
+        hinweis: "Du erhältst diese Nachricht, weil",
+        nichtIch: "Wenn du das nicht warst, antworte bitte kurz auf diese Mail — dann löschen wir sie.",
+      }
+    : {
+        anrede: `Guten Tag ${d.name},`,
+        dank: "vielen Dank für Ihre Bewerbung und Ihr Interesse an unserer Praxis.",
+        weiter: `Wir sehen sie uns an und melden uns innerhalb von 24 Stunden bei Ihnen, um ein persönliches Gespräch zu vereinbaren. Alles Weitere besprechen wir dann.`,
+        frage: "Wenn Sie vorher eine Frage haben, rufen Sie uns gern an:",
+        titel: "Ihre Bewerbung",
+        hinweis: "Sie erhalten diese Nachricht, weil",
+        nichtIch: "Wenn Sie das nicht waren, antworten Sie bitte kurz auf diese Mail — dann löschen wir sie.",
+      };
+}
+
+export function bewerbungText(d: Bewerbungseingang): string {
+  const s = bewerbungsSaetze(d);
+  return (
+    [
+      s.anrede,
+      "",
+      s.dank,
+      "",
+      `Worum es geht: ${d.interesse}`,
+      "",
+      s.weiter,
+      "",
+      `${s.frage} ${praxis.telefon}.`,
+      "",
+      "Viele Grüße",
+      praxis.vollerName,
+      `${praxis.strasse}, ${praxis.ort}`,
+      praxis.eingang,
+      praxis.telefon,
+    ].join("\n") + "\n"
+  );
+}
+
+export function bewerbungHtml(d: Bewerbungseingang): string {
+  const s = bewerbungsSaetze(d);
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>${esc(s.titel)} bei ${esc(praxis.name)}</title>
+</head>
+<body style="margin:0;padding:0;background:${FARBEN.grund};">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Angekommen. Wir melden uns innerhalb von 24 Stunden.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${FARBEN.grund};">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:${FARBEN.karte};border:1px solid ${FARBEN.linie};">
+
+        <tr>
+          <td style="padding:36px 40px 0;">
+            <div style="font-family:${SERIFE};font-size:27px;letter-spacing:-0.4px;color:${FARBEN.text};">${esc(praxis.name)}</div>
+            <div style="margin-top:7px;font-family:${GROTESK};font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:${FARBEN.akzent};">Zahnarztpraxis in Potsdam</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:28px 40px 0;">
+            <div style="height:1px;background:${FARBEN.linie};line-height:1px;font-size:0;">&nbsp;</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:30px 40px 0;">
+            <h1 style="margin:0;font-family:${SERIFE};font-size:30px;line-height:1.2;font-weight:normal;color:${FARBEN.text};">${esc(s.titel)} ist angekommen.</h1>
+            <p style="margin:18px 0 0;font-family:${GROTESK};font-size:15px;line-height:1.65;color:${FARBEN.text};">
+              ${esc(s.anrede)}<br><br>
+              ${esc(s.dank)}<br><br>
+              ${esc(s.weiter)}
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:28px 40px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${FARBEN.linie};">
+              ${zeile("Worum es geht", d.interesse)}
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:28px 40px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${FARBEN.band};border:1px solid ${FARBEN.linie};">
+              <tr>
+                <td style="padding:20px 22px;font-family:${GROTESK};font-size:14px;line-height:1.6;color:${FARBEN.text};">
+                  ${esc(s.frage)}
+                  <a href="tel:${esc(praxis.telefonIntl)}" style="color:${FARBEN.akzent};font-weight:600;text-decoration:none;">${esc(praxis.telefon)}</a>.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:30px 40px 36px;">
+            <div style="height:1px;background:${FARBEN.linie};line-height:1px;font-size:0;">&nbsp;</div>
+            <div style="margin-top:22px;font-family:${GROTESK};font-size:13px;line-height:1.7;color:${FARBEN.leise};">
+              <span style="color:${FARBEN.text};">${esc(praxis.vollerName)}</span><br>
+              ${esc(praxis.strasse)}<br>
+              ${esc(praxis.ort)}<br>
+              <span style="color:${FARBEN.akzent};">${esc(praxis.eingang)}</span>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+
+      <div style="width:600px;max-width:100%;margin-top:16px;font-family:${GROTESK};font-size:11px;line-height:1.6;color:${FARBEN.leise};text-align:center;">
+        ${esc(s.hinweis)} über ${esc(praxis.domain.replace(/^https?:\/\//, ""))} eine Bewerbung mit dieser Adresse gesendet wurde.<br>
+        ${esc(s.nichtIch)}
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>`;
+}

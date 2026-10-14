@@ -4,10 +4,11 @@ import JsonLd from '@/components/JsonLd';
 import Bild, { VOLL } from '@/components/Bild';
 import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
-import NotfallLeiste from '@/components/NotfallLeiste';
+import BewerbungsDialog from '@/components/BewerbungsDialog';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 import { ausbildung } from '@/lib/ausbildung';
+import { interessen } from '@/lib/karriere';
 
 export const metadata = seitenMetadaten('/ausbildung');
 
@@ -19,6 +20,10 @@ export const metadata = seitenMetadaten('/ausbildung');
   Eckdaten stehen in lib/ausbildung.ts, nicht hier: Das JobPosting-Markup
   unten liest dieselben Werte. Ist die Stelle besetzt, genügt dort
   `offen: false` — Markup und Bewerbungsaufforderung verschwinden zugleich.
+
+  Ohne Notfall-Zeile — sie richtet sich an Patienten (Auftraggeber,
+  15.10.2026). Bewerben über das Kurzformular (components/BewerbungsDialog),
+  dort ebenfalls im Du.
 */
 
 const stellentitel = `Auszubildende zur Zahnmedizinischen Fachangestellten (${ausbildung.kuerzel}) ${ausbildung.zusatz}`;
@@ -112,7 +117,7 @@ const faq = [
   },
   {
     q: 'Was muss in die Bewerbung?',
-    a: 'Dein Lebenslauf und ein paar Sätze, warum dich der Beruf interessiert. Ein förmliches Anschreiben nach Vorlage brauchen wir nicht. Wenn du vorher etwas wissen willst, ruf einfach an — wir melden uns ohnehin innerhalb von 24 Stunden zurück.',
+    a: 'Für den Anfang nur dein Name und deine E-Mail-Adresse — über „Jetzt bewerben". Zeugnis oder Lebenslauf kannst du anhängen, musst du aber nicht. Ein förmliches Anschreiben brauchen wir nicht. Wir melden uns innerhalb von 24 Stunden und lernen uns dann persönlich kennen.',
   },
 ];
 
@@ -167,7 +172,6 @@ export default function Ausbildung() {
     <>
       <JsonLd daten={strukturierteDaten} />
       {ausbildung.offen && <JsonLd daten={stellenanzeige} />}
-      <NotfallLeiste />
       <div className='seitenkopf'>
         <div>
           <div className='ueberzeile'>Ausbildung · ZFA</div>
@@ -187,11 +191,13 @@ export default function Ausbildung() {
             vom Behandlungsstuhl über die Prophylaxe bis zum Empfang.
           </p>
           <div className='knopfreihe'>
-            <a
-              className='btn btn-primary knopf-gross'
-              href={bewerbung}>
-              Bewerbung schreiben
-            </a>
+            <BewerbungsDialog
+              knopf='Jetzt bewerben'
+              knopfKlasse='btn btn-primary knopf-gross'
+              interessen={interessen}
+              vorauswahl='/ausbildung'
+              du
+            />
             <a
               className='btn btn-secondary knopf-gross'
               href={praxis.telefonHref}>
@@ -409,15 +415,22 @@ export default function Ausbildung() {
         }}>
         <div>
           <div className='ueberzeile'>So bewirbst du dich</div>
-          <h2 className='titel-2 breite-24'>Lebenslauf genügt.</h2>
-          <p
-            className='fliesstext'
-            style={{ marginTop: '20px' }}>
-            Schick uns deinen Lebenslauf und ein paar Sätze, warum dich der Beruf interessiert. Ein
-            förmliches Anschreiben nach Vorlage brauchen wir nicht. Wenn du vorher etwas wissen
-            willst, ruf an — das beantwortet meist mehr als jede Stellenanzeige. Wir melden uns{' '}
-            {praxis.antwortzeit} zurück.
+          <h2 className='titel-2 breite-24'>Name und E-Mail genügen.</h2>
+          <p className='fliesstext fliesstext--luft'>
+            Mehr brauchen wir für den Anfang nicht. Zeugnis oder Lebenslauf kannst du anhängen, ein
+            förmliches Anschreiben brauchen wir nicht. Wenn du vorher etwas wissen willst, ruf an —
+            das beantwortet meist mehr als jede Stellenanzeige. Wir melden uns{' '}
+            {praxis.antwortzeit} zurück und lernen uns dann persönlich kennen.
           </p>
+          <div className='knopfreihe'>
+            <BewerbungsDialog
+              knopf='Jetzt bewerben'
+              knopfKlasse='btn btn-primary knopf-gross'
+              interessen={interessen}
+              vorauswahl='/ausbildung'
+              du
+            />
+          </div>
         </div>
         <div>
           <p
@@ -470,15 +483,17 @@ export default function Ausbildung() {
         <div className='ueberzeile ueberzeile--hell'>Ausbildungsstart {ausbildung.beginnLang}</div>
         <h2 className='abschluss__titel'>Trau dich, schreib uns.</h2>
         <p className='abschluss__text abschluss__text--breit'>
-          Du musst nichts vorbereiten und nichts auswendig können. Lebenslauf, ein paar Sätze über
-          dich — den Rest klären wir miteinander.
+          Du musst nichts vorbereiten und nichts auswendig können. Name und E-Mail genügen — den
+          Rest klären wir miteinander.
         </p>
         <div className='knopfreihe knopfreihe--mitte'>
-          <a
-            className='btn knopf-band knopf-band--voll'
-            href={bewerbung}>
-            Bewerbung schreiben
-          </a>
+          <BewerbungsDialog
+            knopf='Jetzt bewerben'
+            knopfKlasse='btn knopf-band knopf-band--voll'
+            interessen={interessen}
+            vorauswahl='/ausbildung'
+            du
+          />
           <a
             className='btn knopf-band knopf-band--rahmen'
             href={praxis.telefonHref}>

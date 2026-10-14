@@ -13,6 +13,8 @@ import Fusszeile from "@/components/Fusszeile";
 import TerminLeiste from "@/components/TerminLeiste";
 import ZurueckNachOben from "@/components/ZurueckNachOben";
 import ScrollEffekte from "@/components/ScrollEffekte";
+import KarriereFahne from "@/components/KarriereFahne";
+import { offeneStellen } from "@/lib/karriere";
 import { praxis } from "@/lib/praxis";
 import { TAGESZEIT_SKRIPT } from "@/lib/tageszeit";
 
@@ -96,7 +98,7 @@ export default function RootLayout({
             fontFamily: "var(--font-body)",
           }}
         >
-          <Kopfzeile />
+          <Kopfzeile stellen={offeneStellen.length} />
           {/* tabIndex -1: Ziel für Sprunglink und „Zurück nach oben", ohne Tab-Stopp. */}
           <main id="inhalt" tabIndex={-1}>
             {/*
@@ -111,6 +113,8 @@ export default function RootLayout({
         </div>
         <TerminLeiste />
         <ZurueckNachOben />
+        {/* Nur die Zahl geht an den Browser, nicht die Stellendaten. */}
+        <KarriereFahne anzahl={offeneStellen.length} />
         <ScrollEffekte />
       </body>
     </html>

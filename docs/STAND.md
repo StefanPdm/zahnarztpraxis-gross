@@ -94,6 +94,58 @@ Nach dem Livegang lohnen zwei kostenlose Einträge, die bei einer einzelnen
 Stelle mehr bringen als jede Optimierung an der Seite: die Lehrstellenbörse
 der Zahnärztekammer Brandenburg und die Jobbörse der Agentur für Arbeit.
 
+### Offene Stellen — Pflege
+
+Seit 15.10.2026 gibt es `/karriere` (Übersicht) und
+`/karriere/zahntechniker` (Anzeige mit JobPosting-JSON-LD). Alles hängt an
+**`lib/karriere.ts`**: Dort steht je Stelle `offen`. Ist eine Stelle
+besetzt, `offen: false` setzen (für die Ausbildung weiter in
+`lib/ausbildung.ts`) — dann verschwinden ihr JobPosting, ihr Eintrag im
+Band und in den Hinweisen. Steht keine Stelle mehr offen, verschwinden
+auch die Fahne, der Menüeintrag und das Band; `/karriere` lädt dann zur
+Initiativbewerbung ein.
+
+Wo die Stellen sichtbar sind:
+
+| Stelle | Was |
+| --- | --- |
+| Karriere-Fahne (`components/KarriereFahne`) | Gold, rechter Rand, auf allen Seiten außer `/karriere*`, `/ausbildung`, `/kontakt`. Mobil beim Aufruf eingezogen (nur die Kante), fährt beim ersten Scrollen heraus, zieht sich nach einer Bildschirmhöhe beim Weiterlesen und über Formularen wieder zurück |
+| Mobiles Menü | erster Eintrag „Karriere" mit Zahl der offenen Stellen. Am Desktop kein Menüpunkt — Entscheidung des Auftraggebers |
+| Startseite | Stellenband unter den Kennzahlen, Hinweis vor dem Abschlussband |
+| `/praxis-team`, `/zahnlabor`, Fußzeile | Hinweis bzw. Link |
+
+**Ohne Notfall-Zeile:** `/karriere`, `/karriere/zahntechniker` und
+`/ausbildung` zeigen die `NotfallLeiste` nicht — sie richten sich nicht an
+Patienten (Auftraggeber, 15.10.2026).
+
+**Bewerbungsformular** (`components/BewerbungsDialog`, `app/api/bewerbung`):
+Kurzformular im Dialog auf allen drei Karriereseiten — „Initiativ
+bewerben" auf `/karriere`, „Jetzt bewerben" auf den Stellenseiten, auf
+`/ausbildung` im Du. Pflicht nur Name und E-Mail; Telefon, Nachricht und
+bis zu 3 Anhänge (PDF, JPG, PNG, Word; zusammen 4 MB, Grenze wegen der
+6 MB je Netlify-Function) freiwillig. Die Route prüft Herkunft, Menge,
+Größe, Endung und Dateiinhalt, begrenzt auf 3 Bewerbungen je IP in 10
+Minuten. Versand: Mail an `PRAXIS_MAIL` mit Anhängen, Eingangsbestätigung
+an die Bewerberin oder den Bewerber (`lib/mailvorlage.ts`). Getestet am
+15.10.2026 gegen einen absichtlich toten Mailserver — **ein echter
+Versand mit den SMTP-Daten steht noch aus.**
+
+- [ ] **Datenschutzerklärung: Abschnitt zu Bewerbungen fehlt.** Zweck,
+      Rechtsgrundlage (§ 26 BDSG bzw. Art. 6 Abs. 1 lit. b DSGVO), Weg per
+      E-Mail über STRATO, Speicherdauer nach Absage (üblich bis 6 Monate,
+      wegen möglicher AGG-Ansprüche). Juristischer Text — vom Auftraggeber
+      oder seiner Beratung, nicht erfinden. **Vor dem Livegang des
+      Formulars.**
+- [ ] Die Praxis braucht eine Regel, wann sie Bewerbungsmails löscht (die
+      Mail an die Praxis erinnert daran).
+
+**Zahntechniker-Anzeige:** Text von Claude formuliert, auf Ansage des
+Auftraggebers. Noch zu bestätigen: Vollzeit/Teilzeit, Beginn „ab sofort",
+die Leistungen in der Liste „Das bieten wir Ihnen" (unbefristet, geregelte
+Arbeitszeiten, Fortbildungen), Probetag. **Gehalt fehlt bewusst** — kommt
+vom Auftraggeber, dann als `baseSalary` auch ins JobPosting. `gueltigBis`
+steht vorläufig auf dem 15.04.2027; davor prüfen und verlängern.
+
 ### Impressum
 
 Vom Auftraggeber am 27.09.2026 als vollständig bestätigt — so, wie es

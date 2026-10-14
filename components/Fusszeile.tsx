@@ -54,11 +54,11 @@ export default function Fusszeile() {
               <li>
                 <Link href="/kontakt">Kontakt</Link>
               </li>
-              {/* Die Ausbildungsseite steht bewusst nur hier, auf der
-                  Startseite und auf /praxis-team — nicht in der Kopfzeile.
-                  Die richtet sich an Patienten. */}
+              {/* Die Karriereseite steht nicht in der Kopfzeile — die richtet
+                  sich an Patienten. Dorthin führen die Fahne am rechten
+                  Rand, das mobile Menü, die Startseite und diese Zeile. */}
               <li>
-                <Link href="/ausbildung">Ausbildung &amp; Karriere</Link>
+                <Link href="/karriere">Karriere</Link>
               </li>
             </ul>
           </nav>

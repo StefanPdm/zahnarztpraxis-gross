@@ -143,11 +143,27 @@ export const seiten: Seite[] = [
     beschreibung:
       "Telefon 0331 960926, Öffnungszeiten und Adresse: Schopenhauerstraße 37, Potsdam – Eingang auf der Rückseite. Antwort auf Anfragen innerhalb von 24 Stunden.",
   },
+  /* Die drei Seiten für Bewerber. Rubrik „Praxis", weil sie inhaltlich an
+     /praxis-team hängen. In der Kopfzeile stehen sie bewusst nicht — dorthin
+     führen die Karriere-Fahne am rechten Rand, der Eintrag im mobilen Menü,
+     das Band auf der Startseite und die Fußzeile (lib/karriere.ts). */
   {
-    /* Die einzige Seite, die sich nicht an Patienten richtet. Rubrik
-       „Praxis", weil sie inhaltlich an /praxis-team hängt — in der
-       Patientennavigation taucht sie bewusst nicht auf, sondern in der
-       Fußzeile, auf der Startseite und auf der Team-Seite. */
+    pfad: "/karriere",
+    name: "Karriere",
+    rubrik: "Praxis",
+    titel: "Karriere: Jobs in der Zahnarztpraxis | Groß & Groß Potsdam",
+    beschreibung:
+      "Offene Stellen der Zahnarztpraxis Groß & Groß in Potsdam Mitte: Zahntechniker (w/m/d) ab sofort und Ausbildung zur ZFA. Familiengeführt seit 1991.",
+  },
+  {
+    pfad: "/karriere/zahntechniker",
+    name: "Zahntechniker (w/m/d)",
+    rubrik: "Praxis",
+    titel: "Zahntechniker (w/m/d) in Potsdam gesucht | Groß & Groß",
+    beschreibung:
+      "Zahntechniker (w/m/d) ab sofort in Voll- oder Teilzeit: Labor in der Praxis, CAD/CAM, 3-D-Drucker, direkter Kontakt zu Patienten. Potsdam Mitte.",
+  },
+  {
     pfad: "/ausbildung",
     name: "Ausbildung",
     rubrik: "Praxis",

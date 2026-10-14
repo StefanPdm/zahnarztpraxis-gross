@@ -87,7 +87,8 @@ Selektor in einer CSS-Datei steht.
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
-  Karte, GROSSELINO, Einblenden, Öffnungsstatus.
+  Karte, GROSSELINO, Einblenden, Öffnungsstatus, Karriere-Fahne,
+  Bewerbungs-Dialog.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.
@@ -133,7 +134,11 @@ Selektor in einer CSS-Datei steht.
    auch in den Überschriften von `/leistungen` und `/zahnlabor`. Das Gebäude
    selbst darf weiter Haus heißen, etwa in der Wegbeschreibung auf
    `/anfahrt-parken`.
-5. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
+5. **Stellenanzeige Zahntechnik** (`/karriere/zahntechniker`): Den Text
+   durfte Claude ausnahmsweise selbst formulieren (Auftraggeber,
+   15.10.2026). Die Ausnahme gilt nur für diese Anzeige; Gehalt,
+   Arbeitszeit und Leistungen bestätigt der Auftraggeber noch.
+6. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
    (Klasse `.todo`) und nachfragen. Die offenen Stellen stehen in
    `docs/STAND.md`.
 
@@ -162,7 +167,9 @@ beides: ein Banner **und** eine neue Fassung dieses Abschnitts.
 
 Die Angabe zur Zahnarztangst im Termin-Formular ist ein **Gesundheitsdatum**:
 nur an die Praxis versenden, nicht protokollieren, nicht speichern, nicht an
-Dritte. Keine Zugangsdaten ins Repository.
+Dritte. Dasselbe gilt für **Bewerbungen** samt Anhängen (`app/api/bewerbung`):
+nur per Mail an die Praxis, kein Feldinhalt und kein Dateiname im Log.
+Keine Zugangsdaten ins Repository.
 
 ## Eine neue Seite anlegen
 

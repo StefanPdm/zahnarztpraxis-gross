@@ -7,7 +7,7 @@ import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import Flipkarte from '@/components/Flipkarte';
-import { ausbildung } from '@/lib/ausbildung';
+import { offeneStellen } from '@/lib/karriere';
 
 export const metadata = seitenMetadaten('/praxis-team');
 
@@ -760,34 +760,33 @@ export default function PraxisTeam() {
         </div>
       </div>
       {/* Wer wissen will, wie hier gearbeitet wird, liest diese Seite —
-          deshalb steht der Hinweis auf den Ausbildungsplatz direkt unter
-          dem Praxisteam und nicht in der Patientennavigation. */}
-      <div
-        className='spalten rand'
-        style={{
-          alignItems: 'center',
-          paddingTop: '48px',
-          paddingBottom: '48px',
-          borderTop: '1px solid var(--color-divider)',
-          borderBottom: '1px solid var(--color-divider)',
-          background: 'var(--color-surface)',
-          '--spalten': '1fr auto',
-          '--abstand': '56px',
-        }}>
-        <div>
-          <div className='ueberzeile'>Ausbildung · Start {ausbildung.beginnLang}</div>
-          <p style={{ color: 'var(--color-neutral-800)', margin: '10px 0 0', maxWidth: '58ch' }}>
-            Zum {ausbildung.beginnLang} bilden wir zur Zahnmedizinischen Fachangestellten{' '}
-            {ausbildung.zusatz} aus. Wenn dich der Beruf interessiert: Ein Anruf genügt für den
-            Anfang.
-          </p>
+          deshalb steht der Hinweis auf die offenen Stellen direkt unter dem
+          Praxisteam (lib/karriere.ts). */}
+      {offeneStellen.length > 0 && (
+        <div className='spalten abschnitt abschnitt--knapp abschnitt--linie-oben stellenhinweis'>
+          <div>
+            <div className='ueberzeile'>
+              Karriere · {offeneStellen.length}{' '}
+              {offeneStellen.length === 1 ? 'offene Stelle' : 'offene Stellen'}
+            </div>
+            <p className='stellenhinweis__text fliesstext--luft'>
+              Wir suchen Verstärkung:{' '}
+              {offeneStellen.map((s, i) => (
+                <Fragment key={s.pfad}>
+                  {i > 0 && (i === offeneStellen.length - 1 ? ' und ' : ', ')}
+                  <Link href={s.pfad}>{s.kurz}</Link> {s.beginn}
+                </Fragment>
+              ))}
+              . Ein Anruf genügt für den Anfang.
+            </p>
+          </div>
+          <Link
+            className='btn btn-secondary knopf-gross'
+            href='/karriere'>
+            Offene Stellen ansehen
+          </Link>
         </div>
-        <Link
-          className='btn btn-secondary knopf-gross'
-          href='/ausbildung'>
-          Ausbildungsplatz ansehen
-        </Link>
-      </div>
+      )}
       <div
         className='spalten spalten--3'
         style={{

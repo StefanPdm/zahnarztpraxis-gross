@@ -6,6 +6,7 @@ import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
+import { zahntechnik } from "@/lib/karriere";
 
 export const metadata = seitenMetadaten("/zahnlabor");
 
@@ -201,6 +202,27 @@ export default function Zahnlabor() {
           </div>
         </div>
       </div>
+      {/* Die Seite, auf der Zahntechniker am ehesten landen — und die
+          beschreibt, wie hier gearbeitet wird. Nur solange die Stelle offen
+          ist (lib/karriere.ts). */}
+      {zahntechnik.offen && (
+        <div className="spalten abschnitt abschnitt--knapp stellenhinweis">
+          <div>
+            <div className="ueberzeile">
+              Stellenangebot · {zahntechnik.beginnLang}
+            </div>
+            <h2 className="titel-3 titel-3--eng">
+              Wir suchen Verstärkung im Labor.
+            </h2>
+            <p className="stellenhinweis__text">
+              Eine Zahntechnikerin oder einen Zahntechniker {zahntechnik.zusatz}, in Vollzeit oder Teilzeit — mit dem Patienten eine Tür weiter und kurzen Wegen zu Zahnärztin und Zahnarzt.
+            </p>
+          </div>
+          <Link className="btn btn-primary knopf-gross" href="/karriere/zahntechniker">
+            Zur Stellenanzeige
+          </Link>
+        </div>
+      )}
       <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen
