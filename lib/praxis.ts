@@ -34,6 +34,8 @@ export const praxis = {
   behandlungszimmer: 5,
   implantate: "über 2.500",
   antwortzeit: "innerhalb von 24 Stunden",
+  /** Dieselbe Zusage als Zahl — für die Frist in der Mail an die Praxis. */
+  antwortStunden: 24,
   domain: "https://www.zahnmedizin-potsdam.de",
   /* Eintrag der Praxis bei Google. Öffentlich — sie steht in jedem
      Maps-Link und im Quelltext der Bewertungssektion. Sie stand vorher

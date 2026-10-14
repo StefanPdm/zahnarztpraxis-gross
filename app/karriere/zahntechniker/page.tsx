@@ -7,6 +7,7 @@ import BewerbungsDialog from '@/components/BewerbungsDialog';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 import { interessen, zahntechnik } from '@/lib/karriere';
+import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
 export const metadata = seitenMetadaten('/karriere/zahntechniker');
 
@@ -114,7 +115,7 @@ const faq = [
   },
   {
     q: 'Wie läuft die Bewerbung ab?',
-    a: `Über „Jetzt bewerben" genügen Name und E-Mail-Adresse, Unterlagen können Sie anhängen, müssen aber nicht. Wir melden uns ${praxis.antwortzeit} und vereinbaren ein persönliches Gespräch. Wenn es von beiden Seiten passt, folgt ein Probetag im Labor.`,
+    a: `Über „Jetzt bewerben" genügen Name und E-Mail-Adresse, Unterlagen können Sie anhängen, müssen aber nicht. Wir melden uns ${RUECKMELDUNG_BEWERBUNG} und vereinbaren ein persönliches Gespräch. Wenn es von beiden Seiten passt, folgt ein Probetag im Labor.`,
   },
 ];
 
@@ -289,7 +290,7 @@ export default function Zahntechniker() {
           <p className='fliesstext fliesstext--luft'>
             Name und E-Mail-Adresse reichen, Lebenslauf und Zeugnisse können Sie anhängen. Ein
             Anschreiben brauchen wir nicht — alles Weitere besprechen wir im persönlichen Gespräch.
-            Wir melden uns {praxis.antwortzeit} zurück. Lieber per Mail oder Telefon? Auch gut.
+            Wir melden uns {RUECKMELDUNG_BEWERBUNG} zurück. Lieber per Mail oder Telefon? Auch gut.
           </p>
           <div className='knopfreihe'>
             <BewerbungsDialog

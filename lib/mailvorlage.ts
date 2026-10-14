@@ -1,4 +1,5 @@
 import { praxis, sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
+import { RUECKMELDUNG_BEWERBUNG, RUECKMELDUNG_BEWERBUNG_STUNDEN } from "@/lib/bewerbung";
 
 /**
  * Bestätigungsmail an die Patientin oder den Patienten.
@@ -216,7 +217,7 @@ function bewerbungsSaetze(d: Bewerbungseingang) {
     ? {
         anrede: `Hallo ${d.name},`,
         dank: "danke für deine Bewerbung — schön, dass du dich für uns interessierst.",
-        weiter: `Wir sehen sie uns an und melden uns innerhalb von 24 Stunden bei dir, um ein persönliches Gespräch zu vereinbaren. Vorbereiten musst du dafür nichts.`,
+        weiter: `Wir sehen sie uns an und melden uns ${RUECKMELDUNG_BEWERBUNG} bei dir, um ein persönliches Gespräch zu vereinbaren. Vorbereiten musst du dafür nichts.`,
         frage: "Wenn du vorher eine Frage hast, ruf einfach an:",
         titel: "Deine Bewerbung",
         hinweis: "Du erhältst diese Nachricht, weil",
@@ -225,7 +226,7 @@ function bewerbungsSaetze(d: Bewerbungseingang) {
     : {
         anrede: `Guten Tag ${d.name},`,
         dank: "vielen Dank für Ihre Bewerbung und Ihr Interesse an unserer Praxis.",
-        weiter: `Wir sehen sie uns an und melden uns innerhalb von 24 Stunden bei Ihnen, um ein persönliches Gespräch zu vereinbaren. Alles Weitere besprechen wir dann.`,
+        weiter: `Wir sehen sie uns an und melden uns ${RUECKMELDUNG_BEWERBUNG} bei Ihnen, um ein persönliches Gespräch zu vereinbaren. Alles Weitere besprechen wir dann.`,
         frage: "Wenn Sie vorher eine Frage haben, rufen Sie uns gern an:",
         titel: "Ihre Bewerbung",
         hinweis: "Sie erhalten diese Nachricht, weil",
@@ -267,7 +268,7 @@ export function bewerbungHtml(d: Bewerbungseingang): string {
 <title>${esc(s.titel)} bei ${esc(praxis.name)}</title>
 </head>
 <body style="margin:0;padding:0;background:${FARBEN.grund};">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Angekommen. Wir melden uns innerhalb von 24 Stunden.</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Angekommen. Wir melden uns ${esc(RUECKMELDUNG_BEWERBUNG)}.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${FARBEN.grund};">
   <tr>
     <td align="center" style="padding:32px 16px;">
@@ -341,4 +342,298 @@ export function bewerbungHtml(d: Bewerbungseingang): string {
 </table>
 </body>
 </html>`;
+}
+
+/** Betreff der Eingangsbestätigung. */
+export function bewerbungBetreff(d: Bewerbungseingang): string {
+  return `${bewerbungsSaetze(d).titel} bei ${praxis.name}`;
+}
+
+/* ── Mails an die Praxis ──────────────────────────────────────────────────── */
+
+/**
+ * Meldung an die Praxis über eine Terminanfrage oder eine Bewerbung —
+ * gestaltet wie die Mails nach außen (Auftraggeber, 15.10.2026), dazu eine
+ * Textfassung. Oben steht immer die Zusage, die der Absender bekommen hat,
+ * mit ausgerechneter Frist: Wer die Mail öffnet, sieht sofort, bis wann
+ * geantwortet werden muss.
+ *
+ * Beide Fassungen entstehen aus derselben Beschreibung (`Praxismeldung`),
+ * damit Text und HTML nie auseinanderlaufen. Gebaut wird sie von
+ * `terminMeldung` und `bewerbungMeldung`; die Routen und ein Testversand
+ * rufen dieselben Funktionen auf.
+ */
+export type Praxismeldung = {
+  betreff: string;
+  /** Vorschauzeile im Posteingang */
+  vorschau: string;
+  ueberzeile: string;
+  titel: string;
+  /** Zugesagte Antwortzeit in Stunden und wofür */
+  stunden: number;
+  wofuer: string;
+  /** Wer hinter „Antworten" steht: „die Patientin oder den Patienten" */
+  absender: string;
+  name: string;
+  mail: string;
+  tel?: string;
+  /** Angaben in Gruppen; leere Werte fallen weg */
+  gruppen: { titel: string; zeilen: [string, string | undefined][] }[];
+  nachricht?: string;
+  anhaenge?: string[];
+  /** Zusätzlicher Hinweis unten, z. B. zur Löschfrist */
+  hinweis?: string;
+};
+
+/** Zeitpunkt, bis zu dem die Zusage gilt: „Freitag, 17.10.2026, 14:30 Uhr" (Berliner Zeit). */
+function frist(stunden: number, ab: Date): string {
+  const bis = new Date(ab.getTime() + stunden * 60 * 60 * 1000);
+  const text = new Intl.DateTimeFormat("de-DE", {
+    timeZone: "Europe/Berlin",
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(bis);
+  return `${text} Uhr`;
+}
+
+export function praxisText(m: Praxismeldung, eingang = new Date()): string {
+  const zeilen: string[] = [
+    `ZUGESAGT: Rückmeldung innerhalb von ${m.stunden} Stunden ${m.wofuer}`,
+    `— also bis ${frist(m.stunden, eingang)}.`,
+    "",
+    "Hallo liebes Praxisteam,",
+    "",
+    `über die Website ist eine neue ${m.ueberzeile} eingegangen.`,
+  ];
+  for (const g of m.gruppen) {
+    const gefuellt = g.zeilen.filter(([, w]) => w);
+    if (!gefuellt.length) continue;
+    zeilen.push("", `${g.titel}:`, ...gefuellt.map(([b, w]) => `  ${b}: ${w}`));
+  }
+  if (m.nachricht) zeilen.push("", "Nachricht:", m.nachricht);
+  if (m.anhaenge) zeilen.push("", m.anhaenge.length ? `Anhänge: ${m.anhaenge.join(", ")}` : "Keine Anhänge.");
+  zeilen.push(
+    "",
+    "—",
+    "",
+    `Eine Eingangsbestätigung ist bereits an ${m.mail} gegangen.`,
+    `Ein „Antworten“ auf diese Mail geht direkt an ${m.absender}.`,
+  );
+  if (m.hinweis) zeilen.push("", m.hinweis);
+  zeilen.push("", "Viel Erfolg", "Dein Webmaster");
+  return zeilen.join("\n") + "\n";
+}
+
+/** Knopf, der in Outlook, Apple Mail und Gmail gleich aussieht: Tabelle statt CSS-Box. */
+function knopf(href: string, text: string, voll: boolean): string {
+  return `<td style="padding:0 10px 10px 0;">
+              <a href="${esc(href)}" style="display:inline-block;padding:12px 22px;border:1px solid ${FARBEN.akzent};background:${voll ? FARBEN.akzent : FARBEN.karte};color:${voll ? FARBEN.karte : FARBEN.akzent};font-family:${GROTESK};font-size:13px;letter-spacing:1.4px;text-transform:uppercase;text-decoration:none;">${esc(text)}</a>
+            </td>`;
+}
+
+export function praxisHtml(m: Praxismeldung, eingang = new Date()): string {
+  const gruppen = m.gruppen
+    .map((g) => {
+      const zeilen = g.zeilen.map(([b, w]) => zeile(b, w)).join("");
+      if (!zeilen.trim()) return "";
+      return `
+        <tr>
+          <td style="padding:26px 40px 0;">
+            <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:${FARBEN.akzent};">${esc(g.titel)}</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;border-top:1px solid ${FARBEN.linie};">
+              ${zeilen}
+            </table>
+          </td>
+        </tr>`;
+    })
+    .join("");
+
+  // Zeilenumbrüche der Nachricht erhalten, alles andere maskieren.
+  const nachricht = m.nachricht
+    ? `
+        <tr>
+          <td style="padding:26px 40px 0;">
+            <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:${FARBEN.akzent};">Nachricht</div>
+            <div style="margin-top:10px;padding:16px 18px;border-left:2px solid ${FARBEN.akzent};background:${FARBEN.band};font-family:${SERIFE};font-size:16px;line-height:1.6;color:${FARBEN.text};">${esc(m.nachricht).replace(/\r?\n/g, "<br>")}</div>
+          </td>
+        </tr>`
+    : "";
+
+  const anhaenge = m.anhaenge
+    ? `
+        <tr>
+          <td style="padding:26px 40px 0;">
+            <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:${FARBEN.akzent};">Anhänge</div>
+            <div style="margin-top:10px;font-family:${GROTESK};font-size:14px;line-height:1.7;color:${m.anhaenge.length ? FARBEN.text : FARBEN.leise};">
+              ${m.anhaenge.length ? m.anhaenge.map((a) => esc(a)).join("<br>") : "Keine Anhänge."}
+            </div>
+          </td>
+        </tr>`
+    : "";
+
+  const knoepfe = [
+    knopf(`mailto:${m.mail}?subject=${encodeURIComponent(`Ihre ${m.ueberzeile} bei ${praxis.name}`)}`, "Per E-Mail antworten", true),
+    m.tel ? knopf(`tel:${m.tel.replace(/[^\d+]/g, "")}`, `Anrufen: ${m.tel}`, false) : "",
+  ].join("");
+
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>${esc(m.betreff)}</title>
+</head>
+<body style="margin:0;padding:0;background:${FARBEN.grund};">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">${esc(m.vorschau)}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${FARBEN.grund};">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:${FARBEN.karte};border:1px solid ${FARBEN.linie};">
+
+        <tr>
+          <td style="padding:20px 40px;background:${FARBEN.akzent};font-family:${GROTESK};font-size:14px;line-height:1.55;color:${FARBEN.karte};">
+            <span style="font-size:11px;letter-spacing:2.2px;text-transform:uppercase;">Zugesagt</span><br>
+            <strong style="font-weight:600;font-size:16px;">Rückmeldung innerhalb von ${m.stunden} Stunden</strong> ${esc(m.wofuer)}<br>
+            also bis <strong style="font-weight:600;">${esc(frist(m.stunden, eingang))}</strong>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:30px 40px 0;">
+            <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:${FARBEN.akzent};">${esc(m.ueberzeile)} über die Website</div>
+            <h1 style="margin:10px 0 0;font-family:${SERIFE};font-size:28px;line-height:1.2;font-weight:normal;color:${FARBEN.text};">${esc(m.titel)}</h1>
+          </td>
+        </tr>
+${gruppen}${nachricht}${anhaenge}
+        <tr>
+          <td style="padding:28px 40px 0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>${knoepfe}</tr></table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:20px 40px 36px;">
+            <div style="height:1px;background:${FARBEN.linie};line-height:1px;font-size:0;">&nbsp;</div>
+            <p style="margin:18px 0 0;font-family:${GROTESK};font-size:13px;line-height:1.65;color:${FARBEN.leise};">
+              Eine Eingangsbestätigung ist bereits an ${esc(m.mail)} gegangen.
+              Ein „Antworten“ auf diese Mail geht direkt an ${esc(m.absender)}.${m.hinweis ? `<br><br><span style="color:${FARBEN.text};">${esc(m.hinweis)}</span>` : ""}
+            </p>
+          </td>
+        </tr>
+
+      </table>
+
+      <div style="width:600px;max-width:100%;margin-top:16px;font-family:${GROTESK};font-size:11px;line-height:1.6;color:${FARBEN.leise};text-align:center;">
+        Automatisch erzeugt von ${esc(praxis.domain.replace(/^https?:\/\//, ""))} — nur für das Praxisteam.
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>`;
+}
+
+/** Terminanfrage → Meldung an die Praxis (app/api/termin). */
+export type Terminmeldung = {
+  name: string;
+  tel: string;
+  mail: string;
+  geburt?: string;
+  termin1: string;
+  tageszeit1?: string;
+  termin2?: string;
+  tageszeit2?: string;
+  status?: string;
+  versicherung?: string;
+  angst?: string;
+  anliegen: string;
+  nachricht?: string;
+};
+
+export function terminMeldung(d: Terminmeldung): Praxismeldung {
+  return {
+    betreff: `Terminanfrage: ${d.name}`,
+    vorschau: `${d.anliegen} · ${wunschtermin(d.termin1, d.tageszeit1)} · Rückmeldung innerhalb von ${praxis.antwortStunden} Stunden zugesagt`,
+    ueberzeile: "Terminanfrage",
+    titel: `${d.name} möchte einen Termin.`,
+    stunden: praxis.antwortStunden,
+    wofuer: "mit einem Terminvorschlag",
+    absender: "die Patientin oder den Patienten",
+    name: d.name,
+    mail: d.mail,
+    tel: d.tel,
+    gruppen: [
+      {
+        titel: "Wunschtermine",
+        zeilen: [
+          ["Wunschtermin 1", wunschtermin(d.termin1, d.tageszeit1)],
+          ["Wunschtermin 2", wunschtermin(d.termin2, d.tageszeit2)],
+        ],
+      },
+      {
+        titel: "Anliegen",
+        zeilen: [
+          ["Anliegen", d.anliegen],
+          ["Zahnarztangst", d.angst],
+          ["Status", d.status],
+          ["Versicherung", d.versicherung],
+        ],
+      },
+      {
+        titel: "Kontakt",
+        zeilen: [
+          ["Name", d.name],
+          ["Telefon", d.tel],
+          ["E-Mail", d.mail],
+          ["Geburtsdatum", d.geburt ? datum(d.geburt).replace(/^\w+, /, "") : undefined],
+        ],
+      },
+    ],
+    nachricht: d.nachricht,
+  };
+}
+
+/** Bewerbung → Meldung an die Praxis (app/api/bewerbung). */
+export type Bewerbungsmeldung = {
+  interesse: string;
+  name: string;
+  mail: string;
+  tel?: string;
+  nachricht?: string;
+  anhaenge: string[];
+};
+
+export function bewerbungMeldung(d: Bewerbungsmeldung): Praxismeldung {
+  return {
+    betreff: `Bewerbung: ${d.interesse} – ${d.name}`,
+    vorschau: `${d.name} · ${d.anhaenge.length ? `${d.anhaenge.length} Anhang/Anhänge` : "ohne Anhänge"} · Rückmeldung ${RUECKMELDUNG_BEWERBUNG} zugesagt`,
+    ueberzeile: "Bewerbung",
+    titel: `${d.name} bewirbt sich: ${d.interesse}`,
+    stunden: RUECKMELDUNG_BEWERBUNG_STUNDEN,
+    wofuer: "für ein persönliches Gespräch",
+    absender: "die Bewerberin oder den Bewerber",
+    name: d.name,
+    mail: d.mail,
+    tel: d.tel,
+    gruppen: [
+      {
+        titel: "Kontakt",
+        zeilen: [
+          ["Worum es geht", d.interesse],
+          ["Name", d.name],
+          ["E-Mail", d.mail],
+          ["Telefon", d.tel],
+        ],
+      },
+    ],
+    nachricht: d.nachricht,
+    anhaenge: d.anhaenge,
+    hinweis:
+      "Kommt es nicht zu einer Einstellung, die Mail samt Anhängen bitte spätestens sechs Monate nach der Absage löschen — so steht es in der Datenschutzerklärung (Abschnitt 05).",
+  };
 }

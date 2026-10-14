@@ -9,6 +9,7 @@ import {
   MAX_ANHAENGE,
   MAX_ANHANG_BYTES,
   MAX_ANHANG_TEXT,
+  RUECKMELDUNG_BEWERBUNG,
   type Interesse,
 } from "@/lib/bewerbung";
 
@@ -65,22 +66,22 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
   const t = du
     ? {
         titel: "Erzähl uns kurz, wer du bist.",
-        einleitung: "Ein paar Angaben genügen. Alles Weitere besprechen wir persönlich — wir melden uns innerhalb von 24 Stunden.",
+        einleitung: `Ein paar Angaben genügen. Alles Weitere besprechen wir persönlich — wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         nachricht: "Ein paar Sätze über dich — oder wann wir dich am besten erreichen.",
         anhang: "Zeugnis oder Lebenslauf, wenn du schon etwas hast. Muss aber nicht.",
         datenschutz: "Deine Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für deine Bewerbung verwendet.",
         danke: "Danke! Deine Bewerbung ist angekommen.",
-        dankeText: "Du bekommst gleich eine Bestätigung per E-Mail. Wir melden uns innerhalb von 24 Stunden, um ein Gespräch zu vereinbaren.",
+        dankeText: `Du bekommst gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein Gespräch zu vereinbaren.`,
         fehler: `Das hat leider nicht geklappt. Ruf uns bitte an: ${kontakt.telefon}.`,
       }
     : {
         titel: "Kurz vorstellen genügt.",
-        einleitung: "Ein paar Angaben reichen. Alles Weitere besprechen wir in einem persönlichen Gespräch — wir melden uns innerhalb von 24 Stunden.",
+        einleitung: `Ein paar Angaben reichen. Alles Weitere besprechen wir in einem persönlichen Gespräch — wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         nachricht: "Ein paar Sätze über Sie — oder wann wir Sie am besten erreichen.",
         anhang: "Lebenslauf oder Zeugnisse, wenn Sie möchten. Gern auch später.",
         datenschutz: "Ihre Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für Ihre Bewerbung verwendet.",
         danke: "Vielen Dank! Ihre Bewerbung ist angekommen.",
-        dankeText: "Sie erhalten gleich eine Bestätigung per E-Mail. Wir melden uns innerhalb von 24 Stunden, um ein persönliches Gespräch zu vereinbaren.",
+        dankeText: `Sie erhalten gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein persönliches Gespräch zu vereinbaren.`,
         fehler: `Das hat leider nicht geklappt. Bitte rufen Sie uns an: ${kontakt.telefon}.`,
       };
 

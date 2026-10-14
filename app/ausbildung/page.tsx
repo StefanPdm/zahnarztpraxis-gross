@@ -9,6 +9,7 @@ import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 import { ausbildung } from '@/lib/ausbildung';
 import { interessen } from '@/lib/karriere';
+import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
 export const metadata = seitenMetadaten('/ausbildung');
 
@@ -117,7 +118,7 @@ const faq = [
   },
   {
     q: 'Was muss in die Bewerbung?',
-    a: 'Für den Anfang nur dein Name und deine E-Mail-Adresse — über „Jetzt bewerben". Zeugnis oder Lebenslauf kannst du anhängen, musst du aber nicht. Ein förmliches Anschreiben brauchen wir nicht. Wir melden uns innerhalb von 24 Stunden und lernen uns dann persönlich kennen.',
+    a: `Für den Anfang nur dein Name und deine E-Mail-Adresse — über „Jetzt bewerben". Zeugnis oder Lebenslauf kannst du anhängen, musst du aber nicht. Ein förmliches Anschreiben brauchen wir nicht. Wir melden uns ${RUECKMELDUNG_BEWERBUNG} und lernen uns dann persönlich kennen.`,
   },
 ];
 
@@ -420,7 +421,7 @@ export default function Ausbildung() {
             Mehr brauchen wir für den Anfang nicht. Zeugnis oder Lebenslauf kannst du anhängen, ein
             förmliches Anschreiben brauchen wir nicht. Wenn du vorher etwas wissen willst, ruf an —
             das beantwortet meist mehr als jede Stellenanzeige. Wir melden uns{' '}
-            {praxis.antwortzeit} zurück und lernen uns dann persönlich kennen.
+            {RUECKMELDUNG_BEWERBUNG} zurück und lernen uns dann persönlich kennen.
           </p>
           <div className='knopfreihe'>
             <BewerbungsDialog
@@ -461,7 +462,7 @@ export default function Ausbildung() {
             <Link
               className='btn btn-secondary knopf-gross'
               href='/praxis-team'>
-              Das Team ansehen
+              Die Praxis kennenlernen
             </Link>
             <Link
               className='btn btn-secondary knopf-gross'

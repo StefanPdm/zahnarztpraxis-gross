@@ -1232,6 +1232,10 @@ body:has(header input#navtoggle:checked) .karrierefahne { display: none; }
   text-transform: uppercase;
   color: var(--color-neutral-700);
 }
+/* Schmal stößt die Unterschrift unten an die KI-Plakette — dann nach oben. */
+@media (max-width: 640px) {
+  .breitband:has(> .ai-badge) > .bildmarke { top: 16px; bottom: auto; left: 16px; }
+}
 .breitband--mitte > img { object-position: center; }
 
 /* ── Bewerbungsdialog (components/BewerbungsDialog) ────────────────────────

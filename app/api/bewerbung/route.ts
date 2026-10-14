@@ -3,9 +3,21 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { praxis } from '@/lib/praxis';
 import { interessen } from '@/lib/karriere';
-import { bewerbungHtml, bewerbungText } from '@/lib/mailvorlage';
+import {
+  bewerbungBetreff,
+  bewerbungHtml,
+  bewerbungMeldung,
+  bewerbungText,
+  praxisHtml,
+  praxisText,
+} from '@/lib/mailvorlage';
 import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
-import { ANHANG_TYPEN, MAX_ANHAENGE, MAX_ANHANG_BYTES, MAX_ANHANG_TEXT } from '@/lib/bewerbung';
+import {
+  ANHANG_TYPEN,
+  MAX_ANHAENGE,
+  MAX_ANHANG_BYTES,
+  MAX_ANHANG_TEXT,
+} from '@/lib/bewerbung';
 
 /*
   Bewerbung — Kurzformular auf /karriere, /karriere/zahntechniker und
@@ -87,10 +99,6 @@ async function pruefeAnhaenge(dateien: File[]): Promise<Anhang[] | string> {
     });
   }
   return anhaenge;
-}
-
-function zeile(bezeichnung: string, wert?: string) {
-  return wert ? `${bezeichnung}: ${wert}\n` : '';
 }
 
 export async function POST(request: Request) {
@@ -178,25 +186,15 @@ export async function POST(request: Request) {
 
   const interesse = interessen.find((i) => i.wert === d.interesse)!.label;
 
-  const anPraxis =
-    `Hallo liebes Praxisteam,\n\n` +
-    `über die Website ist eine neue Bewerbung eingegangen:\n\n` +
-    zeile('Worum es geht', interesse) +
-    zeile('Name', d.name) +
-    zeile('E-Mail', d.mail) +
-    zeile('Telefon', d.tel) +
-    (d.nachricht ? `\nNachricht:\n${d.nachricht}\n` : '') +
-    (anhaenge.length
-      ? `\nAnhänge: ${anhaenge.map((a) => a.filename).join(', ')}\n`
-      : '\nKeine Anhänge.\n') +
-    `\n—\n\n` +
-    `Eine Eingangsbestätigung ist bereits an ${d.mail} gegangen, mit der Zusage:\n` +
-    `Rückmeldung innerhalb von 24 Stunden für ein persönliches Gespräch.\n` +
-    `Ein „Antworten“ auf diese Mail geht direkt an die Bewerberin oder den Bewerber.\n\n` +
-    `Bitte die Unterlagen nach Abschluss des Verfahrens löschen, wenn es\n` +
-    `nicht zu einer Einstellung kommt.\n\n` +
-    `Viel Erfolg\n` +
-    `Dein Webmaster\n`;
+  const zeitpunkt = new Date();
+  const meldung = bewerbungMeldung({
+    interesse,
+    name: d.name,
+    mail: d.mail,
+    tel: d.tel,
+    nachricht: d.nachricht,
+    anhaenge: anhaenge.map((a) => a.filename),
+  });
 
   const eingang = { name: d.name, interesse, du: d.anrede === 'du' };
 
@@ -205,15 +203,16 @@ export async function POST(request: Request) {
       from: SMTP_FROM,
       to: PRAXIS_MAIL,
       replyTo: d.mail,
-      subject: `Bewerbung: ${interesse} – ${d.name}`,
-      text: anPraxis,
+      subject: meldung.betreff,
+      text: praxisText(meldung, zeitpunkt),
+      html: praxisHtml(meldung, zeitpunkt),
       attachments: anhaenge,
     });
     await versand.sendMail({
       from: SMTP_FROM,
       to: d.mail,
       replyTo: PRAXIS_MAIL,
-      subject: `${d.anrede === 'du' ? 'Deine' : 'Ihre'} Bewerbung bei ${praxis.name}`,
+      subject: bewerbungBetreff(eingang),
       text: bewerbungText(eingang),
       html: bewerbungHtml(eingang),
     });

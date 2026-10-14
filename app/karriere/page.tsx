@@ -6,7 +6,7 @@ import Bild, { VOLL } from '@/components/Bild';
 import BewerbungsDialog from '@/components/BewerbungsDialog';
 import { praxis } from '@/lib/praxis';
 import { interessen, offeneStellen } from '@/lib/karriere';
-import { INITIATIV } from '@/lib/bewerbung';
+import { INITIATIV, RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
 export const metadata = seitenMetadaten('/karriere');
 
@@ -106,15 +106,24 @@ export default function Karriere() {
           </div>
         </div>
       </div>
-      {/* Echtes Foto der Praxis, keine Kennzeichnung nötig. */}
-      <figure className='breitband breitband--mitte'>
+      {/* Der echte Empfang der Praxis, die Person darin ist erzeugt — also
+          gekennzeichnet (CLAUDE.md, Faustregel zur KI-Kennzeichnung).
+          Ohne --mitte: Der Ausschnitt wandert mobil nach rechts, zu ihr. */}
+      <figure className='breitband'>
         <Bild
           sizes={VOLL}
           vorrang
-          src='/images/empfang-tresen-flur-zahnarztpraxis-potsdam.jpg'
-          alt='Empfang der Praxis mit Tresen, dahinter der Flur zu den Behandlungszimmern, an den Wänden Gemälde in Rot und Orange'
+          src='/images/karriere-auszubildende-empfang-zahnarztpraxis-potsdam.jpg'
+          alt='Zahnmedizinische Auszubildende mit Tablet am Empfang der Praxis, links der Flur zu den Behandlungszimmern mit Gemälden in Rot und Orange'
         />
-        <figcaption className='bildmarke umbruch-schmal'>Der Empfang · hier beginnt der Tag</figcaption>
+        <span className='ai-badge'>
+          {/* eslint-disable-next-line @next/next/no-img-element -- SVG-Kennzeichnung, nichts zu optimieren */}
+          <img
+            src='/images/ai-generated-badge.svg'
+            alt='KI-generiertes Bild'
+          />
+        </span>
+        <figcaption className='bildmarke umbruch-schmal'>Am Empfang · hier beginnt der Tag</figcaption>
       </figure>
       {anzahl > 0 && (
         <div className='spalten spalten--2 stellenkarten'>
@@ -161,7 +170,7 @@ export default function Karriere() {
             <Link
               className='btn btn-secondary knopf-gross'
               href='/praxis-team'>
-              Das Team ansehen
+              Die Praxis kennenlernen
             </Link>
           </div>
         </div>
@@ -178,7 +187,7 @@ export default function Karriere() {
         <div className='ueberzeile ueberzeile--hell'>Initiativbewerbung</div>
         <h2 className='abschluss__titel'>Nichts Passendes dabei?</h2>
         <p className='abschluss__text abschluss__text--breit'>
-          Schreiben Sie uns trotzdem. Wir melden uns {praxis.antwortzeit} — auch dann, wenn gerade
+          Schreiben Sie uns trotzdem. Wir melden uns {RUECKMELDUNG_BEWERBUNG} — auch dann, wenn gerade
           keine Stelle frei ist.
         </p>
         <div className='knopfreihe knopfreihe--mitte'>

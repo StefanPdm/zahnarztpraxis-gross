@@ -91,6 +91,11 @@ Selektor in einer CSS-Datei steht.
   Bewerbungs-Dialog.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
+- **Jede Mail, die die Website verschickt, ist gestaltet** — auch die an
+  die Praxis (Auftraggeber, 15.10.2026). HTML plus Textfassung, beides aus
+  `lib/mailvorlage.ts`, keine externen Bilder. Mails an die Praxis bauen auf
+  `praxisHtml`/`praxisText` und tragen oben die Zusage an den Absender mit
+  ausgerechneter Frist (Termin 24 Stunden, Bewerbung 48 Stunden).
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.
 - Sprache: Bezeichner, Kommentare und Commit-Nachrichten auf Deutsch.
   Ausnahme: React-eigene Namen (`useState`, `className`) bleiben, wie sie sind.
@@ -112,13 +117,16 @@ Selektor in einer CSS-Datei steht.
 2. **KI-Kennzeichnung** (`/images/ai-generated-badge.svg`, Klasse
    `.ai-badge`) nur auf ausdrückliche Ansage des Auftraggebers. Bisher
    gekennzeichnet: `/parodontologie` (Zahnfleisch), `/praxis-team`
-   (Beratung bei den Mitgliedschaften), `/zahnschmerzen` (Wartebereich)
-   und `/aesthetische-zahnmedizin` (Porträt). Faustregel aus der Praxis:
+   (Beratung bei den Mitgliedschaften), `/zahnschmerzen` (Wartebereich),
+   `/aesthetische-zahnmedizin` (Porträt), `/ausbildung` (ZFA am
+   Behandlungsstuhl) und `/karriere` (Auszubildende am Empfang). Faustregel aus der Praxis:
    Zeigt ein erzeugtes Bild **Menschen**, wird es gekennzeichnet;
    Räume, Geräte und Stillleben bisher nicht.
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
    Behandlungszimmer; Schopenhauerstraße 37, 14467 Potsdam, Eingang auf der
-   **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden;
+   **Rückseite**; Telefon 0331 960926; Rückmeldung innerhalb von 24 Stunden
+   (Patienten — auf **Bewerbungen innerhalb von 48 Stunden**, Auftraggeber
+   15.10.2026, `RUECKMELDUNG_BEWERBUNG` in `lib/bewerbung.ts`);
    über 2.500 gesetzte Implantate (Matthias Groß); Chantal und Matthias Groß
    haben beide in **Halle/Saale** studiert (bestätigt 19.09.2026; Schreibweise
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck

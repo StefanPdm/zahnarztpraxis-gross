@@ -33,5 +33,13 @@ export const ANHANG_ACCEPT = Object.keys(ANHANG_TYPEN)
 /** Eine Wahl im Feld „Worum geht es?" — vom Server als Prop übergeben. */
 export type Interesse = { wert: string; label: string };
 
+/**
+ * Zusage für Bewerbungen (Auftraggeber, 15.10.2026). Bewusst länger als
+ * die 24 Stunden für Terminanfragen (`praxis.antwortzeit`) — die gelten
+ * für Patienten und bleiben.
+ */
+export const RUECKMELDUNG_BEWERBUNG_STUNDEN = 48;
+export const RUECKMELDUNG_BEWERBUNG = `innerhalb von ${RUECKMELDUNG_BEWERBUNG_STUNDEN} Stunden`;
+
 /** Wert für die Initiativbewerbung; die übrigen Werte sind die Pfade der Stellen. */
 export const INITIATIV = "initiativ";

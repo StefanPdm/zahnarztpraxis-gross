@@ -130,14 +130,15 @@ an die Bewerberin oder den Bewerber (`lib/mailvorlage.ts`). Getestet am
 15.10.2026 gegen einen absichtlich toten Mailserver — **ein echter
 Versand mit den SMTP-Daten steht noch aus.**
 
-- [ ] **Datenschutzerklärung: Abschnitt zu Bewerbungen fehlt.** Zweck,
-      Rechtsgrundlage (§ 26 BDSG bzw. Art. 6 Abs. 1 lit. b DSGVO), Weg per
-      E-Mail über STRATO, Speicherdauer nach Absage (üblich bis 6 Monate,
-      wegen möglicher AGG-Ansprüche). Juristischer Text — vom Auftraggeber
-      oder seiner Beratung, nicht erfinden. **Vor dem Livegang des
-      Formulars.**
-- [ ] Die Praxis braucht eine Regel, wann sie Bewerbungsmails löscht (die
-      Mail an die Praxis erinnert daran).
+- **Datenschutzerklärung, Abschnitt 05 „Bewerbungen"** — ergänzt am
+  15.10.2026 auf Ansage des Auftraggebers; die folgenden Abschnitte sind
+  seitdem 06–14. Er sagt eine Löschung **spätestens sechs Monate nach
+  Abschluss des Verfahrens** zu — daran muss sich die Praxis halten.
+  Juristisch nicht geprüft; bei Gelegenheit von der Beratung der Praxis
+  gegenlesen lassen.
+- [ ] Die Praxis braucht einen festen Ablauf, Bewerbungsmails nach einer
+      Absage spätestens nach sechs Monaten zu löschen (die Mail an die
+      Praxis erinnert daran; zugesagt in Abschnitt 05).
 
 **Zahntechniker-Anzeige:** Text von Claude formuliert, auf Ansage des
 Auftraggebers. Noch zu bestätigen: Vollzeit/Teilzeit, Beginn „ab sofort",
@@ -163,7 +164,7 @@ muss nach § 38 BDSG keinen benennen. Die Abschnitte sind seitdem ab 02
 neu nummeriert.
 
 **Die Verarbeitungskette** (Auftraggeber, 21.09.2026) — so steht sie in den
-Abschnitten 05 und 07:
+Abschnitten 06 und 08:
 
 | Rolle | Wer |
 | --- | --- |

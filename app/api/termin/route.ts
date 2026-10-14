@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
-import { bestaetigungHtml, bestaetigungText, wunschtermin } from '@/lib/mailvorlage';
+import { bestaetigungHtml, bestaetigungText, praxisHtml, praxisText, terminMeldung } from '@/lib/mailvorlage';
 import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
 import { pruefeTageszeit, pruefeWunschtermin, TAGESZEITEN, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
@@ -47,10 +47,6 @@ const Anfrage = z
 const zuHaeufig = begrenzung(5, 10 * 60 * 1000);
 /** Größer ist keine echte Anfrage: alle Felder zusammen bleiben weit darunter. */
 const MAX_BYTES = 16 * 1024;
-
-function zeile(bezeichnung: string, wert?: string) {
-  return wert ? `${bezeichnung}: ${wert}\n` : '';
-}
 
 export async function POST(request: Request) {
   if (!vonEigenerSeite(request)) {
@@ -127,28 +123,24 @@ export async function POST(request: Request) {
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 
-  const anPraxis =
-    `Hallo liebes Praxisteam,\n\n` +
-    `über die Website ist eine neue Terminanfrage eingegangen:\n\n` +
-    zeile('Name', d.name) +
-    zeile('Telefon', d.tel) +
-    zeile('E-Mail', d.mail) +
-    zeile('Geburtsdatum', d.geburt) +
-    `\n` +
-    zeile('Wunschtermin 1', wunschtermin(d.termin1, d.tageszeit1)) +
-    zeile('Wunschtermin 2', wunschtermin(d.termin2, d.tageszeit2)) +
-    `\n` +
-    zeile('Status', d.status) +
-    zeile('Versicherung', d.versicherung) +
-    zeile('Zahnarztangst', d.angst) +
-    zeile('Anliegen', d.anliegen) +
-    (d.nachricht ? `\nNachricht:\n${d.nachricht}\n` : '') +
-    `\n—\n\n` +
-    `Eine Eingangsbestätigung ist bereits an ${d.mail} gegangen, mit der Zusage:\n` +
-    `Rückmeldung innerhalb von 24 Stunden. Ein „Antworten“ auf diese Mail geht\n` +
-    `direkt an die Patientin oder den Patienten.\n\n` +
-    `Viel Erfolg\n` +
-    `Dein Webmaster\n`;
+  // Meldung an die Praxis: gestaltet wie die Mails nach außen, mit der
+  // zugesagten Frist ganz oben (lib/mailvorlage.ts).
+  const meldung = terminMeldung({
+    name: d.name,
+    tel: d.tel,
+    mail: d.mail,
+    geburt: d.geburt,
+    termin1: d.termin1,
+    tageszeit1: d.tageszeit1,
+    termin2: d.termin2,
+    tageszeit2: d.termin2 ? d.tageszeit2 : undefined,
+    status: d.status,
+    versicherung: d.versicherung,
+    angst: d.angst,
+    anliegen: d.anliegen,
+    nachricht: d.nachricht,
+  });
+  const eingang = new Date();
 
   // Bestätigung an die Patientin/den Patienten: gestaltete HTML-Fassung plus
   // Textfassung für Programme, die kein HTML anzeigen (lib/mailvorlage.ts).
@@ -165,8 +157,9 @@ export async function POST(request: Request) {
       from: SMTP_FROM,
       to: PRAXIS_MAIL,
       replyTo: d.mail || undefined,
-      subject: `Terminanfrage: ${d.name}`,
-      text: anPraxis,
+      subject: meldung.betreff,
+      text: praxisText(meldung, eingang),
+      html: praxisHtml(meldung, eingang),
     });
 
     // Die Adresse ist Pflichtfeld, die Bestätigung geht also immer raus.
