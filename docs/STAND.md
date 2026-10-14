@@ -109,7 +109,7 @@ Wo die Stellen sichtbar sind:
 
 | Stelle | Was |
 | --- | --- |
-| Karriere-Fahne (`components/KarriereFahne`) | Gold, rechter Rand, auf allen Seiten außer `/karriere*`, `/ausbildung`, `/kontakt`. Mobil beim Aufruf eingezogen (nur die Kante), fährt beim ersten Scrollen heraus, zieht sich nach einer Bildschirmhöhe beim Weiterlesen und über Formularen wieder zurück |
+| Karriere-Fahne (`components/KarriereFahne`) | Gold, rechter Rand, auf allen Seiten außer `/karriere*`, `/ausbildung`, `/kontakt`. Mobil beim Aufruf eingezogen (10-px-Kante mit Pfeil), fährt beim ersten Scrollen heraus, zieht sich nach einer Bildschirmhöhe beim Weiterlesen und über Formularen wieder zurück. Ein Tipp auf die Kante holt sie heraus, der zweite führt zur Karriereseite. Bewusst keine Wischgeste: Der Bildschirmrand gehört dem Betriebssystem (Android: Zurück, Safari: Vorwärts) |
 | Mobiles Menü | erster Eintrag „Karriere" mit Zahl der offenen Stellen. Am Desktop kein Menüpunkt — Entscheidung des Auftraggebers |
 | Startseite | Stellenband unter den Kennzahlen, Hinweis vor dem Abschlussband |
 | `/praxis-team`, `/zahnlabor`, Fußzeile | Hinweis bzw. Link |

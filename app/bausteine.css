@@ -1001,8 +1001,9 @@ fieldset.tageszeitwahl { margin-top: var(--space-3); }
 /* ── Karriere-Fahne (components/KarriereFahne) ─────────────────────────────
    Goldene Lasche am rechten Fensterrand, senkrecht beschriftet. Desktop auf
    halber Höhe im Seitenrand, wo sie über keinem Text liegt. Mobil im oberen
-   Drittel; beim Runterscrollen zieht sie sich bis auf eine 6-px-Kante
-   zurück (--eingezogen), beim Hochscrollen kommt sie wieder.
+   Drittel; beim Runterscrollen zieht sie sich bis auf eine 10-px-Kante
+   mit Pfeil zurück (--eingezogen), beim Hochscrollen oder per Tipp auf
+   die Kante kommt sie wieder.
 
    Kontrast: dunkle Schrift auf --color-accent rund 5 : 1. Weiße Schrift
    käme nur auf 3,4 : 1 und fiele unter die Projektgrenze. */
@@ -1029,10 +1030,11 @@ fieldset.tageszeitwahl { margin-top: var(--space-3); }
   transition: transform .45s cubic-bezier(.16,1,.3,1), background .2s ease;
 }
 /* Gegen die allgemeine Link-Regel (Farbe und Unterstrich beim Zeigen). */
-.karrierefahne:hover {
-  color: var(--ink-dark);
-  text-decoration: none;
-  background: var(--color-accent-400);
+.karrierefahne:hover { color: var(--ink-dark); text-decoration: none; }
+/* Aufhellen nur mit Maus — auf dem Handy bliebe der Hover nach dem Tipp
+   hängen, und die Fahne stünde in einem anderen Gold da. */
+@media (hover: hover) {
+  .karrierefahne:hover { background: var(--color-accent-400); }
 }
 .karrierefahne:focus-visible { outline: 2px solid var(--ink-dark); outline-offset: 2px; }
 /* Von unten nach oben zu lesen — wie ein Buchrücken im deutschen Regal. */
@@ -1051,7 +1053,11 @@ fieldset.tageszeitwahl { margin-top: var(--space-3); }
 }
 @media (max-width: 1000px) {
   .karrierefahne {
-    top: 28dvh;
+    /* svh, nicht dvh: Die dynamische Höhe ändert sich, sobald beim
+       Scrollen die Adressleiste ein- oder ausfährt — die Fahne sprang
+       dann mit. svh ist die kleine, feste Höhe. vh als Rückfall. */
+    top: 28vh;
+    top: 28svh;
     translate: none;
     gap: 8px;
     padding: 10px 8px 14px;
@@ -1063,12 +1069,37 @@ fieldset.tageszeitwahl { margin-top: var(--space-3); }
     position: absolute;
     inset: 0 0 0 -12px;
   }
-  .karrierefahne--eingezogen {
-    transform: translateX(calc(100% - 6px));
-    pointer-events: none;
+  /* Eingezogen bleibt eine 10-px-Kante mit Pfeil stehen. Ein Tipp darauf
+     holt die Fahne heraus (components/KarriereFahne), erst der zweite
+     führt zur Karriereseite. Getroffen wird auch hier auf 44 px: Die
+     Fläche reicht unsichtbar 34 px in die Seite — nur auf der Höhe der
+     Fahne, also auf gut 120 px. */
+  .karrierefahne--eingezogen { transform: translateX(calc(100% - 10px)); }
+  .karrierefahne--eingezogen::before { left: -34px; }
+  .karrierefahne__griff {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 10px;
+    color: var(--ink-dark);
+    opacity: 0;
+    transition: opacity .3s ease;
   }
+  .karrierefahne--eingezogen .karrierefahne__griff { opacity: 1; }
+  /* Der Zahlkreis ragt sonst als dunkler Rand in die Kante. */
+  .karrierefahne__zahl,
+  .karrierefahne__wort { transition: opacity .3s ease; }
+  .karrierefahne--eingezogen .karrierefahne__zahl,
+  .karrierefahne--eingezogen .karrierefahne__wort { opacity: 0; }
   /* Per Tastatur angesteuert, steht sie ganz da. */
-  .karrierefahne--eingezogen:focus-visible { transform: none; pointer-events: auto; }
+  .karrierefahne--eingezogen:focus-visible { transform: none; }
+  .karrierefahne--eingezogen:focus-visible .karrierefahne__griff { opacity: 0; }
+}
+@media (min-width: 1001px) {
+  .karrierefahne__griff { display: none; }
 }
 /* Bei offenem Menü steht dort derselbe Eintrag (Kopfzeile). */
 body:has(header input#navtoggle:checked) .karrierefahne { display: none; }
