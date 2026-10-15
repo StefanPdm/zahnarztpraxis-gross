@@ -180,6 +180,7 @@ img, iframe { max-width: 100%; }
 
 body img.plate,
 body video.parallax-img,
+body video.tafel-breit__video,
 body .flipcard img,
 body iframe {
   filter: grayscale(0.22) sepia(0.14) saturate(0.92) contrast(1.05) brightness(1.03);

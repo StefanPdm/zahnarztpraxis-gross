@@ -147,6 +147,31 @@ Arbeitszeiten, Fortbildungen), Probetag. **Gehalt fehlt bewusst** — kommt
 vom Auftraggeber, dann als `baseSalary` auch ins JobPosting. `gueltigBis`
 steht vorläufig auf dem 15.04.2027; davor prüfen und verlängern.
 
+### Video „Blick vom Behandlungsstuhl"
+
+Seit 15.10.2026 auf der Startseite als **Tafel VI** (über die Breite des
+Inhalts, unbeschnitten 16 : 9, Rahmen und Farbfilter wie die Foto-Tafeln) und auf `/angstpatienten` in der Spalte „Ablenkung".
+Die späteren Tafeln der Startseite heißen seitdem VII und VIII. Der Film
+auf dem Deckenmonitor ist laut Auftraggeber rechtefrei.
+
+Rohvideo: `rohvideos/View-dentist-chair.mp4` (per `.gitignore` nicht im
+Repository). Daraus entstanden ohne Ton und mit nahtloser Schleife (die
+letzte Sekunde blendet in die erste über, 9 s):
+
+```bash
+R=rohvideos/View-dentist-chair.mp4
+ffmpeg -ss 1 -i $R -t 1 -i $R -an -filter_complex "[0:v]setpts=PTS-STARTPTS,fps=24[h];[1:v]setpts=PTS-STARTPTS,fps=24[a];[h][a]xfade=transition=fade:duration=1:offset=8,format=yuv420p" -c:v libx264 -crf 12 master.mp4
+# je Breite 1920 (Startseite), 1280 (/angstpatienten) und 960 (mobil).
+# Der Zuschnitt nimmt rundum ~1 % weg — im Rohvideo läuft links eine dunkle Kante.
+ffmpeg -i master.mp4 -an -vf crop=1896:1066:16:7,scale=1920:-2 -c:v libx264 -crf 24 -preset slow -movflags +faststart public/video/blick-vom-stuhl-1920.mp4
+ffmpeg -i master.mp4 -an -vf crop=1896:1066:16:7,scale=1920:-2 -c:v libvpx-vp9 -b:v 0 -crf 35 -row-mt 1 public/video/blick-vom-stuhl-1920.webm
+# 1280 und 960 ebenso, mit -crf 26 (MP4) bzw. 37 (WebM)
+```
+
+Beide Videos (Praxisflug und dieses) laufen über `components/PraxisVideo`:
+Laden erst bei Sichtbarkeit, Anhalten-Knopf, Standbild bei „Bewegung
+reduzieren".
+
 ### Impressum
 
 Vom Auftraggeber am 27.09.2026 als vollständig bestätigt — so, wie es

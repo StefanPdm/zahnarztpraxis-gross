@@ -388,7 +388,12 @@ export default function Index() {
           )}
           <div id='videoband'>
             <div style={{ position: 'relative', overflow: 'hidden', height: '720px' }}>
-              <PraxisVideo standbild='/images/praxisflug-standbild.webp' />
+              <PraxisVideo
+                name='praxisflug'
+                standbild='/images/praxisflug-standbild.webp'
+                beschreibung='Rundflug durch die Praxisräume'
+                klasse='parallax-img'
+              />
               <svg
                 viewBox='0 0 1200 36'
                 preserveAspectRatio='none'
@@ -866,6 +871,38 @@ export default function Index() {
                   }}>
                   <span style={{ color: 'var(--color-accent-700)' }}>Tafel V</span>
                   <span>Flur, hinter dem Empfang</span>
+                </figcaption>
+              </figure>
+            </div>
+            {/* Der Blick des Patienten vom Behandlungsstuhl auf den
+                Deckenmonitor (Auftraggeber, 15.10.2026; Film darauf
+                rechtefrei). Über die Breite des Inhalts, nicht randlos —
+                weiter oben läuft schon der Praxisflug als randloses Band.
+                Unbeschnitten in 16 : 9 und mit dem Rahmen der Foto-Tafeln;
+                zweispaltig mit kurzem Text, damit es nicht die ganze
+                Bildschirmhöhe einnimmt (Auftraggeber, 15.10.2026). */}
+            <div className='tafel-paar'>
+              <div className='tafel-paar__text'>
+                <h3 className='zwischentitel'>Der Blick nach oben.</h3>
+                <p className='text-15'>
+                  Sie liegen, Sie schauen an die Decke — und dort wartet ein Bildschirm. Auf
+                  Wunsch läuft darauf während der Behandlung Ihre Musik oder ein Film Ihrer
+                  Wahl.
+                </p>
+              </div>
+              <figure className='tafel-breit'>
+                <div className='tafel-breit__bild'>
+                  <PraxisVideo
+                    name='blick-vom-stuhl'
+                    standbild='/images/blick-vom-stuhl-standbild.webp'
+                    beschreibung='Blick vom Behandlungsstuhl nach oben: Auf dem Deckenmonitor läuft eine ruhige Küstenlandschaft, daneben die Behandlungsleuchte'
+                    klasse='tafel-breit__video'
+                    desktop={1920}
+                  />
+                </div>
+                <figcaption className='tafelunterschrift umbruch-schmal'>
+                  <span className='tafelunterschrift__nr'>Tafel VI</span>
+                  <span>Ihr Blick vom Behandlungsstuhl</span>
                 </figcaption>
               </figure>
             </div>
@@ -1363,7 +1400,7 @@ export default function Index() {
                   textTransform: 'uppercase',
                   color: 'var(--color-neutral-700)',
                 }}>
-                <span style={{ color: 'var(--color-accent-700)' }}>Tafel VI</span>
+                <span style={{ color: 'var(--color-accent-700)' }}>Tafel VII</span>
                 <span>Zahnlabor, Modell wird digitalisiert</span>
               </figcaption>
             </figure>
@@ -1588,7 +1625,7 @@ export default function Index() {
                   textTransform: 'uppercase',
                   color: 'var(--color-neutral-700)',
                 }}>
-                <span style={{ color: 'var(--color-accent-700)' }}>Tafel VII</span>
+                <span style={{ color: 'var(--color-accent-700)' }}>Tafel VIII</span>
                 <span>Sitzgruppe, Erstgespräch</span>
               </figcaption>
             </figure>

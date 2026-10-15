@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import { seitenMetadaten } from "@/lib/seiten";
 import Bild from "@/components/Bild";
 import AngstRegler from "@/components/AngstRegler";
+import PraxisVideo from "@/components/PraxisVideo";
 import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
@@ -17,7 +18,7 @@ const zusagen = [
         { no: "04", title: "Ein vereinbartes Handzeichen", text: "Hand heben heißt: sofort unterbrechen. Wir halten uns daran, ohne Diskussion und ohne „nur noch schnell“." },
         { no: "05", title: "Pausen, so oft Sie wollen", text: "Kurz durchatmen, aufsetzen, Mund ausspülen. Eine Pause ist kein Abbruch und kostet Sie keinen Termin." },
         { no: "06", title: "Behandlung in Etappen", text: "Große Vorhaben teilen wir in mehrere kurze Termine auf. Sie bestimmen das Tempo, wir planen die Reihenfolge medizinisch sinnvoll." },
-        { no: "07", title: "Ablenkung am Behandlungsstuhl", text: "Monitor am Platz: Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen." }
+        { no: "07", title: "Ablenkung am Behandlungsstuhl", text: "Deckenmonitor am Platz: Sie können während der Behandlung Musik hören oder einen beliebigen Film streamen." }
       ];
 
 const etappen = [
@@ -31,7 +32,7 @@ const faq = [
         { q: "Muss ich erklären, warum ich lange nicht beim Zahnarzt war?", a: "Nein. Das ist für die Behandlung nicht wichtig und wir fragen nicht danach." },
         { q: "Was passiert, wenn ich mitten in der Behandlung nicht mehr kann?", a: "Sie heben die Hand — das Zeichen legen wir vorher fest — und wir unterbrechen sofort. Danach entscheiden Sie, ob wir weitermachen, pausieren oder aufhören." },
         { q: "Kann eine größere Behandlung auf mehrere Termine verteilt werden?", a: "Ja. Wir teilen sie in kürzere Etappen auf und besprechen vorher, was an welchem Termin dran ist." },
-        { q: "Darf ich Musik oder einen Film mitbringen?", a: "Gern. An den Behandlungsplätzen gibt es Monitore; Musik oder Film laufen während der Behandlung." },
+        { q: "Kann ich während der Behandlung Musik hören oder einen Film sehen?", a: "Gern. An unseren Behandlungsplätzen gibt es Deckenmonitore — dort können Sie Musik hören oder einen beliebigen Film streamen." },
         { q: "Wie sage ich Ihnen vorab, dass ich Angst habe?", a: "Bei der Online-Terminanfrage wählen Sie „Angstpatient/in“ aus, oder sagen es am Telefon. Wir planen dann mehr Zeit ein." }
       ];
 
@@ -196,8 +197,21 @@ export default function Angstpatienten() {
             Musik, Film, oder einfach Kopfhörer.
           </h2>
           <p className="fliesstext">
-            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
+            An unseren Behandlungsplätzen gibt es Deckenmonitore. Hier können Sie während der Behandlung Musik hören oder einen beliebigen Film streamen. Für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
+          {/* Genau der Blick, um den es im Satz darüber geht: vom Stuhl
+              nach oben auf den Deckenmonitor (Startseite, Tafel VI). */}
+          <figure className="tafel-klein">
+            <div className="tafel-klein__bild">
+              <PraxisVideo
+                name="blick-vom-stuhl"
+                standbild="/images/blick-vom-stuhl-standbild.webp"
+                beschreibung="Blick vom Behandlungsstuhl nach oben: Auf dem Deckenmonitor läuft eine ruhige Küstenlandschaft, daneben die Behandlungsleuchte"
+                klasse="tafel-breit__video"
+              />
+            </div>
+            <figcaption className="tafelunterschrift">Ihr Blick vom Behandlungsstuhl</figcaption>
+          </figure>
         </div>
         <div className="abschnitt abschnitt--linie">
           <div className="ueberzeile">

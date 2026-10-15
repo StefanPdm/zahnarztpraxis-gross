@@ -132,7 +132,9 @@ Selektor in einer CSS-Datei steht.
    immer „Halle/Saale"); **Intraoralscanner** für den digitalen Abdruck
    (bestätigt 21.09.2026 — der Begriff war bis dahin gesperrt); die Praxis
    arbeitet **abdruckfrei und volldigital** (bestätigt 27.09.2026, Sektion
-   „Gut zu wissen" auf der Startseite); **ein
+   „Gut zu wissen" auf der Startseite); **Deckenmonitore** an den Behandlungsplätzen, über die Patienten
+   während der Behandlung Musik hören oder einen beliebigen Film streamen
+   können (bestätigt 15.10.2026 — vorher hieß es „mitbringen"); **ein
    Ausbildungsplatz zur ZFA, Beginn 1. August 2027** (bestätigt 21.09.2026,
    Eckdaten in `lib/ausbildung.ts`).
 4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,

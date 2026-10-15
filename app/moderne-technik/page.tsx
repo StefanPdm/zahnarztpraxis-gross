@@ -214,7 +214,7 @@ export default function ModerneTechnik() {
             Monitor, Musik, Kopfhörer.
           </h2>
           <p className="fliesstext fliesstext--absatz">
-            An unseren Behandlungsplätzen gibt es Monitore. Sie können Musik oder einen Film mitbringen und während der Behandlung hören oder ansehen — für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
+            An unseren Behandlungsplätzen gibt es Deckenmonitore. Hier können Sie während der Behandlung Musik hören oder einen beliebigen Film streamen. Für viele Patienten ist genau das der Unterschied zwischen „geht nicht“ und „geht schon“.
           </p>
           <p className="fliesstext">
             Dieselben Monitore nutzen wir, um Ihnen zu zeigen, worüber wir sprechen: ein Befund am Bildschirm ist verständlicher als jede Erklärung mit Worten.

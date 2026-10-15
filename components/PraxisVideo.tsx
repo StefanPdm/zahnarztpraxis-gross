@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 /*
-  Rundflug durch die Praxis (Startseite, #videoband).
+  Stummes Video in Schleife — der Rundflug durch die Praxis (Startseite,
+  #videoband) und der Blick vom Behandlungsstuhl (Startseite Tafel VI,
+  /angstpatienten). Dateien unter public/video/<name>-1280|960.webm|mp4.
 
   - Vier Fassungen: WebM/VP9 zuerst (kleiner), MP4/H.264 für Safari < 17.4;
     mobil die 960er-Fassung. Browser ohne media-Attribut nehmen die erste
@@ -14,18 +16,29 @@ import { useEffect, useRef, useState } from "react";
   - Anhalten-Knopf: Bewegung, die länger als 5 s läuft, muss sich stoppen
     lassen (WCAG 2.2.2).
 
-  Klasse und Stil der <video>-Fläche bleiben wie im Design — site.css und
-  der Parallax hängen daran.
+  `klasse` geht an das <video>: Beim Rundflug ist das `parallax-img` —
+  site.css und der Parallax hängen daran.
 */
 
-const quellen = [
-  { src: "/video/praxisflug-960.webm", type: 'video/webm; codecs="vp9"', media: "(max-width: 1000px)" },
-  { src: "/video/praxisflug-960.mp4", type: "video/mp4", media: "(max-width: 1000px)" },
-  { src: "/video/praxisflug-1280.webm", type: 'video/webm; codecs="vp9"' },
-  { src: "/video/praxisflug-1280.mp4", type: "video/mp4" },
+const quellen = (name: string, desktop: number) => [
+  { src: `/video/${name}-960.webm`, type: 'video/webm; codecs="vp9"', media: "(max-width: 1000px)" },
+  { src: `/video/${name}-960.mp4`, type: "video/mp4", media: "(max-width: 1000px)" },
+  { src: `/video/${name}-${desktop}.webm`, type: 'video/webm; codecs="vp9"' },
+  { src: `/video/${name}-${desktop}.mp4`, type: "video/mp4" },
 ];
 
-export default function PraxisVideo({ standbild }: { standbild: string }) {
+type Eigenschaften = {
+  /** Dateiname ohne Breite und Endung, z. B. "praxisflug" */
+  name: string;
+  standbild: string;
+  /** Was zu sehen ist — für Screenreader */
+  beschreibung: string;
+  klasse?: string;
+  /** Breite der Desktop-Fassung — 1920 für Videos über die ganze Inhaltsbreite */
+  desktop?: 1280 | 1920;
+};
+
+export default function PraxisVideo({ name, standbild, beschreibung, klasse, desktop = 1280 }: Eigenschaften) {
   const video = useRef<HTMLVideoElement>(null);
   // null = automatisch (sichtbar → läuft), true/false = vom Besucher gewählt
   const [gewaehlt, setGewaehlt] = useState<boolean | null>(null);
@@ -52,18 +65,18 @@ export default function PraxisVideo({ standbild }: { standbild: string }) {
     <>
       <video
         ref={video}
-        className="parallax-img"
+        className={klasse}
         poster={standbild}
         muted
         loop
         playsInline
         preload="none"
         disablePictureInPicture
-        aria-label="Rundflug durch die Praxisräume"
+        aria-label={beschreibung}
         onPlay={() => setLaeuft(true)}
         onPause={() => setLaeuft(false)}
       >
-        {quellen.map((q) => (
+        {quellen(name, desktop).map((q) => (
           <source key={q.src} src={q.src} type={q.type} media={q.media} />
         ))}
       </video>
