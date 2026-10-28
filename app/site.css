@@ -378,6 +378,13 @@ body header > a > span { transition: font-size .28s cubic-bezier(.2,.8,.25,1), o
   .flipcard:hover .flipinner { transform: rotateY(180deg); }
   .flipcard:hover .fliphint { opacity: 0; }
 }
+/* Die Schaltfläche liegt durchsichtig über der Karte (components/Flipkarte). */
+.flipcard__knopf {
+  position: absolute; inset: 0; z-index: 3;
+  margin: 0; padding: 0; border: 0; background: transparent;
+  border-radius: var(--radius-md); cursor: pointer;
+}
+.flipcard__knopf:focus-visible { outline-offset: 4px; }
 .flipface { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .flipback { position: absolute; inset: 0; transform: rotateY(180deg); }
 body .flipcard img.portrait {

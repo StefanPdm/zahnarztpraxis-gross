@@ -10,9 +10,13 @@ import { useState, type ReactNode } from "react";
   Hover — der Werdegang war dort nicht zu erreichen. Und der Tab-Stopp
   kündigte sich nicht an, weil dem Element Rolle und Name fehlten.
 
-  Jetzt ist es eine Schaltfläche: Klick, Tipp, Enter und Leertaste drehen die
-  Karte, `aria-expanded` sagt den Zustand an. Der Hover bleibt zusätzlich
-  erhalten (site.css), damit sich am Verhalten mit der Maus nichts ändert.
+  Jetzt liegt eine durchsichtige Schaltfläche über der ganzen Karte: Klick,
+  Tipp, Enter und Leertaste drehen sie, `aria-expanded` sagt den Zustand an.
+  Bewusst nicht die Karte selbst als Schaltfläche: Deren Name müsste den
+  ganzen sichtbaren Text enthalten, Werdegang samt Fakten (WCAG 2.5.3), und
+  die Rolle „button" verbirgt den Inhalt vor Screenreadern. So bleibt der
+  Werdegang lesbar, und die Schaltfläche hat einen kurzen Namen. Der Hover
+  bleibt zusätzlich erhalten (site.css).
 */
 export default function Flipkarte({
   name,
@@ -29,25 +33,16 @@ export default function Flipkarte({
   return (
     <div
       className={gedreht ? "flipcard gedreht" : "flipcard"}
-      role="button"
-      tabIndex={0}
-      aria-expanded={gedreht}
-      aria-label={`Werdegang von ${name} ${gedreht ? "ausblenden" : "anzeigen"}`}
-      onClick={() => setGedreht((g) => !g)}
-      onKeyDown={(e) => {
-        if (e.key !== "Enter" && e.key !== " ") return;
-        e.preventDefault(); // Leertaste scrollt sonst die Seite
-        setGedreht((g) => !g);
-      }}
-      style={{
-        position: "relative",
-        height: hoehe,
-        borderRadius: "var(--radius-md)",
-        outlineOffset: "4px",
-        cursor: "pointer",
-      }}
+      style={{ position: "relative", height: hoehe, borderRadius: "var(--radius-md)" }}
     >
       {children}
+      <button
+        type="button"
+        className="flipcard__knopf"
+        aria-expanded={gedreht}
+        aria-label={`Werdegang von ${name} ${gedreht ? "ausblenden" : "anzeigen"}`}
+        onClick={() => setGedreht((g) => !g)}
+      />
     </div>
   );
 }
