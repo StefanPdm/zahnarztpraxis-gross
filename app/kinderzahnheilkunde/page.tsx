@@ -7,6 +7,9 @@ import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
+import { team } from "@/lib/team";
+
+const chantal = team.find((m) => m.name === "Chantal Groß")!;
 
 export const metadata = seitenMetadaten("/kinderzahnheilkunde");
 
@@ -22,6 +25,39 @@ const prophylaxe = [
         { title: "Fluoridierung", icon: "M12 3s5 5.5 5 9.5a5 5 0 01-10 0C7 8.5 12 3 12 3z", text: "Härtet den Zahnschmelz und macht ihn widerstandsfähiger gegen Säure. Schnell, schmerzfrei, ohne Bohrer." },
         { title: "Fissurenversiegelung", icon: "M4 7h16M6 7v10a2 2 0 002 2h8a2 2 0 002-2V7M9 11h6", text: "Die feinen Rillen der Backenzähne werden verschlossen, bevor sich dort Bakterien einnisten können." }
       ];
+
+/* Kassenleistungen: Die Praxis bietet alle an (Auftraggeber, 28.10.2026).
+   Kürzel und Altersgrenzen nach den G-BA-Richtlinien; IP3 gibt es nicht mehr. */
+const kassenleistungen = [
+  {
+    titel: "Bis zum 6. Geburtstag",
+    text: "Früherkennung, sobald die ersten Zähne kommen — mit Beratung für Sie als Eltern.",
+    punkte: [
+      { kuerzel: "FU1a–c", text: "Drei Untersuchungen zwischen dem 6. und 33. Lebensmonat, dazu Tipps zu Ernährung und Zahnpflege und eine Putzanleitung für Eltern." },
+      { kuerzel: "FU2", text: "Drei weitere Untersuchungen vom 34. Lebensmonat bis zum 6. Geburtstag, jeweils im Abstand von mindestens zwölf Monaten." },
+      { kuerzel: "Fluoridlack", text: "Zweimal im Halbjahr, vom 6. Lebensmonat bis zum 6. Geburtstag." },
+    ],
+  },
+  {
+    titel: "Von 6 bis 17 Jahren",
+    text: "Individualprophylaxe: Vorsorge, die das Kind selbst mitmacht.",
+    punkte: [
+      { kuerzel: "IP1", text: "Mundhygienestatus: Wir schauen, wie gut die Zähne geputzt sind und wo Zahnfleisch entzündet ist." },
+      { kuerzel: "IP2", text: "Aufklärung und Putzübungen, abgestimmt auf das Alter Ihres Kindes." },
+      { kuerzel: "IP4", text: "Fluoridierung der Zähne, zweimal im Jahr." },
+      { kuerzel: "IP5", text: "Fissurenversiegelung der bleibenden großen Backenzähne." },
+    ],
+  },
+];
+
+/* Kreidezähne behandelt die Praxis (Auftraggeber, 28.10.2026). Zahnunfall
+   bewusst noch nicht — erst nach Rücksprache. */
+const gutZuWissen = [
+  { titel: "Milchzähne zählen", text: "Milchzähne fallen zwar aus, halten aber bis dahin den Platz für die bleibenden Zähne frei und helfen beim Kauen und Sprechen. Ein kranker Milchzahn kann dem bleibenden Zahn darunter schaden — deshalb nehmen wir Karies auch hier ernst." },
+  { titel: "Nuckelflaschenkaries", text: "Wer oft an einer Flasche mit Saft, gesüßtem Tee oder Milch nuckelt, umspült die Zähne stundenlang mit Zucker. Vor allem die oberen Schneidezähne werden dann schnell kariös. Gegen Durst hilft Wasser, und zum Einschlafen besser keine Flasche." },
+  { titel: "Wechselgebiss", text: "Etwa mit sechs Jahren kommen die ersten bleibenden Backenzähne — hinter den Milchzähnen und oft unbemerkt. Gerade sie sind in den ersten Jahren anfällig für Karies; dafür gibt es die Fissurenversiegelung. Nachputzen lohnt sich, bis Ihr Kind flüssig schreiben kann." },
+  { titel: "Kreidezähne (MIH)", text: "Bei Kreidezähnen ist der Zahnschmelz nicht richtig ausgehärtet: Die Zähne haben weiße, gelbliche oder bräunliche Flecken, reagieren empfindlich auf Kälte und Zähneputzen und können bröckeln. Betroffen sind vor allem die ersten bleibenden Backenzähne und die Schneidezähne. Wir behandeln Kreidezähne in der Praxis — je früher wir sie sehen, desto besser lassen sie sich schützen." },
+];
 
 const faq = [
         { q: "Ab welchem Alter soll mein Kind zum Zahnarzt?", a: "Sobald die ersten Zähne da sind, spätestens im Rahmen der Vorsorgeuntersuchungen. Beim ersten Besuch geht es ohnehin nur ums Kennenlernen — je früher der stattfindet, desto normaler ist der Zahnarzt für Ihr Kind." },
@@ -120,12 +156,16 @@ export default function Kinderzahnheilkunde() {
           <p className="fliesstext">
             Sie dürfen dabeibleiben, so lange Sie und Ihr Kind es möchten. Was wir sehen, erklären wir beiden: dem Kind in seinen Worten, Ihnen in Ihren.
           </p>
-          <blockquote className="linie-links" style={{ margin: "32px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
-            „Ich behandle viele Kinder. Sie brauchen dasselbe wie Erwachsene, die lange nicht da waren: Ruhe und eine ehrliche Ansage.“
-            <cite style={{ display: "block", marginTop: "14px", fontFamily: "var(--font-ui)", fontStyle: "normal", fontSize: "10.5px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>
-              Chantal Groß, Zahnärztin
-            </cite>
-          </blockquote>
+          <figure className="profilzitat">
+            <Bild className="profilzitat__bild" sizes="96px" src="/images/portrait-chantal-gross-kopf.jpg" alt={chantal.alt} />
+            <blockquote className="profilzitat__zitat">
+              „Ich behandle viele Kinder. Sie brauchen dasselbe wie Erwachsene, die lange nicht da waren: Ruhe und eine ehrliche Ansage.“
+            </blockquote>
+            <figcaption className="profilzitat__name">
+              <Link href="/praxis-team">{chantal.name}</Link>
+              <span className="profilzitat__rolle">Ihre Zahnärztin für Kinder in Potsdam</span>
+            </figcaption>
+          </figure>
         </div>
         <div className="linie-links" style={{ position: "relative", overflow: "hidden", minHeight: "560px" }}>
           <Bild className="parallax-img" src="/images/photos-1786974461824-wn8d.jpg" alt="Helles Behandlungszimmer mit Tageslicht in der Zahnarztpraxis Groß & Groß Potsdam" />
@@ -161,7 +201,50 @@ export default function Kinderzahnheilkunde() {
           ))}
         </div>
       </div>
-      <div className="spalten" style={{ borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
+      <div className="abschnitt-oben">
+        <div className="ueberzeile">
+          Kassenleistungen
+        </div>
+        <h2 className="titel-2 breite-26">
+          Was die Krankenkasse für Kinder übernimmt.
+        </h2>
+        <p className="fliesstext fliesstext--gross fliesstext--luft breite-62">
+          Für gesetzlich versicherte Kinder zahlt die Krankenkasse die zahnärztliche Vorsorge vollständig — und wir bieten jede dieser Leistungen an. Beantragen müssen Sie nichts; bringen Sie zum Termin nur die Versichertenkarte Ihres Kindes mit.
+        </p>
+      </div>
+      <div className="raster raster--2 raster--spalten-56">
+        {kassenleistungen.map((k) => (
+          <div key={k.titel}>
+            <h3 className="zwischentitel">{k.titel}</h3>
+            <p className="text-15">{k.text}</p>
+            <ul className="strichliste leistungsliste">
+              {k.punkte.map((p) => (
+                <li key={p.kuerzel}>
+                  <span className="leistungsliste__kuerzel">{p.kuerzel}</span>
+                  {p.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="abschnitt-oben abschnitt-oben--linie">
+        <div className="ueberzeile">
+          Gut zu wissen
+        </div>
+        <h2 className="titel-2 breite-26">
+          Vom ersten Milchzahn bis zum Wechselgebiss.
+        </h2>
+      </div>
+      <div className="raster raster--2 raster--spalten-56">
+        {gutZuWissen.map((g) => (
+          <div key={g.titel} className="wissenspunkt">
+            <h3 className="zwischentitel">{g.titel}</h3>
+            <p className="fliesstext">{g.text}</p>
+          </div>
+        ))}
+      </div>
+      <div className="spalten" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1fr 1.05fr" }}>
         {/* Kein Parallax-Rahmen: die Figur steht rechts im Bild, der Überstand
             von 140 % würde sie anschneiden. Der Ausschnitt liegt deshalb
             rechts, links bleibt die helle Fläche. */}
@@ -185,6 +268,10 @@ export default function Kinderzahnheilkunde() {
           </p>
           <p className="fliesstext">
             Ein Hinweis, der oft überrascht: Karies- und Parodontitisbakterien können von Eltern auf das Kind übertragen werden. Auf die eigene Mundgesundheit zu achten — gerade vor und während einer Schwangerschaft — schützt also beide.
+          </p>
+          <p className="fliesstext fliesstext--luft">
+            Sie finden uns in Potsdam Mitte, nahe dem Brandenburger Tor und Potsdam-West. Kurzzeitparkplätze gibt es direkt auf der Hofseite; der Eingang liegt auf der Rückseite des Hauses. Alles Weitere unter{" "}
+            <Link href="/anfahrt-parken">Anfahrt &amp; Parken</Link>.
           </p>
           <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "28px" }}>
             <Link className="btn btn-primary knopf-gross" href="/#termin">

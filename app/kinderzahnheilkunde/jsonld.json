@@ -31,6 +31,11 @@
             "name": "Prophylaxe für Kinder",
             "procedureType": "https://schema.org/NoninvasiveProcedure",
             "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde"
+          },
+          {
+            "@type": "MedicalCondition",
+            "name": "Kreidezähne",
+            "alternateName": "Molaren-Inzisiven-Hypomineralisation (MIH)"
           }
         ],
         "audience": {
