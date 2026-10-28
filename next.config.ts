@@ -89,7 +89,13 @@ const nextConfig: NextConfig = {
       Browser der Besucher spricht nie mit Google — sonst ginge bei jedem
       Seitenaufruf die IP-Adresse dorthin.
     */
-    remotePatterns: [{ protocol: "https", hostname: "lh3.googleusercontent.com" }],
+    // Nur die Pfade der Profilbilder (/a/…, /a-/…): Unter lh3 liegen auch
+    // beliebige öffentliche Bilder aus Google Fotos und Drive, die sonst
+    // jeder über unsere Domain ausliefern lassen könnte.
+    remotePatterns: [
+      { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/a/**" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "/a-/**" },
+    ],
   },
 
   async redirects() {
