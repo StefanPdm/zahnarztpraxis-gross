@@ -226,6 +226,9 @@ export async function POST(request: Request) {
   } catch (fehler) {
     console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
     await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: anPraxis, bestaetigung: bestaetigt });
+    // Die Praxis hat die Bewerbung, nur die Bestätigung kam nicht an: kein
+    // Fehler melden — sonst bewirbt sich derjenige doppelt.
+    if (anPraxis) return NextResponse.json({ ok: true, ohneBestaetigung: true });
     return NextResponse.json(
       { fehler: `Versand fehlgeschlagen. Bitte rufen Sie uns an: ${praxis.telefon}.` },
       { status: 502 },

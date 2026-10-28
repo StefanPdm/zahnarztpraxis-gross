@@ -60,6 +60,8 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
 
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [gesendet, setGesendet] = useState(false);
+  // Bewerbung angekommen, aber die Bestätigung an den Absender nicht.
+  const [ohneBestaetigung, setOhneBestaetigung] = useState(false);
   const [fehler, setFehler] = useState("");
   const [anhangHinweis, setAnhangHinweis] = useState("");
 
@@ -72,6 +74,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
         datenschutz: "Deine Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für deine Bewerbung verwendet.",
         danke: "Danke! Deine Bewerbung ist angekommen.",
         dankeText: `Du bekommst gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein Gespräch zu vereinbaren.`,
+        dankeOhneBestaetigung: `Nur die Bestätigung an deine E-Mail-Adresse ließ sich nicht zustellen. Prüf die Adresse bitte noch einmal — schick die Bewerbung aber nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         fehler: `Das hat leider nicht geklappt. Ruf uns bitte an: ${kontakt.telefon}.`,
       }
     : {
@@ -82,6 +85,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
         datenschutz: "Ihre Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für Ihre Bewerbung verwendet.",
         danke: "Vielen Dank! Ihre Bewerbung ist angekommen.",
         dankeText: `Sie erhalten gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein persönliches Gespräch zu vereinbaren.`,
+        dankeOhneBestaetigung: `Nur die Bestätigung an Ihre E-Mail-Adresse ließ sich nicht zustellen. Bitte prüfen Sie die Adresse — senden Sie die Bewerbung aber nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         fehler: `Das hat leider nicht geklappt. Bitte rufen Sie uns an: ${kontakt.telefon}.`,
       };
 
@@ -100,6 +104,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
   function beimSchliessen() {
     if (!gesendet) return;
     setGesendet(false);
+    setOhneBestaetigung(false);
     setFehler("");
   }
 
@@ -132,8 +137,10 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
     try {
       const antwort = await fetch("/api/bewerbung", { method: "POST", body: daten });
       if (antwort.ok) {
+        const inhalt = (await antwort.json().catch(() => null)) as { ohneBestaetigung?: boolean } | null;
         f.reset();
         setAnhangHinweis("");
+        setOhneBestaetigung(inhalt?.ohneBestaetigung === true);
         setGesendet(true);
         return;
       }
@@ -168,7 +175,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
 
         {gesendet ? (
           <div className="bewerbung__erfolg" role="status">
-            <p className="fliesstext">{t.dankeText}</p>
+            <p className="fliesstext">{ohneBestaetigung ? t.dankeOhneBestaetigung : t.dankeText}</p>
             <div className="knopfreihe">
               <button type="button" className="btn btn-primary knopf-gross" onClick={schliessen}>
                 Schließen

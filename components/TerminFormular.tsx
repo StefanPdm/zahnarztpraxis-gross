@@ -183,7 +183,7 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
   }
   const [wirdGesendet, setWirdGesendet] = useState(false);
   const [rueckmeldung, setRueckmeldung] = useState<
-    { art: "erfolg" } | { art: "fehler"; text: string } | null
+    { art: "erfolg"; ohneBestaetigung?: boolean } | { art: "fehler"; text: string } | null
   >(null);
   // Zeitstempel für den Spamschutz — erst im Browser setzen, nicht beim Rendern.
   const gestartet = useRef(0);
@@ -281,10 +281,11 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
       });
 
       if (antwort.ok) {
+        const inhalt = (await antwort.json().catch(() => null)) as { ohneBestaetigung?: boolean } | null;
         formular.reset();
         setHinweis({});
         setOhneNm({});
-        setRueckmeldung({ art: "erfolg" });
+        setRueckmeldung({ art: "erfolg", ohneBestaetigung: inhalt?.ohneBestaetigung === true });
         return;
       }
 
@@ -589,6 +590,8 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
           role='status'
           style={{ gridColumn: '1/-1', color: 'var(--color-accent-700)', margin: '0' }}>
           Vielen Dank. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+          {rueckmeldung.ohneBestaetigung &&
+            ' Ihre Anfrage ist angekommen, nur die Bestätigung an Ihre E-Mail-Adresse ließ sich nicht zustellen. Bitte prüfen Sie die Adresse — und schicken Sie die Anfrage nicht noch einmal.'}
         </p>
       )}
       {rueckmeldung?.art === 'fehler' && (

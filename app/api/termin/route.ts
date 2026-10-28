@@ -181,6 +181,10 @@ export async function POST(request: Request) {
   } catch (fehler) {
     console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
     await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: anPraxis, bestaetigung: bestaetigt });
+    // Die Praxis hat die Anfrage, nur die Bestätigung kam nicht an (etwa eine
+    // vertippte Adresse): kein Fehler melden — sonst schickt der Absender
+    // erneut, und die Praxis hat die Anfrage doppelt.
+    if (anPraxis) return NextResponse.json({ ok: true, ohneBestaetigung: true });
     return NextResponse.json(
       { fehler: 'Versand fehlgeschlagen. Bitte rufen Sie uns an: 0331 960926.' },
       { status: 502 },
