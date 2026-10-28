@@ -96,6 +96,10 @@ Selektor in einer CSS-Datei steht.
   `lib/mailvorlage.ts`, keine externen Bilder. Mails an die Praxis bauen auf
   `praxisHtml`/`praxisText` und tragen oben die Zusage an den Absender mit
   ausgerechneter Frist (Termin 24 Stunden, Bewerbung 48 Stunden).
+  Ist `ADMIN_MAIL` gesetzt, geht zusätzlich eine Info an den Admin
+  (`lib/adminmeldung.ts`) — **nur Art, Zeitpunkt und Versandergebnis,
+  nie ein Formularinhalt**. Ins Log kommt bei SMTP-Fehlern nur der
+  Fehlercode, nicht die Meldung (sie enthält oft die Empfängeradresse).
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.
 - Sprache: Bezeichner, Kommentare und Commit-Nachrichten auf Deutsch.
   Ausnahme: React-eigene Namen (`useState`, `className`) bleiben, wie sie sind.

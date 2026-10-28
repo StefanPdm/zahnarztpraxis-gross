@@ -637,3 +637,115 @@ export function bewerbungMeldung(d: Bewerbungsmeldung): Praxismeldung {
       "Kommt es nicht zu einer Einstellung, die Mail samt Anhängen bitte spätestens sechs Monate nach der Absage löschen — so steht es in der Datenschutzerklärung (Abschnitt 05).",
   };
 }
+
+/* ── Info an den Admin ──────────────────────────────────────────────────────
+   Kurze Nachricht an ADMIN_MAIL, sobald ein Formular abgeschickt wurde.
+   Datenschutz: **kein einziger Inhalt aus dem Formular** — kein Name, keine
+   Adresse, keine Angabe zur Zahnarztangst, kein Dateiname. Nur Art,
+   Zeitpunkt und ob der Versand geklappt hat. Die Inhalte gehen allein an
+   die Praxis (CLAUDE.md, Datenschutz). */
+
+export type Adminmeldung = {
+  /** „Terminanfrage" oder „Bewerbung" */
+  formular: string;
+  zeitpunkt: Date;
+  /** Ergebnis je Mail; undefined = nicht versucht, weil vorher abgebrochen */
+  praxis: boolean;
+  bestaetigung?: boolean;
+};
+
+function zeitpunktText(wann: Date): string {
+  const text = new Intl.DateTimeFormat("de-DE", {
+    timeZone: "Europe/Berlin",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(wann);
+  return `${text} Uhr`;
+}
+
+function adminZeilen(m: Adminmeldung): [string, string, boolean][] {
+  const status = (ok: boolean | undefined) => (ok === undefined ? "nicht versucht" : ok ? "zugestellt" : "fehlgeschlagen");
+  return [
+    ["Mail an die Praxis", status(m.praxis), m.praxis],
+    ["Bestätigung an den Absender", status(m.bestaetigung), m.bestaetigung === true],
+  ];
+}
+
+export function adminBetreff(m: Adminmeldung): string {
+  const ok = m.praxis && m.bestaetigung === true;
+  return ok ? `Website: ${m.formular} eingegangen` : `Website: ${m.formular} — Versand fehlgeschlagen`;
+}
+
+export function adminText(m: Adminmeldung): string {
+  return [
+    `${m.formular} über die Website, ${zeitpunktText(m.zeitpunkt)}.`,
+    "",
+    ...adminZeilen(m).map(([b, w]) => `${b}: ${w}`),
+    "",
+    m.praxis
+      ? "Die Inhalte stehen nur in der Mail an die Praxis."
+      : "Die Praxis hat diese Anfrage NICHT erhalten. Bitte den Mailversand prüfen (SMTP-Zugang in Netlify).",
+    "",
+    "—",
+    `Automatisch erzeugt von ${praxis.domain.replace(/^https?:\/\//, "")}. Bewusst ohne Formularinhalte.`,
+  ].join("\n") + "\n";
+}
+
+export function adminHtml(m: Adminmeldung): string {
+  const zeilen = adminZeilen(m)
+    .map(
+      ([b, w, ok]) => `
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid ${FARBEN.linie};font-family:${GROTESK};font-size:14px;color:${FARBEN.leise};">${esc(b)}</td>
+                <td align="right" style="padding:10px 0;border-bottom:1px solid ${FARBEN.linie};font-family:${GROTESK};font-size:14px;font-weight:600;color:${ok ? FARBEN.text : FARBEN.akzent};">${esc(w)}</td>
+              </tr>`,
+    )
+    .join("");
+  const hinweis = m.praxis
+    ? "Die Inhalte stehen nur in der Mail an die Praxis."
+    : "Die Praxis hat diese Anfrage <strong>nicht</strong> erhalten. Bitte den Mailversand prüfen (SMTP-Zugang in Netlify).";
+
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>${esc(adminBetreff(m))}</title>
+</head>
+<body style="margin:0;padding:0;background:${FARBEN.grund};">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${FARBEN.grund};">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background:${FARBEN.karte};border:1px solid ${FARBEN.linie};">
+        <tr>
+          <td style="padding:30px 40px 0;">
+            <div style="font-family:${GROTESK};font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:${FARBEN.akzent};">Info für den Webmaster</div>
+            <h1 style="margin:10px 0 0;font-family:${SERIFE};font-size:26px;line-height:1.2;font-weight:normal;color:${FARBEN.text};">${esc(m.formular)} eingegangen</h1>
+            <p style="margin:8px 0 0;font-family:${GROTESK};font-size:14px;color:${FARBEN.leise};">${esc(zeitpunktText(m.zeitpunkt))}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:22px 40px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${FARBEN.linie};">${zeilen}
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 40px 34px;">
+            <p style="margin:0;font-family:${GROTESK};font-size:13px;line-height:1.65;color:${m.praxis ? FARBEN.leise : FARBEN.text};">${hinweis}</p>
+          </td>
+        </tr>
+      </table>
+      <div style="width:600px;max-width:100%;margin-top:16px;font-family:${GROTESK};font-size:11px;line-height:1.6;color:${FARBEN.leise};text-align:center;">
+        Automatisch erzeugt von ${esc(praxis.domain.replace(/^https?:\/\//, ""))} — bewusst ohne Formularinhalte.
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>`;
+}

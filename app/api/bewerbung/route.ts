@@ -11,6 +11,7 @@ import {
   praxisHtml,
   praxisText,
 } from '@/lib/mailvorlage';
+import { fehlercode, meldeAdmin } from '@/lib/adminmeldung';
 import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
 import {
   ANHANG_TYPEN,
@@ -198,6 +199,9 @@ export async function POST(request: Request) {
 
   const eingang = { name: d.name, interesse, du: d.anrede === 'du' };
 
+  // Für die Info an den Admin: welche der beiden Mails ist angekommen?
+  let anPraxis = false;
+  let bestaetigt: boolean | undefined;
   try {
     await versand.sendMail({
       from: SMTP_FROM,
@@ -208,6 +212,8 @@ export async function POST(request: Request) {
       html: praxisHtml(meldung, zeitpunkt),
       attachments: anhaenge,
     });
+    anPraxis = true;
+    bestaetigt = false;
     await versand.sendMail({
       from: SMTP_FROM,
       to: d.mail,
@@ -216,13 +222,16 @@ export async function POST(request: Request) {
       text: bewerbungText(eingang),
       html: bewerbungHtml(eingang),
     });
+    bestaetigt = true;
   } catch (fehler) {
-    console.error('SMTP-Versand fehlgeschlagen:', (fehler as Error).message);
+    console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
+    await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: anPraxis, bestaetigung: bestaetigt });
     return NextResponse.json(
       { fehler: `Versand fehlgeschlagen. Bitte rufen Sie uns an: ${praxis.telefon}.` },
       { status: 502 },
     );
   }
 
+  await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: true, bestaetigung: true });
   return NextResponse.json({ ok: true });
 }

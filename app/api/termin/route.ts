@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { z } from 'zod';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText, praxisHtml, praxisText, terminMeldung } from '@/lib/mailvorlage';
+import { fehlercode, meldeAdmin } from '@/lib/adminmeldung';
 import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
 import { pruefeTageszeit, pruefeWunschtermin, TAGESZEITEN, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
@@ -152,6 +153,9 @@ export async function POST(request: Request) {
     tageszeit2: d.termin2 ? d.tageszeit2 : undefined,
   };
 
+  // Für die Info an den Admin: welche der beiden Mails ist angekommen?
+  let anPraxis = false;
+  let bestaetigt: boolean | undefined;
   try {
     await versand.sendMail({
       from: SMTP_FROM,
@@ -161,6 +165,8 @@ export async function POST(request: Request) {
       text: praxisText(meldung, eingang),
       html: praxisHtml(meldung, eingang),
     });
+    anPraxis = true;
+    bestaetigt = false;
 
     // Die Adresse ist Pflichtfeld, die Bestätigung geht also immer raus.
     await versand.sendMail({
@@ -171,13 +177,16 @@ export async function POST(request: Request) {
       text: bestaetigungText(bestaetigung),
       html: bestaetigungHtml(bestaetigung),
     });
+    bestaetigt = true;
   } catch (fehler) {
-    console.error('SMTP-Versand fehlgeschlagen:', (fehler as Error).message);
+    console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
+    await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: anPraxis, bestaetigung: bestaetigt });
     return NextResponse.json(
       { fehler: 'Versand fehlgeschlagen. Bitte rufen Sie uns an: 0331 960926.' },
       { status: 502 },
     );
   }
 
+  await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: true, bestaetigung: true });
   return NextResponse.json({ ok: true });
 }
