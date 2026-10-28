@@ -136,7 +136,12 @@ Selektor in einer CSS-Datei steht.
    während der Behandlung Musik hören oder einen beliebigen Film streamen
    können (bestätigt 15.10.2026 — vorher hieß es „mitbringen"); **ein
    Ausbildungsplatz zur ZFA, Beginn 1. August 2027** (bestätigt 21.09.2026,
-   Eckdaten in `lib/ausbildung.ts`).
+   Eckdaten in `lib/ausbildung.ts`); **alle zahnärztlichen Kassenleistungen
+   für Kinder** — FU1a–c, FU2, Fluoridlack, IP1, IP2, IP4, IP5 — und die
+   **Behandlung von Kreidezähnen (MIH)** (beides bestätigt 28.10.2026,
+   `/kinderzahnheilkunde`). Lage für Eltern: Potsdam Mitte, nahe dem
+   Brandenburger Tor und Potsdam-West (bestätigt 28.10.2026). Zahnunfall
+   beim Kind und Kinderwagen vorerst **nicht** erwähnen.
 4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,
    21.09.2026). Labor und Zahntechniker sitzen **in der eigenen Praxis** —
    auch in Fließtext, Bildunterschriften, Metadaten und JSON-LD. „Im Haus"
