@@ -652,7 +652,12 @@ export type Adminmeldung = {
   /** Ergebnis je Mail; undefined = nicht versucht, weil vorher abgebrochen */
   praxis: boolean;
   bestaetigung?: boolean;
+  /** Bestätigung ausgesetzt, weil die Obergrenze je Stunde erreicht ist */
+  gedrosselt?: boolean;
 };
+
+const DROSSEL_HINWEIS =
+  "Die Obergrenze für Bestätigungen in dieser Stunde ist erreicht — ungewöhnlich viele Anfragen, womöglich Missbrauch. Die Praxis bekommt die Anfragen weiter, nur die Bestätigung an den Absender entfällt.";
 
 function zeitpunktText(wann: Date): string {
   const text = new Intl.DateTimeFormat("de-DE", {
@@ -670,12 +675,13 @@ function adminZeilen(m: Adminmeldung): [string, string, boolean][] {
   const status = (ok: boolean | undefined) => (ok === undefined ? "nicht versucht" : ok ? "zugestellt" : "fehlgeschlagen");
   return [
     ["Mail an die Praxis", status(m.praxis), m.praxis],
-    ["Bestätigung an den Absender", status(m.bestaetigung), m.bestaetigung === true],
+    ["Bestätigung an den Absender", m.gedrosselt ? "ausgesetzt (Obergrenze)" : status(m.bestaetigung), m.bestaetigung === true],
   ];
 }
 
 export function adminBetreff(m: Adminmeldung): string {
   const ok = m.praxis && m.bestaetigung === true;
+  if (m.praxis && m.gedrosselt) return `Website: ${m.formular} eingegangen — ohne Bestätigung (Obergrenze)`;
   return ok ? `Website: ${m.formular} eingegangen` : `Website: ${m.formular} — Versand fehlgeschlagen`;
 }
 
@@ -685,6 +691,7 @@ export function adminText(m: Adminmeldung): string {
     "",
     ...adminZeilen(m).map(([b, w]) => `${b}: ${w}`),
     "",
+    ...(m.gedrosselt ? [DROSSEL_HINWEIS, ""] : []),
     m.praxis
       ? "Die Inhalte stehen nur in der Mail an die Praxis."
       : "Die Praxis hat diese Anfrage NICHT erhalten. Bitte den Mailversand prüfen (SMTP-Zugang in Netlify).",
@@ -705,7 +712,7 @@ export function adminHtml(m: Adminmeldung): string {
     )
     .join("");
   const hinweis = m.praxis
-    ? "Die Inhalte stehen nur in der Mail an die Praxis."
+    ? `${m.gedrosselt ? `${DROSSEL_HINWEIS}<br><br>` : ""}Die Inhalte stehen nur in der Mail an die Praxis.`
     : "Die Praxis hat diese Anfrage <strong>nicht</strong> erhalten. Bitte den Mailversand prüfen (SMTP-Zugang in Netlify).";
 
   return `<!DOCTYPE html>

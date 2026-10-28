@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { nachmittagNachVereinbarung, praxis, schliesstage, sprechzeiten } from '@/lib/praxis';
 import { bestaetigungHtml, bestaetigungText, praxisHtml, praxisText, terminMeldung } from '@/lib/mailvorlage';
 import { fehlercode, meldeAdmin } from '@/lib/adminmeldung';
-import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
+import { absenderIp, ALLE, begrenzung, NAME_HINWEIS, nameUnverdaechtig, vonEigenerSeite } from '@/lib/formularschutz';
 import { pruefeTageszeit, pruefeWunschtermin, TAGESZEITEN, WUNSCHTERMIN_HINWEIS } from '@/lib/wunschtermin';
 
 /*
@@ -46,6 +46,13 @@ const Anfrage = z
 
 /** Höchstens 5 Anfragen je IP in 10 Minuten (lib/formularschutz.ts). */
 const zuHaeufig = begrenzung(5, 10 * 60 * 1000);
+/**
+ * Höchstens 20 Bestätigungen in der Stunde, über alle Absender. Darüber
+ * bekommt die Praxis die Anfrage weiter, nur die Bestätigung an die
+ * eingegebene Adresse entfällt — so taugt das Formular nicht als Verteiler
+ * für Werbung an Fremde. Eine Praxis bekommt weit weniger echte Anfragen.
+ */
+const zuVieleBestaetigungen = begrenzung(20, 60 * 60 * 1000);
 /** Größer ist keine echte Anfrage: alle Felder zusammen bleiben weit darunter. */
 const MAX_BYTES = 16 * 1024;
 
@@ -84,6 +91,10 @@ export async function POST(request: Request) {
   }
 
   const d = geprueft.data;
+
+  if (!nameUnverdaechtig(d.name)) {
+    return NextResponse.json({ fehler: NAME_HINWEIS }, { status: 422 });
+  }
 
   // Wunschtermine nur an Sprechtagen ab morgen, „Nachmittag“ je Termin nur
   // mit Nachmittag an diesem Tag (lib/wunschtermin.ts). Das Formular prüft das schon
@@ -156,6 +167,7 @@ export async function POST(request: Request) {
   // Für die Info an den Admin: welche der beiden Mails ist angekommen?
   let anPraxis = false;
   let bestaetigt: boolean | undefined;
+  let gedrosselt = false;
   try {
     await versand.sendMail({
       from: SMTP_FROM,
@@ -166,18 +178,22 @@ export async function POST(request: Request) {
       html: praxisHtml(meldung, eingang),
     });
     anPraxis = true;
-    bestaetigt = false;
 
-    // Die Adresse ist Pflichtfeld, die Bestätigung geht also immer raus.
-    await versand.sendMail({
-      from: SMTP_FROM,
-      to: d.mail,
-      replyTo: PRAXIS_MAIL,
-      subject: `Ihre Terminanfrage bei ${praxis.name}`,
-      text: bestaetigungText(bestaetigung),
-      html: bestaetigungHtml(bestaetigung),
-    });
-    bestaetigt = true;
+    // Die Adresse ist Pflichtfeld, die Bestätigung geht also raus —
+    // außer die Obergrenze ist erreicht.
+    gedrosselt = zuVieleBestaetigungen(ALLE);
+    if (!gedrosselt) {
+      bestaetigt = false;
+      await versand.sendMail({
+        from: SMTP_FROM,
+        to: d.mail,
+        replyTo: PRAXIS_MAIL,
+        subject: `Ihre Terminanfrage bei ${praxis.name}`,
+        text: bestaetigungText(bestaetigung),
+        html: bestaetigungHtml(bestaetigung),
+      });
+      bestaetigt = true;
+    }
   } catch (fehler) {
     console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
     await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: anPraxis, bestaetigung: bestaetigt });
@@ -191,6 +207,6 @@ export async function POST(request: Request) {
     );
   }
 
-  await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: true, bestaetigung: true });
-  return NextResponse.json({ ok: true });
+  await meldeAdmin(versand, SMTP_FROM, { formular: 'Terminanfrage', zeitpunkt: eingang, praxis: true, bestaetigung: bestaetigt, gedrosselt });
+  return NextResponse.json(bestaetigt ? { ok: true } : { ok: true, ohneBestaetigung: true });
 }

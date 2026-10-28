@@ -74,7 +74,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
         datenschutz: "Deine Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für deine Bewerbung verwendet.",
         danke: "Danke! Deine Bewerbung ist angekommen.",
         dankeText: `Du bekommst gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein Gespräch zu vereinbaren.`,
-        dankeOhneBestaetigung: `Nur die Bestätigung an deine E-Mail-Adresse ließ sich nicht zustellen. Prüf die Adresse bitte noch einmal — schick die Bewerbung aber nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
+        dankeOhneBestaetigung: `Nur die Bestätigung per E-Mail ließ sich diesmal nicht verschicken — vielleicht ist die Adresse vertippt. Schick die Bewerbung bitte nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         fehler: `Das hat leider nicht geklappt. Ruf uns bitte an: ${kontakt.telefon}.`,
       }
     : {
@@ -85,7 +85,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
         datenschutz: "Ihre Angaben gehen nur per E-Mail an die Praxis und werden ausschließlich für Ihre Bewerbung verwendet.",
         danke: "Vielen Dank! Ihre Bewerbung ist angekommen.",
         dankeText: `Sie erhalten gleich eine Bestätigung per E-Mail. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}, um ein persönliches Gespräch zu vereinbaren.`,
-        dankeOhneBestaetigung: `Nur die Bestätigung an Ihre E-Mail-Adresse ließ sich nicht zustellen. Bitte prüfen Sie die Adresse — senden Sie die Bewerbung aber nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
+        dankeOhneBestaetigung: `Nur die Bestätigung per E-Mail ließ sich diesmal nicht verschicken — vielleicht ist die Adresse vertippt. Bitte senden Sie die Bewerbung nicht erneut. Wir melden uns ${RUECKMELDUNG_BEWERBUNG}.`,
         fehler: `Das hat leider nicht geklappt. Bitte rufen Sie uns an: ${kontakt.telefon}.`,
       };
 

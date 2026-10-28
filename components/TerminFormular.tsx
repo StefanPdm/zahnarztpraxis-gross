@@ -591,7 +591,7 @@ export default function TerminFormular({ plan, schliesstage, nachVereinbarung }:
           style={{ gridColumn: '1/-1', color: 'var(--color-accent-700)', margin: '0' }}>
           Vielen Dank. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
           {rueckmeldung.ohneBestaetigung &&
-            ' Ihre Anfrage ist angekommen, nur die Bestätigung an Ihre E-Mail-Adresse ließ sich nicht zustellen. Bitte prüfen Sie die Adresse — und schicken Sie die Anfrage nicht noch einmal.'}
+            ' Ihre Anfrage ist angekommen, nur die Bestätigung per E-Mail ließ sich diesmal nicht verschicken — vielleicht ist die Adresse vertippt. Bitte senden Sie die Anfrage nicht noch einmal.'}
         </p>
       )}
       {rueckmeldung?.art === 'fehler' && (

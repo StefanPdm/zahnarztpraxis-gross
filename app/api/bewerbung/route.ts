@@ -12,7 +12,7 @@ import {
   praxisText,
 } from '@/lib/mailvorlage';
 import { fehlercode, meldeAdmin } from '@/lib/adminmeldung';
-import { absenderIp, begrenzung, vonEigenerSeite } from '@/lib/formularschutz';
+import { absenderIp, ALLE, begrenzung, NAME_HINWEIS, nameUnverdaechtig, vonEigenerSeite } from '@/lib/formularschutz';
 import {
   ANHANG_TYPEN,
   MAX_ANHAENGE,
@@ -52,6 +52,12 @@ const Bewerbung = z.object({
 
 /** Höchstens 3 Bewerbungen je IP in 10 Minuten. */
 const zuHaeufig = begrenzung(3, 10 * 60 * 1000);
+/**
+ * Höchstens 10 Bestätigungen in der Stunde, über alle Absender. Darüber
+ * bekommt die Praxis die Bewerbung weiter, nur die Bestätigung entfällt —
+ * Schutz davor, das Formular als Verteiler für Werbung zu missbrauchen.
+ */
+const zuVieleBestaetigungen = begrenzung(10, 60 * 60 * 1000);
 /** Anhänge plus Felder und Trennzeilen des Formulars. */
 const MAX_ANFRAGE = MAX_ANHANG_BYTES + 64 * 1024;
 
@@ -155,6 +161,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ fehler: 'Bitte prüfen Sie Ihre Eingaben.' }, { status: 422 });
   }
   const d = geprueft.data;
+  if (!nameUnverdaechtig(d.name)) {
+    return NextResponse.json({ fehler: NAME_HINWEIS }, { status: 422 });
+  }
 
   const dateien = formular
     .getAll('anhang')
@@ -202,6 +211,7 @@ export async function POST(request: Request) {
   // Für die Info an den Admin: welche der beiden Mails ist angekommen?
   let anPraxis = false;
   let bestaetigt: boolean | undefined;
+  let gedrosselt = false;
   try {
     await versand.sendMail({
       from: SMTP_FROM,
@@ -213,16 +223,19 @@ export async function POST(request: Request) {
       attachments: anhaenge,
     });
     anPraxis = true;
-    bestaetigt = false;
-    await versand.sendMail({
-      from: SMTP_FROM,
-      to: d.mail,
-      replyTo: PRAXIS_MAIL,
-      subject: bewerbungBetreff(eingang),
-      text: bewerbungText(eingang),
-      html: bewerbungHtml(eingang),
-    });
-    bestaetigt = true;
+    gedrosselt = zuVieleBestaetigungen(ALLE);
+    if (!gedrosselt) {
+      bestaetigt = false;
+      await versand.sendMail({
+        from: SMTP_FROM,
+        to: d.mail,
+        replyTo: PRAXIS_MAIL,
+        subject: bewerbungBetreff(eingang),
+        text: bewerbungText(eingang),
+        html: bewerbungHtml(eingang),
+      });
+      bestaetigt = true;
+    }
   } catch (fehler) {
     console.error('SMTP-Versand fehlgeschlagen:', fehlercode(fehler));
     await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: anPraxis, bestaetigung: bestaetigt });
@@ -235,6 +248,6 @@ export async function POST(request: Request) {
     );
   }
 
-  await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: true, bestaetigung: true });
-  return NextResponse.json({ ok: true });
+  await meldeAdmin(versand, SMTP_FROM, { formular: 'Bewerbung', zeitpunkt, praxis: true, bestaetigung: bestaetigt, gedrosselt });
+  return NextResponse.json(bestaetigt ? { ok: true } : { ok: true, ohneBestaetigung: true });
 }

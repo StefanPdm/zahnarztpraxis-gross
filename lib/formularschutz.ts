@@ -32,10 +32,34 @@ export function vonEigenerSeite(request: Request): boolean {
   }
 }
 
-/** Absender-IP, wie sie der Hoster weiterreicht. */
+/**
+ * Absender-IP. Netlify setzt x-nf-client-connection-ip selbst und sagt zu,
+ * ihn beizubehalten; x-forwarded-for kann der Absender mitschicken und
+ * damit jede Begrenzung umgehen — nur noch Rückfall, etwa lokal.
+ */
 export function absenderIp(request: Request): string {
-  return request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unbekannt";
+  return (
+    request.headers.get("x-nf-client-connection-ip")?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+    "unbekannt"
+  );
 }
+
+/**
+ * Der Name steht in der Bestätigung, die an eine frei eingegebene Adresse
+ * geht. Damit niemand über das Formular Werbung an Fremde verschickt, nur
+ * Buchstaben, Leerzeichen, Punkt, Bindestrich und Apostroph — keine Ziffern,
+ * keine Links, nichts, was wie eine Domain aussieht („gewinn.com“).
+ */
+export function nameUnverdaechtig(name: string): boolean {
+  return /^[\p{L}\p{M}][\p{L}\p{M}\p{Zs}.'’-]*$/u.test(name) && !/\.\p{L}{2,}/u.test(name);
+}
+
+/** Antwort, wenn der Name nicht durchgeht. */
+export const NAME_HINWEIS = "Bitte im Feld „Name“ nur den Namen eintragen — ohne Ziffern oder Links.";
+
+/** Schlüssel für eine Obergrenze über alle Absender hinweg. */
+export const ALLE = "alle";
 
 /**
  * Einfache Begrenzung pro IP — je Formular eine eigene, damit eine

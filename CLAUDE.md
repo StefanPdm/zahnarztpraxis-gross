@@ -100,6 +100,16 @@ Selektor in einer CSS-Datei steht.
   (`lib/adminmeldung.ts`) — **nur Art, Zeitpunkt und Versandergebnis,
   nie ein Formularinhalt**. Ins Log kommt bei SMTP-Fehlern nur der
   Fehlercode, nicht die Meldung (sie enthält oft die Empfängeradresse).
+- **Bestätigungsmails gehen an eine frei eingegebene Adresse** — Schutz
+  gegen Missbrauch als Werbeverteiler (`lib/formularschutz.ts`): Der Name
+  darf nur Buchstaben, Leerzeichen, Punkt, Bindestrich und Apostroph
+  enthalten (keine Links, keine Ziffern), und über alle Absender gehen
+  höchstens 20 Termin- bzw. 10 Bewerbungsbestätigungen je Stunde raus;
+  darüber erhält die Praxis die Anfrage weiter, nur ohne Bestätigung.
+  Scheitert nur die Bestätigung, meldet das Formular trotzdem Erfolg.
+  Die IP kommt aus `x-nf-client-connection-ip` (Netlify), nicht aus dem
+  fälschbaren `x-forwarded-for`. Neue Freitextfelder gehören nie in die
+  Bestätigung.
 - Seitenspezifische Texte und Daten als Konstanten oben in der `page.tsx`.
 - Sprache: Bezeichner, Kommentare und Commit-Nachrichten auf Deutsch.
   Ausnahme: React-eigene Namen (`useState`, `className`) bleiben, wie sie sind.
