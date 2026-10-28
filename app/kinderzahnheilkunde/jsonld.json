@@ -13,17 +13,36 @@
         "provider": {
           "@id": "https://www.zahnmedizin-potsdam.de/#praxis"
         },
-        "about": {
-          "@type": "MedicalCondition",
-          "name": "Kinderzahnheilkunde"
-        },
+        "about": [
+          {
+            "@type": "MedicalProcedure",
+            "name": "Fissurenversiegelung",
+            "procedureType": "https://schema.org/NoninvasiveProcedure",
+            "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde"
+          },
+          {
+            "@type": "MedicalProcedure",
+            "name": "Fluoridierung",
+            "procedureType": "https://schema.org/NoninvasiveProcedure",
+            "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde"
+          },
+          {
+            "@type": "MedicalProcedure",
+            "name": "Prophylaxe für Kinder",
+            "procedureType": "https://schema.org/NoninvasiveProcedure",
+            "url": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde"
+          }
+        ],
         "audience": {
-          "@type": "Patient"
+          "@type": "PeopleAudience",
+          "audienceType": "Kinder und Jugendliche",
+          "suggestedMaxAge": 17
         },
         "inLanguage": "de-DE",
         "breadcrumb": {
           "@id": "https://www.zahnmedizin-potsdam.de/kinderzahnheilkunde#breadcrumb"
-        }
+        },
+        "specialty": "https://schema.org/Pediatric"
       },
       {
         "@type": "BreadcrumbList",

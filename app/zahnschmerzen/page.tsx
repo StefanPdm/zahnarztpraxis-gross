@@ -234,7 +234,8 @@ export default function Zahnschmerzen() {
             Viele, die uns mit akuten Schmerzen anrufen, waren jahrelang nicht beim Zahnarzt. Wir fragen nicht, warum, und kommentieren den Zustand nicht. Sagen Sie am Telefon, dass Sie Angst haben — dann planen wir mehr Zeit ein und erklären jeden Schritt vorher.
           </p>
           <p className="fliesstext">
-            Das Handzeichen gilt auch im Schmerztermin: Hand heben, und wir unterbrechen sofort.
+            Das Handzeichen gilt auch im Schmerztermin: Hand heben, und wir unterbrechen sofort. Für Kinder genauso — wie wir mit ihnen umgehen, steht auf der Seite{" "}
+            <Link href="/kinderzahnheilkunde">Kinderzahnarzt in Potsdam</Link>.
           </p>
           <Link className="btn btn-secondary" href="/angstpatienten" style={{ display: "inline-block", marginTop: "24px", padding: "12px 26px", fontSize: "15px" }}>
             Für Angstpatienten

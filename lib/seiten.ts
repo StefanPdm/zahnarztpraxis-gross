@@ -53,7 +53,7 @@ export const seiten: Seite[] = [
     rubrik: "Besondere Anliegen",
     titel: "Kinderzahnarzt in Potsdam | Groß & Groß",
     beschreibung:
-      "Kinderzahnheilkunde in Potsdam: erst zeigen, dann erklären, dann behandeln. Behutsames Kennenlernen, Prophylaxe, Fluoridierung, Fissurenversiegelung.",
+      "Kinderzahnarzt in Potsdam Mitte: behutsames Kennenlernen, Prophylaxe & Fissurenversiegelung. Eltern dürfen dabeibleiben. Jetzt Kindertermin anfragen.",
   },
   {
     pfad: "/leistungen",

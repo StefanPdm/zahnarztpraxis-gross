@@ -28,6 +28,7 @@ const faq = [
         { q: "Was passiert beim ersten Termin?", a: "Ihr Kind darf den Behandlungsstuhl ausprobieren, das Licht anschauen und den Spiegel halten. Wir zählen die Zähne, wenn es möchte. Behandelt wird an diesem Tag nichts." },
         { q: "Darf ich als Elternteil dabeibleiben?", a: "Ja, so lange Sie und Ihr Kind es möchten. Manche Kinder sind ohne Publikum mutiger — das merken wir gemeinsam." },
         { q: "Was ist, wenn mein Kind nicht mitmacht?", a: "Dann machen wir Schluss und probieren es beim nächsten Termin wieder. Niemand wird überredet oder festgehalten; ein abgebrochener Termin ist besser als ein schlechtes erstes Erlebnis." },
+        { q: "Brauche ich für mein Kind einen eigenen Kinderzahnarzt?", a: "Nein. Wer in Potsdam Kinderzahnärzte sucht, denkt oft an eine reine Kinderpraxis. Bei uns sind Kinder eigene Patienten mit eigenem Tempo: Kontrolle, Prophylaxe und Behandlung laufen hier, bei denselben Behandlern, die auch Sie kennen. Das macht Termine planbar und den Weg kurz." },
         { q: "Was kostet die Prophylaxe für Kinder?", a: "Die zahnärztlichen Vorsorgeuntersuchungen und die Individualprophylaxe für Kinder und Jugendliche sind Leistungen der gesetzlichen Krankenkassen. Was darüber hinausgeht, sagen wir Ihnen vorher." },
         { q: "Kann ich Kariesbakterien auf mein Kind übertragen?", a: "Ja, das ist möglich — über gemeinsam benutzte Löffel oder den abgeleckten Schnuller. Deshalb lohnt es sich, gerade vor und während einer Schwangerschaft die eigene Mundgesundheit im Blick zu haben." }
       ];
@@ -36,7 +37,6 @@ export default function Kinderzahnheilkunde() {
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <Grosselino />
       <NotfallLeiste />
       <div className="spalten abschnitt" style={{ alignItems: "center", "--unten": "70px", background: "var(--kid-ground)", borderBottom: "1px solid var(--color-divider)", "--spalten": "1.15fr 1fr", "--abstand": "56px" }}>
         <div>
@@ -109,10 +109,10 @@ export default function Kinderzahnheilkunde() {
       <div className="spalten spalten--2" style={{ borderTop: "1px solid var(--color-divider)", borderBottom: "1px solid var(--color-divider)" }}>
         <div className="abschnitt">
           <div className="ueberzeile">
-            Der erste Besuch
+            Kennenlernen
           </div>
           <h2 className="titel-2 titel-2--luft">
-            Hinsetzen, hochfahren, staunen.
+            Der erste Besuch beim Kinderzahnarzt: hinsetzen, hochfahren, staunen.
           </h2>
           <p className="fliesstext fliesstext--absatz">
             Beim ersten Termin darf Ihr Kind den Stuhl ausprobieren, das Licht anschauen und den Spiegel selbst halten. Wir zählen die Zähne, wenn es das möchte — und wenn nicht, dann eben nicht. Niemand wird überredet.
@@ -224,6 +224,9 @@ export default function Kinderzahnheilkunde() {
           </a>
         </div>
       </div>
+      {/* Am Ende des Markups: Die Figur ist fest positioniert, sieht also gleich
+          aus, aber ihr Begrüßungstext steht im HTML nicht mehr vor der H1. */}
+      <Grosselino />
     </>
   );
 }

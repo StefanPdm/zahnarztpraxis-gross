@@ -88,6 +88,10 @@ export default function Angstpatienten() {
               Chantal Groß, Zahnärztin
             </cite>
           </blockquote>
+          <p className="fliesstext fliesstext--luft">
+            Ihr Kind hat auch Angst vor dem Zahnarzt? Wie wir mit Kindern umgehen, lesen Sie auf der Seite{" "}
+            <Link href="/kinderzahnheilkunde">Kinderzahnarzt in Potsdam</Link>.
+          </p>
         </div>
         <div style={{ position: "relative", overflow: "hidden", minHeight: "560px" }}>
           <Bild vorrang className="parallax-img" src="/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg" alt="Ruhiger Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam" />

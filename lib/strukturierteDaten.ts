@@ -40,6 +40,8 @@ function praxisFakten() {
       })),
     ),
     employee: team.map((m) => ({ "@id": personId(m.name) })),
+    // Pediatric: Kinderbehandlung als Fachgebiet (/kinderzahnheilkunde).
+    medicalSpecialty: ["https://schema.org/Dentistry", "https://schema.org/Pediatric"],
   };
 }
 

@@ -779,6 +779,8 @@ export default function Index() {
                   und ein Wartebereich, in dem man sitzen mag. Auf Wunsch läuft Musik oder ein Film
                   über den Monitor an der Decke, während wir arbeiten. Mit Angstpatienten und
                   Kindern gehen wir bewusst langsam vor: erst zeigen, dann erklären, dann behandeln.
+                  Wie das beim <Link href='/kinderzahnheilkunde'>Kinderzahnarzt in Potsdam</Link>{' '}
+                  aussieht, zeigt unsere Kinderseite.
                 </p>
               </div>
               <figure style={{ margin: '0' }}>
