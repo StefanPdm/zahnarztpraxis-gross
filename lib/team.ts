@@ -31,7 +31,7 @@ export const team: Behandler[] = [
     foto: '/images/portrait-chantal-gross.jpg',
     alt: 'Porträt von Chantal Groß, Zahnärztin bei Groß & Groß in Potsdam',
     zitat:
-      '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe, eine liebesvolle Atmospäre und viel Verständnis“',
+      '„Ich behandle viele Kinder und Menschen, die lange keinen Zahnarzt gesehen haben. Beide brauchen dasselbe: Ruhe, eine liebevolle Atmosphäre und viel Verständnis.“',
     bio: 'Nach dem Studium und der Assistenzzeit habe ich mich auf ästhetische und konservierende Zahnheilkunde spezialisiert — und darauf, Kinder zu behandeln, ohne sie zu überfahren. Regelmäßige Fortbildungen gehören für mich dazu, weil sich in der Zahnmedizin ständig etwas ändert.',
     werdegang:
       'Studium in Halle/Saale, Assistenzzeit in Berlin-Mitte. Curriculum Kinderzahnheilkunde und Parodontologie, jährlich rund 60 Fortbildungsstunden.',

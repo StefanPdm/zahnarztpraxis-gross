@@ -27,9 +27,9 @@ export const seiten: Seite[] = [
     pfad: "/",
     name: "Startseite",
     rubrik: "Praxis",
-    titel: "Zahnarzt in Potsdam Mitte seit 1991 | Groß & Groß",
+    titel: "Zahnarzt Potsdam Mitte | Zahnarztpraxis Groß & Groß",
     beschreibung:
-      "Familiengeführte Zahnarztpraxis in Potsdam Mitte seit 1991: Implantologie, ästhetische Zahnmedizin, eigenes Zahnlabor. Behutsam mit Angstpatienten und Kindern.",
+      "Ihr Zahnarzt in Potsdam Mitte, familiengeführt seit 1991: Implantologie, ästhetische Zahnmedizin, eigenes Zahnlabor. Behutsam mit Angstpatienten und Kindern.",
   },
   {
     pfad: "/praxis-team",

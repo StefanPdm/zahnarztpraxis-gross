@@ -213,34 +213,25 @@ export default function Index() {
               id='heroInner'
               style={{ position: 'relative', zIndex: 1 }}>
               <div className='herofold'>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-ui)',
-                    fontSize: '11px',
-                    letterSpacing: '0.28em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-accent-700)',
-                  }}>
-                  Praxis für ästhetische Zahnmedizin &amp; Implantologie
-                </div>
-                {/* aria-label: Das bewegte „s" (.glanz__ruck) ist ein eigenes
-                    inline-block — Screenreader läsen sonst „Präzi s e". */}
+                {/* Eine H1 aus Versalzeile und Slogan: Die Versalzeile trägt
+                    den Suchbegriff „Zahnarzt Potsdam", ohne dass sich die
+                    Optik ändert. aria-label: Das bewegte „s" (.glanz__ruck)
+                    ist ein eigenes inline-block — Screenreader läsen sonst
+                    „Präzi s e". */}
                 <h1
-                  aria-label='Ruhig behandeln. Präzise arbeiten.'
-                  style={{
-                    fontWeight: '400',
-                    fontSize: 'clamp(48px,8.4vw,124px)',
-                    lineHeight: '0.94',
-                    letterSpacing: '-0.035em',
-                    margin: 'clamp(30px,4.6vh,56px) 0 0',
-                    textWrap: 'balance',
-                  }}>
-                  Ruhig behandeln.
-                  <br />
-                  <span className='glanz' style={{ fontStyle: 'italic' }}>
-                    Präzi<span className='glanz__ruck'>s</span>e&nbsp;
+                  className='hero-titel'
+                  aria-label='Zahnarzt in Potsdam Mitte, Ästhetik und Implantologie: Ruhig behandeln. Präzise arbeiten.'>
+                  <span className='ueberzeile hero-titel__zeile'>
+                    Zahnarzt in Potsdam Mitte · Ästhetik &amp; Implantologie
                   </span>
-                  arbeiten.
+                  <span className='hero-titel__satz'>
+                    Ruhig behandeln.
+                    <br />
+                    <em className='glanz'>
+                      Präzi<span className='glanz__ruck'>s</span>e&nbsp;
+                    </em>
+                    arbeiten.
+                  </span>
                 </h1>
                 <div
                   style={{
@@ -445,7 +436,7 @@ export default function Index() {
               <Bild
                 className='plate'
                 src='/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg'
-                alt='Wartebereich mit Sesseln, Teppich und dem Surfbrett an der Wand'
+                alt='Wartebereich der Zahnarztpraxis in Potsdam Mitte mit Sesseln und Surfbrett an der Wand'
                 style={{
                   width: '100%',
                   height: '520px',
@@ -473,8 +464,8 @@ export default function Index() {
             <figure style={{ margin: '0', background: 'var(--weiss)' }}>
               <Bild
                 className='plate'
-                src='/images/photos-1786974461785-ksjv.jpg'
-                alt='Behandlungseinheit'
+                src='/images/behandlungszimmer-zahnarztpraxis-potsdam.jpg'
+                alt='Behandlungseinheit in Zimmer 2 der Zahnarztpraxis Groß & Groß in Potsdam'
                 style={{
                   width: '100%',
                   height: '520px',
@@ -512,7 +503,7 @@ export default function Index() {
                 marginBottom: '52px',
               }}>
               <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h2)', margin: '0' }}>
-                Wer Sie behandelt
+                Wer Sie behandelt: Ihre Zahnärzte in Potsdam
               </h2>
               <span style={{ height: '1px', background: 'var(--color-divider)' }} />
             </div>
@@ -679,7 +670,15 @@ export default function Index() {
                         hyphens: 'auto',
                         margin: '0',
                       }}>
-                      {m.schwerpunkte}
+                      {m.schwerpunkte.split(/(Implantologie)/).map((teil, tI) =>
+                        teil === 'Implantologie' ? (
+                          <Link key={tI} href='/implantologie'>
+                            {teil}
+                          </Link>
+                        ) : (
+                          teil
+                        ),
+                      )}
                     </p>
                   </div>
                 </Fragment>
@@ -775,8 +774,9 @@ export default function Index() {
                     color: 'var(--color-neutral-800)',
                     columnGap: '36px',
                   }}>
-                  Fünf Behandlungszimmer mit Tageslicht, digitales Röntgen, Laser und Lupenbrille —
-                  und ein Wartebereich, in dem man sitzen mag. Auf Wunsch läuft Musik oder ein Film
+                  Unsere Zahnarztpraxis in Potsdam Mitte hat fünf Behandlungszimmer mit Tageslicht,
+                  digitales Röntgen, Laser und Lupenbrille — und einen Wartebereich, in dem man sitzen mag.
+                  Auf Wunsch läuft Musik oder ein Film
                   über den Monitor an der Decke, während wir arbeiten. Mit Angstpatienten und
                   Kindern gehen wir bewusst langsam vor: erst zeigen, dann erklären, dann behandeln.
                   Wie das beim <Link href='/kinderzahnheilkunde'>Kinderzahnarzt in Potsdam</Link>{' '}
@@ -787,7 +787,7 @@ export default function Index() {
                 <Bild
                   className='plate'
                   src='/images/behandlungszimmer-deckenmonitor-zahnarztpraxis-potsdam.jpg'
-                  alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß'
+                  alt='Behandlungszimmer mit Monitor an der Decke in der Zahnarztpraxis Groß & Groß in Potsdam'
                   style={{
                     width: '100%',
                     height: '460px',
@@ -1027,6 +1027,12 @@ export default function Index() {
                 Alle Leistungen ansehen
               </Link>
             </div>
+            <p
+              data-einblenden
+              className='text-15 einleitung'>
+              Vom Kontrolltermin bis zum Implantat: alles beim selben Zahnarzt in Potsdam,
+              Zahnersatz aus dem eigenen Labor in der Praxis.
+            </p>
             <div
               className='rv spalten spalten--4'
               style={{ '--abstand': '36px 44px' }}>
@@ -1113,7 +1119,8 @@ export default function Index() {
                   hyphens: 'auto',
                   color: 'var(--color-neutral-800)',
                 }}>
-                Kronen, Inlays, Veneers und Brücken entstehen bei uns im eigenen Labor. Farbe und
+                Kronen, Inlays, Veneers und Brücken entstehen bei uns im{' '}
+                <Link href='/zahnlabor'>eigenen Labor</Link>. Farbe und
                 Passung prüfen wir direkt am Patienten, Korrekturen laufen am selben Tag — statt
                 über Wochen und Wege zu einem externen Labor.
               </p>
@@ -1528,7 +1535,8 @@ export default function Index() {
                   color: 'var(--color-neutral-800)',
                   margin: '0 0 28px',
                 }}>
-                Fünf bis zehn Prozent der Menschen meiden den Zahnarzt aus Angst — und riskieren
+                Fünf bis zehn Prozent der Menschen meiden{' '}
+                <Link href='/angstpatienten'>den Zahnarzt aus Angst</Link> — und riskieren
                 damit genau das, wovor sie sich fürchten. Bei uns beginnt nichts mit dem Bohrer: Der
                 erste Termin ist ein Gespräch, wenn Sie möchten ohne jede Behandlung.
               </p>
@@ -1782,7 +1790,7 @@ export default function Index() {
                   <div
                     className='ueberzeile'
                     data-einblenden>
-                    Termin
+                    Termin bei Ihrem Zahnarzt in Potsdam
                   </div>
                   <h2
                     data-einblenden
@@ -1795,9 +1803,9 @@ export default function Index() {
                       color: 'var(--color-neutral-800)',
                     }}>
                     Diese Anfrage ist noch keine feste Buchung: Wir prüfen Ihre Wunschzeit und
-                    bestätigen innerhalb von 24 Stunden, telefonisch oder per E-Mail. Für akute
-                    Beschwerden halten wir jeden Morgen Termine frei — rufen Sie in diesem Fall bitte
-                    direkt an.
+                    bestätigen innerhalb von 24 Stunden, telefonisch oder per E-Mail. Bei{' '}
+                    <Link href='/zahnschmerzen'>Zahnschmerzen</Link> halten wir jeden Morgen Termine
+                    frei — rufen Sie in diesem Fall bitte direkt an.
                   </p>
                   <p
                     className='blocksatz'
@@ -1997,7 +2005,7 @@ export default function Index() {
                 <figure style={{ margin: '24px 0 0' }}>
                   <Bild
                     src='/images/Schopenhauer_Str_37_hinten_cropped.webp'
-                    alt='Rückseite des Gebäudes Schopenhauerstraße 37 mit der gläsernen Eingangstür zur Zahnarztpraxis und gepflastertem Hof'
+                    alt='Eingang zur Zahnarztpraxis auf der Rückseite der Schopenhauerstraße 37 in Potsdam, mit gläserner Tür und gepflastertem Hof'
                     style={{
                       display: 'block',
                       width: '100%',

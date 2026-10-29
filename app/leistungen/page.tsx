@@ -49,7 +49,7 @@ export default function Leistungen() {
         </p>
       </div>
       <div style={{ position: "relative", overflow: "hidden", height: "560px" }}>
-        <Bild sizes={VOLL} vorrang className="parallax-img" src="/images/photos-1786974461785-ksjv.jpg" alt="Behandlungseinheit" />
+        <Bild sizes={VOLL} vorrang className="parallax-img" src="/images/behandlungszimmer-zahnarztpraxis-potsdam.jpg" alt="Behandlungseinheit in der Zahnarztpraxis Groß & Groß in Potsdam" />
         <svg viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", left: "0", top: "-1px", width: "100%", height: "30px", display: "block", pointerEvents: "none" }}>
           <path d="M0,0 L1200,0 L1200,20 C1140,28 1080,10 1020,22 C960,33 900,13 840,25 C780,35 720,15 660,27 C600,36 540,17 480,29 C420,38 360,19 300,30 C240,40 180,21 120,31 C60,39 30,25 0,31 Z" style={{ fill: "var(--color-bg)" }} />
         </svg>

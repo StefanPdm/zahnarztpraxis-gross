@@ -297,6 +297,8 @@
 /* ── Textgrößen ────────────────────────────────────────────────────────── */
 .text-15 { color: var(--color-neutral-800); font-size: 15px; line-height: 1.62; margin: 0; }
 .text-15--dicht { line-height: 1.6; }
+/* Ein Satz zwischen Abschnittskopf und Inhalt (Startseite, Leistungen). */
+.einleitung { max-width: 62ch; margin: -16px 0 44px; }
 
 /* ── Abschlussband ─────────────────────────────────────────────────────────
    Dunkles Band am Seitenende mit Einladung zum Termin. */
@@ -585,6 +587,25 @@ fieldset.field > legend {
   .hero-licht::before { animation: none; }
 }
 
+/* ── Hero-Titel (Startseite) ───────────────────────────────────────────────
+   Versalzeile und Slogan bilden zusammen die H1: Die Versalzeile trägt den
+   Suchbegriff („Zahnarzt in Potsdam Mitte"), der Slogan die Wirkung. Optisch
+   sind es zwei Elemente wie zuvor — die Werte stammen 1:1 aus dem Design. */
+.hero-titel { font-weight: 400; margin: 0; }
+.hero-titel__zeile {
+  display: block;
+  letter-spacing: 0.28em;
+  line-height: 1.55;
+}
+.hero-titel__satz {
+  display: block;
+  font-size: clamp(48px, 8.4vw, 124px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  margin: clamp(30px, 4.6vh, 56px) 0 0;
+  text-wrap: balance;
+}
+
 /* ── Glanz (Startseite, „Präzise" in der Hero) ─────────────────────────────
    Ein heller Reflex läuft einmal über das goldene Wort — wie Blattgold, das
    kurz das Licht fängt. Kein Dauer-Shimmer: Die Zeile heißt „Ruhig
@@ -598,7 +619,7 @@ fieldset.field > legend {
    Nur mit Bewegung erwünscht und ohne Kontrastmodus: Unter forced-colors
    entfernt der Browser Hintergrundbilder, mit background-clip: text wäre
    das Wort dann unsichtbar. Ohne Unterstützung bleibt es einfach golden. */
-.glanz { color: var(--color-accent-700); }
+.glanz { color: var(--color-accent-700); font-style: italic; }
 @media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
   @supports (background-clip: text) or (-webkit-background-clip: text) {
     .glanz {
