@@ -23,6 +23,12 @@ import Einblenden from '@/components/Einblenden';
 
 export const metadata = seitenMetadaten('/');
 
+/* Schwerpunkte unter den Porträtkarten, die auf ihre Unterseite verlinken. */
+const schwerpunktLinks: Record<string, string> = {
+  Implantologie: '/implantologie',
+  Kinderzahnheilkunde: '/kinderzahnheilkunde',
+};
+
 /* Termin-Sektion: übernommen von der früheren Seite /termin. */
 const zusagen = [
   {
@@ -512,7 +518,7 @@ export default function Index() {
               style={{ '--abstand': '64px' }}>
               {team.map((m, mI) => (
                 <Fragment key={mI}>
-                  <div>
+                  <div className='teamkarte'>
                     <Flipkarte
                       name={m.name}
                       hoehe='460px'>
@@ -662,7 +668,6 @@ export default function Index() {
                       {m.zitat}
                     </p>
                     <p
-                      className='blocksatz'
                       style={{
                         fontSize: '14px',
                         lineHeight: '1.6',
@@ -670,9 +675,9 @@ export default function Index() {
                         hyphens: 'auto',
                         margin: '0',
                       }}>
-                      {m.schwerpunkte.split(/(Implantologie)/).map((teil, tI) =>
-                        teil === 'Implantologie' ? (
-                          <Link key={tI} href='/implantologie'>
+                      {m.schwerpunkte.split(/(Implantologie|Kinderzahnheilkunde)/).map((teil, tI) =>
+                        teil in schwerpunktLinks ? (
+                          <Link key={tI} href={schwerpunktLinks[teil]}>
                             {teil}
                           </Link>
                         ) : (

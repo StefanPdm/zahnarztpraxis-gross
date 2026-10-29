@@ -587,6 +587,19 @@ fieldset.field > legend {
   .hero-licht::before { animation: none; }
 }
 
+/* ── Teamkarten (Startseite, „Wer Sie behandelt") ──────────────────────────
+   Bild, Name, Rolle, Zitat, Schwerpunkte: Die Karten nebeneinander teilen
+   sich diese fünf Zeilen (subgrid). So richtet sich das kürzere Zitat nach
+   dem längeren, und die Schwerpunkte stehen bei jeder Breite auf einer
+   Höhe. Innen kein Zeilenabstand — die Abstände tragen die Elemente selbst
+   wie zuvor. Mobil (eine Spalte) ändert sich nichts. */
+.teamkarte {
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+
 /* ── Hero-Titel (Startseite) ───────────────────────────────────────────────
    Versalzeile und Slogan bilden zusammen die H1: Die Versalzeile trägt den
    Suchbegriff („Zahnarzt in Potsdam Mitte"), der Slogan die Wirkung. Optisch
