@@ -87,7 +87,7 @@ Selektor in einer CSS-Datei steht.
 - Server Components sind der Standard. `"use client"` nur mit Grund —
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
-  Karte, GROSSELINO, Einblenden, Öffnungsstatus, Karriere-Fahne,
+  Karte, GROSSELINO, GROSSELINO-Spiel (404), Einblenden, Öffnungsstatus, Karriere-Fahne,
   Bewerbungs-Dialog.
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.

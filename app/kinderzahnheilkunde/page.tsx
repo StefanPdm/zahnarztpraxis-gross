@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
+import { GrosselinoSpiel } from "@/components/GrosselinoSpiel";
 import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
@@ -12,6 +13,15 @@ import { team } from "@/lib/team";
 const chantal = team.find((m) => m.name === "Chantal Groß")!;
 
 export const metadata = seitenMetadaten("/kinderzahnheilkunde");
+
+/* Slogan der Praxis (Auftraggeber, 06.11.2026). Die Pointe bricht nie um;
+   „Groß" steht gemischt im Text, die Versalien macht .versal. */
+const VERS = {
+  zeile1: "„Dein Lächeln strahlt wie Sonnenschein,",
+  zeile2: "ein starkes Team –",
+  pointe: { vor: "denn", name: "Groß", nach: "hilft Klein!“" },
+  absender: "Groß & Groß · Kinderzahnheilkunde",
+};
 
 const regel = [
         { no: "1", title: "Zeigen", icon: "M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z M12 9a3 3 0 100 6 3 3 0 000-6z", text: "Spiegel, Licht, Stuhl, Sauger: alles darf angeschaut und angefasst werden, bevor es benutzt wird." },
@@ -89,6 +99,19 @@ export default function Kinderzahnheilkunde() {
             <br />
             in Potsdam.
           </h1>
+          <figure className="vers">
+            <blockquote className="vers__text">
+              <p>
+                {VERS.zeile1}
+                <br />
+                {VERS.zeile2}{" "}
+                <span className="vers__zusammen">
+                  {VERS.pointe.vor} <span className="versal">{VERS.pointe.name}</span> {VERS.pointe.nach}
+                </span>
+              </p>
+            </blockquote>
+            <figcaption className="ueberzeile vers__absender">{VERS.absender}</figcaption>
+          </figure>
           <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", fontSize: "var(--fs-body-lg)", margin: "26px 0 0", maxWidth: "52ch" }}>
             Unsere kleinen Patienten behandeln wir mit viel Einfühlungsvermögen: Kinder sind bei uns ausdrücklich willkommen — nicht nebenbei, sondern als eigene Patienten mit eigenem Tempo. Unser Ziel ist einfach: dass Ihr Kind gar keine Angst vor dem Zahnarzt entwickelt. Dafür nehmen wir uns beim ersten Mal Zeit für nichts als Kennenlernen.
           </p>
@@ -283,6 +306,17 @@ export default function Kinderzahnheilkunde() {
           </div>
         </div>
       </div>
+      <GrosselinoSpiel
+        ueberzeile="Spielecke"
+        titel="Langweilig im Wartezimmer?"
+        text={
+          <>
+            Dann vertreib dir hier die Zeit und hilf <span className="versal">Grosselino</span>: Spring über Bonbons,
+            Lollis und Limo. Jede Zahnbürste bringt Extrapunkte.
+          </>
+        }
+        linie={false}
+      />
       <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen

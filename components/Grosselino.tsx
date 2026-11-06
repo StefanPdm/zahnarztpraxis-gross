@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useBeimScrollen } from "@/lib/useBeimScrollen";
+import type { SpielMeldung } from "./GrosselinoSpielfeld";
 
 /*
   GROSSELINO, der Begleiter auf /kinderzahnheilkunde. Verhalten nach
@@ -48,7 +49,7 @@ function mitName(text: string) {
   );
 }
 
-const HELL = "#fffdf8";
+export const HELL = "#fffdf8";
 const TINTE = "var(--color-text)";
 
 /** Die Bärenfigur. `praefix` hält die IDs der beiden Fassungen auseinander. */
@@ -101,6 +102,18 @@ function Baer({ praefix, groesse, beine }: { praefix: "gr" | "gr2"; groesse: num
   );
 }
 
+/*
+  An der Spielecke (GrosselinoSpiel) lädt GROSSELINO zum Spielen ein und
+  reagiert auf den Spielstand; während einer Runde schweigt er, damit die
+  Sprechblase nicht über dem Spielfeld liegt.
+*/
+const SPIEL_SPRUECHE: Record<SpielMeldung, string | null> = {
+  bereit: "Komm, spiel mit mir!",
+  laeuft: null,
+  vorbei: "Nochmal? Ich glaub an dich!",
+  geschafft: "Juhu, alle Zähne gerettet!",
+};
+
 export function Grosselino() {
   const [oben, setOben] = useState(18);
   const [spruch, setSpruch] = useState(SPRUECHE[0][1]);
@@ -139,7 +152,23 @@ export function Grosselino() {
     [],
   );
 
-  const klassen = [laeuft && "walking", spricht && "talking"].filter(Boolean).join(" ") || undefined;
+  const [spielImBlick, setSpielImBlick] = useState(false);
+  const [spielStand, setSpielStand] = useState<SpielMeldung>("bereit");
+  useEffect(() => {
+    const melden = (e: Event) => setSpielStand((e as CustomEvent<SpielMeldung>).detail);
+    window.addEventListener("grosselino-spiel", melden);
+    const spiel = document.querySelector(".spiel");
+    const beobachter = new IntersectionObserver(([e]) => setSpielImBlick(e.isIntersecting), { threshold: 0.35 });
+    if (spiel) beobachter.observe(spiel);
+    return () => {
+      window.removeEventListener("grosselino-spiel", melden);
+      beobachter.disconnect();
+    };
+  }, []);
+  const spielSpruch = spielImBlick ? SPIEL_SPRUECHE[spielStand] : null;
+  const sprichtJetzt = spielImBlick ? spielSpruch !== null : spricht;
+
+  const klassen = [laeuft && "walking", sprichtJetzt && "talking"].filter(Boolean).join(" ") || undefined;
 
   return (
     <div
@@ -193,7 +222,7 @@ export function Grosselino() {
           color: "var(--color-neutral-900)",
         }}
       >
-        {mitName(spruch)}
+        {mitName(spielSpruch ?? spruch)}
       </span>
     </div>
   );

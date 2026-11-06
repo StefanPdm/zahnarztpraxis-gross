@@ -1,43 +1,70 @@
 import Link from "next/link";
-import { praxis } from "@/lib/praxis";
+import { GrosselinoSpiel } from "@/components/GrosselinoSpiel";
+import { kontakt } from "@/lib/kontakt";
+import { seite } from "@/lib/seiten";
+
+/*
+  Fehlerseite für unbekannte Adressen. Bewusst mit Status 404 statt einer
+  Umleitung auf die Startseite: Google wertet pauschale Umleitungen als
+  „Soft 404", tote Adressen blieben länger im Index, und kaputte Links
+  fielen in der Search Console nicht mehr auf. Alte Adressen, die Besucher
+  bringen, bekommen eine gezielte Weiterleitung in next.config.ts.
+*/
+
+/** Die Ziele, nach denen die meisten Besucher suchen. Namen aus lib/seiten.ts. */
+const WEGE: { pfad: string; hinweis: string }[] = [
+  { pfad: "/zahnschmerzen", hinweis: "Notfalltermine Montag bis Freitag" },
+  { pfad: "/leistungen", hinweis: "Alle Behandlungen im Überblick" },
+  { pfad: "/angstpatienten", hinweis: "Behutsam, in Ihrem Tempo" },
+  { pfad: "/kinderzahnheilkunde", hinweis: "Für die Kleinen" },
+  { pfad: "/praxis-team", hinweis: "Familiengeführt seit 1991" },
+  { pfad: "/anfahrt-parken", hinweis: "Eingang auf der Rückseite" },
+];
 
 export default function NichtGefunden() {
   return (
-    <div className="abschnitt abschnitt--weit abschnitt--linie-unten">
-      <div
-        style={{
-          fontFamily: "var(--font-ui)",
-          fontSize: "11px",
-          letterSpacing: "0.22em",
-          textTransform: "uppercase",
-          color: "var(--color-accent-700)",
-        }}
-      >
-        Fehler 404
+    <>
+      <div className="seitenkopf abschnitt--linie-unten">
+        <div>
+          <div className="ueberzeile">Fehler 404</div>
+          <h1 className="seitentitel">Diese Seite gibt es nicht.</h1>
+        </div>
+        <div>
+          <p className="fliesstext fliesstext--gross breite-62">
+            Vielleicht hat sich die Adresse geändert. Unten finden Sie die
+            häufigsten Ziele. Sie können uns auch einfach anrufen.
+          </p>
+          <div className="knopfreihe">
+            <Link className="btn btn-primary knopf-gross" href="/#termin">
+              Termin anfragen
+            </Link>
+            <a className="btn btn-secondary knopf-gross" href={kontakt.telefonHref}>
+              {kontakt.telefon}
+            </a>
+          </div>
+        </div>
       </div>
-      <h1
-        style={{
-          fontWeight: "400",
-          fontSize: "var(--fs-hero)",
-          lineHeight: "1.0",
-          letterSpacing: "-0.025em",
-          margin: "22px 0 24px",
-        }}
-      >
-        Diese Seite gibt es nicht.
-      </h1>
-      <p style={{ maxWidth: "56ch", color: "var(--color-neutral-800)" }}>
-        Möglicherweise wurde die Adresse geändert. Über die Navigation oben
-        finden Sie alle Seiten, oder rufen Sie uns einfach an.
-      </p>
-      <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "28px", flexWrap: "wrap" }}>
-        <Link className="btn btn-primary" href="/" style={{ padding: "12px 26px" }}>
-          Zur Startseite
-        </Link>
-        <a className="btn btn-secondary" href={praxis.telefonHref} style={{ padding: "12px 26px" }}>
-          {praxis.telefon}
-        </a>
-      </div>
-    </div>
+
+      <nav className="abschnitt" aria-label="Häufige Ziele">
+        <ul className="wegweiser">
+          {WEGE.map(({ pfad, hinweis }) => (
+            <li key={pfad}>
+              <Link className="wegweiser__ziel" href={pfad}>
+                <span className="titel-5">{seite(pfad).name}</span>
+                <span className="wegweiser__hinweis">{hinweis}</span>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link className="wegweiser__ziel" href="/">
+              <span className="titel-5">{seite("/").name}</span>
+              <span className="wegweiser__hinweis">Zurück zum Anfang</span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+
+      <GrosselinoSpiel />
+    </>
   );
 }
