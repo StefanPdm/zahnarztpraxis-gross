@@ -224,7 +224,18 @@ export default function Kinderzahnheilkunde() {
           ))}
         </div>
       </div>
-      <div className="abschnitt-oben">
+      <GrosselinoSpiel
+        ueberzeile="Spielecke"
+        titel="Langweilig im Wartezimmer?"
+        text={
+          <>
+            Dann vertreib dir hier die Zeit und hilf <span className="versal">Grosselino</span>: Spring über Bonbons,
+            Lollis und Limo. Jede Zahnbürste bringt Extrapunkte.
+          </>
+        }
+        linie={false}
+      />
+      <div className="abschnitt-oben abschnitt-oben--linie">
         <div className="ueberzeile">
           Kassenleistungen
         </div>
@@ -306,17 +317,6 @@ export default function Kinderzahnheilkunde() {
           </div>
         </div>
       </div>
-      <GrosselinoSpiel
-        ueberzeile="Spielecke"
-        titel="Langweilig im Wartezimmer?"
-        text={
-          <>
-            Dann vertreib dir hier die Zeit und hilf <span className="versal">Grosselino</span>: Spring über Bonbons,
-            Lollis und Limo. Jede Zahnbürste bringt Extrapunkte.
-          </>
-        }
-        linie={false}
-      />
       <div className="abschnitt-oben">
         <div className="ueberzeile">
           Häufige Fragen

@@ -30,6 +30,7 @@
   --ebene-schwebend: 50;  /* Zurück nach oben */
   --ebene-leiste:    60;  /* Termin-Leiste */
   --ebene-kopf:     100;  /* Kopfzeile inkl. Menü */
+  --ebene-vollbild: 200;  /* Spiel im Vollbild — die einzige Ausnahme, auf Wunsch und nur bis zum Schließen */
 
   /* Fließende Schriftgrade — Bezugsbreite 1440px.
      Muster: clamp(Minimum, Ideal in vw, Maximum) */

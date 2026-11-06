@@ -1574,6 +1574,74 @@ html:has(dialog.bewerbung[open]) { overflow: hidden; }
 .spiel__hinweis { padding: 2px 10px; border-radius: var(--radius-lg); background: var(--kid-ground); font-family: var(--font-ui); font-size: 13px; color: var(--color-neutral-800); }
 .spiel__leinwand { font-family: var(--font-ui); touch-action: manipulation; cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
 
+/* Vollbild, nur mobil angeboten: Knopf unter „Spielen" und Umschalter unten
+   rechts im Feld. Im Vollbild liegt die Bühne als feste Ebene über allem;
+   der Canvas füllt sie, die Szene skaliert das Spielfeld selbst. */
+.spiel__start .spiel__vollbild-start,
+.spiel__umschalter { display: none; }
+@media (max-width: 1000px), (pointer: coarse) {
+  .spiel__start .spiel__vollbild-start { display: inline-flex; }
+  .spiel__start .btn { min-width: 240px; } /* beide Knöpfe gleich breit */
+  .spiel__umschalter { display: flex; }
+}
+.spiel__umschalter {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--color-accent-200);
+  border-radius: var(--radius-lg);
+  background: var(--kid-ground);
+  color: var(--color-accent-700);
+  cursor: pointer;
+}
+html.spiel-vollbild { overflow: hidden; }
+.spiel__buehne--vollbild {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ebene-vollbild);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: var(--kid-ground);
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+.spiel__buehne--vollbild .spiel__feld { height: 100%; margin: 0; border: 0; border-radius: 0; }
+.spiel__buehne--vollbild .spiel__start { inset: 0; }
+.spiel__buehne--vollbild .spiel__umschalter {
+  right: calc(12px + env(safe-area-inset-right));
+  bottom: calc(12px + env(safe-area-inset-bottom));
+}
+.spiel__ende {
+  position: absolute;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.spiel__ende .btn { min-width: 160px; background: var(--kid-ground); }
+.spiel__drehen { display: none; }
+@media (orientation: portrait) {
+  .spiel__buehne--vollbild .spiel__drehen {
+    display: block;
+    position: absolute;
+    top: calc(24px + env(safe-area-inset-top));
+    right: 24px;
+    left: 24px;
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--color-neutral-800);
+  }
+}
+
 /* Namen in Versalien, im Text gemischt geschrieben (Screenreader, CLAUDE.md). */
 .versal { text-transform: uppercase; }
 

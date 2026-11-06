@@ -33,6 +33,12 @@ import {
   Vor dem Start ist die Szene schon zu sehen, darüber der Knopf „Spielen".
   Den Spielstand meldet das Feld als Ereignis `grosselino-spiel` an die
   Randfigur (components/Grosselino.tsx), die dann passend spricht.
+
+  Vollbild (nur mobil sichtbar, siehe .spiel__umschalter): Die Bühne legt
+  sich als feste Ebene über Kopfzeile und Termin-Leiste und bittet den
+  Browser zusätzlich um echtes Vollbild samt Querformat. Das iPhone kennt
+  kein Vollbild für Elemente — dort bleibt es bei der Ebene. Die Szene wird
+  nur größer gezeichnet; die Spiellogik rechnet weiter in 240 px Höhe.
 */
 
 const HOEHE = 240; // CSS-Pixel, siehe .spiel__feld
@@ -53,6 +59,8 @@ const MONSTER_SPRUENGE = 3;
 const ENDGEGNER_WUERFEL = 6;
 const SIEG_PAUSE = 2.4; // s zwischen besiegtem Monster und nächster Etappe
 const BANNER_DAUER = 2.6;
+const VOLLBILD_BREITE = 480; // so viel Weg bleibt im Vollbild mindestens in Sicht
+const ENDE_SPERRE = 600; // ms nach dem Rundenende, bis ein Tippen wieder zählt
 
 const ETAPPEN: { name: string; bau: Wahrzeichen }[] = [
   { name: "Schloss Sanssouci", bau: "sanssouci" },
@@ -85,11 +93,25 @@ type Monster = {
 export type SpielMeldung = "bereit" | "laeuft" | "vorbei" | "geschafft";
 const melde = (z: SpielMeldung) => window.dispatchEvent(new CustomEvent<SpielMeldung>("grosselino-spiel", { detail: z }));
 
+/* Vollbild-Schnittstellen, die TypeScript nicht (mehr) kennt: Safari auf dem
+   iPad mit Präfix, Ausrichtung sperren nur in Chrome für Android. */
+type VollbildElement = HTMLElement & { webkitRequestFullscreen?: () => void };
+type VollbildDokument = Document & { webkitFullscreenElement?: Element | null; webkitExitFullscreen?: () => void };
+type Ausrichtung = ScreenOrientation & { lock?: (art: string) => Promise<void> };
+const imVollbild = () => {
+  const d = document as VollbildDokument;
+  return Boolean(d.fullscreenElement ?? d.webkitFullscreenElement);
+};
+
 export default function GrosselinoSpielfeld() {
   const feldRef = useRef<HTMLCanvasElement>(null);
+  const buehneRef = useRef<HTMLDivElement>(null);
   const startRef = useRef<() => void>(() => {});
+  const nochmalRef = useRef<() => void>(() => {});
   const [ansage, setAnsage] = useState("");
   const [gestartet, setGestartet] = useState(false);
+  const [vollbild, setVollbild] = useState(false);
+  const [ende, setEnde] = useState(false);
 
   useEffect(() => {
     const feld = feldRef.current;
@@ -115,13 +137,22 @@ export default function GrosselinoSpielfeld() {
     const beruehrung = window.matchMedia("(pointer: coarse)").matches;
     const m = maler(ctx, f);
 
+    /* Gezeichnet wird in Spiel-Pixeln: 240 hoch, `breite` breit. Im Feld ist
+       das 1:1. Im Vollbild wächst die Szene mit der Höhe — aber nur so weit,
+       dass noch VOLLBILD_BREITE Weg in Sicht bleibt, und nie kleiner als im
+       Feld. Was an Höhe übrig bleibt, verteilt sich als Himmel und Boden. */
     let breite = feld.clientWidth;
+    let oben = 0;
     const anpassen = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      breite = feld.clientWidth;
-      feld.width = Math.round(breite * dpr);
-      feld.height = Math.round(HOEHE * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const b = feld.clientWidth;
+      const h = feld.clientHeight || HOEHE;
+      const massstab = Math.min(h / HOEHE, Math.max(1, b / VOLLBILD_BREITE));
+      breite = b / massstab;
+      oben = (h / massstab - HOEHE) / 2;
+      feld.width = Math.round(b * dpr);
+      feld.height = Math.round(h * dpr);
+      ctx.setTransform(dpr * massstab, 0, 0, dpr * massstab, 0, oben * dpr * massstab);
     };
     anpassen();
     const groesse = new ResizeObserver(anpassen);
@@ -210,11 +241,16 @@ export default function GrosselinoSpielfeld() {
       if (!sanssouciImBild) wahrzeichenSetzen("sanssouci");
       banner(`Etappe 1 von ${ETAPPEN.length}`, ETAPPEN[0].name);
       setGestartet(true);
+      setEnde(false);
       melde("laeuft");
     };
     startRef.current = () => {
       neueRunde();
       feld.focus({ preventScroll: true });
+    };
+    nochmalRef.current = () => {
+      if (performance.now() < s.sperreBis) return;
+      startRef.current();
     };
 
     // Vorschau vor dem Start: zeigt, worauf man sich einlässt.
@@ -225,9 +261,15 @@ export default function GrosselinoSpielfeld() {
     ];
     s.buersten = [{ x: breite * 0.58, hoehe: 74, weg: false }];
 
+    let endeZeit = 0;
     const rundeEnde = (zustand: "vorbei" | "geschafft") => {
       s.zustand = zustand;
-      s.sperreBis = performance.now() + 600;
+      s.sperreBis = performance.now() + ENDE_SPERRE;
+      // Knöpfe erst nach der Sperre — sonst trifft ein Sprung-Tippen sie gleich.
+      clearTimeout(endeZeit);
+      endeZeit = window.setTimeout(() => {
+        if (s.zustand !== "laeuft") setEnde(true);
+      }, ENDE_SPERRE);
       const p = punkte();
       s.neuerBestwert = p > s.bestwert;
       s.bestwert = Math.max(s.bestwert, p);
@@ -490,7 +532,7 @@ export default function GrosselinoSpielfeld() {
     };
 
     const zeichnen = () => {
-      ctx.clearRect(0, 0, breite, HOEHE);
+      ctx.clearRect(0, -oben, breite, HOEHE + 2 * oben);
 
       for (const w of s.wolken) m.wolke(w.x * (breite + 160) - 80, w.y, w.g);
       for (const b of s.bauten) m.bau(b.art, b.x - s.kulisse, boden, b.v);
@@ -603,9 +645,9 @@ export default function GrosselinoSpielfeld() {
           if (w.x < 0) w.x += 1;
         }
         s.kulisse += hinten * 0.25;
-        fuelleBis(s.kulisse + breite + 60);
         s.bauten = s.bauten.filter((b) => b.x + baubreite(b) - s.kulisse > -10);
       }
+      fuelleBis(s.kulisse + breite + 60); // auch im Stand: das Vollbild ist breiter
       zeichnen();
       rahmen = requestAnimationFrame(schleife);
     };
@@ -613,6 +655,7 @@ export default function GrosselinoSpielfeld() {
 
     return () => {
       cancelAnimationFrame(rahmen);
+      clearTimeout(endeZeit);
       groesse.disconnect();
       feld.removeEventListener("keydown", tasteRunter);
       feld.removeEventListener("keyup", tasteHoch);
@@ -623,8 +666,53 @@ export default function GrosselinoSpielfeld() {
     };
   }, []);
 
+  /* ── Vollbild ──────────────────────────────────────────────────────── */
+  const vollbildAn = () => {
+    setVollbild(true);
+    const el = buehneRef.current as VollbildElement | null;
+    if (!el) return;
+    const quer = () => (screen.orientation as Ausrichtung | undefined)?.lock?.("landscape").catch(() => {});
+    // Muss in derselben Klick-Behandlung passieren, sonst lehnt der Browser ab.
+    if (el.requestFullscreen) el.requestFullscreen({ navigationUI: "hide" }).then(quer, () => {});
+    else el.webkitRequestFullscreen?.();
+  };
+  const vollbildAus = () => setVollbild(false); // das Aufräumen übernimmt der Effekt
+
+  useEffect(() => {
+    if (!vollbild) return;
+    const wurzel = document.documentElement;
+    wurzel.classList.add("spiel-vollbild"); // Seite dahinter scrollt nicht mit
+    feldRef.current?.focus({ preventScroll: true });
+    // Zurück-Taste oder Esc beenden das echte Vollbild — dann auch die Ebene.
+    const gewechselt = () => {
+      if (!imVollbild()) setVollbild(false);
+    };
+    const taste = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVollbild(false);
+    };
+    document.addEventListener("fullscreenchange", gewechselt);
+    document.addEventListener("webkitfullscreenchange", gewechselt);
+    document.addEventListener("keydown", taste);
+    return () => {
+      wurzel.classList.remove("spiel-vollbild");
+      try {
+        screen.orientation?.unlock();
+      } catch {
+        // nicht gesperrt oder nicht unterstützt
+      }
+      if (imVollbild()) {
+        const d = document as VollbildDokument;
+        if (d.exitFullscreen) d.exitFullscreen().catch(() => {});
+        else d.webkitExitFullscreen?.();
+      }
+      document.removeEventListener("fullscreenchange", gewechselt);
+      document.removeEventListener("webkitfullscreenchange", gewechselt);
+      document.removeEventListener("keydown", taste);
+    };
+  }, [vollbild]);
+
   return (
-    <div className="spiel__buehne">
+    <div ref={buehneRef} className={vollbild ? "spiel__buehne spiel__buehne--vollbild" : "spiel__buehne"}>
       <canvas
         ref={feldRef}
         className="spiel__feld spiel__leinwand"
@@ -638,9 +726,44 @@ export default function GrosselinoSpielfeld() {
           <button type="button" className="btn btn-primary knopf-gross" onClick={() => startRef.current()}>
             Spielen
           </button>
+          {!vollbild && (
+            <button
+              type="button"
+              className="btn btn-secondary knopf-gross spiel__vollbild-start"
+              onClick={() => {
+                vollbildAn();
+                startRef.current();
+              }}
+            >
+              Im Vollbild spielen
+            </button>
+          )}
           <span className="spiel__hinweis">Springen mit Leertaste oder Tippen</span>
         </div>
       )}
+      {vollbild && ende && (
+        <div className="spiel__ende">
+          <button type="button" className="btn btn-primary knopf-gross" onClick={() => nochmalRef.current()}>
+            Nochmal
+          </button>
+          <button type="button" className="btn btn-secondary knopf-gross" onClick={vollbildAus}>
+            Vollbild beenden
+          </button>
+        </div>
+      )}
+      {(gestartet || vollbild) && !(vollbild && ende) && (
+        <button
+          type="button"
+          className="spiel__umschalter"
+          onClick={vollbild ? vollbildAus : vollbildAn}
+          aria-label={vollbild ? "Vollbild beenden" : "Im Vollbild spielen"}
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+            {vollbild ? <path d="M5 5l10 10M15 5L5 15" /> : <path d="M3 8V3h5M12 3h5v5M17 12v5h-5M8 17H3v-5" />}
+          </svg>
+        </button>
+      )}
+      {vollbild && <p className="spiel__drehen">Handy quer halten, dann wird das Spielfeld größer.</p>}
       <p className="nur-vorlesen" aria-live="polite">
         {ansage}
       </p>
