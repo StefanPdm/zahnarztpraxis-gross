@@ -76,7 +76,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de" className={`${cormorant.variable} ${lora.variable} ${jost.variable}`}>
+    // suppressHydrationWarning: TAGESZEIT_SKRIPT setzt data-tageszeit vor der
+    // Hydrierung. Wirkt nur auf die Attribute dieses einen Elements.
+    <html
+      lang="de"
+      className={`${cormorant.variable} ${lora.variable} ${jost.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Vor dem ersten Bild: welche Tageszeit das Hero-Licht zeigt (lib/tageszeit.ts). */}
         <script dangerouslySetInnerHTML={{ __html: TAGESZEIT_SKRIPT }} />

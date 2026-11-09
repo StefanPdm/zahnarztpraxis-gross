@@ -3,7 +3,6 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
-import { GrosselinoSpiel } from "@/components/GrosselinoSpiel";
 import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
@@ -224,18 +223,7 @@ export default function Kinderzahnheilkunde() {
           ))}
         </div>
       </div>
-      <GrosselinoSpiel
-        ueberzeile="Spielecke"
-        titel="Langweilig im Wartezimmer?"
-        text={
-          <>
-            Dann vertreib dir hier die Zeit und hilf <span className="versal">Grosselino</span>: Spring über Bonbons,
-            Lollis und Limo. Jede Zahnbürste bringt Extrapunkte.
-          </>
-        }
-        linie={false}
-      />
-      <div className="abschnitt-oben abschnitt-oben--linie">
+      <div className="abschnitt-oben">
         <div className="ueberzeile">
           Kassenleistungen
         </div>
