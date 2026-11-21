@@ -387,6 +387,7 @@ export default function Index() {
             <div style={{ position: 'relative', overflow: 'hidden', height: '720px' }}>
               <PraxisVideo
                 name='praxisflug'
+                hochformat
                 standbild='/images/praxisflug-standbild.webp'
                 beschreibung='Rundflug durch die Praxisräume'
                 klasse='parallax-img'
