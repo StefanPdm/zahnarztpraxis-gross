@@ -119,7 +119,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
         : gesamt > MAX_ANHANG_BYTES
           ? `Zusammen höchstens ${MAX_ANHANG_TEXT}, das sind gerade ${(gesamt / 1024 / 1024).toFixed(1).replace(".", ",")} MB.`
           : falsch
-            ? "Bitte nur PDF, JPG, PNG oder Word-Dateien."
+            ? "Bitte nur PDF, JPG, PNG oder Word-Dateien (.docx)."
             : "";
     feld.setCustomValidity(hinweis);
     setAnhangHinweis(hinweis);
@@ -255,7 +255,7 @@ export default function BewerbungsDialog({ knopf, knopfKlasse, interessen, vorau
               />
               <p id={`${id}-anhang-hinweis`} className={anhangHinweis ? "feldhinweis" : "feldhinweis feldhinweis-leise"}>
                 {anhangHinweis ||
-                  `${t.anhang} PDF, JPG, PNG oder Word, bis zu ${MAX_ANHAENGE} Dateien, zusammen höchstens ${MAX_ANHANG_TEXT}.`}
+                  `${t.anhang} PDF, JPG, PNG oder Word (.docx), bis zu ${MAX_ANHAENGE} Dateien, zusammen höchstens ${MAX_ANHANG_TEXT}.`}
               </p>
             </div>
 

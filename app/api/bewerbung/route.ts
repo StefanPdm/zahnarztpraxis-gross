@@ -68,7 +68,6 @@ const KENNUNG: Record<string, number[]> = {
   jpeg: [0xff, 0xd8, 0xff],
   png: [0x89, 0x50, 0x4e, 0x47],
   docx: [0x50, 0x4b, 0x03, 0x04], // ZIP
-  doc: [0xd0, 0xcf, 0x11, 0xe0], // altes Office-Format
 };
 
 type Anhang = { filename: string; content: Buffer; contentType: string };
@@ -86,7 +85,7 @@ async function pruefeAnhaenge(dateien: File[]): Promise<Anhang[] | string> {
   for (const [i, datei] of dateien.entries()) {
     const endung = datei.name.split('.').pop()?.toLowerCase() ?? '';
     const typ = ANHANG_TYPEN[endung];
-    if (!typ) return 'Bitte nur PDF, JPG, PNG oder Word-Dateien anhängen.';
+    if (!typ) return 'Bitte nur PDF, JPG, PNG oder Word-Dateien (.docx) anhängen.';
     const inhalt = Buffer.from(await datei.arrayBuffer());
     if (!KENNUNG[endung].every((b, j) => inhalt[j] === b)) {
       return 'Eine Datei ließ sich nicht lesen. Bitte als PDF anhängen.';
@@ -191,6 +190,9 @@ export async function POST(request: Request) {
     host: SMTP_HOST,
     port: Number(SMTP_PORT ?? 587),
     secure: Number(SMTP_PORT ?? 587) === 465,
+    // STARTTLS erzwingen: Ohne requireTLS fiele nodemailer auf Klartext
+    // zurück, wenn ein Angreifer das STARTTLS-Angebot unterdrückt.
+    requireTLS: true,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 

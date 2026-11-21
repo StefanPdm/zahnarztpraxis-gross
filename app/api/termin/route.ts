@@ -132,6 +132,9 @@ export async function POST(request: Request) {
     host: SMTP_HOST,
     port: Number(SMTP_PORT ?? 587),
     secure: Number(SMTP_PORT ?? 587) === 465,
+    // STARTTLS erzwingen: Ohne requireTLS fiele nodemailer auf Klartext
+    // zurück, wenn ein Angreifer das STARTTLS-Angebot unterdrückt.
+    requireTLS: true,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 

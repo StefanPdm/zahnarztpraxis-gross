@@ -15,13 +15,16 @@ export const MAX_ANHAENGE = 3;
 export const MAX_ANHANG_BYTES = 4 * 1024 * 1024;
 export const MAX_ANHANG_TEXT = "4 MB";
 
-/** Endung → erlaubte Dateitypen. Lebenslauf, Zeugnisse, ein Foto. */
+/**
+ * Endung → erlaubte Dateitypen. Lebenslauf, Zeugnisse, ein Foto.
+ * Kein altes Word-Format (.doc): Es kann Makros tragen, und die Anhänge
+ * landen ungeprüft im Postfach der Praxis. .docx führt keine Makros aus.
+ */
 export const ANHANG_TYPEN: Record<string, string[]> = {
   pdf: ["application/pdf"],
   jpg: ["image/jpeg"],
   jpeg: ["image/jpeg"],
   png: ["image/png"],
-  doc: ["application/msword"],
   docx: ["application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
 };
 

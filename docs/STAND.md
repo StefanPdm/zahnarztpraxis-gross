@@ -123,7 +123,7 @@ Patienten (Auftraggeber, 15.10.2026).
 Kurzformular im Dialog auf allen drei Karriereseiten — „Initiativ
 bewerben" auf `/karriere`, „Jetzt bewerben" auf den Stellenseiten, auf
 `/ausbildung` im Du. Pflicht nur Name und E-Mail; Telefon, Nachricht und
-bis zu 3 Anhänge (PDF, JPG, PNG, Word; zusammen 4 MB, Grenze wegen der
+bis zu 3 Anhänge (PDF, JPG, PNG, Word nur als .docx; zusammen 4 MB, Grenze wegen der
 6 MB je Netlify-Function) freiwillig. Die Route prüft Herkunft, Menge,
 Größe, Endung und Dateiinhalt, begrenzt auf 3 Bewerbungen je IP in 10
 Minuten. Versand: Mail an `PRAXIS_MAIL` mit Anhängen, Eingangsbestätigung
