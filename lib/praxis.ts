@@ -36,6 +36,14 @@ export const praxis = {
   antwortzeit: "innerhalb von 24 Stunden",
   /** Dieselbe Zusage als Zahl — für die Frist in der Mail an die Praxis. */
   antwortStunden: 24,
+  /* Auftraggeber, 23.11.2026: Die Praxis nimmt sehr gerne neue Patienten
+     auf, kurzfristige Termine sind verfügbar. Erscheint als
+     isAcceptingNewPatients im JSON-LD, in llms.txt und auf /kontakt. */
+  nimmtNeuePatienten: true,
+  /** Preis der professionellen Zahnreinigung in Euro (Auftraggeber, 23.11.2026).
+      ACHTUNG: steht zusätzlich als Text in der Beschreibung von /prophylaxe
+      in lib/seiten.ts — npm run pruefen liest dort nur einfache Strings. */
+  preisZahnreinigung: 120,
   domain: "https://www.zahnmedizin-potsdam.de",
   /* Eintrag der Praxis bei Google. Öffentlich — sie steht in jedem
      Maps-Link und im Quelltext der Bewertungssektion. Sie stand vorher

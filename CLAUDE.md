@@ -155,7 +155,11 @@ Selektor in einer CSS-Datei steht.
    **Behandlung von Kreidezähnen (MIH)** (beides bestätigt 28.10.2026,
    `/kinderzahnheilkunde`). Lage für Eltern: Potsdam Mitte, nahe dem
    Brandenburger Tor und Potsdam-West (bestätigt 28.10.2026). Zahnunfall
-   beim Kind und Kinderwagen vorerst **nicht** erwähnen.
+   beim Kind und Kinderwagen vorerst **nicht** erwähnen. Die Praxis
+   **nimmt sehr gerne neue Patienten auf**, **kurzfristige Termine** sind
+   verfügbar, die **professionelle Zahnreinigung kostet 120 €** (alles
+   bestätigt 23.11.2026, `lib/praxis.ts`). „Kieferchirurg/Kieferchirurgie"
+   als Bezeichnung der Praxis erst nach Klärung durch den Auftraggeber.
 4. **Zahntechnik: „in der Praxis", nie „im Haus"** (Auftraggeber,
    21.09.2026). Labor und Zahntechniker sitzen **in der eigenen Praxis** —
    auch in Fließtext, Bildunterschriften, Metadaten und JSON-LD. „Im Haus"

@@ -34,6 +34,10 @@ export function GET() {
     `- Google Maps: ${praxis.profile[0]}`,
     `- E-Mail: ${praxis.email}`,
     `- Terminanfrage online: ${url("/")}#termin (Formular auf der Startseite) – Rückmeldung ${praxis.antwortzeit}`,
+    ...(praxis.nimmtNeuePatienten
+      ? [`- Neue Patienten: werden sehr gerne aufgenommen, gesetzlich und privat Versicherte; kurzfristige Termine sind verfügbar.`]
+      : []),
+    `- Professionelle Zahnreinigung: ${praxis.preisZahnreinigung} €`,
     `- Akute Zahnschmerzen: morgens ab 8:00 anrufen; Montag bis Freitag werden Notfalltermine freigehalten.`,
     `- Außerhalb der Sprechzeiten: zahnärztlicher Notdienst der KZV Land Brandenburg, https://www.kzvlb.de/patienten/notdienstsuche`,
     "",

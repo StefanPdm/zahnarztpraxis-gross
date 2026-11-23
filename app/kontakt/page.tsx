@@ -6,9 +6,36 @@ import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
 import Sprechzeiten from '@/components/Sprechzeiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
+import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 
 export const metadata = seitenMetadaten('/kontakt');
+
+/* Fragen, wie sie Patienten auch an KI-Suchen stellen (SEO-Bericht
+   November 2026). Neue Patienten und kurzfristige Termine: Auftraggeber,
+   23.11.2026. */
+const faq = [
+  ...(praxis.nimmtNeuePatienten
+    ? [
+        {
+          q: 'Nehmen Sie neue Patienten auf?',
+          a: `Ja, sehr gerne — gesetzlich und privat Versicherte. Rufen Sie an unter ${praxis.telefon} oder fragen Sie online einen Termin an; wir melden uns ${praxis.antwortzeit}.`,
+        },
+        {
+          q: 'Bekomme ich kurzfristig einen Termin?',
+          a: 'Ja, kurzfristige Termine sind verfügbar. Am schnellsten geht es telefonisch. Bei akuten Schmerzen rufen Sie morgens ab 8:00 an — dafür halten wir Termine frei.',
+        },
+      ]
+    : []),
+  {
+    q: 'Wo ist der Eingang?',
+    a: 'Auf der Rückseite des Gebäudes: Gehen Sie links am Haus vorbei nach hinten in den Hof. Die Praxis liegt im 1. Stock und ist über das Treppenhaus erreichbar — einen Aufzug gibt es nicht.',
+  },
+  {
+    q: 'Was kostet eine professionelle Zahnreinigung?',
+    a: `Bei uns ${praxis.preisZahnreinigung} €.`,
+  },
+];
 
 export default function Kontakt() {
   return (
@@ -218,6 +245,14 @@ export default function Kontakt() {
           </ul>
         </div>
       </div>
+      <div className='abschnitt-oben'>
+        <div className='ueberzeile'>Häufige Fragen</div>
+        <h2 className='titel-2 breite-24'>Was Sie vor dem ersten Termin wissen möchten.</h2>
+      </div>
+      <Fragen
+        eintraege={faq}
+        pfad='/kontakt'
+      />
       <div
         className='spalten abschnitt abschnitt--knapp'
         style={{

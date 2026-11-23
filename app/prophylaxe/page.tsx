@@ -6,6 +6,7 @@ import strukturierteDaten from './jsonld.json';
 import { seitenMetadaten } from '@/lib/seiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import Fragen from '@/components/Fragen';
+import { praxis } from '@/lib/praxis';
 
 export const metadata = seitenMetadaten('/prophylaxe');
 
@@ -71,8 +72,12 @@ const faq = [
     a: 'Rechnen Sie mit etwa einer Stunde. Wie viel Zeit Ihr Fall braucht, hängt davon ab, wie viel Belag und Zahnstein sich gebildet hat.',
   },
   {
+    q: 'Was kostet die professionelle Zahnreinigung?',
+    a: `Bei uns ${praxis.preisZahnreinigung} €.`,
+  },
+  {
     q: 'Zahlt die Krankenkasse die professionelle Zahnreinigung?',
-    a: 'Gesetzliche Kassen übernehmen sie meist nicht oder nur mit einem Zuschuss; viele erstatten sie inzwischen teilweise. Fragen Sie bei Ihrer Kasse nach — wir sagen Ihnen vorher, was der Termin kostet.',
+    a: 'Gesetzliche Kassen übernehmen sie meist nicht oder nur mit einem Zuschuss; viele erstatten sie inzwischen teilweise. Fragen Sie bei Ihrer Kasse nach, wie viel sie dazugibt.',
   },
   {
     q: 'Werden die Zähne dabei weißer?',

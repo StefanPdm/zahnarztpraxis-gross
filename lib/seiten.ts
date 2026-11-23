@@ -77,7 +77,7 @@ export const seiten: Seite[] = [
     rubrik: "Behandlungen",
     titel: "Zahnreinigung (PZR) & Prophylaxe in Potsdam | Groß & Groß",
     beschreibung:
-      "Professionelle Zahnreinigung und Prophylaxe in Potsdam: Beläge entfernen, Zahnfleisch schützen, Karies vorbeugen – im Rhythmus nach Ihrem Risiko.",
+      "Professionelle Zahnreinigung in Potsdam für 120 €: Beläge entfernen, Zahnfleisch schützen, Karies vorbeugen – im Rhythmus nach Ihrem Risiko.",
   },
   {
     pfad: "/parodontologie",

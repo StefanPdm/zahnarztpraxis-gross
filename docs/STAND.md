@@ -54,6 +54,9 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 
 ## Noch zu tun — Inhalte, nicht erfinden
 
+- Ob die Praxis „Kieferchirurgie" bzw. „Kieferchirurg" für sich nennen
+  darf (SEO-Bericht November 2026: „kieferchirurg potsdam" auf Position
+  15,5). Klärt der Auftraggeber; bis dahin nur „Erfahrung aus der MKG".
 - Mitarbeiternamen und Funktionen für `/praxis-team`
 - Eckdaten der Praxisgeschichte seit 1991
 - Echte Google-Bewertungen (die Startseite zeigt sie hinter `showReviews`
