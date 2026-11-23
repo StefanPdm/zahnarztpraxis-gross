@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Bild from "@/components/Bild";
 import { Grosselino, GrosselinoMobil } from "@/components/Grosselino";
+import { GROSSELINO_WINTER, winterkapitel } from "@/lib/winterkapitel";
 import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
@@ -79,6 +80,9 @@ const faq = [
       ];
 
 export default function Kinderzahnheilkunde() {
+  // Winterkapitel: GROSSELINO bekommt andere Sprüche (lib/winterkapitel.ts).
+  const winter = winterkapitel();
+  const winterGrosselino = winter ? GROSSELINO_WINTER[winter.phase] : null;
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
@@ -141,7 +145,7 @@ export default function Kinderzahnheilkunde() {
           In dieser Reihenfolge, ohne Ausnahme. Was ein Kind vorher gesehen und verstanden hat, macht ihm hinterher weniger Angst.
         </p>
       </div>
-      <GrosselinoMobil />
+      <GrosselinoMobil gruss={winterGrosselino?.mobil} />
       <div className="raster raster--3 raster--luft-22">
         {regel.map((r, rI) => (
           <Fragment key={rI}>
@@ -335,7 +339,7 @@ export default function Kinderzahnheilkunde() {
       </div>
       {/* Am Ende des Markups: Die Figur ist fest positioniert, sieht also gleich
           aus, aber ihr Begrüßungstext steht im HTML nicht mehr vor der H1. */}
-      <Grosselino />
+      <Grosselino sprueche={winterGrosselino?.sprueche} />
     </>
   );
 }

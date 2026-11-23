@@ -20,6 +20,13 @@ import { offeneStellen } from '@/lib/karriere';
 import { scanVorteile } from '@/lib/digitalerAbdruck';
 import ScanGrafik from '@/components/ScanGrafik';
 import Einblenden from '@/components/Einblenden';
+import HeroStern from '@/components/HeroStern';
+import HeroSterne from '@/components/HeroSterne';
+import StilleZeit from '@/components/StilleZeit';
+import AdventTafeln from '@/components/AdventTafeln';
+import { SLOGAN, UEBERSCHRIFTEN, vergangeneAdvente, winterkapitel } from '@/lib/winterkapitel';
+import Leitstern from '@/components/Leitstern';
+import LeitsternZiel from '@/components/LeitsternZiel';
 
 export const metadata = seitenMetadaten('/');
 
@@ -191,10 +198,18 @@ const ablauf = [
 ];
 
 export default function Index() {
+  // Winterkapitel (lib/winterkapitel.ts): null im Rest des Jahres.
+  const winter = winterkapitel();
+  const slogan = winter ? SLOGAN[winter.phase] : null;
+  const saisontexte = winter ? UEBERSCHRIFTEN[winter.phase] : null;
   return (
     <>
       <JsonLd daten={strukturierteDaten} />
-      <Laufmarke />
+      <Laufmarke
+        kerzen={winter?.phase === 'advent' ? vergangeneAdvente(winter) : undefined}
+        vorlauf={winter ? 'Winterkapitel' : undefined}
+      />
+      {winter && <Leitstern />}
       <Einblenden />
       <section style={{ fontFamily: 'var(--font-body)' }}>
         <div
@@ -215,6 +230,7 @@ export default function Index() {
               className='hero-licht'
               aria-hidden='true'
             />
+            {winter && <HeroSterne />}
             <div
               id='heroInner'
               style={{ position: 'relative', zIndex: 1 }}>
@@ -226,19 +242,31 @@ export default function Index() {
                     „Präzi s e". */}
                 <h1
                   className='hero-titel'
-                  aria-label='Zahnarzt in Potsdam Mitte, Ästhetik und Implantologie: Ruhig behandeln. Präzise arbeiten.'>
+                  aria-label={`Zahnarzt in Potsdam Mitte, Ästhetik und Implantologie: Ruhig behandeln. ${
+                    slogan ? `${slogan.gold} ${slogan.rest}` : 'Präzise arbeiten.'
+                  }`}>
                   <span className='ueberzeile hero-titel__zeile'>
                     Zahnarzt in Potsdam Mitte · Ästhetik &amp; Implantologie
                   </span>
                   <span className='hero-titel__satz'>
                     Ruhig behandeln.
                     <br />
-                    <em className='glanz'>
-                      Präzi<span className='glanz__ruck'>s</span>e&nbsp;
-                    </em>
-                    arbeiten.
+                    {slogan ? (
+                      <>
+                        <em className='glanz'>{slogan.gold}&nbsp;</em>
+                        {slogan.rest}
+                      </>
+                    ) : (
+                      <>
+                        <em className='glanz'>
+                          Präzi<span className='glanz__ruck'>s</span>e&nbsp;
+                        </em>
+                        arbeiten.
+                      </>
+                    )}
                   </span>
                 </h1>
+                {winter && <HeroStern />}
                 <div
                   style={{
                     display: 'flex',
@@ -316,6 +344,8 @@ export default function Index() {
             <AnliegenWahl />
           </div>
           <NotfallLeiste />
+          {winter && <StilleZeit winter={winter} />}
+          {winter?.phase === 'advent' && <AdventTafeln winter={winter} />}
           <div
             className='statbar spalten'
             style={{
@@ -512,7 +542,10 @@ export default function Index() {
               <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h2)', margin: '0' }}>
                 Wer Sie behandelt: Ihre Zahnärzte in Potsdam
               </h2>
-              <span style={{ height: '1px', background: 'var(--color-divider)' }} />
+              <span
+                className='trennlinie'
+                style={{ height: '1px', background: 'var(--color-divider)' }}
+              />
             </div>
             <div
               className='rv spalten spalten--2'
@@ -783,7 +816,8 @@ export default function Index() {
                   Unsere Zahnarztpraxis in Potsdam Mitte hat fünf Behandlungszimmer mit Tageslicht,
                   digitales Röntgen, Laser und Lupenbrille — und einen Wartebereich, in dem man sitzen mag.
                   Auf Wunsch läuft Musik oder ein Film
-                  über den Monitor an der Decke, während wir arbeiten. Mit Angstpatienten und
+                  über den Monitor an der Decke, während wir arbeiten.
+                  {saisontexte?.decke ? ` ${saisontexte.decke}` : ''} Mit Angstpatienten und
                   Kindern gehen wir bewusst langsam vor: erst zeigen, dann erklären, dann behandeln.
                   Wie das beim <Link href='/kinderzahnheilkunde'>Kinderzahnarzt in Potsdam</Link>{' '}
                   aussieht, zeigt unsere Kinderseite.
@@ -1026,7 +1060,10 @@ export default function Index() {
               <h2 style={{ fontWeight: '400', fontSize: 'var(--fs-h2)', margin: '0' }}>
                 Leistungen
               </h2>
-              <span style={{ height: '1px', background: 'var(--color-divider)' }} />
+              <span
+                className='trennlinie'
+                style={{ height: '1px', background: 'var(--color-divider)' }}
+              />
               <Link
                 className='btn btn-ghost'
                 href='/leistungen'>
@@ -1461,7 +1498,7 @@ export default function Index() {
               </Link>
             </div>
           </section>
-          <GoogleBewertungen />
+          <GoogleBewertungen titel={saisontexte?.bewertungen} />
           <div
             className='colophon rv rand'
             data-abschnitt='Kapitel III · Wenn Angst im Weg steht'
@@ -1794,6 +1831,7 @@ export default function Index() {
               }}>
               <div className='termin-spalte'>
                 <div>
+                  {winter && <LeitsternZiel />}
                   <div
                     className='ueberzeile'
                     data-einblenden>
@@ -2128,9 +2166,9 @@ export default function Index() {
                 maxWidth: '20ch',
                 color: 'var(--papier)',
               }}>
-              Der erste Termin ist oft nur ein
+              {saisontexte ? saisontexte.abschluss[0] : 'Der erste Termin ist oft nur ein'}
               <span style={{ fontStyle: 'italic', color: 'var(--color-accent-400)' }}>
-                Gespräch
+                {saisontexte ? saisontexte.abschluss[1] : 'Gespräch'}
               </span>
               .
             </h2>

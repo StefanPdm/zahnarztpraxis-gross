@@ -10,7 +10,16 @@ import { useBeimScrollen } from "@/lib/useBeimScrollen";
   Abschnitte melden sich über data-abschnitt="…". Rein dekorativ: die
   Kapitelüberschriften stehen ohnehin im Text, darum aria-hidden.
 */
-export default function Laufmarke() {
+/**
+ * `kerzen`: im Winterkapitel ein Adventskranz über der Marke — vier Kerzen,
+ * davon so viele brennend, wie Adventssonntage waren (lib/winterkapitel.ts).
+ * Fehlt der Wert, gibt es keine Kerzen.
+ *
+ * `vorlauf`: Beschriftung, bevor das erste Kapitel erreicht ist — im
+ * Winterkapitel ist die Marke samt Kerzen so von Anfang an da, nicht erst
+ * ab Kapitel I. Ohne Wert bleibt sie bis dahin ausgeblendet wie bisher.
+ */
+export default function Laufmarke({ kerzen, vorlauf = "" }: { kerzen?: number; vorlauf?: string }) {
   const [label, setLabel] = useState("");
   const [anteil, setAnteil] = useState(0);
 
@@ -20,7 +29,7 @@ export default function Laufmarke() {
     for (const a of document.querySelectorAll<HTMLElement>("[data-abschnitt]")) {
       if (a.getBoundingClientRect().top + window.scrollY <= linie) aktuell = a.dataset.abschnitt ?? "";
     }
-    setLabel(aktuell);
+    setLabel(aktuell || vorlauf);
     const gesamt = document.documentElement.scrollHeight - window.innerHeight;
     setAnteil(gesamt > 0 ? Math.min(1, window.scrollY / gesamt) : 0);
   });
@@ -46,6 +55,13 @@ export default function Laufmarke() {
         pointerEvents: "none",
       }}
     >
+      {kerzen !== undefined && (
+        <span className="laufmarke-kranz">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i} className={i < kerzen ? "laufmarke-kerze brennt" : "laufmarke-kerze"} />
+          ))}
+        </span>
+      )}
       <span
         id="runheadLabel"
         style={{

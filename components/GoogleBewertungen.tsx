@@ -112,7 +112,8 @@ function Sterne({ wert }: { wert: number }) {
   );
 }
 
-export default async function GoogleBewertungen() {
+/** `titel`: andere Überschrift, etwa im Winterkapitel (lib/winterkapitel.ts). */
+export default async function GoogleBewertungen({ titel = "Bewertungen" }: { titel?: string }) {
   const ergebnis = await holeBewertungen();
   /* Nur 4 und 5 Sterne — Ansage des Auftraggebers. Der Schnitt und die
      Gesamtzahl stehen darüber, die Auswahl schönt das Bild also nicht. */
@@ -136,7 +137,7 @@ export default async function GoogleBewertungen() {
         }}
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: "20px", flexWrap: "wrap" }}>
-          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>Bewertungen</h2>
+          <h2 style={{ fontWeight: "400", fontSize: "var(--fs-h2)", margin: "0" }}>{titel}</h2>
           {schnitt ? (
             <span
               style={{

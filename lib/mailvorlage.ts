@@ -1,5 +1,12 @@
 import { praxis, sprechzeitGruppen, tageLang, zeitenLang } from "@/lib/praxis";
 import { RUECKMELDUNG_BEWERBUNG, RUECKMELDUNG_BEWERBUNG_STUNDEN } from "@/lib/bewerbung";
+import { MAILGRUSS, winterkapitel } from "@/lib/winterkapitel";
+
+/** Gruß zum Fest in der Terminbestätigung — nur im Winterkapitel, sonst null. */
+function saisongruss(): string | null {
+  const winter = winterkapitel();
+  return winter ? MAILGRUSS[winter.phase] : null;
+}
 
 /**
  * Bestätigungsmail an die Patientin oder den Patienten.
@@ -90,6 +97,7 @@ export function bestaetigungText(d: Bestaetigung): string {
     "",
     `Wenn es dringend ist oder Sie Schmerzen haben, rufen Sie uns bitte direkt an: ${praxis.telefon}.`,
     "",
+    saisongruss() ?? "",
     "Mit freundlichen Grüßen",
     praxis.vollerName,
     `${praxis.strasse}, ${praxis.ort}`,
@@ -168,7 +176,16 @@ export function bestaetigungHtml(d: Bestaetigung): string {
             </table>
           </td>
         </tr>
-
+${(() => {
+  const gruss = saisongruss();
+  return gruss
+    ? `
+        <tr>
+          <td style="padding:28px 40px 0;font-family:${SERIFE};font-size:19px;font-style:italic;line-height:1.4;color:${FARBEN.akzent};">${esc(gruss)}</td>
+        </tr>
+`
+    : "";
+})()}
         <tr>
           <td style="padding:30px 40px 36px;">
             <div style="height:1px;background:${FARBEN.linie};line-height:1px;font-size:0;">&nbsp;</div>

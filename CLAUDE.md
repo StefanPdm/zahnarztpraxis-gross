@@ -88,7 +88,7 @@ Selektor in einer CSS-Datei steht.
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
   Karte, GROSSELINO, GROSSELINO-Spiel (404), Einblenden, Öffnungsstatus, Karriere-Fahne,
-  Bewerbungs-Dialog.
+  Bewerbungs-Dialog, Leitstern (Winterkapitel).
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
 - **Jede Mail, die die Website verschickt, ist gestaltet** — auch die an
@@ -171,7 +171,11 @@ Selektor in einer CSS-Datei steht.
    durfte Claude ausnahmsweise selbst formulieren (Auftraggeber,
    15.10.2026). Die Ausnahme gilt nur für diese Anzeige; Gehalt,
    Arbeitszeit und Leistungen bestätigt der Auftraggeber noch.
-6. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
+6. **Winterkapitel** (`lib/winterkapitel.ts`): Plätzchenrezept,
+   Lieblingsorte und Grußworte hat Claude auf Wunsch des Auftraggebers
+   frei formuliert, die Unterschriften sind nachgestellt (23.11.2026).
+   Die Ausnahme gilt nur für die Texte in dieser Datei.
+7. **Nichts erfinden.** Wo etwas fehlt, einen sichtbaren Platzhalter setzen
    (Klasse `.todo`) und nachfragen. Die offenen Stellen stehen in
    `docs/STAND.md`.
 
@@ -215,6 +219,35 @@ Keine Zugangsdaten ins Repository.
 4. Falls sie in die Navigation gehört: `lib/navigation.ts`.
 
 Sitemap, `llms.txt` und die `.html`-Weiterleitung entstehen automatisch.
+
+## Winterkapitel — die saisonale Ausgabe
+
+Von einer Woche vor dem ersten Advent bis 6. Januar zeigt die Website ein
+„Winterkapitel" (Beginn und Ende einstellbar in `lib/winterkapitel.ts`,
+`BEGINN_TAGE_VOR_DEM_ERSTEN_ADVENT` und `ENDE_TAG_IM_JANUAR`): eine
+dunkle Winterabend-Hero mit Kerzenlicht und funkelnden Sternen, ein dunkles
+Band unter der Kopfzeile auf jeder Seite, ein Stern über dem Monogramm,
+„Kapitel 0 · Die stille Zeit" mit den Sprechzeiten zwischen den Jahren,
+darunter „Die vier Tafeln des Advents" als Türchen, ein Leitstern, der beim
+Scrollen am Rand mitwandert und am Terminformular „landet", ein
+Adventskranz in der Laufmarke (so viele Kerzen brennen, wie Advente waren),
+GROSSELINO mit Mütze, Schal und Wintersprüchen, ein Gruß in der
+Terminbestätigung. Danach ist
+alles wieder wie vorher. Zum Testen zeigt der Schalter `"an"` alles auf
+einmal — **vor dem Veröffentlichen zurück auf `"automatisch"`**.
+
+- **Schalter und alle Texte** in `lib/winterkapitel.ts`:
+  `WINTERKAPITEL = "automatisch" | "aus" | "advent" | "neujahr"`. Die
+  Umgebungsvariable `WINTERKAPITEL` überschreibt ihn — so lässt sich eine
+  Vorschau bauen, ohne Code zu ändern (`WINTERKAPITEL=advent npm run build`).
+- **Aussehen** nur in `app/saison.css`, alles unter `:root[data-saison]`;
+  das Attribut setzt `app/layout.tsx`. Ohne Attribut wirkt die Datei nicht.
+- **Daten rechnen sich selbst**: Adventssonntage, Feiertage, die Tabelle
+  „Zwischen den Jahren". Fürs nächste Jahr genügt es, die Texte zu prüfen.
+- Alle Seiten werden **stündlich neu berechnet** (`revalidate` in
+  `app/layout.tsx`) — darum schaltet sich das Kapitel ohne Build ein und aus.
+- Nichts wird im Browser gespeichert; die Tafeln öffnen sich nur über das
+  Datum auf dem Server, Aufklappen über `<details>`.
 
 ## Vor jedem Commit
 

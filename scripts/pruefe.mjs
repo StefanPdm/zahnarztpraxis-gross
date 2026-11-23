@@ -9,6 +9,7 @@
  *   4  Jedes Bild in <Bild src="…"> hat Maße in lib/bildmasse.json
  *   5  Die Zahl der Inline-Styles steigt nicht (Obergrenze, nur nach unten)
  *   6  Kein CSS-Selektor auf den Style-Text ([style*="…"])
+ *   7  Der Winterkapitel-Schalter steht nicht auf dem Testwert "an"
  *
  * Bricht mit Fehlercode ab, sobald eine Regel verletzt ist.
  */
@@ -94,6 +95,15 @@ for (const d of dateien("app", /\.css$/)) {
     if (/\[style[*^$~|]?=/.test(inhalt)) fehler.push(`${d}:${z + 1}: Selektor auf den Style-Text – Mobilverhalten gehört in eine Klasse (app/bausteine.css)`);
   }
 }
+
+/* 7 — Winterkapitel: "an" ist der Testmodus (alles sichtbar, egal welches
+   Datum). Steht er in der Datei, ginge er mit dem nächsten Deploy live —
+   drei offene Türchen im November. Eine Vorschau mit "an" läuft weiter über
+   die Umgebungsvariable WINTERKAPITEL, die prüft diese Regel nicht. */
+const schalter = lies("lib/winterkapitel.ts").match(/export const WINTERKAPITEL\s*:\s*\w+\s*=\s*['"](\w+)['"]/);
+if (!schalter) fehler.push(`lib/winterkapitel.ts: Schalter WINTERKAPITEL nicht gefunden`);
+else if (schalter[1] === "an")
+  fehler.push(`lib/winterkapitel.ts: WINTERKAPITEL steht auf dem Testwert "an" – vor dem Veröffentlichen auf "automatisch" stellen`);
 
 if (fehler.length) {
   console.error(`✗ ${fehler.length} Problem(e):\n  ` + fehler.join("\n  "));

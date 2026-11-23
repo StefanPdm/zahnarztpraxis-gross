@@ -54,6 +54,14 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
 
 ## Noch zu tun — Inhalte, nicht erfinden
 
+- **Winterkapitel** (`lib/winterkapitel.ts`, automatisch eine Woche vor dem ersten Advent): Rezept,
+  Lieblingsorte und Grußworte sind von Claude formuliert, die Unterschriften
+  nachgestellt — von der Praxis prüfen lassen. Schließtage zwischen den
+  Jahren reicht der Auftraggeber nach; bis dahin gilt: Heiligabend und alle
+  gesetzlichen Feiertage geschlossen (`lib/praxis.ts`, Betriebsferien dort
+  in `betriebsferien` eintragen). Noch kein winterliches Vorschaubild für
+  WhatsApp & Co. (`app/opengraph-image.jpg` bleibt).
+
 - Ob die Praxis „Kieferchirurgie" bzw. „Kieferchirurg" für sich nennen
   darf (SEO-Bericht November 2026: „kieferchirurg potsdam" auf Position
   15,5). Klärt der Auftraggeber; bis dahin nur „Erfahrung aus der MKG".

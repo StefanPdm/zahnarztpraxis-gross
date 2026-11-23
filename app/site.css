@@ -257,6 +257,16 @@ body .platecap > span:last-child { flex: 1; }
   body:has(header input#navtoggle:checked) #totop { opacity: 0; visibility: hidden; }
 }
 
+/* Keine Scroll-Verankerung: Die Kopfzeile liegt im Seitenfluss und wird beim
+   Schrumpfen gut 70 px niedriger. Mit Verankerung zieht der Browser dafür die
+   Scroll-Position um genau diesen Betrag zurück — von 100 auf unter 32 px,
+   also unter die Rückkehrschwelle in components/Kopfzeile.tsx. Die Leiste
+   wurde wieder groß, die Position sprang zurück, sie schrumpfte wieder: nach
+   einer einzigen Mausraddrehung flackerte sie endlos (gemessen: 20 Wechsel in
+   2 s). Bilder tragen über next/image feste Maße, die Verankerung wird sonst
+   nirgends gebraucht. */
+html { overflow-anchor: none; }
+
 /* Kopfzeile klebt am oberen Rand und legt sich mit Weichzeichner über den Inhalt.
    Beim Scrollen (Klasse .shrunk aus site.js) schrumpfen Höhe und Wortmarke. */
 body header {

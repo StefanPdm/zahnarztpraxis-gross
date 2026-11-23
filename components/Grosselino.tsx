@@ -98,6 +98,19 @@ function Baer({ praefix, groesse, beine }: { praefix: "gr" | "gr2"; groesse: num
       <circle cx="59" cy="33" r="2.6" fill={TINTE} stroke="none" />
       <ellipse cx="50" cy="41.5" rx="3.2" ry="2.4" fill={TINTE} stroke="none" />
       <path d="M44 47.5 Q50 52.5 56 47.5" stroke={TINTE} strokeWidth="2.4" />
+      {/* Mütze und Schal fürs Winterkapitel — sichtbar nur mit data-saison
+          (app/saison.css). Kräftiges Gold, damit man sie auch bei 36 px erkennt. */}
+      <g className="grosselino-winter" strokeWidth="2.4">
+        <path d="M57 60 L59.5 74 L66 72.5 L62.5 59 Z" fill="var(--color-accent-500)" />
+        <path d="M58.6 67.2 L64.6 65.8" stroke={HELL} strokeWidth="2" />
+        <path
+          d="M31 53 Q50 63 69 53 Q71.5 55.7 69 58.5 Q50 69 31 58.5 Q28.5 55.7 31 53 Z"
+          fill="var(--color-accent-500)"
+        />
+        <path d="M33 22 Q36 5 55 4 Q66 5 71 13 L67.5 21 Q50 13.5 33 22 Z" fill="var(--color-accent-500)" />
+        <path d="M30 22.5 Q50 12 70 22.5 Q71.5 26 69 27.5 Q50 18 31 27.5 Q28.5 26 30 22.5 Z" fill={HELL} />
+        <circle cx="72" cy="12" r="5" fill={HELL} />
+      </g>
     </svg>
   );
 }
@@ -114,9 +127,10 @@ const SPIEL_SPRUECHE: Record<SpielMeldung, string | null> = {
   geschafft: "Juhu, alle Zähne gerettet!",
 };
 
-export function Grosselino() {
+/** `sprueche`: andere Sprüche, etwa im Winterkapitel — kommt von der Seite (Server). */
+export function Grosselino({ sprueche = SPRUECHE }: { sprueche?: [bis: number, text: string][] }) {
   const [oben, setOben] = useState(18);
-  const [spruch, setSpruch] = useState(SPRUECHE[0][1]);
+  const [spruch, setSpruch] = useState(sprueche[0][1]);
   const [laeuft, setLaeuft] = useState(false);
   const [spricht, setSpricht] = useState(false);
   const stopp = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -127,7 +141,7 @@ export function Grosselino() {
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const fortschritt = Math.max(0, Math.min(1, window.scrollY / max));
     setOben(18 + fortschritt * 48);
-    setSpruch((SPRUECHE.find(([bis]) => fortschritt <= bis) ?? SPRUECHE[SPRUECHE.length - 1])[1]);
+    setSpruch((sprueche.find(([bis]) => fortschritt <= bis) ?? sprueche[sprueche.length - 1])[1]);
 
     // Der erste Aufruf ist die Anfangsmessung, kein Scrollen — dann nicht losgehen.
     if (erstesMal.current) {
@@ -195,15 +209,15 @@ export function Grosselino() {
           alignItems: "center",
           justifyContent: "center",
           flex: "0 0 auto",
-          width: "50px",
-          height: "50px",
+          width: "68px",
+          height: "68px",
           borderRadius: "999px",
           background: HELL,
           border: "1px solid var(--color-accent-300)",
           boxShadow: "var(--shadow-sm)",
         }}
       >
-        <Baer praefix="gr" groesse={36} beine />
+        <Baer praefix="gr" groesse={50} beine />
       </div>
       <span
         id="gr-bubble"
@@ -228,7 +242,15 @@ export function Grosselino() {
   );
 }
 
-export function GrosselinoMobil() {
+/** `gruss`: anderer Text in der Karte, etwa im Winterkapitel — kommt von der Seite (Server). */
+export function GrosselinoMobil({
+  gruss = {
+    zeile: "Hallo, ich bin Grosselino",
+    text: "Beim ersten Mal wird nur geschaut. Und Hand heben heißt immer: Pause.",
+  },
+}: {
+  gruss?: { zeile: string; text: string };
+}) {
   const karte = useRef<HTMLDivElement>(null);
   const [imBild, setImBild] = useState(false);
 
@@ -292,7 +314,7 @@ export function GrosselinoMobil() {
             color: "var(--color-accent-700)",
           }}
         >
-          Hallo, ich bin Grosselino
+          {gruss.zeile}
         </span>
         <span
           style={{
@@ -304,7 +326,7 @@ export function GrosselinoMobil() {
             marginTop: "6px",
           }}
         >
-          Beim ersten Mal wird nur geschaut. Und Hand heben heißt immer: Pause.
+          {gruss.text}
         </span>
       </span>
     </div>

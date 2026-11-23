@@ -94,7 +94,16 @@ export const nachmittagNachVereinbarung: readonly Tag[] = ["Fr"];
  * z. B. "2026-12-28". Der Öffnungsstatus („Jetzt geöffnet") liest von hier;
  * fehlt ein Urlaub, stünde dort in den Ferien „geöffnet".
  */
-export const schliesstage: readonly string[] = [];
+const betriebsferien: readonly string[] = [];
+
+/* Heiligabend ist kein gesetzlicher Feiertag, die Praxis hat aber geschlossen
+   (Auftraggeber, 23.11.2026). Für Vorjahr, dieses und nächstes Jahr, damit
+   der Wechsel um Neujahr keine Lücke reißt. Die gesetzlichen Feiertage in
+   Brandenburg rechnet lib/oeffnungsstatus.ts selbst. */
+const jahr = new Date().getFullYear();
+const heiligabende = [jahr - 1, jahr, jahr + 1].map((j) => `${j}-12-24`);
+
+export const schliesstage: readonly string[] = [...betriebsferien, ...heiligabende];
 
 const TAGNAME: Record<Tag, { lang: string; schema: string }> = {
   Mo: { lang: "Montag", schema: "Monday" },

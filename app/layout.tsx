@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Jost, Lora } from "next/font/google";
 import "./classical.css";
 import "./site.css";
 import "./bausteine.css";
+import "./saison.css"; // Winterkapitel, wirkt nur mit data-saison (lib/winterkapitel.ts)
 import "./schriften.css"; // zuletzt: hängt die next/font-Familien in die Tokens
 
 import Kopfzeile from "@/components/Kopfzeile";
@@ -17,6 +18,17 @@ import KarriereFahne from "@/components/KarriereFahne";
 import { offeneStellen } from "@/lib/karriere";
 import { praxis } from "@/lib/praxis";
 import { TAGESZEIT_SKRIPT } from "@/lib/tageszeit";
+import { winterkapitel } from "@/lib/winterkapitel";
+import Winterband from "@/components/Winterband";
+
+/*
+  Alle Seiten stündlich neu berechnen: Das Winterkapitel schaltet sich vor
+  dem ersten Advent ein und im Januar ab (lib/winterkapitel.ts), die
+  Adventstafeln öffnen sonntags und
+  vergangene Tage verschwinden aus „Zwischen den Jahren" — ohne neuen Build.
+  Die Seiten bleiben statisch; Next erneuert sie nur im Hintergrund.
+*/
+export const revalidate = 3600;
 
 /*
   Die drei Familien des Design-Systems, über next/font self-hosted:
@@ -75,12 +87,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const winter = winterkapitel();
   return (
     // suppressHydrationWarning: TAGESZEIT_SKRIPT setzt data-tageszeit vor der
     // Hydrierung. Wirkt nur auf die Attribute dieses einen Elements.
     <html
       lang="de"
       className={`${cormorant.variable} ${lora.variable} ${jost.variable}`}
+      data-saison={winter?.phase}
       suppressHydrationWarning
     >
       <head>
@@ -105,6 +119,7 @@ export default function RootLayout({
           }}
         >
           <Kopfzeile stellen={offeneStellen.length} />
+          {winter && <Winterband winter={winter} />}
           {/* tabIndex -1: Ziel für Sprunglink und „Zurück nach oben", ohne Tab-Stopp. */}
           <main id="inhalt" tabIndex={-1}>
             {/*

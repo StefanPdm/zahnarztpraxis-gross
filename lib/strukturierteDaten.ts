@@ -1,5 +1,35 @@
-import { praxis, schemaTage, sprechzeitGruppen } from "@/lib/praxis";
+import { praxis, schemaTage, schliesstage, sprechzeitGruppen, sprechzeiten } from "@/lib/praxis";
 import { team } from "@/lib/team";
+import { istFeiertag, KURZTAGE } from "@/lib/oeffnungsstatus";
+import { kalendertag } from "@/lib/winterkapitel";
+
+/**
+ * Feiertage und Schließtage der nächsten acht Wochen, an denen sonst
+ * Sprechstunde wäre — als Sonderöffnungszeit „geschlossen" (opens = closes
+ * = 00:00, so beschreibt schema.org einen geschlossenen Tag). Google zeigt
+ * dann an Heiligabend nicht „geöffnet". Die Seiten werden stündlich neu
+ * berechnet (app/layout.tsx), die Liste wandert also mit.
+ */
+function geschlosseneTage() {
+  const [j, m, t] = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" })
+    .format(new Date())
+    .split("-")
+    .map(Number);
+  const tage = [];
+  for (let i = 0; i < 56; i++) {
+    const tag = kalendertag(j, m, t + i);
+    if (!sprechzeiten[KURZTAGE[tag.wochentag] as keyof typeof sprechzeiten]) continue;
+    if (!istFeiertag(tag.iso) && !schliesstage.includes(tag.iso)) continue;
+    tage.push({
+      "@type": "OpeningHoursSpecification",
+      opens: "00:00",
+      closes: "00:00",
+      validFrom: tag.iso,
+      validThrough: tag.iso,
+    });
+  }
+  return tage;
+}
 
 /**
  * Hält die strukturierten Daten (JSON-LD) mit den Stammdaten im Einklang.
@@ -41,6 +71,7 @@ function praxisFakten() {
     ),
     employee: team.map((m) => ({ "@id": personId(m.name) })),
     isAcceptingNewPatients: praxis.nimmtNeuePatienten,
+    specialOpeningHoursSpecification: geschlosseneTage(),
     // Pediatric: Kinderbehandlung als Fachgebiet (/kinderzahnheilkunde).
     medicalSpecialty: ["https://schema.org/Dentistry", "https://schema.org/Pediatric"],
   };

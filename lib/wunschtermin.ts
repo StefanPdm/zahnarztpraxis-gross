@@ -44,7 +44,8 @@ export const WUNSCHTERMIN_HINWEIS: Record<Wunschterminfehler, string> = {
   wochenende:
     "Samstags und sonntags ist die Praxis geschlossen. Bitte wählen Sie einen Tag von Montag bis Freitag.",
   feiertag: "An diesem Tag ist ein gesetzlicher Feiertag, die Praxis ist geschlossen. Bitte wählen Sie einen anderen Tag.",
-  betriebsferien: "An diesem Tag ist die Praxis geschlossen (Betriebsferien). Bitte wählen Sie einen anderen Tag.",
+  // Auch Heiligabend landet hier (lib/praxis.ts) — deshalb ohne „Betriebsferien".
+  betriebsferien: "An diesem Tag ist die Praxis geschlossen. Bitte wählen Sie einen anderen Tag.",
   "keine-sprechstunde": "An diesem Tag hat die Praxis keine Sprechstunde. Bitte wählen Sie einen anderen Tag.",
 };
 
