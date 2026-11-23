@@ -1,4 +1,4 @@
-import { istFeiertag, KURZTAGE, TAGNAMEN, type Kurztag, type Wochenplan } from "@/lib/oeffnungsstatus";
+import { istPraxisFeiertag, KURZTAGE, TAGNAMEN, type Kurztag, type Wochenplan } from "@/lib/oeffnungsstatus";
 
 /**
  * Wunschtermine im Formular: nur Tage, an denen die Praxis Sprechstunde hat.
@@ -89,7 +89,7 @@ export function pruefeWunschtermin(
   if (tag === null) return "ungueltig";
   if (wert < fruehesterWunschtermin(jetzt)) return "zu-frueh";
   if (tag === 0 || tag === 6) return "wochenende";
-  if (istFeiertag(wert)) return "feiertag";
+  if (istPraxisFeiertag(wert)) return "feiertag";
   if (schliesstage.includes(wert)) return "betriebsferien";
   if (!plan[KURZTAGE[tag]]?.length) return "keine-sprechstunde";
   return null;

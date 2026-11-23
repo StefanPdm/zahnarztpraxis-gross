@@ -29,7 +29,8 @@
                   Außerhalb des Zeitraums tut die Seite dann so, als wäre
                   der 20. Dezember bzw. der 2. Januar: alle Tafeln offen.
    "an"           zum Testen: alles auf einmal sichtbar — Adventsfassung,
-                  Tafeln I–III offen und IV geschlossen (beide Zustände),
+                  alle vier Tafeln freigegeben, alle Kerzen am Kranz,
+                  Suchmaschinen ausgesperrt (app/robots.ts),
                   die Tabelle „Zwischen den Jahren" vollständig, egal
                   welches Datum.
                   Nicht so veröffentlichen.
@@ -42,7 +43,7 @@ export const WINTERKAPITEL: Schalter = 'automatisch'; // 'automatisch' | 'aus' |
    Der erste Advent liegt jedes Jahr zwischen dem 27. November und dem
    3. Dezember — darum relativ zu ihm statt eines festen Datums.
    7 = eine Woche vorher (2026: ab Sonntag, 22. November). 0 = ab dem
-   ersten Advent. Bis zum ersten Advent sind alle vier Türchen geschlossen.
+   ersten Advent. Bis zum ersten Advent sind alle vier Türchen gesperrt.
    ENDE: letzter Tag im Januar (6 = Heilige Drei Könige). */
 export const BEGINN_TAGE_VOR_DEM_ERSTEN_ADVENT = 7;
 export const ENDE_TAG_IM_JANUAR = 6;

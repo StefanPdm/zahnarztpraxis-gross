@@ -6,7 +6,8 @@
  * (aus lib/praxis.ts, über eine Server-Komponente). Deshalb darf diese Datei
  * in eine Client-Komponente — lib/praxis.ts darf das nicht (CLAUDE.md).
  *
- * Gesetzliche Feiertage in Brandenburg sind eingerechnet. Das Terminformular
+ * Gesetzliche Feiertage in Brandenburg sind eingerechnet — außer denen mit
+ * Notdienst (NOTDIENST_AN_FEIERTAGEN), dort ist normal offen. Das Terminformular
  * nutzt dieselben Feiertage und Wochentage (lib/wunschtermin.ts). Betriebsferien
  * kennt die Rechnung nur, wenn sie in `schliesstage` (lib/praxis.ts)
  * eingetragen sind — sonst stünde im Urlaub „Jetzt geöffnet".
@@ -109,6 +110,25 @@ export function istFeiertag(iso: string): boolean {
   return feiertage(Number(iso.slice(0, 4))).has(iso);
 }
 
+/**
+ * Feiertage, an denen die Praxis Notdienst hat und deshalb ganz normal
+ * geöffnet ist — mit den Sprechzeiten des Wochentags. Als ISO-Datum.
+ * Steht hier und nicht in lib/praxis.ts, weil auch der Öffnungsstatus im
+ * Browser es wissen muss.
+ */
+export const NOTDIENST_AN_FEIERTAGEN: readonly string[] = [
+  "2027-01-01", // Neujahr, ein Freitag (Auftraggeber, 23.11.2026)
+];
+
+export function hatNotdienst(iso: string): boolean {
+  return NOTDIENST_AN_FEIERTAGEN.includes(iso);
+}
+
+/** Feiertag, an dem die Praxis geschlossen ist (also nicht im Notdienst). */
+export function istPraxisFeiertag(iso: string): boolean {
+  return istFeiertag(iso) && !hatNotdienst(iso);
+}
+
 export function oeffnungsstatus(
   plan: Wochenplan,
   schliesstage: readonly string[],
@@ -118,7 +138,7 @@ export function oeffnungsstatus(
   const zu = new Set(schliesstage);
   const zeitenAm = (abstand: number) => {
     const t = kalendertag(z.jahr, z.monat, z.tag, abstand);
-    if (zu.has(t.iso) || feiertage(t.jahr).has(t.iso)) return { ...t, zeiten: [] as readonly Zeitraum[] };
+    if (zu.has(t.iso) || istPraxisFeiertag(t.iso)) return { ...t, zeiten: [] as readonly Zeitraum[] };
     return { ...t, zeiten: plan[KURZTAGE[t.wochentag]] ?? [] };
   };
 

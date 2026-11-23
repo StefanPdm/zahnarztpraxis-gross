@@ -1,6 +1,6 @@
 import { praxis, schemaTage, schliesstage, sprechzeitGruppen, sprechzeiten } from "@/lib/praxis";
 import { team } from "@/lib/team";
-import { istFeiertag, KURZTAGE } from "@/lib/oeffnungsstatus";
+import { istPraxisFeiertag, KURZTAGE } from "@/lib/oeffnungsstatus";
 import { kalendertag } from "@/lib/winterkapitel";
 
 /**
@@ -19,7 +19,7 @@ function geschlosseneTage() {
   for (let i = 0; i < 56; i++) {
     const tag = kalendertag(j, m, t + i);
     if (!sprechzeiten[KURZTAGE[tag.wochentag] as keyof typeof sprechzeiten]) continue;
-    if (!istFeiertag(tag.iso) && !schliesstage.includes(tag.iso)) continue;
+    if (!istPraxisFeiertag(tag.iso) && !schliesstage.includes(tag.iso)) continue;
     tage.push({
       "@type": "OpeningHoursSpecification",
       opens: "00:00",

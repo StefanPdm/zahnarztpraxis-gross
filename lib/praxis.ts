@@ -99,7 +99,9 @@ const betriebsferien: readonly string[] = [];
 /* Heiligabend ist kein gesetzlicher Feiertag, die Praxis hat aber geschlossen
    (Auftraggeber, 23.11.2026). Für Vorjahr, dieses und nächstes Jahr, damit
    der Wechsel um Neujahr keine Lücke reißt. Die gesetzlichen Feiertage in
-   Brandenburg rechnet lib/oeffnungsstatus.ts selbst. */
+   Brandenburg rechnet lib/oeffnungsstatus.ts selbst — dort stehen auch die
+   Feiertage mit Notdienst, an denen normal geöffnet ist
+   (NOTDIENST_AN_FEIERTAGEN). */
 const jahr = new Date().getFullYear();
 const heiligabende = [jahr - 1, jahr, jahr + 1].map((j) => `${j}-12-24`);
 
