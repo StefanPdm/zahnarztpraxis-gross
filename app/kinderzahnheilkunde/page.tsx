@@ -12,7 +12,7 @@ import { team } from "@/lib/team";
 
 const chantal = team.find((m) => m.name === "Chantal Groß")!;
 
-export const metadata = seitenMetadaten("/kinderzahnheilkunde");
+export const generateMetadata = () => seitenMetadaten("/kinderzahnheilkunde");
 
 /* Slogan der Praxis (Auftraggeber, 06.11.2026). Die Pointe bricht nie um;
    „Groß" steht gemischt im Text, die Versalien macht .versal. */

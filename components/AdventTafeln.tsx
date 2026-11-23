@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Bild from "@/components/Bild";
 import {
   ADVENTSTAFELN,
   adventssonntage,
@@ -107,6 +108,14 @@ export default function AdventTafeln({ winter }: { winter: Winterkapitel }) {
                       <span className="tafel__oeffnen">Tafel öffnen</span>
                       <span className="tafel__schliessen">Tafel schließen</span>
                     </summary>
+                    {t.bild && (
+                      <Bild
+                        src={t.bild.src}
+                        alt={t.bild.alt}
+                        className="tafel__bild"
+                        sizes="(max-width: 1000px) 100vw, 25vw"
+                      />
+                    )}
                     <Inhalt inhalt={t.inhalt} />
                   </details>
                 </>

@@ -8,7 +8,7 @@ import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 import { scanVorteile } from "@/lib/digitalerAbdruck";
 
-export const metadata = seitenMetadaten("/moderne-technik");
+export const generateMetadata = () => seitenMetadaten("/moderne-technik");
 
 const laser = [
         { title: "Parodontosebehandlung", text: "Der Laser erreicht die entzündeten Zahnfleischtaschen, ohne sie mechanisch aufzuarbeiten." },

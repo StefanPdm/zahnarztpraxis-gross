@@ -6,7 +6,7 @@ import strukturierteDaten from "./jsonld.json";
 import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 
-export const metadata = seitenMetadaten("/leistungen");
+export const generateMetadata = () => seitenMetadaten("/leistungen");
 
 const behandlungen = [
         { no: "01", title: "Prophylaxe & professionelle Zahnreinigung", text: "Reinigung, Fluoridierung und Anleitung zur Pflege zu Hause — mit Zahnseide, Interdentalbürste oder Munddusche, je nachdem, was zu Ihren Zwischenräumen passt. Den Kontrollrhythmus legen wir nach Ihrem Risiko fest, nicht nach Kalender." },

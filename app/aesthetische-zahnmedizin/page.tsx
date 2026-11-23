@@ -7,7 +7,7 @@ import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/aesthetische-zahnmedizin");
+export const generateMetadata = () => seitenMetadaten("/aesthetische-zahnmedizin");
 
 const wege = [
         { title: "Veneers", icon: "M4 6h16v5a8 8 0 01-8 8 8 8 0 01-8-8V6z", text: "Dünne Keramikschalen werden auf die Frontzähne geklebt und korrigieren Form und Farbe. Sie entstehen in unserem eigenen Labor und werden an Ihre Nachbarzähne angeglichen.", fit: "Bei Form, Farbe und kleinen Kanten" },

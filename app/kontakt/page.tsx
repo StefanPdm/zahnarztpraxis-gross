@@ -9,7 +9,7 @@ import NotfallLeiste from '@/components/NotfallLeiste';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 
-export const metadata = seitenMetadaten('/kontakt');
+export const generateMetadata = () => seitenMetadaten('/kontakt');
 
 /* Fragen, wie sie Patienten auch an KI-Suchen stellen (SEO-Bericht
    November 2026). Neue Patienten und kurzfristige Termine: Auftraggeber,

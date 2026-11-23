@@ -7,7 +7,7 @@ import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/implantologie");
+export const generateMetadata = () => seitenMetadaten("/implantologie");
 
 const proof = [
         { value: "2.500+", label: "Gesetzte Implantate" },

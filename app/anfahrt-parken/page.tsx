@@ -8,7 +8,7 @@ import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/anfahrt-parken");
+export const generateMetadata = () => seitenMetadaten("/anfahrt-parken");
 
 const weg = [
         { no: "01", title: "Schopenhauerstraße 37", text: "Die gelbe Fassade mit den hohen Sprossenfenstern ist die Straßenseite. Hier stehen Sie richtig — aber noch nicht am Eingang." },

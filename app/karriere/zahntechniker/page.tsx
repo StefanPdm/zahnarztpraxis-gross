@@ -10,7 +10,7 @@ import { arbeitgeber, euro, monatsverguetung } from '@/lib/arbeitgeber';
 import { interessen, zahntechnik } from '@/lib/karriere';
 import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
-export const metadata = seitenMetadaten('/karriere/zahntechniker');
+export const generateMetadata = () => seitenMetadaten('/karriere/zahntechniker');
 
 /*
   Stellenanzeige Zahntechnik. Die Texte hat der Auftraggeber am 15.10.2026

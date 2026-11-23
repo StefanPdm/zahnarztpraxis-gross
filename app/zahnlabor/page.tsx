@@ -8,7 +8,7 @@ import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 import { zahntechnik } from "@/lib/karriere";
 
-export const metadata = seitenMetadaten("/zahnlabor");
+export const generateMetadata = () => seitenMetadaten("/zahnlabor");
 
 const proof = [
         { value: "Eigenes Labor", label: "Zahntechniker in der Praxis" },

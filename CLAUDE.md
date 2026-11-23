@@ -211,7 +211,9 @@ Keine Zugangsdaten ins Repository.
 ## Eine neue Seite anlegen
 
 1. Eintrag in `lib/seiten.ts` (Titel ≤ 60, Beschreibung ≤ 160 Zeichen).
-2. `app/<pfad>/page.tsx` mit `export const metadata = seitenMetadaten("/<pfad>")`,
+2. `app/<pfad>/page.tsx` mit `export const generateMetadata = () => seitenMetadaten("/<pfad>")`
+   (als Funktion, nicht als Konstante: so wechselt das Vorschaubild im
+   Winterkapitel bei der stündlichen Neuberechnung mit),
    aufgebaut aus den Bausteinen (Vorlage: eine bestehende Unterseite,
    Übersicht unter `/bausteine`).
 3. Häufige Fragen über `<Fragen eintraege={…} pfad="/<pfad>" />` — das

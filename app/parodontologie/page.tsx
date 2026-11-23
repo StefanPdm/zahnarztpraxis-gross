@@ -7,7 +7,7 @@ import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/parodontologie");
+export const generateMetadata = () => seitenMetadaten("/parodontologie");
 
 const zeichen = [
         "Das Zahnfleisch blutet beim Zähneputzen oder bei der Zahnseide.",

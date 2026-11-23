@@ -9,7 +9,7 @@ import NotfallLeiste from '@/components/NotfallLeiste';
 import Flipkarte from '@/components/Flipkarte';
 import { offeneStellen } from '@/lib/karriere';
 
-export const metadata = seitenMetadaten('/praxis-team');
+export const generateMetadata = () => seitenMetadaten('/praxis-team');
 
 const zahlen = [
   { value: '1991', label: 'Familiengeführt in Potsdam' },

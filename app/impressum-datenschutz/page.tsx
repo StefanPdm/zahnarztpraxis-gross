@@ -4,7 +4,7 @@ import { seitenMetadaten } from '@/lib/seiten';
 import NotfallLeiste from '@/components/NotfallLeiste';
 import { praxis } from '@/lib/praxis';
 
-export const metadata = seitenMetadaten('/impressum-datenschutz');
+export const generateMetadata = () => seitenMetadaten('/impressum-datenschutz');
 
 const haftung = [
   {

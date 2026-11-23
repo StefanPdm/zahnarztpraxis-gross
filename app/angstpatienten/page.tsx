@@ -9,7 +9,7 @@ import strukturierteDaten from "./jsonld.json";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/angstpatienten");
+export const generateMetadata = () => seitenMetadaten("/angstpatienten");
 
 const zusagen = [
         { no: "01", title: "Erster Termin nur zum Kennenlernen", text: "Auf Wunsch ohne jede Behandlung. Sie sehen die Praxis, wir hören zu, und Sie entscheiden danach, ob und wann es weitergeht." },

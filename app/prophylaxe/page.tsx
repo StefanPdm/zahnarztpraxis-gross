@@ -8,7 +8,7 @@ import NotfallLeiste from '@/components/NotfallLeiste';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
 
-export const metadata = seitenMetadaten('/prophylaxe');
+export const generateMetadata = () => seitenMetadaten('/prophylaxe');
 
 const schritte = [
   {

@@ -7,7 +7,7 @@ import { seitenMetadaten } from "@/lib/seiten";
 import { sprechzeitGruppen, tageKurz, zeitenKurz } from "@/lib/praxis";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/zahnschmerzen");
+export const generateMetadata = () => seitenMetadaten("/zahnschmerzen");
 
 const zeiten = [
   ...sprechzeitGruppen().map((g) => ({ tag: tageKurz(g), zeit: zeitenKurz(g) })),

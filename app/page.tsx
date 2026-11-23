@@ -28,7 +28,7 @@ import { SLOGAN, UEBERSCHRIFTEN, vergangeneAdvente, winterkapitel } from '@/lib/
 import Leitstern from '@/components/Leitstern';
 import LeitsternZiel from '@/components/LeitsternZiel';
 
-export const metadata = seitenMetadaten('/');
+export const generateMetadata = () => seitenMetadaten('/');
 
 /* Schwerpunkte unter den Porträtkarten, die auf ihre Unterseite verlinken. */
 const schwerpunktLinks: Record<string, string> = {

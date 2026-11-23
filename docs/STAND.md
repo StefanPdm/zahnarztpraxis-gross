@@ -59,8 +59,10 @@ Git-Verlauf). Jeder Schritt steht als eigener Commit im Repository.
   nachgestellt — von der Praxis prüfen lassen. Schließtage zwischen den
   Jahren reicht der Auftraggeber nach; bis dahin gilt: Heiligabend und alle
   gesetzlichen Feiertage geschlossen (`lib/praxis.ts`, Betriebsferien dort
-  in `betriebsferien` eintragen). Noch kein winterliches Vorschaubild für
-  WhatsApp & Co. (`app/opengraph-image.jpg` bleibt).
+  in `betriebsferien` eintragen). Vorschaubild im Winter:
+  `public/images/vorschau-winterkapitel.jpg` (lib/seiten.ts), Zimtsterne
+  im zweiten Türchen. Für das vierte Türchen fehlt noch ein echtes Foto vom
+  Deckenmonitor mit Kaminfeuer.
 
 - Ob die Praxis „Kieferchirurgie" bzw. „Kieferchirurg" für sich nennen
   darf (SEO-Bericht November 2026: „kieferchirurg potsdam" auf Position

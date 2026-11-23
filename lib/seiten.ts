@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // Relativ, nicht "@/…": next.config.ts lädt diese Datei, und dort gilt der Pfad-Alias nicht.
 import { praxis } from "./praxis";
+import { winterkapitel } from "./winterkapitel";
 
 /**
  * Alle Seiten der Website — eine Quelle für Metadaten, Sitemap,
@@ -201,9 +202,25 @@ const vorschaubild = {
   alt: "Wartebereich der Zahnarztpraxis Groß & Groß in Potsdam Mitte",
 };
 
+/* Im Winterkapitel (lib/winterkapitel.ts) ein eigenes Vorschaubild: Kerze und
+   Messingsterne auf Leinen. Erzeugt, ohne Menschen — darum ohne
+   KI-Kennzeichnung (Faustregel in CLAUDE.md). Zuschnitt aus rohfotos/Kerze.png. */
+const vorschaubildWinter = {
+  url: "/images/vorschau-winterkapitel.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Brennende Bienenwachskerze mit goldenen Sternen – Winterzeit in der Zahnarztpraxis Groß & Groß",
+};
+
+/**
+ * Metadaten einer Seite. Die Seiten rufen das über `generateMetadata` auf,
+ * nicht als Konstante: So wird bei jeder (stündlichen) Neuberechnung neu
+ * entschieden, ob das Winter-Vorschaubild gilt.
+ */
 export function seitenMetadaten(pfad: string): Metadata {
   const s = seite(pfad);
   const url = `${praxis.domain}${pfad === "/" ? "" : pfad}`;
+  const bild = winterkapitel() ? vorschaubildWinter : vorschaubild;
   return {
     title: s.titel,
     description: s.beschreibung,
@@ -215,13 +232,13 @@ export function seitenMetadaten(pfad: string): Metadata {
       title: s.titel,
       description: s.beschreibung,
       url,
-      images: [vorschaubild],
+      images: [bild],
     },
     twitter: {
       card: "summary_large_image",
       title: s.titel,
       description: s.beschreibung,
-      images: [vorschaubild],
+      images: [bild],
     },
   };
 }

@@ -7,7 +7,7 @@ import { seitenMetadaten } from "@/lib/seiten";
 import NotfallLeiste from "@/components/NotfallLeiste";
 import Fragen from "@/components/Fragen";
 
-export const metadata = seitenMetadaten("/weisheitszaehne-chirurgie");
+export const generateMetadata = () => seitenMetadaten("/weisheitszaehne-chirurgie");
 
 const gruende = [
         "Der Zahn liegt schief und drückt gegen den Nachbarzahn.",

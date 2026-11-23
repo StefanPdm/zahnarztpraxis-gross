@@ -200,7 +200,13 @@ export type Tafelinhalt =
   | { art: 'rezept'; zutaten: string[]; schritte: string[]; randnotiz: string }
   | { art: 'text'; absaetze: string[]; link?: { href: string; text: string } };
 
-export type Tafel = { titel: string; kurz: string; inhalt: Tafelinhalt };
+/** `bild`: steht oben im aufgeklappten Türchen (Datei in public/images, Maße über `npm run bilder`). */
+export type Tafel = {
+  titel: string;
+  kurz: string;
+  inhalt: Tafelinhalt;
+  bild?: { src: string; alt: string };
+};
 
 /** Je Adventssonntag eine Tafel; sie öffnet sich an diesem Sonntag und bleibt offen. */
 export const ADVENTSTAFELN: Tafel[] = [
@@ -228,6 +234,11 @@ export const ADVENTSTAFELN: Tafel[] = [
   {
     titel: 'Aus Chantals Küche: Zimtsterne',
     kurz: 'Das Rezept, das bei uns jedes Jahr zuerst gebacken wird – mit einer Anmerkung der Zahnärztin am Rand.',
+    // Erzeugtes Bild ohne Menschen — darum ohne KI-Kennzeichnung (CLAUDE.md, Inhaltsregel 2).
+    bild: {
+      src: '/images/zimtsterne-adventstafel.jpg',
+      alt: 'Zimtsterne mit weißem Guss auf Backpapier, daneben ein Ausstecher aus Messing, Zimtstangen und Mandeln',
+    },
     inhalt: {
       art: 'rezept',
       zutaten: [

@@ -12,7 +12,7 @@ import { ausbildung } from '@/lib/ausbildung';
 import { interessen } from '@/lib/karriere';
 import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
-export const metadata = seitenMetadaten('/ausbildung');
+export const generateMetadata = () => seitenMetadaten('/ausbildung');
 
 /*
   Die einzige Seite, die sich nicht an Patienten richtet — deshalb als

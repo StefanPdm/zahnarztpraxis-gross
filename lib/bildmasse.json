@@ -163,6 +163,10 @@
     1600,
     691
   ],
+  "/images/vorschau-winterkapitel.jpg": [
+    1200,
+    630
+  ],
   "/images/wartebereich-surfbrett-zahnarztpraxis-potsdam.jpg": [
     1024,
     683
@@ -190,5 +194,9 @@
   "/images/zahnschmerzen-wartebereich-symbolbild.jpg": [
     1122,
     1402
+  ],
+  "/images/zimtsterne-adventstafel.jpg": [
+    1200,
+    900
   ]
 }

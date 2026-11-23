@@ -8,7 +8,7 @@ import { praxis } from '@/lib/praxis';
 import { interessen, offeneStellen } from '@/lib/karriere';
 import { INITIATIV, RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
-export const metadata = seitenMetadaten('/karriere');
+export const generateMetadata = () => seitenMetadaten('/karriere');
 
 /*
   Karriereseite — Ziel der Karriere-Fahne, des Bands auf der Startseite und
