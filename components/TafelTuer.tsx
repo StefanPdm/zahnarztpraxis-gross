@@ -62,9 +62,10 @@ function Weihnachtsmann() {
 
 function mitUebergang(aenderung: () => void): Promise<void> {
   const doc = document as Document & {
-    startViewTransition?: (f: () => void) => { finished: Promise<void> };
+    startViewTransition?: (f: () => void) => { ready: Promise<void>; finished: Promise<void> };
   };
-  if (!doc.startViewTransition || !bewegungErlaubt()) {
+  // Verdeckter Tab: Der Browser bräche den Übergang ohnehin ab.
+  if (!doc.startViewTransition || !bewegungErlaubt() || document.hidden) {
     aenderung();
     return Promise.resolve();
   }
@@ -72,7 +73,13 @@ function mitUebergang(aenderung: () => void): Promise<void> {
   const wurzel = document.documentElement;
   wurzel.classList.add("tafel-wechsel");
   const lauf = doc.startViewTransition(() => flushSync(aenderung));
-  return lauf.finished.finally(() => wurzel.classList.remove("tafel-wechsel"));
+  // Wird der Tab mitten im Übergang verdeckt, bricht der Browser ihn ab und
+  // verwirft `ready` („InvalidStateError … Document hidden"). Die Änderung
+  // selbst ist dann schon geschehen — nur die Animation fällt weg.
+  lauf.ready.catch(() => {});
+  return lauf.finished
+    .catch(() => {})
+    .finally(() => wurzel.classList.remove("tafel-wechsel"));
 }
 
 export default function TafelTuer({
