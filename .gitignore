@@ -11,6 +11,7 @@ next-env.d.ts
 # im Netz. Was gebraucht wird, wird zugeschnitten nach public/uploads gelegt.
 rohfotos/
 rohvideos/
+rohaudio/
 
 # Der Übergabeordner bleibt im Repo (Quelle der Wahrheit für den Konverter),
 # aber Next soll ihn nicht kompilieren — dafür sorgt tsconfig "exclude".

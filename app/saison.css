@@ -574,7 +574,6 @@
     radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in srgb, var(--color-accent-900) 60%, var(--ink-dark)), var(--ink-dark));
   transition: translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.tafel__tor:disabled { cursor: default; color: var(--papier); }
 .tafel__tor:focus-visible { outline: 2px solid var(--color-accent-300); outline-offset: -6px; }
 /* Lamellen und Endleiste mit Griff */
 .tafel__lamellen {
@@ -674,6 +673,66 @@
   .tafel__tor--rollt { animation: rolltorHoch 1ms forwards; }
 }
 
+/* Zu früh geklickt: Der Weihnachtsmann meldet sich in einer Sprechblase
+   (components/TafelTuer, Sprüche in lib/winterkapitel.ts). Sie liegt oben
+   über dem Rolltor, der Zipfel zeigt aufs Schloss; Klicks gehen durch sie
+   hindurch aufs Tor, so kommt beim nächsten Klick der nächste Spruch. */
+.tafel__zufrueh {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  pointer-events: none;
+}
+.tafel__blase {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--papier);
+  color: var(--ink-dark);
+  border: 1px solid var(--color-accent-300);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transform-origin: 50% 100%;
+}
+.tafel__blase::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: var(--papier);
+  border-right: 1px solid var(--color-accent-300);
+  border-bottom: 1px solid var(--color-accent-300);
+}
+.tafel__figur { flex-shrink: 0; width: 44px; height: 44px; color: var(--color-accent-700); }
+.tafel__blase p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.tafel__countdown {
+  display: block;
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-accent-700);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tafel__blase { animation: blaseAuf 0.38s cubic-bezier(0.34, 1.56, 0.64, 1); }
+}
+@keyframes blaseAuf {
+  from { opacity: 0; scale: 0.8; }
+  to { opacity: 1; scale: 1; }
+}
+
 /* Übergang beim Öffnen und Schließen (View Transition, components/TafelTuer):
    Die Bilder der Kacheln werden nicht gestreckt, sondern mittig beschnitten —
    so wächst die Kachel, und die Ziffer auf dem Tor bleibt ruhig stehen. Die
@@ -769,6 +828,11 @@
   .tafel__aufforderung { letter-spacing: 0.1em; }
   .tafel__offen { padding: 24px 20px 18px; }
   .tafel__titel { font-size: 22px; margin: 10px 0 10px; }
+  .tafel__zufrueh { top: 6px; left: 6px; right: 6px; }
+  .tafel__blase { padding: 10px 11px; gap: 8px; }
+  .tafel__figur { display: none; }
+  .tafel__blase p { font-size: 13px; line-height: 1.4; }
+  .tafel__countdown { font-size: 12px; }
 }
 
 /* ── Der Leitstern (Startseite) ──────────────────────────────────────────────

@@ -337,6 +337,45 @@ export const TAFELN_KOPF = {
   text: 'An jedem Adventssonntag öffnet sich eine neue Tafel – und bleibt bis Weihnachten offen.',
 };
 
+/* ── Der Weihnachtsmann an gesperrten Türchen ────────────────────────────────
+   Wer ein Türchen vor seinem Sonntag antippt, bekommt einen Spruch in einer
+   Sprechblase, dazu die Stimme (components/TafelTuer). Die Sprüche wechseln
+   der Reihe nach, der Start ist zufällig. Der Countdown („noch sechsmal
+   schlafen") steht nur in der Blase, gesprochen wird er nicht.
+
+   Text und Aufnahme gehören zusammen: Wer einen Text ändert, braucht eine
+   neue Aufnahme — oder lässt `ton` weg, dann erscheint nur die Blase.
+   Neue Aufnahmen kommen roh nach rohaudio/ (nicht im Repo) und aufbereitet
+   nach public/ton/; den Befehl dafür nennt docs/STAND.md. Die Stimme ist
+   mit ElevenLabs erzeugt (23.11.2026). */
+export type Weihnachtsmannspruch = { text: string; ton?: string };
+
+export const WEIHNACHTSMANN: Weihnachtsmannspruch[] = [
+  { text: 'Ho, ho, ho! Du bist zu früh. Dieses Türchen bleibt noch ein Weilchen zu.', ton: '/ton/weihnachtsmann-01.mp3' },
+  { text: 'Ho, ho, ho! Nicht so ungeduldig. Du darfst noch ein wenig warten.', ton: '/ton/weihnachtsmann-02.mp3' },
+  { text: 'Na, na, na! Wer rüttelt denn da schon am Türchen? Ho, ho, ho!', ton: '/ton/weihnachtsmann-03.mp3' },
+  { text: 'Ho, ho, ho! Hier wird nicht geschummelt. Meine Rentiere passen gut auf.', ton: '/ton/weihnachtsmann-04.mp3' },
+  { text: 'Ho, ho, ho! Vorfreude ist die schönste Freude. Und die dauert noch ein bisschen.', ton: '/ton/weihnachtsmann-05.mp3' },
+  { text: 'Ho, ho, ho! Ich hab’s genau gesehen. Erst wird geschlafen, dann wird geöffnet.', ton: '/ton/weihnachtsmann-06.mp3' },
+  { text: 'Hohoho … ach, du schon wieder! Es ist noch nicht so weit.', ton: '/ton/weihnachtsmann-07.mp3' },
+  { text: 'Ho, ho, ho! Selbst der Weihnachtsmann muss warten. Und du auch.', ton: '/ton/weihnachtsmann-08.mp3' },
+  { text: 'Ho, ho, ho! Erst Zähne putzen, dann schlafen gehen. Und irgendwann öffnet sich das Türchen ganz von allein.', ton: '/ton/weihnachtsmann-09.mp3' },
+  { text: 'Ho, ho, ho! Dieses Türchen klemmt. Mit Absicht. Komm an seinem Sonntag wieder.', ton: '/ton/weihnachtsmann-10.mp3' },
+];
+
+const MAL = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf'];
+
+/** Countdown unter dem Spruch: „Noch sechsmal schlafen bis zum 1. Advent." */
+export function nochSchlafen(heute: Kalendertag, sonntag: Kalendertag, advent: number): string {
+  const tage = Math.round(
+    (Date.UTC(sonntag.jahr, sonntag.monat - 1, sonntag.tag) - Date.UTC(heute.jahr, heute.monat - 1, heute.tag)) /
+      86_400_000,
+  );
+  const ziel = `bis zum ${advent}. Advent.`;
+  if (tage <= 1) return `Nur noch einmal schlafen ${ziel}`;
+  return `Noch ${tage < MAL.length ? `${MAL[tage]}mal` : `${tage}-mal`} schlafen ${ziel}`;
+}
+
 /** Kleine Änderungen an bestehenden Stellen der Startseite. */
 export const UEBERSCHRIFTEN: Record<
   Phase,

@@ -167,6 +167,23 @@ eine `Organization` (`lib/arbeitgeber.ts`) — mit „Dentist" lehnte Google
 die Anzeige für die Jobsuche ab. `gueltigBis`
 steht vorläufig auf dem 15.04.2027; davor prüfen und verlängern.
 
+### Weihnachtsmann an gesperrten Türchen (Winterkapitel)
+
+Seit 23.11.2026: Wer ein Adventstürchen vor seinem Sonntag antippt, bekommt
+einen von zehn Sprüchen in einer Sprechblase mit Countdown, gesprochen von
+einer ElevenLabs-Stimme („Klaus Santa"). Texte und Zuordnung zu den Dateien
+in `lib/winterkapitel.ts` (`WEIHNACHTSMANN`), Verhalten in
+`components/TafelTuer`. Der Ton spielt nur nach dem Klick, die Dateien
+kommen von der eigenen Domain (`media-src 'self'`).
+
+Rohdateien in `rohaudio/` (per `.gitignore` nicht im Repository), in der
+Reihenfolge der Sprüche nach Erstellungszeit nummeriert. Aufbereitet mit
+— Stille vorn und hinten weg, gleiche Lautheit, Mono, 64 kbit/s:
+
+```bash
+ffmpeg -i roh.mp3 -af "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.08,areverse,silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.25,areverse,loudnorm=I=-18:TP=-1.5:LRA=11" -ac 1 -c:a libmp3lame -b:a 64k public/ton/weihnachtsmann-01.mp3
+```
+
 ### Video „Blick vom Behandlungsstuhl"
 
 Seit 15.10.2026 auf der Startseite als **Tafel VI** (über die Breite des

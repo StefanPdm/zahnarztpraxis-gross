@@ -245,7 +245,11 @@ einmal — **vor dem Veröffentlichen zurück auf `"automatisch"`**.
 Tafeln des Advents" viermal schnell auf „vier" klicken — dann lassen sich
 alle Tafeln öffnen, bis die Seite neu geladen wird (`components/TafelnVorschau`).
 Darum stehen die Inhalte gesperrter Tafeln schon im HTML. Jede freigegebene
-Tafel öffnet sich per Klick aufs Rolltor (`components/TafelTuer`).
+Tafel öffnet sich per Klick aufs Rolltor (`components/TafelTuer`). Wer
+ein gesperrtes Türchen antippt, hört den Weihnachtsmann („Ho, ho, ho! Du
+bist zu früh …") — zehn Sprüche mit Aufnahme in `public/ton/`, Texte in
+`lib/winterkapitel.ts` (`WEIHNACHTSMANN`). Text ändern heißt Aufnahme neu
+machen, sonst passt die Blase nicht zum Ton.
 
 - **Schalter und alle Texte** in `lib/winterkapitel.ts`:
   `WINTERKAPITEL = "automatisch" | "aus" | "advent" | "neujahr"`. Die

@@ -6,8 +6,10 @@ import TafelnVorschau from "@/components/TafelnVorschau";
 import {
   ADVENTSTAFELN,
   adventssonntage,
+  nochSchlafen,
   TAFELN_KOPF,
   vergangeneAdvente,
+  WEIHNACHTSMANN,
   type Tafel,
   type Tafelinhalt,
   type Winterkapitel,
@@ -160,6 +162,11 @@ export default function AdventTafeln({ winter }: { winter: Winterkapitel }) {
               nummer={i + 1}
               gesperrt={!offen}
               hinweisGesperrt={`Öffnet sich am ${i + 1}. Advent`}
+              weihnachtsmann={
+                offen
+                  ? undefined
+                  : { sprueche: WEIHNACHTSMANN, nochSchlafen: nochSchlafen(winter.heute, sonntag, i + 1) }
+              }
               deckel={
                 <>
                   <span className="tafel__ziffer">{ROEMISCH[i]}</span>
