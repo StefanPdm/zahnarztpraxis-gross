@@ -140,11 +140,12 @@ export function adventssonntage(jahr: number): Kalendertag[] {
 
 /**
  * Wie viele Adventssonntage schon waren — so viele Türchen sind offen und so
- * viele Kerzen brennen in der Laufmarke. Testschalter "an": drei, damit
- * beide Zustände zu sehen sind.
+ * viele Kerzen brennen in der Laufmarke. Testschalter "an": alle vier.
+ * (Vorab ansehen lassen sich die Tafeln auch ohne Schalter: viermal auf
+ * „vier" in der Überschrift klicken, components/TafelnVorschau.)
  */
 export function vergangeneAdvente(winter: Winterkapitel): number {
-  if (winter.alles) return 3;
+  if (winter.alles) return 4;
   return adventssonntage(winter.heute.jahr).filter((s) => winter.heute.iso >= s.iso).length;
 }
 
@@ -198,35 +199,57 @@ export const ZWISCHEN_DEN_JAHREN = { von: [12, 22] as const, bis: [1, 2] as cons
 export type Tafelinhalt =
   | { art: 'liste'; eintraege: { titel: string; text: string }[] }
   | { art: 'rezept'; zutaten: string[]; schritte: string[]; randnotiz: string }
-  | { art: 'text'; absaetze: string[]; link?: { href: string; text: string } };
+  | { art: 'text'; absaetze: string[]; link?: { href: string; text: string } }
+  | { art: 'gruss'; absaetze: string[]; unterschriften: string[]; zusatz: string };
 
-/** `bild`: steht oben im aufgeklappten Türchen (Datei in public/images, Maße über `npm run bilder`). */
+/**
+ * `bild`: steht im aufgeklappten Türchen (Datei in public/images, Maße über
+ * `npm run bilder`). `ki`: erzeugtes Bild mit Menschen — bekommt die
+ * KI-Kennzeichnung (CLAUDE.md, Inhaltsregel 2).
+ */
 export type Tafel = {
   titel: string;
   kurz: string;
   inhalt: Tafelinhalt;
-  bild?: { src: string; alt: string };
+  bild?: { src: string; alt: string; ki?: boolean };
 };
 
 /** Je Adventssonntag eine Tafel; sie öffnet sich an diesem Sonntag und bleibt offen. */
 export const ADVENTSTAFELN: Tafel[] = [
   {
-    titel: 'Zahnfreundlich durch den Advent',
-    kurz: 'Drei kleine Gewohnheiten, mit denen Plätzchen, Glühwein und Nüsse ihren Schrecken verlieren.',
+    titel: 'Zum Staunen: Zähne, die keiner erwartet',
+    kurz: 'Vom Elefanten mit sechs Gebissen bis zur Schnecke mit Tausenden Zähnchen – etwas zum Staunen und Weitererzählen beim Adventskaffee.',
+    // Erzeugtes Bild ohne Menschen — darum ohne KI-Kennzeichnung (CLAUDE.md, Inhaltsregel 2).
+    bild: {
+      src: '/images/narwal-adventstafel.jpg',
+      alt: 'Aufgeschlagenes altes Naturkundebuch mit einem Kupferstich eines Narwals, daneben Schneckenhäuser, eine Lupe und ein Tannenzweig im Kerzenlicht',
+    },
     inhalt: {
       art: 'liste',
       eintraege: [
         {
-          titel: 'Nach dem Glühwein: erst Wasser, dann warten',
-          text: 'Säure und Zucker machen den Zahnschmelz kurz weich. Ein Glas Wasser spült beides ab; mit dem Zähneputzen warten Sie danach besser eine halbe Stunde.',
+          titel: 'Sechs Gebisse für ein Elefantenleben',
+          text: 'Elefanten bekommen nacheinander sechs Garnituren Backenzähne. Jeder neue schiebt sich von hinten nach vorn, und ein einzelner Backenzahn kann mehrere Kilo wiegen.',
         },
         {
-          titel: 'Lieber auf einmal als den ganzen Tag',
-          text: 'Nicht die Menge Zucker schadet am meisten, sondern wie oft er kommt. Ein paar Plätzchen zum Kaffee sind besser als eine Zuckerstange, an der man den ganzen Nachmittag lutscht.',
+          titel: 'Tausende Zähne – auf der Zunge',
+          text: 'Schnecken raspeln ihr Futter mit einer Zunge voller winziger Zähnchen, je nach Art Tausende bis Zehntausende. Die der Napfschnecke gelten sogar als das festeste bekannte Material aus der Natur – fester als Spinnenseide.',
         },
         {
-          titel: 'Nüsse gehören in den Nussknacker',
-          text: 'Walnüsse mit den Zähnen zu knacken, kostet jedes Jahr Ecken an Zähnen und Kronen. Der Nussknacker steht ohnehin schon auf dem Tisch.',
+          titel: 'Das Horn des Narwals ist ein Zahn',
+          text: 'Der lange, spiralförmig gedrehte Stoßzahn des Narwals ist ein Eckzahn, der durch die Oberlippe nach vorn wächst – meist nur bei den Männchen und bis zu drei Meter lang.',
+        },
+        {
+          titel: 'Zähne am Fließband',
+          text: 'Haie tragen mehrere Reihen Zähne hintereinander. Fällt vorn einer aus, rückt der nächste nach – so verbrauchen manche Arten im Lauf ihres Lebens Zehntausende Zähne.',
+        },
+        {
+          titel: 'Orange aus Eisen',
+          text: 'Biberzähne sind orange, weil ihr Zahnschmelz Eisen enthält. Das macht sie besonders widerstandsfähig – und nötig ist es auch, denn sie wachsen ein Leben lang nach.',
+        },
+        {
+          titel: 'Und wir?',
+          text: 'Zahnschmelz ist das härteste Material im menschlichen Körper, härter als jeder Knochen. Und die ersten Anlagen der Milchzähne entstehen schon im Mutterleib, um die sechste Schwangerschaftswoche.',
         },
       ],
     },
@@ -262,6 +285,11 @@ export const ADVENTSTAFELN: Tafel[] = [
   {
     titel: "Matthias' Potsdam im Winter",
     kurz: 'Drei Orte, die Matthias Groß als echter Potsdamer im Dezember jedem empfiehlt.',
+    // Erzeugtes Bild ohne Menschen — darum ohne KI-Kennzeichnung (CLAUDE.md, Inhaltsregel 2).
+    bild: {
+      src: '/images/hollaendisches-viertel-adventstafel.jpg',
+      alt: 'Das Holländische Viertel in Potsdam zur blauen Stunde: rote Backsteinhäuser mit leuchtenden Fenstern, Schnee auf Dächern und Kopfsteinpflaster',
+    },
     inhalt: {
       art: 'liste',
       eintraege: [
@@ -281,15 +309,23 @@ export const ADVENTSTAFELN: Tafel[] = [
     },
   },
   {
-    titel: 'Kaminfeuer an der Decke',
-    kurz: 'Über jedem Behandlungsstuhl hängt ein Monitor. Im Dezember dürfen Sie sich dort auch ein knisterndes Feuer wünschen.',
+    titel: 'Frohe Weihnachten aus der Schopenhauerstraße',
+    kurz: 'Hinter dem letzten Türchen warten wir selbst – mit Mütze.',
+    // Vorläufiges Bild bis zum echten Foto. Erzeugt und mit Menschen — darum
+    // mit KI-Kennzeichnung (CLAUDE.md, Inhaltsregel 2).
+    bild: {
+      src: '/images/weihnachtsgruss-adventstafel.jpg',
+      alt: 'Chantal Groß setzt Matthias Groß lachend eine rote Weihnachtsmütze auf',
+      ki: true,
+    },
     inhalt: {
-      art: 'text',
+      art: 'gruss',
       absaetze: [
-        'Wer zu uns kommt, kann über den Monitor an der Decke Musik hören oder einen beliebigen Film sehen. In der Adventszeit wählen viele etwas Ruhigeres: ein Kaminfeuer, das leise knistert, während wir arbeiten.',
-        'Sagen Sie es einfach beim Hinsetzen. Gerade wer ungern zum Zahnarzt geht, merkt oft, wie viel ein ruhiges Bild ausmacht.',
+        'Liebe Patientinnen und Patienten, danke für Ihr Vertrauen in diesem Jahr – für jedes Lächeln im Behandlungsstuhl und jede Geduld im Wartezimmer.',
+        'Wir wünschen Ihnen ruhige Feiertage, gute Gespräche und genau so viele Plätzchen, wie Ihnen guttun. Und falls doch einmal ein Zahn zwickt: Wann wir zwischen den Jahren für Sie da sind, steht ganz oben unter „Die stille Zeit“.',
       ],
-      link: { href: '/angstpatienten', text: 'Wie wir mit Zahnarztangst umgehen' },
+      unterschriften: ['Chantal Groß', 'Matthias Groß'],
+      zusatz: 'und das ganze Team',
     },
   },
 ];

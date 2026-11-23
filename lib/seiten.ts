@@ -220,9 +220,12 @@ const vorschaubildWinter = {
 export function seitenMetadaten(pfad: string): Metadata {
   const s = seite(pfad);
   const url = `${praxis.domain}${pfad === "/" ? "" : pfad}`;
-  const bild = winterkapitel() ? vorschaubildWinter : vorschaubild;
+  const winter = winterkapitel();
+  const bild = winter ? vorschaubildWinter : vorschaubild;
   return {
     title: s.titel,
+    // Testschalter "an" (Vorschau zum Absegnen): nie in den Suchindex.
+    ...(winter?.alles && { robots: { index: false, follow: false } }),
     description: s.beschreibung,
     alternates: { canonical: pfad },
     openGraph: {

@@ -65,6 +65,71 @@
   opacity: 0.75;
 }
 
+/* ── Hero: der Adventskranz links neben dem Slogan (components/HeroKranz) ──
+   Goldene Strichzeichnung wie der große Stern; es brennen so viele Kerzen,
+   wie Advente waren. Flamme und Lichthof jeder Kerze haben eigene Takte
+   (__takt-1 … 4), damit die vier nicht im Gleichschritt flackern. */
+.hero-kranz {
+  position: absolute;
+  left: 7%;
+  bottom: 230px;
+  z-index: 0;
+  width: 264px;
+  height: 160px;
+  overflow: visible;
+  color: var(--color-accent-400);
+  pointer-events: none;
+}
+.hero-kranz__wachs-hell { stop-color: color-mix(in srgb, var(--color-accent-300) 34%, transparent); }
+.hero-kranz__wachs-dunkel { stop-color: color-mix(in srgb, var(--color-accent-300) 4%, transparent); }
+.hero-kranz__flamme-1 { stop-color: var(--color-accent-100); }
+.hero-kranz__flamme-2 { stop-color: var(--color-accent-300); }
+.hero-kranz__flamme-3 { stop-color: var(--color-accent-500); stop-opacity: 0.2; }
+.hero-kranz__schein-1 { stop-color: var(--color-accent-300); stop-opacity: 0.42; }
+.hero-kranz__schein-2 { stop-color: var(--color-accent-500); stop-opacity: 0; }
+.hero-kranz__wachs-grund { fill: var(--ink-dark); }
+.hero-kranz__beere { fill: var(--color-accent-400); }
+.hero-kranz__kern { fill: var(--papier); opacity: 0.85; }
+.hero-kranz__flamme {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-accent-300) 85%, transparent));
+}
+.hero-kranz__schein { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-kranz__flamme { animation: flammeFlackern 2.3s ease-in-out infinite; }
+  .hero-kranz__schein { animation: kerzenSchein 3.7s ease-in-out infinite; }
+  .hero-kranz__takt-2 { animation-duration: 2.7s, 2.7s; animation-delay: -0.9s; }
+  .hero-kranz__schein.hero-kranz__takt-2 { animation-duration: 4.3s; }
+  .hero-kranz__takt-3 { animation-duration: 2s; animation-delay: -1.4s; }
+  .hero-kranz__schein.hero-kranz__takt-3 { animation-duration: 3.2s; }
+  .hero-kranz__takt-4 { animation-duration: 2.5s; animation-delay: -0.4s; }
+  .hero-kranz__schein.hero-kranz__takt-4 { animation-duration: 4.9s; }
+}
+@keyframes flammeFlackern {
+  0%, 100% { transform: scale(1, 1) skewX(0deg); }
+  9% { transform: scale(0.94, 1.08) skewX(-2deg); }
+  17% { transform: scale(1.03, 0.95) skewX(1.5deg); }
+  31% { transform: scale(0.97, 1.05) skewX(3deg); }
+  38% { transform: scale(1.02, 0.9) skewX(-1deg); }
+  52% { transform: scale(0.95, 1.1) skewX(-3deg); }
+  64% { transform: scale(1.04, 0.97) skewX(1deg); }
+  77% { transform: scale(0.98, 1.04) skewX(2.5deg); }
+  88% { transform: scale(1.01, 0.93) skewX(-1.5deg); }
+}
+@keyframes kerzenSchein {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  13% { opacity: 0.72; transform: scale(0.96); }
+  29% { opacity: 1; transform: scale(1.04); }
+  47% { opacity: 0.8; transform: scale(0.98); }
+  61% { opacity: 0.95; transform: scale(1.02); }
+  83% { opacity: 0.7; transform: scale(0.95); }
+}
+/* Mobil: kleiner, unten links — dort steht kein Text. */
+@media (max-width: 1000px) {
+  .hero-kranz { left: var(--rand); bottom: 20px; scale: 0.6; transform-origin: 0 100%; }
+}
+
 /* ── Hero: sieben funkelnde Sterne ───────────────────────────────────────── */
 .hero-sterne { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 /* Jeder Stern hat zwei Lagen: die Sternform (::before, maskiert) und einen
@@ -445,9 +510,11 @@
   .stillezeit__festtag { letter-spacing: 0.1em; }
 }
 
-/* ── Die vier Tafeln des Advents — vier Türchen nebeneinander ───────────────
-   Direkt unter „Die stille Zeit". Ein geschlossenes Türchen ist dunkel und
-   zeigt nur seine Ziffer; ein geöffnetes ist hell, mit Titel und Inhalt. */
+/* ── Die vier Tafeln des Advents — vier Türchen mit Rolltor ─────────────────
+   Direkt unter „Die stille Zeit". Jedes Türchen ist zuerst ein dunkles
+   Rolltor (components/TafelTuer): gesperrt mit geschlossenem Schloss,
+   freigegeben mit offenem Schloss und Leuchten. Geöffnet nimmt die Kachel
+   die ganze Zeile ein, das Tor rollt nach oben und gibt den Inhalt frei. */
 .tafeln {
   padding-top: 88px;
   padding-bottom: 96px;
@@ -462,48 +529,91 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
-  align-items: start;
 }
+/* Vorschau per viermal „vier" (components/TafelnVorschau) */
+.tafeln__vier { cursor: default; -webkit-user-select: none; user-select: none; }
+
 .tafel {
   position: relative;
   overflow: hidden;
   min-height: 340px;
-  padding: 30px 26px 24px;
   background: var(--weiss);
   border: 1px solid var(--color-accent-300);
   border-top: 3px solid var(--color-accent);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
-.tafel--zu {
+/* Namen für den Übergang beim Öffnen: Die Kachel wächst, die anderen gleiten. */
+.tafel:nth-child(1) { view-transition-name: tafel-1; }
+.tafel:nth-child(2) { view-transition-name: tafel-2; }
+.tafel:nth-child(3) { view-transition-name: tafel-3; }
+.tafel:nth-child(4) { view-transition-name: tafel-4; }
+/* Bewusst ohne grid-auto-flow: dense — die Reihenfolge des Kalenders geht
+   vor der Lücke neben einem geöffneten Türchen. */
+.tafel--offen { grid-column: 1 / -1; }
+
+/* Das Rolltor */
+.tafel__tor {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 24px 18px 34px;
+  border: 0;
+  font: inherit;
   text-align: center;
+  color: var(--papier);
+  cursor: pointer;
   background:
     radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in srgb, var(--color-accent-900) 60%, var(--ink-dark)), var(--ink-dark));
-  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
-  color: var(--papier);
+  transition: translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.tafel__ziffer {
+.tafel__tor:disabled { cursor: default; color: var(--papier); }
+.tafel__tor:focus-visible { outline: 2px solid var(--color-accent-300); outline-offset: -6px; }
+/* Lamellen und Endleiste mit Griff */
+.tafel__lamellen {
   position: absolute;
-  right: 18px;
-  bottom: -14px;
-  font-family: var(--font-heading);
-  font-size: 96px;
-  line-height: 1;
-  color: var(--color-accent);
-  opacity: 0.2;
+  inset: 0;
   pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 17px,
+    color-mix(in srgb, var(--color-accent) 22%, transparent) 17px 18px,
+    color-mix(in srgb, var(--ink-dark) 70%, transparent) 18px 19px
+  );
 }
-.tafel--zu .tafel__ziffer {
-  position: static;
-  order: -1;
-  font-size: 128px;
-  opacity: 1;
+.tafel__tor::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7px;
+  background: linear-gradient(var(--color-accent-300), var(--color-accent-700));
+}
+.tafel__tor::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  width: 54px;
+  height: 4px;
+  translate: -50% 0;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--color-accent-300) 70%, transparent);
+}
+.tafel__tor > * { position: relative; }
+.tafel__ziffer {
+  font-family: var(--font-heading);
+  font-size: 112px;
+  line-height: 1;
   color: var(--color-accent-400);
-  margin-bottom: 14px;
 }
 .tafel__wann {
   font-family: var(--font-ui);
@@ -512,37 +622,115 @@
   text-transform: uppercase;
   color: var(--color-accent-700);
 }
-.tafel--zu .tafel__wann { color: var(--color-accent-300); }
+.tafel__tor .tafel__wann { color: var(--color-accent-300); }
 .tafel__datum::before { content: ' · '; }
+.tafel__schloss {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 6px;
+  border: 1px solid color-mix(in srgb, var(--color-accent-300) 70%, transparent);
+  border-radius: 50%;
+  color: var(--color-accent-300);
+}
+.tafel__schloss svg { width: 24px; height: 24px; }
+.tafel__aufforderung {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-300);
+}
+/* Gesperrt: gedämpft. Freigegeben: Schloss leuchtet, das Tor hebt sich beim
+   Zeigen ein Stück — man sieht, dass es aufgeht. */
+.tafel--gesperrt .tafel__ziffer { color: color-mix(in srgb, var(--color-accent-400) 55%, transparent); }
+.tafel--gesperrt .tafel__schloss { opacity: 0.6; }
+.tafel--gesperrt .tafel__aufforderung { color: color-mix(in srgb, var(--papier) 78%, transparent); }
+.tafel--bereit .tafel__schloss {
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--color-accent-300) 55%, transparent);
+}
+@media (hover: hover) {
+  .tafel--bereit .tafel__tor:hover { translate: 0 -12px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tafel--bereit .tafel__schloss { animation: schlossLeuchten 2.8s ease-in-out infinite; }
+  /* Kurz nachgeben, dann mit Schwung nach oben — wie ein echtes Rolltor. */
+  .tafel__tor--rollt { animation: rolltorHoch 1.15s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+}
+@keyframes schlossLeuchten {
+  0%, 100% { box-shadow: 0 0 14px color-mix(in srgb, var(--color-accent-300) 35%, transparent); }
+  50% { box-shadow: 0 0 30px color-mix(in srgb, var(--color-accent-300) 75%, transparent); }
+}
+@keyframes rolltorHoch {
+  0% { translate: 0 0; }
+  14% { translate: 0 8px; }
+  100% { translate: 0 -102%; }
+}
+/* Ohne Bewegung endet das Rollen sofort (TafelTuer wartet auf animationend). */
+@media (prefers-reduced-motion: reduce) {
+  .tafel__tor--rollt { animation: rolltorHoch 1ms forwards; }
+}
+
+/* Übergang beim Öffnen und Schließen (View Transition, components/TafelTuer):
+   Die Bilder der Kacheln werden nicht gestreckt, sondern mittig beschnitten —
+   so wächst die Kachel, und die Ziffer auf dem Tor bleibt ruhig stehen. Die
+   übrige Seite wechselt ohne Überblendung. */
+::view-transition-group(tafel-1),
+::view-transition-group(tafel-2),
+::view-transition-group(tafel-3),
+::view-transition-group(tafel-4) {
+  overflow: clip;
+  border-radius: var(--radius-md);
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(tafel-1), ::view-transition-new(tafel-1),
+::view-transition-old(tafel-2), ::view-transition-new(tafel-2),
+::view-transition-old(tafel-3), ::view-transition-new(tafel-3),
+::view-transition-old(tafel-4), ::view-transition-new(tafel-4) {
+  height: 100%;
+  object-fit: none;
+  object-position: 50% 50%;
+}
+:root.tafel-wechsel::view-transition-old(root),
+:root.tafel-wechsel::view-transition-new(root) { animation: none; }
+
+/* Die geöffnete Tafel */
+.tafel__offen { padding: 40px 44px 30px; }
+.tafel__spalten {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
+  gap: 48px;
+  align-items: start;
+}
 .tafel__titel {
   font-weight: 400;
   font-size: var(--fs-h3);
   line-height: 1.15;
   margin: 14px 0 12px;
 }
-.tafel--zu .tafel__titel { font-style: italic; color: var(--papier); margin-bottom: 6px; }
-.tafel__hinweis { margin: 0; font-size: 14px; line-height: 1.5; color: color-mix(in srgb, var(--papier) 78%, transparent); }
-.tafel__mehr { margin-top: 18px; }
-.tafel__mehr > summary {
+.tafel__kurz { margin: 0 0 20px; }
+.tafel__offen .tafel__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
+.tafel__zu-knopf {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   min-height: 44px;
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+  background: none;
   cursor: pointer;
-  list-style: none;
   font-family: var(--font-ui);
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent-700);
 }
-.tafel__mehr > summary::-webkit-details-marker { display: none; }
-.tafel__mehr > summary::after { content: '+'; font-size: 18px; letter-spacing: 0; }
-.tafel__mehr[open] > summary::after { content: '–'; }
-.tafel__mehr[open] > summary { margin-bottom: 8px; }
-.tafel__schliessen,
-.tafel__mehr[open] .tafel__oeffnen { display: none; }
-.tafel__mehr[open] .tafel__schliessen { display: inline; }
+.tafel__zu-knopf::after { content: '–'; font-size: 18px; letter-spacing: 0; }
 .tafel__liste { margin: 0; display: grid; gap: 18px; }
 .tafel__liste dd { margin: 6px 0 0; }
 .tafel__rezept { display: grid; gap: 22px; }
@@ -563,40 +751,30 @@
   .tafeln { padding-top: 64px; padding-bottom: 64px; }
   .tafeln__raster { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .tafel { min-height: 260px; }
-  /* Ein geöffnetes Türchen nimmt die ganze Breite ein — Rezept und Listen
-     bleiben so lesbar. Ohne :has()-Unterstützung bleibt es in seiner Spalte. */
-  /* Bewusst ohne grid-auto-flow: dense — sonst rückte Türchen III vor das
-     geöffnete II. Die Reihenfolge des Kalenders geht vor der Lücke daneben. */
-  .tafel:has(.tafel__mehr[open]) { grid-column: 1 / -1; }
+  .tafel__ziffer { font-size: 88px; }
+  .tafel__offen { padding: 30px 24px 22px; }
+  .tafel__spalten { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .tafel__offen .tafel__liste { grid-template-columns: minmax(0, 1fr); gap: 18px; }
 }
 @media (max-width: 640px) {
-  /* Zwei Türchen nebeneinander, kompakt: Datum, Titel, „Tafel öffnen".
-     Der Anreißer erscheint erst, wenn das Türchen offen ist. */
   .tafeln__raster { gap: 12px; }
-  .tafel { min-height: 196px; padding: 20px 16px 14px; }
-  .tafel__wann { font-size: 12px; letter-spacing: 0.12em; line-height: 1.5; }
-  .tafel__datum { display: block; }
-  .tafel__datum::before { content: none; }
-  .tafel:has(.tafel__mehr[open]) .tafel__datum { display: inline; }
-  .tafel:has(.tafel__mehr[open]) .tafel__datum::before { content: ' · '; }
-  .tafel:has(.tafel__mehr[open]) .tafel__titel { font-size: 22px; margin-bottom: 10px; }
-  .tafel__titel { font-size: 19px; margin: 10px 0 4px; }
-  .tafel > .text-15 { display: none; }
-  .tafel:has(.tafel__mehr[open]) > .text-15 { display: block; }
-  .tafel:has(.tafel__mehr[open]) { padding: 24px 20px 20px; }
-  .tafel__mehr { margin-top: 6px; }
-  .tafel__mehr > summary { font-size: 12px; letter-spacing: 0.1em; gap: 6px; }
-  .tafel__ziffer { font-size: 56px; right: 10px; bottom: -10px; }
-  .tafel--zu { min-height: 196px; }
-  .tafel--zu .tafel__ziffer { font-size: 64px; margin-bottom: 8px; }
-  .tafel--zu .tafel__titel { font-size: 17px; }
-  .tafel__hinweis { font-size: 13px; }
+  .tafel { min-height: 214px; }
+  .tafel__tor { gap: 8px; padding: 16px 10px 30px; }
+  .tafel__ziffer { font-size: 60px; }
+  .tafel__tor .tafel__wann { letter-spacing: 0.12em; line-height: 1.5; }
+  .tafel__tor .tafel__datum { display: block; }
+  .tafel__tor .tafel__datum::before { content: none; }
+  .tafel__schloss { width: 44px; height: 44px; margin-top: 2px; }
+  .tafel__schloss svg { width: 20px; height: 20px; }
+  .tafel__aufforderung { letter-spacing: 0.1em; }
+  .tafel__offen { padding: 24px 20px 18px; }
+  .tafel__titel { font-size: 22px; margin: 10px 0 10px; }
 }
 
 /* ── Der Leitstern (Startseite) ──────────────────────────────────────────────
    Der große Stern unter dem Slogan macht sich auf den Weg (components/
-   Leitstern): Er fliegt aus der Hero an den Rand, wird dabei klein und wandert
-   mit dem Lesefortschritt bis zum Terminformular. Lage und Größe setzt die
+   Leitstern): Er fliegt aus der Hero an den Rand, wird dabei kleiner und
+   wandert pendelnd mit dem Lesefortschritt bis zum Terminformular. Lage und Größe setzt die
    Komponente (transform, --g); --flug (0 … 1) blendet von der Linienzeichnung
    zum funkelnden Goldstern mit Schweif und Lichthof über. */
 .mit-leitstern #hero .hero-stern { visibility: hidden; }
@@ -621,6 +799,8 @@
   width: 1px;
   height: calc(var(--g) * 3.2);
   translate: -50% -100% !important;
+  transform-origin: 50% 100%;
+  rotate: var(--neigung, 0deg);
   background: linear-gradient(to top, color-mix(in srgb, var(--color-accent) 70%, transparent), transparent);
   opacity: calc(var(--flug) * 1.4 - 0.4);
 }
@@ -642,6 +822,18 @@
 @media (prefers-reduced-motion: no-preference) {
   .leitstern__stern { animation: leitsternFunkeln 3.6s ease-in-out infinite; }
   .leitstern__schein { animation: leitsternSchein 3.6s ease-in-out infinite; }
+}
+/* Schweben auf der Stelle: über die Eigenschaft translate, die sich zur
+   transform-Lage der Komponente addiert. Erst am Rand, damit der Stern in der
+   Hero genau über seinem Platz liegt. */
+@media (prefers-reduced-motion: no-preference) {
+  .leitstern.ist-unterwegs { animation: leitsternSchweben 5.2s ease-in-out infinite; }
+}
+@keyframes leitsternSchweben {
+  0%, 100% { translate: 0 0; }
+  25% { translate: 3px -5px; }
+  50% { translate: 0 -8px; }
+  75% { translate: -3px -4px; }
 }
 /* Nur scale — Lage (translate) und Deckkraft (--flug) bleiben unberührt. */
 @keyframes leitsternSchein {
@@ -738,11 +930,84 @@
 }
 
 /* Bild oben im aufgeklappten Türchen (lib/winterkapitel.ts, `bild`). */
+.tafel__bildrahmen { position: relative; margin: 4px 0 20px; }
 .tafel__bild {
   display: block;
   width: 100%;
   height: auto;
-  margin: 4px 0 20px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-divider);
+}
+
+/* Der Gruß am 4. Advent: Foto groß, darüber feiner Goldschnee. Er setzt ein,
+   wenn das Rolltor oben ist, und fällt zweimal durchs Bild. */
+.tafel__spalten--gruss { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; }
+.tafel__spalten--gruss .tafel__bildrahmen { margin: 0; }
+.tafel__schnee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+.tafel__schnee > span {
+  position: absolute;
+  top: -12px;
+  left: var(--x);
+  width: var(--d, 6px);
+  height: var(--d, 6px);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--weiss), var(--color-accent-100) 45%, color-mix(in srgb, var(--color-accent-400) 70%, transparent) 75%, transparent);
+  box-shadow: 0 0 calc(var(--d, 6px) * 1.4) color-mix(in srgb, var(--color-accent-400) 75%, transparent);
+  scale: 1.6;
+  opacity: 0;
+}
+.tafel__schnee > span:nth-child(1) { --x: 6%; --d: 7px; --t: 7s; --v: 1.4s; }
+.tafel__schnee > span:nth-child(2) { --x: 13%; --d: 4px; --t: 9s; --v: 2.6s; }
+.tafel__schnee > span:nth-child(3) { --x: 21%; --d: 8px; --t: 6.5s; --v: 1.9s; }
+.tafel__schnee > span:nth-child(4) { --x: 28%; --d: 5px; --t: 8.5s; --v: 3.4s; }
+.tafel__schnee > span:nth-child(5) { --x: 35%; --d: 6px; --t: 7.5s; --v: 1.2s; }
+.tafel__schnee > span:nth-child(6) { --x: 42%; --d: 4px; --t: 9.5s; --v: 2.2s; }
+.tafel__schnee > span:nth-child(7) { --x: 49%; --d: 7px; --t: 6.8s; --v: 3s; }
+.tafel__schnee > span:nth-child(8) { --x: 55%; --d: 5px; --t: 8s; --v: 1.6s; }
+.tafel__schnee > span:nth-child(9) { --x: 62%; --d: 8px; --t: 7.2s; --v: 2.8s; }
+.tafel__schnee > span:nth-child(10) { --x: 68%; --d: 4px; --t: 9s; --v: 1.3s; }
+.tafel__schnee > span:nth-child(11) { --x: 74%; --d: 6px; --t: 6.6s; --v: 3.6s; }
+.tafel__schnee > span:nth-child(12) { --x: 80%; --d: 5px; --t: 8.8s; --v: 2s; }
+.tafel__schnee > span:nth-child(13) { --x: 86%; --d: 7px; --t: 7.4s; --v: 1.5s; }
+.tafel__schnee > span:nth-child(14) { --x: 92%; --d: 4px; --t: 9.2s; --v: 2.9s; }
+.tafel__schnee > span:nth-child(15) { --x: 17%; --d: 5px; --t: 8.2s; --v: 4.2s; }
+.tafel__schnee > span:nth-child(16) { --x: 58%; --d: 6px; --t: 7.8s; --v: 4.6s; }
+@media (prefers-reduced-motion: no-preference) {
+  .tafel__schnee > span { animation: goldschnee var(--t) linear var(--v) 2; }
+}
+@keyframes goldschnee {
+  0% { opacity: 0; transform: translate(0, 0); }
+  8% { opacity: 0.95; }
+  25% { transform: translate(10px, calc(var(--fall) * 0.25)); }
+  50% { transform: translate(-8px, calc(var(--fall) * 0.5)); }
+  75% { transform: translate(9px, calc(var(--fall) * 0.75)); }
+  92% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(-4px, var(--fall, 560px)); }
+}
+.tafel__schnee > span { --fall: 560px; }
+.tafel__gruss { margin: 0; }
+.tafel__gruss blockquote { margin: 0; display: grid; gap: 12px; }
+.tafel__gruss blockquote p { margin: 0; }
+.tafel__gruss figcaption { margin-top: 22px; }
+.tafel__unterschriften { display: flex; flex-wrap: wrap; gap: 8px 32px; }
+.tafel__unterschrift { display: flex; flex-direction: column; }
+.tafel__signatur { font-size: 40px; line-height: 1.1; color: var(--color-accent-700); }
+.tafel__name, .tafel__zusatz {
+  margin-top: 4px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+.tafel__zusatz { display: block; margin-top: 14px; }
+@media (max-width: 1000px) {
+  .tafel__spalten--gruss { grid-template-columns: minmax(0, 1fr); }
+  .tafel__schnee > span { --fall: 340px; }
 }

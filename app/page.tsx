@@ -20,6 +20,7 @@ import { offeneStellen } from '@/lib/karriere';
 import { scanVorteile } from '@/lib/digitalerAbdruck';
 import ScanGrafik from '@/components/ScanGrafik';
 import Einblenden from '@/components/Einblenden';
+import HeroKranz from '@/components/HeroKranz';
 import HeroStern from '@/components/HeroStern';
 import HeroSterne from '@/components/HeroSterne';
 import StilleZeit from '@/components/StilleZeit';
@@ -231,6 +232,7 @@ export default function Index() {
               aria-hidden='true'
             />
             {winter && <HeroSterne />}
+            {winter?.phase === 'advent' && <HeroKranz brennen={vergangeneAdvente(winter)} />}
             <div
               id='heroInner'
               style={{ position: 'relative', zIndex: 1 }}>

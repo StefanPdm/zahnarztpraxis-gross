@@ -88,7 +88,7 @@ Selektor in einer CSS-Datei steht.
   aktuell: Kopfzeile, Termin-Leiste, Zurück-nach-oben, Scroll-Effekte,
   Laufmarke, Angst-Regler, Termin-Formular, Praxis-Video,
   Karte, GROSSELINO, GROSSELINO-Spiel (404), Einblenden, Öffnungsstatus, Karriere-Fahne,
-  Bewerbungs-Dialog, Leitstern (Winterkapitel).
+  Bewerbungs-Dialog, Leitstern, Tafel-Rolltor und Tafeln-Vorschau (Winterkapitel).
 - Scroll-Verhalten über `useBeimScrollen` (lib/) — mit dem Pfad als
   Schlüssel, wenn die Komponente im Layout sitzt.
 - **Jede Mail, die die Website verschickt, ist gestaltet** — auch die an
@@ -133,7 +133,8 @@ Selektor in einer CSS-Datei steht.
    gekennzeichnet: `/parodontologie` (Zahnfleisch), `/praxis-team`
    (Beratung bei den Mitgliedschaften), `/zahnschmerzen` (Wartebereich),
    `/aesthetische-zahnmedizin` (Porträt), `/ausbildung` (ZFA am
-   Behandlungsstuhl) und `/karriere` (Auszubildende am Empfang). Faustregel aus der Praxis:
+   Behandlungsstuhl) und `/karriere` (Auszubildende am Empfang), dazu Türchen IV des Winterkapitels
+   (Weihnachtsporträt, vorläufig bis zum echten Foto). Faustregel aus der Praxis:
    Zeigt ein erzeugtes Bild **Menschen**, wird es gekennzeichnet;
    Räume, Geräte und Stillleben bisher nicht.
 3. **Belegte Fakten:** familiengeführt seit 1991 in Potsdam Mitte; fünf
@@ -227,7 +228,9 @@ Sitemap, `llms.txt` und die `.html`-Weiterleitung entstehen automatisch.
 Von einer Woche vor dem ersten Advent bis 6. Januar zeigt die Website ein
 „Winterkapitel" (Beginn und Ende einstellbar in `lib/winterkapitel.ts`,
 `BEGINN_TAGE_VOR_DEM_ERSTEN_ADVENT` und `ENDE_TAG_IM_JANUAR`): eine
-dunkle Winterabend-Hero mit Kerzenlicht und funkelnden Sternen, ein dunkles
+dunkle Winterabend-Hero mit Kerzenlicht, funkelnden Sternen und einer
+Adventskranz links neben dem Slogan (so viele
+Kerzen brennen, wie Advente waren), ein dunkles
 Band unter der Kopfzeile auf jeder Seite, ein Stern über dem Monogramm,
 „Kapitel 0 · Die stille Zeit" mit den Sprechzeiten zwischen den Jahren,
 darunter „Die vier Tafeln des Advents" als Türchen, ein Leitstern, der beim
@@ -237,6 +240,12 @@ GROSSELINO mit Mütze, Schal und Wintersprüchen, ein Gruß in der
 Terminbestätigung. Danach ist
 alles wieder wie vorher. Zum Testen zeigt der Schalter `"an"` alles auf
 einmal — **vor dem Veröffentlichen zurück auf `"automatisch"`**.
+
+**Türchen vorab ansehen** (etwa zum Absegnen): In der Überschrift „Die vier
+Tafeln des Advents" viermal schnell auf „vier" klicken — dann lassen sich
+alle Tafeln öffnen, bis die Seite neu geladen wird (`components/TafelnVorschau`).
+Darum stehen die Inhalte gesperrter Tafeln schon im HTML. Jede freigegebene
+Tafel öffnet sich per Klick aufs Rolltor (`components/TafelTuer`).
 
 - **Schalter und alle Texte** in `lib/winterkapitel.ts`:
   `WINTERKAPITEL = "automatisch" | "aus" | "advent" | "neujahr"`. Die
