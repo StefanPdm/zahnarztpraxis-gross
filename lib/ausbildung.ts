@@ -35,6 +35,10 @@ export const ausbildung = {
   beginn: "2027-08-01",
   beginnLang: "1. August 2027",
   dauerJahre: 3,
+  /** Monatliche Ausbildungsvergütung in Euro, je Ausbildungsjahr
+      (Auftraggeber, 23.11.2026). Steht sichtbar auf /ausbildung und als
+      baseSalary im JobPosting — Google verlangt, dass beides übereinstimmt. */
+  verguetung: [1050, 1150, 1250],
   /* Bis wann die Anzeige gelten soll. Kein Datum vom Auftraggeber —
      gesetzt auf den Tag vor Ausbildungsbeginn, weil eine Bewerbung bis
      dahin theoretisch möglich bleibt. Sobald eine echte Frist feststeht,

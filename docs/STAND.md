@@ -85,8 +85,10 @@ die weiterläuft, wird abgewertet. Dafür genügt in `lib/ausbildung.ts`:
 offen: false   // Markup und Bewerbungsaufforderung entfallen zugleich
 ```
 
-Die Seite bleibt dann als Information über den Beruf stehen. Offen sind
-noch: Höhe der Vergütung, Berufsschule, Ansprechpartnerin, Praktikum oder
+Die Seite bleibt dann als Information über den Beruf stehen. Die
+Ausbildungsvergütung (1.050 / 1.150 / 1.250 € im Monat, Auftraggeber
+23.11.2026) steht in `lib/ausbildung.ts` und als `baseSalary` im
+JobPosting. Offen sind noch: Berufsschule, Ansprechpartnerin, Praktikum oder
 Schnuppertag, eine echte Bewerbungsfrist (`gueltigBis` steht vorläufig auf
 dem Tag vor Ausbildungsbeginn) und die Frage nach Social-Media-Konten.
 Sie stehen als `.todo`-Box sichtbar auf der Seite.
@@ -142,10 +144,14 @@ Versand mit den SMTP-Daten steht noch aus.**
       Praxis erinnert daran; zugesagt in Abschnitt 05).
 
 **Zahntechniker-Anzeige:** Text von Claude formuliert, auf Ansage des
-Auftraggebers. Noch zu bestätigen: Vollzeit/Teilzeit, Beginn „ab sofort",
+Auftraggebers. Arbeitszeit: 35 Stunden in der Woche (Auftraggeber,
+23.11.2026). Noch zu bestätigen: Teilzeit, Beginn „ab sofort",
 die Leistungen in der Liste „Das bieten wir Ihnen" (unbefristet, geregelte
-Arbeitszeiten, Fortbildungen), Probetag. **Gehalt fehlt bewusst** — kommt
-vom Auftraggeber, dann als `baseSalary` auch ins JobPosting. `gueltigBis`
+Arbeitszeiten, Fortbildungen), Probetag. **Gehalt:** 4.000 € brutto im
+Monat (Auftraggeber, 23.11.2026), in `lib/karriere.ts` und als
+`baseSalary` im JobPosting. `hiringOrganization` ist in beiden Anzeigen
+eine `Organization` (`lib/arbeitgeber.ts`) — mit „Dentist" lehnte Google
+die Anzeige für die Jobsuche ab. `gueltigBis`
 steht vorläufig auf dem 15.04.2027; davor prüfen und verlängern.
 
 ### Video „Blick vom Behandlungsstuhl"

@@ -20,8 +20,8 @@ import { ausbildung } from "./ausbildung";
   15.10.2026 ausdrücklich freigegeben, sie selbst zu formulieren, nach dem
   Muster üblicher Ausschreibungen. Ausnahme von „Nichts erfinden"
   (CLAUDE.md), auf diese eine Anzeige beschränkt. Vom Auftraggeber noch zu
-  bestätigen: Arbeitszeit, Beginn, Leistungen, Gehalt (bewusst weggelassen,
-  kommt später). Siehe docs/STAND.md.
+  bestätigen: Beginn, Leistungen. Gehalt und Wochenarbeitszeit hat der
+  Auftraggeber am 23.11.2026 genannt. Siehe docs/STAND.md.
 */
 export const zahntechnik = {
   offen: true,
@@ -31,6 +31,11 @@ export const zahntechnik = {
   zusatz: "(w/m/d)",
   beginnLang: "ab sofort",
   umfang: "Vollzeit oder Teilzeit",
+  /** Bruttogehalt im Monat in Euro (Auftraggeber, 23.11.2026). Steht
+      sichtbar auf der Anzeige und als baseSalary im JobPosting. */
+  gehaltBrutto: 4000,
+  /** Wochenarbeitszeit in Stunden (Auftraggeber, 23.11.2026). */
+  wochenstunden: 35,
   /* Festes Datum, kein `new Date()` — Begründung in lib/ausbildung.ts. */
   veroeffentlicht: "2026-10-15",
   /* Keine Frist vom Auftraggeber. Sechs Monate, danach prüfen und

@@ -7,6 +7,7 @@ import { seitenMetadaten } from '@/lib/seiten';
 import BewerbungsDialog from '@/components/BewerbungsDialog';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
+import { arbeitgeber, euro, monatsverguetung } from '@/lib/arbeitgeber';
 import { ausbildung } from '@/lib/ausbildung';
 import { interessen } from '@/lib/karriere';
 import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
@@ -28,6 +29,12 @@ export const metadata = seitenMetadaten('/ausbildung');
 */
 
 const stellentitel = `Ausbildung ${ausbildung.ausbildungZum} (${ausbildung.kuerzel}) ${ausbildung.zusatz}`;
+
+/* „1.050 € im 1., 1.150 € im 2. und 1.250 € im 3. Ausbildungsjahr" */
+const verguetungText = (() => {
+  const teile = ausbildung.verguetung.map((b, i) => `${euro(b)} im ${i + 1}.`);
+  return `${teile.slice(0, -1).join(', ')} und ${teile[teile.length - 1]} Ausbildungsjahr`;
+})();
 
 const zahlen = [
   { value: ausbildung.beginnLang, label: 'Ausbildungsbeginn' },
@@ -96,7 +103,8 @@ const mitbringen = [
 
 const bieten = [
   'Sehr gute Übernahmechancen nach bestandener Abschlussprüfung',
-  'Eine Ausbildungsvergütung und geregelte Arbeitszeiten',
+  `Ausbildungsvergütung im Monat: ${verguetungText}`,
+  'Geregelte Arbeitszeiten',
   'Unterstützung bei der Vorbereitung auf die Prüfungen',
   'Helle Räume mit Tageslicht in allen fünf Behandlungszimmern',
   'Ein Team, das Fragen beantwortet, statt sie abzuwinken',
@@ -111,6 +119,10 @@ const faq = [
   {
     q: 'Wie lange dauert die Ausbildung?',
     a: 'Drei Jahre, dual: Du arbeitest in der Praxis und gehst daneben zur Berufsschule. Bei guten Leistungen lässt sich die Zeit verkürzen — das entscheidet die Zahnärztekammer auf Antrag.',
+  },
+  {
+    q: 'Wie viel verdiene ich in der Ausbildung?',
+    a: `Deine Ausbildungsvergütung im Monat: ${verguetungText}.`,
   },
   {
     q: 'Was macht eine ZFA eigentlich den ganzen Tag?',
@@ -132,8 +144,10 @@ const stellenanzeige = {
     `<p>Wir bilden ${ausbildung.ausbildungZum} ${ausbildung.zusatz} aus. Ausbildungsbeginn ist der ${ausbildung.beginnLang}, die Ausbildung dauert ${ausbildung.dauerJahre} Jahre.</p>`,
     '<p>Du lernst alle Bereiche kennen: Behandlungsassistenz, Prophylaxe, Empfang mit Terminvergabe und Abrechnung, Hygiene und Röntgen sowie das praxiseigene Zahnlabor.</p>',
     `<p>Wir sind eine familiengeführte Zahnarztpraxis in Potsdam Mitte, seit ${praxis.gegruendet} in derselben Familie, mit ${praxis.behandlungszimmer} Behandlungszimmern und eigenem Labor in der Praxis.</p>`,
-    '<p>Voraussetzung ist ein erfolgreicher Schulabschluss. Wir bieten sehr gute Übernahmechancen, eine Ausbildungsvergütung, geregelte Arbeitszeiten und Unterstützung bei der Prüfungsvorbereitung.</p>',
+    '<p>Voraussetzung ist ein erfolgreicher Schulabschluss. Wir bieten sehr gute Übernahmechancen, geregelte Arbeitszeiten und Unterstützung bei der Prüfungsvorbereitung.</p>',
+    `<p>Ausbildungsvergütung im Monat: ${verguetungText}.</p>`,
   ].join(''),
+  baseSalary: monatsverguetung(ausbildung.verguetung[0], ausbildung.verguetung[ausbildung.verguetung.length - 1]),
   datePosted: ausbildung.veroeffentlicht,
   validThrough: ausbildung.gueltigBis,
   jobStartDate: ausbildung.beginn,
@@ -145,13 +159,7 @@ const stellenanzeige = {
     '@type': 'EducationalOccupationalCredential',
     credentialCategory: 'high school',
   },
-  hiringOrganization: {
-    '@type': 'Dentist',
-    '@id': `${praxis.domain}/#praxis`,
-    name: praxis.vollerName,
-    url: `${praxis.domain}/`,
-    telephone: praxis.telefonIntl,
-  },
+  hiringOrganization: arbeitgeber,
   jobLocation: {
     '@type': 'Place',
     address: {
@@ -403,7 +411,7 @@ export default function Ausbildung() {
         className='todo'
         style={{ margin: '0 var(--rand) 40px' }}>
         <b>Von der Praxis zu bestätigen</b>
-        Höhe der Ausbildungsvergütung · zuständige Berufsschule · Ansprechpartnerin für Bewerbungen
+        Zuständige Berufsschule · Ansprechpartnerin für Bewerbungen
         · ob ein Praktikum oder Schnuppertag möglich ist · Bewerbungsfrist (steht im JobPosting
         derzeit auf dem Tag vor Ausbildungsbeginn) · Instagram oder Facebook, falls vorhanden.
       </div> */}

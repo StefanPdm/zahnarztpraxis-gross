@@ -6,6 +6,7 @@ import { seitenMetadaten } from '@/lib/seiten';
 import BewerbungsDialog from '@/components/BewerbungsDialog';
 import Fragen from '@/components/Fragen';
 import { praxis } from '@/lib/praxis';
+import { arbeitgeber, euro, monatsverguetung } from '@/lib/arbeitgeber';
 import { interessen, zahntechnik } from '@/lib/karriere';
 import { RUECKMELDUNG_BEWERBUNG } from '@/lib/bewerbung';
 
@@ -17,7 +18,7 @@ export const metadata = seitenMetadaten('/karriere/zahntechniker');
   angelehnt an übliche Ausschreibungen, aber nur mit dem, was die Praxis
   tatsächlich hat: Labor in der Praxis, CAD/CAM, Modellscanner,
   Intraoralscanner, 3-D-Drucker und Keramiköfen (Foto des Labors).
-  Gehalt bewusst noch nicht — kommt vom Auftraggeber.
+  Gehalt vom Auftraggeber, 23.11.2026 (lib/karriere.ts).
 
   Anrede „Sie": Die Anzeige richtet sich an Fachkräfte. Nur /ausbildung duzt.
 
@@ -71,7 +72,12 @@ const mitbringen = [
   'Sorgfalt, Verlässlichkeit und Sinn für ein kleines Team',
 ];
 
+const gehaltText = `${euro(zahntechnik.gehaltBrutto)} brutto im Monat`;
+const stundenText = `${zahntechnik.wochenstunden} Stunden in der Woche`;
+
 const bieten = [
+  `Gehalt: ${gehaltText}`,
+  `Arbeitszeit: ${stundenText}`,
   'Eine unbefristete Anstellung, in Vollzeit oder Teilzeit',
   'Ein eingerichtetes Labor: CAD/CAM, Modellscanner, 3-D-Drucker, Keramiköfen',
   'Abwechslung statt Serienfertigung, vom Inlay bis zur Implantatversorgung',
@@ -103,7 +109,7 @@ const gruende = [
 const faq = [
   {
     q: 'Vollzeit oder Teilzeit?',
-    a: 'Beides ist möglich. Wie viele Stunden und an welchen Tagen, besprechen wir mit Ihnen — die Arbeitszeiten richten sich nach den Sprechzeiten der Praxis.',
+    a: `Beides ist möglich. Die volle Stelle hat ${stundenText}. Wenn Sie weniger arbeiten möchten, besprechen wir Stunden und Tage mit Ihnen — die Arbeitszeiten richten sich nach den Sprechzeiten der Praxis.`,
   },
   {
     q: 'Ich habe bisher wenig mit CAD/CAM gearbeitet. Lohnt sich die Bewerbung?',
@@ -121,7 +127,7 @@ const faq = [
 
 /* JobPosting für die Google-Jobsuche. Nur solange die Stelle offen ist:
    Eine Anzeige, die nach der Besetzung weiterläuft, wertet Google ab.
-   Ohne Gehalt — Google empfiehlt die Angabe, verlangt sie aber nicht. */
+   baseSalary muss mit dem Gehalt auf der Seite übereinstimmen. */
 const stellenanzeige = {
   '@context': 'https://schema.org',
   '@type': 'JobPosting',
@@ -131,9 +137,12 @@ const stellenanzeige = {
     '<p>Ihre Aufgaben: festsitzender Zahnersatz aus Vollkeramik und Zirkon, implantatgetragener Zahnersatz, Prothetik mit Anpassungen und Reparaturen, die digitale Strecke mit Intraoralscanner, Modellscanner, CAD/CAM und 3-D-Drucker sowie die Farbbestimmung direkt am Patienten.</p>',
     '<p>Sie bringen eine abgeschlossene Ausbildung als Zahntechnikerin oder Zahntechniker mit, Erfahrung mit festsitzendem und herausnehmbarem Zahnersatz und Freude am Kontakt mit Patienten. CAD/CAM-Kenntnisse sind willkommen, aber keine Bedingung.</p>',
     `<p>Wir sind eine familiengeführte Zahnarztpraxis in Potsdam Mitte, seit ${praxis.gegruendet} in derselben Familie, mit ${praxis.behandlungszimmer} Behandlungszimmern und eigenem Labor in der Praxis. Wir bieten eine unbefristete Anstellung, ein eingerichtetes Labor, kurze Wege zu den Behandlern und Unterstützung bei Fortbildungen.</p>`,
+    `<p>Gehalt: ${gehaltText}. Arbeitszeit: ${stundenText}.</p>`,
   ].join(''),
   datePosted: zahntechnik.veroeffentlicht,
   validThrough: zahntechnik.gueltigBis,
+  baseSalary: monatsverguetung(zahntechnik.gehaltBrutto),
+  workHours: stundenText,
   employmentType: ['FULL_TIME', 'PART_TIME'],
   totalJobOpenings: zahntechnik.stellen,
   occupationalCategory: 'Zahntechniker',
@@ -142,13 +151,7 @@ const stellenanzeige = {
     '@type': 'EducationalOccupationalCredential',
     credentialCategory: 'professional certificate',
   },
-  hiringOrganization: {
-    '@type': 'Dentist',
-    '@id': `${praxis.domain}/#praxis`,
-    name: praxis.vollerName,
-    url: `${praxis.domain}/`,
-    telephone: praxis.telefonIntl,
-  },
+  hiringOrganization: arbeitgeber,
   jobLocation: {
     '@type': 'Place',
     address: {
