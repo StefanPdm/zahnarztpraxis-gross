@@ -1036,7 +1036,8 @@ export default function Index() {
             <p
               data-einblenden
               className='text-15 einleitung'>
-              Vom Kontrolltermin bis zum Implantat: alles beim selben Zahnarzt in Potsdam,
+              Vom Kontrolltermin bis zum Implantat: alles beim selben Zahnarzt in Potsdam
+              Mitte, ein paar Schritte vom Luisenplatz und dem Brandenburger Tor —
               Zahnersatz aus dem eigenen Labor in der Praxis.
             </p>
             <div

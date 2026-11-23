@@ -195,7 +195,7 @@ export default function WeisheitszaehneChirurgie() {
             Weitere Eingriffe.
           </h2>
           <p className="blocksatz" style={{ hyphens: "auto", color: "var(--color-neutral-800)", margin: "0 0 20px" }}>
-            Neben den Weisheitszähnen führen wir weitere chirurgische Eingriffe durch — vor allem im Zusammenhang mit Implantaten und dem Erhalt von Zähnen.
+            Neben den Weisheitszähnen führen wir weitere chirurgische Eingriffe durch — vor allem im Zusammenhang mit <Link href="/implantologie">Implantaten</Link> und dem Erhalt von Zähnen.
           </p>
           <div style={{ display: "grid", gap: "0", borderTop: "1px solid var(--color-divider)" }}>
             {weitere.map((w, wI) => (

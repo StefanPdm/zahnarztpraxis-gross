@@ -67,7 +67,7 @@ export default function AesthetischeZahnmedizin() {
             Wir raten von dem ab, was auffällt. Ein Frontzahn darf eine Kante haben, die Farbe darf natürlich sein — was zählt, ist dass die Arbeit im Gesicht verschwindet. Deshalb steht am Anfang keine Materialliste, sondern die Frage, was Sie an Ihren Zähnen eigentlich stört und was Sie an ihnen mögen.
           </p>
           <p className="fliesstext">
-            Vor jedem Eingriff kommt die Gesundheit: Karies, Zahnfleischentzündungen und lockere Füllungen werden zuerst behandelt. Ästhetik auf kranke Zähne zu setzen hält nicht — weder medizinisch noch optisch.
+            Vor jedem Eingriff kommt die Gesundheit: Karies, <Link href="/parodontologie">Zahnfleischentzündungen</Link> und lockere Füllungen werden zuerst behandelt. Ästhetik auf kranke Zähne zu setzen hält nicht — weder medizinisch noch optisch.
           </p>
           <blockquote className="linie-links" style={{ margin: "32px 0 0", padding: "0 0 0 22px", "--linienfarbe": "var(--color-accent-300)", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "var(--fs-h5)", lineHeight: "1.45", color: "var(--color-neutral-900)" }}>
             „Das schönste Ergebnis ist das, bei dem niemand fragt, was Sie machen ließen.“

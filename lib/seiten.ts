@@ -51,9 +51,9 @@ export const seiten: Seite[] = [
     pfad: "/kinderzahnheilkunde",
     name: "Kinderzahnheilkunde",
     rubrik: "Besondere Anliegen",
-    titel: "Kinderzahnarzt in Potsdam | Groß & Groß",
+    titel: "Kinderzahnarzt Potsdam: alle Kassenleistungen | Groß & Groß",
     beschreibung:
-      "Kinderzahnarzt in Potsdam Mitte: behutsames Kennenlernen, Prophylaxe & Fissurenversiegelung. Eltern dürfen dabeibleiben. Jetzt Kindertermin anfragen.",
+      "Kinderzahnarzt in Potsdam Mitte nahe Brandenburger Tor: alle Kassenleistungen für Kinder, Behandlung von Kreidezähnen (MIH). Eltern dürfen dabeibleiben.",
   },
   {
     pfad: "/leistungen",
@@ -67,7 +67,7 @@ export const seiten: Seite[] = [
     pfad: "/zahnschmerzen",
     name: "Zahnschmerzen & Notfall",
     rubrik: "Behandlungen",
-    titel: "Zahnschmerzen in Potsdam? Schnell zum Termin | Groß & Groß",
+    titel: "Zahnnotfall Potsdam: Termin bei Zahnschmerzen | Groß & Groß",
     beschreibung:
       "Akute Zahnschmerzen? Rufen Sie morgens ab 8:00 an – Montag bis Freitag halten wir Notfalltermine frei. Mit Tipps für die Zeit bis zum Termin.",
   },
@@ -75,7 +75,7 @@ export const seiten: Seite[] = [
     pfad: "/prophylaxe",
     name: "Prophylaxe & Zahnreinigung",
     rubrik: "Behandlungen",
-    titel: "Professionelle Zahnreinigung in Potsdam | Groß & Groß",
+    titel: "Zahnreinigung (PZR) & Prophylaxe in Potsdam | Groß & Groß",
     beschreibung:
       "Professionelle Zahnreinigung und Prophylaxe in Potsdam: Beläge entfernen, Zahnfleisch schützen, Karies vorbeugen – im Rhythmus nach Ihrem Risiko.",
   },
@@ -99,7 +99,7 @@ export const seiten: Seite[] = [
     pfad: "/implantologie",
     name: "Zahnimplantate",
     rubrik: "Behandlungen",
-    titel: "Zahnimplantate in Potsdam | Groß & Groß",
+    titel: "Implantologie & Zahnimplantate in Potsdam | Groß & Groß",
     beschreibung:
       "Zahnimplantate in Potsdam: über 2.500 gesetzte Implantate. Planung, Implantation, Zahnersatz und Nachsorge in einer Praxis – mit eigenem Zahnlabor.",
   },
@@ -107,7 +107,7 @@ export const seiten: Seite[] = [
     pfad: "/aesthetische-zahnmedizin",
     name: "Ästhetische Zahnmedizin",
     rubrik: "Behandlungen",
-    titel: "Ästhetische Zahnmedizin in Potsdam | Groß & Groß",
+    titel: "Ästhetische Zahnmedizin & Bleaching, Potsdam | Groß & Groß",
     beschreibung:
       "Veneers, Bleaching, Keramik-Inlays und Vollkeramikkronen in Potsdam. Zahnfarbe direkt am Stuhl bestimmt, Arbeiten aus dem eigenen Zahnlabor.",
   },

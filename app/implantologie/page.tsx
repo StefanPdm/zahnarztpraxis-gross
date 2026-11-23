@@ -197,7 +197,7 @@ export default function Implantologie() {
             Bei uns sitzt der Zahntechniker in derselben Praxis. Die Zahnfarbe wird direkt am Stuhl bestimmt, Anpassungen passieren am selben Tag, und Kronen entstehen im 3D-Verfahren mit CAD/CAM-Technologie dort, wo sie auch eingesetzt werden.
           </p>
           <p className="fliesstext">
-            Das Modell Ihres Kiefers wird dafür digital eingescannt (Bild links): Aus dem Scan entsteht am Rechner ein exaktes dreidimensionales Abbild, auf dem Krone oder Brücke konstruiert werden — ohne den Umweg über Gipsmodelle, die per Post zwischen Praxis und Fremdlabor reisen.
+            Das Modell Ihres Kiefers wird dafür <Link href="/moderne-technik">digital eingescannt</Link> (Bild links): Aus dem Scan entsteht am Rechner ein exaktes dreidimensionales Abbild, auf dem Krone oder Brücke konstruiert werden — ohne den Umweg über Gipsmodelle, die per Post zwischen Praxis und Fremdlabor reisen.
           </p>
           <div className="umbruch-schmal" style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
             <Link className="btn btn-secondary knopf-gross" href="/zahnlabor">

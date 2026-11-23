@@ -466,7 +466,7 @@ export default function Ausbildung() {
           <p style={{ fontSize: '14px', color: 'var(--color-neutral-800)', margin: '10px 0 0' }}>
             {praxis.strasse} · {praxis.ort} — {praxis.eingang}, {praxis.zugang}.
           </p>
-          <div className='knopfreihe'>
+          <div className='knopfreihe knopfreihe--umbrechen'>
             <Link
               className='btn btn-secondary knopf-gross'
               href='/praxis-team'>
@@ -476,6 +476,11 @@ export default function Ausbildung() {
               className='btn btn-secondary knopf-gross'
               href='/moderne-technik'>
               Die Technik ansehen
+            </Link>
+            <Link
+              className='btn btn-secondary knopf-gross'
+              href='/karriere'>
+              Alle offenen Stellen
             </Link>
           </div>
         </div>

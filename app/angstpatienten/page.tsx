@@ -225,7 +225,7 @@ export default function Angstpatienten() {
             Laser statt Schmerzmittel-Reflex.
           </h2>
           <p className="fliesstext">
-            Wo es möglich ist, arbeiten wir mit dem Laser — in der Parodontosebehandlung, zur Keimreduktion und bei der Fissurenversiegelung. Der Vorteil für Sie: weniger Wundschmerz, längere Schmerzfreiheit und geringere Mengen Betäubungsmittel.
+            Wo es möglich ist, arbeiten wir mit dem <Link href="/moderne-technik">Laser</Link> — in der <Link href="/parodontologie">Parodontosebehandlung</Link>, zur Keimreduktion und bei der Fissurenversiegelung. Der Vorteil für Sie: weniger Wundschmerz, längere Schmerzfreiheit und geringere Mengen Betäubungsmittel.
           </p>
         </div>
       </div>

@@ -292,6 +292,8 @@
 /* ── Knopfreihen ───────────────────────────────────────────────────────── */
 .knopfreihe { display: flex; gap: 14px; margin-top: 26px; }
 .knopfreihe--mitte { justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+/* Mehr als zwei Knöpfe in einer halben Spalte: umbrechen statt überlaufen. */
+.knopfreihe--umbrechen { flex-wrap: wrap; }
 @media (max-width: 640px) { .knopfreihe { flex-wrap: wrap; } }
 
 /* ── Textgrößen ────────────────────────────────────────────────────────── */
