@@ -1,4 +1,4 @@
-import { istPraxisFeiertag, KURZTAGE, TAGNAMEN, type Kurztag, type Wochenplan } from "@/lib/oeffnungsstatus";
+import { istPraxisFeiertag, KURZTAGE, SONDERZEITEN, TAGNAMEN, type Kurztag, type Wochenplan } from "@/lib/oeffnungsstatus";
 
 /**
  * Wunschtermine im Formular: nur Tage, an denen die Praxis Sprechstunde hat.
@@ -34,6 +34,7 @@ export type Wunschterminfehler =
   | "zu-frueh"
   | "wochenende"
   | "feiertag"
+  | "notdienst"
   | "betriebsferien"
   | "keine-sprechstunde";
 
@@ -44,6 +45,8 @@ export const WUNSCHTERMIN_HINWEIS: Record<Wunschterminfehler, string> = {
   wochenende:
     "Samstags und sonntags ist die Praxis geschlossen. Bitte wählen Sie einen Tag von Montag bis Freitag.",
   feiertag: "An diesem Tag ist ein gesetzlicher Feiertag, die Praxis ist geschlossen. Bitte wählen Sie einen anderen Tag.",
+  notdienst:
+    "An diesem Tag hat die Praxis nur Notdienst. Bei akuten Beschwerden rufen Sie bitte an, für einen Termin wählen Sie einen anderen Tag.",
   // Auch Heiligabend landet hier (lib/praxis.ts) — deshalb ohne „Betriebsferien".
   betriebsferien: "An diesem Tag ist die Praxis geschlossen. Bitte wählen Sie einen anderen Tag.",
   "keine-sprechstunde": "An diesem Tag hat die Praxis keine Sprechstunde. Bitte wählen Sie einen anderen Tag.",
@@ -90,6 +93,7 @@ export function pruefeWunschtermin(
   if (wert < fruehesterWunschtermin(jetzt)) return "zu-frueh";
   if (tag === 0 || tag === 6) return "wochenende";
   if (istPraxisFeiertag(wert)) return "feiertag";
+  if (SONDERZEITEN[wert]?.nurNotdienst) return "notdienst";
   if (schliesstage.includes(wert)) return "betriebsferien";
   if (!plan[KURZTAGE[tag]]?.length) return "keine-sprechstunde";
   return null;

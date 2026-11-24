@@ -111,10 +111,10 @@ export function istFeiertag(iso: string): boolean {
 }
 
 /**
- * Feiertage, an denen die Praxis Notdienst hat und deshalb ganz normal
- * geöffnet ist — mit den Sprechzeiten des Wochentags. Als ISO-Datum.
- * Steht hier und nicht in lib/praxis.ts, weil auch der Öffnungsstatus im
- * Browser es wissen muss.
+ * Feiertage, an denen die Praxis Notdienst hat und deshalb geöffnet ist —
+ * mit den Zeiten aus SONDERZEITEN, sonst mit denen des Wochentags. Als
+ * ISO-Datum. Steht hier und nicht in lib/praxis.ts, weil auch der
+ * Öffnungsstatus im Browser es wissen muss.
  */
 export const NOTDIENST_AN_FEIERTAGEN: readonly string[] = [
   "2027-01-01", // Neujahr, ein Freitag (Auftraggeber, 23.11.2026)
@@ -123,6 +123,35 @@ export const NOTDIENST_AN_FEIERTAGEN: readonly string[] = [
 export function hatNotdienst(iso: string): boolean {
   return NOTDIENST_AN_FEIERTAGEN.includes(iso);
 }
+
+/**
+ * Einzelne Tage mit abweichenden Zeiten — ersetzen den Wochenplan an diesem
+ * Datum. `hinweis` steht in der Tabelle „Zwischen den Jahren" neben dem Tag.
+ * `nurNotdienst`: keine Wunschtermine über das Formular.
+ */
+export type Sonderzeit = { zeiten: readonly Zeitraum[]; hinweis: string; nurNotdienst?: boolean };
+
+const NUR_PROPHYLAXE: Sonderzeit = {
+  zeiten: [
+    ["08:00", "13:00"],
+    ["14:00", "18:00"],
+  ],
+  hinweis: "nur Prophylaxe mit festem Termin",
+};
+
+/** Auftraggeber, 24.11.2026. */
+export const SONDERZEITEN: Readonly<Record<string, Sonderzeit>> = {
+  "2026-12-21": NUR_PROPHYLAXE,
+  "2026-12-22": NUR_PROPHYLAXE,
+  "2027-01-01": {
+    zeiten: [
+      ["09:00", "11:00"],
+      ["17:00", "19:00"],
+    ],
+    hinweis: "nur Notdienst",
+    nurNotdienst: true,
+  },
+};
 
 /** Feiertag, an dem die Praxis geschlossen ist (also nicht im Notdienst). */
 export function istPraxisFeiertag(iso: string): boolean {
@@ -139,13 +168,14 @@ export function oeffnungsstatus(
   const zeitenAm = (abstand: number) => {
     const t = kalendertag(z.jahr, z.monat, z.tag, abstand);
     if (zu.has(t.iso) || istPraxisFeiertag(t.iso)) return { ...t, zeiten: [] as readonly Zeitraum[] };
-    return { ...t, zeiten: plan[KURZTAGE[t.wochentag]] ?? [] };
+    return { ...t, zeiten: SONDERZEITEN[t.iso]?.zeiten ?? plan[KURZTAGE[t.wochentag]] ?? [] };
   };
 
   const heute = zeitenAm(0);
   for (const [von, bis] of heute.zeiten) {
     if (z.minute >= minuten(von) && z.minute < minuten(bis)) {
-      return { offen: true, kurz: "Jetzt geöffnet", lang: `Jetzt geöffnet · bis ${uhrzeit(bis)}` };
+      const was = SONDERZEITEN[heute.iso]?.nurNotdienst ? "Jetzt Notdienst" : "Jetzt geöffnet";
+      return { offen: true, kurz: was, lang: `${was} · bis ${uhrzeit(bis)}` };
     }
   }
 

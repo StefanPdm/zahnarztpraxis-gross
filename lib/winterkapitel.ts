@@ -194,8 +194,8 @@ export const FESTTAGE: Record<string, string> = {
   '01-01': 'Neujahr',
 };
 
-/** Zeitraum der Tabelle: vom 22. Dezember bis zum 2. Januar. */
-export const ZWISCHEN_DEN_JAHREN = { von: [12, 22] as const, bis: [1, 2] as const };
+/** Zeitraum der Tabelle: vom 21. Dezember bis zum 2. Januar. */
+export const ZWISCHEN_DEN_JAHREN = { von: [12, 21] as const, bis: [1, 2] as const };
 
 export type Tafelinhalt =
   | { art: 'liste'; eintraege: { titel: string; text: string }[] }

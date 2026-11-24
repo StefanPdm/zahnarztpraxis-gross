@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mrs_Saint_Delafield } from "next/font/google";
 import { praxis, schliesstage, sprechzeiten } from "@/lib/praxis";
-import { hatNotdienst, istPraxisFeiertag, KURZTAGE, TAGNAMEN } from "@/lib/oeffnungsstatus";
+import { istPraxisFeiertag, KURZTAGE, SONDERZEITEN, TAGNAMEN } from "@/lib/oeffnungsstatus";
 import {
   FESTTAGE,
   kalendertag,
@@ -41,10 +41,11 @@ function zwischenDenJahren(winter: Winterkapitel): Zeile[] {
     const t = kalendertag(jahr, vonM, vonT + i);
     if (t.iso > ende) break;
     if (t.iso < winter.heute.iso && !winter.alles) continue;
-    const plan = sprechzeiten[KURZTAGE[t.wochentag] as keyof typeof sprechzeiten];
+    const sonder = SONDERZEITEN[t.iso];
+    const plan = sonder?.zeiten ?? sprechzeiten[KURZTAGE[t.wochentag] as keyof typeof sprechzeiten];
     if (!plan) continue; // Wochenende: immer geschlossen, nicht eigens aufgeführt
     const festtag = FESTTAGE[t.iso.slice(5)];
-    const name = hatNotdienst(t.iso) ? `${festtag ?? "Feiertag"} · wir haben Notdienst` : festtag;
+    const name = [festtag, sonder?.hinweis].filter(Boolean).join(" · ") || undefined;
     const zu = istPraxisFeiertag(t.iso) || schliesstage.includes(t.iso);
     zeilen.push({ tag: t, name, zeiten: zu ? null : plan.map(([v, b]) => `${uhr(v)} – ${uhr(b)}`) });
   }

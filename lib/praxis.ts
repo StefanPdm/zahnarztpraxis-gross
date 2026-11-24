@@ -71,10 +71,10 @@ export const praxis = {
 type Tag = "Mo" | "Di" | "Mi" | "Do" | "Fr";
 type Zeitraum = readonly [von: string, bis: string];
 
-/** Je Tag die Zeiträume (Auftraggeber, 30.09.2026). Nach Vereinbarung auch außerhalb. */
+/** Je Tag die Zeiträume (Auftraggeber, 30.09.2026; Mo/Di bis 18:00 seit 24.11.2026). Nach Vereinbarung auch außerhalb. */
 export const sprechzeiten: Record<Tag, readonly Zeitraum[]> = {
-  Mo: [["08:00", "13:00"], ["14:00", "18:30"]],
-  Di: [["08:00", "13:00"], ["14:00", "18:30"]],
+  Mo: [["08:00", "13:00"], ["14:00", "18:00"]],
+  Di: [["08:00", "13:00"], ["14:00", "18:00"]],
   Mi: [["08:00", "13:00"]],
   Do: [["08:00", "14:00"]],
   Fr: [["08:00", "12:00"]],
@@ -94,7 +94,14 @@ export const nachmittagNachVereinbarung: readonly Tag[] = ["Fr"];
  * z. B. "2026-12-28". Der Öffnungsstatus („Jetzt geöffnet") liest von hier;
  * fehlt ein Urlaub, stünde dort in den Ferien „geöffnet".
  */
-const betriebsferien: readonly string[] = [];
+const betriebsferien: readonly string[] = [
+  // Zwischen den Jahren 23.–31.12.2026 geschlossen (Auftraggeber, 24.11.2026)
+  "2026-12-23",
+  "2026-12-28",
+  "2026-12-29",
+  "2026-12-30",
+  "2026-12-31",
+];
 
 /* Heiligabend ist kein gesetzlicher Feiertag, die Praxis hat aber geschlossen
    (Auftraggeber, 23.11.2026). Für Vorjahr, dieses und nächstes Jahr, damit
@@ -136,13 +143,13 @@ export const tageLang = (g: Sprechzeitgruppe) =>
 /** „Mo, Di" */
 export const tageKurz = (g: Sprechzeitgruppe) => g.tage.join(", ");
 
-/** „08:00 – 13:00 · 14:00 – 18:30", „08:00 – 12:00 · nachmittags nach Vereinbarung" */
+/** „08:00 – 13:00 · 14:00 – 18:00", „08:00 – 12:00 · nachmittags nach Vereinbarung" */
 export const zeitenLang = (g: Sprechzeitgruppe) =>
   [...g.zeiten.map(([v, b]) => `${v} – ${b}`), ...(g.vereinbarung ? ["nachmittags nach Vereinbarung"] : [])].join(
     " · ",
   );
 
-/** „8:00–13:00 und 14:00–18:30", „8:00–12:00, nachmittags nach Vereinbarung" */
+/** „8:00–13:00 und 14:00–18:00", „8:00–12:00, nachmittags nach Vereinbarung" */
 export const zeitenKurz = (g: Sprechzeitgruppe) =>
   g.zeiten.map(([v, b]) => `${v.replace(/^0/, "")}–${b.replace(/^0/, "")}`).join(" und ") +
   (g.vereinbarung ? ", nachmittags nach Vereinbarung" : "");

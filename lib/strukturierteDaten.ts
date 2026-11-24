@@ -1,16 +1,17 @@
 import { praxis, schemaTage, schliesstage, sprechzeitGruppen, sprechzeiten } from "@/lib/praxis";
 import { team } from "@/lib/team";
-import { istPraxisFeiertag, KURZTAGE } from "@/lib/oeffnungsstatus";
+import { istPraxisFeiertag, KURZTAGE, SONDERZEITEN } from "@/lib/oeffnungsstatus";
 import { kalendertag } from "@/lib/winterkapitel";
 
 /**
- * Feiertage und Schließtage der nächsten acht Wochen, an denen sonst
- * Sprechstunde wäre — als Sonderöffnungszeit „geschlossen" (opens = closes
- * = 00:00, so beschreibt schema.org einen geschlossenen Tag). Google zeigt
- * dann an Heiligabend nicht „geöffnet". Die Seiten werden stündlich neu
- * berechnet (app/layout.tsx), die Liste wandert also mit.
+ * Sonderöffnungszeiten der nächsten acht Wochen: Feiertage und Schließtage,
+ * an denen sonst Sprechstunde wäre, als „geschlossen" (opens = closes
+ * = 00:00, so beschreibt schema.org einen geschlossenen Tag), und Tage mit
+ * abweichenden Zeiten (SONDERZEITEN). Google zeigt dann an Heiligabend nicht
+ * „geöffnet". Die Seiten werden stündlich neu berechnet (app/layout.tsx),
+ * die Liste wandert also mit.
  */
-function geschlosseneTage() {
+function sondertage() {
   const [j, m, t] = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" })
     .format(new Date())
     .split("-")
@@ -18,6 +19,19 @@ function geschlosseneTage() {
   const tage = [];
   for (let i = 0; i < 56; i++) {
     const tag = kalendertag(j, m, t + i);
+    const sonder = SONDERZEITEN[tag.iso];
+    if (sonder && !schliesstage.includes(tag.iso)) {
+      for (const [opens, closes] of sonder.zeiten) {
+        tage.push({
+          "@type": "OpeningHoursSpecification",
+          opens,
+          closes,
+          validFrom: tag.iso,
+          validThrough: tag.iso,
+        });
+      }
+      continue;
+    }
     if (!sprechzeiten[KURZTAGE[tag.wochentag] as keyof typeof sprechzeiten]) continue;
     if (!istPraxisFeiertag(tag.iso) && !schliesstage.includes(tag.iso)) continue;
     tage.push({
@@ -71,7 +85,7 @@ function praxisFakten() {
     ),
     employee: team.map((m) => ({ "@id": personId(m.name) })),
     isAcceptingNewPatients: praxis.nimmtNeuePatienten,
-    specialOpeningHoursSpecification: geschlosseneTage(),
+    specialOpeningHoursSpecification: sondertage(),
     // Pediatric: Kinderbehandlung als Fachgebiet (/kinderzahnheilkunde).
     medicalSpecialty: ["https://schema.org/Dentistry", "https://schema.org/Pediatric"],
   };
