@@ -574,6 +574,15 @@
     radial-gradient(ellipse 80% 60% at 50% 40%, color-mix(in srgb, var(--color-accent-900) 60%, var(--ink-dark)), var(--ink-dark));
   transition: translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
+/* Geschlossen liegt das Tor im Fluss: Die Kachel wächst mit, wenn Datum und
+   Hinweis schmal umbrechen — sonst rutscht die letzte Zeile auf den Griff.
+   Erst beim Öffnen legt es sich absolut über den Inhalt und rollt hoch. */
+.tafel:not(.tafel--offen) { display: flex; }
+.tafel:not(.tafel--offen) > .tafel__tor {
+  position: relative;
+  inset: auto;
+  flex: 1;
+}
 .tafel__tor:focus-visible { outline: 2px solid var(--color-accent-300); outline-offset: -6px; }
 /* Lamellen und Endleiste mit Griff */
 .tafel__lamellen {
@@ -825,7 +834,7 @@
   .tafel__tor .tafel__datum::before { content: none; }
   .tafel__schloss { width: 44px; height: 44px; margin-top: 2px; }
   .tafel__schloss svg { width: 20px; height: 20px; }
-  .tafel__aufforderung { letter-spacing: 0.1em; }
+  .tafel__aufforderung { letter-spacing: 0.1em; line-height: 1.5; }
   .tafel__offen { padding: 24px 20px 18px; }
   .tafel__titel { font-size: 22px; margin: 10px 0 10px; }
   .tafel__zufrueh { top: 6px; left: 6px; right: 6px; }
